@@ -1,0 +1,2908 @@
+{
+ "version": "1.0.0",
+ "_readme": "Rules for slop_lint.py. Add a rule by appending an object to 'rules'. Required keys: id, category, severity (block, warn, note), weight, pattern, flags, message, suggestion. Optional: suppress_if_context, suppress_if_before, suppress_if_after, profiles, slots, not_slots, min_hits, examples_bad, examples_ok. Patterns are Python regular expressions. A tilde in a pattern matches a straight or curly apostrophe. Dash characters are written as escapes so this file stays free of them. Run 'python3 -I slop_lint.py --selftest' after every change.",
+ "allowlist": [
+  "Epic Pass",
+  "Ikon Pass",
+  "Majestic Hotel",
+  "Majestic Theatre",
+  "Bayeux Tapestry",
+  "Old Testament",
+  "New Testament",
+  "Last Will and Testament",
+  "immersion suit"
+ ],
+ "caps_allowlist": [
+  "NOK",
+  "USD",
+  "EUR",
+  "GBP",
+  "SEK",
+  "DKK",
+  "UTM",
+  "FAQ",
+  "GPS",
+  "ABS",
+  "VAT",
+  "SMS",
+  "HTML",
+  "JSON",
+  "CSS",
+  "URL",
+  "CSV",
+  "PDF",
+  "API",
+  "CLI",
+  "CTA",
+  "UGC",
+  "DM",
+  "ROAS",
+  "CPM",
+  "CPC",
+  "CTR",
+  "ROI",
+  "KPI",
+  "SEO",
+  "QR",
+  "MIT",
+  "README",
+  "LICENSE",
+  "CHANGELOG",
+  "AGENTS",
+  "SKILL",
+  "VERIFY",
+  "BLOCK",
+  "WARN",
+  "NOTE",
+  "SHIP",
+  "REVISE",
+  "REJECT",
+  "PASS",
+  "OK",
+  "AI",
+  "EU",
+  "EEA",
+  "UK",
+  "US",
+  "USA",
+  "FTC",
+  "GDPR",
+  "DMA",
+  "NPR",
+  "ACL",
+  "PNAS",
+  "NBER",
+  "UTC",
+  "ASCII",
+  "UTF",
+  "TODO",
+  "FIU",
+  "WCAG",
+  "RGB",
+  "PNG",
+  "JPG",
+  "MP4",
+  "MCP",
+  "LLM",
+  "RLHF",
+  "AIDA",
+  "PAS",
+  "FAB",
+  "BAB",
+  "PPC",
+  "CPA",
+  "CRO",
+  "CRM",
+  "FOMO",
+  "ASA",
+  "ECN",
+  "NRK",
+  "TV",
+  "PR",
+  "HR",
+  "ID",
+  "IP",
+  "UI",
+  "UX",
+  "VS",
+  "ETA",
+  "Q4",
+  "AM",
+  "PM",
+  "NA",
+  "XXL",
+  "XL",
+  "PRIMARY",
+  "SECONDARY",
+  "VENDOR",
+  "REPORTED",
+  "APAC",
+  "QUEST",
+  "STEPPS",
+  "PASTOR",
+  "AWAI",
+  "BLUF",
+  "DAGMAR"
+ ],
+ "slots": {
+  "meta_primary": {
+   "limit": 125,
+   "kind": "visible before See more",
+   "source": "https://www.facebook.com/business/ads-guide/update/image/instagram-feed/link-clicks and https://adplus.com/tools/ad-specs-validator/facebook-125-character-primary-text",
+   "status": "Meta page figure verified 2026-10-06. [VERIFY: the cut is layout dependent, about 110 to 135 by device, vendor figure]"
+  },
+  "meta_headline": {
+   "limit": 27,
+   "kind": "Facebook feed headline",
+   "source": "https://www.facebook.com/business/ads-guide/update/image/facebook-feed/link-clicks",
+   "status": "verified 2026-10-06. Instagram feed field allows up to 40 [VERIFY in Ads Manager preview: reportedly not shown on single image feed ads]"
+  },
+  "meta_description": {
+   "limit": 30,
+   "kind": "link description",
+   "source": "https://socialrails.com/blog/facebook-ad-character-limits",
+   "status": "[VERIFY: reported figure, often hidden on mobile]"
+  },
+  "meta_image_line": {
+   "limit": 30,
+   "kind": "on-image text, three lines at 25, 30 and 20",
+   "source": "adquill heuristic for large type on a 375 px wide phone preview",
+   "status": "heuristic, not a platform number"
+  },
+  "meta_image_line_1": {
+   "limit": 25,
+   "kind": "on-image line 1, what it is",
+   "source": "adquill heuristic",
+   "status": "heuristic, not a platform number"
+  },
+  "meta_image_line_2": {
+   "limit": 30,
+   "kind": "on-image line 2, when",
+   "source": "adquill heuristic",
+   "status": "heuristic, not a platform number"
+  },
+  "meta_image_line_3": {
+   "limit": 20,
+   "kind": "on-image line 3, how much",
+   "source": "adquill heuristic",
+   "status": "heuristic, not a platform number"
+  },
+  "reels_line": {
+   "limit": 40,
+   "kind": "Reels and Stories one-line offer",
+   "source": "adquill heuristic. Instagram Reels primary text is 44 at https://www.facebook.com/business/ads-guide/update/video/instagram-reels/link-clicks",
+   "status": "heuristic, 44 verified 2026-10-06"
+  },
+  "x_post": {
+   "limit": 280,
+   "kind": "X post text",
+   "source": "https://benly.ai/learn/x-ads/x-twitter-ads-formats-specs",
+   "status": "[VERIFY: reported figure, X pages unreachable. A link counts as 23, reported]"
+  },
+  "x_card_headline": {
+   "limit": 70,
+   "kind": "X website card headline",
+   "source": "https://www.veuno.com/x-formerly-twitter-ad-specs-your-guide-for-2026/",
+   "status": "[VERIFY: reported figure, 50 recommended]"
+  },
+  "x_card_description": {
+   "limit": 200,
+   "kind": "X website card description",
+   "source": "https://lettercounter.org/blog/twitter-ads-character-limits/",
+   "status": "[VERIFY: vendor figure, about 125 visible]"
+  }
+ },
+ "rules": [
+  {
+   "id": "FMT-001",
+   "category": "formatting",
+   "severity": "warn",
+   "weight": 15,
+   "pattern": "\\u2014",
+   "flags": "",
+   "message": "Em dash (U+2014). House style uses none, and it is a common marker of machine-edited prose.",
+   "suggestion": "Use a comma, a colon, parentheses or a full stop.",
+   "profiles": [
+    "ad",
+    "doc",
+    "code"
+   ],
+   "example_fix": {
+    "before": "Six skiers per guide \u2014 and one very patient dog.",
+    "after": "Six skiers per guide, and one very patient dog."
+   },
+   "examples_bad": [
+    "Ski the fjord \u2014 then do it again."
+   ],
+   "examples_ok": [
+    "Ski the fjord, then do it again."
+   ]
+  },
+  {
+   "id": "FMT-002",
+   "category": "formatting",
+   "severity": "warn",
+   "weight": 15,
+   "pattern": "\\u2013",
+   "flags": "",
+   "message": "En dash (U+2013). House style uses none.",
+   "suggestion": "Use a plain hyphen or the word 'to' for ranges.",
+   "profiles": [
+    "ad",
+    "doc",
+    "code"
+   ],
+   "example_fix": {
+    "before": "9 Jan \u2013 27 Feb",
+    "after": "9 Jan to 27 Feb"
+   },
+   "examples_bad": [
+    "Saturdays 9 Jan \u2013 27 Feb"
+   ],
+   "examples_ok": [
+    "Saturdays 9 Jan to 27 Feb"
+   ]
+  },
+  {
+   "id": "FMT-003",
+   "category": "formatting",
+   "severity": "warn",
+   "weight": 10,
+   "pattern": "(?<=\\w) -- (?=\\w)|(?<=\\w)--(?=\\w)",
+   "flags": "",
+   "message": "Double hyphen used as a dash.",
+   "suggestion": "Use a comma, a colon or a full stop.",
+   "profiles": [
+    "ad",
+    "doc",
+    "code"
+   ],
+   "examples_bad": [
+    "Ski the fjord -- then rest.",
+    "Ski the fjord--then rest."
+   ],
+   "examples_ok": [
+    "Run it with --slot headline."
+   ]
+  },
+  {
+   "id": "FMT-004",
+   "category": "formatting",
+   "severity": "note",
+   "weight": 3,
+   "pattern": "(?<=[A-Za-z,.)]) - (?=[A-Za-z])",
+   "flags": "",
+   "message": "Spaced hyphen that may be standing in for a dash.",
+   "suggestion": "Check it is a real hyphen use. If it is a pause, use a comma or a full stop.",
+   "profiles": [
+    "ad",
+    "doc"
+   ],
+   "examples_bad": [
+    "Ski the fjord - then rest."
+   ],
+   "examples_ok": [
+    "A well-known guide on a half-day tour."
+   ]
+  },
+  {
+   "id": "FMT-005",
+   "category": "formatting",
+   "severity": "warn",
+   "weight": 15,
+   "pattern": "[\\U0001F000-\\U0001FAFF\\u2600-\\u27BF\\u2B50\\u2B05-\\u2B07\\u2B1B\\u2B1C\\u2300-\\u23FF\\uFE0F\\u20E3\\u200D]",
+   "flags": "",
+   "message": "Emoji or pictograph. House style uses none, and it renders differently on every device.",
+   "suggestion": "Say it in words. Describe the thing the emoji stood for.",
+   "profiles": [
+    "ad",
+    "doc",
+    "code"
+   ],
+   "examples_bad": [
+    "Ski the fjord \u2744 now",
+    "Powder day \ud83c\udfbf"
+   ],
+   "examples_ok": [
+    "Ski the fjord now."
+   ]
+  },
+  {
+   "id": "FMT-006",
+   "category": "formatting",
+   "severity": "note",
+   "weight": 3,
+   "pattern": "[\\u2190-\\u21FF\\u2248\\u25B6\\u25B8\\u25C0\\u00BB\\u00AB\\u2022\\u2023\\u25CF\\u25CB\\u25A0\\u25A1]",
+   "flags": "",
+   "message": "Decorative symbol (arrow, bullet dot or shape) used as typography.",
+   "suggestion": "Plain text. Use a line break for separation.",
+   "profiles": [
+    "ad",
+    "doc"
+   ],
+   "examples_bad": [
+    "Dates \u2192 9 Jan to 27 Feb"
+   ],
+   "examples_ok": [
+    "Dates: 9 Jan to 27 Feb"
+   ]
+  },
+  {
+   "id": "FMT-007",
+   "category": "formatting",
+   "severity": "warn",
+   "weight": 8,
+   "pattern": "",
+   "flags": "",
+   "message": "Capital letters used for emphasis. House style uses sentence case.",
+   "suggestion": "Use sentence case. Put the emphasis in a number or a plain word.",
+   "type": "caps",
+   "profiles": [
+    "ad",
+    "doc"
+   ],
+   "examples_bad": [
+    "NEW DATES for the intro day",
+    "NO FEES at all"
+   ],
+   "examples_ok": [
+    "Prices in NOK, VAT included.",
+    "Send a DM or check the FAQ."
+   ]
+  },
+  {
+   "id": "FMT-008",
+   "category": "formatting",
+   "severity": "warn",
+   "weight": 8,
+   "pattern": "!{2,}|\\?!|!\\?|\\?{2,}",
+   "flags": "",
+   "message": "Stacked punctuation.",
+   "suggestion": "One mark, or none.",
+   "profiles": [
+    "ad",
+    "doc"
+   ],
+   "examples_bad": [
+    "Book now!!",
+    "Really?!"
+   ],
+   "examples_ok": [
+    "Book now."
+   ]
+  },
+  {
+   "id": "FMT-009",
+   "category": "formatting",
+   "severity": "warn",
+   "weight": 10,
+   "pattern": "(?m)^\\s{0,3}#{1,6}\\s+\\S",
+   "flags": "",
+   "message": "Markdown heading inside ad copy. Meta and X show the pound sign as plain text.",
+   "suggestion": "Plain text. Use a line break.",
+   "profiles": [
+    "ad"
+   ],
+   "examples_bad": [
+    "# Ski the fjord\nSaturdays, NOK 4,900"
+   ],
+   "examples_ok": [
+    "Ski the fjord\nSaturdays, NOK 4,900"
+   ]
+  },
+  {
+   "id": "FMT-010",
+   "category": "formatting",
+   "severity": "warn",
+   "weight": 8,
+   "pattern": "\\*\\*[^*\\n]{1,80}\\*\\*|__[^_\\n]{1,80}__",
+   "flags": "",
+   "message": "Markdown bold. Meta and X show the asterisks as plain characters.",
+   "suggestion": "Remove the markers. If a phrase needs weight, move it to the start of a line.",
+   "profiles": [
+    "ad"
+   ],
+   "examples_bad": [
+    "Ski the **fjord** on Saturday."
+   ],
+   "examples_ok": [
+    "Ski the fjord on Saturday."
+   ]
+  },
+  {
+   "id": "FMT-011",
+   "category": "formatting",
+   "severity": "warn",
+   "weight": 10,
+   "pattern": "(?m)^\\s*(?:[-*\\u2022]\\s+)?\\*\\*[^*\\n]+\\*\\*\\s*[:\\-]",
+   "flags": "",
+   "message": "Bold-first bullet ('**Label**: text'), a layout models reach for.",
+   "suggestion": "Write one plain sentence per point, or cut the point.",
+   "profiles": [
+    "ad"
+   ],
+   "examples_bad": [
+    "- **Safety**: guides carry radios"
+   ],
+   "examples_ok": [
+    "Guides carry radios."
+   ]
+  },
+  {
+   "id": "FMT-012",
+   "category": "formatting",
+   "severity": "note",
+   "weight": 3,
+   "pattern": "(?m)^\\s*(?:[-*\\u2022]|\\d+[.)])\\s+\\S",
+   "flags": "",
+   "message": "Bullet or numbered list in ad copy. Lists are fine on a landing page and suspect in a feed ad.",
+   "suggestion": "Prose, or one line of three real facts.",
+   "profiles": [
+    "ad"
+   ],
+   "examples_bad": [
+    "- Skins on at 09:15\n- Back by 15:30"
+   ],
+   "examples_ok": [
+    "Skins on at 09:15. Back by 15:30."
+   ]
+  },
+  {
+   "id": "FMT-013",
+   "category": "formatting",
+   "severity": "warn",
+   "weight": 10,
+   "pattern": "(?:#[A-Za-z0-9_]+[ \\t]*){4,}",
+   "flags": "",
+   "message": "Hashtag stack of four or more.",
+   "suggestion": "Zero to two hashtags, and only if your audience searches them.",
+   "profiles": [
+    "ad"
+   ],
+   "examples_bad": [
+    "#ski #norway #voss #fjord #powder"
+   ],
+   "examples_ok": [
+    "#skitouring"
+   ]
+  },
+  {
+   "id": "FMT-014",
+   "category": "formatting",
+   "severity": "note",
+   "weight": 2,
+   "pattern": "(?m)^\\s*[-*_]{3,}\\s*$",
+   "flags": "",
+   "message": "Horizontal rule between sections of an ad.",
+   "suggestion": "Remove it. Use a blank line.",
+   "profiles": [
+    "ad"
+   ],
+   "examples_bad": [
+    "Ski the fjord\n---\nNOK 4,900"
+   ],
+   "examples_ok": [
+    "Ski the fjord\n\nNOK 4,900"
+   ]
+  },
+  {
+   "id": "FMT-015",
+   "category": "formatting",
+   "severity": "note",
+   "weight": 3,
+   "pattern": "(?m)^[A-Z][a-z]+(?: [A-Z][a-z]+){3,}$",
+   "flags": "m",
+   "message": "Title Case line of four or more words.",
+   "suggestion": "Sentence case.",
+   "profiles": [
+    "ad"
+   ],
+   "examples_bad": [
+    "Your Ultimate Norwegian Ski Day"
+   ],
+   "examples_ok": [
+    "Your ski touring day in Norway"
+   ]
+  },
+  {
+   "id": "FMT-016",
+   "category": "formatting",
+   "severity": "note",
+   "weight": 3,
+   "pattern": "\\.{3,}|\\u2026",
+   "flags": "",
+   "message": "Ellipsis used for drama.",
+   "suggestion": "Finish the sentence.",
+   "profiles": [
+    "ad"
+   ],
+   "examples_bad": [
+    "The fjord is waiting..."
+   ],
+   "examples_ok": [
+    "The fjord is below you."
+   ]
+  },
+  {
+   "id": "FMT-017",
+   "category": "formatting",
+   "severity": "warn",
+   "weight": 10,
+   "pattern": "",
+   "flags": "",
+   "message": "Lint-ignore block opened and never closed ({detail}). The rest of the text was skipped.",
+   "suggestion": "Add the closing marker, or remove the opening one.",
+   "type": "builtin",
+   "builtin": "unclosed_ignore",
+   "profiles": [
+    "ad",
+    "doc"
+   ],
+   "examples_bad": [],
+   "examples_ok": []
+  },
+  {
+   "id": "FMT-018",
+   "category": "formatting",
+   "severity": "note",
+   "weight": 2,
+   "pattern": "",
+   "flags": "",
+   "message": "Lint-ignore end marker without a start ({detail}).",
+   "suggestion": "Remove it or add the matching start marker.",
+   "type": "builtin",
+   "builtin": "stray_ignore_end",
+   "profiles": [
+    "ad",
+    "doc"
+   ],
+   "examples_bad": [],
+   "examples_ok": []
+  },
+  {
+   "id": "FMT-019",
+   "category": "formatting",
+   "severity": "note",
+   "weight": 2,
+   "pattern": "",
+   "flags": "",
+   "message": "Lint-ignore start inside an open ignore block ({detail}).",
+   "suggestion": "Remove the inner start marker.",
+   "type": "builtin",
+   "builtin": "nested_ignore",
+   "profiles": [
+    "ad",
+    "doc"
+   ],
+   "examples_bad": [],
+   "examples_ok": []
+  },
+  {
+   "id": "LEX-001",
+   "category": "lexical",
+   "severity": "block",
+   "weight": 30,
+   "pattern": "\\b(?:i hope this helps|certainly[!,.]|of course[!,.]|great question|happy to help|let me know if|would you like me to|as an ai\\b|as a language model|here(?:~s| is) (?:a|an|the|your) (?:revised|updated|draft|version|rewrite|ad|caption|headline|post)|i(?:~ve| have) (?:rewritten|revised|updated|tightened))",
+   "flags": "i",
+   "message": "Chatbot residue: wrapper text that belongs to a conversation, not to an ad.",
+   "suggestion": "Delete it. Ship only the copy.",
+   "examples_bad": [
+    "Certainly! Here is a revised ad for you.",
+    "Great question. Here's the post."
+   ],
+   "examples_ok": [
+    "Certainly not a beginner day."
+   ]
+  },
+  {
+   "id": "LEX-002",
+   "category": "lexical",
+   "severity": "block",
+   "weight": 30,
+   "pattern": "\\[(?:insert|your|company|brand|name|link|date|tour|price|product|city)[^\\]\\n]{0,40}\\]|\\{\\{[^}\\n]+\\}\\}|<(?:insert|your)[^>\\n]{0,40}>|\\blorem ipsum\\b|(?-i:\\bTODO\\b)",
+   "flags": "i",
+   "message": "Template placeholder left in the copy.",
+   "suggestion": "Fill it from the fact ledger, or tag the gap as [VERIFY: reason] and ask.",
+   "profiles": [
+    "ad"
+   ],
+   "examples_bad": [
+    "Ski with [company name] for [price].",
+    "{{price}} per person"
+   ],
+   "examples_ok": [
+    "Ski with Brekke. [VERIFY: guide certificate]"
+   ]
+  },
+  {
+   "id": "LEX-003",
+   "category": "lexical",
+   "severity": "warn",
+   "weight": 10,
+   "pattern": "\\bas of (?:my|the) (?:last|latest) (?:update|training)|\\bknowledge cutoff\\b|\\bbased on (?:the )?(?:available|provided) information\\b",
+   "flags": "i",
+   "message": "Knowledge-limit disclaimer from a chat reply.",
+   "suggestion": "Delete it. State the verified fact or tag it [VERIFY: reason].",
+   "examples_bad": [
+    "As of my last update, the price is NOK 4,900."
+   ],
+   "examples_ok": [
+    "The price is NOK 4,900."
+   ]
+  },
+  {
+   "id": "LEX-010",
+   "category": "lexical",
+   "severity": "warn",
+   "weight": 10,
+   "pattern": "\\b(?:delv(?:e|es|ed|ing)|tapestr(?:y|ies)|realms?|testament|embark(?:s|ed|ing)?|unparalleled|multifaceted|myriad|plethora|beacon of|kaleidoscope|vibrant|bustling|intricate|intricacies|meticulous(?:ly)?|pivotal|underscor(?:e|es|ed|ing)|commendable|noteworthy|invaluable)\\b",
+   "flags": "i",
+   "message": "Tier 1 stock vocabulary: words that show up far more in machine-edited prose than in plain ad copy, and carry no picture.",
+   "suggestion": "Name the thing. Delete the sentence if the word was doing all the work.",
+   "suppress_if_context": "\\bbayeux\\b|\\blast will and testament\\b|\\b(?:old|new) testament\\b",
+   "example_fix": {
+    "before": "We delve into the fjords.",
+    "after": "We ski down to the fjord."
+   },
+   "examples_bad": [
+    "We delve into the fjords.",
+    "Woven into the tapestry of Voss.",
+    "The bustling town of Voss."
+   ],
+   "examples_ok": [
+    "Beacon, shovel and probe are included.",
+    "The Bayeux tapestry hangs in Bayeux."
+   ]
+  },
+  {
+   "id": "LEX-011",
+   "category": "lexical",
+   "severity": "warn",
+   "weight": 10,
+   "pattern": "\\b(?:unlock(?:s|ed|ing)?|elevat(?:e|es|ed|ing)|empower(?:s|ed|ing|ment)?|supercharg(?:e|es|ed|ing)|reimagin(?:e|es|ed|ing)|revolutioni[sz](?:e|es|ed|ing)|revolutionary|transformative|game[- ]chang(?:er|ers|ing)|cutting[- ]edge|next[- ]level|seamless(?:ly)?|holistic|synerg(?:y|ies)|turbocharg\\w+)\\b",
+   "flags": "i",
+   "message": "Ad-slop verb or adjective with no action a body can do.",
+   "suggestion": "Use a verb a body can do: climb, skin, carve, wait, eat, sleep, drive.",
+   "suppress_if_context": "\\bunlock(?:s|ed|ing)? (?:the |a |your |our )?(?:door|hut|cabin|lock|phone|gate|code|padlock|car|screen|lift|barrier|boot room|locker)\\b|\\belevated (?:terrain|ridge|hut|viewpoint|platform|position|plateau|trail|path)\\b",
+   "example_fix": {
+    "before": "Elevate your ski season.",
+    "after": "Skin up on Saturday. Ski down before lunch."
+   },
+   "examples_bad": [
+    "Elevate your ski season.",
+    "A seamless, game-changer of a day.",
+    "Unlock the ultimate winter playground."
+   ],
+   "examples_ok": [
+    "Unlock the cabin door with the brass key.",
+    "Elevation gain is 900 m.",
+    "The hut sits on an elevated ridge."
+   ]
+  },
+  {
+   "id": "LEX-012",
+   "category": "lexical",
+   "severity": "warn",
+   "weight": 8,
+   "pattern": "\\b(?:leverag(?:e|es|ed|ing)|streamlin(?:e|es|ed|ing)|utili[sz](?:e|es|ed|ing)|foster(?:s|ed|ing)?|showcas(?:e|es|ed|ing)|bolster(?:s|ed|ing)?|spearhead(?:s|ed|ing)?)\\b",
+   "flags": "i",
+   "message": "Business-report verb. In ad copy it replaces a plainer verb.",
+   "suggestion": "Use use, show, build, back up, start. Or say what actually happens.",
+   "suppress_if_context": "\\b(?:financial|operating|debt|equity|mortgage|margin|ratio|buyout|pole|plant|physics|mechanical|torque|lever|foster (?:parent|child|home|care))\\b",
+   "examples_bad": [
+    "Our guides leverage deep local knowledge.",
+    "We foster community on every tour."
+   ],
+   "examples_ok": [
+    "The firm's leverage ratio is 3.2.",
+    "Leverage on a pole plant turns the ski."
+   ]
+  },
+  {
+   "id": "LEX-013",
+   "category": "lexical",
+   "severity": "warn",
+   "weight": 5,
+   "pattern": "\\brobust\\b",
+   "flags": "i",
+   "message": "'Robust' describes ideas in copy. It is fine for gear and software.",
+   "suggestion": "Say what holds up and how: 'a shell that kept us dry through a wet March'.",
+   "suppress_if_context": "\\b(?:software|api|code|server|backend|framework|tests?|shell|boots?|jackets?|bindings?|construction|build|fabric|material|gear|skis?|poles?|gloves?|pack|tent|load|stress)\\b",
+   "examples_bad": [
+    "A robust approach to winter adventure."
+   ],
+   "examples_ok": [
+    "The API is robust under load.",
+    "A robust shell jacket is recommended."
+   ]
+  },
+  {
+   "id": "LEX-014",
+   "category": "lexical",
+   "severity": "warn",
+   "weight": 10,
+   "pattern": "\\bharness(?:es|ed|ing)? (?:the |your |our |their |its |a |an )?(?:power|energy|potential|magic|beauty|spirit|strength|force|wind|sun|essence|best)\\b",
+   "flags": "i",
+   "message": "'Harness the power of' is stock phrasing. The gear noun is fine.",
+   "suggestion": "Say what you do with the thing.",
+   "examples_bad": [
+    "Harness the power of Norwegian winter."
+   ],
+   "examples_ok": [
+    "You wear a harness on the glacier section.",
+    "Harness and rope are included."
+   ]
+  },
+  {
+   "id": "LEX-015",
+   "category": "lexical",
+   "severity": "warn",
+   "weight": 8,
+   "pattern": "\\bnavigat(?:e|es|ed|ing) (?:the |your |through )?(?:complexit\\w+|challenges?|world|landscape|journey|transition|ups and downs|process|market|changing|uncertaint\\w+|waters|unknown|path)\\b",
+   "flags": "i",
+   "message": "'Navigate the challenges' is stock phrasing. Literal navigation is fine.",
+   "suggestion": "Say what the problem is and what you do about it.",
+   "examples_bad": [
+    "Navigate the challenges of the backcountry."
+   ],
+   "examples_ok": [
+    "We navigate by compass in a whiteout.",
+    "The guide navigates the fog with a map."
+   ]
+  },
+  {
+   "id": "LEX-016",
+   "category": "lexical",
+   "severity": "warn",
+   "weight": 6,
+   "pattern": "\\bjourneys?\\b",
+   "flags": "i",
+   "message": "'Journey' as a noun for a trip or a feeling. A literal travel time is fine.",
+   "suggestion": "Say what happens: the climb, the drive, the descent.",
+   "suppress_if_context": "\\b(?:buyer|customer|user|consumer|purchase|reader)[- ]journeys?\\b|\\b(?:train|boat|ferry|bus|car|bike|return|outbound|long|short|bumpy|overnight|flight)\\s+journeys?\\b|\\bjourneys? (?:time|takes|from|to|north|south|back|home|by)\\b|\\b\\d+[- ](?:hour|minute|day)s?\\.? journey",
+   "examples_bad": [
+    "A journey of discovery and connection.",
+    "Your ski journey starts here."
+   ],
+   "examples_ok": [
+    "The train journey to Voss takes about an hour.",
+    "The journey takes two hours."
+   ]
+  },
+  {
+   "id": "LEX-017",
+   "category": "lexical",
+   "severity": "warn",
+   "weight": 6,
+   "pattern": "\\b(?:innovative|dynamic|sophisticated|state[- ]of[- ]the[- ]art|best[- ]in[- ]class|bespoke)\\b",
+   "flags": "i",
+   "message": "Corporate adjective that says nothing a skier can check.",
+   "suggestion": "Give the spec or the habit that proves it.",
+   "suppress_if_context": "\\bdynamic (?:creative|ads?|pricing|product|range|text|language|catalog)\\b",
+   "examples_bad": [
+    "An innovative, dynamic ski day."
+   ],
+   "examples_ok": [
+    "Wear a layer you can move in."
+   ]
+  },
+  {
+   "id": "LEX-020",
+   "category": "lexical",
+   "severity": "note",
+   "weight": 2,
+   "pattern": "\\b(?:discover(?:s|ed|ing)?|explor(?:e|es|ed|ing)|curated?|crafted|authentic(?:ally)?|iconic|legendary|uncover(?:s|ed|ing)?|dive into|transform(?:s|ed|ing)?|finest|perfect|ideal)\\b",
+   "flags": "i",
+   "message": "Tier 2 stock word. Fine once when literal, a pattern when it clusters.",
+   "suggestion": "Check each one. If it is literal, keep it. If not, name the thing.",
+   "suppress_if_context": "\\btransform(?:er|ers)\\b",
+   "profiles": [
+    "ad"
+   ],
+   "examples_bad": [
+    "Discover an authentic, iconic day."
+   ],
+   "examples_ok": [
+    "Ski on Saturday."
+   ]
+  },
+  {
+   "id": "LEX-021",
+   "category": "lexical",
+   "severity": "note",
+   "weight": 3,
+   "pattern": "\\b(?:truly|deeply|fundamentally|remarkably|genuinely|effortlessly|literally|absolutely|incredibly|extremely|utterly|totally|amazingly|quietly|profoundly|undeniably|undoubtedly)\\b",
+   "flags": "i",
+   "message": "Empty intensifier. It adds volume, not information.",
+   "suggestion": "Cut the adverb. If the sentence dies, it had no content.",
+   "examples_bad": [
+    "A truly unforgettable day."
+   ],
+   "examples_ok": [
+    "A long day on skis."
+   ]
+  },
+  {
+   "id": "LEX-022",
+   "category": "lexical",
+   "severity": "note",
+   "weight": 3,
+   "pattern": "\\b(?:crucial|vital|enhanc(?:e|es|ed|ing)|align(?:s|ed|ing)? with|resonat(?:e|es|ed|ing) with|diverse|comprehensive|nuanced|enduring)\\b",
+   "flags": "i",
+   "message": "Tier 2 stock vocabulary from machine-edited prose.",
+   "suggestion": "Use the plain word or the fact it stands for.",
+   "suppress_if_context": "\\bvital (?:signs|statistics)\\b|\\benhance(?:d|ments?)? (?:cta|media|image|text|brightness)\\b|\\btext enhancements?\\b",
+   "examples_bad": [
+    "A comprehensive, diverse programme."
+   ],
+   "examples_ok": [
+    "Check the vital signs of the snowpack."
+   ]
+  },
+  {
+   "id": "LEX-030",
+   "category": "lexical",
+   "severity": "warn",
+   "weight": 8,
+   "pattern": "\\b(?:serves|stands|functions|acts|operates) as (?:a|an|the)\\b|\\bboasts?\\b|\\bfeatures? (?:a|an) (?:diverse|rich|wide|vast)\\b|\\ba diverse array\\b|\\ba (?:rich|vast|wide) (?:range|array|variety|selection) of\\b|\\boffers? (?:a|an) (?:unique|unparalleled|exceptional|unforgettable|wide|rich)\\b",
+   "flags": "i",
+   "message": "Copula dodge: a fancier verb where 'is' or 'has' would do.",
+   "suggestion": "Write 'is' or 'has'.",
+   "example_fix": {
+    "before": "The lodge boasts a sauna.",
+    "after": "The lodge has a sauna."
+   },
+   "examples_bad": [
+    "The lodge boasts a sauna.",
+    "The hut serves as a base."
+   ],
+   "examples_ok": [
+    "The lodge has a sauna."
+   ]
+  },
+  {
+   "id": "LEX-031",
+   "category": "lexical",
+   "severity": "warn",
+   "weight": 6,
+   "pattern": ",\\s+(?:highlighting|underscoring|emphasi[sz]ing|reflecting|showcasing|fostering|symbolizing|cultivating|contributing to|enhancing|making it (?:the perfect|an ideal|easy to)|ensuring (?:a |an |that )?(?:seamless|smooth|safe|memorable|unforgettable|perfect|great|enjoyable))\\b",
+   "flags": "i",
+   "message": "Shallow participle rider tacked onto a fact.",
+   "suggestion": "Cut it. If the point matters, give it its own sentence with a fact in it.",
+   "examples_bad": [
+    "We ski the ridge, highlighting local culture.",
+    "A short day, making it the perfect intro."
+   ],
+   "examples_ok": [
+    "We ski the ridge, then eat lunch."
+   ]
+  },
+  {
+   "id": "LEX-032",
+   "category": "lexical",
+   "severity": "warn",
+   "weight": 10,
+   "pattern": "\\btestament to\\b|\\bplays? an? (?:crucial|pivotal|vital|key|significant) role\\b|\\bin today~s (?:fast[- ]paced|digital|ever[- ]changing|modern) world\\b|\\bever[- ]evolving\\b|\\brich (?:cultural )?tapestry\\b|\\bevolving landscape\\b|\\bindelible mark\\b",
+   "flags": "i",
+   "message": "Significance inflation: an ordinary fact dressed as history.",
+   "suggestion": "Say what happened and when.",
+   "examples_bad": [
+    "A testament to Norwegian outdoor culture.",
+    "In today's fast-paced world, skiing matters."
+   ],
+   "examples_ok": [
+    "Skiing started here long before the lifts."
+   ]
+  },
+  {
+   "id": "LEX-033",
+   "category": "lexical",
+   "severity": "warn",
+   "weight": 8,
+   "pattern": "\\b(?:experts|studies|research|critics|observers|many people|some say|industry reports)\\s+(?:argue|suggest|say|show|have shown|believe|agree|report)\\b",
+   "flags": "i",
+   "message": "Vague attribution: an unnamed authority.",
+   "suggestion": "Name the source with a link, or cut the line.",
+   "suppress_if_context": "\\bet al\\b|\\b(?:19|20)\\d\\d\\b|\\[VERIFY|\\bsource:",
+   "examples_bad": [
+    "Experts agree this is the best tour.",
+    "Studies show skiers sleep better."
+   ],
+   "examples_ok": [
+    "Research by Jones et al. (2021) shows less sleep debt."
+   ]
+  },
+  {
+   "id": "LEX-034",
+   "category": "lexical",
+   "severity": "warn",
+   "weight": 8,
+   "pattern": "\\bit~?s worth (?:noting|mentioning|remembering)\\b|\\bit is (?:worth noting|important to (?:note|remember|understand))\\b|\\blet~s (?:dive|delve|explore|unpack|break (?:this|it) down)\\b|\\bwithout further ado\\b|\\bhere~s (?:the (?:thing|kicker|catch|truth|secret)|what you need to know)\\b|\\bat its core\\b|\\bwhat really matters\\b|\\bthe real question is\\b",
+   "flags": "i",
+   "message": "Throat-clearing: it announces a point instead of making one.",
+   "suggestion": "Start the sentence at the point.",
+   "examples_bad": [
+    "It's worth noting that conditions vary.",
+    "Here's the thing: skiing is hard."
+   ],
+   "examples_ok": [
+    "Conditions vary by week."
+   ]
+  },
+  {
+   "id": "LEX-035",
+   "category": "lexical",
+   "severity": "warn",
+   "weight": 8,
+   "pattern": "\\b(?:furthermore|moreover|additionally|consequently|nevertheless|notably|importantly|interestingly|in addition),|(?:^|[.!?]\\s+)(?:ultimately|overall),",
+   "flags": "im",
+   "message": "Filler transition. It signals structure and adds nothing.",
+   "suggestion": "Start at the point. Let the order of the sentences do the work.",
+   "examples_bad": [
+    "Furthermore, the tour is good.",
+    "Skiing is fun. Moreover, it is cheap."
+   ],
+   "examples_ok": [
+    "Overall prices rose in March."
+   ]
+  },
+  {
+   "id": "LEX-036",
+   "category": "lexical",
+   "severity": "warn",
+   "weight": 8,
+   "pattern": "\\b(?:in (?:conclusion|summary)|to sum up|all in all|at the end of the day|in a nutshell)\\b",
+   "flags": "i",
+   "message": "Summary closer. A learned wrap-up habit.",
+   "suggestion": "End on the last useful fact or the call to action.",
+   "examples_bad": [
+    "In conclusion, it was great."
+   ],
+   "examples_ok": [
+    "Book by Thursday 18:00."
+   ]
+  },
+  {
+   "id": "LEX-037",
+   "category": "lexical",
+   "severity": "warn",
+   "weight": 6,
+   "pattern": "\\b(?:could|might|may|can) (?:potentially|possibly|perhaps|arguably)\\b|\\bit could be argued\\b",
+   "flags": "i",
+   "message": "Hedge stack. Qualifiers pile up through repeated editing.",
+   "suggestion": "Keep one honest hedge and give its reason: 'snow depends on the week's weather'.",
+   "examples_bad": [
+    "It could potentially work."
+   ],
+   "examples_ok": [
+    "Snow depends on the week's weather."
+   ]
+  },
+  {
+   "id": "LEX-038",
+   "category": "lexical",
+   "severity": "warn",
+   "weight": 8,
+   "pattern": "\\b(?:symphony|dance|mosaic|kaleidoscope|canvas|masterclass|orchestra) of\\b|\\bearns? its keep\\b|\\bworth its weight\\b|\\ba dial worth\\b|\\bpaints? a picture\\b|\\bsecret sauce\\b|\\bweav(?:e|es|ing) (?:together|a story|its way)\\b",
+   "flags": "i",
+   "message": "Mannered prose: metaphor or flourish where a direct statement exists. The phrase displays the writer.",
+   "suggestion": "Say what you mean with the literal phrase.",
+   "examples_bad": [
+    "A symphony of snow and silence.",
+    "It paints a picture of winter."
+   ],
+   "examples_ok": [
+    "Snow and silence."
+   ]
+  },
+  {
+   "id": "STR-001",
+   "category": "structural",
+   "severity": "warn",
+   "weight": 12,
+   "pattern": "\\b(?:it|this|that|these|those|they|we|you|(?:a|an|the|our|your) \\w+(?: \\w+)?)(?:~s not|~re not| (?:is|are|was|were) not| (?:isn~t|aren~t|wasn~t|weren~t)| (?:don~t|doesn~t|do not|does not) (?:just |only |merely )?[a-z]+)\\b[^.!?\\n;,]{0,70}?(?:[,;:]|\\s\\u2014|\\s\\u2013|\\s--|\\.)\\s*(?:(?:it|this|that|they|we|you)(?:~s|~re| is| are| will be)|but\\b|rather\\b|instead\\b)",
+   "flags": "i",
+   "message": "Negative parallelism ('it is not X, it is Y'): it argues with a claim nobody made.",
+   "suggestion": "State Y as a fact. If the correction is literal and true, keep it, once.",
+   "example_fix": {
+    "before": "It's not a ski trip, it's a way of life.",
+    "after": "Eight Saturdays on skins. Back at the car by 15:30."
+   },
+   "examples_bad": [
+    "It's not just a ski trip, it's a way of life.",
+    "This isn't about skiing. It's about freedom.",
+    "It's not a tour, but a lifestyle."
+   ],
+   "examples_ok": [
+    "The trip is cheap and short."
+   ]
+  },
+  {
+   "id": "STR-002",
+   "category": "structural",
+   "severity": "warn",
+   "weight": 12,
+   "pattern": "\\bnot (?:just|only|merely|simply) [^.!?\\n]{1,80}?,? (?:but|it~s|it is)\\b|\\bmore than (?:just )?(?:a|an) [a-z-]+(?: [a-z-]+)?[,.;:] (?:it~s|it is)\\b",
+   "flags": "i",
+   "message": "'Not just X but Y' or 'more than just X': a straw man plus a flourish.",
+   "suggestion": "Say the one thing you offer.",
+   "examples_bad": [
+    "Not only a tour, but also a story.",
+    "More than just a ski trip, it's a lifestyle."
+   ],
+   "examples_ok": [
+    "Not every day is a ski day."
+   ]
+  },
+  {
+   "id": "STR-003",
+   "category": "structural",
+   "severity": "warn",
+   "weight": 10,
+   "pattern": "\\bno [^.!?\\n,]{1,30},\\s+no [^.!?\\n,]{1,30},\\s+(?:and )?(?:just|only)\\b|\\bno [a-z ]{2,25}\\.\\s+no [a-z ]{2,25}\\.\\s+(?:just|only)\\b|\\bnot (?:a|an|the)? ?[^.!?\\n]{1,40}\\.\\s+not [^.!?\\n]{1,40}\\.\\s+(?:just|only)\\b",
+   "flags": "i",
+   "message": "Countdown: 'No X. No Y. Just Z.' Negation tripled, then a reveal.",
+   "suggestion": "One concrete contrast with a real detail: 'No lift queue. You climb for it.'",
+   "examples_bad": [
+    "No queues. No crowds. Just snow.",
+    "Not a lift queue. Not a crowd. Just snow."
+   ],
+   "examples_ok": [
+    "No lift queue. You climb for it."
+   ]
+  },
+  {
+   "id": "STR-004",
+   "category": "structural",
+   "severity": "warn",
+   "weight": 10,
+   "pattern": "\\bwhether you~?(?:re| are) (?:a |an )?[^.!?\\n]{1,60}? or (?:a |an )?[^.!?\\n]{1,60}?[,.!]",
+   "flags": "i",
+   "message": "'Whether you are X or Y' sweeps the audience instead of choosing a reader.",
+   "suggestion": "Say who it is for and who it is not for.",
+   "examples_bad": [
+    "Whether you're a first-timer or a seasoned pro, we have a tour."
+   ],
+   "examples_ok": [
+    "It is for skiers who handle red runs."
+   ]
+  },
+  {
+   "id": "STR-005",
+   "category": "structural",
+   "severity": "warn",
+   "weight": 8,
+   "pattern": "(?:^|(?<=[.!?] ))(?i:(?:the|a|an) (?:result|catch|worst part|best part|truth|secret|kicker|twist|problem|answer|difference|best bit|reason|verdict|upshot|trick)\\?)\\s+[A-Z]",
+   "flags": "m",
+   "message": "'The X? A Y.' self-answered question: false suspense.",
+   "suggestion": "Give the result.",
+   "examples_bad": [
+    "The result? Powder.",
+    "The catch? You climb first."
+   ],
+   "examples_ok": [
+    "What is the catch? Ask us before you pay."
+   ]
+  },
+  {
+   "id": "STR-006",
+   "category": "structural",
+   "severity": "note",
+   "weight": 3,
+   "pattern": "(?m)^\\s*imagine\\b|\\bimagine (?:a world|waking|standing|yourself|this|if|being|skiing|sipping)\\b",
+   "flags": "im",
+   "message": "'Imagine' opener: an invitation to futurism.",
+   "suggestion": "Describe what happens at 08:30 on the day.",
+   "profiles": [
+    "ad"
+   ],
+   "examples_bad": [
+    "Imagine waking up to fjord views."
+   ],
+   "examples_ok": [
+    "You wake at 06:30."
+   ]
+  },
+  {
+   "id": "STR-007",
+   "category": "structural",
+   "severity": "note",
+   "weight": 3,
+   "pattern": "\\bfrom [^.!?\\n,]{2,40} to [^.!?\\n,]{2,40},? (?:to|and) [^.!?\\n]{2,40}\\b",
+   "flags": "i",
+   "message": "False range: items that are not on one scale.",
+   "suggestion": "Use a true range, such as dates or distances.",
+   "suppress_if_context": "\\bfrom \\d|\\bfrom (?:mon|tue|wed|thu|fri|sat|sun|jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)\\w*",
+   "profiles": [
+    "ad"
+   ],
+   "examples_bad": [
+    "From adventure to relaxation to culture."
+   ],
+   "examples_ok": [
+    "From 9 Jan to 27 Feb, and every Saturday between."
+   ]
+  },
+  {
+   "id": "STR-008",
+   "category": "structural",
+   "severity": "note",
+   "weight": 3,
+   "pattern": "\\b(?:\\d+|three|four|five|six|seven|eight|nine|ten) (?:things|reasons|ways|tips|secrets|steps|mistakes|hacks|must[- ]haves)\\b",
+   "flags": "i",
+   "message": "Counting headline format.",
+   "suggestion": "Lead with the one fact instead.",
+   "profiles": [
+    "ad"
+   ],
+   "examples_bad": [
+    "5 reasons to ski Norway."
+   ],
+   "examples_ok": [
+    "Six skiers per guide."
+   ]
+  },
+  {
+   "id": "STR-009",
+   "category": "structural",
+   "severity": "note",
+   "weight": 3,
+   "pattern": "\\b(?:think of it (?:as|like)|picture this|here~s the deal)\\b",
+   "flags": "i",
+   "message": "Patronising analogy or false suspense.",
+   "suggestion": "Say it once, plainly.",
+   "profiles": [
+    "ad"
+   ],
+   "examples_bad": [
+    "Think of it as a ski day with a teacher."
+   ],
+   "examples_ok": [
+    "A ski day with a teacher."
+   ]
+  },
+  {
+   "id": "STR-010",
+   "category": "structural",
+   "severity": "note",
+   "weight": 3,
+   "pattern": "\\b(?:despite (?:these|its|the) (?:challenges|setbacks|obstacles)|challenges and (?:legacy|opportunities)|future (?:outlook|prospects))\\b",
+   "flags": "i",
+   "message": "Outline-like 'challenges and prospects' formula.",
+   "suggestion": "State the real constraint and move on.",
+   "profiles": [
+    "ad"
+   ],
+   "examples_bad": [
+    "Despite these challenges, we ski."
+   ],
+   "examples_ok": [
+    "Snow was thin in March, so we skied the north side."
+   ]
+  },
+  {
+   "id": "STR-011",
+   "category": "structural",
+   "severity": "note",
+   "weight": 4,
+   "pattern": "",
+   "flags": "",
+   "message": "Several three-item lists: {detail}.",
+   "suggestion": "Keep one list at most, and only for real items such as gear.",
+   "type": "metric",
+   "metric": "tricolon",
+   "params": {
+    "min_words": 40,
+    "min_lists": 2
+   },
+   "profiles": [
+    "ad"
+   ],
+   "examples_bad": [
+    "We ski red runs, black runs, and glades. You bring skins, skis, and boots. The guide brings beacons, shovels, and probes. We start at nine on Saturday morning and we finish at half past three in the afternoon, after a long lunch at the top of the ridge."
+   ],
+   "examples_ok": [
+    "We ski red runs and glades."
+   ]
+  },
+  {
+   "id": "STR-012",
+   "category": "structural",
+   "severity": "note",
+   "weight": 3,
+   "pattern": "",
+   "flags": "",
+   "message": "Colon reveals: {detail}.",
+   "suggestion": "Let the sentence carry the reveal.",
+   "type": "metric",
+   "metric": "colon_reveals",
+   "params": {
+    "min": 3
+   },
+   "profiles": [
+    "ad"
+   ],
+   "examples_bad": [
+    "The plan: Ski early. The price: Low. The catch: Climbing."
+   ],
+   "examples_ok": [
+    "The plan is to ski early."
+   ]
+  },
+  {
+   "id": "STR-013",
+   "category": "structural",
+   "severity": "warn",
+   "weight": 6,
+   "pattern": "\\?\\s+(?:Because|Simple|Easy|Exactly|Simply put|Here~s why)\\b",
+   "flags": "i",
+   "message": "Question answered by the same writer in the next breath.",
+   "suggestion": "Say the answer first.",
+   "profiles": [
+    "ad"
+   ],
+   "examples_bad": [
+    "Why Brekke? Because we ski every Saturday."
+   ],
+   "examples_ok": [
+    "We ski every Saturday."
+   ]
+  },
+  {
+   "id": "STR-014",
+   "category": "structural",
+   "severity": "note",
+   "weight": 3,
+   "pattern": "\\bhere~s (?:what|how|why|everything)\\b[^.\\n]{0,40}:",
+   "flags": "i",
+   "message": "Signposting colon: it announces a list.",
+   "suggestion": "Start the list.",
+   "profiles": [
+    "ad"
+   ],
+   "examples_bad": [
+    "Here's what you get:"
+   ],
+   "examples_ok": [
+    "You get a guide and a beacon."
+   ]
+  },
+  {
+   "id": "STR-015",
+   "category": "structural",
+   "severity": "note",
+   "weight": 3,
+   "pattern": "\\bno [a-z ]{2,25}[,.]\\s+(?:just|only) [a-z]",
+   "flags": "i",
+   "message": "'No X, just Y': often a hollow contrast.",
+   "suggestion": "Keep it only if the contrast is a real, checkable fact.",
+   "profiles": [
+    "ad"
+   ],
+   "examples_bad": [
+    "No queues, just snow."
+   ],
+   "examples_ok": [
+    "No lift pass needed, skins only."
+   ]
+  },
+  {
+   "id": "TON-001",
+   "category": "tonal",
+   "severity": "warn",
+   "weight": 8,
+   "pattern": "\\b(?:amazing|incredible|unbelievable|fantastic|awesome|mind[- ]blowing|jaw[- ]dropping|life[- ]changing|phenomenal|extraordinary|fabulous)\\b",
+   "flags": "i",
+   "message": "Hype adjective. A flat register of delight with no information in it.",
+   "suggestion": "Show the thing that amazed you.",
+   "examples_bad": [
+    "An amazing, incredible day."
+   ],
+   "examples_ok": [
+    "A day that ends with soup."
+   ]
+  },
+  {
+   "id": "TON-002",
+   "category": "tonal",
+   "severity": "warn",
+   "weight": 8,
+   "pattern": "",
+   "flags": "",
+   "message": "More than one exclamation mark: {detail}.",
+   "suggestion": "One mark at most, and only when something surprising is said.",
+   "type": "metric",
+   "metric": "exclamations",
+   "params": {
+    "max": 1
+   },
+   "profiles": [
+    "ad"
+   ],
+   "examples_bad": [
+    "Ski Saturday! Bring skins! Book now."
+   ],
+   "examples_ok": [
+    "Ski Saturday. Bring skins. Book now!"
+   ]
+  },
+  {
+   "id": "TON-003",
+   "category": "tonal",
+   "severity": "warn",
+   "weight": 10,
+   "pattern": "\\b(?:change(?:s|d)? (?:how you|the way you|your life|everything)|will never be the same|like never before|once and for all|life[- ]altering|change your (?:life|world))\\b",
+   "flags": "i",
+   "message": "Grandiose stakes: everything is world-historical.",
+   "suggestion": "Small, true stakes: warm hands, a good run, a hot meal.",
+   "examples_bad": [
+    "This will change how you see winter."
+   ],
+   "examples_ok": [
+    "You will ski a red run with control."
+   ]
+  },
+  {
+   "id": "TON-004",
+   "category": "tonal",
+   "severity": "warn",
+   "weight": 8,
+   "pattern": "\\b(?:you deserve|you(?:~ve| have) earned (?:it|this)|treat yourself|you owe it to yourself|you(?:~re| are) worth it)\\b",
+   "flags": "i",
+   "message": "Flattery. It also reads as pressure.",
+   "suggestion": "Respect the reader. Give information.",
+   "examples_bad": [
+    "You deserve this."
+   ],
+   "examples_ok": [
+    "You pay once and ski eight Saturdays."
+   ]
+  },
+  {
+   "id": "TON-005",
+   "category": "tonal",
+   "severity": "note",
+   "weight": 3,
+   "pattern": "\\b(?:honestly\\??|let~s be honest|to be honest|i(?:~ll| will) be honest|frankly|truth be told|not gonna lie)\\b",
+   "flags": "i",
+   "message": "Performed candor: honesty as decoration.",
+   "suggestion": "Be candid by stating a real downside.",
+   "profiles": [
+    "ad"
+   ],
+   "examples_bad": [
+    "Honestly? It is hard."
+   ],
+   "examples_ok": [
+    "It is hard. You climb for two hours."
+   ]
+  },
+  {
+   "id": "TON-006",
+   "category": "tonal",
+   "severity": "warn",
+   "weight": 6,
+   "pattern": "\\byou(?:~ll| will) (?:love|adore|fall in love)\\b|\\byou(?:~re| are) going to love\\b|\\byou won~t believe\\b|\\btrust us\\b|\\byou won~t regret\\b",
+   "flags": "i",
+   "message": "Promise about the reader's feelings.",
+   "suggestion": "Describe the day. Let the reader decide how they feel.",
+   "examples_bad": [
+    "You'll love it.",
+    "You won't regret it."
+   ],
+   "examples_ok": [
+    "You will wear a beacon all day."
+   ]
+  },
+  {
+   "id": "TON-007",
+   "category": "tonal",
+   "severity": "note",
+   "weight": 3,
+   "pattern": "",
+   "flags": "",
+   "message": "Reads like a brochure: {detail}.",
+   "suggestion": "Use contractions where you would in speech: you'll, we're, can't.",
+   "type": "metric",
+   "metric": "no_contractions",
+   "params": {
+    "min_words": 40
+   },
+   "profiles": [
+    "ad"
+   ],
+   "examples_bad": [
+    "You will meet the guide at the car park above Brekke. We will check every beacon before we leave. You will climb for about two hours. We will eat lunch at the top. You will ski down in the early afternoon. We will be back at the car by half past three. You will need red run skills for this day."
+   ],
+   "examples_ok": [
+    "You'll meet the guide at the car park."
+   ]
+  },
+  {
+   "id": "TON-008",
+   "category": "tonal",
+   "severity": "warn",
+   "weight": 8,
+   "pattern": "\\b(?:we(?:~re| are) passionate about|we pride ourselves|passionate about (?:what we do|providing|delivering|sharing)|our passion for|driven by passion|our mission is to)\\b",
+   "flags": "i",
+   "message": "Corporate warmth: a claim about feelings instead of a fact about the work.",
+   "suggestion": "Say what you do on a Saturday.",
+   "examples_bad": [
+    "We are passionate about skiing."
+   ],
+   "examples_ok": [
+    "We guide every Saturday."
+   ]
+  },
+  {
+   "id": "RHY-001",
+   "category": "rhythmic",
+   "severity": "note",
+   "weight": 4,
+   "pattern": "",
+   "flags": "",
+   "message": "Sentence length is too even: {detail}.",
+   "suggestion": "Mix a three-word sentence with a twenty-five-word one.",
+   "type": "metric",
+   "metric": "sentence_cv",
+   "params": {
+    "min_sentences": 6,
+    "max_cv": 0.35
+   },
+   "examples_bad": [
+    "We start at nine. We climb for hours. We stop for lunch. We ski the glade. We drive back down. We meet at eight."
+   ],
+   "examples_ok": [
+    "We start at nine. The climb takes two hours and the guide sets a pace you can talk at. Lunch. Then the glade, which is the best run of the day. Back at the car by half past three. Questions welcome."
+   ]
+  },
+  {
+   "id": "RHY-002",
+   "category": "rhythmic",
+   "severity": "note",
+   "weight": 4,
+   "pattern": "",
+   "flags": "",
+   "message": "No short sentence: {detail}.",
+   "suggestion": "Add one fragment that carries a fact.",
+   "type": "metric",
+   "metric": "no_short_sentence",
+   "params": {
+    "min_sentences": 6,
+    "short": 6
+   },
+   "examples_bad": [
+    "We start at nine on Saturday morning. The climb takes about two hours on skins. Lunch is at the top of the ridge. The glade is the best run of the day. We drive back to the car park at noon. Everyone gets home before the dark falls."
+   ],
+   "examples_ok": [
+    "We start at nine on Saturday morning. The climb takes about two hours on skins. Lunch. The glade is the best run of the day. We drive back to the car park at noon. Everyone gets home before the dark."
+   ]
+  },
+  {
+   "id": "RHY-003",
+   "category": "rhythmic",
+   "severity": "note",
+   "weight": 4,
+   "pattern": "",
+   "flags": "",
+   "message": "Repeated sentence openings: {detail}.",
+   "suggestion": "Vary the subject: the snow, the time, the reader.",
+   "type": "metric",
+   "metric": "repeated_opener",
+   "params": {
+    "min_count": 3,
+    "min_sentences": 4
+   },
+   "profiles": [
+    "ad"
+   ],
+   "examples_bad": [
+    "Our guides know the slopes. Our groups stay small. Our days start early. Our price includes the beacon."
+   ],
+   "examples_ok": [
+    "Guides know the slopes. Groups stay small. Days start early."
+   ]
+  },
+  {
+   "id": "RHY-004",
+   "category": "rhythmic",
+   "severity": "note",
+   "weight": 4,
+   "pattern": "",
+   "flags": "",
+   "message": "Drumbeat rhythm: {detail}.",
+   "suggestion": "Merge two sentences or split a long one.",
+   "type": "metric",
+   "metric": "drumbeat",
+   "params": {
+    "run": 4,
+    "tolerance": 2,
+    "min_words": 5
+   },
+   "profiles": [
+    "ad"
+   ],
+   "examples_bad": [
+    "The guide meets you at eight. The skins go on at nine. The climb takes about two hours. The ridge opens above the trees."
+   ],
+   "examples_ok": [
+    "The guide meets you at eight. Skins go on at nine, and the climb takes about two hours. Ridge. Then the trees open."
+   ]
+  },
+  {
+   "id": "RHY-005",
+   "category": "rhythmic",
+   "severity": "note",
+   "weight": 3,
+   "pattern": "",
+   "flags": "",
+   "message": "Very long sentence: {detail}.",
+   "suggestion": "Split it. A phone reader needs a place to breathe.",
+   "type": "metric",
+   "metric": "long_sentence",
+   "params": {
+    "max_words": 35
+   },
+   "examples_bad": [
+    "You meet the guide at the car park above Brekke at half past eight and then you put your skins on at a quarter past nine and climb for about two hours before the ridge opens and the first descent starts at about twenty to twelve."
+   ],
+   "examples_ok": [
+    "You meet the guide at half past eight. Skins go on at a quarter past nine."
+   ]
+  },
+  {
+   "id": "RHY-006",
+   "category": "rhythmic",
+   "severity": "note",
+   "weight": 3,
+   "pattern": "",
+   "flags": "",
+   "message": "Paragraphs have a template shape: {detail}.",
+   "suggestion": "Let one paragraph be a single line.",
+   "type": "metric",
+   "metric": "paragraph_uniform",
+   "params": {
+    "min_paragraphs": 4
+   },
+   "profiles": [
+    "ad"
+   ],
+   "examples_bad": [
+    "We start at nine. We climb for two hours.\n\nLunch is at the top. The glade comes next.\n\nWe drive back at noon. Everyone is home early.\n\nBooking closes Thursday. The price is NOK 4,900."
+   ],
+   "examples_ok": [
+    "We start at nine. We climb for two hours.\n\nLunch.\n\nWe drive back at noon. Everyone is home early."
+   ]
+  },
+  {
+   "id": "RHY-007",
+   "category": "rhythmic",
+   "severity": "note",
+   "weight": 4,
+   "pattern": "(?:^|[.!?]\\s+)(?:Period|Full stop|End of story|Simple as that|Every single time)\\.",
+   "flags": "im",
+   "message": "Manufactured fragment: emphasis with no information in it.",
+   "suggestion": "Use a fragment only when it carries a fact: 'Thursday. Rain.'",
+   "profiles": [
+    "ad"
+   ],
+   "examples_bad": [
+    "We ski every Saturday. Period."
+   ],
+   "examples_ok": [
+    "We ski every Saturday. Thursday, if it rains."
+   ]
+  },
+  {
+   "id": "SEM-001",
+   "category": "semantic",
+   "severity": "warn",
+   "weight": 10,
+   "pattern": "",
+   "flags": "",
+   "message": "Low specificity: {detail}.",
+   "suggestion": "Add a price, date, place, gear item or time from the ledger.",
+   "type": "metric",
+   "metric": "specificity",
+   "params": {
+    "min_words": 40,
+    "min_per_100": 3
+   },
+   "profiles": [
+    "ad"
+   ],
+   "examples_bad": [
+    "We offer a wonderful winter experience for everyone who loves the outdoors and wants a memorable time with friends or family. Our team works hard to make every day fun and safe so that you can relax and enjoy the beautiful scenery all around you at every moment of the trip."
+   ],
+   "examples_ok": [
+    "Six skiers per guide. Saturdays 9 Jan to 27 Feb, NOK 4,900. Meet 08:30 at the car park above Brekke, skins on at 09:15, back by 15:30. Beacon, shovel and probe are lent. Bring lunch."
+   ]
+  },
+  {
+   "id": "SEM-002",
+   "category": "semantic",
+   "severity": "warn",
+   "weight": 8,
+   "pattern": "",
+   "flags": "",
+   "message": "Nothing checkable: {detail}.",
+   "suggestion": "Add one number, date, place or name a reader could verify.",
+   "type": "metric",
+   "metric": "no_specifics_short",
+   "params": {
+    "min_words": 20,
+    "max_words": 40
+   },
+   "profiles": [
+    "ad"
+   ],
+   "examples_bad": [
+    "Come and enjoy a wonderful winter day with friendly people in lovely surroundings and learn something new about the mountains that you can use again later."
+   ],
+   "examples_ok": [
+    "Come and ski a Saturday above Brekke with a guide who knows the slopes and teaches you how to use the transceiver before you need it."
+   ]
+  },
+  {
+   "id": "SEM-003",
+   "category": "semantic",
+   "severity": "warn",
+   "weight": 8,
+   "pattern": "\\b(?:adventure|journey|memories|magic|freedom|discovery|connection|serenity|tranquility|essence|passion|excellence|inspiration|transformation|authenticity|harmony|wellness|lifestyle|wonder)\\b",
+   "flags": "i",
+   "message": "Abstract nouns. No picture forms.",
+   "suggestion": "Swap each one for a thing, a time or a number. If none exists in the ledger, delete the sentence.",
+   "profiles": [
+    "ad"
+   ],
+   "min_hits": 2,
+   "examples_bad": [
+    "Adventure, freedom and magic on every tour."
+   ],
+   "examples_ok": [
+    "Freedom of the hills is a legal term in Norway."
+   ]
+  },
+  {
+   "id": "SEM-004",
+   "category": "semantic",
+   "severity": "warn",
+   "weight": 6,
+   "pattern": "\\b(?:in this (?:ad|post|article|caption|guide|video)|this (?:ad|post|article|caption) (?:explores|shows|covers|will)|we(?:~ll| will) (?:explore|take a look|cover|dive))\\b",
+   "flags": "i",
+   "message": "Narrating the document: writing about the text instead of the subject.",
+   "suggestion": "Cut it and start with the subject.",
+   "profiles": [
+    "ad"
+   ],
+   "examples_bad": [
+    "In this post we explore the best ski day."
+   ],
+   "examples_ok": [
+    "Saturday ski day, NOK 4,900."
+   ]
+  },
+  {
+   "id": "SEM-005",
+   "category": "semantic",
+   "severity": "note",
+   "weight": 3,
+   "pattern": "\\b\\d{1,3}(?:[.,]\\d+)?\\s?(?:%|percent|per cent)",
+   "flags": "i",
+   "message": "Percent figure. It needs a ledger row or a source.",
+   "suggestion": "Name the source with a link, tag it [VERIFY: reason], or cut it.",
+   "suppress_if_context": "\\[VERIFY|\\bsource\\b|\\bet al\\b|\\b(?:deposit|refund|cancellation|vat|tax)\\b",
+   "profiles": [
+    "ad"
+   ],
+   "examples_bad": [
+    "80 percent of skiers sleep better."
+   ],
+   "examples_ok": [
+    "A 25% deposit holds your place."
+   ]
+  },
+  {
+   "id": "SEM-006",
+   "category": "semantic",
+   "severity": "note",
+   "weight": 0,
+   "pattern": "",
+   "flags": "",
+   "message": "Open items: {detail}.",
+   "suggestion": "Resolve each [VERIFY] with the user, or leave the line out.",
+   "type": "metric",
+   "metric": "open_verify",
+   "profiles": [
+    "ad"
+   ],
+   "examples_bad": [
+    "Guides are certified [VERIFY: certificate number]."
+   ],
+   "examples_ok": [
+    "Guides lead every day."
+   ]
+  },
+  {
+   "id": "SEM-007",
+   "category": "semantic",
+   "severity": "warn",
+   "weight": 6,
+   "pattern": "\\b(?:countless|endless|a wide variety|a world of|so many|a host of|a wealth of)\\b",
+   "flags": "i",
+   "message": "Vague quantity. A number would be checkable.",
+   "suggestion": "Give the count: 'eight Saturdays', 'three descents'.",
+   "profiles": [
+    "ad"
+   ],
+   "examples_bad": [
+    "Countless ways to ski."
+   ],
+   "examples_ok": [
+    "Three descents."
+   ]
+  },
+  {
+   "id": "AD-001",
+   "category": "ad-specific",
+   "severity": "warn",
+   "weight": 10,
+   "pattern": "\\b(?:ready to|looking for|tired of|dreaming of|craving|searching for|want to|need a|wondering (?:if|how|what)|what if you could)\\b[^.!?\\n]{0,70}\\?",
+   "flags": "i",
+   "message": "Stock rhetorical-question opener from sales copy.",
+   "suggestion": "Open with a fact, a date, a price or a small scene.",
+   "suppress_if_context": "\\bwe(?:~re| are) ready to\\b",
+   "profiles": [
+    "ad"
+   ],
+   "example_fix": {
+    "before": "Ready to ski the fjords?",
+    "after": "Saturdays 9 Jan to 27 Feb. Six skiers per guide."
+   },
+   "examples_bad": [
+    "Ready to ski the fjords?",
+    "Tired of crowded slopes?"
+   ],
+   "examples_ok": [
+    "We are ready to ski at 08:30."
+   ]
+  },
+  {
+   "id": "AD-002",
+   "category": "ad-specific",
+   "severity": "warn",
+   "weight": 10,
+   "pattern": "\\b(?:say goodbye to|say hello to|look no further|what are you waiting for|the wait is over|don~t wait|take (?:it|your \\w+) to the next level|you(?:~ll| will) never look back)\\b",
+   "flags": "i",
+   "message": "Stock ad hook.",
+   "suggestion": "Open with the offer itself.",
+   "examples_bad": [
+    "Say goodbye to crowded resorts.",
+    "Look no further."
+   ],
+   "examples_ok": [
+    "Crowded resorts have lift queues. This day has none."
+   ]
+  },
+  {
+   "id": "AD-003",
+   "category": "ad-specific",
+   "severity": "warn",
+   "weight": 10,
+   "pattern": "\\b(?:epic|ultimate|dream|perfect|ideal|unique|authentic|unforgettable|once[- ]in[- ]a[- ]lifetime) (?:adventure|getaway|escape|trip|holiday|vacation|experience|destination|retreat)s?\\b|\\b(?:perfect|ideal|unique|harmonious|seamless) (?:blend|mix|combination|fusion|balance) of\\b|\\bdreams? (?:come|comes) true\\b|\\bfall(?:s|en)? in love with\\b|\\bchase the (?:northern lights|aurora|powder|thrill|dream)\\b",
+   "flags": "i",
+   "message": "Ad cliche pairing.",
+   "suggestion": "Name the trip and one thing that happens on it.",
+   "examples_bad": [
+    "An epic adventure and a perfect blend of fun and rest.",
+    "Dreams come true here."
+   ],
+   "examples_ok": [
+    "An intro day on skins."
+   ]
+  },
+  {
+   "id": "AD-004",
+   "category": "ad-specific",
+   "severity": "warn",
+   "weight": 8,
+   "pattern": "\\b(?:ultimate|premium|all[- ]in[- ]one|top[- ]notch|second to none|unbeatable|world[- ]class|best[- ]in[- ]class|one[- ]of[- ]a[- ]kind|must[- ]have)\\b",
+   "flags": "i",
+   "message": "Hype adjective that every competitor also uses.",
+   "suggestion": "State the measurable fact: group size, hours on snow, price.",
+   "profiles": [
+    "ad"
+   ],
+   "examples_bad": [
+    "The ultimate ski experience.",
+    "World-class instruction."
+   ],
+   "examples_ok": [
+    "Six skiers per guide."
+   ]
+  },
+  {
+   "id": "AD-005",
+   "category": "ad-specific",
+   "severity": "warn",
+   "weight": 8,
+   "pattern": "\\b(?:best|greatest|top[- ]rated|number one|#1|leading|unrivall?ed|unmatched|award[- ]winning|the (?:only|first|largest|biggest|oldest))\\b",
+   "flags": "i",
+   "message": "Unsupported superlative or first-and-only claim.",
+   "suggestion": "Give the proof (a ledger row with a source) or cut the claim.",
+   "suppress_if_context": "\\b(?:your|our|their|my) best\\b|\\bdo (?:the |our |your )?best\\b|\\bpersonal best\\b|\\bbest before\\b|\\bbest of luck\\b|\\bat best\\b|\\bbest case\\b|\\bbest to\\b|\\[VERIFY|\\baccording to\\b|\\bwinner of\\b",
+   "suppress_if_after": "^\\s+(?:descent|run|turn|day|ascent|hour|lift|morning|stop|night|skin|climb|section|pitch|departure|bus|train|km|\\d)",
+   "profiles": [
+    "ad"
+   ],
+   "examples_bad": [
+    "Experts agree this is the best tour.",
+    "The only guide service in the valley."
+   ],
+   "examples_ok": [
+    "Do your best on the climb.",
+    "The first descent starts about 11:40."
+   ]
+  },
+  {
+   "id": "AD-006",
+   "category": "ad-specific",
+   "severity": "warn",
+   "weight": 8,
+   "pattern": "\\b(?:your )?(?:trusted|one-stop|go-to|reliable) (?:partner|shop|solution|source)\\b|\\bfor all your [a-z]+ needs\\b|\\bexceptional (?:service|quality|customer|results)\\b|\\bcommitment to (?:excellence|quality|innovation)\\b|\\bdeliver(?:s|ing) (?:exceptional|outstanding|results|value|excellence)\\b|\\btop priority\\b|\\bpeace of mind\\b|\\bsafe and seamless\\b",
+   "flags": "i",
+   "message": "Corporate or service-business filler.",
+   "suggestion": "Say what you do and what it costs.",
+   "examples_bad": [
+    "Your trusted partner for all your ski needs.",
+    "Safety is our top priority."
+   ],
+   "examples_ok": [
+    "The guide reads the avalanche forecast at breakfast."
+   ]
+  },
+  {
+   "id": "AD-007",
+   "category": "ad-specific",
+   "severity": "warn",
+   "weight": 8,
+   "pattern": "\\bjoin (?:our|the|a) (?:community|family|movement|tribe|journey)\\b",
+   "flags": "i",
+   "message": "Stock community pitch with no member count or fact behind it.",
+   "suggestion": "Say what members do together, with a date.",
+   "examples_bad": [
+    "Join our community of skiers."
+   ],
+   "examples_ok": [
+    "Join the Saturday group at 08:30."
+   ]
+  },
+  {
+   "id": "AD-008",
+   "category": "ad-specific",
+   "severity": "warn",
+   "weight": 6,
+   "pattern": "\\b(?:our company|the company|our team of (?:experts|professionals)|our (?:experienced|dedicated|passionate) team)\\b",
+   "flags": "i",
+   "message": "Company voice. The reader is the subject of an ad.",
+   "suggestion": "Say 'we' and what we do, or 'you' and what you do.",
+   "profiles": [
+    "ad"
+   ],
+   "examples_bad": [
+    "Our dedicated team offers tours."
+   ],
+   "examples_ok": [
+    "We guide six skiers at a time."
+   ]
+  },
+  {
+   "id": "AD-009",
+   "category": "ad-specific",
+   "severity": "note",
+   "weight": 3,
+   "pattern": "^\\s*(?:hey|hi|hello|greetings)\\b(?: there| everyone| adventurers)?[ ,!]",
+   "flags": "im",
+   "message": "Greeting opener. It spends the first line on nothing.",
+   "suggestion": "Open with the offer.",
+   "profiles": [
+    "ad"
+   ],
+   "examples_bad": [
+    "Hey there! Saturday ski day."
+   ],
+   "examples_ok": [
+    "Saturday ski day."
+   ]
+  },
+  {
+   "id": "AD-010",
+   "category": "ad-specific",
+   "severity": "note",
+   "weight": 4,
+   "pattern": "\\b(?:and (?:so )?much more|and more!|everything you need|all you need|you name it)\\b",
+   "flags": "i",
+   "message": "Open-ended filler instead of a list.",
+   "suggestion": "List what is included, or say what is not.",
+   "profiles": [
+    "ad"
+   ],
+   "examples_bad": [
+    "Skis, skins and so much more."
+   ],
+   "examples_ok": [
+    "Beacon, shovel and probe are lent."
+   ]
+  },
+  {
+   "id": "AD-011",
+   "category": "ad-specific",
+   "severity": "note",
+   "weight": 3,
+   "pattern": "\\b(?:NOK|kr\\.?|EUR|USD|GBP)\\s?\\d[\\d,]*(?![\\d,])(?!\\s*(?:per|/|each|pp|a person|a head|a night|a day|a week|total|incl|excl|includes|excluding|including|vat|taxes))",
+   "flags": "i",
+   "message": "Price without a basis nearby (per person, per group, what it includes).",
+   "suggestion": "Add the basis in the same slot or the next one.",
+   "profiles": [
+    "ad"
+   ],
+   "slots": [
+    "meta_primary",
+    "x_post",
+    "x_card_description"
+   ],
+   "example_slot": "x_post",
+   "examples_bad": [
+    "Ski the fjord on a Saturday for NOK 4,900 and bring skins."
+   ],
+   "examples_ok": [
+    "NOK 4,900 per person, beacon included."
+   ]
+  },
+  {
+   "id": "AD-012",
+   "category": "ad-specific",
+   "severity": "warn",
+   "weight": 8,
+   "pattern": "",
+   "flags": "",
+   "message": "Repeated sentence: {detail}.",
+   "suggestion": "No sentence appears twice. Say it once, in the best slot.",
+   "type": "metric",
+   "metric": "duplicate_sentence",
+   "params": {
+    "min_words": 3
+   },
+   "profiles": [
+    "ad"
+   ],
+   "examples_bad": [
+    "Saturdays 9 Jan to 27 Feb.\nSix skiers per guide.\nSaturdays 9 Jan to 27 Feb."
+   ],
+   "examples_ok": [
+    "Saturdays 9 Jan to 27 Feb.\nSix skiers per guide."
+   ]
+  },
+  {
+   "id": "TRV-001",
+   "category": "travel-specific",
+   "severity": "warn",
+   "weight": 10,
+   "pattern": "\\b(?:breathtaking|majestic|stunning(?:ly)?|spectacular|magnificent|picturesque|idyllic|enchanting|mesmeri[sz]ing|awe[- ]inspiring|captivating|pristine|unspoiled|untouched|crystal[- ]clear|snow[- ]capped|postcard[- ]perfect|picture[- ]perfect|otherworldly|magical|charming|quaint|lush|gorgeous|dreamy|fairy[- ]?tale)\\b",
+   "flags": "i",
+   "message": "Scenery adjective from the travel-brochure stock. Every competitor uses it, and no reader pictures anything.",
+   "suggestion": "Describe what you saw on one given day: the colour of the fjord at 08:00, the sound of skins.",
+   "example_fix": {
+    "before": "Majestic fjords and snow-capped peaks await.",
+    "after": "The fjord is black at 08:00 and the snow is blue."
+   },
+   "examples_bad": [
+    "Breathtaking, majestic fjords.",
+    "Stunning snow-capped peaks."
+   ],
+   "examples_ok": [
+    "The fjord is black at 08:00 and the snow is blue."
+   ]
+  },
+  {
+   "id": "TRV-002",
+   "category": "travel-specific",
+   "severity": "warn",
+   "weight": 10,
+   "pattern": "\\b(?:adventure of a lifetime|once[- ]in[- ]a[- ]lifetime|unforgettable|unmissable|bucket[- ]list|winter wonderland|natural playground|nature~s playground|playground for|paradise on earth|hidden gems?|secret gems?|best[- ]kept secret|off the beaten (?:path|track)|like no other|something for everyone|memories that last a lifetime|escape the ordinary|escape the (?:everyday|daily grind|crowds)|must[- ](?:see|visit|do)|wanderlust|your dream (?:getaway|escape|vacation|holiday)|(?:adventure|magic|paradise|excitement) awaits?)\\b",
+   "flags": "i",
+   "message": "Travel cliche, older than any language model.",
+   "suggestion": "Give one concrete reason: a number, a time, a thing you can photograph.",
+   "examples_bad": [
+    "Adventure awaits in our winter wonderland.",
+    "A hidden gem, off the beaten path."
+   ],
+   "examples_ok": [
+    "Eight Saturdays on skins."
+   ]
+  },
+  {
+   "id": "TRV-003",
+   "category": "travel-specific",
+   "severity": "warn",
+   "weight": 8,
+   "pattern": "\\b(?:immerse (?:yourself|yourselves)|embark on|indulge (?:in|yourself)|unwind (?:in|with|and)|awaken your|experience the (?:magic|wonder|beauty|thrill)|discover the (?:magic|wonder|beauty|secrets?)|explore the (?:wonders|beauty|magic)|calling your name|answer the call)\\b",
+   "flags": "i",
+   "message": "Invitation verb with no action a body can do.",
+   "suggestion": "Use the verb a guest performs: skin, click in, stamp, carve, eat.",
+   "examples_bad": [
+    "Immerse yourself in Norway.",
+    "Discover the magic of Voss."
+   ],
+   "examples_ok": [
+    "You skin up the ridge."
+   ]
+  },
+  {
+   "id": "TRV-004",
+   "category": "travel-specific",
+   "severity": "warn",
+   "weight": 8,
+   "pattern": "\\b(?:nestled|perched|tucked away|in the heart of|rich (?:cultural )?(?:heritage|history)|charming village|picture[- ]postcard|quaint (?:village|town)|where (?:the )?(?:mountains|fjords) meet)\\b",
+   "flags": "i",
+   "message": "Generic place description: it could describe any mountain town on earth.",
+   "suggestion": "Say what a local would: the station, the road, the bakery.",
+   "examples_bad": [
+    "Nestled in the heart of the Sunnmore Alps."
+   ],
+   "examples_ok": [
+    "The car park is 20 minutes above Brekke."
+   ]
+  },
+  {
+   "id": "TRV-005",
+   "category": "travel-specific",
+   "severity": "warn",
+   "weight": 6,
+   "pattern": "\\b(?:expert|world[- ]class|passionate|friendly|knowledgeable|seasoned|top[- ]notch|dedicated|professional) (?:local )?(?:guides?|instructors?|team)\\b",
+   "flags": "i",
+   "message": "Unprovable adjective on guides.",
+   "suggestion": "State a fact: certification and body (from the ledger), years, group ratio.",
+   "examples_bad": [
+    "Our expert guides keep you safe."
+   ],
+   "examples_ok": [
+    "One guide per six skiers."
+   ]
+  },
+  {
+   "id": "TRV-006",
+   "category": "travel-specific",
+   "severity": "warn",
+   "weight": 10,
+   "pattern": "\\b(?:(?:perfect|pristine|untouched|endless|bottomless|waist[- ]deep|knee[- ]deep|guaranteed|champagne|fluffy) (?:powder|snow|conditions)|fresh powder)\\b",
+   "flags": "i",
+   "message": "Promise about natural conditions you do not control.",
+   "suggestion": "Use possibility language and the real reason: 'snow depends on the week's weather'.",
+   "suppress_if_before": "\\b(?:not|no|never|cannot|can~t|can not|don~t|do not|doesn~t|does not|won~t|will not|isn~t|aren~t|without|unable to|nothing|nor|nobody|neither)\\W+(?:\\w+\\W+){0,5}$",
+   "examples_bad": [
+    "Perfect powder every day.",
+    "Waist-deep snow awaits."
+   ],
+   "examples_ok": [
+    "We can't promise fresh powder.",
+    "Snow depends on the week's weather."
+   ]
+  },
+  {
+   "id": "TRV-007",
+   "category": "travel-specific",
+   "severity": "warn",
+   "weight": 12,
+   "pattern": "\\byou(?:~ll| will) (?:see|witness|watch|catch|spot|experience) (?:the )?(?:northern lights|aurora|auroras)\\b|\\b(?:see|witness|catch) the (?:northern lights|aurora) (?:every|each) (?:night|evening)\\b",
+   "flags": "i",
+   "message": "Certainty about a natural phenomenon. Nobody can order the sky.",
+   "suggestion": "Possibility language: 'we look for the aurora on three nights'.",
+   "suppress_if_before": "\\b(?:not|no|never|cannot|can~t|can not|don~t|do not|doesn~t|does not|won~t|will not|isn~t|aren~t|without|unable to|nothing|nor|nobody|neither)\\W+(?:\\w+\\W+){0,5}$",
+   "examples_bad": [
+    "You'll see the northern lights."
+   ],
+   "examples_ok": [
+    "We look for the northern lights on three nights. They depend on the sky."
+   ]
+  },
+  {
+   "id": "TRV-008",
+   "category": "travel-specific",
+   "severity": "warn",
+   "weight": 6,
+   "pattern": "\\b(?:adrenaline|adrenalin|thrill[- ]seek\\w*|heart[- ]pounding|pulse[- ]pounding|white[- ]knuckle)\\b",
+   "flags": "i",
+   "message": "Thrill vocabulary. It over-promises and puts off beginners.",
+   "suggestion": "Describe the day: long ascents, a red run, a lunch.",
+   "examples_bad": [
+    "For adrenaline junkies."
+   ],
+   "examples_ok": [
+    "A red run with control."
+   ]
+  },
+  {
+   "id": "TRV-009",
+   "category": "travel-specific",
+   "severity": "note",
+   "weight": 4,
+   "pattern": "\\b(?:adventurers?|explorers?|wanderers?|globetrotters?|wanderlusters?|outdoor enthusiasts?)\\b",
+   "flags": "i",
+   "message": "Generic audience label.",
+   "suggestion": "Name the reader by what they already do: 'you ski red runs on Saturdays'.",
+   "profiles": [
+    "ad"
+   ],
+   "examples_bad": [
+    "Calling all adventurers."
+   ],
+   "examples_ok": [
+    "You ski red runs with control."
+   ]
+  },
+  {
+   "id": "TRV-010",
+   "category": "travel-specific",
+   "severity": "warn",
+   "weight": 8,
+   "pattern": "\\bepic\\b",
+   "flags": "i",
+   "message": "'Epic' is applied to everything from lunch to ski passes.",
+   "suggestion": "Give the number: vertical metres, hours, kilometres.",
+   "suppress_if_context": "\\bepic pass\\b",
+   "examples_bad": [
+    "An epic day on skis."
+   ],
+   "examples_ok": [
+    "The Epic Pass works there."
+   ]
+  },
+  {
+   "id": "TRV-011",
+   "category": "travel-specific",
+   "severity": "warn",
+   "weight": 8,
+   "pattern": "\\b(?:paradise|wonderland|playgrounds?|utopia|heaven on earth)\\b",
+   "flags": "i",
+   "message": "Place described as a utopia.",
+   "suggestion": "Say what the place has.",
+   "examples_bad": [
+    "A skier's paradise."
+   ],
+   "examples_ok": [
+    "A ridge with three descents."
+   ]
+  },
+  {
+   "id": "TRV-012",
+   "category": "travel-specific",
+   "severity": "warn",
+   "weight": 6,
+   "pattern": "\\bgetaways?\\b|\\b(?:weekend|winter|ski|ultimate|perfect|dream|romantic) (?:escape|retreat)s?\\b",
+   "flags": "i",
+   "message": "Vague noun for a trip.",
+   "suggestion": "Name the trip: 'intro to ski touring, one guided day'.",
+   "examples_bad": [
+    "Your winter getaway.",
+    "A romantic retreat."
+   ],
+   "examples_ok": [
+    "Intro to ski touring, one guided day."
+   ]
+  },
+  {
+   "id": "POL-001",
+   "category": "policy",
+   "severity": "block",
+   "weight": 30,
+   "pattern": "\\b(?:guarantee(?:s|d)?|guaranteeing|100% (?:guaranteed|satisfaction)|sure thing|never fails?|foolproof|fail[- ]safe)\\b",
+   "flags": "i",
+   "message": "Guarantee or certainty claim. Meta restricts unrealistic or guaranteed outcomes, and nature is not yours to guarantee.",
+   "suggestion": "Use possibility language, or state a real refund or rebooking rule from the ledger.",
+   "suppress_if_context": "\\bmoney[- ]back guarantee\\b|\\brefund guarantee\\b|\\bguaranteed departure\\b",
+   "suppress_if_before": "\\b(?:not|no|never|cannot|can~t|can not|don~t|do not|doesn~t|does not|won~t|will not|isn~t|aren~t|without|unable to|nothing|nor|nobody|neither)\\W+(?:\\w+\\W+){0,5}$",
+   "examples_bad": [
+    "Guaranteed fresh snow.",
+    "A sure thing."
+   ],
+   "examples_ok": [
+    "We cannot guarantee snow.",
+    "Snow is not guaranteed in February.",
+    "Money-back guarantee, as listed in the terms."
+   ]
+  },
+  {
+   "id": "POL-002",
+   "category": "policy",
+   "severity": "block",
+   "weight": 30,
+   "pattern": "\\b(?:100% safe|completely safe|totally safe|absolutely safe|perfectly safe|entirely safe|zero risk|no risk|risk[- ]free|riskless|safest|avalanche[- ]proof|accident[- ]free|injury[- ]free)\\b",
+   "flags": "i",
+   "message": "Safety absolute. Nobody can promise it in avalanche terrain, and platforms treat it as an unrealistic claim.",
+   "suggestion": "Say what you do: the forecast read at breakfast, the beacon check, the group cap.",
+   "suppress_if_before": "\\b(?:not|no|never|cannot|can~t|can not|don~t|do not|doesn~t|does not|won~t|will not|isn~t|aren~t|without|unable to|nothing|nor|nobody|neither)\\W+(?:\\w+\\W+){0,5}$",
+   "examples_bad": [
+    "The safest tour in Norway.",
+    "Risk-free skiing."
+   ],
+   "examples_ok": [
+    "Nothing in the mountains is 100% safe.",
+    "We never claim a tour is risk-free."
+   ]
+  },
+  {
+   "id": "POL-003",
+   "category": "policy",
+   "severity": "block",
+   "weight": 30,
+   "pattern": "\\b(?:only|just) (?:a )?(?:few|\\d+|one|two|three|four|five|six|seven|eight|nine|ten) (?:spots?|places?|slots?|seats?|rooms?|tickets?|beds?)\\s+(?:left|remaining|available|open)\\b|\\b(?:last|final) (?:few )?(?:spots?|places?|slots?|seats?|rooms?|tickets?|beds?)\\b|\\b(?:few|limited) (?:spots?|places?|slots?|seats?|rooms?|tickets?|beds?) (?:left|remaining)\\b|\\bends? (?:tonight|at midnight|in \\d+ (?:hours?|minutes?))\\b|\\bbefore midnight\\b|\\b(?:selling|sells?) (?:out )?fast\\b|\\bselling out\\b|\\balmost (?:sold out|full|gone)\\b|\\bfilling up fast\\b",
+   "flags": "i",
+   "message": "False or unverifiable scarcity. Meta restricts false urgency, and Norwegian marketing law treats it as misleading. A ledger fact is needed.",
+   "suggestion": "Cut it, or state the real count and where it comes from. A real deadline with a date is fine: 'Booking closes Thursday 18:00'.",
+   "examples_bad": [
+    "Only 3 spots left.",
+    "Book before midnight!",
+    "Selling fast."
+   ],
+   "examples_ok": [
+    "Booking closes Thursday at 18:00.",
+    "Six skiers per guide."
+   ]
+  },
+  {
+   "id": "POL-017",
+   "category": "policy",
+   "severity": "block",
+   "weight": 30,
+   "pattern": "\\bcountdown\\b|\\bonly \\d+ (?:hours?|days?|minutes?) left\\b|\\b(?:ends|closes|expires) in \\d+ (?:hours?|minutes?)\\b",
+   "flags": "i",
+   "message": "Countdown or ticking-clock urgency. It needs a real, dated deadline in the ledger.",
+   "suggestion": "State the real deadline with a date and time: 'Booking closes Thursday 18:00'.",
+   "profiles": [
+    "ad"
+   ],
+   "examples_bad": [
+    "Countdown: the offer ends in 3 hours.",
+    "Only 2 days left."
+   ],
+   "examples_ok": [
+    "Booking closes Thursday 18:00."
+   ]
+  },
+  {
+   "id": "POL-004",
+   "category": "policy",
+   "severity": "warn",
+   "weight": 12,
+   "pattern": "\\b(?:last chance|don~t miss out|hurry|act now|act fast|limited (?:spots|places|time|availability|seats|offer)|while (?:stocks|spots|places|seats) last|book now before|going fast|don~t wait|time is running out|running out of time|spots are limited|places are limited|grab your spot|secure your spot)\\b",
+   "flags": "i",
+   "message": "Soft urgency. It reads as pressure and can be false.",
+   "suggestion": "Give a real date or leave urgency out.",
+   "examples_bad": [
+    "Last chance to book. Don't miss out!",
+    "Limited spots."
+   ],
+   "examples_ok": [
+    "Booking closes Thursday at 18:00."
+   ]
+  },
+  {
+   "id": "POL-005",
+   "category": "policy",
+   "severity": "block",
+   "weight": 30,
+   "pattern": "\\b(?:are you|do you|have you|did you|can you)\\b[^.!?\\n]{0,40}?\\b(?:overweight|obese|depress\\w*|anxious|anxiety|lonely|divorced|widowed|gay|lesbian|transgender|disabled|disabilit\\w+|diabet\\w+|cancer|pregnan\\w+|in debt|broke|bankrupt|unemployed|out of shape|unfit|over[- ]?[4-7]0s?|over [4-7]\\d|elderly|retired|christian|muslim|jewish|hindu|atheist|struggling|suffering|single(?! (?:day|saturday|sunday|run|room|turn|track|departure|trip|price|supplement|line|file|ski|guide|group|person|payment|booking|class|lesson|weekend)))\\b|\\byou(?:~re| are)\\s+(?:\\w+\\s+){0,2}(?:overweight|obese|depressed|anxious|lonely|divorced|broke|unfit|out of shape|struggling|suffering|single(?! (?:day|run)))\\b",
+   "flags": "i",
+   "message": "Personal-attributes opener: it implies you know a health, age, money, relationship or identity fact about the viewer. Meta's personal attributes policy targets this.",
+   "suggestion": "Describe the trip, not the viewer: 'Saturdays 9 Jan to 27 Feb, six skiers per guide'.",
+   "examples_bad": [
+    "Are you over 50 and still skiing?",
+    "Are you struggling with your fitness?",
+    "You're single? Ski with us."
+   ],
+   "examples_ok": [
+    "Do you have a free Saturday?",
+    "Are you free on a single Saturday?"
+   ]
+  },
+  {
+   "id": "POL-006",
+   "category": "policy",
+   "severity": "block",
+   "weight": 30,
+   "pattern": "\\b(?:singles|seniors|divorcees|christians|muslims|retirees|pensioners|over[- ]?[4-7]0s)\\s+(?:near|in|around|from)\\s+(?:you|your area|\\w+)\\b|\\bfor (?:the )?(?:seniors|singles|divorcees|elderly|disabled|retirees|pensioners|over[- ]?[4-7]0s)\\b|\\bmeet (?:other |new |local )?(?:singles|seniors|women|men|couples)\\b",
+   "flags": "i",
+   "message": "Targeting a group by a personal attribute. Meta's personal attributes policy restricts it.",
+   "suggestion": "Write for the activity and the level, not the group.",
+   "suppress_if_context": "\\b(?:discount|price|ticket|rate|pass|fare|concession)\\b",
+   "examples_bad": [
+    "Meet other singles near you.",
+    "A tour for seniors."
+   ],
+   "examples_ok": [
+    "Senior discount: see the price list."
+   ]
+  },
+  {
+   "id": "POL-007",
+   "category": "policy",
+   "severity": "warn",
+   "weight": 12,
+   "pattern": "\\byour (?:\\w+ ){0,2}?(?:fears?|injur\\w+|weight|body|age|health|credit|debt|loneliness|anxiety|depression)\\b|\\b(?:beginners?|out of shape|unfit|overweight|older|elderly) (?:like|just like) you\\b|\\bif you(?:~re| are) (?:a |an )?(?:complete |total |absolute )?(?:beginner|novice|out of shape|unfit|scared|afraid|nervous|overweight|older|over \\d+)\\b",
+   "flags": "i",
+   "message": "'You' joined to a fear, fitness or age term can read as a personal-attributes claim.",
+   "suggestion": "Say it through the trip: 'groups are capped at six'. Do not describe the viewer's worry back at them.",
+   "examples_bad": [
+    "If you're a beginner, you'll fit in.",
+    "Overcome your fear of steep slopes."
+   ],
+   "examples_ok": [
+    "Groups are capped at six."
+   ]
+  },
+  {
+   "id": "POL-008",
+   "category": "policy",
+   "severity": "block",
+   "weight": 30,
+   "pattern": "\\b(?:rated|rating of) \\d(?:\\.\\d)?\\b|\\b\\d(?:\\.\\d)?\\s?(?:/|out of)\\s?5\\b|(?<![\\d,])\\d(?:\\.\\d)? stars?\\b|\\b\\d[\\d,]*\\+? (?:happy|satisfied|delighted|loyal) (?:guests|customers|travell?ers|skiers|clients)\\b|\\b(?:thousands|hundreds|millions) of (?:happy |satisfied |delighted |loyal )?(?:guests|customers|clients|skiers|travell?ers|people|users)\\b|\\bjoin (?:thousands|hundreds|millions|\\d[\\d,]{2,})\\b|\\b\\d{2,3}% of (?:guests|customers|clients|skiers)\\b",
+   "flags": "i",
+   "message": "Invented-looking proof: a rating, review count or guest count with no platform, count or date. Never write one the ledger does not hold.",
+   "suggestion": "Use a real review with its source, or write without proof and say so. If real, add platform, count, date checked and link.",
+   "suppress_if_context": "\\[VERIFY|\\b(?:checked|verified|as of)\\s+\\d",
+   "examples_bad": [
+    "Rated 4.9 by thousands of happy skiers.",
+    "Join thousands of skiers.",
+    "4.8/5 from our guests."
+   ],
+   "examples_ok": [
+    "4.8 on ExampleReviews, 31 reviews, checked 2026-10-01."
+   ]
+  },
+  {
+   "id": "POL-009",
+   "category": "policy",
+   "severity": "warn",
+   "weight": 10,
+   "pattern": "\\b(?:guests|travell?ers|skiers|customers|clients|visitors) (?:love|rave|adore|swear by)\\b|\\bloved by (?:guests|travell?ers|skiers|thousands)\\b|\\bhappy (?:guests|customers|skiers|clients)\\b|\\btrusted by\\b|\\bvoted (?:best|top|number one)\\b",
+   "flags": "i",
+   "message": "Vague social proof: an unnamed crowd. It can also be a misleading claim.",
+   "suggestion": "Quote one real guest with permission, or leave proof out.",
+   "examples_bad": [
+    "Guests rave about our guides.",
+    "Loved by travellers."
+   ],
+   "examples_ok": [
+    "Five guests wrote to us after the March departure. [VERIFY: quotes and permission]"
+   ]
+  },
+  {
+   "id": "POL-010",
+   "category": "policy",
+   "severity": "warn",
+   "weight": 12,
+   "pattern": "[\\\"\\u201c][^\\\"\\u201d\\n]{15,200}[\\\"\\u201d]\\s*[,.\\u2014\\u2013-]?\\s*(?:[A-Z][a-z]+,?\\s+(?:from|of)\\s+[A-Z]|a (?:happy|recent|satisfied) (?:guest|customer|skier|traveller|traveler))",
+   "flags": "",
+   "message": "Quoted testimonial. It must be real, verbatim, permitted and in the ledger.",
+   "suggestion": "Check the ledger row and the permission. Never write one.",
+   "examples_bad": [
+    "\"Best day of my life on skis,\" Anna from Oslo."
+   ],
+   "examples_ok": [
+    "\"Skins on at 09:15.\""
+   ]
+  },
+  {
+   "id": "POL-011",
+   "category": "policy",
+   "severity": "block",
+   "weight": 30,
+   "pattern": "\\b(?:was|previously|originally|instead of|normally|usually|regularly|regular price|rrp|reduced from)\\s*:?\\s*(?:NOK|kr\\.?|EUR|USD|GBP|\\u20ac|\\$|\\u00a3)\\s?\\d|\\bnow\\s*:?\\s*(?:NOK|kr\\.?|EUR|USD|GBP|\\u20ac|\\$|\\u00a3)\\s?\\d|\\b\\d[\\d,. ]*\\s?(?:NOK|kr)\\s+(?:was|before|previously)\\b",
+   "flags": "i",
+   "message": "Before-and-after price. Norwegian rules on reference prices and Meta's price-match rule apply. The ledger needs a proven earlier price.",
+   "suggestion": "Show the current price and its basis. Use a was-price only with a documented earlier price.",
+   "examples_bad": [
+    "Was NOK 6,900, now NOK 4,900."
+   ],
+   "examples_ok": [
+    "NOK 4,900 per person."
+   ]
+  },
+  {
+   "id": "POL-012",
+   "category": "policy",
+   "severity": "warn",
+   "weight": 10,
+   "pattern": "\\bsave (?:up to )?(?:\\d{1,2} ?(?:%|percent)|(?:NOK|kr\\.?|EUR|USD|\\u20ac|\\$) ?\\d)|\\b\\d{1,2} ?(?:%|percent) off\\b|\\bhalf[- ]price\\b|\\b(?:huge|big|massive|incredible|unbeatable) (?:savings|deals?|prices?)\\b|\\bfire sale\\b|\\bbargain\\b",
+   "flags": "i",
+   "message": "Discount claim with no base price in the ledger.",
+   "suggestion": "State the price and its basis. Name the base price if you claim a saving.",
+   "examples_bad": [
+    "Save 30% today.",
+    "Huge savings."
+   ],
+   "examples_ok": [
+    "NOK 4,900 per person."
+   ]
+  },
+  {
+   "id": "POL-013",
+   "category": "policy",
+   "severity": "block",
+   "weight": 30,
+   "pattern": "\\bbreaking(?: news)?:|\\bshocking (?:discovery|truth|secret)\\b|\\bdoctors hate\\b|\\bthey don~t want you to know\\b|\\b(?:local|this) (?:guide|mom|dad|man|woman) (?:shocks|stuns|reveals)\\b|\\bone weird trick\\b|\\bwhat happened next\\b",
+   "flags": "i",
+   "message": "Fake-news or clickbait format. It misleads and can breach deceptive-content rules.",
+   "suggestion": "State the offer in plain words.",
+   "examples_bad": [
+    "Breaking: local guide shocks experts.",
+    "One weird trick for ski touring."
+   ],
+   "examples_ok": [
+    "A local guide leads eight Saturdays."
+   ]
+  },
+  {
+   "id": "POL-014",
+   "category": "policy",
+   "severity": "warn",
+   "weight": 12,
+   "pattern": "\\b(?:always|never) (?:fails?|disappoints?|rains?|snows?|crowded|cold|wet|lose|miss)\\b|\\bevery (?:guest|skier|visitor|traveller|traveler) (?:will |gets? |leaves? |sees? |loves? )|\\b(?:perfect|ideal|flawless) (?:conditions|weather|snow|day)\\b|\\b(?:sure|certain|bound) to (?:see|snow|love|fall)\\b|\\byou(?:~ll| will) (?:definitely|certainly|surely) \\w+",
+   "flags": "i",
+   "message": "Outcome absolute: a promise about conditions or about every guest.",
+   "suggestion": "Say what you do, then name the limit: 'The guide decides on the day'.",
+   "suppress_if_before": "\\b(?:not|no|never|cannot|can~t|can not|don~t|do not|doesn~t|does not|won~t|will not|isn~t|aren~t|without|unable to|nothing|nor|nobody|neither)\\W+(?:\\w+\\W+){0,5}$",
+   "examples_bad": [
+    "Every guest will love it.",
+    "Perfect conditions every Saturday."
+   ],
+   "examples_ok": [
+    "The guide decides on the day."
+   ]
+  },
+  {
+   "id": "POL-015",
+   "category": "policy",
+   "severity": "warn",
+   "weight": 8,
+   "pattern": "\\b(?:cures?|cured|miracle|detox\\w*|lose \\d+ ?(?:kg|kilos?|lbs?|pounds)|burn \\d+ ?calories)\\b",
+   "flags": "i",
+   "message": "Health or body claim. Platforms restrict it.",
+   "suggestion": "Describe the activity, not the outcome for the body.",
+   "suppress_if_after": "^\\s+for\\b",
+   "examples_bad": [
+    "A miracle cure for winter blues."
+   ],
+   "examples_ok": [
+    "The cure for a tired Sunday is a long run."
+   ]
+  },
+  {
+   "id": "POL-016",
+   "category": "policy",
+   "severity": "warn",
+   "weight": 6,
+   "pattern": "\\b(?:beers?|wine|cocktails?|apr[e\\u00e8]s[- ]ski drinks|booze|prosecco|champagne|schnapps|aquavit)\\b",
+   "flags": "i",
+   "message": "Alcohol mention. Alcohol ads have age-gating and local rules.",
+   "suggestion": "Check the platform rule and target age before you keep it.",
+   "examples_bad": [
+    "Apres-ski drinks at the hut."
+   ],
+   "examples_ok": [
+    "Coffee at the hut."
+   ]
+  },
+  {
+   "id": "PLT-001",
+   "category": "platform",
+   "severity": "block",
+   "weight": 30,
+   "pattern": "",
+   "flags": "",
+   "message": "X post is over its character budget: {detail}. A link counts as 23 characters [VERIFY].",
+   "suggestion": "Cut words, not facts. Move the second idea to a second post.",
+   "type": "slot_limit",
+   "params": {
+    "limit": 280
+   },
+   "slots": [
+    "x_post"
+   ],
+   "examples_bad": [
+    "Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski "
+   ],
+   "examples_ok": [
+    "Ski touring day above Brekke, NOK 4,900. Six skiers per guide."
+   ]
+  },
+  {
+   "id": "PLT-002",
+   "category": "platform",
+   "severity": "warn",
+   "weight": 12,
+   "pattern": "",
+   "flags": "",
+   "message": "Primary text runs past the visible part: {detail}. Only about the first 125 characters show before 'See more'.",
+   "suggestion": "Put the hook, the price and the action inside the first 125 characters.",
+   "type": "slot_limit",
+   "params": {
+    "limit": 125
+   },
+   "slots": [
+    "meta_primary"
+   ],
+   "examples_bad": [
+    "Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski "
+   ],
+   "examples_ok": [
+    "Six skiers per guide. Saturdays 9 Jan to 27 Feb, NOK 4,900."
+   ]
+  },
+  {
+   "id": "PLT-003",
+   "category": "platform",
+   "severity": "warn",
+   "weight": 15,
+   "pattern": "",
+   "flags": "",
+   "message": "Headline is over the Facebook feed budget: {detail}.",
+   "suggestion": "Trim to 27 characters. Keep the price.",
+   "type": "slot_limit",
+   "params": {
+    "limit": 27
+   },
+   "slots": [
+    "meta_headline"
+   ],
+   "examples_bad": [
+    "Guided ski touring day above Brekke"
+   ],
+   "examples_ok": [
+    "Ski touring day, NOK 4,900"
+   ]
+  },
+  {
+   "id": "PLT-004",
+   "category": "platform",
+   "severity": "block",
+   "weight": 30,
+   "pattern": "",
+   "flags": "",
+   "message": "Headline is over the widest field limit: {detail}.",
+   "suggestion": "Trim hard. Past 40 characters it is cut everywhere.",
+   "type": "slot_limit",
+   "params": {
+    "limit": 40
+   },
+   "slots": [
+    "meta_headline"
+   ],
+   "examples_bad": [
+    "Guided ski touring day above Brekke on Saturdays"
+   ],
+   "examples_ok": [
+    "Ski touring day, NOK 4,900"
+   ]
+  },
+  {
+   "id": "PLT-005",
+   "category": "platform",
+   "severity": "warn",
+   "weight": 12,
+   "pattern": "",
+   "flags": "",
+   "message": "Description is over its budget: {detail} [VERIFY: reported figure, often hidden on mobile].",
+   "suggestion": "One extra fact in 30 characters.",
+   "type": "slot_limit",
+   "params": {
+    "limit": 30
+   },
+   "slots": [
+    "meta_description"
+   ],
+   "examples_bad": [
+    "Beacon, shovel and probe are lent to every guest"
+   ],
+   "examples_ok": [
+    "Beacon, shovel and probe lent"
+   ]
+  },
+  {
+   "id": "PLT-006",
+   "category": "platform",
+   "severity": "warn",
+   "weight": 12,
+   "pattern": "",
+   "flags": "",
+   "message": "On-image text is over budget: {detail}. The budgets are 25, 30 and 20 characters (adquill heuristic for large type on a phone).",
+   "suggestion": "Shorten the line, or lower the type size only if the preview stays legible at 375 px wide.",
+   "type": "slot_limit",
+   "params": {
+    "limits_by_line": [
+     25,
+     30,
+     20
+    ]
+   },
+   "slots": [
+    "meta_image_line"
+   ],
+   "examples_bad": [
+    "Guided ski day above Brekke today\nSaturdays 9 Jan to 27 Feb\nNOK 4,900"
+   ],
+   "examples_ok": [
+    "Guided ski day, Brekke\nSaturdays 9 Jan to 27 Feb\nNOK 4,900"
+   ]
+  },
+  {
+   "id": "PLT-007",
+   "category": "platform",
+   "severity": "warn",
+   "weight": 12,
+   "pattern": "",
+   "flags": "",
+   "message": "image_line_1 is over its budget: {detail}.",
+   "suggestion": "25 characters for what it is.",
+   "type": "slot_limit",
+   "params": {
+    "limit": 25
+   },
+   "slots": [
+    "meta_image_line_1"
+   ],
+   "examples_bad": [
+    "Guided ski day above Brekke"
+   ],
+   "examples_ok": [
+    "Guided ski day, Brekke"
+   ]
+  },
+  {
+   "id": "PLT-008",
+   "category": "platform",
+   "severity": "warn",
+   "weight": 12,
+   "pattern": "",
+   "flags": "",
+   "message": "image_line_2 is over its budget: {detail}.",
+   "suggestion": "30 characters for when.",
+   "type": "slot_limit",
+   "params": {
+    "limit": 30
+   },
+   "slots": [
+    "meta_image_line_2"
+   ],
+   "examples_bad": [
+    "Saturdays 9 Jan to 27 Feb 2027 only"
+   ],
+   "examples_ok": [
+    "Saturdays 9 Jan to 27 Feb"
+   ]
+  },
+  {
+   "id": "PLT-009",
+   "category": "platform",
+   "severity": "warn",
+   "weight": 12,
+   "pattern": "",
+   "flags": "",
+   "message": "image_line_3 is over its budget: {detail}.",
+   "suggestion": "20 characters for how much.",
+   "type": "slot_limit",
+   "params": {
+    "limit": 20
+   },
+   "slots": [
+    "meta_image_line_3"
+   ],
+   "examples_bad": [
+    "NOK 4,900 per person total"
+   ],
+   "examples_ok": [
+    "NOK 4,900"
+   ]
+  },
+  {
+   "id": "PLT-010",
+   "category": "platform",
+   "severity": "warn",
+   "weight": 12,
+   "pattern": "",
+   "flags": "",
+   "message": "Reels line is over its budget: {detail}.",
+   "suggestion": "40 characters: the whole offer in one line.",
+   "type": "slot_limit",
+   "params": {
+    "limit": 40
+   },
+   "slots": [
+    "reels_line"
+   ],
+   "examples_bad": [
+    "Guided ski touring day, Saturdays, NOK 4,900"
+   ],
+   "examples_ok": [
+    "Ski touring day, NOK 4,900"
+   ]
+  },
+  {
+   "id": "PLT-011",
+   "category": "platform",
+   "severity": "warn",
+   "weight": 15,
+   "pattern": "",
+   "flags": "",
+   "message": "X card headline is over its budget: {detail} [VERIFY: reported figure].",
+   "suggestion": "Trim to 70 characters.",
+   "type": "slot_limit",
+   "params": {
+    "limit": 70
+   },
+   "slots": [
+    "x_card_headline"
+   ],
+   "examples_bad": [
+    "Guided ski touring day above Brekke on Saturdays from 9 Jan to 27 Feb, NOK 4,900"
+   ],
+   "examples_ok": [
+    "Ski touring day, NOK 4,900"
+   ]
+  },
+  {
+   "id": "PLT-012",
+   "category": "platform",
+   "severity": "note",
+   "weight": 4,
+   "pattern": "",
+   "flags": "",
+   "message": "X card headline is over the recommended 50 characters: {detail} [VERIFY: reported figure].",
+   "suggestion": "Trim to 50 to avoid truncation.",
+   "type": "slot_limit",
+   "params": {
+    "limit": 50
+   },
+   "slots": [
+    "x_card_headline"
+   ],
+   "examples_bad": [
+    "Guided ski touring day above Brekke, Saturdays, NOK 4,900"
+   ],
+   "examples_ok": [
+    "Ski touring day, NOK 4,900"
+   ]
+  },
+  {
+   "id": "PLT-013",
+   "category": "platform",
+   "severity": "warn",
+   "weight": 15,
+   "pattern": "",
+   "flags": "",
+   "message": "X card description is over its budget: {detail} [VERIFY: reported figure].",
+   "suggestion": "Trim to 200 characters.",
+   "type": "slot_limit",
+   "params": {
+    "limit": 200
+   },
+   "slots": [
+    "x_card_description"
+   ],
+   "examples_bad": [
+    "Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski "
+   ],
+   "examples_ok": [
+    "Beacon, shovel and probe included. Pick a Saturday and book online."
+   ]
+  },
+  {
+   "id": "PLT-014",
+   "category": "platform",
+   "severity": "note",
+   "weight": 4,
+   "pattern": "",
+   "flags": "",
+   "message": "X card description runs past the visible part: {detail} [VERIFY: about 125 visible, vendor figure].",
+   "suggestion": "Put the point in the first 125 characters.",
+   "type": "slot_limit",
+   "params": {
+    "limit": 125
+   },
+   "slots": [
+    "x_card_description"
+   ],
+   "examples_bad": [
+    "Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski Ski "
+   ],
+   "examples_ok": [
+    "Beacon, shovel and probe included. Pick a Saturday and book online."
+   ]
+  },
+  {
+   "id": "PLT-015",
+   "category": "platform",
+   "severity": "warn",
+   "weight": 8,
+   "pattern": "(?<!\\w)#[A-Za-z]\\w*",
+   "flags": "",
+   "message": "More than two hashtags on an X post.",
+   "suggestion": "Zero to two, and only if the audience uses them.",
+   "slots": [
+    "x_post"
+   ],
+   "min_hits": 3,
+   "examples_bad": [
+    "Ski day #ski #norway #voss"
+   ],
+   "examples_ok": [
+    "Ski day #skitouring"
+   ]
+  },
+  {
+   "id": "PLT-016",
+   "category": "platform",
+   "severity": "note",
+   "weight": 3,
+   "pattern": "(?<!\\w)#[A-Za-z]\\w*",
+   "flags": "",
+   "message": "Hashtag in an X ad post. Reported ad-quality guidance prefers none [VERIFY: current status].",
+   "suggestion": "Cut it unless your audience searches it.",
+   "slots": [
+    "x_post"
+   ],
+   "examples_bad": [
+    "Ski day #skitouring"
+   ],
+   "examples_ok": [
+    "Ski day above Brekke."
+   ]
+  },
+  {
+   "id": "PLT-017",
+   "category": "platform",
+   "severity": "note",
+   "weight": 3,
+   "pattern": "",
+   "flags": "",
+   "message": "Link inside the X post text. Reported ad-quality guidance prefers none in the copy [VERIFY: current status].",
+   "suggestion": "Put the link in the card or the button.",
+   "type": "builtin",
+   "builtin": "url_in_post",
+   "slots": [
+    "x_post"
+   ],
+   "examples_bad": [
+    "Ski day above Brekke https://brekkeskiguides.example/intro"
+   ],
+   "examples_ok": [
+    "Ski day above Brekke."
+   ]
+  },
+  {
+   "id": "PLT-018",
+   "category": "platform",
+   "severity": "note",
+   "weight": 4,
+   "pattern": "",
+   "flags": "",
+   "message": "{detail}. Price, date or group size belongs in the visible text.",
+   "suggestion": "Move one number into the first 125 characters.",
+   "type": "metric",
+   "metric": "visible_no_number",
+   "params": {
+    "visible": 125
+   },
+   "slots": [
+    "meta_primary"
+   ],
+   "examples_bad": [
+    "Come and ski a quiet ridge with a guide who knows the way up and the way down."
+   ],
+   "examples_ok": [
+    "Six skiers per guide. Saturdays 9 Jan to 27 Feb."
+   ]
+  }
+ ]
+}

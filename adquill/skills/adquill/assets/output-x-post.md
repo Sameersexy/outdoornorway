@@ -2,7 +2,7 @@
 
 The exact output adquill returns for an X (Twitter) promoted post. Read it at step 8 of the method when the platform is X. The filled example uses the fictional brief from assets/brief-template.md.
 
-X has two text layers, the post and the website card. Do not copy the Meta layout onto it. The post must stand alone with no image, because it is the only thing a reader is sure to see.
+X has two text layers, the post and the website card. Do not copy the Meta layout onto it. The post must stand alone with no image, because the image or card may not load or may be skipped.
 
 ## Rules for this output
 
@@ -12,9 +12,10 @@ X has two text layers, the post and the website card. Do not copy the Meta layou
 4. No hashtags, no link in the post text (the link lives in the card), no emoji. These are style choices that follow X's reported ad quality direction [VERIFY: reported, not read from X].
 5. The post carries the fact in line one or two: the thing, the date, the price.
 6. No sentence appears in two slots.
-7. Every variant ends with a receipt: Angle, Mechanism, Risk, Test hypothesis.
-8. One group chat line, one image or card spec, a policy and fact pass with tiers, and a status line.
-9. Say that X is a secondary channel for most small advertisers, and that the user should compare cost per landing page view with Meta.
+7. Lint every slot with scripts/slop_lint.py and its --slot name (x_post, x_card_headline, x_card_description). Show the lowest score and any hits.
+8. Every variant ends with a receipt: Angle, Mechanism, Risk, Test hypothesis.
+9. One group chat line, one image or card spec, a policy and fact pass with tiers, and a status line.
+10. Say that X is a secondary channel for most small advertisers, and that the user should compare cost per landing page view with Meta.
 
 ## Slots and sources
 
@@ -99,20 +100,20 @@ Platform data verified 2026-10-06 where marked, otherwise [VERIFY]
 
 ## Ledger facts used
 
-NOK 4,900 per person. Saturdays 6 Feb to 27 Mar 2027, eight departures. Six people per guide. Red runs with control required. Typical day times. Gear hire NOK 650 extra. Free cancellation up to 7 days before. Full refund or another Saturday if the guide calls the day off for avalanche risk. Guide, avalanche kit loan and route planning included. Taught: skins, kick turns, transceiver.
+NOK 4,900 per person. Sunnmøre Alps, meeting above Brekke. Saturdays 9 Jan to 27 Feb 2027, eight departures. Six people per guide. Red runs with control required. Typical day times. Gear hire NOK 650 per person. Free cancellation up to 7 days before. Full refund or another Saturday if the guide calls the day off for avalanche risk. Guide, avalanche kit loan and route planning included. Taught: skins, kick turns, transceiver.
 
 Not used (not verified or not allowed): guide certification, guest reviews, seats left, any superlative.
 
 ## Post 1: The plain list
 
-Post (173/280):
+Post (222/280):
 
 ```text
-Guided ski touring day. Saturdays, 6 Feb to 27 Mar 2027.
+Guided ski touring day in the Sunnmøre Alps. Saturdays, 9 Jan to 27 Feb 2027.
 
 Six people per guide. Typical day: meet 08:30, back at the car about 15:30.
 
-NOK 4,900. Gear hire is NOK 650 extra.
+NOK 4,900 per person, with gear hire at NOK 650 per person on top.
 ```
 
 | Slot | Text | Count | Budget |
@@ -121,7 +122,7 @@ NOK 4,900. Gear hire is NOK 650 extra.
 | card_description | Guide, avalanche kit loan and route planning included. Free cancellation until 7 days before. | 93 | 200 [VERIFY] |
 
 Hook type: specificity
-Lint: LINT_P1
+Lint: 100/100 (lowest of 3 slots, no hits)
 
 Receipt
 - Angle: the whole offer in three lines a reader can screenshot.
@@ -134,16 +135,16 @@ Receipt
 Post (184/280):
 
 ```text
-If we call the day off for avalanche risk, you pick another Saturday or take a full refund. That holds for all eight Saturdays, 6 Feb to 27 Mar 2027. NOK 4,900 a person, six per guide.
+If we call the day off for avalanche risk, you pick another Saturday or take a full refund. That holds for all eight Saturdays, 9 Jan to 27 Feb 2027. NOK 4,900 a person, six per guide.
 ```
 
 | Slot | Text | Count | Budget |
 |---|---|---|---|
 | card_headline | Day called off? Rebook or refund | 32 | 70 [VERIFY] |
-| card_description | Intro to ski touring, guided. Gear hire is NOK 650 extra. | 57 | 200 [VERIFY] |
+| card_description | Intro to ski touring, guided. Gear hire NOK 650 per person. | 59 | 200 [VERIFY] |
 
 Hook type: direct benefit, written as a rule
-Lint: LINT_P2
+Lint: 100/100 (lowest of 3 slots, no hits)
 
 Receipt
 - Angle: the cancellation worry answered with a rule, spoken by the people who make the call.
@@ -153,19 +154,19 @@ Receipt
 
 ## Post 3: The entry bar
 
-Post (182/280):
+Post (193/280):
 
 ```text
-You need to ski red runs with control. That is the entry bar for our intro to ski touring. We teach skins, kick turns and the transceiver. Saturdays, 6 Feb to 27 Mar 2027. NOK 4,900.
+You need to ski red runs with control. That is the entry bar for our intro to ski touring. We teach skins, kick turns and the transceiver. Saturdays, 9 Jan to 27 Feb 2027. NOK 4,900 per person.
 ```
 
 | Slot | Text | Count | Budget |
 |---|---|---|---|
 | card_headline | First ski tour, NOK 4,900 | 25 | 70 [VERIFY] |
-| card_description | Guide, avalanche kit loan and route planning included. Gear hire is NOK 650 extra. | 82 | 200 [VERIFY] |
+| card_description | Guide, avalanche kit loan and route planning included. Gear hire NOK 650 per person. | 84 | 200 [VERIFY] |
 
 Hook type: honest concession (a contrarian hook)
-Lint: LINT_P3
+Lint: 100/100 (lowest of 3 slots, no hits)
 
 Receipt
 - Angle: name the entry bar first, so the right people stop scrolling.
@@ -185,9 +186,9 @@ The three shapes differ on purpose. No two rows match on more than one column.
 
 ## Group chat line
 
-Found a guided intro to ski touring: Saturdays 6 Feb to 27 Mar, six people per guide, NOK 4,900. You need to ski red runs. Want to book one?
+Found a guided intro to ski touring: Saturdays 9 Jan to 27 Feb, 6 people per guide, NOK 4,900 per person. You need to ski red runs. I would book 16 Jan, are you free?
 
-140 characters. Same facts as the posts.
+166 characters. Same facts as the posts, plus a Saturday the sender picks (16 Jan is inside the window).
 
 ## Card spec (for the designer)
 
@@ -211,7 +212,7 @@ Note:
 - Post 3: "You need to ski red runs with control" is a requirement of the offer, not a claim about the reader.
 - X policy pages could not be read for this check. Read the live deceptive and fraudulent content policy before you spend (https://business.x.com/en/help/ads-policies/ads-content-policies/deceptive-and-fraudulent-content) [VERIFY].
 
-Fact check: 6 Feb 2027 and 27 Mar 2027 are Saturdays (calendar calculation). Every number maps to a ledger row: 4,900, 650, 6, 8, 08:30, 15:30, 7. Typical times carry "typical" or "about". No testimonial, rating, certification or seat count appears.
+Fact check: 9 Jan 2027 and 27 Feb 2027 are Saturdays (calendar calculation). Every number maps to a ledger row: 4,900, 650, 6, 8, 08:30, 15:30, 7. Typical times carry "typical" or "about". No testimonial, rating, certification or seat count appears.
 
 ## Before you publish
 

@@ -13,7 +13,7 @@ Write facts, not feelings. "Six people per guide, 08:30 start" helps. "Small fri
 | offer | What you sell, in one sentence | The ad has one idea. This is its subject |
 | price and its basis | The number, per what, what it includes, what it excludes | A price without a basis is a policy risk and a trust problem |
 | dates | Departures, season or booking window. Weekdays included | Dates are checked against a calendar |
-| audience segment | Who they are, what they already do, where they are | Decides the first line |
+| audience segment | Who they are, what they already do, where they are | Decides line one |
 | platform and placement | Meta feed, Reels or Stories, X post, X card | Decides slots and budgets |
 | verified proof | Real proof and where it was verified, or "none" | The skill will not invent proof |
 
@@ -72,10 +72,12 @@ price and basis:
   price: NOK 4,900
   per: person, for the day
   includes: guide, loan of a transceiver, probe and shovel, route planning
-  excludes: skis, skins and boots (hire is NOK 650 extra), lunch, travel to the meeting point
-dates: Saturdays, 6 Feb to 27 Mar 2027. That is eight Saturdays (6, 13, 20 and 27 Feb;
-  6, 13, 20 and 27 Mar). Booking closes at 18:00 on the Thursday before.
-audience segment: Confident resort skiers in southern Norway who have never toured.
+  excludes: skis, skins and boots (hire is NOK 650 per person for the set), lunch, travel to the meeting point
+dates: Saturdays, 9 Jan to 27 Feb 2027. That is eight Saturdays (9, 16, 23 and 30 Jan;
+  6, 13, 20 and 27 Feb). Booking closes at 18:00 on the Thursday before.
+where: the Sunnmøre Alps, meeting at a car park above Brekke (Brekke is a fictional place
+  in a real region).
+audience segment: Confident resort skiers in western Norway who have never toured.
   They ski red runs, own a resort pass and are tired of lift queues on weekends.
 platform and placement: Meta feed (Facebook and Instagram), single image, 4:5.
   Also one X post with a website card.

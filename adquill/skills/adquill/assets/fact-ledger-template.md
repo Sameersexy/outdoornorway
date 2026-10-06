@@ -14,8 +14,8 @@ The table adquill builds at step 2 of the method, before it writes a word. Read 
 
 ## Rules
 
-1. A fact the user states in the brief counts as verified yes, with source "brief". A fact the user hints at ("our guides are top notch") is not a fact. Turn it into a question.
-2. Derived facts show their arithmetic in the value column. "8 Saturdays: 6, 13, 20, 27 Feb; 6, 13, 20, 27 Mar". Check weekdays with a calendar calculation.
+1. A fact the user states in the brief counts as verified yes, with source "brief". A fact the user hints at ("our guides really know their stuff") is not a fact. Turn it into a question.
+2. Derived facts show their arithmetic in the value column. "8 Saturdays: 9, 16, 23, 30 Jan; 6, 13, 20, 27 Feb". Check weekdays with a calendar calculation.
 3. Prices are checked against the landing page. If the brief and the page disagree, mark both rows verified no and ask.
 4. Proof rows record what kind of proof it is: review (with link), count (with date), certificate (with number), policy (with page). Proof without a kind and a source is verified no.
 5. Scarcity and urgency rows need a count or deadline and the date it was true. Without both, allowed in copy is no.
@@ -51,9 +51,10 @@ This ledger belongs to the fictional brief in assets/brief-template.md. Brekke S
 | landing page price | NOK 4,900 per person | brekkeskiguides.example/intro, as pasted by the user | yes | yes |
 | price includes | guide, transceiver, probe and shovel loan, route planning | brief | yes | yes |
 | price excludes | skis, skins, boots, lunch, travel | brief | yes | yes |
-| gear hire | NOK 650 extra | brief | yes | yes |
-| dates | Saturdays 6 Feb to 27 Mar 2027 | brief, weekday checked by calendar calculation | yes | yes |
-| number of departures | 8 (6, 13, 20, 27 Feb; 6, 13, 20, 27 Mar) | derived from dates | yes | yes |
+| gear hire | NOK 650 per person for skis, skins and boots | brief | yes | yes |
+| where | Sunnmøre Alps, meeting at a car park above Brekke (fictional place in a real region) | brief | yes | yes |
+| dates | Saturdays 9 Jan to 27 Feb 2027 | brief, weekday checked by calendar calculation | yes | yes |
+| number of departures | 8 (9, 16, 23, 30 Jan; 6, 13, 20, 27 Feb) | derived from dates | yes | yes |
 | booking closes | 18:00 on the Thursday before | brief | yes | yes |
 | group size | six people per guide, at most | brief, booking terms | yes | yes |
 | level requirement | must ski red runs with control | brief | yes | yes |
@@ -71,7 +72,7 @@ What the ledger changes in the copy:
 
 - The ads may say "six people per guide" and "full refund". They may not claim certified guides, praise from guests, a seat count or a superlative, because none of those has a row marked allowed.
 - The typical day is allowed only with a softener ("typical", "about") because the owner said conditions can shift it.
-- Every number in the draft ads (NOK 4,900, 6 Feb, 27 Mar, eight Saturdays, 08:30, 7 days) maps to a row above. A number with no row is a defect.
+- Every number in the draft ads (NOK 4,900, 9 Jan, 27 Feb, eight Saturdays, 08:30, 7 days) maps to a row above. A number with no row is a defect.
 
 ## Open questions list
 

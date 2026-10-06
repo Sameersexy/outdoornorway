@@ -15,7 +15,7 @@ All examples in this skill use one invented brand, Brekke Ski Guides. Every exam
 
 Most people will just ask in plain language: "write a Meta ad for our guided ski day". That is enough. Read the request, pick the command from the table below, then follow the method in order.
 
-The explicit form is "/adquill:adquill <command> ...". Agents that do not use plugin namespaces load this file directly and treat the first word as the command.
+The explicit form is "/adquill:adquill <command> ...". Agents that do not use plugin namespaces load this file directly and treat the opening word as the command.
 
 | Command | Input | Output |
 |---|---|---|
@@ -37,7 +37,7 @@ These apply to every command. They exist because ads fail in three ways: they so
 3. One idea per ad, many ads per campaign. Meta rewards different concepts. A reader gets one thing from a static ad. Put the full story on the landing page.
 4. Variants are different ideas, not rewordings. If two variants could swap headlines without changing the ad, they are one variant.
 5. Count characters in code, never by eye. Report the count beside every slot.
-6. House style in everything you write: no em dash (U+2014) and no en dash (U+2013), no emoji, no capital letters for emphasis, short sentences, no filler transitions. Use a comma, colon, parentheses or a plain hyphen. For ranges write "6 Feb to 27 Mar".
+6. House style in everything you write: no em dash (U+2014) and no en dash (U+2013), no emoji, no capital letters for emphasis, short sentences, no filler transitions. Use a comma, colon, parentheses or a plain hyphen. For ranges write "9 Jan to 27 Feb".
 7. Ask once, ask in a batch. If required fields are missing, send one message with all questions (at most six). If the user says "just write it", write a draft with [VERIFY] tokens and mark it as a draft, not ready to publish.
 
 ## The method
@@ -59,7 +59,7 @@ Optional: brand voice (three adjectives plus a sample of real writing is better)
 
 Ask for three more things if they are missing, because the ads improve a lot with them: the landing page and the price it shows, the cancellation and weather policy, and one honest limit (who this is not for). Also ask whether real guest words exist. Do not ask for testimonials the business does not have.
 
-Why: the brief is the only source of truth. Every later step checks against it.
+Why: every later step checks against the brief, so a gap here becomes a wrong claim there.
 
 ### Step 2. Build the fact ledger
 
@@ -114,7 +114,7 @@ Add one angle that names the main anxiety plainly, if the facts allow it. Say th
 
 ### Step 5. Write to slots
 
-Write each ad into the slots below. Draft more than you show: at least ten hooks per angle in private, each tagged with its hook type, then cut to the best.
+Write each ad into the slots below. Draft more than you show: at least ten hooks per angle in private, each tagged with its hook type, then cut to the strongest.
 
 For a Meta static ad:
 
@@ -125,7 +125,7 @@ For a Meta static ad:
 | image_line_3 | 20 | How much |
 | primary_text | 125 visible | The reason to care, first line carries the hook |
 | headline | 27 | Repeats the offer |
-| description | 30 | One extra fact, never the only appearance of price or dates |
+| description | 30 | One extra fact. Price and dates must also appear in slots people always see |
 | cta | button label | From the list in references/meta.md |
 | reels_line | 40 | The whole offer in one line for Reels and Stories |
 
@@ -143,7 +143,19 @@ Run the self-edit pass in references/rewrite-protocol.md. It has twelve steps. T
 
 Then run the linter on every slot:
 
-python3 -I skills/adquill/scripts/slop_lint.py --slot headline --text "Ski touring day, NOK 4,900"
+python3 -I skills/adquill/scripts/slop_lint.py --slot meta_headline --text "Ski touring day, NOK 4,900"
+
+The --slot value checks the character budget and applies the slot rules. Match slots to linter names like this:
+
+| Slot in this skill | --slot value |
+|---|---|
+| image_line_1, image_line_2, image_line_3 | meta_image_line_1, meta_image_line_2, meta_image_line_3 |
+| primary_text | meta_primary |
+| headline | meta_headline |
+| description | meta_description |
+| reels_line | reels_line |
+| post (X) | x_post |
+| card headline, card description (X) | x_card_headline, x_card_description |
 
 If the skill is installed elsewhere, resolve the scripts folder relative to this file. The linter reads its rules from scripts/rules.json, needs only the Python standard library, never touches the network, and writes no files. Useful flags: --json, --fail-under N, --explain, input from a file or stdin.
 
@@ -157,7 +169,7 @@ Read references/policy.md. It sorts risks into three tiers: block (do not publis
 
 The pass has two parts.
 
-Policy: personal attributes ("you" joined to health, age, money, relationship or identity), guaranteed or unrealistic outcomes (snow, weather, superlatives without proof), false urgency or scarcity, price that differs from the landing page, sensational imagery, third-party logos.
+Policy: personal attributes ("you" joined to health, age, money, relationship or identity), promises about outcomes nobody controls (snow, weather, superlatives without proof), false urgency or scarcity, price that differs from the landing page, shocking imagery, third-party logos.
 
 Facts: every number, date, name and promise in every slot matches a ledger row marked allowed. The price is identical in the image lines, primary text, headline and landing page. Weekdays match dates.
 
@@ -215,13 +227,13 @@ Every variant ends with a receipt of exactly four lines:
 - Risk: what could go wrong or what must be true for the ad to be honest
 - Test hypothesis: one sentence the user can check with real results ("If X, then Y will beat Z")
 
-Every set of variants also carries one group chat line: a sentence written to be pasted to a friend, partner or group ("There is a guided ski touring day on Saturdays from 6 Feb..."). A line that survives a paste is more likely to be forwarded (see references/sharing-and-virality.md). The line must hold the same facts as the ad and must not read like an ad.
+Every set of variants also carries one group chat line: a sentence written to be pasted to a friend, partner or group ("There is a guided ski touring day on Saturdays from 9 Jan..."). A line that survives a paste is more likely to be forwarded (see references/sharing-and-virality.md). The line must hold the same facts as the ad and must not read like an ad.
 
 Why: receipts teach the user what the ad is doing, so they can write the next one themselves. They also make a weak variant easy to spot.
 
 ## Refuse to invent proof
 
-adquill does not invent testimonials, quotes, review counts, ratings, awards, certifications, press mentions, statistics, study results, "guests say" lines, sold-out claims, seats left, or countdowns. It does not attach a made-up first name to a made-up quote. It does not round a rating up. It does not write "thousands of happy guests" when it was not given a number.
+adquill does not invent testimonials, quotes, review counts, ratings, awards, certifications, press mentions, statistics, study results, "guests say" lines, sold-out claims, seats left, or countdowns. It does not attach a made-up first name to a made-up quote. It does not round a rating up. It does not write a guest count it was not given.
 
 When proof is missing, do one of three things:
 
@@ -256,7 +268,7 @@ Say these plainly when they matter, and in the README.
 - It will not promise virality, a click-through rate, a conversion rate or a return. It can state a test hypothesis. It cannot know the result.
 - It will not help text evade AI detectors. The linter finds patterns that read as automated, and removing them makes copy better to read. Detectors are a different problem and adquill makes no claim about them.
 - It will not publish ads. It has no access to Ads Manager and no network access. The user pastes the text and uploads the image.
-- It cannot guarantee policy approval. Meta and X decide, and they review the landing page too. The policy pass lowers the risk and leaves the ruling to them.
+- Policy approval is outside its control. Meta and X decide, and they review the landing page too. The policy pass lowers the risk and leaves the ruling to them.
 - It does not make images. It writes a spec for the designer. Image tools garble text and invent details.
 - Platform numbers age. Items tagged [VERIFY] are unconfirmed. Re-check before spending money.
 - For Reels it writes hooks, on-screen text and captions. It does not storyboard or script a full video.
@@ -270,7 +282,7 @@ Read a reference when its trigger applies. Do not load them all by default. Each
 |---|---|
 | references/craft.md | Step 3 and 4: choosing a framework from awareness and sophistication, or when an ad feels like a brochure |
 | references/hooks-and-headlines.md | Step 5: drafting hooks, scoring headlines, or when variants look alike |
-| references/offer-and-price.md | Step 5: stating price, inclusions, dates, "from" pricing, cancellation or a guarantee |
+| references/offer-and-price.md | Step 5: stating price, inclusions, dates, "from" pricing, cancellation or a money-back rule |
 | references/psychology.md | Step 4: naming the mechanism and risk for each angle |
 | references/buyer-journey-and-anxieties.md | Step 3: finding the main anxiety, or writing for a high-ticket trip with several decision makers |
 | references/sharing-and-virality.md | Step 8: writing the group chat line, or when the user asks how to make an ad shareable |

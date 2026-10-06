@@ -27,7 +27,7 @@ Every reviewer gets the same packet, and nothing else:
 5. The policy and fact pass from step 7 of the method.
 6. The platform and placement.
 
-Do not include your own opinion of the drafts. Do not say what verdict you hope for. Do not include another reviewer's output in the first round, because independence is the point.
+Do not include your own opinion of the drafts. Do not say what verdict you hope for. Do not include another reviewer's output in round one, because independence is the point.
 
 ## Step 2. Run the three in parallel
 

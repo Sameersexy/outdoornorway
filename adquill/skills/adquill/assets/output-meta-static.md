@@ -7,11 +7,12 @@ The exact output adquill returns for a Meta (Facebook and Instagram) static imag
 1. One section per variant. Each variant is a different idea.
 2. Every slot shows its text, its character count and its budget. Counts are computed in code and include spaces and the comma in "NOK 4,900".
 3. No sentence appears in two slots. The headline may repeat the offer (the price), and may not repeat a sentence from the primary text.
-4. Every variant ends with a receipt of four lines: Angle, Mechanism, Risk, Test hypothesis.
-5. One group chat line for the whole set. It holds the same facts as the ads.
-6. One image spec brief. The designer or a layout tool puts the text on the image. An image generator never renders it, because generators garble text and can invent details.
-7. A policy and fact pass with tiers: block, warn, note.
-8. A status line that says either "ready to paste" or "draft, not ready to publish", with the reason.
+4. Lint every slot with scripts/slop_lint.py and its --slot name (meta_image_line_1 to 3, meta_primary, meta_headline, meta_description, reels_line). Show the lowest score and any hits.
+5. Every variant ends with a receipt of four lines: Angle, Mechanism, Risk, Test hypothesis.
+6. One group chat line for the whole set. It holds the same facts as the ads.
+7. One image spec brief. The designer or a layout tool puts the text on the image. An image generator never renders it, because generators garble text and can invent details.
+8. A policy and fact pass with tiers: block, warn, note.
+9. A status line that says either "ready to paste" or "draft, not ready to publish", with the reason.
 
 ## The shape
 
@@ -103,7 +104,7 @@ Platform data verified 2026-10-06
 
 ## Ledger facts used
 
-NOK 4,900 per person. Saturdays 6 Feb to 27 Mar 2027, eight departures. Six people per guide. Red runs with control required. Typical day times. Gear hire NOK 650 extra. Free cancellation up to 7 days before. Full refund or another Saturday if the guide calls the day off for avalanche risk. Taught on the day: skins, kick turns, transceiver.
+NOK 4,900 per person. Sunnmøre Alps, meeting at a car park above Brekke. Saturdays 9 Jan to 27 Feb 2027, eight departures. Six people per guide. Red runs with control required. Typical day times. Gear hire NOK 650 per person. Free cancellation up to 7 days before. Full refund or another Saturday if the guide calls the day off for avalanche risk. Taught on the day: skins, kick turns, transceiver.
 
 Not used (not verified or not allowed): guide certification (no certificate number), guest reviews (none supplied), seats left (not supplied), any superlative.
 
@@ -112,19 +113,19 @@ Not used (not verified or not allowed): guide certification (no certificate numb
 | Slot | Text | Count | Budget |
 |---|---|---|---|
 | image_line_1 | Intro to ski touring | 20 | 25 |
-| image_line_2 | Saturdays, 6 Feb to 27 Mar | 26 | 30 |
+| image_line_2 | Saturdays, 9 Jan to 27 Feb | 26 | 30 |
 | image_line_3 | NOK 4,900 | 9 | 20 |
-| primary_text | Typical day: meet 08:30, skins on 09:15, first descent about 11:40, back at the car about 15:30. Six per guide. | 111 | 125 visible |
+| primary_text | Typical day in the Sunnmøre Alps: meet 08:30, skins on 09:15, first descent about 11:40, back about 15:30. Six per guide. | 121 | 125 visible |
 | headline | Ski touring day, NOK 4,900 | 26 | 27 |
-| description | Gear hire is NOK 650 extra | 26 | 30 |
+| description | Gear hire NOK 650 per person | 28 | 30 |
 | cta | Check Availability | label | label |
 | reels_line | Try ski touring with a guide. NOK 4,900. | 40 | 40 |
 
 Hook type: specificity
-Lint: LINT_V1
+Lint: 100/100 (lowest of 7 slots, no hits)
 
 Receipt
-- Angle: the first-timer can picture the whole day, so the unknown gets smaller.
+- Angle: a beginner can picture the whole day, so the unknown gets smaller.
 - Mechanism: concreteness (times and numbers instead of adjectives).
 - Risk: false precision. The times are typical, and the owner says conditions can shift them, so the copy says "typical" and "about".
 - Test hypothesis: if not knowing what the day looks like is the main hurdle, this variant gets more link clicks per impression than Variant 3.
@@ -134,16 +135,16 @@ Receipt
 | Slot | Text | Count | Budget |
 |---|---|---|---|
 | image_line_1 | Ski touring, 6 max | 18 | 25 |
-| image_line_2 | Saturdays, 6 Feb to 27 Mar | 26 | 30 |
+| image_line_2 | Saturdays, 9 Jan to 27 Feb | 26 | 30 |
 | image_line_3 | NOK 4,900 | 9 | 20 |
-| primary_text | Day called off for avalanche risk? Pick another Saturday or take a full refund. Eight Saturdays, six people per guide. | 118 | 125 visible |
+| primary_text | Day called off for avalanche risk? Pick another Saturday or take a full refund. 8 Saturdays, 6 people per guide. | 112 | 125 visible |
 | headline | Ski touring, NOK 4,900 | 22 | 27 |
 | description | Cancel free up to 7 days out | 28 | 30 |
 | cta | Check Availability | label | label |
 | reels_line | Day called off? Rebook or full refund. | 38 | 40 |
 
 Hook type: question about the activity, with a direct benefit
-Lint: LINT_V2
+Lint: 100/100 (lowest of 7 slots, no hits)
 
 Receipt
 - Angle: the second doubt after "can I do it" is "what if it is called off", and the refund rule answers it with a fact.
@@ -156,16 +157,16 @@ Receipt
 | Slot | Text | Count | Budget |
 |---|---|---|---|
 | image_line_1 | Red runs required | 17 | 25 |
-| image_line_2 | Saturdays, 6 Feb to 27 Mar | 26 | 30 |
+| image_line_2 | Saturdays, 9 Jan to 27 Feb | 26 | 30 |
 | image_line_3 | NOK 4,900 | 9 | 20 |
-| primary_text | You need to ski red runs with control. You do not need to have toured. We teach skins, kick turns and the transceiver. | 118 | 125 visible |
+| primary_text | You need to ski red runs with control. You do not need to have toured. 6 per guide, and we teach skins and kick turns. | 118 | 125 visible |
 | headline | First ski tour, NOK 4,900 | 25 | 27 |
-| description | Six people per guide, at most | 29 | 30 |
+| description | Avalanche kit loan included | 27 | 30 |
 | cta | Check Availability | label | label |
 | reels_line | Ski red runs? Then learn to skin up. | 36 | 40 |
 
 Hook type: honest concession (a contrarian hook)
-Lint: LINT_V3
+Lint: 100/100 (lowest of 7 slots, no hits)
 
 Receipt
 - Angle: say the entry bar first, and the right people recognise themselves.
@@ -185,9 +186,9 @@ No two rows match on more than one column. Each is a different idea.
 
 ## Group chat line
 
-There is a guided ski touring day on Saturdays from 6 Feb. Six people per guide, NOK 4,900, loan of the avalanche kit included. If you ski red runs you are in. Want to go?
+There's a guided ski touring day on Saturdays from 9 Jan: 6 people per guide, NOK 4,900 per person, avalanche kit loan included. You ski red runs, so you're in. I'm looking at 16 Jan. Are you free?
 
-171 characters. Same facts as the ads.
+197 characters. Same facts as the ads, plus a Saturday the sender picks (16 Jan is inside the window).
 
 ## Image spec brief (for the designer)
 
@@ -197,7 +198,7 @@ This brief is fictional.
 - Margins: keep all text at least 5 percent from every edge (72 px at the sides, 90 px at top and bottom). Practitioner heuristic, not a Meta rule. Keep the text block out of the lowest part of the image.
 - Type hierarchy: price (line 3) heaviest and largest, date (line 2) second, name (line 1) third. Starting sizes to test: 160 px, 90 px and 80 px type. Adjust until all three lines read at 375 px wide.
 - Contrast: text on a plain area or a solid band, at least 4.5 to 1 against the background (https://www.w3.org/TR/WCAG21/#contrast-minimum).
-- On-image lines for Variant 1: "Intro to ski touring", "Saturdays, 6 Feb to 27 Mar", "NOK 4,900". Variants 2 and 3 use the lines in their tables.
+- On-image lines for Variant 1: "Intro to ski touring", "Saturdays, 9 Jan to 27 Feb", "NOK 4,900". Variants 2 and 3 use the lines in their tables.
 - Photo direction: a real photo of a real group on skins, daylight, faces visible, taken by the brand with consent. No stock, no generated people. No third-party logos.
 - Text is added in a layout tool or by a designer. An image generator never renders it.
 - 9:16 version, only if the ad runs in Stories and Reels: 1080 x 1920 px. Keep text out of the top 269 px, the bottom 672 px and 65 px at each side, which leaves a centre band of about 950 x 979 px (Meta Reels spec, verified 2026-10-06: https://www.facebook.com/business/ads-guide/update/video/instagram-reels/link-clicks). The reels_line goes in this version.
@@ -216,7 +217,7 @@ Note:
 - The Instagram feed headline field reportedly does not show on single image ads [VERIFY in Ads Manager preview]. The image lines carry the price, so nothing is lost.
 - The description slot is often hidden on mobile. Nothing important lives only there.
 
-Fact check: 6 Feb 2027 and 27 Mar 2027 are Saturdays (calendar calculation). Eight Saturdays counted: 6, 13, 20 and 27 Feb, 6, 13, 20 and 27 Mar. Every number in the slots maps to a ledger row: 4,900, 650, 6, 8, 08:30, 09:15, 11:40, 15:30, 7. Typical times carry "typical" or "about". No testimonial, rating, certification or seat count appears.
+Fact check: 9 Jan 2027 and 27 Feb 2027 are Saturdays (calendar calculation). Eight Saturdays counted: 9, 16, 23 and 30 Jan, 6, 13, 20 and 27 Feb. Every number in the slots maps to a ledger row: 4,900, 650, 6, 8, 08:30, 09:15, 11:40, 15:30, 7. Typical times carry "typical" or "about". No testimonial, rating, certification or seat count appears.
 
 ## Before you publish
 

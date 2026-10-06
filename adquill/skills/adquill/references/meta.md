@@ -299,7 +299,7 @@ Every row below carries [VERIFY: no Meta source]. They are common in agency post
 
 | Claim | Where it circulates | Status |
 |---|---|---|
-| Meta assigns an "Entity ID" and collapses similar ads into one | Many agency blogs. One source calls it "an explanatory device ... rather than an official term Meta publishes" (https://adsuploader.com/blog/meta-andromeda) | The idea is plausible. The label is not Meta's. [VERIFY: not in Meta documentation] |
+| Meta assigns an "Entity ID" and collapses similar ads into one | Many agency blogs. One source calls it "an explanatory device" and says it is not an official Meta term (https://adsuploader.com/blog/meta-andromeda) | The idea is plausible. The label is not Meta's. [VERIFY: not in Meta documentation] |
 | A "similarity score" above 60 percent suppresses delivery, under 40 percent is good | Agency guides. Traced to one London agency guide, not to Meta (https://nikhil.pro/meta-ads-creative-similarity-explained/) | [VERIFY: no Meta source] |
 | One ad set with 25 varied creatives gives 17 percent more conversions at 16 percent lower cost than five ad sets of five | Agency post summaries | [VERIFY: no study or method found] |
 | Brands testing 20 or more new ads a month get 65 percent higher return on ad spend than brands under 10 | Same | [VERIFY: no study or method found] |
@@ -357,7 +357,7 @@ Menu names and positions change. The controls below are where vendor guides plac
 
 1. Open the ad, go to the Ad setup or Creative section, and find the Advantage+ creative (or "Creative features") block. Switch off every text-touching option listed above for that ad.
 2. For many ads at once use bulk edit, and check the account-level "Creative features" in Advertising Settings so a new ad does not inherit the default.
-3. In the Branding section under Identity (logo, fonts, colours, tone) set the Restricted Words list. Add the words you never want in generated text: "guaranteed", "best", "free", "last chance", and any price word you did not write.
+3. In the Branding section under Identity (logo, fonts, colours, tone) set the Restricted Words list. Add the words you never want in generated text: superlatives, outcome promises, urgency words and any price word you did not write.
 4. Open the preview for every placement and every variant. Read each price and date against the fact ledger.
 5. After the ad goes live, open it from the Facebook page or the Ad Library and compare the running text with the approved text. If anything differs, pause and fix before spending more.
 
