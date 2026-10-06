@@ -1,0 +1,103 @@
+{
+  "as_of": "2026-10-06",
+  "currency": "NOK",
+  "season": 2027,
+  "price_source": "Confirmed by Sameer on 2026-10-06. Matches the hub page https://www.outdoornorway.com/ski. Tour page prices and schema are known to be stale on two tours, so the hub is the source of truth.",
+  "tours": [
+    {
+      "id": "ski-9day",
+      "name": "9 Day Ski Trip in Norway",
+      "hub_name": "9 DAY NORWAY SKI HOLIDAYS",
+      "kind": "multi-day",
+      "days": 9,
+      "price_nok": 42126,
+      "url": "https://www.outdoornorway.com/multi-day-tour/ski-trip-in-norway",
+      "departures": [
+        { "start": "2027-01-30", "end": "2027-02-07", "page_text": "30 Jan - 07 Feb" },
+        { "start": "2027-02-11", "end": "2027-02-19", "page_text": "11 Feb - 19 Feb" },
+        { "start": "2027-02-20", "end": "2027-02-28", "page_text": "20 Feb - 28 Feb" },
+        { "start": "2027-03-13", "end": "2027-03-21", "page_text": "13 Mar - 21 Mar" },
+        { "start": "2027-04-10", "end": "2027-04-18", "page_text": "10 Apr - 18 Apr" }
+      ]
+    },
+    {
+      "id": "ski-aurora-7day",
+      "name": "7 Day Ski in Fjord Norway & Aurora in Tromsø",
+      "hub_name": "7 DAY SKI IN FJORD NORWAY & AURORA IN TROMSØ",
+      "kind": "multi-day",
+      "days": 7,
+      "price_nok": 41181,
+      "url": "https://www.outdoornorway.com/multi-day-tour/northern-lights-tour-bergen-tromso",
+      "departures": [
+        { "start": "2027-01-23", "end": "2027-01-29", "page_text": "23 Jan - 29 Jan" },
+        { "start": "2027-01-30", "end": "2027-02-05", "page_text": "30 Jan - 05 Feb" },
+        { "start": "2027-02-06", "end": "2027-02-12", "page_text": "06 Feb - 12 Feb" },
+        { "start": "2027-02-13", "end": "2027-02-19", "page_text": "13 Feb - 19 Feb" },
+        { "start": "2027-02-27", "end": "2027-03-05", "page_text": "27 Feb - 05 Mar" }
+      ]
+    },
+    {
+      "id": "ski-6day",
+      "name": "6 Day Ski Package Fresh & Cruisers",
+      "hub_name": "6 DAY SKI PACKAGE FRESH & CRUISERS",
+      "kind": "multi-day",
+      "days": 6,
+      "price_nok": 28896,
+      "url": "https://www.outdoornorway.com/multi-day-tour/6-day-ski-package-fresh-cruisers",
+      "departures": [
+        { "start": "2027-01-29", "end": "2027-02-03", "page_text": "29 January to 3 February" },
+        { "start": "2027-02-04", "end": "2027-02-09", "page_text": "4 February to 9 February" }
+      ]
+    },
+    {
+      "id": "ski-snowshoe-3day",
+      "name": "3-Day Ski and Snowshoe Experience",
+      "hub_name": "3-DAY SKI AND SNOWSHOE EXPERIENCE",
+      "kind": "multi-day",
+      "days": 3,
+      "price_nok": 17451,
+      "url": "https://www.outdoornorway.com/multi-day-tour/3-day-ski-and-snowshoe-experience",
+      "stale_page_price_nok": 13462,
+      "departures": [
+        { "start": "2027-01-28", "end": "2027-01-30", "page_text": "28 Jan to 30 Jan" },
+        { "start": "2027-01-31", "end": "2027-02-02", "page_text": "31nd Jan to 2nd Feb" },
+        { "start": "2027-02-07", "end": "2027-02-09", "page_text": "07th to 09th Feb" }
+      ]
+    },
+    {
+      "id": "multisport-3day",
+      "name": "3-Day Winter Multi-Sport Explorer",
+      "hub_name": "3-DAY WINTER MULTI-SPORT EXPLORER",
+      "kind": "multi-day",
+      "days": 3,
+      "price_nok": 16527,
+      "url": "https://www.outdoornorway.com/multi-day-tour/3-day-winter-multi-sport-explorer",
+      "stale_page_price_nok": 12749,
+      "departures": [
+        { "start": "2027-02-05", "end": "2027-02-07", "page_text": "5-7 Feb", "note": "page lists 2026 and 2027 blocks, this is the 2027 block" },
+        { "start": "2027-02-12", "end": "2027-02-14", "page_text": "12 - 14 Feb (Valentine's Day)", "label": "Valentine's Day departure" },
+        { "start": "2027-03-05", "end": "2027-03-07", "page_text": "5-7 Mar" }
+      ]
+    },
+    {
+      "id": "backcountry-beginner",
+      "name": "Backcountry Ski Tour, Beginner to Intermediate",
+      "hub_name": "BACKCOUNTRY SKI TOUR - BEGINNER",
+      "kind": "day-tour",
+      "days": 1,
+      "price_nok": 1948,
+      "url": "https://www.outdoornorway.com/day-tour/backcountry-ski-beginner",
+      "recurring": { "text": "every Saturday and Sunday, from January to April", "page_text": "available every Saturday and Sunday, from January to April" }
+    },
+    {
+      "id": "backcountry-advanced",
+      "name": "Backcountry Ski Tour, Intermediate to Advanced",
+      "hub_name": "BACKCOUNTRY SKI TOUR - ADVANCED",
+      "kind": "day-tour",
+      "days": 1,
+      "price_nok": 1948,
+      "url": "https://www.outdoornorway.com/day-tour/backcountry-ski-advanced",
+      "recurring": { "text": "every Saturday and Sunday, from January to April", "page_text": "every Saturday and Sunday, from January to April" }
+    }
+  ]
+}
