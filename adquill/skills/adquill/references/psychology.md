@@ -38,13 +38,13 @@ Match the lever to the buyer's stage. Trigger-stage readers need a scene (rows 2
 | B | Large dataset, platform-official data, or peer reviewed work with a consistent direction whose replication the research could not confirm |
 | C | Practitioner lore, a model with little formal test, or theory with no direct ad evidence |
 
-The grade rates the move as used in ad copy, not the theory behind it. No row earns an A today. Applied ad tests rarely come with the replication the grade needs, and the notes could not confirm replications for the classic studies. A contributor can promote a row by adding a replication or meta-analysis URL to the basis notes.
+The grade rates the move as used in ad copy. It does not grade the theory behind it. No row earns an A today. Applied ad tests rarely come with the replication the grade needs, and the notes could not confirm replications for the classic studies. A contributor can promote a row by adding a replication or meta-analysis URL to the basis notes.
 
 Where a row says [VERIFY: reason], the claim could not be confirmed from the primary source when the notes were written (2026-10-06).
 
 ## 3. The translation table
 
-Platform fit is an editorial judgement, not a tested result. "Meta" means Facebook and Instagram feed, Stories and Reels. "X" means short posts, replies and threads. All example lines below: fictional brief, Brekke Ski Guides.
+Platform fit is an editorial judgement and has no test behind it. "Meta" means Facebook and Instagram feed, Stories and Reels. "X" means short posts, replies and threads. All example lines below: fictional brief, Brekke Ski Guides.
 
 ### 3.1 Proof and authority
 
@@ -130,7 +130,7 @@ Row 3: Goldstein, Cialdini and Griskevicius ran hotel field experiments. A towel
 
 Rows 6, 7: Cialdini's liking and unity. Unity came in the 2021 expanded edition of Influence [overview: https://www.neurosciencemarketing.com/blog/articles/cialdini-7th-unity.htm]. No ad-specific test found. Grade C.
 
-Row 8: Practitioner reading. Among popular open source skill repos, the ones that state their own limits in the README (a small sample size, a benchmark caveat) read as more credible. That is an observation, not a controlled test [see research notes on README patterns; no URL for a controlled study]. Grade C.
+Row 8: Practitioner reading. Among popular open source skill repos, the ones that state their own limits in the README (a small sample size, a benchmark caveat) read as more credible. That is an observation with no controlled test behind it [VERIFY: no URL for a controlled study]. Grade C.
 
 Rows 10, 11: Cialdini's reciprocity and commitment. Practitioner translation. Grade C.
 
@@ -188,12 +188,14 @@ Why these rules have teeth beyond taste. Falsely claiming a product is available
 What is allowed with proof and what is not (the right column quotes banned patterns, so it sits in a lint ignore block):
 
 <!-- adquill-lint: ignore-start -->
+
 | Allowed with a ledger row | Not allowed |
 |---|---|
 | "Eight guests per departure." | "Only 2 spots left!" when the system shows 5 |
 | "Booking for 14 Mar closes 1 Feb, when the huts are paid for." | A timer that resets on reload |
 | "NOK 18,500 until 1 Feb, then NOK 19,900." (a real, honoured change) | A "special price" that was never lower than the new price |
 | "Free cancellation until [date]." (if true) | "Risk-free" with unstated conditions |
+
 <!-- adquill-lint: ignore-end -->
 
 ## 6. Levers with weak or contested evidence
@@ -212,6 +214,7 @@ The behavioural science canon is uneven. Treat these as hypotheses, never as law
 Fictional brief: Brekke Ski Guides, six day hut-to-hut trip, 14 and 21 Mar 2027, NOK 18,500, Meta feed. The first draft below is what a default reply tends to produce. It is wrapped in lint ignore markers because it contains the patterns this skill bans.
 
 <!-- adquill-lint: ignore-start -->
+
 Weak primary text: "Only 3 spots left! Book NOW for the adventure of a lifetime. Thousands of happy skiers. Worried you are too unfit? Our amazing, unforgettable tour has it all."
 
 What went wrong, row by row:
@@ -220,7 +223,8 @@ What went wrong, row by row:
 - "Thousands of happy skiers" has no count, source or date (rows 1 and 2).
 - "Worried you are too unfit?" addresses a health attribute of the viewer. Meta's personal attributes rule is the reason to cut it (policy: https://transparency.meta.com/policies/ad-standards/objectionable-content/privacy-violations-personal-attributes/, checked 2026-10-06, confirm in the live policy).
 - "Amazing", "unforgettable" and "has it all" are low-arousal, unfalsifiable adjectives. Nothing is concrete (row 21).
-- Five levers in 160 characters, no total price, no dates, no inclusions.
+- Five levers in 158 characters, no total price, no dates, no inclusions.
+
 <!-- adquill-lint: ignore-end -->
 
 Strong version, with one lead and one support:
@@ -235,7 +239,7 @@ Lead: concreteness (row 21, grade B). Support: risk reversal (row 16, grade C). 
 
 The first two sentences (83 characters) carry the scene, the guides, the group cap and the daily effort, so they sit well inside the 125 visible characters. The refund sentence runs past the cut and shows after "See more", where a reader with a doubt will expand. Every number maps to a ledger row. The ad says nothing about the viewer. It gives no snow promise and no scarcity claim, because the ledger holds none.
 
-Why it works: a reader on a feed can picture the day and check the numbers. The price appears in the headline and on the image, so the person who forwards it needs no context. The risk answer is a fact about the booking, not a comment about the reader's worries.
+Why it works: a reader on a feed can picture the day and check the numbers. The price appears in the headline and on the image, so the person who forwards it needs no context. The risk answer is a fact about the booking.
 
 ## 8. Pre-flight checklist
 

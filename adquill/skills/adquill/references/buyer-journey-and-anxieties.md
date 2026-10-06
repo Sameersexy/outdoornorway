@@ -98,7 +98,7 @@ Example, one trip across stages (fictional brief):
 
 ## 4. The four forces and the jobs behind a trip
 
-Moesta's model has four forces. Push is frustration with the present. Pull is the attraction of the new. Anxiety is fear about the new. Habit is comfort with the old. Change happens when push plus pull beat anxiety plus habit [https://jobstobedone.org/radio/unpacking-the-progress-making-forces-diagram/]. It is a practitioner model built from interviews, not a lab result (grade C), and it makes a good copy tool.
+Moesta's model has four forces. Push is frustration with the present. Pull is the attraction of the new. Anxiety is fear about the new. Habit is comfort with the old. Change happens when push plus pull beat anxiety plus habit [https://jobstobedone.org/radio/unpacking-the-progress-making-forces-diagram/]. It is a practitioner model built from interviews (grade C), and it makes a good copy tool.
 
 | Force | Example | Where it shows up in copy |
 |---|---|---|
