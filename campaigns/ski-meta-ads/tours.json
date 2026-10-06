@@ -13,12 +13,34 @@
       "price_nok": 42126,
       "url": "https://www.outdoornorway.com/multi-day-tour/ski-trip-in-norway",
       "departures": [
-        { "start": "2027-01-30", "end": "2027-02-07", "page_text": "30 Jan - 07 Feb" },
-        { "start": "2027-02-11", "end": "2027-02-19", "page_text": "11 Feb - 19 Feb" },
-        { "start": "2027-02-20", "end": "2027-02-28", "page_text": "20 Feb - 28 Feb" },
-        { "start": "2027-03-13", "end": "2027-03-21", "page_text": "13 Mar - 21 Mar" },
-        { "start": "2027-04-10", "end": "2027-04-18", "page_text": "10 Apr - 18 Apr" }
-      ]
+        {
+          "start": "2027-01-30",
+          "end": "2027-02-07",
+          "page_text": "30 Jan - 07 Feb"
+        },
+        {
+          "start": "2027-02-11",
+          "end": "2027-02-19",
+          "page_text": "11 Feb - 19 Feb"
+        },
+        {
+          "start": "2027-02-20",
+          "end": "2027-02-28",
+          "page_text": "20 Feb - 28 Feb"
+        },
+        {
+          "start": "2027-03-13",
+          "end": "2027-03-21",
+          "page_text": "13 Mar - 21 Mar"
+        },
+        {
+          "start": "2027-04-10",
+          "end": "2027-04-18",
+          "page_text": "10 Apr - 18 Apr"
+        }
+      ],
+      "price_qualifier": "from",
+      "price_basis": "Tour pages say \"From\" (for example \"From NOK 41,181\" on the 7 Day page). The hub shows the bare price. Per person basis is not stated anywhere. [VERIFY: confirm per person with Sameer before it goes in an ad.]"
     },
     {
       "id": "ski-aurora-7day",
@@ -29,12 +51,34 @@
       "price_nok": 41181,
       "url": "https://www.outdoornorway.com/multi-day-tour/northern-lights-tour-bergen-tromso",
       "departures": [
-        { "start": "2027-01-23", "end": "2027-01-29", "page_text": "23 Jan - 29 Jan" },
-        { "start": "2027-01-30", "end": "2027-02-05", "page_text": "30 Jan - 05 Feb" },
-        { "start": "2027-02-06", "end": "2027-02-12", "page_text": "06 Feb - 12 Feb" },
-        { "start": "2027-02-13", "end": "2027-02-19", "page_text": "13 Feb - 19 Feb" },
-        { "start": "2027-02-27", "end": "2027-03-05", "page_text": "27 Feb - 05 Mar" }
-      ]
+        {
+          "start": "2027-01-23",
+          "end": "2027-01-29",
+          "page_text": "23 Jan - 29 Jan"
+        },
+        {
+          "start": "2027-01-30",
+          "end": "2027-02-05",
+          "page_text": "30 Jan - 05 Feb"
+        },
+        {
+          "start": "2027-02-06",
+          "end": "2027-02-12",
+          "page_text": "06 Feb - 12 Feb"
+        },
+        {
+          "start": "2027-02-13",
+          "end": "2027-02-19",
+          "page_text": "13 Feb - 19 Feb"
+        },
+        {
+          "start": "2027-02-27",
+          "end": "2027-03-05",
+          "page_text": "27 Feb - 05 Mar"
+        }
+      ],
+      "price_qualifier": "from",
+      "price_basis": "Tour pages say \"From\" (for example \"From NOK 41,181\" on the 7 Day page). The hub shows the bare price. Per person basis is not stated anywhere. [VERIFY: confirm per person with Sameer before it goes in an ad.]"
     },
     {
       "id": "ski-6day",
@@ -45,9 +89,19 @@
       "price_nok": 28896,
       "url": "https://www.outdoornorway.com/multi-day-tour/6-day-ski-package-fresh-cruisers",
       "departures": [
-        { "start": "2027-01-29", "end": "2027-02-03", "page_text": "29 January to 3 February" },
-        { "start": "2027-02-04", "end": "2027-02-09", "page_text": "4 February to 9 February" }
-      ]
+        {
+          "start": "2027-01-29",
+          "end": "2027-02-03",
+          "page_text": "29 January to 3 February"
+        },
+        {
+          "start": "2027-02-04",
+          "end": "2027-02-09",
+          "page_text": "4 February to 9 February"
+        }
+      ],
+      "price_qualifier": "from",
+      "price_basis": "Tour pages say \"From\" (for example \"From NOK 41,181\" on the 7 Day page). The hub shows the bare price. Per person basis is not stated anywhere. [VERIFY: confirm per person with Sameer before it goes in an ad.]"
     },
     {
       "id": "ski-snowshoe-3day",
@@ -59,10 +113,24 @@
       "url": "https://www.outdoornorway.com/multi-day-tour/3-day-ski-and-snowshoe-experience",
       "stale_page_price_nok": 13462,
       "departures": [
-        { "start": "2027-01-28", "end": "2027-01-30", "page_text": "28 Jan to 30 Jan" },
-        { "start": "2027-01-31", "end": "2027-02-02", "page_text": "31nd Jan to 2nd Feb" },
-        { "start": "2027-02-07", "end": "2027-02-09", "page_text": "07th to 09th Feb" }
-      ]
+        {
+          "start": "2027-01-28",
+          "end": "2027-01-30",
+          "page_text": "28 Jan to 30 Jan"
+        },
+        {
+          "start": "2027-01-31",
+          "end": "2027-02-02",
+          "page_text": "31nd Jan to 2nd Feb"
+        },
+        {
+          "start": "2027-02-07",
+          "end": "2027-02-09",
+          "page_text": "07th to 09th Feb"
+        }
+      ],
+      "price_qualifier": "from",
+      "price_basis": "Tour pages say \"From\" (for example \"From NOK 41,181\" on the 7 Day page). The hub shows the bare price. Per person basis is not stated anywhere. [VERIFY: confirm per person with Sameer before it goes in an ad.]"
     },
     {
       "id": "multisport-3day",
@@ -74,10 +142,26 @@
       "url": "https://www.outdoornorway.com/multi-day-tour/3-day-winter-multi-sport-explorer",
       "stale_page_price_nok": 12749,
       "departures": [
-        { "start": "2027-02-05", "end": "2027-02-07", "page_text": "5-7 Feb", "note": "page lists 2026 and 2027 blocks, this is the 2027 block" },
-        { "start": "2027-02-12", "end": "2027-02-14", "page_text": "12 - 14 Feb (Valentine's Day)", "label": "Valentine's Day departure" },
-        { "start": "2027-03-05", "end": "2027-03-07", "page_text": "5-7 Mar" }
-      ]
+        {
+          "start": "2027-02-05",
+          "end": "2027-02-07",
+          "page_text": "5-7 Feb",
+          "note": "page lists 2026 and 2027 blocks, this is the 2027 block"
+        },
+        {
+          "start": "2027-02-12",
+          "end": "2027-02-14",
+          "page_text": "12 - 14 Feb (Valentine's Day)",
+          "label": "Valentine's Day departure"
+        },
+        {
+          "start": "2027-03-05",
+          "end": "2027-03-07",
+          "page_text": "5-7 Mar"
+        }
+      ],
+      "price_qualifier": "from",
+      "price_basis": "Tour pages say \"From\" (for example \"From NOK 41,181\" on the 7 Day page). The hub shows the bare price. Per person basis is not stated anywhere. [VERIFY: confirm per person with Sameer before it goes in an ad.]"
     },
     {
       "id": "backcountry-beginner",
@@ -87,7 +171,12 @@
       "days": 1,
       "price_nok": 1948,
       "url": "https://www.outdoornorway.com/day-tour/backcountry-ski-beginner",
-      "recurring": { "text": "every Saturday and Sunday, from January to April", "page_text": "available every Saturday and Sunday, from January to April" }
+      "recurring": {
+        "text": "every Saturday and Sunday, from January to April",
+        "page_text": "available every Saturday and Sunday, from January to April"
+      },
+      "price_qualifier": "per adult",
+      "price_basis": "Page shows 1,948 NOK adults and 1,753 NOK youth. Open group pricing on the page is lower (beginner 1,858, advanced 1,650) and needs a minimum of 3 participants, otherwise the guest shares a private guide fee or gets a refund. Do not promise a fixed departure in an ad."
     },
     {
       "id": "backcountry-advanced",
@@ -97,7 +186,42 @@
       "days": 1,
       "price_nok": 1948,
       "url": "https://www.outdoornorway.com/day-tour/backcountry-ski-advanced",
-      "recurring": { "text": "every Saturday and Sunday, from January to April", "page_text": "every Saturday and Sunday, from January to April" }
+      "recurring": {
+        "text": "every Saturday and Sunday, from January to April",
+        "page_text": "every Saturday and Sunday, from January to April"
+      },
+      "price_qualifier": "per adult",
+      "price_basis": "Page shows 1,948 NOK adults and 1,753 NOK youth. Open group pricing on the page is lower (beginner 1,858, advanced 1,650) and needs a minimum of 3 participants, otherwise the guest shares a private guide fee or gets a refund. Do not promise a fixed departure in an ad."
     }
-  ]
+  ],
+  "display_name_lines": {
+    "ski-9day": [
+      "9 DAY SKI TRIP",
+      "IN NORWAY"
+    ],
+    "ski-aurora-7day": [
+      "7 DAY SKI IN FJORD NORWAY",
+      "& AURORA IN TROMSØ"
+    ],
+    "ski-6day": [
+      "6 DAY SKI PACKAGE",
+      "FRESH & CRUISERS"
+    ],
+    "ski-snowshoe-3day": [
+      "3-DAY SKI AND",
+      "SNOWSHOE EXPERIENCE"
+    ],
+    "multisport-3day": [
+      "3-DAY WINTER",
+      "MULTI-SPORT EXPLORER"
+    ],
+    "backcountry-beginner": [
+      "BACKCOUNTRY SKI TOUR",
+      "BEGINNER TO INTERMEDIATE"
+    ],
+    "backcountry-advanced": [
+      "BACKCOUNTRY SKI TOUR",
+      "INTERMEDIATE TO ADVANCED"
+    ]
+  }
 }
