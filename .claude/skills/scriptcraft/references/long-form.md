@@ -2,6 +2,20 @@
 
 For YouTube landscape (16:9). Hard max 200 s (3:20), warn above 190 s. 440 words hard max, 320 to 400 target, 14 to 22 beats. Limits in tiers.md.
 
+## Styles in long form
+
+Two styles work here. Set `style:` in the front matter; without it the script is `voiceover`. `ugc_text` is short only and is a parse error in a long script.
+
+| | voiceover | ugc_talk |
+|---|---|---|
+| Who | A calm read over edited footage | A guide talking to the camera and narrating live on the day |
+| Words per second | 2.2 | 2.8 |
+| Words, hard max (target) | 440 (320 to 400) | 560 (420 to 520) |
+| Sentence hard max | 18 | 20 |
+| Everything else | The long tier | The long tier: hook by 8 s, promise by 30 s, 4 to 6 chapters, the same fact and number limits |
+
+ugc_talk long adds the UGC rules: a person, selfie, POV, handheld shot or hands in frame one (U01), no end card, logo, title card or stock footage anywhere (U02), a hook that says you or opens on a first-person stake (U03), a soft call to action (U05) and a named subject in every visual (U07). Disclosure (D01) and music (SND01) apply in both styles. The long format that worked for creators is one day, start to finish: hook in 10 s, 4 to 6 chapters of 25 to 40 s, close on the group, landscape, the guide narrating live, not in post (references/ugc-style.md). In ugc_talk, the End row in the B-roll table below drops the end card: close on the group at the van.
+
 A 200 s video is a chain of small units around one question. A single question held open for three minutes with nothing paid off is a plateau, and plateaus are where the retention curve dips.
 
 ## Shape
@@ -120,6 +134,7 @@ Spectacle budgets do not transfer. A view and a question do.
 
 ## Checklist before running the validator
 
+- [ ] Style set. ugc_talk long: no end card or logo in any visual, disclosure beat starting by 5 s when relationship needs one.
 - [ ] The title promise is spoken by 30 s.
 - [ ] 4 to 6 chapters, each with a mini-payoff.
 - [ ] Partial answer between 80 and 120 s.

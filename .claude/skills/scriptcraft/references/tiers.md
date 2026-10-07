@@ -1,10 +1,12 @@
 # Tiers: every limit, its reason and its grade
 
-The numbers below mirror `scripts/tiers.json` (version 0.2.0, verified 2026-10-07). The JSON is the source of truth. Change a number there and the validator changes with it. Then update this page.
+The numbers below mirror `scripts/tiers.json` (version 0.3.0, verified 2026-10-07). The JSON is the source of truth. Change a number there and the validator changes with it. Then update this page.
 
 Grades: A platform official or peer reviewed. B documented creator process or large dataset. C practitioner lore. J judgement derived from A and B inputs. Almost every limit is J: the inputs (speech rate, reading rate, working memory, platform windows) are A or B, the cut-off is ours.
 
-## Two tiers only
+## Two tiers only, three styles
+
+The tier table and the Limits table below are the tier values, which are also the `voiceover` values. The `ugc_talk` and `ugc_text` styles override some of them; see Styles.
 
 | | Short | Long |
 |---|---|---|
@@ -15,7 +17,7 @@ Grades: A platform official or peer reviewed. B documented creator process or la
 | wps (effective words per second) | 2.4 | 2.2 |
 | number_penalty_seconds (per number) | 0.4 | 0.4 |
 
-Any other length is refused. Asked for a 60 s reel, offer a 25 s reel, or a 200 s YouTube video instead. The optional `seconds` field (8 to the tier max) scales the word budget by seconds / max_seconds.
+Any other length is refused. Asked for a 60 s reel, offer a 25 s reel, or a 200 s YouTube video instead. The optional `seconds` field (8 to the tier max; ugc_text 7 to 15) scales the word budget by seconds / max_seconds.
 
 Estimated seconds = words / (wps x narrator pace) + 0.4 per number + [PAUSE n] seconds.
 
@@ -59,6 +61,122 @@ The budgets interact. A short hook of 9 words is allowed by H01 but needs 3.8 s 
 | Partial answer window | n/a | 80 to 120 s | J | |
 | Re-engagement windows | n/a | 55 to 80 s and 120 to 145 s | J/B | Where a 200 s curve usually dips |
 
+## Styles
+
+Front matter `style:` picks one of voiceover, ugc_talk or ugc_text. Left out, it is voiceover. A TikTok script sets it explicitly. ugc_text is short only; in a long script it is a parse error. Each style overrides tier values for that style only; nested values merge key by key. Facts limits are never raised by a style. Brand rules run in every style.
+
+Rendered from `styles` in tiers.json. Tier value is the voiceover value; n/a means the key exists only for the style.
+
+| Style | Tier | Key | Tier value | Style value |
+|---|---|---|---|---|
+| voiceover | short | none | | no overrides |
+| voiceover | long | none | | no overrides |
+| ugc_talk | short | wps | 2.4 | 3.0 |
+| ugc_talk | short | words.hard_max | 60 | 75 |
+| ugc_talk | short | words.target_min | 40 | 55 |
+| ugc_talk | short | words.target_max | 55 | 68 |
+| ugc_talk | short | words_per_beat.target_min | 8 | 10 |
+| ugc_talk | short | words_per_beat.target_max | 15 | 20 |
+| ugc_talk | short | words_per_beat.hard_max | 18 | 24 |
+| ugc_talk | short | sentence.avg_min | 6 | 7 |
+| ugc_talk | short | sentence.avg_max | 9 | 12 |
+| ugc_talk | short | sentence.hard_max_words | 12 | 16 |
+| ugc_talk | short | hook.max_seconds | 3 | 3 |
+| ugc_talk | short | hook.max_seconds_with_overlay | n/a | 4 |
+| ugc_talk | short | hook.min_words | 4 | 4 |
+| ugc_talk | short | hook.max_words | 9 | 15 |
+| ugc_talk | short | hook.hard_max_words | 10 | 15 |
+| ugc_talk | short | hook.first_word_by_seconds | n/a | 0.5 |
+| ugc_talk | short | hook.first_sentence_min_words | n/a | 6 |
+| ugc_talk | short | hook.first_sentence_max_words | n/a | 15 |
+| ugc_talk | short | overlay.max_words | 6 | 8 |
+| ugc_talk | short | overlay.max_chars_per_line | 32 | 40 |
+| ugc_talk | short | cta.min | 1 | 0 |
+| ugc_talk | short | cta.max | 1 | 1 |
+| ugc_talk | short | cta.hard_max | 1 | 1 |
+| ugc_talk | short | cta.max_words | 8 | 10 |
+| ugc_talk | short | cta.last_seconds | 4 | 5 |
+| ugc_talk | short | casual.markers_max_per_100_words | n/a | 2 |
+| ugc_talk | short | casual.contractions_min_per_100_words | n/a | 1 |
+| ugc_talk | long | wps | 2.2 | 2.8 |
+| ugc_talk | long | words.hard_max | 440 | 560 |
+| ugc_talk | long | words.target_min | 320 | 420 |
+| ugc_talk | long | words.target_max | 400 | 520 |
+| ugc_talk | long | sentence.hard_max_words | 18 | 20 |
+| ugc_talk | long | casual.markers_max_per_100_words | n/a | 2 |
+| ugc_talk | long | casual.contractions_min_per_100_words | n/a | 1 |
+| ugc_text | short | max_seconds | 25 | 15 |
+| ugc_text | short | min_seconds | n/a | 7 |
+| ugc_text | short | warn_seconds | 23 | 15 |
+| ugc_text | short | words.hard_max | 60 | 12 |
+| ugc_text | short | words.target_min | 40 | 0 |
+| ugc_text | short | words.target_max | 55 | 12 |
+| ugc_text | short | words.scale_with_seconds | n/a | false |
+| ugc_text | short | words_per_beat.target_min | 8 | 0 |
+| ugc_text | short | words_per_beat.target_max | 15 | 12 |
+| ugc_text | short | words_per_beat.hard_max | 18 | 12 |
+| ugc_text | short | beats.min | 4 | 1 |
+| ugc_text | short | beats.target_max | 6 | 3 |
+| ugc_text | short | beats.hard_max | 7 | 3 |
+| ugc_text | short | seconds_per_beat.min | 3 | 2 |
+| ugc_text | short | seconds_per_beat.max | 6 | 15 |
+| ugc_text | short | hook.max_seconds | 3 | 15 |
+| ugc_text | short | hook.min_words | 4 | 0 |
+| ugc_text | short | hook.max_words | 9 | 12 |
+| ugc_text | short | hook.hard_max_words | 10 | 12 |
+| ugc_text | short | facts.per_beat_max | 1 | 1 |
+| ugc_text | short | facts.per_script_max | 3 | 1 |
+| ugc_text | short | facts.numbers_per_script_max | 2 | 2 |
+| ugc_text | short | sentence.avg_min | 6 | 1 |
+| ugc_text | short | sentence.avg_max | 9 | 12 |
+| ugc_text | short | sentence.hard_max_words | 12 | 12 |
+| ugc_text | short | overlay.max_words | 6 | 12 |
+| ugc_text | short | overlay.max_chars_per_line | 32 | 40 |
+| ugc_text | short | overlay.max_lines | 2 | 2 |
+| ugc_text | short | overlay.min_seconds | 1.5 | 2 |
+| ugc_text | short | overlay.chars_per_second | 15 | 15 |
+| ugc_text | short | overlay.persistent | n/a | true |
+| ugc_text | short | overlay.script_min_words | n/a | 4 |
+| ugc_text | short | overlay.script_max_words | n/a | 12 |
+| ugc_text | short | overlay.script_max_lines | n/a | 2 |
+| ugc_text | short | overlay.required_in_first_beat | n/a | true |
+| ugc_text | short | cta.min | 1 | 0 |
+| ugc_text | short | cta.max | 1 | 1 |
+| ugc_text | short | cta.hard_max | 1 | 1 |
+| ugc_text | short | cta.max_words | 8 | 8 |
+| ugc_text | short | cta.last_seconds | 4 | 4 |
+| ugc_text | short | visual.max_seconds_per_shot | 3 | 8 |
+| ugc_text | short | visual.hard_max_static_seconds | 4 | 15 |
+| ugc_text | short | loops.close_in_last_beat | n/a | true |
+
+Grades, from the evidence fields in tiers.json: ugc_talk short wps 3.0 is J, our chosen value, set below the 3.3 to 4.9 measured on purpose (the extra speed is connective talk, not more facts, and many of our guides speak English as a second language). Measured inputs: top five creators 3.3 to 4.9 (note 04, C), talking clips of 45 s or less 3.46 median (note 06, n = 6, C), micro creators 2.87 pooled median (note 05, 49 videos, C). ugc_talk long wps 2.8 is J (long spoken micro videos 2.3 to 3.1, C). Hook timing and length are C inputs with a J cut-off. ugc_text limits come from one creator's eight text posts and another's 528,500-view tips post (C); spoken max 12 and 1 fact are J.
+
+Where each style rule runs: H02 and H03 voiceover only. U01, U02, U04, U05, U07 in ugc_talk and ugc_text. U03 and U06 in ugc_talk only. D01 in the ugc styles, and in voiceover only when `relationship:` is written. SND01 in every style.
+
+### Front matter fields
+
+| Field | Allowed | Default | Read by |
+|---|---|---|---|
+| style | voiceover, ugc_talk, ugc_text | voiceover | Every limit above |
+| creator | guide, guest, staff, editor | guide | The report; changes no limit |
+| relationship | staff, guide, guest_paid, guest_gifted, guest_unpaid | staff | D01 |
+| sound | original, commercial_library, voiceover_only, trending, none | original | SND01 |
+
+A value outside the list is a parse error (exit 2) naming the line.
+
+### Disclosure (D01) and sound (SND01) settings
+
+| Setting | Value |
+|---|---|
+| disclosure.within_seconds | 5: the `disclosure` beat must start by then |
+| disclosure.ad_label_required | guest_paid, guest_gifted: caption starts with Ad, #ad, Advert, Advertisement, Reklame or Annonse, and the disclosure beat says so (block) |
+| disclosure.role_line_expected | staff, guide: the disclosure beat names the role or the brand (warn) |
+| disclosure.paid_words | ad, advert, advertisement, paid, paid partnership, sponsored, gifted, free trip, for free, invited, hosted, comped, partnership, partnered, reklame. A paid word right after a negation in the same clause (not an ad, I'm not paid) does not count (paid_negation_regex) |
+| disclosure.role_words | guide, guides, guiding, instructor, staff, team, employee, work for, work at, work with, i run, we run, owner, founder, co-founder, plus the brand name |
+| sound.blocked_value | trending, when the voiceover, overlay or caption names the brand, a trip word (tour, trip, booking, book, package, holiday, departure, weekend, getaway, excursion, itinerary and plurals) or a price |
+
+Grades: disclosure rests on FTC Disclosures 101 (A), ASA (B) and TikTok Commercial Disclosure (A); sound on the TikTok Commercial Music Library page (A). Legal reading is [VERIFY with counsel]; see references/ugc-style.md.
+
 ## How the validator counts
 
 Run `script_check.py --explain RULE_ID` for any rule. The short version:
@@ -81,11 +199,11 @@ Run `script_check.py --explain RULE_ID` for any rule. The short version:
 | standard | 1.0 | 1.0 | Native or fluent English voiceover at a natural, not rushed, pace |
 | slow | 0.85 | 0.85 | Non-native narrator, text-to-speech, or a deliberately calm read. Cuts the word budget by 15 percent |
 
-With `slow`, the hard max becomes 51 words (short) and 374 words (long), before any `seconds` scaling.
+With `slow`, the hard max becomes 51 words (short) and 374 words (long) in voiceover, before any `seconds` scaling. In ugc_talk, 75 becomes 64 (short) and 560 becomes 476 (long).
 
 ## Roles
 
-Common: hook, setup, build, shift, explain, proof, payoff, cta. Long only: promise, partial, progress, reengage, soft-cta. Chapters: ch:1 to ch:6, with mini:1 to mini:6 on the beat that answers that chapter's small question. Loops: open:A and close:A, any single capital letter.
+Common: hook, setup, build, shift, explain, proof, payoff, cta, disclosure. `disclosure` marks the beat that says who the creator is to the brand (D01). Long only: promise, partial, progress, reengage, soft-cta. Chapters: ch:1 to ch:6, with mini:1 to mini:6 on the beat that answers that chapter's small question. Loops: open:A and close:A, any single capital letter.
 
 ## Acronym allowlist
 
@@ -94,6 +212,7 @@ CTA, POV, UGC, NOK, USD, EUR, UK, EU, US, FAQ, DM, GPS, SOS, TV, AM, PM, OK, HQ,
 ## Where the numbers come from
 
 - Speech: edX data, mean 156 wpm, 2.6 words per second (Guo, Kim, Rubin 2014, A). Voiceover guides about 2.5 (C). Creator videos measured at a median 2.75 (C, n=14). Effective rates are lower once breaths and holds are counted.
+- UGC speech: notes 04 to 06, summarised in references/ugc-style.md and references/creator-patterns.md (C).
 - Hook: TikTok creative best practices, "Introduce your content proposition in the first 3 seconds" (A). YouTube Help: intro is "after the first 30 seconds" (A).
 - Density: Cowan 2001 and 2010, about 4 chunks (A). Mayer redundancy and segmenting principles (A).
 - Overlays: Netflix English timed text, 42 characters per line, 2 lines (A).

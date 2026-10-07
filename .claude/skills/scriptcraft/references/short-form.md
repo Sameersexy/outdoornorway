@@ -1,8 +1,29 @@
 # Short form playbook: 25 seconds
 
-For Instagram Reels, YouTube Shorts and TikTok. Hard max 25 s, warn above 23 s, 60 words hard max, 40 to 55 target. Limits in tiers.md.
+For Instagram Reels, YouTube Shorts and TikTok. Hard max 25 s, warn above 23 s. Limits in tiers.md.
 
 A 25 s short carries one idea. Sampled travel creators publish 37 to 122 s shorts; our cap is 2 to 5 times tighter. Copy their hook and close, never their middle.
+
+## Pick the style first
+
+Three styles share this tier. Set `style:` in the front matter. A TikTok script sets `style: ugc_talk` or `style: ugc_text` explicitly; a script without the field is `voiceover`.
+
+| | voiceover | ugc_talk | ugc_text |
+|---|---|---|---|
+| Who | A calm read over edited footage | A guide, staff member or guest talking to the phone | Text on a clip, little or no talk |
+| Words per second | 2.4 | 3.0 | n/a |
+| Words, hard max (target) | 60 (40 to 55) | 75 (55 to 68) | 12 spoken, zero is normal |
+| Hook | Beat 1 ends by 3 s, 4 to 9 words, hard max 10 | First word by 0.5 s, first sentence 6 to 15 words, hook up to 4 s when beat 1 has an overlay | Overlay in beat 1 from frame one |
+| Words per beat | 8 to 15, hard max 18 | 10 to 20, hard max 24 | n/a |
+| Sentence average (hard max) | 6 to 9 (12) | 7 to 12 (16) | n/a |
+| Overlay | 6 words, 32 characters per line | Title up to 8 words, 40 characters per line | 4 to 12 words in the whole script, 40 characters per line |
+| Length and beats | 8 to 25 s, 4 to 7 beats of 3 to 6 s | 8 to 25 s, 4 to 7 beats of 3 to 6 s | 7 to 15 s, 1 to 3 beats of 2 to 15 s |
+| Call to action | Exactly 1, 8 words, last 4 s | 0 or 1, 10 words, last 5 s, a soft prompt (U05) | 0 or 1, 8 words, last 4 s |
+| Facts, numbers | 3 facts, 1 per beat, 2 numbers | Same | 1 fact |
+| Beat 1 visual | Motion or a person (H02 warns) | A person, selfie, POV, handheld or hands (U01 blocks) | Same as ugc_talk |
+| Disclosure, music | D01 and SND01 by relationship and sound | Same | Same |
+
+tiers.md renders the exact numbers from tiers.json. The structures and hook formulas below are written for `voiceover`. For ugc_talk and ugc_text, use the hook library and repeatable formats in `references/ugc-style.md`; the grids below still work as a starting point once you move the disclosure line into a beat that starts by 5 s.
 
 ## Four structures
 
@@ -77,7 +98,7 @@ A fragment pair in the hook ("Eight a.m. Only the squeak...") is fine even if S0
 
 ## Visual hooks for beat 1
 
-Frame 1 is already moving: one subject, high contrast, readable with the sound off. Pick from the hook library in visuals-and-text.md (grouped by what the frame does: contrast, reaction, mishap, sound-first, overhead, detail, one take). Never a logo, a title card, black, a fade in, or a talking head saying hello (H02 blocks these).
+Frame 1 is already moving: one subject, high contrast, readable with the sound off. Pick from the hook library in visuals-and-text.md (grouped by what the frame does: contrast, reaction, mishap, sound-first, overhead, detail, one take). Never a logo, a title card, black, a fade in, or a talking head saying hello (H02 for voiceover). In ugc_talk and ugc_text the first frame must show a person, a selfie, a POV, a handheld shot or hands in action, and no visual cell may name an end card, logo, title card, stock footage, animation, slide or lower third (U01 and U02 block).
 
 ## Overlays and captions
 
@@ -88,6 +109,8 @@ Frame 1 is already moving: one subject, high contrast, readable with the sound o
 - Details in visuals-and-text.md.
 
 ## Call to action
+
+Voiceover: the rules below. ugc_talk and ugc_text: 0 or 1 call to action, max 10 words, in the last 5 s, and it should be a soft prompt from tiers.json (save this, send this to, which one, follow along, or one logistics sentence on how to book). A call to action that is only "link in bio" or "comment for the link" warns, and so does an open comment question (U05). Booking links go in the caption.
 
 - Exactly one. Starts in the last 4 s. Max 8 words.
 - One verb: send, save, follow, comment, ask, book. Two or more ask verbs in the cta beat get a C03 warning. A booking or link ask in any other beat gets a C01 warning.
@@ -110,13 +133,15 @@ Frame 1 is already moving: one subject, high contrast, readable with the sound o
 
 ## Checklist before running the validator
 
+- [ ] Style set. TikTok scripts say `style: ugc_talk` or `style: ugc_text`. `relationship` and `sound` set when they differ from the defaults (staff, original).
 - [ ] One idea. Can you say it in one sentence of under 12 words?
-- [ ] Beat 1: motion, "you", overlay, 7 words or fewer (6 with narrator slow).
+- [ ] Beat 1, voiceover: motion, "you", overlay, 7 words or fewer (6 with narrator slow). ugc_talk: a person on camera, first word at frame one, you or I in the first sentence, a title overlay.
+- [ ] Disclosure beat starting by 5 s when relationship is staff, guide, guest_paid or guest_gifted (D01).
 - [ ] Every number is in a verified facts row cited in that beat. Dates with the year sit in the caption.
 - [ ] Every factual line says no more than its fact row.
 - [ ] At most 3 facts, 2 numbers, 1 place name.
 - [ ] Payoff closes the hook question in the last or second-last beat.
-- [ ] One CTA, last 4 s, 8 words or fewer.
+- [ ] Voiceover: one CTA, last 4 s, 8 words or fewer. ugc: at most one soft prompt, last 5 s, 10 words or fewer.
 - [ ] Every beat has 2 shots unless it is 3 s or shorter, or one real continuous take marked `one take:`.
 - [ ] No line copied from the examples or this page.
 

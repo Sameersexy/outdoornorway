@@ -1,6 +1,6 @@
 # Visuals, overlays, captions and safe zones
 
-The visual column is written first. The voice adds what the picture cannot show. Everything here applies to both tiers unless a tier is named.
+The visual column is written first. The voice adds what the picture cannot show. Everything here applies to both tiers and all styles unless a tier or style is named. UGC framing, native text and music rules for `ugc_talk` and `ugc_text` are in the UGC section below and in references/ugc-style.md.
 
 ## How to write the visual column
 
@@ -13,7 +13,7 @@ The visual column is written first. The voice adds what the picture cannot show.
 
 ## Visual hook library
 
-Beat 1 must show motion or a person. The validator warns if beat 1 names none of: person, skier, guide, hands, POV, drop, skis, walk, hike, pan, drone, glide, snow, boots. It blocks logo, title card, intro, fade in, black screen and a talking-head greeting.
+Voiceover style: beat 1 must show motion or a person. The validator warns if beat 1 names none of: person, skier, guide, hands, POV, drop, skis, walk, hike, pan, drone, glide, snow, boots. It blocks logo, title card, intro, fade in, black screen and a talking-head greeting.
 
 Grouped by what the frame does. Each frame pairs with a hook formula (short-form.md) and a counterpoint: a line that adds what the picture does not say. The lines show shapes; write your own. S works vertical, L works landscape.
 
@@ -40,6 +40,29 @@ Grouped by what the frame does. Each frame pairs with a hook formula (short-form
 
 A number in a counterpoint counts toward the numbers budget and needs a facts row if it is a claim. Do not claim a group size; the do-not-claim list bans group size numbers.
 
+## UGC visuals (ugc_talk and ugc_text)
+
+The phone is the camera and a person is the subject. Write every visual cell as who or what is on camera, doing what, from where: "selfie, guide Ingrid walks up the skin track", not "skin track".
+
+| Rule | Severity | What the cell needs |
+|---|---|---|
+| U01 | block | Beat 1 names a person, selfie, POV, handheld shot or hands in action. The cue list is in tiers.json |
+| U02 | block | No cell names an end card, logo, title card, stock footage, animation, slide or lower third |
+| U07 | warn | Every cell has 3 or more words and names who or what is on camera |
+
+Framing vocabulary that films well on a phone:
+
+| Framing | Use for |
+|---|---|
+| Selfie at arm's length, walking | The hook, the name and role line, the call to action |
+| Chest POV (phone in a chest strap or pocket) | The skin track, kick turns, the descent, anything with both hands busy |
+| Handheld, a colleague filming | The demo, the guest copying it, reactions |
+| Tripod or phone propped in the snow | The group passing, a wide reveal, the guide in frame with the group |
+| Top-down on the snow | Gear, the pack, the thermos, food |
+| Hands in action | Skins on a base, a beacon check, a binding flipped to walk mode |
+
+A talking selfie is one continuous shot. Mark it `one take:` and name the move ("one take: selfie, Ingrid walks up the track talking"), so V01 treats it as motion. Continuous POV runs with zero cuts and fast vlog cutting (3 to 6 cuts per 10 s) both appear in the creators' hits (C); neither is enforced beyond V01.
+
 ## Overlays (the text column)
 
 | Rule | Short | Long |
@@ -55,6 +78,17 @@ A number in a counterpoint counts toward the numbers budget and needs a facts ro
 - One overlay on screen at a time. Separate lines with " / " in the text column.
 - Digits on screen count as numbers and facts, exactly like spoken ones. Each must be in a verified facts row cited in that beat (F04).
 - Sentence case. No capitals for emphasis, no emojis, no dashes.
+
+UGC overlays (native text):
+
+| Rule | ugc_talk | ugc_text |
+|---|---|---|
+| Title in beat 1 | Up to 8 words, 40 characters per line, 2 lines | The joke or the tip, visible from frame one |
+| Total overlay words | No extra limit beyond each overlay | 4 to 12 in the whole script, across one or two lines |
+| Case | Sentence or lower case; capitals for emphasis warn (U04) | Same |
+| Font and place | In-app font or a lookalike, top third, inside the safe box | Same |
+
+Burned-in captions that mirror the speech stay a separate track in every style.
 
 ## Captions
 
@@ -78,3 +112,4 @@ Long form (16:9): keep text out of the bottom 20 percent in the last 20 s, where
 
 - Natural sound is a beat: skins squeaking, wind, a thermos lid. Mark it with [PAUSE n] in the voiceover, n in seconds.
 - Music sits under the voice. Drop it for a 2 s sound break at a re-engagement beat.
+- Set `sound:` in the front matter: original, commercial_library, voiceover_only, trending or none (default original). `sound: trending` blocks when the script names the brand, a trip or a price (SND01): businesses must use TikTok's Commercial Music Library for commercial posts (A). Commercial Music Library clearance covers TikTok only [VERIFY with counsel]; re-clear music before posting the same file to Reels or Shorts.

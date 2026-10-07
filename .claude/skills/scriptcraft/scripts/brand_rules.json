@@ -1,7 +1,7 @@
 {
-  "version": "0.2.0",
+  "version": "0.3.0",
   "brand": "Outdoor Norway",
-  "note": "Brand and claims rules for Outdoor Norway scripts. Derived from the company's brand voice and guest benefit checks and the content QC rules. Swap this file to reuse the skill for another brand. Matching is case-insensitive. Severity: block fails the script, warn is reported.",
+  "note": "Brand and claims rules for Outdoor Norway scripts. Derived from the company's brand voice and guest benefit checks and the content QC rules. Swap this file to reuse the skill for another brand. Matching is case-insensitive. Severity: block fails the script, warn is reported. 0.3.0 added casual and slang variants for the ugc style: BR04 slang scarcity regex, BR05 slang negative framing (phrases plus a regex for destroy, wreck or murder you or your; 'kill your speed' is ski instruction, so kill is left out), BR09 '100 percent', 'hundred percent', 'deffo'.",
   "rules": [
     {
       "id": "BR01",
@@ -111,7 +111,8 @@
         "spots are limited",
         "seats are limited"
       ],
-      "scope": "any"
+      "scope": "any",
+      "regex": "\\b(spots?|places?|seats?|spaces?|dates?|slots?|tickets?|tours?|trips?)\\b[^.!?]{0,20}\\b(go|goes|going|fill up|fills up|filling up|sell|sells|selling|book up|books up|booking up|disappear|disappears|disappearing)( so| really| super| crazy| mad| stupid)? (fast|quick|quickly)\\b|\\b(selling out|sells out|sold out|almost gone|nearly gone|basically gone|before (they're|it's|they are|it is|they|it) gone|gone in (minutes|seconds|hours|a day)|won't last)\\b|\\bonly( like| about| around)? (\\d+|a few|a couple|two|three|four|five) (spots?|places?|seats?|spaces?|slots?) left\\b"
     },
     {
       "id": "BR05",
@@ -127,8 +128,28 @@
         "survive",
         "you'll suffer",
         "you will suffer",
-        "extreme"
+        "extreme",
+        "destroy you",
+        "destroys you",
+        "wreck you",
+        "wrecks you",
+        "kill you",
+        "kills you",
+        "you'll be dying",
+        "you will be dying",
+        "leg killer",
+        "not for noobs",
+        "noobs",
+        "pros only",
+        "experts only",
+        "only pros",
+        "not for the weak",
+        "you'll be crying",
+        "you will be crying",
+        "you'll hate",
+        "you will hate"
       ],
+      "regex": "\\b(destroy|destroys|wreck|wrecks|murder|murders)\\s+(you|your)\\b",
       "scope": "any"
     },
     {
@@ -181,9 +202,9 @@
       "id": "BR09",
       "severity": "block",
       "message": "Guarantee wording attached to a natural phenomenon. The aurora, snow, powder, weather and wildlife can never be promised. Only a negation that directly governs the guarantee word (can't promise, no guarantee, not guaranteed) makes it safe.",
-      "regex": "\\b(guarante\\w*|promise[sd]?|always|100 ?%|for sure|definitely|certain(ly)?|sure thing|no question|no doubt|without fail|not a chance|never miss|won't miss|will not miss)[^.!?]{0,60}\\b(aurora|northern lights|snow|powder|weather|sunshine|sighting|wildlife|whales?|reindeer)\\b|\\b(aurora|northern lights|snow|powder|weather|sunshine|sighting|wildlife|whales?|reindeer)\\b[^.!?]{0,60}\\b(guarante\\w*|promise[sd]?|always|100 ?%|for sure|definitely|certain(ly)?|sure thing|no question|no doubt|without fail|not a chance|never miss|won't miss|will not miss|every (day|night|morning|week|weekend|winter|time|trip))",
+      "regex": "\\b(guarante\\w*|promise[sd]?|always|100 ?(%|percent|per cent)|(a )?hundred (percent|per cent)|deffo|defo|for sure|definitely|certain(ly)?|sure thing|no question|no doubt|without fail|not a chance|never miss|won't miss|will not miss)[^.!?]{0,60}\\b(aurora|northern lights|snow|powder|weather|sunshine|sighting|wildlife|whales?|reindeer)\\b|\\b(aurora|northern lights|snow|powder|weather|sunshine|sighting|wildlife|whales?|reindeer)\\b[^.!?]{0,60}\\b(guarante\\w*|promise[sd]?|always|100 ?(%|percent|per cent)|(a )?hundred (percent|per cent)|deffo|defo|for sure|definitely|certain(ly)?|sure thing|no question|no doubt|without fail|not a chance|never miss|won't miss|will not miss|every (day|night|morning|week|weekend|winter|time|trip))",
       "scope": "any",
-      "guarantee_regex": "\\b(guarante\\w*|promise[sd]?|always|100 ?%|for sure|definitely|certain(ly)?|sure thing|no question|no doubt|without fail|not a chance|never miss|won't miss|will not miss|every (day|night|morning|week|weekend|winter|time|trip))",
+      "guarantee_regex": "\\b(guarante\\w*|promise[sd]?|always|100 ?(%|percent|per cent)|(a )?hundred (percent|per cent)|deffo|defo|for sure|definitely|certain(ly)?|sure thing|no question|no doubt|without fail|not a chance|never miss|won't miss|will not miss|every (day|night|morning|week|weekend|winter|time|trip))",
       "negated_when_preceded_by": "(\\b(can't|cannot|can not|won't|will not|doesn't|does not|don't|do not|isn't|is not|aren't|are not|never|not|no)|\\b(no one|nobody|no \\w+) can)( (ever|always|really))?\\s*$"
     },
     {

@@ -90,6 +90,19 @@ The full phrase lists are in the JSON. Read them before writing, not after the v
 - Beginner positioning on the 3-Day Ski and Snowshoe or the 3-Day Multi-Sport.
 - Questions about the viewer's age, fitness, level or status.
 
+## UGC: the same rules, a human voice
+
+Every rule on this page applies in ugc_talk and ugc_text. What changes is who is speaking:
+
+- "I" is fine for the guide or guest on camera. R03 counts I and my with you, against we, our, us and the brand name. The viewer still benefits from every line.
+- The person on camera discloses the relationship in the video (D01). A guide is never written as an ordinary guest.
+- Humour targets the guide or the weather, never the guest or how hard the day is (BR05).
+- "Best day ever" is still a superlative (BR11). Say the moment instead: "my favourite run this season".
+- Snow and aurora clips carry a date or "this was" framing, never "every day" or "you will see" (BR09, BR10).
+- No trending songs on posts that name us, a trip or a price (SND01).
+
+The full guide, with sources and [VERIFY with counsel] tags, is references/ugc-style.md.
+
 ## House style in every script cell
 
 No em or en dashes, no emojis (R01). No capitals for emphasis (R02). No AI vocabulary: delve, tapestry, leverage, robust, seamless, unlock, elevate, game-changer, journey as a noun. No "not X but Y" contrasts, no tricolons, no slogan closers, no "Imagine...", no rhetorical "Ready to...?". The validator does not catch these; the reviewer does.

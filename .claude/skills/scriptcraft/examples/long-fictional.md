@@ -2,6 +2,7 @@
 tier: long
 platform: youtube
 narrator: standard
+style: voiceover
 seconds: 190
 title: One mountain day for a skier, a walker and a kid (fictional example, three people one trip)
 objection: My family doesn't all ski, so a ski trip will split us up.
