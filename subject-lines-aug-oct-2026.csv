@@ -1,0 +1,23 @@
+Tab,Target cell,Email Name (sheet),Email Name (HubSpot),Send Date,Subject Line,Match
+August/September,D2,B2B Newsletter - August/September,B2B Newsletter - August/September,2026-09-28 17:00:00,"August | New trips, useful updates & ideas for your Norway clients",exact name
+August/September,D3,B2C Newsletter September,B2C Newsletter September,2026-09-28 17:00:00,The Voss Dispatch: Autumn has entered the chat 🍂,exact name
+August/September,D4,(A) Autumn getaway email 3,(A) Autumn getaway email 3,2026-09-04 14:24:36,"Your three days in Fjord Norway, sorted 🌄",exact name
+August/September,D5,Autumn getaway email 2,Autumn getaway email 2,2026-09-04 12:10:19,How we'd spend 3 autumn days in Fjord Norway 🇳🇴,exact name
+August/September,D6,(A) Autumn getaway email 1,(A) Autumn getaway email 1,2026-09-04 12:09:49,Summer gets all the attention. We prefer this 🍂,exact name
+August/September,D7,Early Bird Email 1,Early Bird Email 1 vA,2026-09-02 15:40:23,Your Norway trip doesn't have to be paid all at once ✨,send date + name prefix
+August/September,D8,Early Bird Email 2,Early Bird Email 2 vA,2026-09-02 15:39:32,Special offer for your 2027 Norway trip 🇳🇴,send date + name prefix
+August/September,D9,Early Bird Email 3,Early Bird Email 3,2026-09-02 15:38:09,Special offer for your 2027 Norway trip 🇳🇴,exact name
+August/September,D10,B2C Newsletter - August,B2C Newsletter - August,2026-08-31 17:00:00,The Voss Dispatch: Summer’s going strong 🌄,exact name
+Brochures,B2,"Download Itinerary - ""5-Day Fjord Norway Adventure"" Email 1","Download Itinerary - ""5-Day Fjord Norway Adventure"" Email 1",2026-08-20 14:00:12,Your Outdoor Norway itinerary 💫,exact name
+Brochures,B3,"Download Itinerary - ""5-Day Fjord Norway Adventure"" Email 2","Download Itinerary - ""5-Day Fjord Norway Adventure"" Email 2",2026-09-17 13:26:47,When are you visiting? 🇳🇴,exact name
+Brochures,B4,"Download Itinerary - ""5-Day Fjord Norway Adventure"" Email 3","Download Itinerary - ""5-Day Fjord Norway Adventure"" Email 3",2026-08-20 14:54:13,Planning a Norway trip?,exact name
+Brochures,B5,"Download Itinerary - ""5-Day Fjord Norway Adventure"" Email 4","Download Itinerary - ""5-Day Fjord Norway Adventure"" Email 4",2026-08-20 14:54:51,What is an Outdoor Norway trip actually like? 🎒,exact name
+Brochures,B6,"Download Itinerary - ""5-Day Fjord Norway Adventure"" Email 5","Download Itinerary - ""5-Day Fjord Norway Adventure"" Email 5",2026-08-20 14:55:13,Still thinking about Norway?,exact name
+Brochures,B7,"Download Itinerary - ""6-Day Alta Northern Lights Tour"" Email 1","Download Itinerary - ""6-Day Alta Northern Lights Tour"" Email 1",2026-09-17 16:09:04,Download Your 6-Day Alta Northern Lights tour Itinerary 🇳🇴,exact name
+Brochures,B8,"Download Itinerary - ""7-Day Northern Lights Tour: Bergen to Tromsø, Norway"" Email 1","Download Itinerary - ""7-Day Northern Lights Tour: Bergen to Tromsø, Norway"" Email 1",2026-09-22 08:35:41,Download Your 7-Day Northern Lights Tour: Bergen to Tromsø Itinerary 🇳🇴,exact name
+Brochures,B9,"Download Itinerary - ""7-Day Norway Yoga Retreat"" Email 1","Download Itinerary - ""7-Day Norway Yoga Retreat"" Email 1",2026-08-24 11:30:57,[Download] 7 Day Norway Yoga Retreat Itinerary 💫,exact name
+Brochures,B10,"Download Itinerary - ""9-Day E-MTB tour"" Email 1","Download Itinerary - ""9-Day E-MTB tour"" Email 1",2026-09-17 16:08:25,Download Your 9-Day E-MTB Itinerary 🇳🇴,exact name
+NO ROW IN SHEET,,,Girikon | Overall Customer Survey,2026-08-11 11:02:34,Your Feedback Helps Us Create Better Adventures 🌱,needs a row
+NO ROW IN SHEET,,,Email 1 - 25% Autumn Sale,2026-09-30 11:42:30,We’ve got two Autumn Getaways left - and they’re 25% off.,needs a row
+NO ROW IN SHEET,,,Email 2 - 25% Autumn Sale,2026-09-30 11:42:47,Autumn in Fjord Norway is pretty good 🍂,needs a row
+NO ROW IN SHEET,,,Email 3 - 25% Autumn Sale,2026-09-30 11:43:00,Last call for October 9 🚂,needs a row
