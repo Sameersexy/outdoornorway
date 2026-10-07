@@ -1,0 +1,65 @@
+{
+  "version": "0.1.0",
+  "verified": "2026-10-07",
+  "note": "Single source of truth for length rules. The validator and every document read this file. Grades: A platform official or peer reviewed, B documented creator process or large dataset, C practitioner lore, J judgement derived from A and B inputs. Almost every limit below is J. Change a number here and the validator changes with it.",
+  "tiers": {
+    "short": {
+      "label": "Short form: Instagram Reels, YouTube Shorts, TikTok",
+      "platforms": ["reels", "shorts", "tiktok"],
+      "max_seconds": 25,
+      "warn_seconds": 23,
+      "wps": 2.4,
+      "number_penalty_seconds": 0.4,
+      "words": { "hard_max": 60, "target_min": 40, "target_max": 55 },
+      "beats": { "min": 4, "target_max": 6, "hard_max": 7 },
+      "seconds_per_beat": { "min": 3, "max": 6 },
+      "words_per_beat": { "target_min": 8, "target_max": 15, "hard_max": 18 },
+      "hook": { "max_seconds": 3, "min_words": 4, "max_words": 9, "hard_max_words": 10 },
+      "facts": { "per_beat_max": 1, "per_script_max": 3, "numbers_per_script_max": 2 },
+      "sentence": { "avg_min": 6, "avg_max": 9, "hard_max_words": 12 },
+      "overlay": { "max_words": 6, "max_chars_per_line": 32, "max_lines": 2, "min_seconds": 1.5, "chars_per_second": 15 },
+      "cta": { "min": 1, "max": 1, "max_words": 8, "last_seconds": 4 },
+      "visual": { "max_seconds_per_shot": 3, "hard_max_static_seconds": 4 },
+      "loops": { "dominant_open_by_seconds": 3, "supporting_allowed": false, "max_open": 1 }
+    },
+    "long": {
+      "label": "Long form: YouTube landscape",
+      "platforms": ["youtube"],
+      "max_seconds": 200,
+      "warn_seconds": 190,
+      "wps": 2.2,
+      "number_penalty_seconds": 0.4,
+      "words": { "hard_max": 440, "target_min": 320, "target_max": 400 },
+      "beats": { "min": 14, "target_max": 22, "hard_max": 24 },
+      "seconds_per_beat": { "min": 6, "max": 15 },
+      "words_per_beat": { "target_min": 20, "target_max": 35, "hard_max": 45 },
+      "hook": { "verbal_by_seconds": 8, "max_words": 22, "promise_by_seconds": 30, "promise_max_words": 70 },
+      "facts": { "per_beat_max": 2, "numbers_per_beat_max": 1, "per_script_max": 14, "numbers_per_script_max": 6 },
+      "sentence": { "avg_min": 8, "avg_max": 12, "hard_max_words": 18 },
+      "overlay": { "max_words": 8, "max_chars_per_line": 42, "max_lines": 2, "min_seconds": 2, "chars_per_second": 15 },
+      "cta": { "min": 1, "max": 2, "max_words": 25, "last_seconds": 20, "soft_mid_max": 1 },
+      "visual": { "max_seconds_per_shot": 6, "pattern_interrupt_every_seconds": 40 },
+      "chapters": { "min": 4, "max": 6 },
+      "loops": {
+        "dominant_open_by_seconds": 8,
+        "dominant_close_by_seconds": 185,
+        "max_open": 2,
+        "mini_payoff_per_chapter": true,
+        "partial_answer_window": [80, 120],
+        "reengage_windows": [[55, 80], [120, 145]]
+      }
+    }
+  },
+  "narrators": {
+    "standard": { "pace": 1.0, "word_scale": 1.0, "note": "Native or fluent English voiceover at a natural, not rushed, pace." },
+    "slow": { "pace": 0.85, "word_scale": 0.85, "note": "Non-native narrator, text-to-speech, or a deliberately calm read. Cuts the word budget by 15 percent." }
+  },
+  "roles": {
+    "note": "Allowed tokens in the role column, comma separated. Loop tokens take a letter: open:A, close:A.",
+    "common": ["hook", "setup", "build", "shift", "explain", "proof", "payoff", "cta"],
+    "long_only": ["promise", "partial", "progress", "reengage", "soft-cta"],
+    "chapter_tokens": "ch:1 to ch:6 marks a beat as part of a chapter. mini:1 to mini:6 marks the beat where that chapter's small question is answered.",
+    "loop_tokens": "open:A, close:A (any single capital letter)"
+  },
+  "acronym_allowlist": ["CTA", "POV", "UGC", "NOK", "USD", "EUR", "UK", "EU", "US", "FAQ", "DM", "GPS", "SOS", "TV", "AM", "PM", "OK", "HQ", "RV"]
+}

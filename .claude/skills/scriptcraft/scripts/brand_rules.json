@@ -1,0 +1,255 @@
+{
+  "version": "0.1.0",
+  "brand": "Outdoor Norway",
+  "note": "Brand and claims rules for Outdoor Norway scripts. Derived from the company's brand voice and guest benefit checks and the content QC rules. Swap this file to reuse the skill for another brand. Matching is case-insensitive. Severity: block fails the script, warn is reported.",
+  "rules": [
+    {
+      "id": "BR01",
+      "severity": "block",
+      "message": "Greeting or channel intro opens the script. Open on the guest's stake instead.",
+      "phrases": [
+        "hey guys",
+        "hey everyone",
+        "hi guys",
+        "hi everyone",
+        "hello everyone",
+        "what's up",
+        "welcome to",
+        "welcome back",
+        "in this video",
+        "today we are going to",
+        "today we're going to",
+        "today i'm going to",
+        "today i am going to",
+        "before we start",
+        "quick intro"
+      ],
+      "scope": "first_beat"
+    },
+    {
+      "id": "BR02",
+      "severity": "block",
+      "message": "End signal before the payoff, or a generic sign-off. End on the payoff and one call to action.",
+      "phrases": [
+        "that's it",
+        "that's all",
+        "to wrap up",
+        "in conclusion",
+        "thanks for watching",
+        "don't forget to like",
+        "like and subscribe",
+        "smash that"
+      ],
+      "scope": "any"
+    },
+    {
+      "id": "BR03",
+      "severity": "block",
+      "message": "Cliche or exaggeration the brand voice rejects. Name the thing instead.",
+      "phrases": [
+        "winter wonderland",
+        "breathtaking",
+        "magical",
+        "magic of",
+        "unforgettable",
+        "epic",
+        "stunning",
+        "bucket list",
+        "hidden gem",
+        "once in a lifetime",
+        "like no other",
+        "paradise",
+        "must-see",
+        "must see",
+        "game-changer",
+        "game changer",
+        "adrenaline",
+        "thrill-seeker",
+        "thrill seeker",
+        "pristine",
+        "perfect powder",
+        "seamless",
+        "hassle-free",
+        "stress-free",
+        "immerse yourself",
+        "embark",
+        "nestled",
+        "majestic",
+        "awe-inspiring",
+        "second to none"
+      ],
+      "scope": "any"
+    },
+    {
+      "id": "BR04",
+      "severity": "block",
+      "message": "Scarcity or urgency wording. Use real departure dates from the facts table instead.",
+      "phrases": [
+        "few slots left",
+        "few spots left",
+        "last chance",
+        "limited spots",
+        "limited places",
+        "selling fast",
+        "sold out soon",
+        "don't miss out",
+        "do not miss out",
+        "book now before",
+        "hurry",
+        "act now",
+        "only a few left"
+      ],
+      "scope": "any"
+    },
+    {
+      "id": "BR05",
+      "severity": "block",
+      "message": "Negative framing of an activity or difficulty. Describe what the day involves instead.",
+      "phrases": [
+        "only for experts",
+        "not for beginners",
+        "if you can handle",
+        "not for the faint",
+        "hardcore",
+        "brutal",
+        "survive",
+        "you'll suffer",
+        "you will suffer",
+        "extreme"
+      ],
+      "scope": "any"
+    },
+    {
+      "id": "BR06",
+      "severity": "block",
+      "message": "Company-speak or third person. Speak to the guest with you, use we for what the team looks after.",
+      "phrases": [
+        "outdoor norway offers",
+        "outdoor norway provides",
+        "our company",
+        "guests will",
+        "our guests",
+        "we are pleased",
+        "we are proud",
+        "our esteemed"
+      ],
+      "scope": "any"
+    },
+    {
+      "id": "BR07",
+      "severity": "warn",
+      "message": "Sales verb. A script should help first and sell once, in the call to action.",
+      "phrases": [
+        "we offer",
+        "we provide",
+        "book today",
+        "buy now",
+        "sign up today",
+        "grab your spot",
+        "secure your spot"
+      ],
+      "scope": "before_cta"
+    },
+    {
+      "id": "BR08",
+      "severity": "warn",
+      "message": "Personal-attribute address. Meta and good taste both dislike it. Describe the trip, not the viewer.",
+      "phrases": [
+        "are you a beginner",
+        "are you over",
+        "are you scared",
+        "scared of",
+        "afraid of the",
+        "are you out of shape",
+        "are you single"
+      ],
+      "scope": "any"
+    },
+    {
+      "id": "BR09",
+      "severity": "block",
+      "message": "Guarantee wording attached to a natural phenomenon. The aurora, snow, powder, weather and wildlife can never be promised.",
+      "regex": "(guarante\\w*|promise\\w*|always|100 ?%|for sure|definitely|certain\\w*)[^.!?]{0,60}(aurora|northern lights|snow|powder|weather|sunshine|sighting|wildlife|whale|reindeer)|(aurora|northern lights|snow|powder|weather|sunshine|sighting|wildlife|whale|reindeer)[^.!?]{0,60}(guarante\\w*|for sure|definitely|every (night|time|trip))",
+      "scope": "any"
+    },
+    {
+      "id": "BR10",
+      "severity": "block",
+      "message": "The script sells the northern lights or a sighting but never says the aurora cannot be promised. Add a possibility line.",
+      "when_regex": "aurora|northern lights",
+      "requires_regex": "(can't|cannot|can not|no one can|nobody can|no tour can|no trip can|no departure can) (promise|guarantee)|no guarantee|not guaranteed|if the sky|if the clouds|if the lights|chance of|a chance|depends on the sky|when the sky|may show|might show|could show",
+      "scope": "any"
+    },
+    {
+      "id": "BR11",
+      "severity": "block",
+      "message": "Unsupported superlative. Add a sourced row to the facts table that contains the same word, or use a plain description.",
+      "superlatives": [
+        "best",
+        "biggest",
+        "largest",
+        "greatest",
+        "number one",
+        "#1",
+        "ultimate",
+        "world's",
+        "finest",
+        "top-rated",
+        "unrivalled",
+        "unmatched"
+      ],
+      "scope": "any"
+    },
+    {
+      "id": "BR14",
+      "severity": "warn",
+      "message": "Possible unsupported superlative or exclusivity claim. If it is a claim (the only, the most, the first), add a sourced row to the facts table with the same word. Ordinary use such as 'your first tour' is fine.",
+      "superlatives": [
+        "most",
+        "only",
+        "first",
+        "never before",
+        "nobody else",
+        "no one else"
+      ],
+      "scope": "any"
+    },
+    {
+      "id": "BR12",
+      "severity": "warn",
+      "message": "A date without a year. State the year at least once in the script.",
+      "regex": "\\b(\\d{1,2}(st|nd|rd|th)? (jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*|(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]* \\d{1,2})\\b",
+      "requires_regex": "\\b20\\d{2}\\b",
+      "scope": "script"
+    },
+    {
+      "id": "BR13",
+      "severity": "block",
+      "message": "A placeholder is still in the spoken line or the on-screen text. Resolve it with the client or cut the claim.",
+      "regex": "\\[(verify|todo|tbd|link)[^\\]]*\\]",
+      "scope": "voiceover_and_text",
+      "mode": "final_only"
+    }
+  ],
+  "guest_subject": {
+    "note": "The guest is the subject. The hook window must address the guest.",
+    "you_words": [
+      "you",
+      "your",
+      "you're",
+      "you'll",
+      "yours"
+    ],
+    "company_words": [
+      "we",
+      "our",
+      "us",
+      "we're",
+      "we'll",
+      "outdoor norway"
+    ],
+    "max_company_to_you_ratio": 1.0,
+    "hook_must_contain_you": true
+  },
+  "difficulty_note": "Describe difficulty by what the day involves (long ascents, steep descents, confident on skis), never with adjectives or warnings."
+}
