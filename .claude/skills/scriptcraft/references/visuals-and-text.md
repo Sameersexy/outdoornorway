@@ -7,6 +7,7 @@ The visual column is written first. The voice adds what the picture cannot show.
 - One shot per idea, separated by " / ". Name a subject and an action: "guide digs a small pit", not "safety".
 - Write shots that exist or can be filmed on one shoot day. Mark anything that needs a new shoot in the caption notes.
 - Short: a new shot every 3 s at most, never a static shot over 4 s. Long: every 6 s at most.
+- A real continuous take (a POV walk, a drone push) is one shot. Start the cell with `one take:` and name the move: "one take: POV, snowshoes step from the road into the forest". V01 then treats it as motion, not a static hold. A one take that names no move gets a warning. Never split one shot into a fake "a / b" to pass V01: the crew will film what you wrote.
 - The best shot goes to the payoff, not the hook. The hook gets the clearest motion.
 - Do not narrate what the picture already shows. "Here is the fjord" over the fjord wastes words.
 
@@ -14,25 +15,30 @@ The visual column is written first. The voice adds what the picture cannot show.
 
 Beat 1 must show motion or a person. The validator warns if beat 1 names none of: person, skier, guide, hands, POV, drop, skis, walk, hike, pan, drone, glide, snow, boots. It blocks logo, title card, intro, fade in, black screen and a talking-head greeting.
 
-Short (vertical, 0 to 3 s):
+Grouped by what the frame does. Each frame pairs with a hook formula (short-form.md) and a counterpoint: a line that adds what the picture does not say. The lines show shapes; write your own. S works vertical, L works landscape.
 
-| Hook shot | Pairs with |
-|---|---|
-| POV skis on skins sliding uphill | A "how" question |
-| A skier drops into the slope, snow spraying | Outcome first, then "here's the climb" |
-| Guide turns to camera mid-climb and points | A surprising rule |
-| Hands click a binding to walk mode | A kit question |
-| Boots crunch onto the snow at the van, breath steaming | A small scene with a time |
-| Snowshoes sink, then hold, in deep snow | "Why these work" |
+| Frame does | Shot | Formula | Counterpoint shape | Tier |
+|---|---|---|---|---|
+| Motion | POV skis on skins sliding uphill | Specific question | "Your skis are walking. Here's how." | S L |
+| Motion | Snowshoes sink, then hold, in deep snow | Specific question | "Two steps and the snow stops winning." | S |
+| Motion | one take: drone pushes along a ridge to one small figure | Scale question | "That dot is a guest on day one." | L |
+| Two-person contrast | A skier carves past while a snowshoer on the trail waves | The unsaid belief | "Same mountain. Only one of them skis." | S L |
+| Two-person contrast | Parent on skis, child on snowshoes, walking side by side | Three people, one trip | "Your kids don't ski. Bring them anyway." | S L |
+| Two-person contrast | The guide's calm face beside a guest's red face mid-climb | Guide confession | "Your guide is going slow on purpose." | S |
+| Reaction face | A guest's face as the view opens at the tree line | Outcome first | "You'll forget the climb in about a second." | S L |
+| Reaction face | A child's face at the first bite of a hut waffle | Small scene | "Lunch is the part the kids talk about." | S |
+| Reaction face | A guest laughing in soft snow after a slow fall | Visual contradiction | "Your favourite part of the day." | S |
+| Small mishap | A glove slides downhill and a guest chases it | Honest downside | "Clip your gloves. Ask us how we know." | S |
+| Small mishap | Snow drops off a branch onto a hood | Visual contradiction | "This is the warm part of the day." | S |
+| Sound-first | Dark frame lifting to a headlamp, skins squeaking | Small scene | "Seven a.m. You hear the track before you see it." | S L |
+| Sound-first | A thermos lid unscrews at a windy stop, steam rises | Surprising rule | "Your guide stops before you're tired." | S L |
+| Overhead group | Drone straight down on a line of skiers and snowshoers | Three people, one trip | "Skis or snowshoes, you share one route up." | L |
+| Overhead group | A group eats lunch in a circle on the snow, from above | Small scene | "Lunch is on the ridge you just climbed." | S L |
+| Close detail | Hands press a skin onto a ski base | Specific question | "This strip is the whole trick." | S |
+| Close detail | Frost on a guest's eyelashes, then a grin | Honest downside | "Your face gets cold. Your feet don't." | S |
+| Close detail | Wet boots drying by a cabin stove | Loop-back | "...and that's why your guide wants you a little cold." | S L |
 
-Long (landscape, 0 to 8 s):
-
-| Hook shot | Pairs with |
-|---|---|
-| Drone pulls back from one skier on a white ridge | The scale question |
-| Line of skiers climbing out of the trees, slow pan | The "could you" question |
-| The gondola leaving the station, then the slope above | The access question |
-| A guide reading the forecast at dawn, then the group setting off | The decision question |
+A number in a counterpoint counts toward the numbers budget and needs a facts row if it is a claim. Do not claim a group size; the do-not-claim list bans group size numbers.
 
 ## Overlays (the text column)
 
@@ -47,14 +53,14 @@ Long (landscape, 0 to 8 s):
 - Beat 1 always has an overlay. Muted viewers decide on the frame and the text.
 - An overlay adds or highlights: the question, a keyword, the chapter name, the price in the CTA beat. It never repeats the narration (Mayer redundancy principle, A; the validator warns above 60 percent overlap).
 - One overlay on screen at a time. Separate lines with " / " in the text column.
-- Digits on screen count as facts and must be in the facts table.
+- Digits on screen count as numbers and facts, exactly like spoken ones. Each must be in a verified facts row cited in that beat (F04).
 - Sentence case. No capitals for emphasis, no emojis, no dashes.
 
 ## Captions
 
 - Burned-in captions are the full transcript for sound-off viewers. Generate them from the final voiceover. They are not overlays.
 - Keep captions in the lower part of the safe box, 2 lines max.
-- The post caption (the `## Caption` section) adds what the video left out: dates, price basis, a link. At most 2 hashtags.
+- The post caption (the `## Caption` section) adds what the video left out: full dates with the year, price basis, a link. At most 2 hashtags. Its digits are checked too: each must be in a verified facts row (F04).
 
 ## Safe zones (vertical 1080 x 1920)
 

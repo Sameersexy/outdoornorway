@@ -1,5 +1,5 @@
 {
-  "version": "0.1.0",
+  "version": "0.2.0",
   "brand": "Outdoor Norway",
   "note": "Brand and claims rules for Outdoor Norway scripts. Derived from the company's brand voice and guest benefit checks and the content QC rules. Swap this file to reuse the skill for another brand. Matching is case-insensitive. Severity: block fails the script, warn is reported.",
   "rules": [
@@ -97,7 +97,19 @@
         "book now before",
         "hurry",
         "act now",
-        "only a few left"
+        "only a few left",
+        "seats are going fast",
+        "spots are going fast",
+        "places are going fast",
+        "spaces are going fast",
+        "dates are going fast",
+        "filling up fast",
+        "dates are filling up",
+        "tours are filling up",
+        "spaces are limited",
+        "places are limited",
+        "spots are limited",
+        "seats are limited"
       ],
       "scope": "any"
     },
@@ -168,22 +180,24 @@
     {
       "id": "BR09",
       "severity": "block",
-      "message": "Guarantee wording attached to a natural phenomenon. The aurora, snow, powder, weather and wildlife can never be promised.",
-      "regex": "(guarante\\w*|promise\\w*|always|100 ?%|for sure|definitely|certain\\w*)[^.!?]{0,60}(aurora|northern lights|snow|powder|weather|sunshine|sighting|wildlife|whale|reindeer)|(aurora|northern lights|snow|powder|weather|sunshine|sighting|wildlife|whale|reindeer)[^.!?]{0,60}(guarante\\w*|for sure|definitely|every (night|time|trip))",
-      "scope": "any"
+      "message": "Guarantee wording attached to a natural phenomenon. The aurora, snow, powder, weather and wildlife can never be promised. Only a negation that directly governs the guarantee word (can't promise, no guarantee, not guaranteed) makes it safe.",
+      "regex": "\\b(guarante\\w*|promise[sd]?|always|100 ?%|for sure|definitely|certain(ly)?|sure thing|no question|no doubt|without fail|not a chance|never miss|won't miss|will not miss)[^.!?]{0,60}\\b(aurora|northern lights|snow|powder|weather|sunshine|sighting|wildlife|whales?|reindeer)\\b|\\b(aurora|northern lights|snow|powder|weather|sunshine|sighting|wildlife|whales?|reindeer)\\b[^.!?]{0,60}\\b(guarante\\w*|promise[sd]?|always|100 ?%|for sure|definitely|certain(ly)?|sure thing|no question|no doubt|without fail|not a chance|never miss|won't miss|will not miss|every (day|night|morning|week|weekend|winter|time|trip))",
+      "scope": "any",
+      "guarantee_regex": "\\b(guarante\\w*|promise[sd]?|always|100 ?%|for sure|definitely|certain(ly)?|sure thing|no question|no doubt|without fail|not a chance|never miss|won't miss|will not miss|every (day|night|morning|week|weekend|winter|time|trip))",
+      "negated_when_preceded_by": "(\\b(can't|cannot|can not|won't|will not|doesn't|does not|don't|do not|isn't|is not|aren't|are not|never|not|no)|\\b(no one|nobody|no \\w+) can)( (ever|always|really))?\\s*$"
     },
     {
       "id": "BR10",
       "severity": "block",
       "message": "The script sells the northern lights or a sighting but never says the aurora cannot be promised. Add a possibility line.",
       "when_regex": "aurora|northern lights",
-      "requires_regex": "(can't|cannot|can not|no one can|nobody can|no tour can|no trip can|no departure can) (promise|guarantee)|no guarantee|not guaranteed|if the sky|if the clouds|if the lights|chance of|a chance|depends on the sky|when the sky|may show|might show|could show",
+      "requires_regex": "(can't|cannot|can not|no one can|nobody can|no tour can|no trip can|no departure can|no guide can|we can't|we cannot) (promise|guarantee)|no guarantee|not guaranteed|never guaranteed|if the sky|if the clouds|if the lights|(a|some|good|fair|real) chance (of|to) (see|seeing|catch|catching|spot|spotting)|depends on the sky|when the sky|may show|might show|could show",
       "scope": "any"
     },
     {
       "id": "BR11",
       "severity": "block",
-      "message": "Unsupported superlative. Add a sourced row to the facts table that contains the same word, or use a plain description.",
+      "message": "Unsupported superlative. Cite, in the same beat's facts column, a sourced row that contains the same word, or use a plain description.",
       "superlatives": [
         "best",
         "biggest",
@@ -196,21 +210,31 @@
         "finest",
         "top-rated",
         "unrivalled",
-        "unmatched"
+        "unmatched",
+        "world-class",
+        "world class",
+        "unbeatable",
+        "premier",
+        "industry-leading",
+        "market-leading",
+        "award-winning"
       ],
       "scope": "any"
     },
     {
       "id": "BR14",
       "severity": "warn",
-      "message": "Possible unsupported superlative or exclusivity claim. If it is a claim (the only, the most, the first), add a sourced row to the facts table with the same word. Ordinary use such as 'your first tour' is fine.",
+      "message": "Possible exclusivity claim (the only, the most, the first). If it is a claim, cite a sourced row with the same words in that beat. Ordinary use such as 'your first tour' or 'lesson first' is not flagged.",
       "superlatives": [
-        "most",
-        "only",
-        "first",
+        "the most",
+        "the only",
+        "the first",
+        "first-ever",
+        "first ever",
         "never before",
         "nobody else",
-        "no one else"
+        "no one else",
+        "leading"
       ],
       "scope": "any"
     },
@@ -231,6 +255,62 @@
       "mode": "final_only"
     }
   ],
+  "cta": {
+    "note": "C03 warns when a cta beat uses more than one of these verbs (stacked asks). C01 warns when a beat without the cta or soft-cta role matches untagged_regex.",
+    "verbs": [
+      "book",
+      "save",
+      "follow",
+      "subscribe",
+      "share",
+      "send",
+      "comment",
+      "tag",
+      "join",
+      "sign up",
+      "click",
+      "tap",
+      "visit",
+      "like",
+      "dm",
+      "message us"
+    ],
+    "untagged_regex": "\\b(book (now|today|your|a|the|it|online|here|from|via|at)|subscribe|link below|link in (the )?bio|tap the link|click the link|sign up)\\b"
+  },
+  "place_names": {
+    "note": "Sentence-initial words are not counted as names unless they are here, or appear mid-sentence with a capital in the facts table or the script.",
+    "names": [
+      "Voss",
+      "Vossevangen",
+      "Myrdal",
+      "Myrkdalen",
+      "Bavallen",
+      "Hanguren",
+      "Lonahorgi",
+      "Raundalen",
+      "Stalheim",
+      "Gudvangen",
+      "Flam",
+      "Finse",
+      "Bergen",
+      "Oslo",
+      "Norway",
+      "Hardanger",
+      "Hardangerfjord",
+      "Sognefjord",
+      "Naeroyfjord",
+      "Jotunheimen",
+      "Tromso",
+      "Lofoten",
+      "Lyngen",
+      "Hemsedal",
+      "Geilo",
+      "Lønahorgi",
+      "Flåm",
+      "Tromsø",
+      "Nærøyfjord"
+    ]
+  },
   "guest_subject": {
     "note": "The guest is the subject. The hook window must address the guest.",
     "you_words": [

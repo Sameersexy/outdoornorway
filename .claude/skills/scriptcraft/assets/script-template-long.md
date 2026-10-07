@@ -3,6 +3,7 @@ tier: long
 platform: youtube
 narrator: standard
 title: [FILL: title, the promise the first 30 seconds must confirm]
+objection: [FILL: optional, the one doubt this video answers]
 core_takeaway: [FILL: the answer to the one question, one sentence]
 ---
 ## Facts
@@ -15,7 +16,7 @@ core_takeaway: [FILL: the answer to the one question, one sentence]
 ## Script
 | beat | time | voiceover | visual | text | role | facts |
 |---|---|---|---|---|---|---|
-| 1 | 0-8 | [FILL: hook, at most 17 words, says you, asks the one question] | [FILL: motion or a person, no logo] / [FILL: shot] | [FILL: overlay, 2 to 5 words] | hook, open:A | - |
+| 1 | 0-8 | [FILL: hook, at most 17 words, says you, asks the one question] | [FILL: motion or a person, no logo] / [FILL: shot] | [FILL: overlay inside the tier limit (8 words)] | hook, open:A | - |
 | 2 | 8-19 | [FILL: promise, 20 to 24 words, what the viewer will know by the end] | [FILL: shot] / [FILL: shot] | - | promise | - |
 | 3 | 19-31 | [FILL: chapter 1 question, 20 to 26 words] | [FILL: shot] / [FILL: shot] | [FILL: chapter name] | ch:1, setup, open:B | F1 |
 | 4 | 31-43 | [FILL: chapter 1 answer, 20 to 26 words] | [FILL: shot] / [FILL: shot] | - | ch:1, mini:1, explain, close:B | - |
@@ -30,6 +31,6 @@ core_takeaway: [FILL: the answer to the one question, one sentence]
 | 13 | 140-152 | [FILL: chapter 4 build, 20 to 26 words] | [FILL: shot] / [FILL: shot] | - | ch:4, build | - |
 | 14 | 152-164 | [FILL: chapter 4 answer, 20 to 26 words] | [FILL: shot] / [FILL: shot] | - | ch:4, mini:4, close:E | - |
 | 15 | 164-178 | [FILL: the full answer to the main question, 24 to 30 words] | [FILL: the strongest shot] / [FILL: shot] / [FILL: shot] | [FILL: payoff overlay] | payoff, close:A | - |
-| 16 | 178-191 | [FILL: one call to action tied to the payoff, at most 25 words] | [FILL: shot] / [FILL: shot] / [FILL: end card] | [FILL: price or date from the facts table] | cta | - |
+| 16 | 178-191 | [FILL: one call to action tied to the payoff, at most 25 words] | [FILL: shot] / [FILL: shot] / [FILL: end card] | [FILL: one number at most, from a row this beat cites] | cta | - |
 ## Caption
-[FILL: chapter timestamps for the description, the link, at most 2 hashtags]
+[FILL: chapter timestamps, full dates with the year, the link. Every digit needs a verified facts row. At most 2 hashtags. Delete this note: the beat grid above is one structure only; re-time it to the structure you chose in references/long-form.md]

@@ -16,7 +16,7 @@ FIX = os.path.join(HERE, "fixtures")
 CFG = sc.load_json(os.path.join(HERE, "tiers.json"))
 BRAND = sc.load_json(os.path.join(HERE, "brand_rules.json"))
 
-# Each failing fixture is named after the rule it breaks; value is the expected severity.
+# Each failing fixture is named after the rule it breaks (RULE or RULE-case); value is the expected severity.
 EXPECT = {
     "T01": "block", "T02": "warn", "T03": "block", "T04": "block",
     "W01": "block", "W02": "warn", "W03": "warn", "B01": "warn", "B02": "warn",
@@ -29,6 +29,13 @@ EXPECT = {
     "L01": "block", "R02": "warn", "R03": "warn",
     "BR01": "block", "BR03": "block", "BR09": "block", "BR10": "block",
     "BR11": "block", "BR13": "block", "BR14": "warn",
+    # Reviewer false negatives, one fixture each.
+    "BR09-not-a-chance": "block", "BR09-no-question": "block", "BR09-certain": "block",
+    "BR09-every-morning": "block", "BR09-every-night": "block", "BR10-chance-of-cloud": "block",
+    "BR04-going-fast": "block", "BR11-world-class": "block", "BR11-uncited-row": "block",
+    "F04-spelled": "block", "F04-uncited": "warn", "F07-brand-part": "warn", "F07-sentence-initial": "warn",
+    "H01-hyphen-chain": "block", "C01-untagged": "warn", "C03-stacked": "warn", "C01-two-hard": "block",
+    "C02-soft-early": "block", "V01-one-take-static": "warn",
 }
 
 SHORT_15 = """---
@@ -124,12 +131,14 @@ class FailingFixtures(unittest.TestCase):
         self.assertEqual(out.strip().splitlines()[-1], "RESULT: FAIL (1 blocking, 0 warnings)")
 
 
-def make_fixture_test(rid, sev):
+def make_fixture_test(name, sev):
+    rid = name.split("-")[0]
+
     def test(self):
         final = rid == "BR13"
-        ctx = check(read(rid + ".md"), final=final)
-        self.assertTrue(found(ctx, rid, sev), "%s expected %s, got %s" % (rid, sev, ctx.findings))
-        args = [os.path.join(FIX, rid + ".md")] + (["--final"] if final else [])
+        ctx = check(read(name + ".md"), final=final)
+        self.assertTrue(found(ctx, rid, sev), "%s expected %s, got %s" % (name, sev, ctx.findings))
+        args = [os.path.join(FIX, name + ".md")] + (["--final"] if final else [])
         code, out = cli(*args)
         line = "[FAIL] " + rid if sev == "block" else "[WARN] " + rid
         self.assertIn(line, out)
@@ -142,7 +151,7 @@ def make_fixture_test(rid, sev):
 
 
 for _rid, _sev in EXPECT.items():
-    setattr(FailingFixtures, "test_fixture_%s" % _rid, make_fixture_test(_rid, _sev))
+    setattr(FailingFixtures, "test_fixture_%s" % _rid.replace("-", "_"), make_fixture_test(_rid, _sev))
 
 
 class FalsePositives(unittest.TestCase):
@@ -166,7 +175,8 @@ class FalsePositives(unittest.TestCase):
     def test_superlative_allowed_when_fact_row_has_it(self):
         text = read("BR11.md").replace("| fixture data, guide estimate | yes |",
                                        "| fixture data, guide estimate | yes |\n| F3 | Skins are the best way up on skis | guide manual | yes |")
-        self.assertFalse(found(check(text), "BR11"))
+        self.assertTrue(found(check(text), "BR11", "block"))  # row exists but the beat does not cite it
+        self.assertFalse(found(check(text.replace("| build | - |", "| build | F3 |")), "BR11"))
 
     def test_number_in_facts_table_not_double_counted(self):
         ctx = check(read("valid-short.md"))
@@ -176,7 +186,7 @@ class FalsePositives(unittest.TestCase):
 
     def test_thousands_separator_matches_spaced_fact(self):
         text = read("valid-short.md").replace("The guided climb takes about 2 hours", "A day costs NOK 1 500 and the climb takes 2 hours")
-        text = text.replace("| Guided tours from Voss | cta |", "| From NOK 1,500 | cta |")
+        text = text.replace("| Guided tours from Voss | cta | F1 |", "| From NOK 1,500 | cta | F2 |")
         ctx = check(text)
         self.assertFalse(found(ctx, "F04"))
 
@@ -218,6 +228,81 @@ class FalsePositives(unittest.TestCase):
     def test_br09_still_catches_guarantee(self):
         text = read("valid-short.md").replace("How climbing skins work", "Snow is guaranteed")
         self.assertTrue(found(check(text), "BR09", "block"))
+
+    def test_spaced_thousands_in_script_match_comma_row(self):
+        text = read("valid-short.md").replace("| Guided tours from Voss | cta | F1 |", "| From NOK 1 950 | cta | F3 |")
+        text = text.replace("Book a guided ski tour from Voss.", "Book a guided ski touring day.")
+        text = text.replace("| fixture data, guide estimate | yes |",
+                            "| fixture data, guide estimate | yes |\n| F3 | Day tours from NOK 1,950 per adult | fixture price list | yes |")
+        ctx = check(text)
+        self.assertEqual(ctx.doc.beats[5].number_values, {"1950"})
+        self.assertFalse(blocking(ctx))
+        self.assertFalse(found(ctx, "F04"))
+
+    def test_placeholder_counts_as_one_word(self):
+        text = read("valid-short.md").replace(
+            "Slide forward and it holds.", "[VERIFY: which ski levels the lessons suit, ask the head guide] It holds.")
+        ctx = check(text)
+        self.assertFalse(found(ctx, "S01", "block"))
+        self.assertEqual(ctx.doc.beats[2].words, 1 + 2 + 5)
+        self.assertTrue(found(check(text, final=True), "BR13", "block"))
+
+    def test_governed_negations_are_safe(self):
+        for line in ("No guide can guarantee snow. You ski down.", "It doesn't always snow. You ski down.",
+                     "We can't promise the aurora. You ski down.", "The aurora is never guaranteed here."):
+            ctx = check(read("valid-short.md").replace("At the top, skins off. You ski down.", line))
+            self.assertFalse(found(ctx, "BR09"), line)
+            self.assertFalse(found(ctx, "BR10"), line)
+
+    def test_snowshoes_every_day_is_not_a_snow_guarantee(self):
+        ctx = check(read("valid-short.md").replace("You walk up, not back.", "Snowshoes every day, uncertain weather."))
+        self.assertFalse(found(ctx, "BR09"))
+
+    def test_possibility_line_satisfies_br10(self):
+        ctx = check(read("valid-short.md").replace(
+            "At the top, skins off. You ski down.", "There's a chance of seeing the northern lights."))
+        self.assertFalse(found(ctx, "BR10"))
+
+    def test_lesson_first_is_not_a_claim(self):
+        ctx = check(read("valid-short.md").replace("| Climbing skins |", "| Lesson first |"))
+        self.assertFalse(found(ctx, "BR14"))
+
+    def test_one_take_with_motion_is_not_static(self):
+        text = read("valid-short.md").replace(
+            "Hands rip the skins off / first turn down the slope", "one take: POV, skins off and the first turn down")
+        self.assertFalse(found(check(text), "V01"))
+        self.assertTrue(found(check(text.replace("one take: POV, ", "")), "V01", "block"))
+
+    def test_hyphens_split_words(self):
+        self.assertEqual(len(sc.words("a little-bit-cold day, NOK 1,950")), 7)
+
+    def test_spelled_compound_is_one_number(self):
+        ctx = check(read("valid-short.md").replace("You walk up, not back.", "You walk up for twenty-five steps."))
+        self.assertEqual(ctx.doc.beats[2].number_values, {"twenty-five"})
+        self.assertTrue(found(ctx, "F04", "block"))
+
+    def test_spelled_number_matches_digit_row(self):
+        text = read("valid-short.md").replace("You walk up, not back.", "Ninety skiers walk up.")
+        text = text.replace("| build | - |", "| build | F3 |").replace(
+            "| fixture data, guide estimate | yes |", "| fixture data, guide estimate | yes |\n| F3 | 90 skiers a day | fixture | yes |")
+        self.assertFalse(found(check(text), "F04"))
+
+    def test_uncited_number_blocks_in_final(self):
+        self.assertTrue(found(check(read("F04-uncited.md"), final=True), "F04", "block"))
+
+    def test_caption_number_needs_a_row(self):
+        ctx = check(read("valid-short.md").replace("#skitouring #voss", "Dates 12 Feb 2027. #skitouring"))
+        self.assertTrue(found(ctx, "F04", "block"))
+
+    def test_soft_cta_after_first_mini_passes(self):
+        ctx = check(read("valid-long.md").replace("| ch:2, mini:2, proof |", "| ch:2, mini:2, proof, soft-cta |"))
+        self.assertFalse(found(ctx, "C01"))
+        self.assertFalse(found(ctx, "C02"))
+
+    def test_silent_hold_info_line(self):
+        ctx = check(read("valid-short.md").replace("A strip of fabric under each ski grips the snow.", "Skins grip."))
+        self.assertTrue(any(x.startswith("beat 2:") for x in ctx.info))
+        self.assertIn("[INFO] beat 2", sc.render(ctx, "x.md"))
 
     def test_two_hashtags_are_fine(self):
         self.assertFalse(found(check(read("valid-short.md")), "C05"))
@@ -385,6 +470,8 @@ class Parsing(unittest.TestCase):
         self.assertEqual(code, 0)
         self.assertIn("max_seconds=25", out)
         self.assertIn("max_seconds=200", out)
+        self.assertIn("counts:", out)
+        self.assertIn("fix:", out)
         self.assertIn("block", cli("--explain", "BR03")[1])
         self.assertEqual(cli("--explain", "ZZ9")[0], 2)
 

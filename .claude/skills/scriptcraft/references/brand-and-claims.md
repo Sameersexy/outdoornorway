@@ -30,9 +30,10 @@ Describe it by what the day involves: "long ascents", "confident on red runs", "
 
 ## Natural phenomena
 
-- Never promise snow, powder, sunshine, wildlife or the aurora (BR09).
+- Never promise snow, powder, sunshine, wildlife or the aurora (BR09). That includes "certain", "for sure", "no question", "no doubt", "not a chance you miss", "never miss" and "[phenomenon] every morning, night or week".
+- A negation makes a line safe only when it governs the guarantee word directly: "can't promise", "no guide can guarantee", "not guaranteed", "isn't always". "No question, guaranteed" is still a guarantee.
 - Any script that mentions the aurora or northern lights must also say it cannot be promised (BR10). The 7 Day trip page says no departure can guarantee an appearance.
-- Possibility verbs: look for, wait for, if the sky clears, a chance of.
+- Possibility lines: "if the sky clears", "a chance of seeing the lights", "depends on the sky", "no one can promise the aurora". A bare "a chance of cloud" does not count.
 
 ## Rule summary (brand_rules.json)
 
@@ -41,17 +42,17 @@ Describe it by what the day involves: "long ascents", "confident on red runs", "
 | BR01 | block | Greeting or channel intro in beat 1 ("hey guys", "welcome to", "in this video") |
 | BR02 | block | End signals and sign-offs ("that's it", "to wrap up", "thanks for watching", "like and subscribe") |
 | BR03 | block | Cliche and hype ("winter wonderland", "breathtaking", "magical", "epic", "stunning", "bucket list", "adrenaline", "perfect powder", "seamless", "nestled", "majestic") |
-| BR04 | block | Scarcity and urgency ("few spots left", "last chance", "hurry", "don't miss out") |
+| BR04 | block | Scarcity and urgency ("few spots left", "last chance", "hurry", "don't miss out", "seats are going fast", "filling up fast", "spaces are limited") |
 | BR05 | block | Negative framing of difficulty ("only for experts", "brutal", "survive", "extreme") |
 | BR06 | block | Company-speak ("Outdoor Norway offers", "our guests", "guests will", "we are proud") |
 | BR07 | warn | Sales verbs before the CTA ("we offer", "book today", "secure your spot") |
 | BR08 | warn | Personal-attribute address ("are you a beginner", "scared of", "are you over") |
-| BR09 | block | Guarantee wording near aurora, snow, powder, weather, wildlife |
+| BR09 | block | Guarantee wording near aurora, snow, powder, weather, wildlife, unless a negation governs the guarantee word |
 | BR10 | block | Aurora mentioned with no possibility line |
-| BR11 | block | Superlatives ("best", "biggest", "ultimate", "world's", "#1") without a facts row that contains the same word |
+| BR11 | block | Superlatives ("best", "biggest", "ultimate", "world's", "#1", "world-class", "unbeatable", "premier", "award-winning") unless the same beat cites a facts row that contains the same word. In the caption, any row counts |
 | BR12 | warn | A date with no year anywhere in the script |
 | BR13 | block, --final only | A placeholder ([VERIFY], [TODO], [TBD], [LINK]) still in voiceover or overlay |
-| BR14 | warn | Possible exclusivity claim ("only", "most", "first", "nobody else"). Ordinary use like "your first tour" is fine; reword to avoid the warning |
+| BR14 | warn | Possible exclusivity claim ("the only", "the most", "the first", "first-ever", "nobody else", "leading"). "Your first tour" and "lesson first" are not flagged |
 
 The full phrase lists are in the JSON. Read them before writing, not after the validator complains.
 
@@ -59,9 +60,12 @@ The full phrase lists are in the JSON. Read them before writing, not after the v
 
 - Facts come only from: tours.json, product-marketing.md, a page URL the user names, or the user in writing. Never from memory.
 - Each fact is one row: id, the fact with the number exactly as spoken, the source, verified yes or no.
-- Every digit spoken or shown must appear in a row with verified yes (F04). Unverified rows are allowed in a draft and block with --final.
+- A written client brief is a source. A row is verified yes only for what the brief states; anything you infer from it is no.
+- A number is tied to the row you cite in that beat. Every digit spoken or shown, and every spelled number from twenty up ("ninety percent"), must appear in a verified row listed in that beat's facts column (F04). A number found only in another row warns in a draft and blocks with --final. A number in no row blocks.
+- Caption digits are checked too (F04): any verified row will do.
+- Every factual sentence maps to a fact id cited in that beat, and claims no more than the row. Row "snowshoe day for non-skiers" supports "non-skiers get a snowshoe day", not "nobody skis that day".
 - Prices: "from NOK X" for multi-day trips, "NOK X per adult" for day tours. Never "per person" until confirmed.
-- Dates in full with the year: "30 Jan to 7 Feb 2027".
+- Every numeral counts toward the number budget, including the day and the year. Spoken lines and overlays carry one date element per beat ("in February 2027"). Full dates with the year ("30 Jan to 7 Feb 2027") go in the caption or description, backed by a verified row.
 - Missing fact: write `[VERIFY: what to confirm, who confirms it]` in the voiceover and list it in open items. Never fill the gap with a plausible number.
 - Never invent a URL. Use `[LINK: what the page is]`.
 
@@ -80,7 +84,7 @@ The full phrase lists are in the JSON. Read them before writing, not after the v
 
 - "6 days of skiing" on the 6 Day package. "Ski days" plural on the 7 Day trip.
 - Any aurora sighting or guarantee. Guaranteed snow, perfect powder, all gear included.
-- Any group size or guide ratio number. Any age limit.
+- Any group size or guide ratio number. Any age limit. The words "small group" without a number are allowed: the hub shows a "Small groups" badge and product-marketing.md lists "small group" as a word to use.
 - Scarcity of any kind unless live availability is confirmed.
 - A rating without a named source and a current number.
 - Beginner positioning on the 3-Day Ski and Snowshoe or the 3-Day Multi-Sport.
@@ -88,4 +92,6 @@ The full phrase lists are in the JSON. Read them before writing, not after the v
 
 ## House style in every script cell
 
-No em or en dashes, no emojis (R01). No capitals for emphasis (R02). No AI vocabulary: delve, tapestry, leverage, robust, seamless, unlock, elevate, game-changer, journey as a noun. No "not X but Y" contrasts, no "Imagine...", no rhetorical "Ready to...?". Numerals for numbers.
+No em or en dashes, no emojis (R01). No capitals for emphasis (R02). No AI vocabulary: delve, tapestry, leverage, robust, seamless, unlock, elevate, game-changer, journey as a noun. No "not X but Y" contrasts, no tricolons, no slogan closers, no "Imagine...", no rhetorical "Ready to...?". The validator does not catch these; the reviewer does.
+
+Numerals for numbers you claim ("2 hours", "NOK 1,948"). Spelling a number out does not hide it: "two" to "nineteen" still count toward the number budget, and "twenty" and up also need a facts row. Only "one" is free.

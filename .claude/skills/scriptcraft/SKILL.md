@@ -20,6 +20,8 @@ NON-NEGOTIABLE RULES
    opened in the hook, closed before the call to action.
 8. Follow scripts/brand_rules.json: no hype words, no guarantees on snow or aurora,
    no unsourced superlatives, no scarcity, the guest is the subject.
+9. Never reuse a line from the examples, templates or references word for word.
+   They show the shape. Your lines come from this brief.
 ```
 
 ## Method
@@ -31,32 +33,37 @@ Ask only for what is missing. Six answers:
 | Question | Why it matters |
 |---|---|
 | Platform | reels, shorts or tiktok means tier short. youtube means tier long. |
-| Length | Short is 8 to 25 s, long up to 200 s. Anything else: refuse and offer the nearest tier. A 60 s reel becomes a 25 s short or a 200 s long. |
+| Length | Short is 8 to 25 s, long up to 200 s. Anything else: refuse and offer the nearest tier. Asked for a 60 s reel, offer a 25 s reel, or a 200 s YouTube video instead. |
 | Core takeaway | One sentence. If the user gives three, ask which one wins. |
 | Product | A tour id from `campaigns/ski-meta-ads/tours.json`, or "no product" for a helpful post. |
 | Facts source | tours.json, `.claude/product-marketing.md`, a page URL or the user. Nothing else. |
 | Narrator | standard (fluent, natural pace) or slow (non-native guide, text-to-speech, calm read). Slow cuts the word budget by 15 percent. |
+| Objection | The one doubt this video answers ("will I hold the group up?"). Goes in the optional `objection:` front matter field; the reviewer checks the script answers it. |
 
 If the user asks for a different length ("a 45 second reel", "a 10 minute video"), say the two tiers are fixed, name the nearest one, and continue only after they choose.
 
 ### 2. Build the facts table
 
-Copy facts word for word from the source into `## Facts`, one row each, with the number exactly as it will be spoken. Source names a file and key, a URL or a person. `verified` is yes only when the source is confirmed (tours.json counts). Everything else is `no` and the claim carries `[VERIFY: ...]` until resolved. Check the do-not-claim list in product-marketing.md before you use any fact.
+Copy facts word for word from the source into `## Facts`, one row each, with the number exactly as it will be spoken. Source names a file and key, a URL or a person. `verified` is yes when the source states the fact in writing: tours.json, product-marketing.md, a named page, or a written client brief (source: "client brief, <date>"). Anything you infer from a source, or a brief only implies, is `no` and the claim carries `[VERIFY: ...]` until resolved. Check the do-not-claim list in product-marketing.md before you use any fact.
+
+A thin brief makes a short script. If the long facts table has fewer than about 8 rows, lower `seconds` or accept the W02 warning. Never pad with claims the table does not hold.
 
 ### 3. Choose the structure
 
-Short: 5 or 6 beats. Hook, setup, build or shift, payoff that closes the loop, call to action. See references/short-form.md.
+Pick a named structure, not the template grid. Short (references/short-form.md): outcome-first rewind, one real-time scene, guide and guest Q and A, loop-back. Long (references/long-form.md): a day as scenes, misconception test, three people one trip. Each has its own beat grid. Choose the one that fits the takeaway, and do not reuse the structure of the last script you wrote for the same product.
 
-Long: hook (by 8 s), promise (by 30 s), 4 to 6 chapters of 2 to 4 beats, each with its own small question and mini-payoff, a partial answer between 80 and 120 s, re-engagement beats between 55 and 80 s and between 120 and 145 s, the full answer by 185 s, then the call to action. See references/long-form.md.
+Every long script still needs: hook by 8 s, promise by 30 s, 4 to 6 chapters each with a mini-payoff, a partial answer between 80 and 120 s, re-engagement beats between 55 and 80 s and between 120 and 145 s, the full answer by 185 s, then the call to action.
 
-Copy the matching template from assets/ and fill it. Start the visual column before the voiceover: pick the shot, then write what the picture cannot say.
+Copy the template from assets/ for the file format, then re-time its beats to your structure. Start the visual column before the voiceover: pick the shot (references/visuals-and-text.md has the hook library), then write what the picture cannot say.
 
 ### 4. Write the beats
 
 - Ask of every line: which loop does this open, sustain or close? If none, cut it.
 - One new fact per beat in a short, two in a long, never two numbers in one sentence.
+- Every number counts, including a day and a year, and spelled "two" or "three". Spoken lines carry one date element at most ("in February 2027"). Full dates with the year go in the caption, backed by a verified facts row.
+- Every factual sentence maps to a fact id cited in that beat, and says no more than the row says.
 - Voice adds what the picture cannot show: the reason, the name, the cost. It never narrates the obvious.
-- Overlays carry 2 to 6 keywords that add to the voice. They never repeat it.
+- Overlays stay inside the tier overlay limit (6 words short, 8 long) and add to the voice. They never repeat it.
 - Sentences short. Average 6 to 9 words in a short, 8 to 12 in a long.
 - Describe difficulty by what the day involves ("long ascents", "confident on red runs").
 - Plain verbs a body can do: climb, skin, carve, wait, eat. No AI vocabulary.
@@ -71,11 +78,13 @@ python3 -I .claude/skills/scriptcraft/scripts/script_check.py path/to/script.md 
 python3 -I .claude/skills/scriptcraft/scripts/script_check.py --explain F01
 ```
 
-Exit 0 is PASS, 1 is FAIL, 2 is a parse error naming the line. Use `--final` before publishing: placeholders and unverified facts then block.
+Exit 0 is PASS, 1 is FAIL, 2 is a parse error naming the line. Use `--final` before publishing: placeholders, unverified facts and numbers from uncited rows then block. `--explain` prints what a rule counts and the usual fix. Read "How the validator counts" in references/tiers.md before your first draft.
 
 ### 6. Fix until PASS
 
-Read each `[FAIL]` line, fix the cause, rerun. Never fix a length failure by deleting a fact row or by shortening times you cannot read in that time. Cut words. Clear `[WARN]` lines too unless you can say why one is acceptable. Five failed rounds means the idea is too big for the tier: say so and propose a narrower takeaway.
+Read each `[FAIL]` line, fix the cause, rerun. Never fix a length failure by deleting a fact row or by shortening times you cannot read in that time. Cut words. Never split one shot into a fake "a / b" to pass V01; mark a real continuous take as `one take:`. Clear `[WARN]` lines too unless you can say why one is acceptable. Five failed rounds means the idea is too big for the tier: say so and propose a narrower takeaway.
+
+PASS is a floor, not a verdict. The validator does not catch tricolons, "not X but Y" contrasts, slogan closers, a line that overstates its fact row, or a script that copies the examples. The writer rereads for them; the reviewer agent checks them.
 
 ### 7. Final output
 
@@ -96,7 +105,7 @@ Viewers cannot re-read speech. A spoken beat with a price, a date, a place and a
 |---|---|---|
 | Ideas | 1 takeaway | 1 question, 1 small idea per chapter |
 | Facts (numbers, names, prices, places) | 3 max, 1 per beat | 14 max, 2 per beat |
-| Numbers | 2 max | 6 max, 1 per beat |
+| Numbers | 2 max (a full date is 2 or 3) | 6 max, 1 per beat |
 | Leave out | Itinerary, prices beside dates, more than one place name, gear lists, company history, safety detail | Day-by-day lists, every inclusion, more than one price, numbers in the payoff line |
 | Keep | One scene, one surprise, one ask | The scenes that answer the question, one honest downside |
 | Where the rest goes | Caption or landing page | Description, chapters, landing page |
@@ -123,12 +132,12 @@ Short: one loop, opened in beat 1, closed in the last or second-last beat. No su
 | No visual column | Visual hook in beat 1, shot pace limits |
 | No density limit | Facts and numbers per beat and per script |
 | No facts or brand rules | Facts table with sources, brand_rules.json, [VERIFY] |
-| No call to action | One CTA in a short, one plus one optional soft CTA in a long, placed late |
+| No call to action | One CTA beat in both tiers, plus one optional soft CTA in a long after the first mini-payoff, all checked in code |
 | Zeigarnik and dopamine framing | Curiosity and resumption, with grades |
 | Never resolve the main question early | Short: yes. Long: mini-payoffs, partial answer, re-engagement beats |
 | No validator | scripts/script_check.py, rerun by an independent reviewer |
 
-Kept: loops, the "which loop does this line serve" test, word economy, concrete over abstract.
+Kept: loops, the "which loop does this line serve" test, word economy, concrete over abstract, the appetite for an interrupting hook and the emotional-relevance source (references/psychology-for-scripts.md).
 
 ## Agents
 

@@ -13,7 +13,7 @@ A compact summary of the creators and brands studied for this skill (research da
 | Mario Joos (ex MrBeast editor) | Novelty matters more than cut speed. "Structural context is god-like" | C |
 | Nas Daily | One story per minute, big subtitles, fixed sign-off. Measured 2.34 to 2.57 words per second | B, C |
 | Drew Binsky | Moved from "what's up guys, welcome to" (2019) to claim-first openers (2026) | C |
-| Kara and Nate | Journey as an obstacle, an honest downside before the verdict, a question plus share CTA | C |
+| Kara and Nate | The trip there as an obstacle, an honest downside before the verdict, a question plus share CTA | C |
 | Lost LeBlanc | Price loop opened at 10 s, paid at 101 s of 111 s. "By day... later that night" day frame | C |
 | Mark Wiens | Sensory promise plus place in the hook | C |
 | Visit Norway, winter family film | Third person, five characters with one want each, activities as a verb list | C |
@@ -37,6 +37,18 @@ Measured pace: creator voiceover median 2.75 words per second (shorts 2.87, long
 | Sources shown | Kurzgesagt, Veritasium | Facts table, F04 to F07, [VERIFY] |
 | Honest downside before the verdict | Kara and Nate | One plain limit in long scripts |
 | A day as scenes, not dates | Lost LeBlanc, Visit Norway | "By the climb... at the top..." instead of "Day 1, Day 2" |
+
+## Distinctive brand assets
+
+Rent a Finn and Ask Gudmundur sold a person, not a list of sights. Cover the logo: a viewer should still know whose video it is. Give every Outdoor Norway script at least one of these, and keep them the same across videos:
+
+| Asset | How it shows up in a script | Status |
+|---|---|---|
+| A named guide as narrator or on camera | The same guide answers one viewer question per video, by first name, in the visual column and a facts row | [VERIFY: which guide agrees to appear, and the name to use] |
+| A recurring natural sound | The same sound in beat 1 or at the first re-engagement: skins squeaking on dry snow, or the thermos lid at the first stop. Mark it `[PAUSE 2]` | Free to use now |
+| A fixed local detail | One detail only a Voss local would show, used as the payoff shot or the end card: the waffle with jam at the mountain cafe, the gondola leaving beside the train station | Free to use now (product-marketing.md) |
+
+Use the asset, not a slogan about it. The asset is a picture or a sound, never a line like "That's the Voss way".
 
 ## What does not transfer
 

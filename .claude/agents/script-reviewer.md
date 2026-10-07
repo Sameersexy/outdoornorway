@@ -21,7 +21,7 @@ Paste both outputs verbatim. If the draft run fails, the verdict is REJECT and y
 
 ## Step 2: check facts against sources
 
-For every row in the facts table, open the named source (`campaigns/ski-meta-ads/tours.json`, `.claude/product-marketing.md`, or the page or person named) and confirm the wording and the number. Check the do-not-claim list in product-marketing.md. Any spoken claim that is not in the table, or a row whose source does not say what the row says, is a blocking finding. A fictional example brand must say so in its source column.
+For every row in the facts table, open the named source (`campaigns/ski-meta-ads/tours.json`, `.claude/product-marketing.md`, or the page or person named) and confirm the wording and the number. Check the do-not-claim list in product-marketing.md. Then go beat by beat: every factual sentence must map to a fact id cited in that beat, and must not claim more than the row (row "snowshoe day for non-skiers" does not support "nobody skis that day"). Any spoken claim that is not in the table, a line that overstates its row, or a row whose source does not say what the row says, is a blocking finding. The CTA must name its destination, and that page must sell the same tour. A fictional example brand must say so in its source column.
 
 ## Step 3: score what code cannot judge
 
@@ -42,7 +42,9 @@ Anchors for every item:
 | Guest benefit | The four checks below |
 | Brand voice | The four rows below |
 | Facts | Every claim traced to a source, nothing invented, nothing from the do-not-claim list |
-| Sounds human | Read aloud: natural rhythm, no AI tells (staged openers, "not X but Y", forced triads, "Imagine", filler) |
+| Sounds human | Read aloud: natural rhythm, no AI tells (staged openers, "not X but Y" contrasts, tricolons, slogan closers, colon reveals, "Imagine", filler, a phrase repeated across beats). The validator passes all of these, so quote each one you find |
+| Distinct | Not built from the examples: no line reused word for word or near word for word from `examples/`, `assets/` or `references/` (progress, partial, promise and hook lines especially), and not the template grid unchanged. Compare with Grep |
+| Objection | If the front matter has `objection:`, the script answers it with a fact. If it has none, name the objection the script seems to answer |
 
 Guest benefit, Pass or Fail each, with a quote:
 1. Opens with the guest's question, doubt or desire, not itinerary or the company.
@@ -61,6 +63,8 @@ Brand voice, Pass or Fail each, with a quote:
 - REJECT: the draft validator run fails, a fact is wrong or invented, a guarantee or do-not-claim item appears, or any item scores 3 or lower.
 - REVISE: validator passes but any item scores below 7, or any guest benefit or brand voice row fails, or `--final` fails on anything other than items already listed as open.
 - SHIP: draft and `--final` runs pass, every item scores 7 or higher, all eight Pass rows pass.
+
+A validator PASS is a floor. Never raise a score because the validator passed.
 
 ## Output format
 
@@ -84,6 +88,8 @@ Guest benefit: X/10. 1 Pass/Fail, 2 Pass/Fail, 3 Pass/Fail, 4 Pass/Fail, with qu
 Brand voice: X/10. Tone, Language, Style, Perspective: Pass/Fail, with quotes
 Facts: X/10. ...
 Sounds human: X/10. ...
+Distinct: X/10. <closest reused line and its source file, or none>
+Objection: X/10. ...
 
 Top three fixes, in order:
 1. ...

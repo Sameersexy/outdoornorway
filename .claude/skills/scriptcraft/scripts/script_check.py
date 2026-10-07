@@ -28,23 +28,33 @@ BEAT_OVER_BLOCK = 1.25    # T04 and H01: estimate over the declared seconds
 BEAT_OVER_WARN = 1.10     # T04
 OVERLAY_REPEAT_MAX = 0.6  # O03
 CAPTION_HASHTAGS_MAX = 2  # C05
+HOLD_INFO_SECONDS = 3     # info line: declared time this far above the estimate is a silent hold
+PLACEHOLDER_WORDS = " tbd "  # a [VERIFY] or [TODO] note counts as one spoken word
 
-SPELLED = {"two", "three", "four", "five", "six", "seven", "eight", "nine",
-           "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen",
-           "sixteen", "seventeen", "eighteen", "nineteen", "twenty",
-           "hundred", "thousand", "million"}
+# Spelled two to nineteen count toward density only; "one" never counts.
+# Twenty and up are claims: they count toward density and need a facts row (F04).
+SPELLED_SMALL = {"two", "three", "four", "five", "six", "seven", "eight", "nine",
+                 "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen",
+                 "sixteen", "seventeen", "eighteen", "nineteen"}
+UNITS = {"one": 1, "two": 2, "three": 3, "four": 4, "five": 5, "six": 6, "seven": 7, "eight": 8, "nine": 9}
+TENS = {"twenty": 20, "thirty": 30, "forty": 40, "fifty": 50, "sixty": 60, "seventy": 70,
+        "eighty": 80, "ninety": 90}
+BIG = dict(TENS, dozen=12, hundred=100, thousand=1000, million=1000000)
+SPELLED_BIG_RE = re.compile(r"\b(%s)(?:[- ](%s))?\b|\b(dozen|hundred|thousand|million)\b"
+                            % ("|".join(TENS), "|".join(UNITS)), re.I)
 H02_BANNED = re.compile(r"\b(logo|title card|intro(duction)?|fade[ -]in|black screen|"
                         r"talking[ -]head|greeting|waves? hello|says? hi)\b", re.I)
 H02_MOTION = re.compile(r"\b(person|people|skier|guide|hands|pov|drop|skis|walk|hike|"
                         r"hiking|pan|drone|glide|gliding|snow|boots)", re.I)
-# BR14: ordinary uses that are not claims ("your first tour", "at most").
-# BR09: "no one can guarantee snow" is the required disclaimer, not a guarantee.
-NEGATABLE_RULES = {"BR09"}
-NEGATION_RE = re.compile(r"\b(not|no|never|nobody|cannot|can't|can not|won't|isn't)\b")
-ORDINARY_BEFORE = {"first": {"your", "my", "our", "their", "his", "her", "its", "at"}, "most": {"at"}}
+ONE_TAKE_RE = re.compile(r"^one take:", re.I)
+TAKE_MOTION = re.compile(r"\b(pov|drone|pan|push|pull|track|tracking|follow|follows|orbit|tilt|walk|walks|"
+                         r"step|steps|climb|climbs|ski|skis|glide|glides|slide|slides|rise|rises|drop|drops|"
+                         r"hike|hikes|run|runs|turn|turns)\b", re.I)
 
-WORD_RE = re.compile(r"[A-Za-z0-9\u00c0-\u024f]+(?:['\u2019.,:-][A-Za-z0-9\u00c0-\u024f]+)*")
+# Hyphens split words, so "a-b-c" is three words. Digits keep their separators.
+WORD_RE = re.compile(r"\d+(?:[.,:]\d+)+|[A-Za-z0-9\u00c0-\u024f]+(?:['\u2019][A-Za-z0-9\u00c0-\u024f]+)*")
 NUM_RE = re.compile(r"\d+(?:[.,:]\d+)*")
+SPACED_THOUSANDS = re.compile(r"(?<![\d.,])\d{1,3}(?:[ \u00a0]\d{3})+(?!\d)")
 PAUSE_RE = re.compile(r"\[\s*PAUSE\s+(\d+(?:\.\d+)?)\s*s?\s*\]", re.I)
 BRACKET_RE = re.compile(r"\[[^\]]*\]")
 TIME_RE = re.compile(r"^(\d+(?:\.\d+)?)\s*-\s*(\d+(?:\.\d+)?)$")
@@ -91,6 +101,63 @@ RULES = {
     "R02": "no capitals for emphasis",
     "R03": "speaks to you more than about the company",
 }
+# --explain: what each rule counts, and the usual fix.
+HELP = {
+    "T01": ("Sum of beat estimates: words / (wps x narrator pace) + penalty per spoken digit number + [PAUSE n].",
+            "Cut words. Spoken digits cost extra time, so cut numbers first."),
+    "T02": ("The same estimate against the warning line.", "Cut a sentence or accept the warning."),
+    "T03": ("Declared start-end times: contiguous, from 0, ending inside the maximum (or the seconds field).",
+            "Make each beat start where the last one ended."),
+    "T04": ("Per beat: estimated speaking time against declared time. Over 10 percent warns, over 25 percent blocks.",
+            "Cut words in that beat or give it more seconds from a quieter beat."),
+    "W01": ("Spoken words, hyphenated parts counted separately, [PAUSE] excluded, a placeholder counts as 1 word.",
+            "Cut words. Budget scales with narrator word_scale and seconds / max_seconds."),
+    "W02": ("Same count against the target range.", "Add or cut a line; do not pad with filler."),
+    "W03": ("Words per beat. Hook and cta beats are exempt from the target range, not from the hard max.",
+            "Move a sentence to a neighbouring beat or cut it."),
+    "B01": ("Rows in the Script table.", "Merge or split beats."),
+    "B02": ("Declared seconds per beat.", "Re-time beats inside the range."),
+    "H01": ("Short: beat 1 end time and words. Long: words before verbal_by_seconds, and the promise beat timing and words.",
+            "Cut the hook to one question. With narrator slow, keep a short hook to 6 words."),
+    "H02": ("Beat 1 visual cell text: banned openers block; no motion or person word warns.",
+            "Open on a moving subject: skis, a guide, hands, boots, a drone move."),
+    "H03": ("you, your and similar words in voiceover and overlay inside the hook window.", "Put the guest in the first line."),
+    "F01": ("Per beat: cited fact ids, plus digit numbers and names not covered by a cited row. Long also counts numbers: "
+            "digits, spelled two and up (one never counts), a full date is 2 or 3 numbers.",
+            "Move one fact to another beat, the caption or the description."),
+    "F02": ("Distinct facts across all beats. Facts rows that no beat cites do not count.", "Cut facts the takeaway does not need."),
+    "F03": ("Distinct numbers across all beats: digits and spelled numbers from two up, voiceover and overlay.",
+            "Say one number per idea. Put dates and prices in the caption."),
+    "F04": ("Every digit and every spelled number from twenty up, in voiceover, overlay and caption, must be in a "
+            "verified facts row. In a beat it must be in a row that beat cites. Commas, spaces and NOK are ignored.",
+            "Cite the row in the beat's facts column, add a sourced row, or cut the number."),
+    "F05": ("Ids in the facts column against the facts table.", "Fix the id or add the row."),
+    "F06": ("Facts rows: a source and verified yes or no.", "Name the file, page or person, and set verified."),
+    "F07": ("Capitalized words not at a sentence start (plus known place names anywhere), not found in the facts table.",
+            "Add a sourced row for the name or cut it. The full brand name is exempt."),
+    "S01": ("Words per sentence across the voiceover. Hard max blocks; the average warns.",
+            "Split long sentences. A deliberate fragment pair may keep the average warning."),
+    "V01": ("Beat seconds divided by shots. A short single shot over the static maximum blocks unless it is a "
+            "'one take:' shot that names a camera or subject move.", "Add a shot, or mark a real continuous take as 'one take:'."),
+    "V02": ("An empty visual cell.", "Name a subject and an action."),
+    "V03": ("Long: windows with no beat of 2 or more shots and no shift or reengage role.", "Add a cut or a reengage beat."),
+    "O01": ("Overlay words, characters per line and lines.", "Cut the overlay to keywords."),
+    "O02": ("Overlay characters per second of the beat, and the beat's minimum seconds.", "Shorten the overlay or lengthen the beat."),
+    "O03": ("Share of the beat's voiceover words repeated in its overlay.", "Make the overlay add a keyword the voice does not say."),
+    "O04": ("Beat 1 overlay cell.", "Give muted viewers the question on screen."),
+    "C01": ("cta beats (hard_max), cta plus soft-cta beats (max), soft-cta beats (soft_mid_max); and a booking or "
+            "link ask in a beat without a cta role (warn).", "Keep one primary ask. Move asks out of story beats."),
+    "C02": ("cta start against the declared end of the script minus last_seconds. Long: a soft-cta must start after "
+            "promise_by_seconds and after the first mini beat.", "Move the ask later."),
+    "C03": ("Spoken words in the cta beat; more than one ask verb in it warns.", "One verb, one destination."),
+    "C04": ("cta beat position against the payoff or close of the dominant loop.", "Pay off first, then ask."),
+    "C05": ("Hashtags in the caption.", "Keep 2 at most."),
+    "L01": ("Role column loop and chapter tokens.", "Short: open:A in beat 1, close:A in one of the last 2 beats. "
+            "Long: see references/long-form.md."),
+    "R01": ("Em dash, en dash or emoji in any cell or the caption.", "Use a comma, colon or full stop."),
+    "R02": ("Words of 3 or more capitals not in the acronym allowlist.", "Use sentence case."),
+    "R03": ("Company words (we, our, us, the brand) against you words.", "Make the guest the subject."),
+}
 LIMIT_KEYS = {
     "T01": ["max_seconds"], "T02": ["warn_seconds"], "T03": ["max_seconds"],
     "T04": ["wps", "number_penalty_seconds"], "W01": ["words"], "W02": ["words"],
@@ -121,6 +188,9 @@ class Fact:
         self.squeezed = re.sub(r"[,\s]", "", no_nok)
 
     def has_number(self, n):
+        """n is a digit string or a spelled number such as 'ninety'."""
+        if not n[0].isdigit():
+            return self.has_phrase(n) or self.has_number(str(spelled_value(n)))
         return n in self.nums or re.search(r"(?<![\d.])%s(?!\d)" % re.escape(n), self.squeezed)
 
     def has_phrase(self, phrase):
@@ -176,16 +246,37 @@ def num_norm(s):
     return s.replace(",", "")
 
 
+def join_thousands(text):
+    """NOK 1 950 is one number, as in the facts row NOK 1,950."""
+    return SPACED_THOUSANDS.sub(lambda m: re.sub(r"\s", "", m.group(0)), text)
+
+
+def digits(text):
+    return [num_norm(x) for x in NUM_RE.findall(join_thousands(text))]
+
+
+def spelled_big(text):
+    """Spelled numbers from twenty up, compounds joined: 'twenty-five' -> 'twenty-five'."""
+    return [m.group(0).lower().replace(" ", "-") for m in SPELLED_BIG_RE.finditer(text)]
+
+
+def spelled_value(token):
+    parts = token.split("-")
+    return BIG[parts[0]] + (UNITS[parts[1]] if len(parts) > 1 else 0)
+
+
 def spoken(vo):
-    return PAUSE_RE.sub(" ", vo)
+    """Voiceover as said: [PAUSE n] removed, any other [note] counted as one word."""
+    return BRACKET_RE.sub(PLACEHOLDER_WORDS, PAUSE_RE.sub(" ", vo))
 
 
 def words(text):
     return WORD_RE.findall(text)
 
 
-def proper_nouns(text, allow):
-    """Capitalized words that are not sentence-initial and not I; adjacent ones form one name."""
+def proper_nouns(text, allow, known=()):
+    """Capitalized words that are not sentence-initial and not I; adjacent ones form one name.
+    A sentence-initial word counts when it is in known (lowercase place names and names)."""
     names, group, prev_end = [], [], 0
 
     def flush():
@@ -199,7 +290,7 @@ def proper_nouns(text, allow):
         is_i = w == "I" or re.match(r"^I['\u2019]", w)
         shouting = len(w) > 1 and w.isupper()  # emphasis is R02, not a name
         capital = w[0].isupper() and not is_i and not shouting and w not in allow
-        if capital and not initial:
+        if capital and (not initial or w.lower() in known):
             if group and not text[prev_end:m.start()].strip():
                 group.append(w)
             else:
@@ -389,47 +480,69 @@ class Context:
         return self.tname == "long"
 
 
+def is_brand(ctx, name):
+    return norm(name) == norm(ctx.brand.get("brand", ""))
+
+
+def cited_rows(ctx, b):
+    return [ctx.doc.facts_by_id[f] for f in b.facts if f in ctx.doc.facts_by_id]
+
+
 def fact_units(ctx, b):
     """Facts a beat carries: declared ids, plus numbers and names not covered by them."""
-    facts = ctx.doc.facts
-    declared = [ctx.doc.facts_by_id[f] for f in b.facts if f in ctx.doc.facts_by_id]
+    facts, declared = ctx.doc.facts, cited_rows(ctx, b)
     units = set(b.facts)
-    for n in sorted(b.digit_values):
+    for n in sorted(b.claim_numbers):
         if not any(f.has_number(n) for f in declared):
             row = next((f for f in facts if f.has_number(n)), None)
             units.add(row.id if row else "#" + n)
     for name in b.names:
-        if any(f.has_phrase(name) for f in declared):
+        if any(f.has_phrase(name) for f in declared) or is_brand(ctx, name):
             continue
         row = next((f for f in facts if f.has_phrase(name)), None)
-        if row:
-            units.add(row.id)
-        elif not has_phrase(norm(ctx.brand.get("brand", "")), name):
-            units.add("@" + name)
+        units.add(row.id if row else "@" + name)
     return units
+
+
+def known_names(ctx):
+    """Lowercase words that count as names even at a sentence start."""
+    known = {norm(n) for n in ctx.brand.get("place_names", {}).get("names", [])}
+    texts = [f.text for f in ctx.doc.facts] + [spoken(b.vo) for b in ctx.doc.beats]
+    for t in texts:
+        for name in proper_nouns(t, ctx.allow):
+            known.update(norm(w) for w in name.split())
+    return known
 
 
 def measure(ctx):
     pace = ctx.narrator["pace"]
+    known = known_names(ctx)
     for b in ctx.doc.beats:
         said = spoken(b.vo)
         shown = " ".join(b.overlay)
+        b.said = said
         b.word_list = words(said)
         b.words = len(b.word_list)
         b.pause = sum(float(x) for x in PAUSE_RE.findall(b.vo))
-        b.vo_digits = [num_norm(x) for x in NUM_RE.findall(said)]
-        b.digit_values = set(b.vo_digits) | {num_norm(x) for x in NUM_RE.findall(shown)}
-        spelled = {w.lower() for w in words(said + " " + shown) if w.lower() in SPELLED}
-        b.number_values = b.digit_values | spelled
+        b.vo_digits = digits(said)
+        b.digit_values = set(b.vo_digits) | set(digits(shown))
+        both = said + " " + shown
+        big = set(spelled_big(both))
+        small = {w.lower() for w in words(SPELLED_BIG_RE.sub(" ", both)) if w.lower() in SPELLED_SMALL}
+        b.claim_numbers = b.digit_values | big
+        b.number_values = b.claim_numbers | small
         b.est = (b.words / (ctx.t["wps"] * pace)
                  + ctx.t["number_penalty_seconds"] * len(b.vo_digits) + b.pause)
-        b.names = proper_nouns(BRACKET_RE.sub(" ", said), ctx.allow)
+        b.names = proper_nouns(said, ctx.allow, known)
         b.overlay_words = len(words(shown))
         b.units = fact_units(ctx, b)
     beats = ctx.doc.beats
     ctx.total_words = sum(b.words for b in beats)
     ctx.total_est = sum(b.est for b in beats)
     ctx.end = beats[-1].end
+    ctx.info = ["%s: about %.0f s with no voice or [PAUSE] (declared %g s, estimated %.1f s)"
+                % (b.label(), b.seconds - b.est, b.seconds, b.est)
+                for b in beats if b.seconds - b.est > HOLD_INFO_SECONDS]
 
 
 # ---------------------------------------------------------------- rule families
@@ -556,29 +669,40 @@ def check_facts(ctx):
     if len(numbers) > f["numbers_per_script_max"]:
         ctx.add("F03", "block", "%d numbers in the script, maximum %d" % (len(numbers), f["numbers_per_script_max"]),
                 ", ".join(sorted(numbers)))
-    shown = set().union(*[b.digit_values for b in beats])
-    shown |= {num_norm(x) for x in NUM_RE.findall(doc.caption)}
-    for n in sorted(shown):
+    final_sev = "block" if ctx.final else "warn"
+    for b in beats:
+        cited = cited_rows(ctx, b)
+        for n in sorted(b.claim_numbers):
+            mine = [r for r in cited if r.has_number(n)]
+            rows = [r for r in doc.facts if r.has_number(n)]
+            if mine:
+                if not any(r.verified == "yes" for r in mine):
+                    ctx.add("F04", final_sev, "%s: number only in an unverified fact row" % b.label(), n)
+            elif rows:
+                ctx.add("F04", final_sev, "%s: number is in %s, which this beat does not cite"
+                        % (b.label(), ", ".join(r.id for r in rows)), n)
+            else:
+                ctx.add("F04", "block", "%s: number not in the facts table" % b.label(), n)
+    for n in sorted(set(digits(doc.caption)) | set(spelled_big(doc.caption))):
         rows = [r for r in doc.facts if r.has_number(n)]
         if not rows:
-            ctx.add("F04", "block", "number not in the facts table", n)
+            ctx.add("F04", "block", "caption: number not in the facts table", n)
         elif not any(r.verified == "yes" for r in rows):
-            ctx.add("F04", "block" if ctx.final else "warn", "number only in an unverified fact row", n)
+            ctx.add("F04", final_sev, "caption: number only in an unverified fact row", n)
     used = sorted({fid for b in beats for fid in b.facts})
     for fid in used:
         row = doc.facts_by_id.get(fid)
         if row is None:
             ctx.add("F05", "block", "fact id is not in the facts table", fid)
         elif row.verified != "yes":
-            ctx.add("F04", "block" if ctx.final else "warn", "fact used but not verified yes", fid)
+            ctx.add("F04", final_sev, "fact used but not verified yes", fid)
     for row in doc.facts:
         if not row.source.strip() or row.source.strip() == "-" or not row.text.strip():
             ctx.add("F06", "block", "fact row %s has no source or no text" % row.id)
         if row.verified not in ("yes", "no"):
             ctx.add("F06", "block", "fact row %s: verified must be yes or no" % row.id, row.verified)
-    brand = norm(ctx.brand.get("brand", ""))
     for name in sorted({n for b in beats for n in b.names}):
-        if not has_phrase(ctx.facts_low, name) and not has_phrase(brand, name):
+        if not has_phrase(ctx.facts_low, name) and not is_brand(ctx, name):
             ctx.add("F07", "warn", "proper noun not in the facts table", name)
 
 
@@ -602,6 +726,13 @@ def check_visuals(ctx):
             ctx.add("V02", "block", "%s has no visual" % b.label())
             continue
         per = b.seconds / len(b.shots)
+        takes = [x for x in b.shots if ONE_TAKE_RE.match(x)]
+        if takes:
+            # A continuous take that names a move is motion, not a static hold.
+            for x in takes:
+                if not TAKE_MOTION.search(ONE_TAKE_RE.sub("", x)):
+                    ctx.add("V01", "warn", "%s: one take names no camera or subject move" % b.label(), quote(x))
+            continue
         if "hard_max_static_seconds" in v and len(b.shots) == 1 and b.seconds > v["hard_max_static_seconds"]:
             ctx.add("V01", "block", "%s holds one shot for %g s, maximum %g" % (b.label(), b.seconds, v["hard_max_static_seconds"]),
                     quote(b.visual))
@@ -648,12 +779,33 @@ def payoff_index(ctx):
 
 
 def check_cta(ctx):
-    c, cta = ctx.t["cta"], ctx.cta
-    if not c["min"] <= len(cta) <= c["max"]:
-        ctx.add("C01", "block", "%d cta beats, allowed %d to %d" % (len(cta), c["min"], c["max"]))
-    soft = [b for b in ctx.doc.beats if b.has("soft-cta")]
+    c, cta, beats = ctx.t["cta"], ctx.cta, ctx.doc.beats
+    hard_max = c.get("hard_max", c["max"])
+    soft = [b for b in beats if b.has("soft-cta")]
+    if not c["min"] <= len(cta) <= hard_max:
+        ctx.add("C01", "block", "%d cta beats, allowed %d to %d" % (len(cta), c["min"], hard_max))
+    if len(cta) + len(soft) > c["max"]:
+        ctx.add("C01", "block", "%d asks (cta plus soft-cta beats), maximum %d" % (len(cta) + len(soft), c["max"]))
     if len(soft) > c.get("soft_mid_max", 0):
         ctx.add("C01", "block", "%d soft-cta beats, maximum %d" % (len(soft), c.get("soft_mid_max", 0)))
+    cfg = ctx.brand.get("cta", {})
+    untagged = cfg.get("untagged_regex")
+    for b in beats:
+        if untagged and not (b.has("cta") or b.has("soft-cta")):
+            m = re.search(untagged, norm(b.said + " / " + b.text))
+            if m:
+                ctx.add("C01", "warn", "%s asks for an action but has no cta role" % b.label(), m.group(0))
+    minis = [b.end for b in beats if any(r.startswith("mini:") for r in b.roles)]
+    not_before = max(ctx.t["hook"].get("promise_by_seconds", 0), min(minis) if minis else 0)
+    for b in soft:
+        if b.start < not_before:
+            ctx.add("C02", "block", "%s soft-cta starts at %g s, not before %g s (after the promise and the first mini-payoff)"
+                    % (b.label(), b.start, not_before))
+    for b in cta:
+        low = norm(b.said)
+        verbs = [v for v in cfg.get("verbs", []) if has_phrase(low, v)]
+        if len(verbs) > 1:
+            ctx.add("C03", "warn", "%s stacks %d asks, keep one" % (b.label(), len(verbs)), ", ".join(verbs))
     pay = payoff_index(ctx)
     for b in cta:
         if b.start < ctx.end - c["last_seconds"]:
@@ -771,19 +923,27 @@ def check_style(ctx):
 
 
 def scope_texts(ctx, scope):
+    """(where, lowercase text, beat or None) for a brand rule scope."""
     beats = ctx.doc.beats
-    pair = lambda b: (b.label(), norm(spoken(b.vo) + " / " + b.text))
+    item = lambda b: (b.label(), norm(PAUSE_RE.sub(" ", b.vo) + " / " + b.text), b)
     if scope == "first_beat":
-        return [pair(beats[0])]
+        return [item(beats[0])]
     if scope == "before_cta":
         stop = ctx.cta[0].n if ctx.cta else len(beats) + 1
-        return [pair(b) for b in beats if b.n < stop and not b.has("soft-cta")]
+        return [item(b) for b in beats if b.n < stop and not b.has("soft-cta")]
     if scope == "voiceover_and_text":
-        return [pair(b) for b in beats]
-    texts = [pair(b) for b in beats] + [("caption", norm(ctx.doc.caption))]
+        return [item(b) for b in beats]
+    texts = [item(b) for b in beats] + [("caption", norm(ctx.doc.caption), None)]
     if scope == "script":
-        return [("script", " \n ".join(t for _, t in texts))]
+        return [("script", " \n ".join(t for _, t, _ in texts), None)]
     return texts
+
+
+def negated(rule, text, m):
+    """True when every guarantee word in the match is directly governed by a negation."""
+    terms = list(re.finditer(rule["guarantee_regex"], m.group(0), re.I))
+    neg = rule["negated_when_preceded_by"]
+    return bool(terms) and all(re.search(neg, text[:m.start() + g.start()], re.I) for g in terms)
 
 
 def check_brand(ctx):
@@ -792,41 +952,34 @@ def check_brand(ctx):
             continue
         rid, sev, msg = rule["id"], rule["severity"], rule["message"]
         texts = scope_texts(ctx, rule.get("scope", "any"))
-        joined = " \n ".join(t for _, t in texts)
+        joined = " \n ".join(t for _, t, _ in texts)
         if "requires_regex" in rule:
             trigger = re.search(rule.get("when_regex") or rule.get("regex"), joined, re.I)
             if trigger and not re.search(rule["requires_regex"], joined, re.I):
                 ctx.add(rid, sev, msg, trigger.group(0))
             continue
-        for where, text in texts:
-            hits = []
-            for p in rule.get("phrases", []):
-                if has_phrase(text, p):
-                    hits.append(p)
+        for where, text, beat in texts:
+            hits = [p for p in rule.get("phrases", []) if has_phrase(text, p)]
             if "regex" in rule:
                 for m in re.finditer(rule["regex"], text, re.I):
-                    near = text[max(0, m.start() - 25):m.end()]
-                    if rid in NEGATABLE_RULES and NEGATION_RE.search(near):
+                    if "guarantee_regex" in rule and negated(rule, text, m):
                         continue
                     hits.append(m.group(0))
             for sup in rule.get("superlatives", []):
-                hits += superlative_hits(ctx, rid, text, sup)
+                hits += superlative_hits(ctx, text, sup, beat)
             for h in hits:
                 ctx.add(rid, sev, "%s: %s" % (where, msg), h)
 
 
-def superlative_hits(ctx, rid, text, sup):
-    """A superlative counts unless a facts row contains the same word."""
+def superlative_hits(ctx, text, sup, beat):
+    """A superlative counts unless the beat cites a facts row with the same word (caption: any row)."""
     pat = r"(?<![a-z0-9#])%s(?![a-z0-9])" % re.escape(sup.lower())
-    if re.search(pat, ctx.facts_low):
+    if not re.search(pat, text):
         return []
-    hits = []
-    for m in re.finditer(pat, text):
-        prev = re.findall(r"[a-z']+", text[:m.start()])
-        if rid == "BR14" and prev and prev[-1] in ORDINARY_BEFORE.get(sup.lower(), ()):
-            continue  # ordinary use: "your first tour", "at most"
-        hits.append(sup)
-    return sorted(set(hits))
+    rows = cited_rows(ctx, beat) if beat else ctx.doc.facts
+    if any(re.search(pat, r.low) for r in rows):
+        return []
+    return [sup]
 
 
 CHECKS = [check_time, check_words, check_beats, check_hook, check_facts, check_sentences,
@@ -867,7 +1020,7 @@ def as_dict(ctx, strict=False):
                    "beats": len(ctx.doc.beats), "end_seconds": ctx.end,
                    "facts": len(set().union(*[b.units for b in ctx.doc.beats])),
                    "numbers": len(set().union(*[b.number_values for b in ctx.doc.beats]))},
-        "findings": ctx.findings,
+        "findings": ctx.findings, "info": ctx.info,
         "result": "PASS" if ok else "FAIL", "blocking": blocks, "warnings": warns,
     }
 
@@ -884,6 +1037,7 @@ def render(ctx, path, strict=False):
     tt = d["totals"]
     out.append("TOTAL words %d | est %.1f s | declared end %g s | beats %d | facts %d | numbers %d"
                % (tt["words"], tt["est_seconds"], tt["end_seconds"], tt["beats"], tt["facts"], tt["numbers"]))
+    out += ["[INFO] %s" % x for x in d["info"]]
     for rid in rule_order(ctx):
         found = [f for f in ctx.findings if f["id"] == rid]
         if not found:
@@ -914,6 +1068,8 @@ def explain(rule_id, cfg, brand):
     if rid not in RULES:
         return None
     lines = ["%s: %s" % (rid, RULES[rid])]
+    if rid in HELP:
+        lines += ["  counts: %s" % HELP[rid][0], "  fix: %s" % HELP[rid][1]]
     for tname, t in cfg["tiers"].items():
         vals = ["%s=%s" % (k, json.dumps(t[k])) for k in LIMIT_KEYS.get(rid, []) if k in t]
         if vals:

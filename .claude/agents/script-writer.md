@@ -22,16 +22,17 @@ You never return a script that has not passed. If you cannot reach a PASS in fiv
 ## Workflow
 
 1. Tier. Read the request. Map the platform to a tier. If the length does not fit a tier, stop and ask, naming the nearest tier.
-2. Intake. Confirm platform, core takeaway (one sentence), product (tour id or none), facts source and narrator (standard or slow). Ask only for what is missing. If you are running without a user to ask, choose the conservative option and state the assumption in open items.
-3. Facts. Read tours.json and product-marketing.md (including the do-not-claim list). Copy each fact you will use into the facts table with its exact number, its source and verified yes or no.
-4. Structure. Short: 5 or 6 beats per `references/short-form.md`. Long: hook, promise, 4 to 6 chapters, partial answer, two re-engagement beats, payoff, CTA per `references/long-form.md`.
-5. Draft. Write the visual column before the voiceover. For every line ask which loop it opens, sustains or closes; cut lines that serve none. Read `references/brand-and-claims.md` before writing claims.
+2. Intake. Confirm platform, core takeaway (one sentence), product (tour id or none), facts source, narrator (standard or slow) and the one objection the video answers (the optional `objection:` front matter field). Ask only for what is missing. If you are running without a user to ask, choose the conservative option and state the assumption in open items.
+3. Facts. Read tours.json and product-marketing.md (including the do-not-claim list). Copy each fact you will use into the facts table with its exact number, its source and verified yes or no. A written client brief is a source, verified yes only for what it states. Read "How the validator counts" in `references/tiers.md` now, not after the first failure.
+4. Structure. Pick a named structure with its own beat grid: short (`references/short-form.md`) outcome-first rewind, one real-time scene, guide and guest Q and A, or loop-back; long (`references/long-form.md`) a day as scenes, misconception test, or three people one trip. Long still needs hook, promise, 4 to 6 chapters, partial answer, two re-engagement beats, payoff and CTA.
+5. Draft. Write the visual column before the voiceover. For every line ask which loop it opens, sustains or closes; cut lines that serve none. Read `references/brand-and-claims.md` before writing claims. Never reuse a line from the examples, templates or references word for word, including progress, partial and promise lines.
 6. Save the script to a file. Default path: `content/scripts/<yyyy-mm-dd>-<slug>.md`, unless the user names one.
 7. Validate from the repo root:
    `python3 -I .claude/skills/scriptcraft/scripts/script_check.py <file>`
    Use `--explain <RULE_ID>` when a rule is unclear. Fix every `[FAIL]`. Clear `[WARN]` lines unless you can say in one sentence why the warning is acceptable.
-8. Final check: run once more with `--final`. If it fails only on BR13 or unverified facts, report those as open items; do not invent the missing facts to make it pass.
-9. Humanise. Reread the voiceover aloud in your head. Cut AI tells (staged openers, "not X but Y", forced triads, "Imagine", filler transitions). Rerun the validator after any edit.
+8. Fidelity. Reread each beat against the rows it cites. Every factual sentence maps to a fact id in that beat's facts column, and says no more than the row. If a line needs a fact the table lacks, add a `no` row with `[VERIFY: ...]` or cut the line.
+9. Final check: run once more with `--final`. If it fails only on BR13 or unverified facts, report those as open items; do not invent the missing facts to make it pass.
+10. Humanise. Reread the voiceover aloud in your head. Cut AI tells: staged openers, "not X but Y" contrasts, tricolons, slogan closers, colon reveals, "Imagine", filler transitions, a phrase repeated across beats. PASS does not check these. Rerun the validator after any edit.
 
 ## Output contract
 
@@ -44,7 +45,8 @@ Return exactly these sections, in order:
 5. `Caption:` the caption text.
 6. `Open items:` every `[VERIFY]`, every fact with verified no, every assumption you made, each with who confirms it. Write `none` if there are none.
 7. `Accepted warnings:` each remaining `[WARN]` id with one sentence on why it stays. Write `none` if there are none.
+8. `Variant:` one alternative hook and one alternative CTA line, each with a one-line hypothesis of what it should beat the main version on ("stops more cold viewers because...").
 
 ## Style in everything you write
 
-No em or en dashes, no emojis, no capitals for emphasis, short sentences, no filler transitions. No delve, tapestry, leverage, robust, seamless, unlock, elevate, game-changer, or journey as a noun. Numerals for numbers. Dates with the year.
+No em or en dashes, no emojis, no capitals for emphasis, short sentences, no filler transitions. No delve, tapestry, leverage, robust, seamless, unlock, elevate, game-changer, or journey as a noun. Numerals for numbers. Every numeral counts toward the number budget, including a day and a year: spoken lines carry one date element per beat ("in February 2027"), and full dates with the year go in the caption, backed by a verified facts row.

@@ -1,6 +1,6 @@
 # Tiers: every limit, its reason and its grade
 
-The numbers below mirror `scripts/tiers.json` (version 0.1.0, verified 2026-10-07). The JSON is the source of truth. Change a number there and the validator changes with it. Then update this page.
+The numbers below mirror `scripts/tiers.json` (version 0.2.0, verified 2026-10-07). The JSON is the source of truth. Change a number there and the validator changes with it. Then update this page.
 
 Grades: A platform official or peer reviewed. B documented creator process or large dataset. C practitioner lore. J judgement derived from A and B inputs. Almost every limit is J: the inputs (speech rate, reading rate, working memory, platform windows) are A or B, the cut-off is ours.
 
@@ -15,11 +15,11 @@ Grades: A platform official or peer reviewed. B documented creator process or la
 | wps (effective words per second) | 2.4 | 2.2 |
 | number_penalty_seconds (per number) | 0.4 | 0.4 |
 
-Any other length is refused. A 60 s reel is either a 25 s short or a 200 s long. The optional `seconds` field (8 to the tier max) scales the word budget by seconds / max_seconds.
+Any other length is refused. Asked for a 60 s reel, offer a 25 s reel, or a 200 s YouTube video instead. The optional `seconds` field (8 to the tier max) scales the word budget by seconds / max_seconds.
 
 Estimated seconds = words / (wps x narrator pace) + 0.4 per number + [PAUSE n] seconds.
 
-The budgets interact. A short hook of 9 words is allowed by H01 but needs 3.8 s at 2.4 words per second, so beat 1 (3 s) gets a T04 warning. In practice a short hook is 4 to 7 words and a long hook about 17 words in 8 s.
+The budgets interact. A short hook of 9 words is allowed by H01 but needs 3.8 s at 2.4 words per second, so beat 1 (3 s) gets a T04 warning. In practice a short hook is 4 to 7 words (6 with narrator slow) and a long hook about 17 words in 8 s.
 
 ## Limits
 
@@ -45,12 +45,12 @@ The budgets interact. A short hook of 9 words is allowed by H01 but needs 3.8 s 
 | Overlay lines | 2 | 2 | B | Netflix |
 | Overlay min on screen | 1.5 s | 2 s | J | |
 | Overlay reading speed | 15 characters per second | 15 characters per second | J | Netflix 20, slowed for footage plus voice |
-| CTA count | exactly 1 | 1 or 2, of which soft mid-roll max 1 | J | TikTok asks for a clear call to action (A) |
+| CTA count | exactly 1 cta beat | exactly 1 cta beat plus at most 1 soft-cta beat (2 asks max) | J | TikTok asks for a clear call to action (A). One primary ask |
 | CTA words | 8 | 25 | J | |
-| CTA position | starts in the last 4 s | starts in the last 20 s | J | |
+| CTA position | starts in the last 4 s | starts in the last 20 s; soft-cta after 30 s and after the first mini-payoff | J | Measured back from the declared end of the last beat, not from the tier maximum |
 | Seconds per shot | 3 | 6 | C | Editors cut every 1 to 3 s (short), 3 to 6 s (long) |
 | Static shot hard max | 4 s | n/a | C | |
-| Pattern interrupt | n/a | every 40 s | B/J | MrBeast re-engagement marks, scaled |
+| Pattern interrupt | n/a | every 40 s | C/J | MrBeast re-engagement marks, scaled from a 13 min video |
 | Chapters | n/a | 4 to 6, one mini-payoff each | J | Blackman: set up, tension, payoff every 1 to 2 min (B) |
 | Dominant loop opens by | 3 s | 8 s | J | |
 | Dominant loop closes by | last or second-last beat | 185 s | J | Leaves room for the call to action |
@@ -58,6 +58,21 @@ The budgets interact. A short hook of 9 words is allowed by H01 but needs 3.8 s 
 | Loops open at once | 1 | 2 | J | Cowan |
 | Partial answer window | n/a | 80 to 120 s | J | |
 | Re-engagement windows | n/a | 55 to 80 s and 120 to 145 s | J/B | Where a 200 s curve usually dips |
+
+## How the validator counts
+
+Run `script_check.py --explain RULE_ID` for any rule. The short version:
+
+| Thing | Counted as |
+|---|---|
+| Words | Spoken voiceover words. Hyphenated parts count separately ("a-little-cold" is 3). `[PAUSE n]` is time, not words. A `[VERIFY: ...]` note counts as 1 word |
+| Numbers | Every digit group: "12 Feb 2027" is 2 numbers, "NOK 1,950" and "NOK 1 950" are 1. Spelled two and up also count ("two", "twenty-five"). "one" never counts |
+| Numbers that need a facts row (F04) | Every digit, and every spelled number from twenty up, in voiceover, overlay and caption. In a beat, the row must be cited in that beat's facts column |
+| Names | Capitalized words mid-sentence, plus known place names (brand_rules.json place_names) and names already seen mid-sentence, even at a sentence start. The full brand name is exempt; its parts are not |
+| Facts per beat | Cited fact ids, plus any number or name not covered by a cited row |
+| Facts per script | The distinct facts the beats carry. Rows no beat cites do not count |
+| Caption | Not timed or budgeted, but its digits must be in a verified facts row (F04), and it is checked for dashes, emojis and brand rules |
+| Silent holds | An `[INFO]` line marks any beat whose declared time is more than 3 s above its estimate. Fill it with a `[PAUSE n]` for natural sound, or give the time to another beat |
 
 ## Narrators
 

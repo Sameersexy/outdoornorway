@@ -17,6 +17,14 @@ Grades: A peer reviewed or platform official. B large dataset or documented proc
 | Thumbnail and title match | The first 30 s must confirm the promise | A | YouTube Help, audience retention |
 | Escalation | Each step bigger than the last, best payoff late | B | MrBeast production memo |
 
+## Interruption and emotional relevance
+
+Kept from the previous skill, with the claims trimmed. A hook's job is to interrupt a thumb that is about to scroll. Polite, generic openers lose that contest; a specific, slightly uncomfortable truth wins it.
+
+The best source of that truth is emotional relevance: what the viewer believes but has never heard said out loud. "You think you'll be the slow one." "Your kids don't ski, so you assume this trip isn't for you." Say it plainly, then let the video answer it with a fact. Find it in the objection list (references/brand-and-claims.md, product-marketing.md) or in real guest questions, never by guessing at the viewer's age, body or status (BR08).
+
+Grade: C for the craft claim. The memory benefit of curiosity behind it is A (Gruber 2014).
+
 ## What we dropped
 
 | Claim | Verdict | Why |

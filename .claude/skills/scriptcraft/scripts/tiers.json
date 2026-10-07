@@ -1,7 +1,7 @@
 {
-  "version": "0.1.0",
+  "version": "0.2.0",
   "verified": "2026-10-07",
-  "note": "Single source of truth for length rules. The validator and every document read this file. Grades: A platform official or peer reviewed, B documented creator process or large dataset, C practitioner lore, J judgement derived from A and B inputs. Almost every limit below is J. Change a number here and the validator changes with it.",
+  "note": "Single source of truth for length rules. The validator and every document read this file. Grades: A platform official or peer reviewed, B documented creator process or large dataset, C practitioner lore, J judgement derived from A and B inputs. Almost every limit below is J. Change a number here and the validator changes with it. 0.2.0 added cta.hard_max: max counts every ask (cta plus soft-cta beats), hard_max counts cta beats alone, so a long script has one primary ask and at most one soft ask.",
   "tiers": {
     "short": {
       "label": "Short form: Instagram Reels, YouTube Shorts, TikTok",
@@ -18,7 +18,7 @@
       "facts": { "per_beat_max": 1, "per_script_max": 3, "numbers_per_script_max": 2 },
       "sentence": { "avg_min": 6, "avg_max": 9, "hard_max_words": 12 },
       "overlay": { "max_words": 6, "max_chars_per_line": 32, "max_lines": 2, "min_seconds": 1.5, "chars_per_second": 15 },
-      "cta": { "min": 1, "max": 1, "max_words": 8, "last_seconds": 4 },
+      "cta": { "min": 1, "max": 1, "hard_max": 1, "max_words": 8, "last_seconds": 4 },
       "visual": { "max_seconds_per_shot": 3, "hard_max_static_seconds": 4 },
       "loops": { "dominant_open_by_seconds": 3, "supporting_allowed": false, "max_open": 1 }
     },
@@ -37,7 +37,7 @@
       "facts": { "per_beat_max": 2, "numbers_per_beat_max": 1, "per_script_max": 14, "numbers_per_script_max": 6 },
       "sentence": { "avg_min": 8, "avg_max": 12, "hard_max_words": 18 },
       "overlay": { "max_words": 8, "max_chars_per_line": 42, "max_lines": 2, "min_seconds": 2, "chars_per_second": 15 },
-      "cta": { "min": 1, "max": 2, "max_words": 25, "last_seconds": 20, "soft_mid_max": 1 },
+      "cta": { "min": 1, "max": 2, "hard_max": 1, "max_words": 25, "last_seconds": 20, "soft_mid_max": 1 },
       "visual": { "max_seconds_per_shot": 6, "pattern_interrupt_every_seconds": 40 },
       "chapters": { "min": 4, "max": 6 },
       "loops": {
