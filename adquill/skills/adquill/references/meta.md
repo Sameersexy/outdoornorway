@@ -27,7 +27,7 @@ Platform pages move faster than any reference file. Every number below carries o
 | Tag | Meaning |
 |---|---|
 | verified 2026-10-06 | Read on a Meta page by the adquill research pass. The page URL is in the row. |
-| Reported | Trade press or a practitioner describing the platform. Cross-checked where possible. Treat as likely, not certain. |
+| Reported | Trade press or a practitioner describing the platform. Cross-checked where possible. Treat as likely, not certain. Every Reported row also carries a [VERIFY] note, so no row reads as confirmed when it is not. |
 | Vendor | An agency, tool or blog claim with no Meta page behind it. Treat as a hypothesis. |
 | [VERIFY: reason] | Could not be confirmed. Do not present it to the user as fact. Check it in Ads Manager preview or on the live Meta page. |
 | adquill heuristic | Our own working rule for legibility. Not a Meta rule. Say so when asked. |
@@ -222,7 +222,7 @@ The headline field exists on Meta's page. Vendor guides report that single-image
 +-----------------------------------------------------+
 | Like    Comment    Share                      Save  |
 | brekkeskiguides Six skiers per guide. Skins on at   |  [5] primary_text starts after
-| 09:15, first descent about 11:40, back at the... more|      the account name
+| 09:15, first descent about 11:40, back at the... more |     the account name
 +-----------------------------------------------------+
 ```
 
@@ -288,10 +288,10 @@ Tag every delivery claim in output with one of official, reported or vendor. Nev
 | Andromeda is the retrieval stage of Meta's ad system. It picks a few thousand candidates from tens of millions. Post of 2 December 2024. | https://engineering.fb.com/2024/12/02/production-engineering/meta-andromeda-advantage-automation-next-gen-personalized-ads-retrieval-engine/ | verified 2026-10-06 |
 | The same post says the system is expected to move to an autoregressive loss that "delivers a more diverse set of ad candidates". It names no similarity penalty and does not use the term "Entity ID". | same page | verified 2026-10-06 |
 | Meta's Q2 2026 earnings call credits its recommender and ranking models plus better user understanding with "an 8.3% increase in ad clicks and a 15.7% uplift in conversions on Facebook". Quote it the way Meta said it. One vendor page ties the 15.7% to a single model. The transcript ties it to the combination. | https://s21.q4cdn.com/399680738/files/doc_financials/2026/q2/META-Q2-2026-Earnings-Call-Transcript.pdf | verified 2026-10-06. Meta's own marketing claim, not an independent test |
-| December 2025 creative advice from Meta: give the system a broad portfolio of assets "that take more creative liberty across text, image, and video". Image generation "11% higher CTR and 7.6% higher CVR", text generation "3% higher CTR". Three Reels hook types: value promise, statement of intent, question or invitation. | https://www.socialmediatoday.com/news/meta-shares-tips-on-reels-hooks-creative-diversification-in-ads-and-threa/808182/ | Reported (17 December 2025). Meta's marketing figures, not independent tests |
+| December 2025 creative advice from Meta: give the system a broad portfolio of assets "that take more creative liberty across text, image, and video". Image generation "11% higher CTR and 7.6% higher CVR", text generation "3% higher CTR". Three Reels hook types: value promise, statement of intent, question or invitation. | https://www.socialmediatoday.com/news/meta-shares-tips-on-reels-hooks-creative-diversification-in-ads-and-threa/808182/ | Reported (17 December 2025). Meta's marketing figures, not independent tests. [VERIFY: trade press, no Meta page read] |
 | Learning phase: Meta's help text recommends about 50 optimisation events after the last significant edit. An ad set is "learning limited" when it is unlikely to reach about 50 events in the week after the last significant edit. | https://www.facebook.com/business/help/942374239243867 and https://www.facebook.com/business/help/112167992830700/ | [VERIFY: page bodies did not load, wording is from Meta text shown in search results] |
-| Detailed targeting exclusions were removed (developer blog, 21 January 2025). | https://developers.facebook.com/blog/post/2025/01/21/removal-of-detailed-targeting-exclusions/ | Reported via https://ppc.land/meta-removes-detailed-targeting-exclusions-for-ad-accounts/ . [VERIFY: the lower cost per conversion figure of 22 to 22.6 percent differs by 0.6 points between two secondary sources] |
-| A Creative diversity column (Low, Medium, High per ad set) appeared in Ads Manager on 26 August 2026. The interface labels it "estimated and in development". | https://www.marketingconcurrent.nl/en/blog/meta-ads-manager-introduces-creative-diversity-score-what-a-low-rating-really-means and https://commonthreadco.com/blogs/coachs-corner/meta-ads-changes-2026 | Reported. No link to cost or delivery is confirmed. Use it as a hint, not a target |
+| Detailed targeting exclusions were removed (developer blog, 21 January 2025). | https://developers.facebook.com/blog/post/2025/01/21/removal-of-detailed-targeting-exclusions/ | Reported via https://ppc.land/meta-removes-detailed-targeting-exclusions-for-ad-accounts/ . [VERIFY: the developer blog page was not read, and the lower cost per conversion figure of 22 to 22.6 percent differs by 0.6 points between two secondary sources] |
+| A Creative diversity column (Low, Medium, High per ad set) appeared in Ads Manager on 26 August 2026. The interface labels it "estimated and in development". | https://www.marketingconcurrent.nl/en/blog/meta-ads-manager-introduces-creative-diversity-score-what-a-low-rating-really-means and https://commonthreadco.com/blogs/coachs-corner/meta-ads-changes-2026 | Reported. No link to cost or delivery is confirmed. Use it as a hint, not a target. [VERIFY: trade press, no Meta page read] |
 
 ### What is vendor lore
 
@@ -314,7 +314,7 @@ What is safe to say: Meta says creative is the main lever it wants advertisers t
 ### What this means for the writing
 
 - Write several different ads, not one ad ten ways. A concept differs in the first-second hook, the scene, the person and the offer angle. A new headline or a recoloured price pill is not a new concept.
-- A small advertiser can start with 3 to 5 genuinely different creatives per ad set. That range is a vendor suggestion (https://www.superads.ai/blog/creative-diversity-in-ads). [VERIFY: Vendor]. adquill asks for two to four angles, which sits inside it.
+- A small advertiser can start with 3 to 5 clearly different creatives per ad set. That range is a vendor suggestion (https://www.superads.ai/blog/creative-diversity-in-ads). [VERIFY: Vendor]. adquill asks for two to four angles, which sits inside it.
 - Learning phase for a low-volume advertiser: a business that books a few dozen guests a season will not see 50 purchases a week per ad set. Options, as practitioner heuristics: optimise for an earlier event that reaches volume (landing page view, view content, add to cart, initiate checkout) and read bookings from the booking system, keep fewer ad sets so events pool, and avoid big edits mid-flight. [VERIFY: the right event depends on tracking quality and the booking flow. Meta's definition of "significant edit" did not load.]
 - Hook rate (three-second views divided by impressions) is a buyer metric, not a Meta KPI name. Vendor ranges exist, such as a median of 20.9 percent in a June to August 2026 sample (https://www.biddyco.com/blog-posts/hook-rate-benchmarks-meta). [VERIFY: vendor, do not quote as a benchmark]
 
@@ -339,16 +339,16 @@ The feature names are quoted as labelled in that reference, so the table sits in
 | Enhance CTA | Swaps the button message | Off |
 | Show summaries | Adds an AI summary | Off |
 | Translations | Translates the ad | Off unless you review each language |
-| Dynamic description | Catalog ads only | Not used for static ads |
+| Catalog description option | Catalog ads only | Not used for static ads |
 
 <!-- adquill-lint: ignore-end -->
 
 ### What is known about defaults and dates
 
 - 27 July 2026: image text rewriting reported as on by default for eligible Advantage+ campaigns, with up to 8 variants of the headline text in the image. Sources: https://commonthreadco.com/blogs/coachs-corner/meta-advantage-plus-creative-image-text-rewriting-ecommerce-2026 , https://www.xwork.my/meta-advantage-creative-ad-image-text/ , and a first write-up at https://www.jonloomer.com/meta-rewrite-text-ad-images/ (it returned 403 to the research pass). None of them cites a Meta announcement page. [VERIFY: Meta's own wording and the default state per campaign type]
-- Some enhancements (dynamic description, image touch-ups, relevant comments) are reported as on by default through the API. Marketing API v22.0 (January 2025) reportedly no longer lets an advertiser opt in or out of the single standard enhancements bundle. [VERIFY: vendor reference]
+- Some enhancements (the catalog description option, image touch-ups, relevant comments) are reported as on by default through the API. Marketing API v22.0 (January 2025) reportedly no longer lets an advertiser opt in or out of the single standard enhancements bundle. [VERIFY: vendor reference]
 - Price risk: one write-up warns that an on-image line such as a one-time fee could be rewritten into something generic or into something that changes the implied price, and advises disabling the swap on any image with a price point, or reviewing every variant. Source: https://www.xwork.my/meta-advantage-creative-ad-image-text/ . [VERIFY: Vendor write-up]
-- Restricted Words was added on 2 September 2025. Meta's wording, as quoted by the trade press: "Specify if there are certain words or phrases you don't want to appear in AI-generated text options and we'll exclude them in Advantage+ Creative text generation". Reported guardrail limits: Meta "still occasionally slips in an emoji". Source: https://www.socialmediatoday.com/news/meta-adds-restricted-words-ai-ad-copy-generation/759084/ . Status: Reported.
+- Restricted Words was added on 2 September 2025. Meta's wording, as quoted by the trade press: "Specify if there are certain words or phrases you don't want to appear in AI-generated text options and we'll exclude them in Advantage+ Creative text generation". Reported guardrail limits: Meta "still occasionally slips in an emoji". Source: https://www.socialmediatoday.com/news/meta-adds-restricted-words-ai-ad-copy-generation/759084/ . Status: Reported. [VERIFY: trade press, no Meta page read]
 - Buyer-reported tests say Text improvements off beats on for text-heavy direct response, because rewritten hooks drift from the approved angle. [VERIFY: anecdotal, https://commonthreadco.com and similar]. Meta's own figure for text generation is a 3 percent higher CTR (December 2025, Reported, see section 11).
 
 ### How to switch them off for a price or date ad
@@ -365,22 +365,22 @@ adquill prints this checklist in the "Before you publish" section of every outpu
 
 ## 13. Placements that changed in the last 12 months
 
-Window: roughly October 2025 to 2026-10-06. Items just outside it are marked background. Every row is Reported or Vendor unless the Source column says a Meta page was read.
+Window: roughly October 2025 to 2026-10-06. Items just outside it are marked background. Every row is Reported or Vendor, so every row carries a [VERIFY] note. No Meta page was read for this table.
 
 | Date | Change | Source | Status |
 |---|---|---|---|
-| 2 September 2025 (background) | Restricted Words setting for AI-generated text in Advantage+ creative | https://www.socialmediatoday.com/news/meta-adds-restricted-words-ai-ad-copy-generation/759084/ | Reported |
-| 11 December 2025 | Creator tools for partnership ads expanded. Meta published "19% lower CPAs and 13% higher click through rates on average" for campaigns that add partnership ads | https://www.marketingdive.com/news/meta-streamlines-brands-creator-partnerships-with-ai-powered-updates/807629/ | Reported. Meta marketing its own product |
-| 17 December 2025 | Meta guidance on Reels hooks and creative portfolios | https://www.socialmediatoday.com/news/meta-shares-tips-on-reels-hooks-creative-diversification-in-ads-and-threa/808182/ | Reported |
+| 2 September 2025 (background) | Restricted Words setting for AI-generated text in Advantage+ creative | https://www.socialmediatoday.com/news/meta-adds-restricted-words-ai-ad-copy-generation/759084/ | Reported. [VERIFY: trade press, no Meta page read] |
+| 11 December 2025 | Creator tools for partnership ads expanded. Meta published "19% lower CPAs and 13% higher click through rates on average" for campaigns that add partnership ads | https://www.marketingdive.com/news/meta-streamlines-brands-creator-partnerships-with-ai-powered-updates/807629/ | Reported. Meta marketing its own product. [VERIFY: trade press, no Meta page read] |
+| 17 December 2025 | Meta guidance on Reels hooks and creative portfolios | https://www.socialmediatoday.com/news/meta-shares-tips-on-reels-hooks-creative-diversification-in-ads-and-threa/808182/ | Reported. [VERIFY: trade press, no Meta page read] |
 | January 2026 | Less personalised ads choice rolled out to all EEA users | https://ppc.land/metas-2026-dma-report-reveals-whatsapp-ads-a-eu200m-fine-and-a-defiant-stance-on-personalized-advertising/ | Reported. [VERIFY: Norway scope and effect on delivery] |
 | 15 January 2026 | Reported final cutoff for consolidated detailed targeting interests | https://www.wickedreports.com/blog/meta-removes-detailed-targeting-exclusions-from-ad-campaigns | [VERIFY: vendor sources only] |
 | March 2026 | Flexible format reportedly folded into a "Flexible media" toggle inside Advantage+ creative | https://adsuploader.com/blog/meta-flexible-ads | [VERIFY: no Meta page read] |
-| 10 March 2026 | Location fees announced: UK 2%, France, Italy and Spain 3% each, Austria and Turkey 5% each. Effective May 2026, billed from 1 July 2026, on top of ad spend. Norway not listed in anything read | https://www.mediapost.com/publications/article/413378/meta-passes-eu-digital-services-tax-to-advertisers.html | Reported. If you target those markets, budget 2% to 5% extra |
+| 10 March 2026 | Location fees announced: UK 2%, France, Italy and Spain 3% each, Austria and Turkey 5% each. Effective May 2026, billed from 1 July 2026, on top of ad spend. Norway not listed in anything read | https://www.mediapost.com/publications/article/413378/meta-passes-eu-digital-services-tax-to-advertisers.html | Reported. If you target those markets, budget 2% to 5% extra. [VERIFY: trade press, no Meta page read] |
 | 23 June 2026 | Advantage+ text generation reportedly extended to image text. A brand memory feature in test | https://adsuploader.com/blog/advantage-plus-creative-enhancements | [VERIFY: vendor reference] |
 | 27 July 2026 | Image text rewriting reported as default on in eligible Advantage+ campaigns | see section 12 | [VERIFY: no Meta page read] |
 | 19 to 21 August 2026 | Placement, platform, device and operating system exclusions removed from ad sets for Sales and Leads campaigns. Account-level placement controls and value rules remain | https://www.socialsamosa.com/news-2/meta-remove-placement-controls-from-ad-sets-12401398 and https://www.relevantaudience.com/facebook-ads/meta-removes-option-to-exclude-ad-placements/ | Reported. One summary says it was not a formal announcement and reached only some advertisers. [VERIFY: scope by objective] |
-| 26 August 2026 | Creative diversity column in Ads Manager | see section 11 | Reported |
-| 27 August 2026 | Messenger Stories removed as an ad placement | https://commonthreadco.com/blogs/coachs-corner/meta-ads-changes-2026 | Reported |
+| 26 August 2026 | Creative diversity column in Ads Manager | see section 11 | Reported. [VERIFY: trade press, no Meta page read] |
+| 27 August 2026 | Messenger Stories removed as an ad placement | https://commonthreadco.com/blogs/coachs-corner/meta-ads-changes-2026 | Reported. [VERIFY: single vendor changelog, no Meta page read] |
 | September 2026 | One changelog lists a Creator Marketing Hub (15 September), Instagram live video ads (29 September), Threads ads without an Instagram presence (22 September) and exclusion-only custom audiences (10 August) | https://commonthreadco.com/blogs/coachs-corner/meta-ads-changes-2026 | [VERIFY: single vendor changelog] |
 
 Consequence for the writing: with placement exclusions gone in some campaign types, every ad must survive every placement. That means a 4:5 file with centred content for feed, a separate 9:16 file for Reels and Stories, and a 40 character line that works alone. Placement asset customisation (assign a 4:5 file to Feed and a 9:16 file to Stories and Reels inside one ad) remains the way to control what each surface shows. Without it a 1:1 file is letterboxed or auto-cropped into 9:16. Source: https://withblip.com/blog/meta-ads-placement-customization-guide/ . [VERIFY: Vendor guide, Meta help page not read]

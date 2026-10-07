@@ -258,8 +258,8 @@
     "code"
    ],
    "examples_bad": [
-    "Ski the fjord -- then rest.",
-    "Ski the fjord--then rest."
+    "Ski the fjord \u002d\u002d then rest.",
+    "Ski the fjord\u002d\u002dthen rest."
    ],
    "examples_ok": [
     "Run it with --slot headline."
@@ -688,14 +688,16 @@
    "flags": "i",
    "message": "Business-report verb. In ad copy it replaces a plainer verb.",
    "suggestion": "Use use, show, build, back up, start. Or say what actually happens.",
-   "suppress_if_context": "\\b(?:financial|operating|debt|equity|mortgage|margin|ratio|buyout|pole|plant|physics|mechanical|torque|lever|foster (?:parent|child|home|care))\\b",
+   "suppress_if_context": "\\b(?:financial|operating|debt|equity|mortgage|margin|ratio|buyout|fund|loan|bank|investor|borrow\\w*|pole|plant|physics|mechanical|torque|lever|foster (?:parent|child|home|care))\\b",
+   "suppress_if_before": "\\b(?:a|the|of|with|has|have|had|more|no|little|its|their|some|any)\\s+$",
    "examples_bad": [
     "Our guides leverage deep local knowledge.",
     "We foster community on every tour."
    ],
    "examples_ok": [
     "The firm's leverage ratio is 3.2.",
-    "Leverage on a pole plant turns the ski."
+    "Leverage on a pole plant turns the ski.",
+    "The fund runs at a leverage of three to one."
    ]
   },
   {

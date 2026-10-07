@@ -47,10 +47,10 @@ Say this plainly to the user: on X, check the limits in the composer before you 
 | Image sizes | 1200 x 675 (1.91:1), 1080 x 1080 (1:1), 1080 x 1350 (4:5). Minimum 600 x 335 | https://benly.ai/learn/x-ads/x-twitter-ads-formats-specs | Reported. [VERIFY] |
 | Image file size | 5 MB in two spec guides. The Ads API documentation says 3 MB, formats bmp, jpeg and png, minimum width 800 px | https://docs.x.com/x-ads-api/creatives | Conflict. API figure verified 2026-10-06. [VERIFY: current Ads Manager limit. Use a file under 3 MB until confirmed] |
 | Video ratios | 16:9, 1:1, 9:16 | https://benly.ai/learn/x-ads/x-twitter-ads-formats-specs | Reported. [VERIFY] |
-| Video length | up to 2 minutes 20 seconds in the interface, 15 to 30 seconds recommended. The API allows 10 minutes | https://benly.ai/learn/x-ads/x-twitter-ads-formats-specs and https://docs.x.com/x-ads-api/creatives | Interface figure Reported. API figure verified 2026-10-06 |
+| Video length | up to 2 minutes 20 seconds in the interface, 15 to 30 seconds recommended. The API allows 10 minutes | https://benly.ai/learn/x-ads/x-twitter-ads-formats-specs and https://docs.x.com/x-ads-api/creatives | Interface figure Reported. [VERIFY: interface limit, X pages unreachable]. API figure verified 2026-10-06 |
 | Video file | MP4 or MOV, H.264, AAC, up to 1 GB (under 30 MB suggested), 30 or 60 fps | https://benly.ai/learn/x-ads/x-twitter-ads-formats-specs and https://www.veuno.com/x-formerly-twitter-ad-specs-your-guide-for-2026/ | Reported. [VERIFY] |
 | Button labels | Install, Open, Play, Shop, Book, Connect, Order | https://www.veuno.com/x-formerly-twitter-ad-specs-your-guide-for-2026/ | [VERIFY: this list is for app buttons. Current website card labels not confirmed] |
-| Sales objective layout | from 13 May 2025 the headline and a customisable CTA button sit below the image or video | https://www.socialmediatoday.com/news/x-formerly-twitter-updates-link-format-ads-adds-cta-button/748010/ | Reported, quoting X |
+| Sales objective layout | from 13 May 2025 the headline and a customisable CTA button sit below the image or video | https://www.socialmediatoday.com/news/x-formerly-twitter-updates-link-format-ads-adds-cta-button/748010/ | Reported, quoting X. [VERIFY: trade press, X page not read] |
 | Promoted-only posts | created through a dedicated endpoint, they do not appear on the public timeline | https://docs.x.com/x-ads-api/campaign-management | verified 2026-10-06 |
 | Account structure limits | 200 active campaigns, 100 line items per campaign, 8,000 active line items per account | https://docs.x.com/x-ads-api/campaign-management | verified 2026-10-06 |
 
@@ -147,7 +147,7 @@ Plain advice for the user: treat X as a test channel unless the business already
 
 - Norway, as of October 2025, from DataReportal's Digital 2026 report, shown as ad reach and not as active users: Facebook 3.05 million (54.1 percent of the population), Instagram 2.65 million (47.0 percent), X 1.02 million (18.2 percent), TikTok 1.80 million adults (39.8 percent of those 18 and over), Snapchat 3.70 million (65.7 percent). Source: https://datareportal.com/reports/digital-2026-norway . [VERIFY: the figures reached the research pass through a page summariser]
 - An earlier search summary cited 1.11 million X users in early 2025, which points to a falling trend. [VERIFY]
-- Global monthly users are a third-party estimate of about 557 to 611 million, because X stopped publishing audited figures. Source: https://searchlab.nl/en/statistics/x-twitter-statistics-2026 . Status: Reported.
+- Global monthly users are a third-party estimate of about 557 to 611 million, because X stopped publishing audited figures. Source: https://searchlab.nl/en/statistics/x-twitter-statistics-2026 . Status: Reported. [VERIFY: third-party estimate]
 - The age, gender and interest profile of X users in Norway: no sourced data found. [VERIFY: pull it from X Ads audience insights, do not guess]
 - Tone. People on X react badly to posts that look like ads. That is craft opinion, not a measured result. [VERIFY]
 - Moment-based posts suit X: a snow report, a weekend with places left. This only works when the facts are real and current. A claim of "places left" needs a count and a date in the ledger.

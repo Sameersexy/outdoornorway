@@ -1,8 +1,8 @@
 # Buyer path and anxieties for high-ticket experiences
 
-What it is: how people decide to buy a premium guided trip, the job an ad has at each stage, the anxiety list with copy answers that stay inside Meta's personal attributes rule, the group decision problem, price psychology and a short consumer law pointer. Read it at method step 3 when you diagnose the main anxiety, and whenever the offer costs more than a few thousand NOK or more than one person has to say yes.
+What it is: how people decide to buy a premium guided trip, and the job an ad has at each stage. It also holds the anxiety list with copy answers that stay inside Meta's personal attributes rule, the group decision problem, price psychology and a short consumer law pointer. Read it at method step 3 when you diagnose the main anxiety, and whenever the offer costs more than a few thousand NOK or more than one person has to say yes.
 
-Every example uses the invented company Brekke Ski Guides. Every example is a fictional brief. Prices, dates, group sizes, policies and inclusions are invented for teaching and carry no claim about any real operator. Brekke's invented ledger: day tour NOK 2,350, weekend course NOK 4,900, six day hut-to-hut trip NOK 18,500 (departures 14 and 21 Mar 2027, eight guests, two guides, five to seven hours a day on skins), deposit NOK 3,000, full refund when the guest cancels 60 days or more before departure.
+Every example uses the invented company Brekke Ski Guides. Every example is a fictional brief. Prices, dates, group sizes, policies and inclusions are invented for teaching and carry no claim about any real operator. Brekke's invented ledger: day tour NOK 2,350, weekend course NOK 4,900, six day hut-to-hut trip NOK 18,500. The trip departs 14 and 21 Mar 2027 with eight guests and two guides, five to seven hours a day on skins. Deposit NOK 3,000. Full refund when the guest cancels 60 days or more before departure.
 
 Evidence grades follow references/psychology.md: A peer reviewed and replicated, B large dataset or platform-official, C practitioner lore or a model with little formal test. Anything unverified carries [VERIFY: reason].
 
@@ -65,7 +65,7 @@ Reading them together: the path is long (weeks to months), spread across many to
 
 ### 2.3 What ski buyers research (closest data found, grade C)
 
-An Iglu survey of UK skiers (sample size and method not stated, [VERIFY: sample size and method]) reported snow reliability as the top resort factor at 78 percent, value for money at 56 percent, "been before" as the most trusted source at 55 percent, word of mouth at 51 percent and reviews at 42 percent [https://www.snowsportsnews.com/newsrepository/2026/june/in-iglu-s-biggest-ever-survey-ai-use-for-ski-trip-research-nearly-quadruples-in-a-year-but-snow-certainty-and-trusted-advice-still-decide-where-britain-skis/]. Intermediates were 46 percent of that market. These are UK mass-market package buyers, so they do not describe guided off-piste clients. They hint at the questions to answer: snow, level, value and a voice the buyer trusts.
+An Iglu survey of UK skiers reported snow reliability as the top resort factor at 78 percent. Value for money scored 56 percent, "been before" as the source people trusted most at 55 percent, word of mouth at 51 percent and reviews at 42 percent [https://www.snowsportsnews.com/newsrepository/2026/june/in-iglu-s-biggest-ever-survey-ai-use-for-ski-trip-research-nearly-quadruples-in-a-year-but-snow-certainty-and-trusted-advice-still-decide-where-britain-skis/]. Intermediates were 46 percent of that market. These are UK mass-market package buyers, so they do not describe guided off-piste clients. They hint at the questions to answer: snow, level, value and a voice the buyer trusts. The survey gives no sample size or method [VERIFY: sample size and method].
 
 What social advertising does in this path: it feeds inspiration, it re-enters during evaluation as retargeting and proof, and it rarely closes alone. Expect assisted conversions and say so in the brief. X is a conversation platform, so its role is voice, authority and replies rather than scenic reels.
 
@@ -185,7 +185,7 @@ Run a "second person plus attribute" scan on every Meta ad: a "you" or "your" cl
 
 ### 7.1 What the research says
 
-Skiing is a group activity. In the Iglu survey 37 percent travelled with family, 31 percent as a couple and 28 percent with friends (grade C, link in section 2.3). Tourism research on couples reports a trend toward joint decisions, with women often dominant in the early stages [Couple dynamic in household tourism decision making: women as gatekeepers?, https://www.researchgate.net/publication/254583454_Couple_Dynamic_in_Household_Tourism_Decision_Making_Women_as_the_Gatekeepers, grade C, abstract level] [VERIFY: the stage pattern]. Practitioner writing on ski groups says each group needs one organiser who keeps the plan moving [https://www.snowcompare.com/blog/2024/09/ski-trip, grade C]. No peer reviewed ski-specific study of the second reader was found [VERIFY: treat as a hypothesis].
+Skiing is a group activity. In the Iglu survey 37 percent travelled with family, 31 percent as a couple and 28 percent with friends (grade C, link in section 2.3). Tourism research on couples reports a trend toward joint decisions, with women often dominant in the early stages [tourism research on couples and gatekeeping, https://www.researchgate.net/publication/254583454_Couple_Dynamic_in_Household_Tourism_Decision_Making_Women_as_the_Gatekeepers, grade C, abstract level] [VERIFY: the stage pattern]. Practitioner writing on ski groups says each group needs one organiser who keeps the plan moving [https://www.snowcompare.com/blog/2024/09/ski-trip, grade C]. No peer reviewed ski-specific study of the second reader was found [VERIFY: treat as a hypothesis].
 
 Private sharing matters. A GWI and We Are Social study reported 63 percent of UK and US internet users share content through private messaging apps, ahead of open social media at 54 percent [https://www.thedrum.com/news/63-people-prefer-share-content-dark-social-channels, grade C, dated] [VERIFY: year and method].
 
@@ -201,7 +201,7 @@ The person who clicks the ad is the champion. The people who must say yes are th
 6. What if I cannot go? (cancellation)
 7. Who else is going?
 
-The champion needs a link preview that works without context (title, image, price visible), a short block they can paste (trip name, dates, price, one line on level, one on safety), a reason that sounds like an idea the second reader would have, and a way to take a small step without the whole group.
+The champion needs four things. A link preview that works without context, with title, image and price visible. A short block to paste: trip name, dates, price, one line on level and one on safety. A reason that sounds like an idea the second reader would have. A way to take a small step without the whole group.
 
 ### 7.3 How an ad arms the champion
 
@@ -234,7 +234,7 @@ All numbers in the examples are the invented Brekke ledger. Calculations are don
 | "From" prices? | A low advertised anchor raises intention in general [https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7434854/] (B). A mismatch between the pictured product and the "from" product reads as bait. | The product pictured or described is the product at the price shown. Write "Day tour from NOK 2,350" and name what it buys. |
 | Show the price at all? | In Google's data "best" gained ground on "cheap" in considered purchases, which suggests buyers want quality assurance more than the lowest price [https://www.thinkwithgoogle.com/_qs/documents/9998/Decoding_Decisions_The_Messy_Middle_of_Purchase_Behavior.pdf] (B, a reading of the data). | A high price is a quality signal. Showing it plainly earns trust. Hiding it undermines the signal. |
 
-Experience purchases pay back before departure. Kumar, Killingsworth and Gilovich (2014) found people were happier thinking about an upcoming experiential purchase, with experience sampling of 2,266 adults [https://sciencedaily.com/releases/2014/08/140825100051.htm] (B). Nawijn and colleagues found vacationers were happier before the trip, and most were not happier after [https://research.tilburguniversity.edu/en/publications/vacationers-happier-but-most-not-happier-after-a-holiday/] (B). The honest reading: the weeks before count, so "the countdown starts when you book" is a fair line, and "this week will change your life" is not.
+Experience purchases pay back before departure. Kumar, Killingsworth and Gilovich (2014) found people were happier thinking about an upcoming experiential purchase, with experience sampling of 2,266 adults [https://sciencedaily.com/releases/2014/08/140825100051.htm] (B). Nawijn and colleagues found vacationers were happier before the trip, and most were not happier after [https://research.tilburguniversity.edu/en/publications/vacationers-happier-but-most-not-happier-after-a-holiday/] (B). The honest reading: the weeks before count, so "the countdown starts when you book" is a fair line, and a promise of lasting transformation is not.
 
 Three price lines that work on a feed (fictional brief):
 
@@ -252,7 +252,7 @@ This section summarises secondary pages. It is not legal advice. Every row needs
 | Misleading acts and omissions | Section 7 covers false information about characteristics, price or price advantage. Section 8 covers omitting material information, which for an invitation to purchase includes main characteristics, price and withdrawal rights. | Same |
 | Documentation | Section 3 expects documentation of factual claims and that marketing is identifiable as marketing | Same. Forbrukertilsynet guidance: https://www.forbrukertilsynet.no/wp-content/uploads/2025/06/veiledning-om-reglene-som-gjelder-ved-markedsforing-av-salg-og-betingede-tilbud-l2398774.pdf |
 | Price reductions | When goods are marketed as reduced, the prior price is the lowest price used in the 30 days before the sale began, and the discount is computed from it. The wording refers to goods, and whether it applies to services by analogy is open [VERIFY with counsel]. | Forbrukertilsynet guidance above |
-| False limited-time claims | Falsely claiming a product is available only for a very limited time to force a quick decision is on the EU list of practices banned in all circumstances | https://eur-lex.europa.eu/NL/legal-content/summary/unfair-commercial-practices.html |
+| False limited-time claims | Falsely claiming that an offer is about to end, to force a quick decision, is on the EU list of practices banned in all circumstances | https://eur-lex.europa.eu/NL/legal-content/summary/unfair-commercial-practices.html |
 | Countdown timers | Forbrukertilsynet's subdirector said in 2023 that an automatically restarting timer "will easily be a breach of the marketing law" | https://netthandel.no/forbrukertilsynet-forklarer-dette-ma-nettbutikkene-unnga-a-gjore/ |
 | Package travel | Package travel law applies to trips marketed at a total price that last more than 24 hours or include accommodation and combine two or more elements. A guided multi-day trip with lodging may qualify. Price-increase notice, information duties and insolvency protection need a check. | https://www.travelnetkrs.no/pakkereiseloven (secondary) |
 | Reviews and endorsements | Fake reviews are an enforcement target in the EU after the Omnibus Directive amended the unfair practices rules [VERIFY: the blacklist points] | https://eur-lex.europa.eu/eli/dir/2019/2161/oj/eng |
@@ -271,7 +271,7 @@ This section summarises secondary pages. It is not legal advice. Every row needs
 - Fogg Behavior Model: https://www.behaviormodel.org/
 - Ski learning, fear and self-efficacy: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6162698/
 - Meta Ad Standards, personal attributes: https://transparency.meta.com/policies/ad-standards/objectionable-content/privacy-violations-personal-attributes/
-- Couple dynamic in household tourism decision making: https://www.researchgate.net/publication/254583454_Couple_Dynamic_in_Household_Tourism_Decision_Making_Women_as_the_Gatekeepers
+- Tourism research on couples and gatekeeping: https://www.researchgate.net/publication/254583454_Couple_Dynamic_in_Household_Tourism_Decision_Making_Women_as_the_Gatekeepers
 - Snowcompare on ski group planning: https://www.snowcompare.com/blog/2024/09/ski-trip
 - The Drum on private sharing: https://www.thedrum.com/news/63-people-prefer-share-content-dark-social-channels
 - Gourville (1998): https://academic.oup.com/jcr/article-abstract/24/4/395/1797969

@@ -24,7 +24,7 @@ Pick one lead mechanism and one support per ad. Never stack more. An ad that tri
 
 Prefer the higher grade when two levers fit. Google's simulation of 31,000 online shoppers found social proof had the largest or second-largest effect in 28 of 31 categories, and scarcity was most often the weakest of six levers [Google and The Behavioural Architects, 2020: https://www.thinkwithgoogle.com/_qs/documents/9998/Decoding_Decisions_The_Messy_Middle_of_Purchase_Behavior.pdf]. That result comes from UK shoppers, simulated purchases and fictional brands, so treat it as a strong prior and not as a law for your audience.
 
-Name the mechanism with its grade in the receipt, for example "social proof: specific review (grade B)". Never write "studies show" in the copy or the notes unless you can print the source.
+Name the mechanism with its grade in the receipt, for example "social proof: specific review (grade B)". Never cite research in the copy or the notes unless you can print the source.
 
 Rotate levers across a test set. If every variant leans on the same mechanism, the test shows nothing about which one works for this audience.
 
@@ -89,7 +89,7 @@ Platform fit is an editorial judgement and has no test behind it. "Meta" means F
 | 22 | curiosity gap, honest | C | Pose one specific open question and close it in the first screen of the landing page. | "The one gully we only ski when the wind drops. How we decide, on one page." | Meta. X thread. | Clickbait that pays off nothing. |
 | 23 | story with a turn | C | One short scene from a real event. | "At 09:10 we reached the ridge. Nobody spoke for a minute. Then the guide said skins off." | Meta video. X thread. | An invented guest quote presented as real. |
 | 24 | pre-suasion: the first line | C | Open with the image you want held in mind when the offer arrives. | "Seven a.m. on the ridge. The only sound is your skins." | Meta video hook. X first line. | A hook the offer does not deliver. |
-| 25 | awe through a concrete scene | B | One specific scene with scale, light or silence. Skip the word "breathtaking". | "Four hours up, then forty minutes down a slope with our tracks only." | Meta image-led. X one image. | Overpromising conditions. Claim only what the day delivers. |
+| 25 | awe through a concrete scene | B | One specific scene with scale, light or silence. Skip stock scenery adjectives. | "Four hours up, then forty minutes down a slope with our tracks only." | Meta image-led. X one image. | Overpromising conditions. Claim only what the day delivers. |
 | 26 | practical value | B | Give the number, the list or the comparison people want to keep. | "What six days on skins cost, line by line: guides, huts, food, and the three things you pay for yourself." | Meta carousel. X thread. | A teaser that withholds the useful part. |
 | 27 | insider specifics (costly signal) | B | Use named places, kit and drills the novice cannot fake. | "Day one: skin track, kick turns, transceiver search. Tour skis for hire at NOK 650 a day." | X insider voice. Meta niche audiences. | Jargon that shuts out newcomers. A wrong detail loses an expert at once. |
 
@@ -183,7 +183,7 @@ These rules override every row above. A line that breaks one is cut, however wel
 7. The mechanism test: if the guest would feel tricked on seeing how the line was built, drop it.
 8. The skill refuses to invent proof. When a ledger row for a review, rating, award, count or deadline is empty, it writes the ad without that line and says what is missing.
 
-Why these rules have teeth beyond taste. Falsely claiming a product is available only for a very limited time, to force a quick decision, is on the EU list of practices banned in all circumstances [https://eur-lex.europa.eu/NL/legal-content/summary/unfair-commercial-practices.html]. Forbrukertilsynet's subdirector said in 2023 that an automatically restarting countdown timer "will easily be a breach of the marketing law" [https://netthandel.no/forbrukertilsynet-forklarer-dette-ma-nettbutikkene-unnga-a-gjore/]. In 2019 the UK CMA obtained binding commitments from six booking sites on pressure-selling claims, including the number of rooms left [https://cms.law/en/gbr/legal-updates/CMA-secures-commitments-from-holiday-booking-sites-on-sales-practices]. None of this is legal advice. Check price claims, urgency, reviews and package travel information with counsel [VERIFY with counsel].
+Why these rules have teeth beyond taste. Falsely claiming that an offer is about to end, to force a quick decision, is on the EU list of practices banned in all circumstances [https://eur-lex.europa.eu/NL/legal-content/summary/unfair-commercial-practices.html]. Forbrukertilsynet's subdirector said in 2023 that an automatically restarting countdown timer "will easily be a breach of the marketing law" [https://netthandel.no/forbrukertilsynet-forklarer-dette-ma-nettbutikkene-unnga-a-gjore/]. In 2019 the UK CMA obtained binding commitments from six booking sites on pressure-selling claims, including the number of rooms left [https://cms.law/en/gbr/legal-updates/CMA-secures-commitments-from-holiday-booking-sites-on-sales-practices]. None of this is legal advice. Check price claims, urgency, reviews and package travel information with counsel [VERIFY with counsel].
 
 What is allowed with proof and what is not (the right column quotes banned patterns, so it sits in a lint ignore block):
 
@@ -233,11 +233,11 @@ Lead: concreteness (row 21, grade B). Support: risk reversal (row 16, grade C). 
 
 | Slot | Text | Characters |
 |---|---|---|
-| primary_text | Six days on skins in the Sunnmøre Alps. Two guides, eight guests, five hours a day. Cancel 60 days or more before and we refund you in full. | 143 |
+| primary_text | Six days on skins in the Sunnmøre Alps. Two guides, eight guests, five to seven hours a day. Cancel 60 days or more before and we refund you in full. | 149 |
 | headline | Six days, NOK 18,500 | 20 |
 | image lines | Six day ski tour / 14 or 21 Mar 2027 / NOK 18,500 | n/a |
 
-The first two sentences (83 characters) carry the scene, the guides, the group cap and the daily effort, so they sit well inside the 125 visible characters. The refund sentence runs past the cut and shows after "See more", where a reader with a doubt will expand. Every number maps to a ledger row. The ad says nothing about the viewer. It gives no snow promise and no scarcity claim, because the ledger holds none.
+The first two sentences (92 characters) carry the scene, the guides, the group cap and the daily effort, so they sit inside the 125 visible characters. The refund sentence runs past the cut and shows after "See more", where a reader with a doubt will expand. Every number maps to a ledger row. The ad says nothing about the viewer. It gives no snow promise and no scarcity claim, because the ledger holds none.
 
 Why it works: a reader on a feed can picture the day and check the numbers. The price appears in the headline and on the image, so the person who forwards it needs no context. The risk answer is a fact about the booking.
 

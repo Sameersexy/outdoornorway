@@ -1,6 +1,8 @@
-# Offer and price: how to build the offer, reverse the risk, frame the price and keep every number honest
+# Offer, risk reversal and price
 
-What it is: the playbook for the offer line, the risk reducer, price framing for high-ticket experiences, the decision to show or hide price and dates, honest scarcity, and price consistency across image, text, headline and landing page. Read it at method steps 2, 5 and 7: when you build the fact ledger, when you write the price and date lines, and when you run the fact pass.
+What it is: the playbook for the offer line, the risk reducer and price framing for high-ticket experiences.
+
+It also covers whether to show price and dates, honest scarcity, and price consistency across image, text, headline and landing page. Read it at method steps 2, 5 and 7: when you build the fact ledger, write the price and date lines and run the fact pass.
 
 Every example uses the invented company Brekke Ski Guides. Every example is a fictional brief. Prices, dates, policies, group sizes and inclusions are invented for teaching. Where an example needs a real policy, the line says so, and the real skill asks the user for it.
 
@@ -56,8 +58,8 @@ If an ad moves none of the four, it has no offer. Rewrite it.
 
 Notes:
 
-- Google's simulation of 31,000 online shoppers found that "power of free" ranked first or second in 18 of 31 categories. A free extra day in car hire pulled 70 percent of shoppers from the favourite [PRIMARY, read in full: https://www.thinkwithgoogle.com/_qs/documents/9998/Decoding_Decisions_The_Messy_Middle_of_Purchase_Behavior.pdf]. Prefer a real named extra to a percentage discount. The extra must be real, specific and valuable. Never use "free" to hide a higher base price.
-- Dan Ariely, a co-author of the original zero-price paper, has had other work retracted. A 2012 honesty-pledge paper was withdrawn in 2021 after its data were shown to be fabricated [SECONDARY: https://bigthink.com/the-present/honesty-pledge-study-fraud-dan-ariely/]. The zero-price effect has independent support in Google's test. Cite Google, and never write "Ariely found".
+- Google's simulation of 31,000 online shoppers found that "power of free" had the largest or second-largest effect in 18 of 31 categories [PRIMARY: https://www.thinkwithgoogle.com/_qs/documents/9998/Decoding_Decisions_The_Messy_Middle_of_Purchase_Behavior.pdf]. The limits matter: UK shoppers, 2020, simulated purchases of fictional brands, not guided trips. Prefer a real named extra to a percentage discount. The extra must be real, specific and valuable. Never use "free" to hide a higher base price.
+- Integrity note. Dan Ariely co-authored the original zero-price paper. He also co-authored a 2012 honesty-pledge paper that was retracted in 2021 after other researchers showed its data were fabricated. All five authors agreed the data were fake and denied making it up themselves [SECONDARY: https://bigthink.com/the-present/honesty-pledge-study-fraud-dan-ariely/]. The zero-price effect has independent support in Google's test. Cite Google, and never give "Ariely found" as the reason for a copy choice.
 - Any "was NOK X, now NOK Y" line needs a real prior price and its dates. See section 6.
 
 ## 2. Risk reversal
@@ -212,7 +214,7 @@ There is no controlled evidence in the research for or against showing price in 
 
 - A date on an image is a printed date. Pull the ad when it passes.
 - For evergreen campaigns, put the season in the image and the departure dates in the text, so you can edit them without making a new image.
-- Advantage+ creative can rewrite text inside an image. Switch it off for any ad with a price or a date, then check every placement preview. meta.md has the checklist.
+- Advantage+ creative can rewrite text inside an image. Switch it off for any ad with a price or a date, then check every placement preview. meta.md has the checklist, the source and the verification date.
 
 ## 6. Honest scarcity only
 

@@ -1,6 +1,8 @@
-# Craft: the decision tree, the frameworks that hold up, and how senior writers edit
+# Craft: decision tree, frameworks and the edit
 
-What it is: the craft playbook behind every adquill ad. Read it when you diagnose a brief (method step 3), pick angles (step 4), write to slots (step 5) or edit (step 6). Hooks, headlines and CTAs have their own file (hooks-and-headlines.md). Offer, risk and price are in offer-and-price.md.
+What it is: the craft playbook behind every adquill ad.
+
+Read it when you diagnose a brief (method step 3), pick angles (step 4), write to slots (step 5) or edit (step 6). Hooks, headlines and CTAs have their own file (hooks-and-headlines.md). Offer, risk and price are in offer-and-price.md.
 
 All examples use one invented company, Brekke Ski Guides. Every example is a fictional brief. Names, prices, dates, group sizes and policies are invented and carry no claim about any real operator.
 
@@ -27,7 +29,7 @@ Craft doctrine is mostly working knowledge handed down by practitioners. Very li
 
 | Tag | Meaning |
 |---|---|
-| [PRIMARY] | The original text or the platform's own page was read in full by the research team. |
+| [PRIMARY] | The original text or the platform's own page was read by the research team. For a book, this means the cited chapters, not necessarily the whole book. |
 | [SECONDARY] | A summary, review or teaching page was read. The idea is probably right. The exact wording is not guaranteed. |
 | [VERIFY: reason] | A number or claim that could not be confirmed. Do not put it in an ad. Do not quote it in public. |
 
@@ -77,7 +79,24 @@ Sources for the table: Schwartz levels from the summaries above and https://selz
 
 Stage sources: https://www.selfstorming.com/tools/libraries/frameworks/market-sophistication and https://auresnotes.com/summary-breakthrough-advertising-eugene-schwartz/ [SECONDARY]. Hopkins already shows the pattern. When every soap maker said "abundant lather", one maker said it "multiplies itself in lather 250 times" [PRIMARY: Scientific Advertising, chapter 7, https://archive.org/details/scientific-advertising]. That is stage 2 to 3: enlarge the claim and make it specific.
 
-### 2.4 Then run the building blocks
+### 2.4 Both answers together
+
+Awareness picks the subject: what the line is about. Stage picks how far the claim must go before anyone believes it. Read the table by row (awareness) and column (stage). Each cell is the instruction for the line. adquill's synthesis, not a published standard. Examples are fictional brief.
+
+| Awareness | Stage 1: plain claim | Stage 2: bigger claim | Stage 3: mechanism | Stage 4: sharper mechanism | Stage 5: identity |
+|---|---|---|---|---|---|
+| Unaware | A scene of the activity, offer in line two | The scene plus one tighter number | A scene that shows the mechanism at work | A scene of what the usual trip skips | One identity line in the buyer's own words |
+| Problem aware | Name the want, state the offer plainly | Name the want, enlarge with a number | Name the want, then the mechanism that answers it | Name the want, show why the usual fix misses it | Name the want as a shared want: "for people who..." |
+| Solution aware | Say what, where, when, how much | The same with the tighter number (six per guide) | Lead with the mechanism, number second | Lead with the sharper mechanism and proof it runs | Lead with the stance, the mechanism is the proof |
+| Product aware | Remove the one doubt with one fact | Remove it with a number the reader can check | Show the mechanism running (the real forecast, the real route plan) | Proof stack: a real review, a real count, a real policy | Proof that the right people already go: a real quote, with permission |
+| Most aware | Date and price | Date, price and the tighter number | Date, price and the named structure | Date, price, one proof line, one real risk reducer | Date, price, one line in the tribe's voice |
+
+Two rules for using it.
+
+1. When two cells seem to fit, take the one with fewer claims.
+2. When you cannot tell the row or the column, ask once. Ask who sees the ad (strangers, site visitors, people who started to book) and ask the user to paste three competitor ads from the Meta Ad Library. Do not guess a stage and present it as a finding.
+
+### 2.5 Then run the building blocks
 
 After awareness and stage, check the nine blocks below on every draft. They are covered in the sections that follow.
 
@@ -152,7 +171,7 @@ Definitions for the formulas below come from the Copyhackers formula guide [PRIM
 |---|---|---|---|---|
 | AIDA | Attention, Interest, Desire, Action | An order check on a landing page | Feeds, where attention, desire and action can all happen in two seconds. It also assumes a straight line from awareness to purchase, which research has not supported | Contested. An unsigned Printers' Ink item of 9 February 1898 already described the idea. E. St. Elmo Lewis is the usual name, with a 1910 line. The acronym appears in print by 1921 [SECONDARY: https://en.wikipedia.org/wiki/AIDA_(marketing)] |
 | PAS | Problem, Agitate, Solve | Problem aware audiences, a Reel script (problem in 3 seconds, agitation in the next 5, fix after) | Aspirational products. A ski trip is a treat, and heavy agitation sounds wrong. Meta also restricts copy that implies a personal attribute (see policy.md) | Dan Kennedy is credited with calling it "the most reliable sales formula ever invented". That shows he praised it. It does not show he invented it [SECONDARY: http://www.nonprofitcopywriter.com/PAS-copywriting-formula.html, VERIFY the date of origin] |
-| BAB | Before, After, Bridge | Aspiration and travel, a six second video, a split frame image | When the "after" cannot be shown honestly | I could not find who first defined it [SECONDARY: https://dowordsgood.com/before-after-bridge-formula-ad-trick/, VERIFY] |
+| BAB | Before, After, Bridge | Aspiration and travel, a six second video, a split frame image | When the "after" cannot be shown honestly | The research found no first author [SECONDARY: https://dowordsgood.com/before-after-bridge-formula-ad-trick/, VERIFY] |
 | 4Ps | Two competing versions. Picture, Promise, Prove, Push (credited to Henry Hoke Sr.). Problem, Promise, Proof, Proposal (credited to Ray Edwards) | The two versions agree on the middle: promise, then proof | Sources mix the two. Say which one you mean | [SECONDARY: https://copyhackers.com/2015/10/copywriting-formula/ and https://copywriting.school/formulas/pppp-picture-promise-prove-push, VERIFY the Hoke attribution] |
 | 4Us | Useful, Urgent, Unique, Ultra-specific | Ranking 30 headlines fast. It is the base of the scorecard in hooks-and-headlines.md | When "urgent" is faked to score points | Credited to Michael Masterson and the AWAI school [SECONDARY: https://www.awai.com/2022/05/4-goof-proof-ways-to-write-irresistible-headlines/] |
 | PASTOR | Problem, Amplify, Story, Transformation, Offer, Response | Sales pages, email, a 60 second video, long threads | Anything under 100 words. Do not force it onto a 125 character hook | Ray Edwards [SECONDARY: https://www.shortform.com/blog/ray-edwards-p-a-s-t-o-r-framework/] |
@@ -170,7 +189,7 @@ Two famous pieces of advice point in opposite directions.
 - Hopkins: "Bring all your good arguments to bear". He also says the average reader is only once a reader, so every ad must carry the whole case [PRIMARY: Scientific Advertising, chapter 8, https://archive.org/details/scientific-advertising].
 - Dave Trott: create a single message that people believe [SECONDARY, VERIFY the wording: https://www.goodreads.com/work/quotes/25311444-predatory-thinking-a-masterclass-in-out-thinking-the-competition].
 
-Hopkins wrote for one newspaper insertion that a reader met once and had time to read. A feed gives you a glance, and it lets you show the same person many ads. Current guides say Meta's delivery rewards genuinely different concepts and treats near-copies as one [SECONDARY: https://www.dentsu.com/ae/en/our-latest-thinking/meta-andromeda-strategy, VERIFY against Meta's own statement]. Vendor numbers on how many concepts to run are untraced [VERIFY].
+Hopkins wrote for one newspaper insertion that a reader met once and had time to read. A feed gives you a glance, and it lets you show the same person many ads. Current guides say Meta's delivery rewards different concepts and treats near-copies as one [SECONDARY: https://www.dentsu.com/ae/en/our-latest-thinking/meta-andromeda-strategy, VERIFY against Meta's own statement]. Vendor numbers on how many concepts to run are untraced [VERIFY].
 
 The reconciliation adquill applies:
 
@@ -243,7 +262,7 @@ Reason-why in a short slot: put the number in the line, because the number is th
 
 The mechanism is the how. It explains why this product delivers when others did not. Schwartz puts it at stage 3 and above [SECONDARY, see section 2].
 
-Hopkins gives the cleanest case. When rival brewers all shouted "pure beer", one brewer described the process: a plate glass cooling room, filtered air, bottles "washed four times by machinery", water from 4,000 feet, and 1,018 experiments to find the yeast [PRIMARY for the text: chapter 7]. The text does not name the brewer. Teaching sources name Schlitz and claim sales rose from fifth place to a tie for first. I could not confirm either [SECONDARY: search summary, VERIFY the name and the rank claim].
+Hopkins gives the cleanest case. When every rival brewer shouted that the product was pure, one described the process: a plate glass cooling room, filtered air, bottles "washed four times by machinery", water from 4,000 feet, and 1,018 experiments to find the yeast [PRIMARY for the text: chapter 7]. The text does not name the brewer. Teaching sources name Schlitz and claim sales rose from fifth place to a tie for first. The research could not confirm either [SECONDARY: search summary, VERIFY the name and the rank claim].
 
 Three rules for a mechanism:
 

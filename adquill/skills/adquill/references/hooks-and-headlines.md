@@ -1,6 +1,8 @@
-# Hooks, headlines and CTAs: typology, scorecard, the 25 line grid, mobile line craft
+# Hooks, headlines and CTAs
 
-What it is: how to write the first thing a reader meets (image line, first line of primary text, first three seconds of a Reel, first line of an X post), how to score it, and how to write the call to action. Read it at method step 5 (write to slots) and whenever the user asks for variants, a new angle or a stronger headline.
+What it is: how to write, score and test the first thing a reader meets, and how to write the call to action.
+
+The first thing is the image line, the first line of primary text, the first three seconds of a Reel or the first line of an X post. Read this file at method step 5 (write to slots) and whenever the user asks for variants, a new angle or a stronger headline.
 
 Every example uses the invented company Brekke Ski Guides. Every example is a fictional brief. Prices, dates, group sizes, ratings and places are invented for teaching and make no claim about any real operator.
 
@@ -38,18 +40,19 @@ Full specs live in meta.md and x.md. These are the numbers this file leans on.
 |---|---|---|
 | Facebook feed headline | 27 characters | Meta's feed image spec page, verified 2026-10-06: https://www.facebook.com/business/ads-guide/image/facebook-feed/traffic |
 | Facebook feed primary text | 50 to 150 characters recommended | Same page, verified 2026-10-06 |
+| Instagram feed headline | field up to 40 characters, reportedly not shown on single image feed ads | Meta's Instagram feed page, verified 2026-10-06: https://www.facebook.com/business/ads-guide/update/image/instagram-feed/link-clicks [VERIFY in the Ads Manager preview] |
 | Primary text visible before "See more" on mobile | about 125 characters | A practical figure. It depends on the layout and the device. Roughly 110 on a small phone, 135 on a large one, about 80 with large accessibility text [SECONDARY: https://adplus.com/tools/ad-specs-validator/facebook-125-character-primary-text, VERIFY on your own preview] |
 | First characters that must carry the hook | about 40 | The same vendor's advice [SECONDARY, VERIFY]. Treat it as a design rule |
 | Image text lines | 25, 30, 20 characters | adquill practitioner heuristics for on-image text. They are not Meta limits |
-| Reels line | 40 characters | adquill heuristic for the shortest placement. See meta.md for the placement figures [VERIFY: see meta.md] |
-| X post | 280 characters | https://benly.ai/learn/x-ads/x-twitter-ads-formats-specs, updated 24 March 2026 [SECONDARY, VERIFY: X's own pages did not load] |
+| Reels line | 40 characters | adquill heuristic for the tightest placement. Meta's page lists 44 characters of primary text for Instagram Reels, verified 2026-10-06 (see meta.md) |
+| X post | 280 characters | https://benly.ai/learn/x-ads/x-twitter-ads-formats-specs, updated 24 March 2026, checked 2026-10-06 [SECONDARY, VERIFY: X's own pages did not load] |
 | First three seconds of video | up to 47 percent of the value of a video campaign, and 74 percent in the first ten | Meta's page on video ads, with Nielsen: https://www.facebook.com/business/news/updated-features-for-video-ads [PRIMARY, VERIFY: the page is undated and the figures look old. Use the direction only. Do not quote them as 2026 benchmarks] |
 
 Meta's text limits are recommendations. The behaviour that matters is truncation. Count characters in code, never by eye.
 
 ## 3. The hook typology
 
-Eight hook types, each with a weak and a strong example, and the reason. The taxonomy comes from practitioner guides, not from any standard [SECONDARY: https://www.opus.pro/blog/instagram-reels-hook-formulas and https://www.heyorca.com/blog/the-best-social-media-hooks-for-2026, vendor blogs]. Use it as a menu for diversity. Label every headline with its type so the user can see what is being tested.
+Eight hook types, each with a weak and a strong example, and the reason. The taxonomy comes from practitioner guides, not from any standard [SECONDARY: https://www.heyorca.com/blog/the-best-social-media-hooks-for-2026, a vendor blog]. Use it as a menu for diversity. Label every headline with its type so the user can see what is being tested.
 
 Which type for which awareness level is in craft.md, section 2. A short version: unaware and problem aware readers like story, question and pattern interrupt. Solution aware readers like specificity and mechanism. Product aware readers like proof and the honest concession. Most aware readers like the plain offer.
 
@@ -146,7 +149,10 @@ Asks what the reader is already asking.
 - Strong: "Never ski toured? Start with one Saturday." (42 characters)
 - Why: it hails a specific person (a skier who has never toured) by an activity, and it gives a first step instead of a leap.
 - Best at: problem aware readers.
-- Watch for: a question about an activity is fine. A question that states or implies a personal trait is a policy problem on Meta ("Are you out of shape?"). See policy.md.
+- Watch for: a question about an activity is fine. A question that states or implies a personal trait is a policy problem on Meta.
+<!-- adquill-lint: ignore-start -->
+- Example of the problem: "Are you out of shape?" asserts a fact about the viewer. policy.md has the tiers and the safe rewrite.
+<!-- adquill-lint: ignore-end -->
 - Real precedent: "Do You Make These Mistakes in English?", the Sherwin Cody ad credited to Max Sackheim, said to have run for roughly 40 to 45 years [SECONDARY, VERIFY: sources disagree on the length].
 
 ### 3.8 Pattern interrupt
@@ -358,7 +364,7 @@ Craft rules for video and Reels text:
 2. Burned-in captions in the brand font.
 3. The hook is readable in the first half second.
 4. Never rely on a voiceover line for price or date.
-5. Keep text out of the Stories and Reels safe zone: 14 percent from the top, 35 percent from the bottom and 6 percent on each side [VERIFY: Meta's help page did not load for the research team. See meta.md for the figures with their source].
+5. Keep text out of the Stories and Reels safe zone: 14 percent from the top, 35 percent from the bottom and 6 percent on each side (Meta's Reels spec page, verified 2026-10-06: https://www.facebook.com/business/ads-guide/update/video/instagram-reels/link-clicks. See meta.md for the Stories figures, which are vendor-reported [VERIFY]).
 
 Skimmers.
 
@@ -384,7 +390,7 @@ Primary:
 
 Secondary and vendor (wording unconfirmed):
 
-- Hook taxonomy: https://www.opus.pro/blog/instagram-reels-hook-formulas , https://www.heyorca.com/blog/the-best-social-media-hooks-for-2026
+- Hook taxonomy: https://www.heyorca.com/blog/the-best-social-media-hooks-for-2026
 - Caples: https://larslofgren.com/john-caples-headline-formulas/ , https://maverickwords.com/4-copywriting-lessons-from-john-caples-tested-advertising-methods , https://archive.seattletimes.com/archive/19900611/1076601/john-caples-author-of-famous-ad-line
 - 4Us: https://www.awai.com/2022/05/4-goof-proof-ways-to-write-irresistible-headlines/
 - Dry's three tests: https://www.upgrow.io/harry-dry-copywriting-3-rules/

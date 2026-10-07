@@ -4,7 +4,7 @@ What it is: the research on why people forward content, what the platforms say t
 
 Every example uses the invented company Brekke Ski Guides. Every example is a fictional brief. Prices, dates and group sizes are invented for teaching and carry no claim about any real operator. Brekke's invented ledger: day tour NOK 2,350, weekend course NOK 4,900, six day hut-to-hut trip NOK 18,500 (departures 14 and 21 Mar 2027, eight guests, two guides, five to seven hours a day on skins).
 
-Evidence grades follow references/psychology.md: A peer reviewed and replicated, B large dataset or platform-official, C practitioner lore or theory with no direct ad evidence. Platform statements carry the date 2026-10-06 when the primary source was read that day, or [VERIFY: reason].
+Evidence grades follow references/psychology.md: A peer reviewed and replicated, B large dataset or platform-official, C practitioner lore or theory with no direct ad evidence. Platform statements say "verified 2026-10-06" when the primary source was read that day, or carry [VERIFY: reason].
 
 ## Contents
 
@@ -47,9 +47,9 @@ The paper's reading is that high-arousal emotion, positive (awe) or negative (an
 
 What this means for a ski operator:
 
-- Awe is honest and available: scale, light, silence, a descent. It needs a concrete scene. The word "breathtaking" carries none.
+- Awe is honest and available: scale, light, silence, a descent. It needs a concrete scene. Stock scenery adjectives carry none.
 - Anger is available only in a narrow, brand-safe form: a fair grievance about an industry habit that the operator can prove it avoids, such as a price buried on page three. Aim it at a habit, never at people.
-- Anxiety maps to urgency ("only 3 places left"). Use it only when the number is true and checkable. Fake scarcity is a trust and policy risk (ethics rules in references/psychology.md).
+- Anxiety maps to urgency, such as a count of places left. Use it only when the number is true and checkable. Fake scarcity is a trust and policy risk (ethics rules in references/psychology.md).
 - Sadness and sentimental nostalgia lose on this evidence. Avoid them when the goal is sends and replies.
 
 Give every ad a declared activation target: awe, a useful surprise or a fair grievance. Refuse low-arousal filler.
@@ -84,9 +84,9 @@ Example (fictional brief): "The one gully we only ski when the wind drops. How w
 Two sources with real data (grade B):
 
 - Hansen and Wänke (2010): the same content is judged more likely true when written in concrete language than in abstract language, across four experiments [https://journals.sagepub.com/doi/10.1177/0146167210386238].
-- Hu, Pilgrim, Zhao and Hills (2025): concrete language predicted sharing in 15.5 million Twitter posts (February 2020 to January 2021, 35 topics) and 50,517 Reddit posts, and in an experiment with 167 participants over 55 pairs of manipulated posts people chose the concrete version more often (t(166) = 15.36, p < .001). Each standardised unit of concreteness went with about 216 more Reddit upvotes. The authors note that concreteness was scored word by word, that platform algorithms and follower counts were not modelled, and that concreteness and specificity correlate only weakly (r = .255) [https://pmc.ncbi.nlm.nih.gov/articles/PMC13062457/].
+- Hu, Pilgrim, Zhao and Hills (2025): concrete language predicted sharing in 15.5 million Twitter posts (February 2020 to January 2021, 35 topics) and 50,517 Reddit posts. In an experiment with 167 participants over 55 pairs of manipulated posts people chose the concrete version more often (t(166) = 15.36, p < .001). Each standardised unit of concreteness went with about 216 more Reddit upvotes. The authors note that concreteness was scored word by word, that platform algorithms and follower counts were not modelled, and that concreteness and specificity correlate only weakly (r = .255) [https://pmc.ncbi.nlm.nih.gov/articles/PMC13062457/].
 
-Swap category words for sensory, countable things. "Adventure of a lifetime" becomes "four hours of skinning, then a descent with nobody else on it". Numbers help because a reader can check them. Require at least one number or named place in every variant, and a ledger row for each.
+Swap category words for sensory, countable things. The stock brochure promise becomes "four hours of skinning, then a descent with nobody else on it". Numbers help because a reader can check them. Require at least one number or named place in every variant, and a ledger row for each.
 
 ### 2.5 Identity and social currency
 
@@ -138,7 +138,7 @@ Why it fails: it has no date, no price and no place, so the second reader learns
 
 Strong: "Found a six-day ski tour in the Sunnmøre Alps, 14 or 21 Mar. Huts, two guides, eight people, NOK 18,500 all told. Level is red runs with control. Free the 14th?"
 
-Why it works: the first three questions a second reader asks (what, when, how much) are answered in the first two sentences, the level line answers "can I do it", and the last line is a plan for two people. It reads like a person wrote it. The count is 160 characters.
+Why it works: the first two sentences answer what, when and how much, the three questions a second reader asks first. The level line answers "can I do it". The last line is a plan for two people. It reads like a person wrote it. The count is 160 characters.
 
 Check the facts and the length in code, never by eye. If a ledger fact is missing (no level, no price), the skill writes a shorter line and says what is missing.
 
@@ -148,7 +148,7 @@ Paste the ad text and the link preview into a blank chat. If a reader cannot tel
 
 ## 4. Platform signals
 
-Platform behaviour changes faster than craft. Every statement here is date-stamped "as of 2026-10-06". Recheck anything older than 90 days.
+Platform behaviour changes faster than craft. Every statement here was verified 2026-10-06 against the source named, or carries [VERIFY: reason]. Recheck anything older than 90 days.
 
 ### 4.1 X organic For You ranking
 
@@ -156,7 +156,7 @@ Primary source, read on 2026-10-06: the xai-org/x-algorithm repository, first pu
 
 What the README states:
 
-- A Grok-based model predicts the probability of these actions. Engagement: favorite, reply, repost, quote, share, share via DM, share via copy link. Clicks: post, profile, link, photo expand, video open, quoted post. Attention: video quality view, dwell, dwell time, click dwell time, video continuation seconds, profile visit seconds. Author: follow. Negative: not interested, mute, block, report, not dwelled.
+- A learned ranking model predicts the probability of these actions. Engagement: favorite, reply, repost, quote, share, share via DM, share via copy link. Clicks: post, profile, link, photo expand, video open, quoted post. Attention: video quality view, dwell, dwell time, click dwell time, video continuation seconds, profile visit seconds. Author: follow. Negative: not interested, mute, block, report, not dwelled.
 - The score is a weighted sum of weight times predicted probability. The weights sit in home-mixer/params/param.rs, which the notes did not read, so no weight is quoted [VERIFY: read param.rs before quoting any weight]. Older third-party claims about numeric weights, such as "a reply is worth 27 likes", come from the 2023 release and do not describe the 2026 system.
 - After scoring: author diversity (repeat posts from one author decay), an out-of-network discount and a new-author boost for low-impression authors.
 
