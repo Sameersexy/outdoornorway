@@ -270,9 +270,9 @@
     {
       "id": "BR13",
       "severity": "block",
-      "message": "A placeholder is still in the spoken line, the on-screen text or the caption. Resolve it with the client or cut the claim.",
+      "message": "A placeholder is still in the script: the spoken line, a visual, the on-screen text or the caption. Resolve it with the client or the guide, or cut the claim.",
       "regex": "\\[(verify|todo|tbd|link)[^\\]]*\\]",
-      "scope": "any",
+      "scope": "everything",
       "mode": "final_only"
     }
   ],

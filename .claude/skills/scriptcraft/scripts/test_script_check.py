@@ -998,6 +998,11 @@ tier: short
         text = self.brief_text("client brief, 2026-10-08").replace("| yes |\n| F1 |", "| no |\n| F1 |", 1)
         self.assertFalse(found(check(text), "F06"))
 
+    def test_br13_placeholder_in_a_visual_blocks_final_only(self):
+        text = beat(read(TALK), 3, visual="selfie, the guide on the trail [VERIFY: which trail, guide]")
+        self.assertFalse(found(check(text), "BR13"))
+        self.assertTrue(found(check(text, final=True), "BR13", "block"))
+
     def test_d01_disclosure_beat_without_overlay_warns(self):
         text = beat(self.talk(), 2, overlay="-")
         self.assertTrue(found(check(text), "D01", "warn"))

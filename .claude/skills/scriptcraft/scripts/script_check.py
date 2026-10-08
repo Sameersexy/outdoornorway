@@ -1494,6 +1494,9 @@ def scope_texts(ctx, scope):
         return [item(b) for b in beats if b.n < stop and not b.has("soft-cta")]
     if scope == "voiceover_and_text":
         return [item(b) for b in beats]
+    if scope == "everything":  # every cell the crew or the viewer reads: voiceover, visual, overlay, caption
+        every = [(b.label(), norm(PAUSE_RE.sub(" ", b.vo) + " / " + b.visual + " / " + b.text), b) for b in beats]
+        return every + [("caption", norm(ctx.doc.caption), None)]
     texts = [item(b) for b in beats] + [("caption", norm(ctx.doc.caption), None)]
     if scope == "script":
         return [("script", " \n ".join(t for _, t, _ in texts), None)]
