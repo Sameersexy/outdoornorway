@@ -57,7 +57,7 @@ Copy facts word for word from the source into `## Facts`, one row each, with the
 
 A thin brief makes a short script. If the long facts table has fewer than about 8 rows, lower `seconds` or accept the W02 warning. Never pad with claims the table does not hold.
 
-Thin-brief protocol. A brief with no real moment in it (no named person, object, place or sensory detail from a real trip) pulls writers toward brochure lines and the example shots. Before drafting, ask the guide for one real moment in their own words and one thing a guest said or did. With nobody to ask, write visuals only from what the facts table supports, mark every schedule or sequence you assume with `[VERIFY: what, who]`, and list in Open items what the guide must supply before filming. Never fill the gap with a shot from an example.
+Thin-brief protocol. A brief with no real moment in it (no named person, object, place or sensory detail from a real trip) pulls writers toward brochure lines and the example shots. Before drafting, send the guide `assets/guide-moment-intake.md` (ten short questions: one real moment, one guest reaction, the doubt, the gear, where they can film). Its answers become facts rows quoted in the source cell. In the end-to-end test two rewrite rounds on a thin brief fixed facts, distinctness and the objection, and the hook, loop and visuals stayed at 4 to 5 out of 10 until a real moment was supplied. With nobody to ask, write visuals only from what the facts table supports, mark every schedule or sequence you assume with `[VERIFY: what, who]`, and list in Open items what the guide must supply before filming. Never fill the gap with a shot from an example.
 
 ### 3. Choose the structure
 
@@ -204,3 +204,4 @@ Kept: loops, the "which loop does this line serve" test, word economy, concrete 
 | examples/short-fictional.md, examples/long-fictional.md | You want to see a passing voiceover script before writing. |
 | examples/short-ugc-talk-fictional.md, examples/short-ugc-text-fictional.md | You want to see a passing ugc script before writing. |
 | examples/creator-brief-fictional.md | You are writing a creator brief. |
+| assets/guide-moment-intake.md | The brief holds no real moment from a real trip, or a guide is about to film. |
