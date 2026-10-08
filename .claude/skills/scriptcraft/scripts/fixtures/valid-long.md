@@ -34,3 +34,8 @@ core_takeaway: With skins, kick turns and a guide setting the pace, you can clim
 | 16 | 176-190 | Day tours run from January to April. Book a guided touring day in Voss, and tell us how much you ski now. | Skier glides past the camera / group at the trailhead / guide waves the group on | Guided touring days from Voss | cta | F5, F1 |
 ## Caption
 How a guided ski touring day in Voss works, from skins to the ski down. #skitouring #voss
+0:00 Skis that climb
+0:20 The gear
+0:44 The climb
+1:20 The turn
+1:56 The ski down

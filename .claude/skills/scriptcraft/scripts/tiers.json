@@ -202,6 +202,16 @@
       "price_regex": "\\b(nok|kr|eur|usd|gbp)\\s?\\d[\\d,.]*|\\d[\\d,. ]*\\s?(nok|kr|kroner|euros?|dollars?|pounds?)\\b|[$\\u00a3\\u20ac]\\s?\\d|\\b(price|prices|priced|costs?|per person|per adult)\\b"
     }
   },
+  "caption_chapters": {
+    "note": "C06. YouTube Help, 'Add chapters to your videos' (A): the description needs at least 3 timestamps in ascending order, the first at 0:00, and each chapter at least 10 seconds. [VERIFY: confirm current feature set for YouTube chapters] The rule applies to platform youtube, tier long. Chapter timestamps are positions in the video, so F04 does not count them as numbers.",
+    "platform": "youtube",
+    "tier": "long",
+    "line_regex": "^\\s*((?:\\d{1,2}:)?\\d{1,2}:\\d{2})\\b",
+    "min_chapters": 3,
+    "min_chapter_seconds": 10,
+    "must_match_beat_start": true,
+    "beat_match_seconds": 1
+  },
   "sources": {
     "note": "F06. A row marked verified yes from a client brief must quote the brief in double quotes in the source cell. The end-to-end test found a writer marking 'the trip starts Friday and ends Sunday' as verified yes against a brief that did not say it. A quote does not prove the brief says it, but it lets the reviewer check in seconds.",
     "quote_required_regex": "\\bbrief\\b"

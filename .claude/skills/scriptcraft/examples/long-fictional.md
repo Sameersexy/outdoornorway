@@ -42,3 +42,8 @@ core_takeaway: A family that does not all ski can share one mountain day, becaus
 | 16 | 178-190 | Family days run on Saturdays in February and March. Book a date from the link below, for the skier and the walkers in your house. | family walks to the van in late light, carrying skis and snowshoes / end card with the logo and the booking link over the snow | From NOK 1,450 per adult | cta | F9 |
 ## Caption
 A ski morning and a snowshoe morning that meet at lunch, above Lindvik. Saturdays in February and March 2027, from NOK 1,450 per adult. Brekke Ski Guides is a fictional brand made for this example. #familyski
+0:00 One mountain day for the whole family
+0:22 The keen skier
+0:58 The snowshoer
+1:34 The smallest walker
+2:10 Where the day comes back together

@@ -95,7 +95,7 @@ STYLE_ONLY = {"H02": ("voiceover",), "H03": ("voiceover",), "U01": UGC, "U02": U
               "U04": UGC, "U05": UGC, "U06": ("ugc_talk",), "U07": UGC}
 STYLE_SKIP_NOTE = {"H02": "see U01", "H03": "see U03"}
 # Rules added in 0.3.0. A voiceover script with no new front matter field does not list them.
-NEW_RULES = ("U01", "U02", "U03", "U04", "U05", "U06", "U07", "D01", "SND01", "R04")
+NEW_RULES = ("U01", "U02", "U03", "U04", "U05", "U06", "U07", "D01", "SND01", "R04", "C06")
 NEW_FIELDS = ("creator", "relationship", "sound")
 
 RULES = {
@@ -131,6 +131,7 @@ RULES = {
     "C03": "call to action length",
     "C04": "call to action comes after the payoff",
     "C05": "caption hashtags",
+    "C06": "YouTube chapters in the description: timestamps from 0:00, at least 3, 10 s apart, on beat starts",
     "L01": "loop and chapter structure",
     "R01": "no em dash, en dash or emoji",
     "R02": "no capitals for emphasis",
@@ -220,6 +221,12 @@ HELP = {
     "C03": ("Spoken words in the cta beat; more than one ask verb in it warns.", "One verb, one destination."),
     "C04": ("cta beat position against the payoff or close of the dominant loop.", "Pay off first, then ask."),
     "C05": ("Hashtags in the caption.", "Keep 2 at most."),
+    "C06": ("Platform youtube, tier long: the caption is the description and must carry chapters (caption_chapters in "
+            "tiers.json): at least min_chapters timestamp lines, the first at 0:00, ascending, each at least "
+            "min_chapter_seconds after the last and inside the script, each on the start of a beat (within "
+            "beat_match_seconds), and a title after each. Timestamps on those lines are not numbers for F04. "
+            "Other platforms: timestamps are never checked. [VERIFY: confirm current feature set for YouTube chapters]",
+            "Write one line per chapter beat: 0:00 The question. Use each chapter beat's start time."),
     "L01": ("Role column loop and chapter tokens. ugc_text (loops.close_in_last_beat): close:A in the last beat.",
             "Short: open:A in beat 1, close:A in one of the last 2 beats (ugc_text: the last beat; one beat may "
             "hold both). Long: see references/long-form.md."),
@@ -986,7 +993,7 @@ def check_facts(ctx):
     final_sev = "block" if ctx.final else "warn"
     for b in beats:
         check_beat_numbers(ctx, b, final_sev)
-    for n in sorted(set(digits(doc.caption)) | set(spelled_big(doc.caption))):
+    for n in sorted(set(digits(caption_without_chapters(ctx))) | set(spelled_big(doc.caption))):
         rows = [r for r in doc.facts if r.has_number(n)]
         if not rows:
             ctx.add("F04", "block", "caption: number not in the facts table", n)
@@ -1546,6 +1553,57 @@ def superlative_hits(ctx, text, sup, beat):
     return [sup]
 
 
+# ---------------------------------------------------------------- C06: YouTube chapters in the description
+
+def chapter_lines(ctx):
+    """(timestamp text, seconds, title) for each caption line that starts with a timestamp."""
+    cc = ctx.cfg.get("caption_chapters")
+    if not cc:
+        return []
+    out = []
+    for line in ctx.doc.caption.split("\n"):
+        m = re.match(cc["line_regex"], line)
+        if m:
+            parts = [int(x) for x in m.group(1).split(":")]
+            secs = sum(v * 60 ** i for i, v in enumerate(reversed(parts)))
+            out.append((m.group(1), secs, line[m.end():].strip(" -\u2013\u2014:|\t")))
+    return out
+
+
+def caption_without_chapters(ctx):
+    """The caption with chapter timestamps removed: they are positions in the video, not claims."""
+    cc = ctx.cfg.get("caption_chapters")
+    if not cc:
+        return ctx.doc.caption
+    return "\n".join(re.sub(cc["line_regex"], " ", line, count=1) for line in ctx.doc.caption.split("\n"))
+
+
+def check_chapters(ctx):
+    cc = ctx.cfg.get("caption_chapters")
+    if not cc or ctx.doc.meta.get("platform") != cc["platform"] or ctx.tname != cc["tier"]:
+        return
+    ch = chapter_lines(ctx)
+    if len(ch) < cc["min_chapters"]:
+        ctx.add("C06", "warn", "the description has %d chapter timestamps, YouTube needs at least %d (0:00 first)"
+                % (len(ch), cc["min_chapters"]))
+        return
+    if ch[0][1] != 0:
+        ctx.add("C06", "warn", "the first chapter must start at 0:00", ch[0][0])
+    starts = [b.start for b in ctx.doc.beats]
+    for i, (text, secs, title) in enumerate(ch):
+        if not title:
+            ctx.add("C06", "warn", "chapter %s has no title" % text)
+        if i and secs - ch[i - 1][1] < cc["min_chapter_seconds"]:
+            ctx.add("C06", "warn", "chapter %s is under %g s after the one before" % (text, cc["min_chapter_seconds"]))
+        if secs > ctx.end:
+            ctx.add("C06", "warn", "chapter %s is after the end of the script (%g s)" % (text, ctx.end))
+        elif cc.get("must_match_beat_start") and not any(abs(secs - s) <= cc["beat_match_seconds"] for s in starts):
+            ctx.add("C06", "warn", "chapter %s does not start on a beat (beat starts: %s)"
+                    % (text, ", ".join("%g" % s for s in starts)))
+        if i and secs <= ch[i - 1][1]:
+            ctx.add("C06", "warn", "chapter %s is not after the one before" % text)
+
+
 # ---------------------------------------------------------------- R04: copied example lines
 
 _REF_CACHE = {}
@@ -1671,7 +1729,7 @@ def check_example_copy(ctx):
 
 CHECKS = [check_time, check_words, check_beats, check_hook, check_facts, check_sentences,
           check_visuals, check_overlay, check_cta, check_loops, check_style, check_ugc, check_disclosure,
-          check_sound, check_example_copy, check_brand]
+          check_sound, check_chapters, check_example_copy, check_brand]
 
 # ---------------------------------------------------------------- run and report
 
@@ -1793,6 +1851,8 @@ def explain(rule_id, cfg, brand):
     for section, k in STYLE_KEYS.get(rid, []):
         if k in styles.get(section, {}):
             lines.append("  styles.%s.%s=%s" % (section, k, json.dumps(styles[section][k])))
+    if rid == "C06" and "caption_chapters" in cfg:
+        lines.append("  caption_chapters=%s" % json.dumps({k: v for k, v in cfg["caption_chapters"].items() if k != "note"}))
     return "\n".join(lines)
 
 

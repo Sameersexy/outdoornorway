@@ -572,7 +572,7 @@ class StyleDefaults(unittest.TestCase):
             code, out = cli("--explain", rid)
             self.assertEqual(code, 0, rid)
             self.assertIn("counts:", out)
-            self.assertIn("styles.", out)
+            self.assertIn("caption_chapters" if rid == "C06" else "styles.", out)
 
     def test_explain_shows_style_overrides(self):
         _, out = cli("--explain", "H01")
@@ -1038,6 +1038,77 @@ tier: short
         base = read(TEXT)
         text = beat(base, 1, overlay="the layer rule every guide uses on every single winter climb")
         self.assertTrue(found(check(text), "O01", "block"))
+
+
+class YoutubeChapters(unittest.TestCase):
+    """C06 and the F04 exemption for chapter timestamps in a YouTube description."""
+
+    def long(self):
+        return read("valid-long.md")
+
+    def with_caption(self, lines):
+        return attack_cases.set_caption(self.long(), "\n".join(lines))
+
+    GOOD = ["How a guided ski touring day works. #skitouring", "0:00 Skis that climb", "0:20 The gear", "0:44 The climb",
+            "1:20 The turn", "1:56 The ski down"]
+
+    def test_valid_chapters_pass_clean(self):
+        ctx = check(self.with_caption(self.GOOD))
+        self.assertEqual(ctx.findings, [])
+
+    def test_timestamps_are_not_numbers_for_f04(self):
+        self.assertFalse(found(check(self.with_caption(self.GOOD)), "F04"))
+
+    def test_a_real_number_on_a_chapter_line_still_needs_a_facts_row(self):
+        lines = list(self.GOOD)
+        lines[2] = "0:20 The gear costs 9,999"
+        self.assertTrue(found(check(self.with_caption(lines)), "F04", "block"))
+
+    def test_no_chapters_warns_for_youtube_long(self):
+        ctx = check(self.with_caption(["How a guided ski touring day works. #skitouring"]))
+        self.assertTrue(found(ctx, "C06", "warn"))
+
+    def test_fewer_than_three_chapters_warns(self):
+        self.assertTrue(found(check(self.with_caption(self.GOOD[:3])), "C06", "warn"))
+
+    def test_first_chapter_must_be_zero(self):
+        lines = list(self.GOOD)
+        lines[1] = "0:08 Skis that climb"
+        self.assertTrue([f for f in found(check(self.with_caption(lines)), "C06") if "0:00" in f["message"]])
+
+    def test_chapter_off_a_beat_start_warns(self):
+        lines = list(self.GOOD)
+        lines[3] = "0:50 The climb"
+        self.assertTrue([f for f in found(check(self.with_caption(lines)), "C06") if "does not start on a beat" in f["message"]])
+
+    def test_chapters_under_10_seconds_apart_warn(self):
+        lines = list(self.GOOD)
+        lines[1:3] = ["0:20 Skis that climb", "0:25 The gear"]
+        self.assertTrue([f for f in found(check(self.with_caption(lines)), "C06") if "under" in f["message"]])
+
+    def test_chapter_without_a_title_warns(self):
+        lines = list(self.GOOD)
+        lines[2] = "0:20"
+        self.assertTrue([f for f in found(check(self.with_caption(lines)), "C06") if "no title" in f["message"]])
+
+    def test_other_platforms_are_not_checked(self):
+        cfg = json.loads(json.dumps(CFG))
+        cfg["caption_chapters"]["platform"] = "tiktok"
+        text = self.with_caption(["A caption with no chapters. #skitouring"])
+        ctx = sc.run(sc.parse_document(text, cfg), cfg, BRAND)
+        self.assertFalse(found(ctx, "C06"))
+
+    def test_short_tier_never_needs_chapters(self):
+        self.assertFalse(found(check(read(TALK)), "C06"))
+
+    def test_chapter_after_the_script_end_warns(self):
+        lines = list(self.GOOD) + ["4:00 Late"]
+        self.assertTrue(found(check(self.with_caption(lines)), "C06", "warn"))
+
+    def test_help_for_c06_names_the_config(self):
+        code, out = cli("--explain", "C06")
+        self.assertEqual(code, 0)
+        self.assertIn("caption_chapters", out)
 
 
 class AttackHarness(unittest.TestCase):

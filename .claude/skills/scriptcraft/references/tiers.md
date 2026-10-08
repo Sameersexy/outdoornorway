@@ -174,6 +174,7 @@ A value outside the list is a parse error (exit 2) naming the line.
 | disclosure.paid_words | ad, advert, advertisement, paid, paid partnership, sponsored, gifted, free trip, for free, invited, hosted, comped, partnership, partnered, reklame. A paid word right after a negation in the same clause (not an ad, I'm not paid) does not count (paid_negation_regex) |
 | disclosure.overlay_required | true: the disclosure beat needs on-screen text (warn), because many viewers watch muted |
 | disclosure.overlay_max_words | 6: in ugc_text the overlay on a disclosure beat that is not the hook is counted apart from the 2 content lines |
+| caption_chapters | C06 (warn): YouTube long. At least 3 chapter lines in the caption, first at 0:00, 10 s apart, each within 1 s of a beat start; timestamps are not numbers for F04 |
 | sources.quote_required_regex | `\bbrief\b`: F06 warns (blocks with --final) when a row verified yes names a brief in its source and quotes nothing |
 | example_copy | R04 (warn): 5-word runs shared with `examples/` or `assets/`; 2 distinct shared runs (a 6-word copy gives two) in the voiceover, or 2 in the visual and overlay cells, warn. Also 3 shots that restate reference shots (60 percent of a reference shot's content words, 3 content words minimum) |
 | disclosure.role_words | guide, guides, guiding, instructor, staff, team, employee, work for, work at, work with, i run, we run, owner, founder, co-founder, plus the brand name |
