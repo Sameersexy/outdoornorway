@@ -40,7 +40,93 @@
         }
       ],
       "price_qualifier": "from",
-      "price_basis": "Tour pages say \"From\" (for example \"From NOK 41,181\" on the 7 Day page). The hub shows the bare price. Per person basis is not stated anywhere. [VERIFY: confirm per person with Sameer before it goes in an ad.]"
+      "price_basis": "Tour pages say \"From\" (for example \"From NOK 41,181\" on the 7 Day page). The hub shows the bare price. Per person basis is not stated anywhere. [VERIFY: confirm per person with Sameer before it goes in an ad.]",
+      "itinerary": [
+        {
+          "day": 1,
+          "kind": "travel",
+          "places": [
+            "Bergen",
+            "Voss"
+          ],
+          "fact": "Arrive in Bergen, welcome tour, transfer to Voss, check in.",
+          "page_heading": "Day 1 - Welcome to Norway!"
+        },
+        {
+          "day": 2,
+          "kind": "ski",
+          "places": [
+            "Voss Resort"
+          ],
+          "fact": "Ski day at Voss Resort.",
+          "page_heading": "Day 2 - Ski Voss Resort"
+        },
+        {
+          "day": 3,
+          "kind": "ski",
+          "places": [
+            "Voss Resort"
+          ],
+          "fact": "Second ski day at Voss Resort.",
+          "page_heading": "Day 3 - Another Day at Voss Resort"
+        },
+        {
+          "day": 4,
+          "kind": "ski",
+          "places": [
+            "Myrkdalen"
+          ],
+          "fact": "Ski day at Myrkdalen.",
+          "page_heading": "Day 4 - Discover Myrkdalen"
+        },
+        {
+          "day": 5,
+          "kind": "travel",
+          "places": [
+            "Myrkdalen",
+            "Sogndal"
+          ],
+          "fact": "Scenic drive through Fjord Norway from Myrkdalen to Sogndal.",
+          "page_heading": "Day 5 - Scenic Drive to Sogndal"
+        },
+        {
+          "day": 6,
+          "kind": "ski",
+          "places": [
+            "Sogndal"
+          ],
+          "fact": "Full ski day at Sogndal Ski Centre.",
+          "page_heading": "Day 6 - Full Day Skiing in Sogndal"
+        },
+        {
+          "day": 7,
+          "kind": "ski",
+          "places": [
+            "Stranda"
+          ],
+          "fact": "Ski day at Stranda Ski Resort.",
+          "page_heading": "Day 7 - Stranda Ski Resort"
+        },
+        {
+          "day": 8,
+          "kind": "ski",
+          "places": [
+            "Stranda"
+          ],
+          "fact": "Second ski day at Stranda.",
+          "page_heading": "Day 8 - One More Day in Stranda"
+        },
+        {
+          "day": 9,
+          "kind": "travel",
+          "places": [
+            "Alesund",
+            "Vigra Airport"
+          ],
+          "fact": "Transfer to Alesund and then to Vigra Airport.",
+          "page_heading": "Day 9 - Farewell to Norway!"
+        }
+      ]
     },
     {
       "id": "ski-aurora-7day",
@@ -78,7 +164,75 @@
         }
       ],
       "price_qualifier": "from",
-      "price_basis": "Tour pages say \"From\" (for example \"From NOK 41,181\" on the 7 Day page). The hub shows the bare price. Per person basis is not stated anywhere. [VERIFY: confirm per person with Sameer before it goes in an ad.]"
+      "price_basis": "Tour pages say \"From\" (for example \"From NOK 41,181\" on the 7 Day page). The hub shows the bare price. Per person basis is not stated anywhere. [VERIFY: confirm per person with Sameer before it goes in an ad.]",
+      "itinerary": [
+        {
+          "day": 1,
+          "kind": "travel",
+          "places": [
+            "Bergen"
+          ],
+          "fact": "Day in Bergen.",
+          "page_heading": "Day 1 - A stroll between the seven mountains"
+        },
+        {
+          "day": 2,
+          "kind": "snowshoe",
+          "places": [
+            "Bergen",
+            "Voss"
+          ],
+          "fact": "Morning train from Bergen to Voss (about an hour), then a guided snowshoe tour.",
+          "page_heading": "Day 2 - A winter wonderland beyond beautiful"
+        },
+        {
+          "day": 3,
+          "kind": "ski",
+          "places": [
+            "Voss Resort"
+          ],
+          "fact": "Ski day at Voss Resort.",
+          "page_heading": "Day 3 - Carve through the best slopes in Norway"
+        },
+        {
+          "day": 4,
+          "kind": "aurora",
+          "places": [
+            "Voss Resort",
+            "Bergen",
+            "Tromso"
+          ],
+          "fact": "Flight from Bergen to Tromso and a guided aurora safari. The aurora can never be promised (BR09, BR10).",
+          "page_heading": "Day 4 - Aurora Borealis over the Arctic Circle awaits"
+        },
+        {
+          "day": 5,
+          "kind": "aurora",
+          "places": [
+            "Tromso"
+          ],
+          "fact": "Fjord trip on a private boat with lunch, then aurora observation at the hotel camp in the evening. The aurora can never be promised.",
+          "page_heading": "Day 5 - Fjord Serenity and Aurora Splendor"
+        },
+        {
+          "day": 6,
+          "kind": "aurora",
+          "places": [
+            "Tromso"
+          ],
+          "fact": "Dog sledding, then an aurora hunting trip at night. The aurora can never be promised.",
+          "page_heading": "Day 6 - Arctic Rush and Nighttime Magic"
+        },
+        {
+          "day": 7,
+          "kind": "travel",
+          "places": [
+            "Tromso"
+          ],
+          "fact": "Transfer to Tromso Airport, timed to your flight.",
+          "page_heading": "Day 7 - Return to Airport"
+        }
+      ]
     },
     {
       "id": "ski-6day",
@@ -101,7 +255,67 @@
         }
       ],
       "price_qualifier": "from",
-      "price_basis": "Tour pages say \"From\" (for example \"From NOK 41,181\" on the 7 Day page). The hub shows the bare price. Per person basis is not stated anywhere. [VERIFY: confirm per person with Sameer before it goes in an ad.]"
+      "price_basis": "Tour pages say \"From\" (for example \"From NOK 41,181\" on the 7 Day page). The hub shows the bare price. Per person basis is not stated anywhere. [VERIFY: confirm per person with Sameer before it goes in an ad.]",
+      "itinerary": [
+        {
+          "day": 1,
+          "kind": "travel",
+          "places": [
+            "Bergen",
+            "Voss"
+          ],
+          "fact": "Train from Bergen to Voss, check in at Fleischer's Hotel. No scheduled activity.",
+          "page_heading": "Day 1: Bergen to Voss"
+        },
+        {
+          "day": 2,
+          "kind": "ski",
+          "places": [
+            "Voss Resort"
+          ],
+          "fact": "First ski lesson at Voss Resort. Gondola access is included in the ski pass.",
+          "page_heading": "Day 2: Ski Lessons at Voss Resort"
+        },
+        {
+          "day": 3,
+          "kind": "snowshoe",
+          "places": [
+            "Hardangerfjord",
+            "Mount Oksen"
+          ],
+          "fact": "Snowshoe hike in the Hardangerfjord region with a local guide and a campfire stop. The Mount Oksen route has a challenging initial ascent.",
+          "page_heading": "Day 3: Snowshoeing in Hardangerfjord"
+        },
+        {
+          "day": 4,
+          "kind": "ski",
+          "places": [
+            "Voss Resort",
+            "Myrkdalen"
+          ],
+          "fact": "Second ski lesson at Voss Resort, then about a 30-minute shuttle to Myrkdalen in the afternoon.",
+          "page_heading": "Day 4: Ski Voss Resort, Then Travel to Myrkdalen"
+        },
+        {
+          "day": 5,
+          "kind": "ski",
+          "places": [
+            "Myrkdalen"
+          ],
+          "fact": "Ski day at Myrkdalen with a lesson tailored to your needs.",
+          "page_heading": "Day 5: Skiing at Myrkdalen"
+        },
+        {
+          "day": 6,
+          "kind": "travel",
+          "places": [
+            "Bergen",
+            "Mount Fløyen"
+          ],
+          "fact": "Day in Bergen. The itinerary includes a funicular ticket to Mount Fløyen. Confirm the transfer and finishing time with the team.",
+          "page_heading": "Day 6: Explore Bergen and Mount Fløyen"
+        }
+      ]
     },
     {
       "id": "ski-snowshoe-3day",
@@ -130,7 +344,38 @@
         }
       ],
       "price_qualifier": "from",
-      "price_basis": "Tour pages say \"From\" (for example \"From NOK 41,181\" on the 7 Day page). The hub shows the bare price. Per person basis is not stated anywhere. [VERIFY: confirm per person with Sameer before it goes in an ad.]"
+      "price_basis": "Tour pages say \"From\" (for example \"From NOK 41,181\" on the 7 Day page). The hub shows the bare price. Per person basis is not stated anywhere. [VERIFY: confirm per person with Sameer before it goes in an ad.]",
+      "itinerary": [
+        {
+          "day": 1,
+          "kind": "ski",
+          "places": [
+            "Voss Resort"
+          ],
+          "fact": "Ski day at Voss Resort. The page mentions lessons.",
+          "page_heading": "Day 1 - The only thing you need is a hunger for winter sports"
+        },
+        {
+          "day": 2,
+          "kind": "snowshoe",
+          "places": [
+            "Hardangerfjord",
+            "Mount Oksen",
+            "Tjoflot"
+          ],
+          "fact": "Guided snowshoe hike in the Hardangerfjord region. The trail starts in Tjoflot and climbs through forest above the tree line. The page says the initial ascent is challenging. Age and level wording conflicts across pages, so say nothing about who it suits.",
+          "page_heading": "Day 2 - A boundless view of an ancient glacier bottom"
+        },
+        {
+          "day": 3,
+          "kind": "ski",
+          "places": [
+            "Myrkdalen"
+          ],
+          "fact": "Ski day at Myrkdalen. The page mentions the slope restaurant.",
+          "page_heading": "Day 3 - Another day, another thrill"
+        }
+      ]
     },
     {
       "id": "multisport-3day",
@@ -161,7 +406,36 @@
         }
       ],
       "price_qualifier": "from",
-      "price_basis": "Tour pages say \"From\" (for example \"From NOK 41,181\" on the 7 Day page). The hub shows the bare price. Per person basis is not stated anywhere. [VERIFY: confirm per person with Sameer before it goes in an ad.]"
+      "price_basis": "Tour pages say \"From\" (for example \"From NOK 41,181\" on the 7 Day page). The hub shows the bare price. Per person basis is not stated anywhere. [VERIFY: confirm per person with Sameer before it goes in an ad.]",
+      "itinerary": [
+        {
+          "day": 1,
+          "kind": "ski",
+          "places": [
+            "Voss Resort"
+          ],
+          "fact": "Guided ski day at Voss Resort, terrain to suit your level. The page mentions museums and cafes in Voss afterwards.",
+          "page_heading": "Day 1 - On the skis, life feels like a breeze"
+        },
+        {
+          "day": 2,
+          "kind": "snowshoe",
+          "places": [
+            "Voss"
+          ],
+          "fact": "Guided snowshoe day on forest trails near Voss. The page says guides provide the equipment and mentions grilling local food on an open campfire. Confirm gear and campfire wording with Sameer before using them.",
+          "page_heading": "Day 2 - Walk on nature’s fluffy pillows"
+        },
+        {
+          "day": 3,
+          "kind": "ski",
+          "places": [
+            "Voss"
+          ],
+          "fact": "Guided off-piste powder skiing day near Voss. Snow conditions can never be promised (BR09).",
+          "page_heading": "Day 3 - Chasing Powder Dreams: Discover Norway's Hidden Beauty"
+        }
+      ]
     },
     {
       "id": "backcountry-beginner",
@@ -223,5 +497,6 @@
       "BACKCOUNTRY SKI TOUR",
       "INTERMEDIATE TO ADVANCED"
     ]
-  }
+  },
+  "itinerary_note": "itinerary: per-day facts taken from the live tour pages on 2026-10-08 and shortened to plain statements. page_heading is the exact day heading on the page and verify_tours.py checks it. kind is ski, snowshoe, aurora or travel. The page text promises things this file does not repeat (powder, aurora, all gear included); see the do-not-claim list in .claude/product-marketing.md. Not yet confirmed by Sameer."
 }

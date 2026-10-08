@@ -37,6 +37,12 @@ def page_lines(raw):
     return [norm(x) for x in t.split("\n") if norm(x)]
 
 
+def flatten(text):
+    """Lower case, one kind of dash and quote, single spaces: for matching headings."""
+    text = norm(text).lower().replace("\u2019", "'").replace("\u2018", "'")
+    return re.sub(r"\s*[-:|]\s*", " ", re.sub(r"\s+", " ", text)).strip()
+
+
 def money_to_int(text):
     m = re.search(r"NOK\s*([\d,]+)(?:\.\d+)?", text)
     return int(m.group(1).replace(",", "")) if m else None
@@ -73,6 +79,15 @@ def main():
             if a < dt.date.fromisoformat(data["as_of"]):
                 problems.append(f"{t['id']}: departure {d['start']} is in the past")
             notes.append(f"{t['id']}: {a.strftime('%a %d %b %Y')} to {b.strftime('%a %d %b %Y')}")
+        # itinerary: every day heading must be on the live page (dashes and curly quotes ignored)
+        flat = flatten(blob)
+        for day in t.get("itinerary", []):
+            if flatten(day["page_heading"]) not in flat:
+                problems.append(f"{t['id']}: itinerary heading not on page: {day['page_heading']}")
+            if day["day"] > t["days"]:
+                problems.append(f"{t['id']}: itinerary day {day['day']} is past the {t['days']} day tour")
+        if t.get("itinerary") and len(t["itinerary"]) != t["days"]:
+            problems.append(f"{t['id']}: itinerary lists {len(t['itinerary'])} days, tour is {t['days']}")
         rec = t.get("recurring")
         if rec and rec["page_text"] not in blob:
             problems.append(f"{t['id']}: recurring text not on page: {rec['page_text']}")

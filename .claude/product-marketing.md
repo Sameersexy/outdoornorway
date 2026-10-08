@@ -1,7 +1,7 @@
 # Outdoor Norway: product marketing context
 
 Read by the installed copy skills (copywriting, ad-creative, social, marketing-psychology) and by the ski ad job.
-Source of truth for prices and dates: `campaigns/ski-meta-ads/tours.json`. Re-check with `python3 -I campaigns/ski-meta-ads/verify_tours.py`.
+Source of truth for prices, dates and the day-by-day plan of each multi-day tour (the `itinerary` list, kind ski, snowshoe, aurora or travel): `campaigns/ski-meta-ads/tours.json`. Re-check with `python3 -I campaigns/ski-meta-ads/verify_tours.py`.
 Last reviewed: 2026-10-06. Facts below come from the client's pages and the confirmed price list. Anything marked [VERIFY] is not yet confirmed.
 
 ## Who we are

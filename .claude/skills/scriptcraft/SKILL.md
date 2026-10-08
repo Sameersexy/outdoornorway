@@ -45,7 +45,7 @@ Ask only for what is missing:
 | Length | Short is 8 to 25 s (ugc_text 7 to 15 s), long up to 200 s. Anything else: refuse and offer the nearest tier. Asked for a 60 s reel, offer a 25 s reel, or a 200 s YouTube video instead. |
 | Core takeaway | One sentence. If the user gives three, ask which one wins. |
 | Product | A tour id from `campaigns/ski-meta-ads/tours.json`, or "no product" for a helpful post. |
-| Facts source | tours.json, `.claude/product-marketing.md`, a page URL or the user. Nothing else. |
+| Facts source | tours.json (prices, dates, day-by-day itinerary), `.claude/product-marketing.md`, a page URL or the user. Nothing else. |
 | Narrator | standard (fluent, natural pace) or slow (non-native guide, text-to-speech, calm read). Slow cuts the word budget by 15 percent, in every style. |
 | Objection | The one doubt this video answers ("will I hold the group up?"). Goes in the optional `objection:` front matter field; the reviewer checks the script answers it. |
 
