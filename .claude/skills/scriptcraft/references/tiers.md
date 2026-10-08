@@ -151,7 +151,7 @@ Rendered from `styles` in tiers.json. Tier value is the voiceover value; n/a mea
 
 Grades, from the evidence fields in tiers.json: ugc_talk short wps 3.0 is J, our chosen value, set below the 3.3 to 4.9 measured on purpose (the extra speed is connective talk, not more facts, and many of our guides speak English as a second language). Measured inputs: top five creators 3.3 to 4.9 (note 04, C), talking clips of 45 s or less 3.46 median (note 06, n = 6, C), micro creators 2.87 pooled median (note 05, 49 videos, C). ugc_talk long wps 2.8 is J (long spoken micro videos 2.3 to 3.1, C). Hook timing and length are C inputs with a J cut-off. ugc_text limits come from one creator's eight text posts and another's 528,500-view tips post (C); spoken max 12 and 1 fact are J.
 
-Where each style rule runs: H02 and H03 voiceover only. U01, U02, U04, U05, U07 in ugc_talk and ugc_text. U03 and U06 in ugc_talk only. D01 in the ugc styles, and in voiceover only when `relationship:` is written. SND01 in every style.
+Where each style rule runs: H02 and H03 voiceover only. U01, U02, U04, U05, U07 in ugc_talk and ugc_text. U03 and U06 in ugc_talk only. D01 in the ugc styles, and in voiceover only when `relationship:` is written. SND01 in every style. R04 in every style when the validator is given a file.
 
 ### Front matter fields
 
@@ -172,6 +172,9 @@ A value outside the list is a parse error (exit 2) naming the line.
 | disclosure.ad_label_required | guest_paid, guest_gifted: caption starts with Ad, #ad, Advert, Advertisement, Reklame or Annonse, and the disclosure beat says so (block) |
 | disclosure.role_line_expected | staff, guide: the disclosure beat names the role or the brand (warn) |
 | disclosure.paid_words | ad, advert, advertisement, paid, paid partnership, sponsored, gifted, free trip, for free, invited, hosted, comped, partnership, partnered, reklame. A paid word right after a negation in the same clause (not an ad, I'm not paid) does not count (paid_negation_regex) |
+| disclosure.overlay_required | true: the disclosure beat needs on-screen text (warn), because many viewers watch muted |
+| disclosure.overlay_max_words | 6: in ugc_text the overlay on a disclosure beat that is not the hook is counted apart from the 2 content lines |
+| example_copy | R04 (warn): 5-word runs shared with `examples/` or `assets/`; 2 shared runs (a 6-word copy) in the voiceover, or 2 in the visual and overlay cells, warn |
 | disclosure.role_words | guide, guides, guiding, instructor, staff, team, employee, work for, work at, work with, i run, we run, owner, founder, co-founder, plus the brand name |
 | sound.blocked_value | trending, when the voiceover, overlay or caption names the brand, a trip word (tour, trip, booking, book, package, holiday, departure, weekend, getaway, excursion, itinerary and plurals) or a price |
 

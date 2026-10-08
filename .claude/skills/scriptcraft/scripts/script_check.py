@@ -95,7 +95,7 @@ STYLE_ONLY = {"H02": ("voiceover",), "H03": ("voiceover",), "U01": UGC, "U02": U
               "U04": UGC, "U05": UGC, "U06": ("ugc_talk",), "U07": UGC}
 STYLE_SKIP_NOTE = {"H02": "see U01", "H03": "see U03"}
 # Rules added in 0.3.0. A voiceover script with no new front matter field does not list them.
-NEW_RULES = ("U01", "U02", "U03", "U04", "U05", "U06", "U07", "D01", "SND01")
+NEW_RULES = ("U01", "U02", "U03", "U04", "U05", "U06", "U07", "D01", "SND01", "R04")
 NEW_FIELDS = ("creator", "relationship", "sound")
 
 RULES = {
@@ -144,6 +144,7 @@ RULES = {
     "U07": "every visual names who or what is on camera",
     "D01": "disclosure: Ad label and an early disclosure beat when the relationship needs one",
     "SND01": "no trending song when the script names the brand, a trip or a price",
+    "R04": "lines and visuals are not copied from the examples or templates",
 }
 # --explain: what each rule counts, and the usual fix.
 HELP = {
@@ -201,7 +202,9 @@ HELP = {
     "V03": ("Long: windows with no beat of 2 or more shots and no shift or reengage role.", "Add a cut or a reengage beat."),
     "O01": ("Overlay words, characters per line and lines per beat. With overlay.persistent (ugc_text) also the "
             "distinct lines across the script: over script_max_lines or script_max_words blocks, under "
-            "script_min_words warns.", "Cut the overlay to keywords."),
+            "script_min_words warns. The overlay line on the disclosure beat is counted apart, up to "
+            "styles.disclosure.overlay_max_words words, so the disclosure never costs a content line.",
+            "Cut the overlay to keywords."),
     "O02": ("Overlay characters per second of the beat, and the beat's minimum seconds. With overlay.persistent "
             "(ugc_text) the distinct lines over the time from their first beat to the end.",
             "Shorten the overlay or lengthen the beat."),
@@ -258,10 +261,17 @@ HELP = {
             "starts inside within_seconds with the role token disclosure must say so in its voiceover or overlay "
             "(paid_words; a paid word right after a negation, as in 'not an ad', does not count); each missing part blocks. staff or "
             "guide: a disclosure beat inside within_seconds whose voiceover or overlay names the role (role_words or "
-            "the brand name), else warn. guest_unpaid: no requirement. Runs in the ugc styles; in voiceover only "
-            "when relationship is written in the front matter.",
+            "the brand name), else warn. When a disclosure beat is required, an empty text cell on that beat "
+            "warns (styles.disclosure.overlay_required): muted viewers must see it. guest_unpaid: no requirement. "
+            "Runs in the ugc styles; in voiceover only when relationship is written in the front matter.",
             "Start the caption with 'Ad'. Add a beat in the first 5 s with the disclosure role: 'I guide for "
             "Outdoor Norway' or 'Ad: Outdoor Norway paid for my trip'."),
+    "R04": ("Runs when the validator is given a file (not when a test passes text). Compares the voiceover, and the visual "
+            "and overlay cells, against every table row in the example and template files "
+            "(styles.example_copy.reference_dirs). Counts distinct runs of shingle_words consecutive words that appear in "
+            "both; at voiceover_shingles_warn or visual_shingles_warn the script warns. The file being checked is "
+            "never compared with itself. Example lines are fictional, so a copied line is also an unsupported claim.",
+            "Write the script from the facts table and the creator's own words. Use the examples for format only."),
     "SND01": ("Front matter sound, rules in styles.sound. sound: trending blocks when the voiceover, overlay or "
               "caption names the brand (brand_rules.json brand), a trip (trip_words) or a price (price_regex). "
               "Other sound values pass.",
@@ -289,6 +299,8 @@ STYLE_KEYS = {
                                         "caption_label_regex", "paid_words", "paid_negation_regex",
                                         "role_words")],
     "SND01": [("sound", k) for k in ("blocked_value", "trip_words", "price_regex")],
+    "R04": [("example_copy", k) for k in ("reference_dirs", "shingle_words", "voiceover_shingles_warn",
+                                          "visual_shingles_warn")],
 }
 # --explain: style tier keys each rule reads (besides LIMIT_KEYS).
 STYLE_LIMIT_KEYS = {"U06": ["casual"], "T03": ["min_seconds"]}
@@ -711,6 +723,8 @@ class Context:
         self.ratio = self.secs / self.t["max_seconds"]
         self.allow = set(cfg.get("acronym_allowlist", []))
         self.findings = []
+        self.source = None
+        self.skipped = {}
         self.facts_low = " \n ".join(f.low for f in doc.facts)
         self.cta = [b for b in doc.beats if b.has("cta")]
         self.dominant = next((r.split(":")[1] for b in doc.beats for r in b.roles if r.startswith("open:")), None)
@@ -1086,11 +1100,19 @@ def check_overlay(ctx):
 def check_persistent_overlay(ctx, o):
     """Text that stays on screen (ugc_text): each distinct line counts once across the script."""
     lines, first = [], None
+    disc, token = [], ctx.styles.get("disclosure", {}).get("role_token", "disclosure")
+    cap = ctx.styles.get("disclosure", {}).get("overlay_max_words")
     for b in ctx.doc.beats:
         for line in b.overlay:
-            if norm(line).strip() not in [norm(x).strip() for x in lines]:
-                lines.append(line)
+            # The overlay of a disclosure beat that is not the hook has its own small cap (styles.disclosure.overlay_max_words),
+            # so it never uses up the script's two content lines.
+            bucket = disc if (b.has(token) and not b.has("hook") and cap) else lines
+            if norm(line).strip() not in [norm(x).strip() for x in lines + disc]:
+                bucket.append(line)
                 first = b if first is None else first
+    for line in disc:
+        if len(words(line)) > cap:
+            ctx.add("O01", "block", "the disclosure overlay line has %d words, maximum %d" % (len(words(line)), cap), line)
     if not lines:
         return
     n = sum(len(words(x)) for x in lines)
@@ -1102,7 +1124,7 @@ def check_persistent_overlay(ctx, o):
     elif n < o["script_min_words"]:
         ctx.add("O01", "warn", "%d overlay words in the script, minimum %d" % (n, o["script_min_words"]), " / ".join(lines))
     shown = ctx.end - first.start
-    chars = sum(len(x) for x in lines)
+    chars = sum(len(x) for x in lines + disc)
     if shown < o["min_seconds"] or (shown > 0 and chars / shown > o["chars_per_second"]):
         ctx.add("O02", "warn", "overlay: %d characters on screen for %g s, limit %g per second and %g s minimum"
                 % (chars, shown, o["chars_per_second"], o["min_seconds"]), " / ".join(lines))
@@ -1389,6 +1411,11 @@ def check_disclosure(ctx):
         return
     early = [b for b in ctx.doc.beats if b.has(d["role_token"]) and b.start < d["within_seconds"]]
     cells = lambda b: spoken(b.vo) + " / " + b.text
+    if d.get("overlay_required", True):
+        for b in early:
+            if not b.overlay:
+                ctx.add("D01", "warn", "%s: the disclosure beat has no on-screen text; muted viewers must see the "
+                        "disclosure too" % b.label(), quote(spoken(b.vo)))
     if paid:
         if not re.search(d["caption_label_regex"], ctx.doc.caption, re.I):
             ctx.add("D01", "block", "relationship %s: the caption must start with an ad label (Ad, #ad, Advertisement, Reklame)" % rel,
@@ -1501,15 +1528,95 @@ def superlative_hits(ctx, text, sup, beat):
     return [sup]
 
 
+# ---------------------------------------------------------------- R04: copied example lines
+
+_REF_CACHE = {}
+
+
+def table_cells(line):
+    """voiceover, visual and overlay cells of a script table row, or None for any other line."""
+    if not line.lstrip().startswith("|"):
+        return None
+    cells = split_row(line)
+    if len(cells) < 7 or SEP_RE.match(cells[0]) or not cells[0].isdigit():
+        return None
+    return cells[2], cells[3], cells[4]
+
+
+def shingles(texts, size):
+    """Set of word runs of length size, lower case, brackets and punctuation removed."""
+    out = set()
+    for t in texts:
+        ws = [w.lower() for w in words(norm(BRACKET_RE.sub(" ", t)))]
+        for i in range(len(ws) - size + 1):
+            out.add(" ".join(ws[i:i + size]))
+    return out
+
+
+def reference_rows(cfg, source):
+    """(voiceover shingles, visual shingles) of every reference file except the source, cached by path."""
+    ec = cfg.get("styles", {}).get("example_copy", {})
+    size = ec.get("shingle_words", 5)
+    skip = os.path.realpath(source) if source else None
+    vo, vis = {}, {}
+    for d in ec.get("reference_dirs", []):
+        folder = os.path.join(HERE, d)
+        try:
+            names = sorted(os.listdir(folder))
+        except OSError:
+            continue
+        for name in names:
+            path = os.path.realpath(os.path.join(folder, name))
+            if not name.endswith(".md") or path == skip:
+                continue
+            key = (path, size)
+            if key not in _REF_CACHE:
+                try:
+                    with open(path, encoding="utf-8") as fh:
+                        rows = [c for c in map(table_cells, fh.read().split("\n")) if c]
+                except (OSError, UnicodeDecodeError):
+                    rows = []
+                _REF_CACHE[key] = (shingles([r[0] for r in rows], size),
+                                   shingles([r[1] + " / " + r[2] for r in rows], size))
+            v, x = _REF_CACHE[key]
+            for sh in v:
+                vo.setdefault(sh, name)
+            for sh in x:
+                vis.setdefault(sh, name)
+    return vo, vis
+
+
+def check_example_copy(ctx):
+    """R04: runs of words copied from the example and template scripts."""
+    ec = ctx.styles.get("example_copy")
+    if not ec:
+        return
+    if ctx.source is None:
+        ctx.skipped["R04"] = "no file path given, or --no-example-copy"
+        return
+    size = ec.get("shingle_words", 5)
+    ref_vo, ref_vis = reference_rows(ctx.cfg, ctx.source)
+    mine_vo = shingles([b.vo for b in ctx.doc.beats], size)
+    mine_vis = shingles([b.visual + " / " + b.text for b in ctx.doc.beats], size)
+    for label, mine, ref, limit in (("voiceover", mine_vo, ref_vo, ec.get("voiceover_shingles_warn", 2)),
+                                    ("visual or overlay", mine_vis, ref_vis, ec.get("visual_shingles_warn", 2))):
+        hits = sorted(mine & set(ref))
+        if len(hits) >= limit:
+            files = sorted({ref[h] for h in hits})
+            ctx.add("R04", "warn", "%s copies %d runs of %d words from %s; write it from your own facts and words"
+                    % (label, len(hits), size, ", ".join(files)), quote(hits[0]))
+
+
 CHECKS = [check_time, check_words, check_beats, check_hook, check_facts, check_sentences,
           check_visuals, check_overlay, check_cta, check_loops, check_style, check_ugc, check_disclosure,
-          check_sound, check_brand]
-
+          check_sound, check_example_copy, check_brand]
 
 # ---------------------------------------------------------------- run and report
 
-def run(doc, cfg, brand, final=False):
+def run(doc, cfg, brand, final=False, source=None):
+    """source is the script's file path. R04 needs it; a caller that passes only text skips R04."""
     ctx = Context(doc, cfg, brand, final)
+    ctx.source = source
     for check in CHECKS:
         check(ctx)
     return ctx
@@ -1565,6 +1672,9 @@ def render(ctx, path, strict=False):
     for rid in rule_order(ctx):
         found = [f for f in ctx.findings if f["id"] == rid]
         if ctx.legacy and rid in NEW_RULES and not found:
+            continue
+        if rid in ctx.skipped:
+            out.append("[SKIP] %s %s (%s)" % (rid, RULES[rid], ctx.skipped[rid]))
             continue
         if not ctx.checks(rid):
             extra = STYLE_SKIP_NOTE.get(rid)
@@ -1631,6 +1741,8 @@ def main(argv=None):
     ap.add_argument("--json", action="store_true")
     ap.add_argument("--final", action="store_true", help="placeholders and unverified facts block")
     ap.add_argument("--strict", action="store_true", help="warnings fail")
+    ap.add_argument("--no-example-copy", action="store_true",
+                    help="skip R04 (for the validator's own tests; the report prints [SKIP] R04)")
     ap.add_argument("--tiers", default=os.path.join(HERE, "tiers.json"))
     ap.add_argument("--brand", default=os.path.join(HERE, "brand_rules.json"))
     ap.add_argument("--explain", metavar="RULE_ID")
@@ -1648,7 +1760,8 @@ def main(argv=None):
                 text = fh.read()
         except (OSError, UnicodeDecodeError) as exc:
             raise ParseError(0, "cannot read %s: %s" % (args.file, exc))
-        ctx = run(parse_document(text, cfg, args.tier), cfg, brand, args.final)
+        ctx = run(parse_document(text, cfg, args.tier), cfg, brand, args.final,
+                  source=None if args.no_example_copy else args.file)
     except ParseError as exc:
         if args.json:
             print(json.dumps({"result": "PARSE", "line": exc.line, "error": exc.msg}))

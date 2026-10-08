@@ -71,6 +71,7 @@ Film every beat two or three times. Keep the phone vertical, the mic near your m
 ## Disclosure
 
 Say it in the first 5 s: "[FILL: the disclosure line, for example I guide for Outdoor Norway]"
+Show it on screen in the same beat: "[FILL: the role line, 2 to 5 words, for muted viewers]"
 Caption starts with: [FILL: Ad, #ad, Advert, Advertisement, Reklame or Annonse; required for guest_paid and guest_gifted, recommended for staff and guide]
 TikTok content disclosure toggle: [FILL: on for staff, guide, paid and gifted posts]
 

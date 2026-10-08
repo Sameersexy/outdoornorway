@@ -25,8 +25,8 @@ NON-NEGOTIABLE RULES
    snow or aurora, no unsourced superlatives, no scarcity, the guest is the subject.
 10. Disclose the relationship in the video (D01). No trending music on a post that
    names the brand, a trip or a price (SND01).
-11. Never reuse a line from the examples, templates or references word for word.
-   They show the shape. Your lines come from this brief.
+11. Never reuse a line or a shot from the examples, templates or references. They
+   show the shape. Your lines come from this brief. R04 warns on a copied run.
 ```
 
 ## Method
@@ -56,6 +56,8 @@ If the user asks for a different length ("a 45 second reel", "a 10 minute video"
 Copy facts word for word from the source into `## Facts`, one row each, with the number exactly as it will be spoken. Source names a file and key, a URL or a person. `verified` is yes when the source states the fact in writing: tours.json, product-marketing.md, a named page, or a written client brief (source: "client brief, <date>"). Anything you infer from a source, or a brief only implies, is `no` and the claim carries `[VERIFY: ...]` until resolved. Check the do-not-claim list in product-marketing.md before you use any fact.
 
 A thin brief makes a short script. If the long facts table has fewer than about 8 rows, lower `seconds` or accept the W02 warning. Never pad with claims the table does not hold.
+
+Thin-brief protocol. A brief with no real moment in it (no named person, object, place or sensory detail from a real trip) pulls writers toward brochure lines and the example shots. Before drafting, ask the guide for one real moment in their own words and one thing a guest said or did. With nobody to ask, write visuals only from what the facts table supports, mark every schedule or sequence you assume with `[VERIFY: what, who]`, and list in Open items what the guide must supply before filming. Never fill the gap with a shot from an example.
 
 ### 3. Choose the structure
 
@@ -146,8 +148,9 @@ New rule ids, all enforced in code (`--explain ID` for each):
 | U05 | ugc_talk, ugc_text | warn | The call to action is a soft prompt from tiers.json; link in bio alone warns |
 | U06 | ugc_talk | warn | Casual markers above 2 per 100 words, or contractions below 1 per 100 words |
 | U07 | ugc_talk, ugc_text | warn | Every visual names who or what is on camera, 3 words or more |
-| D01 | ugc styles; voiceover when relationship is written | block or warn | guest_paid, guest_gifted: caption starts with Ad, #ad, Advert, Advertisement, Reklame or Annonse and a `disclosure` beat starting by 5 s says so (block). staff, guide: a `disclosure` beat by 5 s names the role or the brand (warn). guest_unpaid: none |
+| D01 | ugc styles; voiceover when relationship is written | block or warn | guest_paid, guest_gifted: caption starts with Ad, #ad, Advert, Advertisement, Reklame or Annonse and a `disclosure` beat starting by 5 s says so (block). staff, guide: a `disclosure` beat by 5 s names the role or the brand (warn). The disclosure beat also needs on-screen text (warn); in ugc_text that line is up to 6 words and does not use a content line. guest_unpaid: none |
 | SND01 | all | block | sound trending when the script names the brand, a trip or a price |
+| R04 | all, when the validator gets a file | warn | Voiceover, visuals or overlay repeat a run of 6 or more words from `examples/` or `assets/`. `--no-example-copy` skips it (prints [SKIP]); only the validator's own tests use it |
 
 Changed rules: R03 is style aware (in ugc, I and my count with you against we, our, us and the brand name). F04 now also checks that a digit in a beat sits in a facts row that beat cites (warn in draft, block with --final). The role token `disclosure` joins the allowed roles. A paid word right after a negation ("not an ad", "I'm not paid") does not count as disclosure.
 

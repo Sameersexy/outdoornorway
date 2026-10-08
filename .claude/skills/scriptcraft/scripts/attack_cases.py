@@ -238,7 +238,7 @@ def run_case(text, args=()):
     p = os.path.join(d, "t.md")
     with open(p, "w", encoding="utf-8") as fh:
         fh.write(text)
-    r = subprocess.run([sys.executable, "-I", CHECK, p, "--json"] + list(args), capture_output=True, text=True)
+    r = subprocess.run([sys.executable, "-I", CHECK, p, "--json", "--no-example-copy"] + list(args), capture_output=True, text=True)
     os.remove(p)
     os.rmdir(d)
     try:

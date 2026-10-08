@@ -58,7 +58,7 @@ Film every beat two or three times. Phone vertical, mic near your mouth, light o
 
 ## On-screen text
 
-Beat 1: "the step I fix first" (lower case, in-app font, top third). Beat 4: "slide, don't lift". Burned-in captions from the app for the rest.
+Beat 1: "the step I fix first" (lower case, in-app font, top third). Beat 2: "Ingrid, Brekke guide". Beat 4: "slide, don't lift". Burned-in captions from the app for the rest.
 
 ## Call to action
 
@@ -67,6 +67,7 @@ Beat 1: "the step I fix first" (lower case, in-app font, top third). Beat 4: "sl
 ## Disclosure
 
 Say it in the first 5 s: "I'm Ingrid, I guide for Brekke."
+Show it on screen in the same beat: "Ingrid, Brekke guide"
 Caption starts with: Ad.
 TikTok content disclosure toggle: on.
 

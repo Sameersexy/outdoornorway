@@ -529,7 +529,7 @@ class StyleDefaults(unittest.TestCase):
     def test_valid_style_fixtures_pass_clean_and_strict(self):
         for name in (TALK, TEXT, "valid-voiceover-loop.md"):
             self.assertEqual(check(read(name)).findings, [], name)
-            self.assertEqual(cli(os.path.join(FIX, name), "--strict", "--final")[0], 0, name)
+            self.assertEqual(cli(os.path.join(FIX, name), "--strict", "--final", "--no-example-copy")[0], 0, name)
 
     def test_ugc_talk_short_overrides(self):
         t = sc.tier_limits(CFG, "short", "ugc_talk")
@@ -762,7 +762,7 @@ class Disclosure(unittest.TestCase):
         self.assertTrue(found(check(text), "D01", "warn"))
 
     def test_staff_role_line_must_name_the_role(self):
-        ctx = check(beat(read(TALK), 2, vo="Quick one from me, this is my favourite rule."))
+        ctx = check(beat(read(TALK), 2, vo="Quick one from me, this is my favourite rule.", overlay="the layer rule"))
         self.assertTrue(found(ctx, "D01", "warn"))
 
     def test_voiceover_runs_d01_only_when_relationship_is_written(self):
@@ -856,6 +856,116 @@ class VerifierRound(unittest.TestCase):
     def test_snd01_weekend_is_a_trip_word(self):
         text = beat(with_meta(self.talk(), "sound", "trending"), 2, vo="Quick one from me, I'm a ski guide on this weekend.")
         self.assertTrue(found(check(text), "SND01", "block"))
+
+
+class ExampleCopyAndDisclosureOverlay(unittest.TestCase):
+    """R04 (copied example lines) and the on-screen disclosure line of D01."""
+
+    REF = """---
+tier: short
+---
+## Script
+| beat | time | voiceover | visual | text | role | facts |
+|---|---|---|---|---|---|---|
+| 1 | 0-4 | The old fleece trick keeps every guest warm all day long. | selfie: guide holds a damp fleece up to the lens beside a birch tree | - | hook | - |
+| 2 | 4-8 | Send this to the friend who overdresses. | guide zips a shell at the top of the track | - | cta | - |
+"""
+
+    def setUp(self):
+        import tempfile
+        self.dir = tempfile.mkdtemp()
+        self.ref = os.path.join(self.dir, "ref.md")
+        self.out = os.path.join(self.dir, "out")
+        os.makedirs(self.out)
+        with open(self.ref, "w", encoding="utf-8") as fh:
+            fh.write(self.REF)
+        self.cfg = json.loads(json.dumps(CFG))
+        self.cfg["styles"]["example_copy"]["reference_dirs"] = [self.dir]
+
+    def run_r04(self, text, name="mine.md", source=None):
+        path = source or os.path.join(self.out, name)
+        if not source:
+            with open(path, "w", encoding="utf-8") as fh:
+                fh.write(text)
+        return sc.run(sc.parse_document(text, self.cfg), self.cfg, BRAND, False, source=path)
+
+    def talk(self):
+        return read(TALK)
+
+    def test_copied_voiceover_sentence_warns(self):
+        text = beat(self.talk(), 3, vo="The old fleece trick keeps every guest warm today.")
+        self.assertTrue(found(self.run_r04(text), "R04", "warn"))
+
+    def test_copied_visual_warns(self):
+        text = beat(self.talk(), 3, visual="selfie: guide holds a damp fleece up to the lens beside a birch tree / skis")
+        self.assertTrue(found(self.run_r04(text), "R04", "warn"))
+
+    def test_one_short_shared_run_does_not_warn(self):
+        text = beat(self.talk(), 6, vo="Send this to the friend you ski with.", overlay="-")
+        self.assertFalse(found(self.run_r04(text), "R04"))
+
+    def test_script_is_never_compared_with_itself(self):
+        self.assertEqual(sc.reference_rows(self.cfg, self.ref), ({}, {}))
+        self.assertTrue(sc.reference_rows(self.cfg, os.path.join(self.out, "other.md"))[0])
+
+    def test_examples_do_not_trip_r04_on_themselves(self):
+        for name in ("short-fictional.md", "short-ugc-talk-fictional.md", "short-ugc-text-fictional.md", "long-fictional.md"):
+            code, out = cli(os.path.join(HERE, "..", "examples", name), "--final", "--strict")
+            self.assertEqual(code, 0, name + out)
+            self.assertNotIn("R04 voiceover", out)
+
+    def test_copy_of_a_whole_example_warns_from_the_cli(self):
+        import shutil
+        dst = os.path.join(self.out, "copy.md")
+        shutil.copy(os.path.join(HERE, "..", "examples", "short-ugc-talk-fictional.md"), dst)
+        code, out = cli(dst, "--json")
+        data = json.loads(out)
+        self.assertTrue([f for f in data["findings"] if f["id"] == "R04" and f["severity"] == "warn"])
+
+    def test_text_only_run_skips_r04(self):
+        ctx = check(self.talk())
+        self.assertIn("R04", ctx.skipped)
+        self.assertFalse(found(ctx, "R04"))
+
+    def test_no_example_copy_flag_prints_skip(self):
+        code, out = cli(os.path.join(FIX, TALK), "--no-example-copy")
+        self.assertIn("[SKIP] R04", out)
+
+    def test_d01_disclosure_beat_without_overlay_warns(self):
+        text = beat(self.talk(), 2, overlay="-")
+        self.assertTrue(found(check(text), "D01", "warn"))
+        self.assertFalse(found(check(self.talk()), "D01"))
+
+    def test_d01_guest_unpaid_needs_no_overlay(self):
+        text = beat(with_meta(self.talk(), "relationship", "guest_unpaid"), 2, overlay="-")
+        self.assertFalse(found(check(text), "D01"))
+
+    def test_disclosure_overlay_does_not_use_a_content_line_in_ugc_text(self):
+        three = read(TEXT).replace("| 1 | 0-5 | I guide for Outdoor Norway. |", "| 1 | 0-3 | - |").replace(
+            "hook, open:A, disclosure", "hook, open:A").replace(
+            "| 2 | 5-10 | - |", "| 2 | 3-6 | I guide for Outdoor Norway. |").replace(
+            "start cold, ski down warm | payoff, close:A", "ski guide | disclosure")
+        three = three.replace("## Caption", "| 3 | 6-10 | - | guide peels off a fleece at the top, grinning / skier drops into "
+                              "the descent | start cold, ski down warm | payoff, close:A | - |\n## Caption", 1)
+        ctx = check(three)
+        self.assertFalse([f for f in found(ctx, "O01", "block") if "different overlay lines" in f["message"]], ctx.findings)
+        off = json.loads(json.dumps(CFG))
+        del off["styles"]["disclosure"]["overlay_max_words"]
+        ctx = sc.run(sc.parse_document(three, off), off, BRAND)
+        self.assertTrue([f for f in found(ctx, "O01", "block") if "different overlay lines" in f["message"]])
+
+    def test_disclosure_overlay_over_6_words_blocks(self):
+        base = read(TEXT)
+        text = base.replace("| 2 | 5-10 | - |", "| 2 | 5-10 | I guide for Outdoor Norway. |").replace(
+            "start cold, ski down warm | payoff, close:A", "start cold, ski down warm | payoff, close:A")
+        text = text.replace("hook, open:A, disclosure", "hook, open:A")
+        text = beat(text, 2, role="disclosure, close:A", overlay="I guide here for the whole winter at Outdoor Norway")
+        self.assertTrue([f for f in found(check(text), "O01", "block") if "disclosure overlay" in f["message"]])
+
+    def test_hook_beat_overlay_never_uses_the_disclosure_allowance(self):
+        base = read(TEXT)
+        text = beat(base, 1, overlay="the layer rule every guide uses on every single winter climb")
+        self.assertTrue(found(check(text), "O01", "block"))
 
 
 class AttackHarness(unittest.TestCase):

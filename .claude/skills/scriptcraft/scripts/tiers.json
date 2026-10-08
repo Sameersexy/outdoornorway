@@ -169,6 +169,10 @@
     "disclosure": {
       "note": "D01. FTC (Disclosures 101, A): disclose in the video, early, not only in the caption; employees disclose too. ASA (B): '#ad' up front. TikTok Commercial Disclosure (A): own business promotion needs the disclosure toggle. Note 06 section 4.1.",
       "within_seconds": 5,
+      "overlay_required": true,
+      "overlay_max_words": 6,
+      "overlay_max_words_note": "In ugc_text the overlay is limited to 2 distinct lines for the whole script. The disclosure line sits on top of that cap, up to 6 words, so a muted viewer sees who the creator is without losing a content line (O01).",
+      "overlay_required_note": "The disclosure beat needs on-screen text (D01 warn). Many viewers watch muted, and the FTC and ASA want the disclosure seen, not only heard.",
       "role_token": "disclosure",
       "ad_label_required": ["guest_paid", "guest_gifted"],
       "role_line_expected": ["staff", "guide"],
@@ -179,6 +183,13 @@
       "paid_words": ["ad", "advert", "advertisement", "paid", "paid partnership", "sponsored", "gifted", "free trip", "for free", "invited", "hosted", "comped", "partnership", "partnered", "reklame"],
       "role_words": ["guide", "guides", "guiding", "instructor", "staff", "team", "employee", "work for", "work at", "work with", "i run", "we run", "owner", "founder", "co-founder"],
       "role_words_note": "The brand name from brand_rules.json also counts as naming the role."
+    },
+    "example_copy": {
+      "note": "R04. The skill ships fictional example scripts and templates. A script that repeats their lines or visuals is copying fiction, and the end-to-end test found writers lifting shot lists and call-to-action shapes. Warn only, because short generic runs ('send this to a friend') are legitimate. The validator must be given a file path for R04 to run.",
+      "reference_dirs": ["../examples", "../assets"],
+      "shingle_words": 5,
+      "voiceover_shingles_warn": 2,
+      "visual_shingles_warn": 2
     },
     "sound": {
       "note": "SND01. TikTok Commercial Music Library (A): businesses cannot use the general music library commercially; business posts use pre-cleared tracks. A trending song blocks when the script names the brand, a trip or a price. Note 06.",

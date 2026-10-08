@@ -171,7 +171,7 @@ The sources behind it:
 
 Outdoor Norway is a Norwegian trader, so Norwegian law likely applies whatever the audience [VERIFY with counsel]. The validator enforces the floor: Ad, #ad, Advert, Advertisement, Reklame or Annonse first in the caption, and a disclosure beat starting by 5 s. The safer wording for a Norwegian trader is "Advertisement" first in the caption and on screen, and the validator accepts it; confirm with counsel which word to standardise on. Turn on the TikTok toggle for every staff, guide, paid or gifted post.
 
-The disclosure beat does not need to be its own beat. Beat 2 can carry `disclosure, setup` if it starts by 5 s and the role line is in its voice or overlay.
+The disclosure beat does not need to be its own beat. Beat 2 can carry `disclosure, setup` if it starts by 5 s and the role line is in its voice. Put the same role line on screen too, in 2 to 5 words ("Ingrid, Brekke guide"): many viewers watch muted and the FTC and ASA want the disclosure seen, not only heard. D01 warns when the beat has no overlay. In ugc_text the line may be up to 6 words and does not count against the 2 content lines, unless it sits on the hook beat.
 
 ## Music (SND01)
 
@@ -217,6 +217,7 @@ TikTok removes risky acts by non-professionals that could be imitated and cause 
 | U07 | ugc_talk, ugc_text | warn | Each visual cell has 3 or more words naming who or what is on camera |
 | D01 | ugc_talk, ugc_text; voiceover when relationship is written | block or warn | Disclosure, see above |
 | SND01 | all styles | block | sound trending with the brand, a trip or a price in the script |
+| R04 | all styles | warn | A run of 6 or more words, or two shared 5-word visual runs, copied from `examples/` or `assets/`. Needs a file path; `--no-example-copy` skips it for the validator's own tests |
 | R03 | all styles | warn | You plus I against we, our, us and the brand name (ugc); you against company words (voiceover) |
 | F04 | all styles | warn, block with --final | Every digit in a beat is in a facts row that beat cites |
 

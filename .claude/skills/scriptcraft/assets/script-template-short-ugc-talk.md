@@ -21,7 +21,7 @@ core_takeaway: [FILL: the one idea a viewer keeps, one sentence]
 | beat | time | voiceover | visual | text | role | facts |
 |---|---|---|---|---|---|---|
 | 1 | 0-4 | [FILL: hook, first word at frame one, first sentence 6 to 15 words, says you or opens on I, I'm, my or we] | [FILL: one take: selfie, POV, handheld or hands in action, name who is on camera and the move] | [FILL: title overlay, up to 8 words, 40 characters per line, sentence or lower case] | hook, open:A | - |
-| 2 | 4-8 | [FILL: name and role line that discloses, then the setup, 10 to 14 words] | [FILL: who is on camera and what they do] / [FILL: shot] | - | disclosure, setup | F1 |
+| 2 | 4-8 | [FILL: name and role line that discloses, then the setup, 10 to 14 words] | [FILL: who is on camera and what they do] / [FILL: shot] | [FILL: role line on screen, 2 to 5 words, for muted viewers] | disclosure, setup | F1 |
 | 3 | 8-12 | [FILL: build, 10 to 12 words, one fact at most] | [FILL: shot] / [FILL: shot] | - | build | F2 |
 | 4 | 12-17 | [FILL: the turn or the demo, 12 to 15 words, contractions welcome] | [FILL: shot] / [FILL: shot] | [FILL: optional keyword overlay, never the spoken line] | explain | F3 |
 | 5 | 17-21 | [FILL: payoff, 10 to 12 words, answers the hook] | [FILL: the strongest shot] / [FILL: shot] | - | payoff, close:A | - |

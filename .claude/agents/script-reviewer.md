@@ -17,7 +17,9 @@ python3 -I .claude/skills/scriptcraft/scripts/script_check.py <file>
 python3 -I .claude/skills/scriptcraft/scripts/script_check.py <file> --final
 ```
 
-Paste both outputs verbatim. If the draft run fails, the verdict is REJECT and you still finish the review so the writer knows what else to fix. If the writer's pasted output differs from yours, say so first.
+Paste both outputs verbatim. If the draft run fails, the verdict is REJECT and you still finish the review so the writer knows what else to fix. If the writer's pasted output differs from yours, say so first. An R04 warning means the script copies the examples or templates: quote the shared run, score Distinct 4 or lower, and name the source file.
+
+Ask for the brief the writer worked from (platform, audience, relationship, facts source, objection). If you were not given it, say "brief not provided" and mark every finding that depends on it (audience, objection, who may appear in the video) as unconfirmed instead of blocking. Never infer the audience from the script.
 
 ## Step 2: check facts against sources
 
@@ -26,7 +28,7 @@ For every row in the facts table, open the named source (`campaigns/ski-meta-ads
 ## Step 2b: disclosure, music and consent (ugc and any staff or guest post)
 
 - Relationship matches the creator. A guide or staff member is never written as an ordinary guest ("I booked this trip", "we paid for"). That is a blocking finding.
-- Disclosure: for staff and guide, the `disclosure` beat starts by 5 s and names the role in plain words. For guest_paid and guest_gifted, the caption starts with Ad, #ad, Advert, Advertisement, Reklame or Annonse and the beat says so. Quote the line.
+- Disclosure: for staff and guide, the `disclosure` beat starts by 5 s, names the role in plain words, and shows the same words on screen (muted viewers). For guest_paid and guest_gifted, the caption starts with Ad, #ad, Advert, Advertisement, Reklame or Annonse and the beat says so. Quote the line.
 - Sound: no trending song on a post that names the brand, a trip or a price.
 - Every identifiable guest is covered by a release. A guest's spoken line in the script is a finding: guest words are never scripted.
 - Safety: any touring or off-piste shot shows gear, the guide in position and spacing; no "send it", no guest unguided in avalanche terrain.
