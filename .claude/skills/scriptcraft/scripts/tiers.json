@@ -202,6 +202,10 @@
       "price_regex": "\\b(nok|kr|eur|usd|gbp)\\s?\\d[\\d,.]*|\\d[\\d,. ]*\\s?(nok|kr|kroner|euros?|dollars?|pounds?)\\b|[$\\u00a3\\u20ac]\\s?\\d|\\b(price|prices|priced|costs?|per person|per adult)\\b"
     }
   },
+  "sources": {
+    "note": "F06. A row marked verified yes from a client brief must quote the brief in double quotes in the source cell. The end-to-end test found a writer marking 'the trip starts Friday and ends Sunday' as verified yes against a brief that did not say it. A quote does not prove the brief says it, but it lets the reviewer check in seconds.",
+    "quote_required_regex": "\\bbrief\\b"
+  },
   "narrators": {
     "standard": { "pace": 1.0, "word_scale": 1.0, "note": "Native or fluent English voiceover at a natural, not rushed, pace." },
     "slow": { "pace": 0.85, "word_scale": 0.85, "note": "Non-native narrator, text-to-speech, or a deliberately calm read. Cuts the word budget by 15 percent." }

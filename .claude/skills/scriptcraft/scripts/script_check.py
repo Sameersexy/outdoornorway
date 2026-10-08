@@ -191,7 +191,9 @@ HELP = {
             "Cite the row that says this exact claim in the beat's facts column, add a sourced row for the new "
             "claim, or cut the number."),
     "F05": ("Ids in the facts column against the facts table.", "Fix the id or add the row."),
-    "F06": ("Facts rows: a source and verified yes or no.", "Name the file, page or person, and set verified."),
+    "F06": ("Facts rows: a source and verified yes or no. A row verified yes whose source names a brief "
+            "(sources.quote_required_regex) must quote the brief's own words in double quotes; warns in a draft, blocks "
+            "with --final.", "Name the file, page or person, and set verified. Quote the brief, or set verified no."),
     "F07": ("Capitalized words not at a sentence start (plus known place names anywhere), not found in the facts table.",
             "Add a sourced row for the name or cut it. The full brand name is exempt."),
     "S01": ("Words per sentence across the voiceover. Hard max blocks; the average warns.",
@@ -1002,6 +1004,10 @@ def check_facts(ctx):
             ctx.add("F06", "block", "fact row %s has no source or no text" % row.id)
         if row.verified not in ("yes", "no"):
             ctx.add("F06", "block", "fact row %s: verified must be yes or no" % row.id, row.verified)
+        qr = ctx.cfg.get("sources", {}).get("quote_required_regex")
+        if qr and row.verified == "yes" and re.search(qr, row.source, re.I) and not re.search(r"[\"\u201c\u201d]", row.source):
+            ctx.add("F06", final_sev, "fact row %s: a row verified yes from a brief must quote the brief's own words in "
+                    "the source cell, or be verified no" % row.id, quote(row.source))
     for name in sorted({n for b in beats for n in b.names}):
         if not has_phrase(ctx.facts_low, name) and not is_brand(ctx, name):
             ctx.add("F07", "warn", "proper noun not in the facts table", name)

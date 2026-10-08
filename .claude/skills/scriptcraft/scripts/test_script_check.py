@@ -977,6 +977,27 @@ tier: short
         self.assertTrue([i for i in ctx.info if "disclosure rule was not checked" in i])
         self.assertFalse([i for i in check(self.talk()).info if "disclosure rule was not checked" in i])
 
+    def brief_text(self, source):
+        text = read(TALK)
+        return text.replace("| F1 |", "| F9 | The guide leads the day | %s | yes |\n| F1 |" % source, 1)
+
+    def test_f06_brief_without_a_quote_warns_and_blocks_final(self):
+        text = self.brief_text("client brief, 2026-10-08")
+        self.assertTrue(found(check(text), "F06", "warn"))
+        self.assertTrue(found(check(text, final=True), "F06", "block"))
+
+    def test_f06_brief_with_a_quote_passes(self):
+        text = self.brief_text('client brief 2026-10-08: "the guide leads the day"')
+        self.assertFalse(found(check(text, final=True), "F06"))
+
+    def test_f06_file_source_needs_no_quote(self):
+        text = self.brief_text("campaigns/ski-meta-ads/tours.json")
+        self.assertFalse(found(check(text, final=True), "F06"))
+
+    def test_f06_unverified_brief_row_needs_no_quote(self):
+        text = self.brief_text("client brief, 2026-10-08").replace("| yes |\n| F1 |", "| no |\n| F1 |", 1)
+        self.assertFalse(found(check(text), "F06"))
+
     def test_d01_disclosure_beat_without_overlay_warns(self):
         text = beat(self.talk(), 2, overlay="-")
         self.assertTrue(found(check(text), "D01", "warn"))
