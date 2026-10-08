@@ -905,7 +905,7 @@ tier: short
         self.assertFalse(found(self.run_r04(text), "R04"))
 
     def test_script_is_never_compared_with_itself(self):
-        self.assertEqual(sc.reference_rows(self.cfg, self.ref), ({}, {}))
+        self.assertEqual(sc.reference_rows(self.cfg, self.ref), ({}, {}, []))
         self.assertTrue(sc.reference_rows(self.cfg, os.path.join(self.out, "other.md"))[0])
 
     def test_examples_do_not_trip_r04_on_themselves(self):
@@ -930,6 +930,52 @@ tier: short
     def test_no_example_copy_flag_prints_skip(self):
         code, out = cli(os.path.join(FIX, TALK), "--no-example-copy")
         self.assertIn("[SKIP] R04", out)
+
+    NEAR_REF = """---
+tier: short
+---
+## Script
+| beat | time | voiceover | visual | text | role | facts |
+|---|---|---|---|---|---|---|
+| 1 | 0-4 | Placeholder line one. | a drone rises over the ridge | - | hook | - |
+| 2 | 4-8 | Placeholder line two. | skis and snowshoes stacked / family walks to the van in late light, carrying skis and snowshoes | - | cta | - |
+"""
+
+    def near_ctx(self, visuals):
+        with open(self.ref, "w", encoding="utf-8") as fh:
+            fh.write(self.NEAR_REF)
+        text = self.talk()
+        for n, v in zip((3, 4, 5), visuals):
+            text = beat(text, n, visual=v)
+        return self.run_r04(text)
+
+    def test_three_restated_shots_warn(self):
+        ctx = self.near_ctx(["one take: drone rises over a ridge",
+                             "skis and snowshoes stacked together by a door",
+                             "friends walk off the snow in late light, skis on shoulders and snowshoes in hand"])
+        self.assertTrue([f for f in found(ctx, "R04", "warn") if "restate shots" in f["message"]], ctx.findings)
+
+    def test_two_restated_shots_do_not_warn(self):
+        ctx = self.near_ctx(["one take: drone rises over a ridge",
+                             "skis and snowshoes stacked together by a door",
+                             "guide kneels to tighten a boot buckle on the track"])
+        self.assertFalse([f for f in found(ctx, "R04") if "restate shots" in f["message"]], ctx.findings)
+
+    def test_unrelated_shots_do_not_warn(self):
+        ctx = self.near_ctx(["guide kneels to tighten a boot buckle on the track",
+                             "guest laughs at the camera and wipes frost off a glove",
+                             "skier skids to a stop beside a birch trunk"])
+        self.assertFalse(found(ctx, "R04"), ctx.findings)
+
+    def test_caption_placeholder_blocks_final_only(self):
+        text = attack_cases.set_caption(self.talk(), "Ad. Book here [LINK: tour page, client confirms]. #skitouring")
+        self.assertFalse(found(check(text), "BR13"))
+        self.assertTrue(found(check(text, final=True), "BR13", "block"))
+
+    def test_voiceover_without_relationship_gets_an_info_line(self):
+        ctx = check(read("valid-short.md"))
+        self.assertTrue([i for i in ctx.info if "disclosure rule was not checked" in i])
+        self.assertFalse([i for i in check(self.talk()).info if "disclosure rule was not checked" in i])
 
     def test_d01_disclosure_beat_without_overlay_warns(self):
         text = beat(self.talk(), 2, overlay="-")

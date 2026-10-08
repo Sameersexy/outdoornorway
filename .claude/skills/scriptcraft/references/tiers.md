@@ -174,7 +174,7 @@ A value outside the list is a parse error (exit 2) naming the line.
 | disclosure.paid_words | ad, advert, advertisement, paid, paid partnership, sponsored, gifted, free trip, for free, invited, hosted, comped, partnership, partnered, reklame. A paid word right after a negation in the same clause (not an ad, I'm not paid) does not count (paid_negation_regex) |
 | disclosure.overlay_required | true: the disclosure beat needs on-screen text (warn), because many viewers watch muted |
 | disclosure.overlay_max_words | 6: in ugc_text the overlay on a disclosure beat that is not the hook is counted apart from the 2 content lines |
-| example_copy | R04 (warn): 5-word runs shared with `examples/` or `assets/`; 2 shared runs (a 6-word copy) in the voiceover, or 2 in the visual and overlay cells, warn |
+| example_copy | R04 (warn): 5-word runs shared with `examples/` or `assets/`; 2 distinct shared runs (a 6-word copy gives two) in the voiceover, or 2 in the visual and overlay cells, warn. Also 3 shots that restate reference shots (60 percent of a reference shot's content words, 3 content words minimum) |
 | disclosure.role_words | guide, guides, guiding, instructor, staff, team, employee, work for, work at, work with, i run, we run, owner, founder, co-founder, plus the brand name |
 | sound.blocked_value | trending, when the voiceover, overlay or caption names the brand, a trip word (tour, trip, booking, book, package, holiday, departure, weekend, getaway, excursion, itinerary and plurals) or a price |
 

@@ -53,7 +53,7 @@ If the user asks for a different length ("a 45 second reel", "a 10 minute video"
 
 ### 2. Build the facts table
 
-Copy facts word for word from the source into `## Facts`, one row each, with the number exactly as it will be spoken. Source names a file and key, a URL or a person. `verified` is yes when the source states the fact in writing: tours.json, product-marketing.md, a named page, or a written client brief (source: "client brief, <date>"). Anything you infer from a source, or a brief only implies, is `no` and the claim carries `[VERIFY: ...]` until resolved. Check the do-not-claim list in product-marketing.md before you use any fact.
+Copy facts word for word from the source into `## Facts`, one row each, with the number exactly as it will be spoken. Source names a file and key, a URL or a person. `verified` is yes when the source states the fact in writing: tours.json, product-marketing.md, a named page, or a written client brief. For a client brief, put the brief's own words in the source cell (`client brief 2026-10-07: "runs Friday to Sunday"`); a row you cannot quote is `no`. Anything you infer from a source, or a brief only implies, is `no` and the claim carries `[VERIFY: ...]` until resolved. Check the do-not-claim list in product-marketing.md before you use any fact.
 
 A thin brief makes a short script. If the long facts table has fewer than about 8 rows, lower `seconds` or accept the W02 warning. Never pad with claims the table does not hold.
 
@@ -150,7 +150,7 @@ New rule ids, all enforced in code (`--explain ID` for each):
 | U07 | ugc_talk, ugc_text | warn | Every visual names who or what is on camera, 3 words or more |
 | D01 | ugc styles; voiceover when relationship is written | block or warn | guest_paid, guest_gifted: caption starts with Ad, #ad, Advert, Advertisement, Reklame or Annonse and a `disclosure` beat starting by 5 s says so (block). staff, guide: a `disclosure` beat by 5 s names the role or the brand (warn). The disclosure beat also needs on-screen text (warn); in ugc_text that line is up to 6 words and does not use a content line. guest_unpaid: none |
 | SND01 | all | block | sound trending when the script names the brand, a trip or a price |
-| R04 | all, when the validator gets a file | warn | Voiceover, visuals or overlay repeat a run of 6 or more words from `examples/` or `assets/`. `--no-example-copy` skips it (prints [SKIP]); only the validator's own tests use it |
+| R04 | all, when the validator gets a file | warn | Two distinct 5-word runs (a copied sentence of 6 words or more) in the voiceover, or two in the visual and overlay cells, or 3 shots that restate shots from `examples/` or `assets/` in other words. `--no-example-copy` skips it (prints [SKIP]); only the validator's own tests use it |
 
 Changed rules: R03 is style aware (in ugc, I and my count with you against we, our, us and the brand name). F04 now also checks that a digit in a beat sits in a facts row that beat cites (warn in draft, block with --final). The role token `disclosure` joins the allowed roles. A paid word right after a negation ("not an ad", "I'm not paid") does not count as disclosure.
 

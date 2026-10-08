@@ -269,8 +269,12 @@ HELP = {
     "R04": ("Runs when the validator is given a file (not when a test passes text). Compares the voiceover, and the visual "
             "and overlay cells, against every table row in the example and template files "
             "(styles.example_copy.reference_dirs). Counts distinct runs of shingle_words consecutive words that appear in "
-            "both; at voiceover_shingles_warn or visual_shingles_warn the script warns. The file being checked is "
-            "never compared with itself. Example lines are fictional, so a copied line is also an unsupported claim.",
+            "both; two distinct runs (a copied sentence of 6 words or more gives two) in the voiceover, or two in the "
+            "visual and overlay cells, warn. It also compares each shot with the reference shots by content words "
+            "(small words and camera words removed, endings cut): a shot that has at least 3 content words and "
+            "holds at least 60 percent of a reference shot's content words is a near copy, and 3 near copies warn. "
+            "The file being checked is never compared with itself. Example lines are fictional, so a copied line "
+            "is also an unsupported claim.",
             "Write the script from the facts table and the creator's own words. Use the examples for format only."),
     "SND01": ("Front matter sound, rules in styles.sound. sound: trending blocks when the voiceover, overlay or "
               "caption names the brand (brand_rules.json brand), a trip (trip_words) or a price (price_regex). "
@@ -300,7 +304,8 @@ STYLE_KEYS = {
                                         "role_words")],
     "SND01": [("sound", k) for k in ("blocked_value", "trip_words", "price_regex")],
     "R04": [("example_copy", k) for k in ("reference_dirs", "shingle_words", "voiceover_shingles_warn",
-                                          "visual_shingles_warn")],
+                                          "visual_shingles_warn", "near_shots_warn", "near_min_content_words",
+                                          "near_containment")],
 }
 # --explain: style tier keys each rule reads (besides LIMIT_KEYS).
 STYLE_LIMIT_KEYS = {"U06": ["casual"], "T03": ["min_seconds"]}
@@ -1404,7 +1409,11 @@ def check_disclosure(ctx):
     """D01: who the creator is to the brand, said early, and an Ad label on paid or gifted posts."""
     d = ctx.styles.get("disclosure")
     rel = ctx.doc.meta.get("relationship")
-    if not d or not (ctx.ugc or "relationship" in ctx.explicit):
+    if not d:
+        return
+    if not (ctx.ugc or "relationship" in ctx.explicit):
+        ctx.info.append("the disclosure rule was not checked: no relationship in the front matter. Add relationship: staff, "
+                        "guide, guest_paid, guest_gifted or guest_unpaid, and a disclosure beat when it applies")
         return
     paid, role = rel in d["ad_label_required"], rel in d["role_line_expected"]
     if not (paid or role):
@@ -1553,12 +1562,33 @@ def shingles(texts, size):
     return out
 
 
+SHOT_STOP = set("a an the and of to in on at by with for from into onto over under up down out as is are was be his her their its "
+                "your our they he she it this that then while after before near beside along toward towards across through "
+                "selfie pov handheld close take shot cut camera frame lens phone one take again".split())
+
+
+def stem(w):
+    w = w.lower()
+    if len(w) > 4 and w.endswith(("ches", "shes", "sses", "xes")):
+        return w[:-2]
+    for suf in ("ing", "ed", "s"):
+        if w.endswith(suf) and len(w) - len(suf) >= 3 and not w.endswith("ss"):
+            return w[:-len(suf)]
+    return w
+
+
+def shot_words(shot):
+    """Content words of one shot: lower case, no small words, plural and verb endings cut."""
+    return frozenset(stem(w) for w in words(norm(BRACKET_RE.sub(" ", shot))) if len(w) > 2 and w.lower() not in SHOT_STOP)
+
+
 def reference_rows(cfg, source):
-    """(voiceover shingles, visual shingles) of every reference file except the source, cached by path."""
+    """(voiceover shingles, visual shingles, shots) of every reference file except the source, cached by path.
+    shots is a list of (content-word set, file name), one per shot in a visual cell."""
     ec = cfg.get("styles", {}).get("example_copy", {})
     size = ec.get("shingle_words", 5)
     skip = os.path.realpath(source) if source else None
-    vo, vis = {}, {}
+    vo, vis, shots = {}, {}, []
     for d in ec.get("reference_dirs", []):
         folder = os.path.join(HERE, d)
         try:
@@ -1577,17 +1607,36 @@ def reference_rows(cfg, source):
                 except (OSError, UnicodeDecodeError):
                     rows = []
                 _REF_CACHE[key] = (shingles([r[0] for r in rows], size),
-                                   shingles([r[1] + " / " + r[2] for r in rows], size))
-            v, x = _REF_CACHE[key]
-            for sh in v:
-                vo.setdefault(sh, name)
-            for sh in x:
-                vis.setdefault(sh, name)
-    return vo, vis
+                                   shingles([r[1] + " / " + r[2] for r in rows], size),
+                                   [shot_words(x) for r in rows for x in split_list(r[1])])
+            v, x, sh = _REF_CACHE[key]
+            for t in v:
+                vo.setdefault(t, name)
+            for t in x:
+                vis.setdefault(t, name)
+            shots += [(w, name) for w in sh]
+    return vo, vis, shots
+
+
+def near_shots(ctx, ec, ref_shots):
+    """Shots of this script that restate a reference shot in other words: most of the reference shot's content words appear."""
+    min_words, need = ec.get("near_min_content_words", 3), ec.get("near_containment", 0.6)
+    hits = []
+    for b in ctx.doc.beats:
+        for shot in b.shots:
+            mine = shot_words(shot)
+            if len(mine) < min_words:
+                continue
+            for ref, name in ref_shots:
+                shared = mine & ref
+                if len(ref) >= min_words and len(shared) >= min_words and len(shared) / len(ref) >= need:
+                    hits.append((shot, name))
+                    break
+    return hits
 
 
 def check_example_copy(ctx):
-    """R04: runs of words copied from the example and template scripts."""
+    """R04: runs of words, and shots, copied from the example and template scripts."""
     ec = ctx.styles.get("example_copy")
     if not ec:
         return
@@ -1595,7 +1644,7 @@ def check_example_copy(ctx):
         ctx.skipped["R04"] = "no file path given, or --no-example-copy"
         return
     size = ec.get("shingle_words", 5)
-    ref_vo, ref_vis = reference_rows(ctx.cfg, ctx.source)
+    ref_vo, ref_vis, ref_shots = reference_rows(ctx.cfg, ctx.source)
     mine_vo = shingles([b.vo for b in ctx.doc.beats], size)
     mine_vis = shingles([b.visual + " / " + b.text for b in ctx.doc.beats], size)
     for label, mine, ref, limit in (("voiceover", mine_vo, ref_vo, ec.get("voiceover_shingles_warn", 2)),
@@ -1605,6 +1654,10 @@ def check_example_copy(ctx):
             files = sorted({ref[h] for h in hits})
             ctx.add("R04", "warn", "%s copies %d runs of %d words from %s; write it from your own facts and words"
                     % (label, len(hits), size, ", ".join(files)), quote(hits[0]))
+    near = near_shots(ctx, ec, ref_shots)
+    if len(near) >= ec.get("near_shots_warn", 3):
+        ctx.add("R04", "warn", "%d shots restate shots from %s in other words; shoot what this trip supports"
+                % (len(near), ", ".join(sorted({n for _, n in near}))), quote(near[0][0]))
 
 
 CHECKS = [check_time, check_words, check_beats, check_hook, check_facts, check_sentences,

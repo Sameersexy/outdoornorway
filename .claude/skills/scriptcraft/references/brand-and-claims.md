@@ -51,7 +51,7 @@ Describe it by what the day involves: "long ascents", "confident on red runs", "
 | BR10 | block | Aurora mentioned with no possibility line |
 | BR11 | block | Superlatives ("best", "biggest", "ultimate", "world's", "#1", "world-class", "unbeatable", "premier", "award-winning") unless the same beat cites a facts row that contains the same word. In the caption, any row counts |
 | BR12 | warn | A date with no year anywhere in the script |
-| BR13 | block, --final only | A placeholder ([VERIFY], [TODO], [TBD], [LINK]) still in voiceover or overlay |
+| BR13 | block, --final only | A placeholder ([VERIFY], [TODO], [TBD], [LINK]) still in voiceover, overlay or caption |
 | BR14 | warn | Possible exclusivity claim ("the only", "the most", "the first", "first-ever", "nobody else", "leading"). "Your first tour" and "lesson first" are not flagged |
 
 The full phrase lists are in the JSON. Read them before writing, not after the validator complains.

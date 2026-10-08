@@ -189,7 +189,11 @@
       "reference_dirs": ["../examples", "../assets"],
       "shingle_words": 5,
       "voiceover_shingles_warn": 2,
-      "visual_shingles_warn": 2
+      "visual_shingles_warn": 2,
+      "near_shots_warn": 3,
+      "near_min_content_words": 3,
+      "near_containment": 0.6,
+      "near_note": "A shot restates a reference shot when it has at least 3 content words (small words and camera words removed, plural and verb endings cut) and at least 60 percent of the reference shot's content words appear in it. 3 such shots warn. This catches 'skis and snowshoes stacked together by a door' against 'skis and snowshoes stacked'. The end-to-end review found six shots lifted this way that no word-run check sees."
     },
     "sound": {
       "note": "SND01. TikTok Commercial Music Library (A): businesses cannot use the general music library commercially; business posts use pre-cleared tracks. A trending song blocks when the script names the brand, a trip or a price. Note 06.",

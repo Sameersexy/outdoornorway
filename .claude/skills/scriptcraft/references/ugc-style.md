@@ -217,7 +217,7 @@ TikTok removes risky acts by non-professionals that could be imitated and cause 
 | U07 | ugc_talk, ugc_text | warn | Each visual cell has 3 or more words naming who or what is on camera |
 | D01 | ugc_talk, ugc_text; voiceover when relationship is written | block or warn | Disclosure, see above |
 | SND01 | all styles | block | sound trending with the brand, a trip or a price in the script |
-| R04 | all styles | warn | A run of 6 or more words, or two shared 5-word visual runs, copied from `examples/` or `assets/`. Needs a file path; `--no-example-copy` skips it for the validator's own tests |
+| R04 | all styles | warn | Two distinct 5-word runs (a copied sentence of 6 words or more) in the voiceover, two in the visual and overlay cells, or 3 shots that restate shots from `examples/` or `assets/`. Needs a file path; `--no-example-copy` skips it for the validator's own tests |
 | R03 | all styles | warn | You plus I against we, our, us and the brand name (ugc); you against company words (voiceover) |
 | F04 | all styles | warn, block with --final | Every digit in a beat is in a facts row that beat cites |
 
