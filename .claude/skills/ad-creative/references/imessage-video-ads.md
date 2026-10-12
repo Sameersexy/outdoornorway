@@ -42,7 +42,7 @@ Most iMessage ads fit one of six angles. Pick the angle before writing any copy,
 
 | Angle | The hook attachment | The reveal |
 |---|---|---|
-| **Result-as-screenshot** | A number that brags by itself — race time, app summary, dashboard stat | "X minutes a day. that's it." |
+| **Result-as-screenshot** | A number that brags by itself: race time, app summary, dashboard stat | "X minutes a day. that's it." |
 | **Setup flex** | A photo of your space, tiny apartment gym, race-kit corner, desk setup | "this is the whole setup" |
 | **Cancellation moment** | A confirmation receipt, gym cancellation email, "subscription cancelled" page | "$X/mo → $Y/mo. do the math" |
 | **Feature-as-punchline** | A short clip of the product mechanic in motion | The mechanic *is* the brand |

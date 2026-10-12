@@ -13,8 +13,11 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 COMMANDS = sorted((ROOT / ".claude" / "commands").glob("*.md"))
 AGENTS = sorted((ROOT / ".claude" / "agents").glob("*.md"))
-DASHES = re.compile("[–—]")
-EMOJI = re.compile("[\U0001F300-\U0001FAFF☀-➿]")
+DASHES = re.compile("[" + chr(0x2013) + chr(0x2014) + "]")
+EMOJI = re.compile("[" + chr(0x1F300) + "-" + chr(0x1FAFF) + chr(0x2600) + "-" + chr(0x27BF) + "]")
+MODEL_NAMES = re.compile(r"claude[- ]?(?:opus|sonnet|haiku|fable)|\b(?:opus|sonnet|haiku|fable) ?[0-9]", re.I)
+SELF = Path(__file__).resolve()
+TEXT_SUFFIXES = {".md", ".json", ".py", ".txt"}
 
 
 def read(path):
@@ -128,23 +131,44 @@ class Licences(unittest.TestCase):
                 self.assertIn(f"| {folder.name} |", table, folder.name)
 
 
+def third_party_skill_names():
+    table = read(ROOT / "THIRD_PARTY_SKILLS.md")
+    return set(re.findall(r"^\| ([a-z-]+) \| [^|]+ \| [0-9a-f]{40} \|", table, re.M))
+
+
+def tracked_text_files():
+    """Every text file in the repo except this one, with the skill folder it sits in (or None)."""
+    third = third_party_skill_names()
+    for path in sorted(ROOT.rglob("*")):
+        rel = path.relative_to(ROOT).parts
+        if not path.is_file() or ".git" in rel or "__pycache__" in rel or path == SELF:
+            continue
+        if path.suffix not in TEXT_SUFFIXES:
+            continue
+        skill = rel[2] if len(rel) > 3 and rel[:2] == (".claude", "skills") and rel[2] in third else None
+        yield path, skill
+
+
 class Hygiene(unittest.TestCase):
-    FILES = [ROOT / "README.md", ROOT / "CLAUDE.md", ROOT / "docs" / "getting-started.md"] + COMMANDS + AGENTS
-
-    def test_no_dashes_or_emoji(self):
-        for path in self.FILES:
+    def test_no_dashes_or_emoji_in_our_own_files(self):
+        # Third-party skill files keep quoted examples (lists of AI tells), see THIRD_PARTY_SKILLS.md.
+        bad = []
+        for path, skill in tracked_text_files():
+            if skill is not None:
+                continue
             text = read(path)
-            self.assertIsNone(DASHES.search(text), f"{path.name} has an em or en dash")
-            self.assertIsNone(EMOJI.search(text), f"{path.name} has an emoji")
+            if DASHES.search(text) or EMOJI.search(text):
+                bad.append(str(path.relative_to(ROOT)))
+        self.assertEqual(bad, [], "em or en dash, or emoji, in: " + ", ".join(bad))
 
-    def test_no_local_scratch_paths_in_docs(self):
-        for path in list((ROOT / "docs").rglob("*.md")) + self.FILES:
-            self.assertNotIn("/tmp/claude", read(path), path.name)
+    def test_no_local_scratch_paths(self):
+        scratch = "/tmp/" + "claude"
+        bad = [str(p.relative_to(ROOT)) for p, _ in tracked_text_files() if scratch in read(p)]
+        self.assertEqual(bad, [], "local scratch path in: " + ", ".join(bad))
 
-    def test_no_model_names_in_tracked_text(self):
-        pattern = re.compile(r"claude-(?:opus|sonnet|haiku|fable)-\d", re.I)
-        for path in self.FILES:
-            self.assertIsNone(pattern.search(read(path)), path.name)
+    def test_no_claude_model_names_anywhere(self):
+        bad = [str(p.relative_to(ROOT)) for p, _ in tracked_text_files() if MODEL_NAMES.search(read(p))]
+        self.assertEqual(bad, [], "model name in: " + ", ".join(bad))
 
     def test_guide_does_not_say_private(self):
         guide = read(ROOT / "docs" / "getting-started.md")
