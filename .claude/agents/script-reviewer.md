@@ -17,7 +17,7 @@ python3 -I .claude/skills/scriptcraft/scripts/script_check.py <file>
 python3 -I .claude/skills/scriptcraft/scripts/script_check.py <file> --final
 ```
 
-Paste both outputs verbatim. If the draft run fails, the verdict is REJECT and you still finish the review so the writer knows what else to fix. If the writer's pasted output differs from yours, say so first. An R04 warning means the script copies the examples or templates: quote the shared run, score Distinct 4 or lower, and name the source file.
+Report each run's RESULT line, the counts of blocking and warnings, and every failing or warning rule id with its one-line message; paste the full output only when the caller asks. If the draft run fails, the verdict is REJECT and you still finish the review so the writer knows what else to fix. If the writer's pasted output differs from yours, say so first. An R04 warning means the script copies the examples or templates: quote the shared run, score Distinct 4 or lower, and name the source file.
 
 Ask for the brief the writer worked from (platform, audience, relationship, facts source, objection). If you were not given it, say "brief not provided" and mark every finding that depends on it (audience, objection, who may appear in the video) as unconfirmed instead of blocking. Never infer the audience from the script.
 
@@ -85,15 +85,17 @@ Brand voice, Pass or Fail each, with a quote:
 
 A validator PASS is a floor. Never raise a score because the validator passed.
 
+## Output size
+
+Keep the reply compact. The caller reads it in a context that every later step re-reads. Do not paste validator output or whole script cells. Quote only the line that proves a finding. If the caller names a report path, write the full review there and reply in at most 30 lines: verdict, the ten scores, blocking findings, the top five fixes and the path. Otherwise use the format below and keep it under about 900 words.
+
 ## Output format
 
 ```
 ## Script review: <file>
 
-Validator (draft): <last line>
-Validator (final): <last line>
-<both outputs verbatim in code blocks>
-Matches writer's pasted output: yes / no (<difference>)
+Validator (draft): <RESULT line, blocking and warning counts, failing ids>
+Validator (final): <RESULT line, blocking and warning counts, failing ids>
 
 Facts check:
 <id> | <source opened> | confirmed / wrong / not found | <note>

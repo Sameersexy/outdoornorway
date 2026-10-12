@@ -7,7 +7,7 @@ Voiceover original and its notes: `content/scripts/2026-10-12-northern-lights-7d
 
 - The validator passes the script in draft mode. It gives 2 warnings (F04), both on purpose: the on-camera guide (row F19) and the level wording (row F20) are unverified.
 - `--final` fails on 34 `[VERIFY]` placeholders (rule BR13) and on those two rows. By design: no guide is named, nobody could be asked, and no shot is invented.
-- Independent reviews of the writer's two versions scored 5.8 and 6.0 out of 10 (both REJECT). I then fixed the three blocking findings by hand and rebuilt the ending. That hand-edited version has not been independently re-scored: the reviewer run hit the usage limit. It is scheduled again for after the reset at 12:00 UTC.
+- Independent reviews of the writer's two versions scored 5.8 and 6.0 out of 10 (both REJECT). I then fixed the three blocking findings by hand and rebuilt the ending. That hand-edited version has not been independently re-scored: the reviewer run hit the usage limit, and the re-run was cancelled to save tokens. Run `script-reviewer` on this file in a fresh session before anyone films it.
 - Hand edits caused a REJECT-level error once before (the plural "ski days" in the voiceover version), so treat this version as unchecked until that review is back.
 
 ## What the three blocking findings were, and the fixes
