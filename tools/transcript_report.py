@@ -2,7 +2,9 @@
 """Where did the tokens go? Reads one Claude Code session transcript (.jsonl) and prints
 the model calls, the context size per call, and the biggest entries.
 
-    python3 -I tools/transcript_report.py PATH/TO/SESSION.jsonl
+    python3 -I tools/transcript_report.py [PATH/TO/SESSION.jsonl]
+
+Without a path it reads the most recently written transcript.
 
 The transcript lives under ~/.claude/projects/<project>/<session id>.jsonl.
 Standard library only. Sizes in tokens are estimates at 4 characters per token."""
@@ -64,7 +66,19 @@ def main(path):
         print("  %6.0fk  %-26s %s" % (n / 4e3, label, head.replace("\n", " ")))
 
 
+def latest_transcript():
+    """The most recently written transcript under ~/.claude/projects, or None."""
+    import glob
+    import os
+    files = glob.glob(os.path.expanduser("~/.claude/projects/*/*.jsonl"))
+    return max(files, key=os.path.getmtime) if files else None
+
+
 if __name__ == "__main__":
-    if len(sys.argv) != 2:
+    if len(sys.argv) > 2:
         sys.exit(__doc__)
-    main(sys.argv[1])
+    target = sys.argv[1] if len(sys.argv) == 2 else latest_transcript()
+    if not target:
+        sys.exit("no transcript found under ~/.claude/projects")
+    print("transcript: " + target)
+    main(target)

@@ -5,7 +5,7 @@ Checks a voiceover video script (the markdown format in ../SKILL.md) against
 the limits in tiers.json and the claims rules in brand_rules.json.
 
     python3 -I script_check.py FILE [--tier short|long] [--json] [--final]
-        [--strict] [--tiers PATH] [--brand PATH] [--explain RULE_ID]
+        [--strict] [--brief] [--open-items] [--tiers PATH] [--brand PATH] [--explain RULE_ID]
 
 Exit codes: 0 pass, 1 fail, 2 parse error.
 Standard library only, no network, deterministic. Every length or density
@@ -1856,6 +1856,66 @@ def explain(rule_id, cfg, brand):
     return "\n".join(lines)
 
 
+PLACEHOLDER_RE = re.compile(r"\[\s*(verify|todo|tbd|link)\b[:\s]*([^\]]*)\]", re.I)
+
+
+def open_items_report(doc):
+    """Placeholders and unverified fact rows, grouped by who must confirm (the last comma part of a [VERIFY: what, who])."""
+    found = []  # (owner, where, what)
+
+    def scan(where, text):
+        for m in PLACEHOLDER_RE.finditer(text):
+            inner = m.group(2).strip()
+            what, _, owner = inner.rpartition(",")
+            if not what:
+                what, owner = inner, "unassigned"
+            found.append((owner.strip() or "unassigned", where, " ".join(what.split())))
+
+    for b in doc.beats:
+        for name, cell in (("voiceover", b.vo), ("visual", b.visual), ("text", b.text)):
+            scan("beat %d %s" % (b.n, name), cell)
+    scan("description", doc.caption)
+    for f in doc.facts:
+        scan("fact %s" % f.id, f.text + " " + f.source)
+    unverified = [f for f in doc.facts if f.verified != "yes"]
+    groups = {}
+    for owner, where, what in found:
+        groups.setdefault(owner, []).append((where, what))
+    out = ["open items: %d placeholders, %d unverified fact rows" % (len(found), len(unverified))]
+    for owner, items in sorted(groups.items(), key=lambda kv: (-len(kv[1]), kv[0])):
+        out.append("%s (%d)" % (owner, len(items)))
+        out += ["  %s: %s" % (w, quote(x, 110)) for w, x in items]
+    if unverified:
+        out.append("unverified fact rows")
+        out += ["  %s: %s" % (f.id, quote(f.text, 110)) for f in unverified]
+    return "\n".join(out)
+
+
+BRIEF_PREFIXES = ("scriptcraft check:", "TOTAL", "[INFO]", "[FAIL]", "[WARN]", "RESULT")
+BRIEF_REPEAT = 3  # lines shown per rule before the rest are counted
+
+
+def brief_report(report):
+    """Header, totals, findings and RESULT only; a rule that repeats shows its first lines and a count."""
+    out, seen, hidden = [], {}, {}
+    for line in report.split("\n"):
+        if not line.startswith(BRIEF_PREFIXES):
+            continue
+        parts = line.split()
+        key = (parts[0], parts[1]) if line.startswith(("[FAIL]", "[WARN]")) and len(parts) > 1 else None
+        if key:
+            seen[key] = seen.get(key, 0) + 1
+            if seen[key] > BRIEF_REPEAT:
+                hidden[key] = hidden.get(key, 0) + 1
+                continue
+        out.append(line)
+    result = [l for l in out if l.startswith("RESULT")]
+    body = [l for l in out if not l.startswith("RESULT")]
+    for (tag, rid), n in hidden.items():
+        body.append("%s %s ... and %d more of the same rule (run without --brief for all)" % (tag, rid, n))
+    return "\n".join(body + result)
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(description="Check a scriptcraft video script.")
     ap.add_argument("file", nargs="?")
@@ -1868,6 +1928,10 @@ def main(argv=None):
     ap.add_argument("--tiers", default=os.path.join(HERE, "tiers.json"))
     ap.add_argument("--brand", default=os.path.join(HERE, "brand_rules.json"))
     ap.add_argument("--explain", metavar="RULE_ID")
+    ap.add_argument("--brief", action="store_true",
+                    help="print only the header, totals, [INFO], [FAIL], [WARN] and RESULT lines (a short report)")
+    ap.add_argument("--open-items", action="store_true",
+                    help="list every [VERIFY] placeholder and unverified fact row, grouped by who confirms it")
     args = ap.parse_args(argv)
     try:
         cfg, brand = load_json(args.tiers), load_json(args.brand)
@@ -1882,8 +1946,11 @@ def main(argv=None):
                 text = fh.read()
         except (OSError, UnicodeDecodeError) as exc:
             raise ParseError(0, "cannot read %s: %s" % (args.file, exc))
-        ctx = run(parse_document(text, cfg, args.tier), cfg, brand, args.final,
-                  source=None if args.no_example_copy else args.file)
+        doc = parse_document(text, cfg, args.tier)
+        if args.open_items:
+            print(open_items_report(doc))
+            return 0
+        ctx = run(doc, cfg, brand, args.final, source=None if args.no_example_copy else args.file)
     except ParseError as exc:
         if args.json:
             print(json.dumps({"result": "PARSE", "line": exc.line, "error": exc.msg}))
@@ -1893,7 +1960,10 @@ def main(argv=None):
     if args.json:
         print(json.dumps(as_dict(ctx, args.strict), indent=2))
     else:
-        print(render(ctx, args.file, args.strict))
+        report = render(ctx, args.file, args.strict)
+        if args.brief:
+            report = brief_report(report)
+        print(report)
     return 0 if summary(ctx, args.strict)[0] else 1
 
 

@@ -1115,6 +1115,66 @@ class YoutubeChapters(unittest.TestCase):
         self.assertIn("caption_chapters", out)
 
 
+class BriefAndOpenItems(unittest.TestCase):
+    """--brief (short report) and --open-items (who must confirm what)."""
+
+    def tmp(self, text):
+        import tempfile
+        d = tempfile.mkdtemp()
+        path = os.path.join(d, "t.md")
+        with open(path, "w", encoding="utf-8") as fh:
+            fh.write(text)
+        return path
+
+    def test_brief_keeps_only_summary_lines(self):
+        code, out = cli(os.path.join(FIX, "valid-short.md"), "--brief")
+        self.assertEqual(code, 0)
+        for line in out.strip().splitlines():
+            self.assertTrue(line.startswith(sc.BRIEF_PREFIXES), line)
+        self.assertNotIn("[PASS]", out)
+        self.assertEqual(out.strip().splitlines()[-1], "RESULT: PASS")
+
+    def test_brief_is_much_shorter_than_the_full_report(self):
+        _, full = cli(os.path.join(FIX, "valid-long.md"))
+        _, brief = cli(os.path.join(FIX, "valid-long.md"), "--brief")
+        self.assertLess(len(brief.splitlines()), len(full.splitlines()) / 3)
+
+    def test_brief_collapses_a_repeated_rule(self):
+        text = read(TALK)
+        for n in (2, 3, 4, 5, 6):
+            text = beat(text, n, visual="selfie, the guide on the track with the group behind [VERIFY: footage for beat %d, Sameer]" % n)
+        code, out = cli(self.tmp(text), "--brief", "--final")
+        self.assertEqual(code, 1)
+        self.assertIn("more of the same rule", out)
+        self.assertLessEqual(len([l for l in out.splitlines() if l.startswith("[FAIL] BR13")]), sc.BRIEF_REPEAT + 1)
+
+    def test_brief_keeps_the_exit_code(self):
+        self.assertEqual(cli(os.path.join(FIX, "T01.md"), "--brief")[0], 1)
+
+    def test_open_items_none_on_a_clean_script(self):
+        code, out = cli(os.path.join(FIX, "valid-short.md"), "--open-items")
+        self.assertEqual(code, 0)
+        self.assertIn("0 placeholders, 0 unverified fact rows", out)
+
+    def test_open_items_groups_by_owner(self):
+        text = beat(read(TALK), 3, visual="selfie, the guide at the trailhead with the group [VERIFY: Day 2 footage, Sameer]")
+        text = beat(text, 4, visual="chest POV on the route [VERIFY: the real route, Voss guide]")
+        code, out = cli(self.tmp(text), "--open-items")
+        self.assertEqual(code, 0)
+        self.assertIn("Sameer (1)", out)
+        self.assertIn("Voss guide (1)", out)
+        self.assertIn("beat 3 visual: Day 2 footage", out)
+
+    def test_open_items_lists_unverified_rows(self):
+        text = read(TALK).replace("| F1 |", "| F9 | Something unconfirmed | a guess | no |\n| F1 |", 1)
+        _, out = cli(self.tmp(text), "--open-items")
+        self.assertIn("1 unverified fact rows", out)
+        self.assertIn("F9: Something unconfirmed", out)
+
+    def test_open_items_parse_error_exits_2(self):
+        self.assertEqual(cli(self.tmp("no front matter here"), "--open-items")[0], 2)
+
+
 class AttackHarness(unittest.TestCase):
     def test_attack_cases_have_no_mismatch(self):
         self.assertEqual(attack_cases.run_all(verbose=False), [])
