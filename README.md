@@ -2,6 +2,8 @@
 
 Marketing tools for Outdoor Norway, built for Claude Code: a video script skill with an enforced validator, two agents, slash commands and vetted copywriting skills.
 
+Writers and video editors: start with [docs/getting-started.md](docs/getting-started.md), or run `/howto` once the repo is open in Claude Code.
+
 ## Install
 
 Open this repo in Claude Code and everything loads: the slash commands, the skills and the agents live in `.claude/`.
@@ -24,6 +26,7 @@ Check the packaging with `claude plugin validate .` (it passes; its one warning 
 | `/review-script <file>` | Independent review by the script-reviewer agent: facts, voice, authenticity, verdict, top five fixes |
 | `/validate <file> [--final] [--strict]` | Runs the validator and shows only the findings |
 | `/open-items <file>` | Lists every `[VERIFY]` placeholder and unverified fact row, grouped by who confirms it |
+| `/howto` | Shows the quick start for writers and editors |
 | `/tour-data` | Checks `campaigns/ski-meta-ads/tours.json` against the live site |
 | `/tokens` | Shows where this session's tokens went |
 
