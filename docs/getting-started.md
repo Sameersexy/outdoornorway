@@ -26,14 +26,18 @@ A set of tools that lives in this GitHub repo. It writes and checks video script
 
 ## Set up (once)
 
-1. **GitHub access.** The repo is private. Sameer invites you; accept the email invitation from GitHub. You need a GitHub account.
+1. **GitHub.** The repo is public, so you can read it and clone it without an invitation. To save your work back you need a GitHub account and either an invitation from Sameer (so you can push a branch) or your own fork. See "Without write access" below. Do not put anything confidential in this repo: everyone can read it.
 2. **A Claude account that includes Claude Code.** [VERIFY: confirm which Claude plans include Claude Code]
 3. **Pick one way to run it.**
    - Easiest, nothing to install: Claude Code on the web at claude.ai/code. Connect GitHub, choose the repo `Sameersexy/outdoornorway`, start a session. [VERIFY: confirm the current steps in the Claude Code app]
    - Terminal: install Claude Code, then run `git clone https://github.com/Sameersexy/outdoornorway.git`, `cd outdoornorway`, `claude`. Git will ask you to sign in to GitHub.
 4. **Check it works.** Type `/`. You should see `/script`, `/review-script`, `/validate`, `/open-items`, `/tour-data` and `/howto`. If not, you are not inside the repo: restart the session from the repo.
 
-To use the same tools in a different project, install the plugin: `/plugin install outdoornorway-marketing --marketplace Sameersexy/outdoornorway`.
+The commands work inside a clone of this repo. Installing the plugin in a different project is untested, because the commands look for files at the repo's own paths. [VERIFY: test a clean plugin install in an empty folder]
+
+## Without write access
+
+If Sameer has not added you as a collaborator, you cannot push a branch here. Fork the repo on GitHub, work in your fork, and open a pull request from the fork to Sameer. Ask Claude: "commit this to my fork and open a pull request". Scripts for real tours are drafts until Sameer confirms the facts, so send the pull request even if open items remain.
 
 ## For writers
 
@@ -99,6 +103,7 @@ Editor's checklist for each script:
 
 ## For Sameer (admin)
 
-- Invite people: on GitHub, repo Settings, Collaborators, Add people. On a personal account a collaborator can push. [VERIFY: confirm the permission level on a personal private repo]
-- Ask everyone to work on a branch and open a pull request, then review and merge. Protecting `main` may need a paid GitHub plan for a private repo. [VERIFY: confirm on the current plan]
+- Invite people who need to push: on GitHub, repo Settings, Collaborators, Add people. On a personal account a collaborator can push. [VERIFY: confirm the permission level on a personal repo]
+- Ask everyone to work on a branch and open a pull request, then review and merge. Branch protection on `main` is available for public repos on the free plan. [VERIFY: confirm on the current plan]
+- The repo is public. Keep client-sensitive material (page audits, questions for the client, supplier terms, personal data) in a private place, not here.
 - When you change the tools, bump `version` in `.claude-plugin/plugin.json` and `.claude-plugin/marketplace.json` so installed copies update.

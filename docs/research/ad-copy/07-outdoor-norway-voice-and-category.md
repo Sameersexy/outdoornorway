@@ -9,7 +9,7 @@ What I read first:
 
 - The client's four voice skills (brand-voice-checker, guest-benefit-checker, content-qc, script-writing).
 - CONFIRMED-PRICES-AND-DATES.md (prices and 2027 dates below are taken from it and treated as authoritative).
-- All seven in-scope ski page texts plus the ski hub text, line by line. Line numbers below refer to the cleaned `.txt` files in `/tmp/claude-0/-home-user-outdoornorway/698d341b-36e0-5dc5-a8cb-413a8d3083ac/scratchpad/site/`.
+- All seven in-scope ski page texts plus the ski hub text, line by line. Line numbers below refer to the cleaned `.txt` files in a local scratch folder (not in the repo).
 - The three reference ad images (ref-a, ref-b, ref-c). I viewed them myself. All analysis in section 1 comes from what I can see in the screenshots, not from the audit's data.
 - The nine first-cut creatives, using the copy quoted in the brief. I have not seen the images for those nine, so the critique is of copy and claims only.
 

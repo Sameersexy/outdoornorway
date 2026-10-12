@@ -2,19 +2,17 @@
 
 Marketing tools for Outdoor Norway, built for Claude Code: a video script skill with an enforced validator, two agents, slash commands and vetted copywriting skills.
 
+This repo is public and specific to Outdoor Norway. No licence has been chosen, so all rights are reserved by default. [VERIFY: owner to choose a licence]
+
 Writers and video editors: start with [docs/getting-started.md](docs/getting-started.md), or run `/howto` once the repo is open in Claude Code.
 
 ## Install
 
 Open this repo in Claude Code and everything loads: the slash commands, the skills and the agents live in `.claude/`.
 
-To use the same tools in another project or on another machine, install the plugin:
+On another machine, clone the repo and start `claude` inside it. The commands and agents look for files at this repo's own paths, so they work inside a clone.
 
-```
-/plugin install outdoornorway-marketing --marketplace Sameersexy/outdoornorway
-```
-
-Or in two steps: `/plugin marketplace add Sameersexy/outdoornorway`, then `/plugin install outdoornorway-marketing@outdoornorway`. Installed commands are namespaced, for example `/outdoornorway-marketing:script`. A private repo needs git access on that machine. [VERIFY: confirm the repo visibility and a clean install on a second machine]
+A plugin package exists (`/plugin install outdoornorway-marketing --marketplace Sameersexy/outdoornorway`), but installing it into a different project is untested and the commands would not find the validator there. [VERIFY: test a clean install in an empty folder, and whether `${CLAUDE_PLUGIN_ROOT}` paths in the commands fix it]
 
 Check the packaging with `claude plugin validate .` (it passes; its one warning says the repo's `CLAUDE.md` is not shipped inside the plugin, which is intended).
 

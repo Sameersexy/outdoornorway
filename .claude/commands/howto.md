@@ -1,6 +1,6 @@
 ---
 description: Show the quick start for writers and editors (the commands and the first steps)
-allowed-tools: Bash(sed:*)
+allowed-tools: Bash(sed -n '/^## Quick start/,/^## Set up/p' docs/getting-started.md)
 disable-model-invocation: true
 ---
 !`sed -n '/^## Quick start/,/^## Set up/p' docs/getting-started.md`
