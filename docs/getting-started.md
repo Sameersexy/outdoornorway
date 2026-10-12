@@ -31,6 +31,8 @@ If you installed the plugin, type each command with its full name: `/outdoornorw
 
 You need a Claude account that includes Claude Code. [VERIFY: confirm which Claude plans include Claude Code]
 
+You also need Python 3, because the checker is a Python script. Run `python3 --version` in a terminal to see if you have it. On Windows the command may be `python` instead. [VERIFY: confirm the checker runs on Windows with the `python3` name]
+
 **Option A: install the plugin (works from any folder).** In a terminal, run these two lines:
 
 ```
