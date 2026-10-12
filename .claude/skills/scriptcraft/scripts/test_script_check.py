@@ -1003,6 +1003,10 @@ tier: short
         self.assertFalse(found(check(text), "BR13"))
         self.assertTrue(found(check(text, final=True), "BR13", "block"))
 
+    def test_u05_logistics_line_to_the_description_is_soft(self):
+        for vo in ("The dates and prices are in the description if you're keen.", "Booking details are in the description."):
+            self.assertFalse(found(check(beat(self.talk(), 6, vo=vo, overlay="-")), "U05"), vo)
+
     def test_d01_disclosure_beat_without_overlay_warns(self):
         text = beat(self.talk(), 2, overlay="-")
         self.assertTrue(found(check(text), "D01", "warn"))

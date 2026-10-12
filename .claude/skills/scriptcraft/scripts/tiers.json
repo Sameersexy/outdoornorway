@@ -152,7 +152,7 @@
         "details in the caption", "how to book is in the caption", "book in the caption", "book through the caption",
         "dates and prices in the caption"
       ],
-      "cta_soft_regex": "\\b(dates?|prices?|booking|book|details|info|times?)\\b[^.!?]{0,30}\\bcaption\\b",
+      "cta_soft_regex": "\\b(dates?|prices?|booking|book|details|info|times?)\\b[^.!?]{0,30}\\b(caption|description)\\b",
       "cta_soft_prompts_note": "Soft prompts from note 04 section 7 point 6: save, send to a friend, which one, follow along, or one logistics sentence on how to book. cta_soft_regex accepts any logistics sentence that points to the caption (dates are in the caption, how to book is down in the caption). A link_only phrase in any beat, when no cta beat holds a soft prompt, warns.",
       "cta_link_only": [
         "link in bio", "link in my bio", "link in the bio", "link below", "link in the description",

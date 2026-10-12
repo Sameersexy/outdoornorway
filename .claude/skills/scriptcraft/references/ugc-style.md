@@ -212,7 +212,7 @@ TikTok removes risky acts by non-professionals that could be imitated and cause 
 | U02 | ugc_talk, ugc_text | block | No end card, closing card, logo, title card, stock footage (stock drone footage too), animation or animated map, price or title graphic, slide or lower third in any visual cell |
 | U03 | ugc_talk | warn | The hook says you or your, or opens on I, I'm, my or we |
 | U04 | ugc_talk, ugc_text | warn | No capitals for emphasis in overlays |
-| U05 | ugc_talk, ugc_text | warn | The call to action is a soft prompt from tiers.json (save this, send this to, which one, follow along, or a logistics line pointing to the caption such as "dates are in the caption"); link in bio alone warns, in any beat |
+| U05 | ugc_talk, ugc_text | warn | The call to action is a soft prompt from tiers.json (save this, send this to, which one, follow along, or a logistics line pointing to the caption or, on YouTube, the description, such as "dates are in the caption"); link in bio alone warns, in any beat |
 | U06 | ugc_talk | warn | Casual markers above 2 per 100 words, contractions below 1 per 100 words |
 | U07 | ugc_talk, ugc_text | warn | Each visual cell has 3 or more words naming who or what is on camera |
 | D01 | ugc_talk, ugc_text; voiceover when relationship is written | block or warn | Disclosure, see above |
