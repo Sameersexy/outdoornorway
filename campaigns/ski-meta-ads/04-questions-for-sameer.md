@@ -25,3 +25,8 @@ Nothing here blocks the copy drafts. Each item stops a specific claim from going
 | 19 | Fix the 9-day link in the ClickUp brief. The old URL returns 404 | A dead landing page | Live URL used |
 
 Checked on 2026-10-06 against the live pages. Prices and dates are verified by `verify_tours.py`.
+
+## Owner answers (12 October 2026)
+
+- Row 4 (gear): the owner knows the hub badge and the 7 Day page disagree. The company wants the "All Gear Included" wording on the site. Scripts keep the rule in `.claude/product-marketing.md` and do not claim gear is included. [VERIFY: owner to say if scripts may use the badge wording]
+- Row 6 (rating): the 4.9/5 comes from the company's Tripadvisor listing. The site could not link it to Tripadvisor, so it has no source on the page. [VERIFY: current number, review count and which listing] Scripts keep the rule: no rating badge without a named source and a current number.

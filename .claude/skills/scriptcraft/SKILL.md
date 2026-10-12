@@ -82,7 +82,7 @@ Copy the template from assets/ for the file format, then re-time its beats to yo
 
 ### 5. Run the validator
 
-From the repo root:
+From the repo root. When the plugin is installed instead of a clone, use the plugin folder in place of the repo root: it is three folders above this skill's base directory.
 
 ```
 python3 -I .claude/skills/scriptcraft/scripts/script_check.py path/to/script.md
