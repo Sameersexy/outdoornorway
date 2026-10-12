@@ -7,7 +7,7 @@
       "name": "outdoornorway-marketing",
       "source": "./",
       "description": "Video script skill, validator, writer and reviewer agents and slash commands for Outdoor Norway marketing.",
-      "version": "0.1.0"
+      "version": "0.2.0"
     }
   ]
 }

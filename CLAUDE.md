@@ -6,12 +6,14 @@ What is here
 - `content/scripts/`: finished and draft scripts, each with a notes file. `docs/`: research and test write-ups.
 
 Commands
-- Tests: `python3 -I .claude/skills/scriptcraft/scripts/test_script_check.py`
+- Tests: `python3 -I .claude/skills/scriptcraft/scripts/test_script_check.py` and `python3 -I tools/test_repo_integrity.py`
 - Validate a script: `python3 -I .claude/skills/scriptcraft/scripts/script_check.py FILE [--final] [--strict]`
 - Live data check: `python3 -I campaigns/ski-meta-ads/verify_tours.py`
 - Slash commands (in `.claude/commands/`): `/script`, `/review-script`, `/validate`, `/open-items`, `/tour-data`, `/tokens`, `/howto`. The validator takes `--brief` for a short report and `--open-items` for the placeholder list.
 
 Rules
+- Commands and agents reach repo files through ROOT (`${CLAUDE_PLUGIN_ROOT}`, or the current folder in a clone). Do not add `!` shell lines with `${...}` or bare repo paths to commands. `/howto` embeds the guide's Quick start: after editing it, regenerate `.claude/commands/howto.md` (the integrity test checks they match).
+- The repo is public and MIT licensed. Nothing confidential goes in it.
 - Facts come from tours.json, `.claude/product-marketing.md` or a page the client names. Never invent a fact, a guide's words or a URL.
 - No model names in any file. No em or en dashes, no emojis.
 - Work on the branch the session names. Open a pull request only when asked.

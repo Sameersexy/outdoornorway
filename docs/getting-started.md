@@ -8,12 +8,13 @@ A set of tools that lives in this GitHub repo. It writes and checks video script
 
 ## Quick start
 
-1. Open this repo in Claude Code (setup is below, once).
-2. Type `/` and pick a command, or type it. To write a script: `/script ski-aurora-7day youtube voiceover`
-3. Claude saves the script in `content/scripts/` and tells you what is still open.
-4. `/open-items content/scripts/<file>.md` lists everything that still needs a person: footage, permissions, facts to confirm.
-5. `/review-script content/scripts/<file>.md` gets an independent second opinion.
-6. When you are happy, ask Claude: "commit this and open a pull request". Sameer reviews it.
+1. Install once. Pick one way in "Set up" below: install the plugin, or clone the repo.
+2. Start Claude Code in the folder where you want your scripts saved. For a clone, that is the repo folder.
+3. Type `/` and pick a command. To write a script: `/script ski-aurora-7day youtube voiceover`
+4. Claude saves the script in `content/scripts/` and tells you what is still open.
+5. `/open-items content/scripts/<file>.md` lists everything that still needs a person: footage, permissions, facts to confirm.
+6. `/review-script content/scripts/<file>.md` gets an independent second opinion.
+7. When you are happy, send the script to Sameer. If you cloned the repo, ask Claude: "commit this and open a pull request".
 
 | Command | Use it to |
 |---|---|
@@ -24,20 +25,40 @@ A set of tools that lives in this GitHub repo. It writes and checks video script
 | `/tour-data` | Check our prices and dates against the live website |
 | `/howto` | Show this quick start again |
 
+If you installed the plugin, type each command with its full name: `/outdoornorway-marketing:script`, `/outdoornorway-marketing:validate` and so on. The short names above work when you cloned the repo.
+
 ## Set up (once)
 
-1. **GitHub.** The repo is public, so you can read it and clone it without an invitation. To save your work back you need a GitHub account and either an invitation from Sameer (so you can push a branch) or your own fork. See "Without write access" below. Do not put anything confidential in this repo: everyone can read it.
-2. **A Claude account that includes Claude Code.** [VERIFY: confirm which Claude plans include Claude Code]
-3. **Pick one way to run it.**
-   - Easiest, nothing to install: Claude Code on the web at claude.ai/code. Connect GitHub, choose the repo `Sameersexy/outdoornorway`, start a session. [VERIFY: confirm the current steps in the Claude Code app]
-   - Terminal: install Claude Code, then run `git clone https://github.com/Sameersexy/outdoornorway.git`, `cd outdoornorway`, `claude`. Git will ask you to sign in to GitHub.
-4. **Check it works.** Type `/`. You should see `/script`, `/review-script`, `/validate`, `/open-items`, `/tour-data` and `/howto`. If not, you are not inside the repo: restart the session from the repo.
+You need a Claude account that includes Claude Code. [VERIFY: confirm which Claude plans include Claude Code]
 
-The commands work inside a clone of this repo. Installing the plugin in a different project is untested, because the commands look for files at the repo's own paths. [VERIFY: test a clean plugin install in an empty folder]
+**Option A: install the plugin (works from any folder).** In a terminal, run these two lines:
+
+```
+claude plugin marketplace add Sameersexy/outdoornorway
+claude plugin install outdoornorway-marketing@outdoornorway
+```
+
+Or type `/plugin` inside Claude Code and add the marketplace `Sameersexy/outdoornorway`, then install `outdoornorway-marketing`. Restart Claude Code. To update later: `claude plugin marketplace update outdoornorway`, then `claude plugin update outdoornorway-marketing@outdoornorway`. [VERIFY: confirm the update steps on a second machine]
+
+**Option B: clone the repo (best if you will also edit files and send pull requests).** Install Claude Code, then run:
+
+```
+git clone https://github.com/Sameersexy/outdoornorway.git
+cd outdoornorway
+claude
+```
+
+Update later with `git pull`. The commands work in the repo folder. Start Claude Code there.
+
+**Check it works.** Type `/`. You should see `/script`, `/review-script`, `/validate`, `/open-items`, `/tour-data` and `/howto`.
+
+The repo is public: you can read and clone it without an invitation. To save work back you need a GitHub account and either an invitation from Sameer (to push a branch) or your own fork. See "Without write access". Do not put anything confidential in this repo: everyone can read it.
+
+There is no `npx` step. The plugin install above is the Claude Code equivalent.
 
 ## Without write access
 
-If Sameer has not added you as a collaborator, you cannot push a branch here. Fork the repo on GitHub, work in your fork, and open a pull request from the fork to Sameer. Ask Claude: "commit this to my fork and open a pull request". Scripts for real tours are drafts until Sameer confirms the facts, so send the pull request even if open items remain.
+If Sameer has not added you as a collaborator, you cannot push a branch here. Fork the repo on GitHub, work in your fork, and open a pull request from the fork to Sameer. Or send the script file to Sameer directly. Scripts for real tours are drafts until Sameer confirms the facts, so send them even if open items remain.
 
 ## For writers
 

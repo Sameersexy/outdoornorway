@@ -14,6 +14,8 @@ The vetting notes (what was read, what was rejected and why) are in the session 
 | conversion-copywriter | mikefutia/conversion-copywriter-skill, `SKILL.md` | f8d30360d38b20ff1f616ff6c4c5d89a764ce9a3 | MIT | No (manual) |
 | fact-check | garrytan/gbrain, `skills/fact-check` (rewritten, see below) | 76a9984bdca8183f34965e04e0aad92c85e71ba8 | MIT | Yes |
 
+This repo's own files are MIT licensed (see `LICENSE`). Each third-party skill keeps the licence of its upstream project, in a `LICENSE-*` file inside its folder.
+
 ## Why some are manual only
 
 The writing skills overlap. All of them say "write copy". If they all auto-invoked, they would compete. They carry `disable-model-invocation: true`, so you call them by name (for example `/copywriting`). The ad writer for this repo is `adquill`, and it reads these as references.
