@@ -5,7 +5,7 @@ disable-model-invocation: true
 ---
 Write a video script for: $ARGUMENTS
 
-Where the files live: ROOT is `${CLAUDE_PLUGIN_ROOT}`. If that text does not start with a slash, ROOT is the current folder (a clone of the repo). The validator, tools and data are under ROOT. Files you save for the user go in the current folder, never under ROOT.
+Where the files live: ROOT is `${CLAUDE_PLUGIN_ROOT}`. If that text does not start with a slash, ROOT is the current folder (a clone of the repo). The validator, tools and data are under ROOT. Files you save for the user go in the current folder, never under ROOT. When you tell the user about a file under ROOT, write its real path, not the word ROOT.
 
 Use the script-writer agent (subagent_type `script-writer`; when installed as a plugin its full name is `outdoornorway-marketing:script-writer`) and follow `ROOT/.claude/skills/scriptcraft/SKILL.md`. Tell the agent what ROOT is.
 
