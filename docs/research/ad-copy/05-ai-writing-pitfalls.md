@@ -25,7 +25,7 @@ Status of the main sources I opened:
 | tropes.fyi | Fetched the full directory | Read. |
 | blader/humanizer | Fetched repo page and SKILL.md; star count from the GitHub search API on 2026-10-06 | Read. |
 | conorbronsdon/avoid-ai-writing | Fetched SKILL.md summary | Summary only. |
-| Anthropic prompting docs (Fable 5.1 page, best practices page) | Fetched and searched the saved text | Read the writing sections. |
+| Anthropic prompting docs (the current model page, best practices page) | Fetched and searched the saved text | Read the writing sections. |
 | Adpharm anti-slop playbook | Fetched | Read. |
 | GPTZero explanation pages | Fetched one, searched one | Partly read. |
 | Reddit | Search returned no usable thread | Not used. Community voice comes from Hacker News and blogs. |
@@ -92,7 +92,7 @@ Pangram, "9 signs of AI writing, backed by data": https://www.pangram.com/signs-
 
 ### 1.5 The em dash
 
-- Freeburg, "The Last Fingerprint: How Markdown Training Shapes LLM Prose" (March 2026 preprint): https://arxiv.org/abs/2603.27006 . Twelve models, five providers, told to avoid markdown. Em dashes survived in most. Llama models produced 0.0 per 1,000 words and GPT-4.1 produced 9.1 under suppression. A search summary also gave Claude Opus 4.6 at 9.09 and DeepSeek V3 at 6.95. [VERIFY: those two figures were not in the abstract I read]. The author frames em dashes as a trace of fine-tuning method.
+- Freeburg, "The Last Fingerprint: How Markdown Training Shapes LLM Prose" (March 2026 preprint): https://arxiv.org/abs/2603.27006 . Twelve models, five providers, told to avoid markdown. Em dashes survived in most. One model family produced 0.0 per 1,000 words and another produced 9.1 under suppression. A search summary also gave two more models at 9.09 and 6.95. [VERIFY: those two figures were not in the abstract I read]. The author frames em dashes as a trace of fine-tuning method.
 - FIU expert Mustafa Ocal says models learn from highly rated sources that use em dashes: https://news.fiu.edu/2026/why-does-ai-use-so-many-em-dashes-an-expert-explains . That is an explanation from one expert, not a measured cause.
 
 Takeaway: telling a model "no em dashes" is not enough. It often keeps them. The skill needs a post-check (the linter) and not only an instruction.
@@ -110,7 +110,7 @@ So the honest summary is: detectors vary a lot, some work well, all can be wrong
 
 ### 1.7 Anthropic's own guidance
 
-Prompting guide for Claude Fable 5.1: https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-fable-5-1 (section "Writing density"). The guide says the model has few stock phrases but its prose can be dense, with long sentences and few paragraph breaks. It defines "mannered prose" this way: it substitutes metaphor and flourish for direct statement, the phrases exist to display the writer, and the fix is to say what you mean and use the literal phrase when one is available. Its examples: "a dial worth turning" for "a parameter worth varying", "this point earns its keep" for "this point still matters". It suggests adding the definition to the user message (preferred) or the system prompt, and offers a short form: "Please remove all mannered prose."
+Anthropic prompting guide for the current Claude model (platform docs, prompt engineering section "Writing density"). [link: source page, left out because its address names a model] The guide says the model has few stock phrases but its prose can be dense, with long sentences and few paragraph breaks. It defines "mannered prose" this way: it substitutes metaphor and flourish for direct statement, the phrases exist to display the writer, and the fix is to say what you mean and use the literal phrase when one is available. Its examples: "a dial worth turning" for "a parameter worth varying", "this point earns its keep" for "this point still matters". It suggests adding the definition to the user message (preferred) or the system prompt, and offers a short form: "Please remove all mannered prose."
 
 The general best-practices page (https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices) advises prose over heavy markdown for long-form content, with a sample instruction block for minimizing markdown, and says matching the prompt's own formatting to the desired output helps.
 
@@ -259,7 +259,7 @@ Word and phrase list for the skill (flag these in travel, outdoor and ski copy):
 | Urgency | Limited spots, selling fast, act now, hurry, last chance. These are also a honesty risk, see Section 8. |
 | Social proof stock | Thousands of happy guests, join the community, loved by travellers |
 
-The Adpharm guide (April 3, 2026) adds a useful instruction-side finding: words like "engaging", "compelling", "punchy", "modern", "fresh", "dynamic" and "professional yet approachable", when placed in the brief, push the model toward the generic register. https://www.theadpharm.com/insights/claude-opus-anti-slop-playbook . This is one publisher's claim from its own practice. [VERIFY: independent test]. It still suggests a design rule: the skill's own prompts should not use those words.
+The Adpharm guide (April 3, 2026) adds a useful instruction-side finding: words like "engaging", "compelling", "punchy", "modern", "fresh", "dynamic" and "professional yet approachable", when placed in the brief, push the model toward the generic register. [link: Adpharm source page, left out because its address names a model]. This is one publisher's claim from its own practice. [VERIFY: independent test]. It still suggests a design rule: the skill's own prompts should not use those words.
 
 ### 3.3 False friends: words that are fine in this domain
 
@@ -834,9 +834,9 @@ Put a short "What adwright will not do" section in the README: no fake reviews, 
 - https://www.cell.com/patterns/fulltext/S2666-3899(23)00130-7 (Liang et al.)
 - https://www.nber.org/system/files/working_papers/w34223/w34223.pdf (Jabarian and Imas)
 - https://arxiv.org/abs/2310.13548 (sycophancy)
-- https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-fable-5-1
+- [link: Anthropic prompting guide for the current Claude model, left out because its address names a model]
 - https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices
-- https://www.theadpharm.com/insights/claude-opus-anti-slop-playbook
+- [link: Adpharm anti-slop playbook, left out because its address names a model]
 - https://github.com/blader/humanizer
 - https://github.com/conorbronsdon/avoid-ai-writing
 - https://github.com/Anbeeld/WRITING.md

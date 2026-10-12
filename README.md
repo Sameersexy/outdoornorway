@@ -43,14 +43,15 @@ Check the packaging with `claude plugin validate .` (it passes; its one warning 
 | `/tour-data` | Checks `campaigns/ski-meta-ads/tours.json` against the live site |
 | `/tokens` | Shows where this session's tokens went |
 
-The commands are user-invoked only, so they add nothing to the model's context until you run one.
+The commands run only when you type them.
 
 ## What is here
 
-- `.claude/skills/scriptcraft/`: the script skill. Two tiers (short up to 25 s, long up to 3:20), three styles (voiceover, ugc_talk, ugc_text), a validator with 61 rules (47 structural, 14 brand), fixtures and 269 tests.
+- `.claude/skills/scriptcraft/`: the script skill. Two tiers (short up to 25 s, long up to 3:20), three styles (voiceover, ugc_talk, ugc_text), a validator with 61 rules (47 structural, 14 brand), fixtures and 270 tests.
 - `.claude/agents/`: `script-writer` and `script-reviewer`.
 - `campaigns/ski-meta-ads/tours.json`: prices, dates and day-by-day plans, checked by `verify_tours.py`.
 - `content/scripts/`: scripts, each with a notes file. `docs/`: research and test write-ups, `docs/token-hygiene.md`.
+- `adquill/`: a paused ad-copy skill and agents (drafts). The plugin does not install it.
 - `THIRD_PARTY_SKILLS.md`: the vetted third-party skills, their sources and licenses.
 
 Tests: `python3 -I .claude/skills/scriptcraft/scripts/test_script_check.py` (validator) and `python3 -I tools/test_repo_integrity.py` (commands, plugin files, licences, guide).

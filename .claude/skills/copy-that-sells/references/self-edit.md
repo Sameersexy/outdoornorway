@@ -52,7 +52,7 @@ Align with. Aligning with. Bolstered (still banned). Crucial (still banned). Emp
 
 Emphasizing. Enhance. Highlighting. Showcasing. (All still banned regardless of era.)
 
-### Banned words: Era 4 (Claude 4.x and Opus 4.5 to 4.7 generation, 2026)
+### Banned words: Era 4 (2026 generation)
 
 The current generation of frontier models has its own fingerprint. These words and phrases are the 2026 tells and join the banned list:
 

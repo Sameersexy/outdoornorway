@@ -133,6 +133,15 @@ class FailingFixtures(unittest.TestCase):
         self.assertEqual(code, 2)
         self.assertIn("PARSE ERROR line 18", out)
 
+    def test_missing_file_and_no_file_say_so_without_line_zero(self):
+        code, out = cli(os.path.join(FIX, "does-not-exist.md"))
+        self.assertEqual(code, 2)
+        self.assertTrue(out.startswith("PARSE ERROR: cannot read"))
+        self.assertNotIn("line 0", out)
+        code, out = cli("--brief")
+        self.assertEqual(code, 2)
+        self.assertEqual(out.strip(), "PARSE ERROR: no script file given")
+
     def test_fail_final_line_format(self):
         code, out = cli(os.path.join(FIX, "C03.md"))
         self.assertEqual(code, 1)

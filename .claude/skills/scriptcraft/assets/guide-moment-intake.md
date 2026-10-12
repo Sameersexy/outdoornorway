@@ -19,7 +19,7 @@ The script writer uses your answers as facts only for what you actually say. Not
 
 ## How the script uses it
 
-- Each answer you give becomes a facts row: `source: guide intake <first name> <date>: "<your answer>"`, verified yes. The quotation marks are required (validator rule F06).
+- Each answer you give becomes a facts row: `source: guide intake <first name> <date>: "<your answer>"`, verified yes. The quotation marks are required: they mark the guide's own words, and the reviewer checks them (rule F06 enforces them for sources that name a brief).
 - Answer 3 and 4 give the real detail the script was missing: a sound, a place, a reaction. Answer 10 sets the voice.
 - Answer 8 fills the safety line in the creator brief. Answer 7 fills the filming note.
 - A guest's name or face needs a signed release before filming. Do not give names here.
