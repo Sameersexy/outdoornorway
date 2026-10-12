@@ -42,7 +42,7 @@ If you installed the plugin, type each command with its full name: `/outdoornorw
 
 You need a Claude account that includes Claude Code. [VERIFY: confirm which Claude plans include Claude Code]
 
-You also need Python 3, because the checker is a Python script. Open a terminal and run `python3 --version`. If it prints a version number, you are set. If it says the command is not found, install Python 3 and try again. The commands call `python3`, and on Windows that name may not exist. [VERIFY: confirm the checker runs on Windows]
+You also need Python 3, because the checker is a Python script. Open a terminal and run `python3 --version`. If it prints a version number, you are set. If it says the command is not found, install Python 3 [link: Python 3 install page, Sameer to add] and try again. The commands call `python3`, and on Windows that name may not exist. [VERIFY: confirm the checker runs on Windows]
 
 **Option A: install the plugin (works from any folder).** In a terminal, run these two lines:
 
@@ -51,9 +51,9 @@ claude plugin marketplace add Sameersexy/outdoornorway
 claude plugin install outdoornorway-marketing@outdoornorway
 ```
 
-Or type `/plugin` inside Claude Code and add the marketplace `Sameersexy/outdoornorway`, then install `outdoornorway-marketing`. Restart Claude Code. To update later: `claude plugin marketplace update outdoornorway`, then `claude plugin update outdoornorway-marketing@outdoornorway`, then restart Claude Code.
+Or type `/plugin` inside Claude Code and add the marketplace `Sameersexy/outdoornorway`, then install `outdoornorway-marketing`. (A marketplace is a list of plugins that lives on GitHub.) Restart Claude Code. To update later: `claude plugin marketplace update outdoornorway`, then `claude plugin update outdoornorway-marketing@outdoornorway`, then restart Claude Code.
 
-**Option B: clone the repo (best if you will also edit files and send pull requests).** Install Claude Code, then run:
+**Option B: clone the repo (best if you will also edit files and send pull requests).** Install Claude Code first [link: Claude Code install steps, Sameer to add], then run:
 
 ```
 git clone https://github.com/Sameersexy/outdoornorway.git
@@ -88,7 +88,7 @@ Things to know:
 - **Facts come from `campaigns/ski-meta-ads/tours.json`**, `.claude/product-marketing.md` or a page we name. Do not type prices or dates into a script by hand. If a price looks wrong, run `/tour-data`.
 - **Changes:** tell Claude what to change in plain words. It must keep `/validate` passing.
 - **Ready to publish** means: `/validate <file> --final --strict` says `RESULT: PASS` and `/open-items <file>` shows nothing open. Until then it is a draft. Do not remove a `[VERIFY]` marker yourself unless the person named in it has confirmed.
-- **Cost:** each script uses the agents, which use real usage. One script per session, and run `/review-script` once, not after every edit.
+- **Cost:** each script runs extra Claude helper sessions (the agents), and they count against your Claude usage limit. One script per session, and run `/review-script` once, not after every edit.
 
 ## For video editors
 
@@ -128,7 +128,7 @@ Editor's checklist for each script:
 
 ## If something goes wrong
 
-- **No commands when you type `/`.** You are not in the repo folder or the session did not start from the repo.
+- **No commands when you type `/`.** If you installed the plugin, restart Claude Code and run `claude plugin list` to check it is enabled. If you cloned the repo, start Claude Code inside the repo folder.
 - **"Usage limit reached".** Wait for the reset. Use one script per session next time. See `docs/token-hygiene.md`.
 - **`PARSE ERROR line N`.** The script file format is broken at that line. Ask Claude to repair it.
 - **`[FAIL] BR13`.** Placeholders (the `[VERIFY: ...]` markers) are still in the script, and BR13 is the check that blocks the final version until they are gone. Expected until the people named in them confirm.
