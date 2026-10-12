@@ -14,3 +14,5 @@ Use the script-writer agent (subagent_type `script-writer`; when installed as a 
 3. Give the agent the brief, the sources, and these output rules: save the script to `content/scripts/<yyyy-mm-dd>-<slug>.md`, run the validator in draft and --final mode, and reply compactly with the path, the RESULT lines, open items grouped by who confirms, and one alternative hook and call to action. No pasted script, no full validator output.
 4. If the brief has no real moment from a real guide, say so and point to `ROOT/.claude/skills/scriptcraft/assets/guide-moment-intake.md`.
 5. Relay the agent's result in at most 30 lines. Offer `/review-script` as the next step in one short line.
+
+Do not send a progress message such as "the agent is working". Wait for the agent, then reply once with the result.

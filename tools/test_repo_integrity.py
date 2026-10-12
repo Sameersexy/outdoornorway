@@ -170,6 +170,19 @@ class Hygiene(unittest.TestCase):
         bad = [str(p.relative_to(ROOT)) for p, _ in tracked_text_files() if MODEL_NAMES.search(read(p))]
         self.assertEqual(bad, [], "model name in: " + ", ".join(bad))
 
+    def test_no_dangling_session_references(self):
+        for name in ("THIRD_PARTY_SKILLS.md", "README.md", "CLAUDE.md"):
+            text = read(ROOT / name).lower()
+            self.assertNotIn("session notes", text, name)
+            self.assertNotIn("session research", text, name)
+
+    def test_quick_start_stands_alone(self):
+        # /howto shows only the Quick start, so it must not point at a section it does not show.
+        guide = read(ROOT / "docs" / "getting-started.md")
+        quick = guide[guide.index("## Quick start"):guide.index("## Set up (once)")]
+        self.assertNotIn("below", quick)
+        self.assertIn("Set up (once)", quick)
+
     def test_guide_does_not_say_private(self):
         guide = read(ROOT / "docs" / "getting-started.md")
         self.assertNotIn("The repo is private", guide)

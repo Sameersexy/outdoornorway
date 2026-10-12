@@ -1,7 +1,7 @@
 # Third-party skills in `.claude/skills/`
 
 These skills were copied into the repo as text, from pinned commits. No third-party code runs. Each copy keeps its upstream licence file.
-The vetting notes (what was read, what was rejected and why) are in the session research, summarised in the table.
+The vetting notes (what was read, what was rejected and why) are in `docs/research/ad-copy/06-skill-vetting.md`.
 
 | Skill | Source | Pinned commit | Licence | Auto-invokes |
 |---|---|---|---|---|
@@ -34,7 +34,7 @@ The writing skills overlap. All of them say "write copy". If they all auto-invok
 ## What was deliberately not installed
 
 - **gbrain runtime.** It is a memory runtime (Bun, a local database, optional background services, a daily version check), not a skill pack. Only its `fact-check` skill fits this work, and it was copied by hand.
-- **Graft** (trailhq/Graft). It builds a code graph with tree-sitter, which does not read markdown. This repo is markdown and two Python files. Its init writes hooks into `.claude/settings.json` that fire on every prompt. See the session notes for the exact dry-run command if it is wanted later.
+- **Graft** (trailhq/Graft). It builds a code graph with tree-sitter, which does not read markdown. This repo is markdown and two Python files. Its init writes hooks into `.claude/settings.json` that fire on every prompt.
 - 26 other candidates were read and rejected or kept as reading only. Reasons include lead-gen funnels, scripts that read ad account tokens, and curl-pipe installers.
 
 ## Upgrading

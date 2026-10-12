@@ -3,6 +3,7 @@
 What is here
 - `.claude/skills/scriptcraft/`: video script skill, validator (`scripts/script_check.py`), fixtures and tests. Agents: `.claude/agents/script-writer.md`, `script-reviewer.md`.
 - `campaigns/ski-meta-ads/tours.json`: source of truth for prices, dates and day-by-day plans. Check it with `verify_tours.py`.
+- `adquill/`: paused ad-copy skill and agents (drafts, not installed by the plugin).
 - `content/scripts/`: finished and draft scripts, each with a notes file. `docs/`: research and test write-ups.
 
 Commands
@@ -13,7 +14,7 @@ Commands
 
 Rules
 - Commands and agents reach repo files through ROOT (`${CLAUDE_PLUGIN_ROOT}`, or the current folder in a clone). Do not add `!` shell lines with `${...}` or bare repo paths to commands. `/howto` embeds the guide's Quick start: after editing it, regenerate `.claude/commands/howto.md` (the integrity test checks they match).
-- The repo is public and MIT licensed. Nothing confidential goes in it.
+- The repo is public and MIT licensed. Do not add supplier terms, personal data or other private client information. The page-audit notes in `campaigns/ski-meta-ads/` stay public on purpose (owner decision, 12 October 2026).
 - Facts come from tours.json, `.claude/product-marketing.md` or a page the client names. Never invent a fact, a guide's words or a URL.
 - No model names in any file. No em or en dashes, no emojis.
 - Work on the branch the session names. Open a pull request only when asked.

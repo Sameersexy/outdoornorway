@@ -1955,7 +1955,7 @@ def main(argv=None):
         if args.json:
             print(json.dumps({"result": "PARSE", "line": exc.line, "error": exc.msg}))
         else:
-            print("PARSE ERROR line %s: %s" % (exc.line, exc.msg))
+            print("PARSE ERROR line %s: %s" % (exc.line, exc.msg) if exc.line else "PARSE ERROR: %s" % exc.msg)
         return 2
     if args.json:
         print(json.dumps(as_dict(ctx, args.strict), indent=2))
