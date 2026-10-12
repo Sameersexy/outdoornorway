@@ -183,6 +183,12 @@ class Hygiene(unittest.TestCase):
         self.assertNotIn("below", quick)
         self.assertIn("Set up (once)", quick)
 
+    def test_guide_has_no_link_placeholders_and_names_the_install_pages(self):
+        guide = read(ROOT / "docs" / "getting-started.md")
+        self.assertNotIn("[link:", guide)
+        self.assertIn("https://code.claude.com/docs/en/quickstart", guide)
+        self.assertIn("https://www.python.org/downloads/", guide)
+
     def test_guide_does_not_say_private(self):
         guide = read(ROOT / "docs" / "getting-started.md")
         self.assertNotIn("The repo is private", guide)

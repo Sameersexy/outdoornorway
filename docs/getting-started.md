@@ -9,7 +9,7 @@ A set of tools that lives in this GitHub repo. It writes and checks video script
 ## Words used here
 
 - **Claude Code:** the app where you type to Claude. Typing `/` in it opens the list of commands.
-- **Terminal:** the window where you type commands. On a Mac it is called Terminal. On Windows, use PowerShell.
+- **Terminal:** the window where you type commands. On a Mac it is called Terminal. On Windows, use PowerShell. The [terminal guide](https://code.claude.com/docs/en/terminal-guide) shows how to open one.
 - **Plugin:** the tools, installed once from GitHub. It works from any folder. Choose this if you only write or read scripts.
 - **Clone:** a full copy of the repo on your computer. Choose this if you also edit the tools or send changes through GitHub.
 - **Checker:** the program behind `/validate`. It enforces the rules, so a script cannot pass while it breaks one.
@@ -40,9 +40,13 @@ If you installed the plugin, type each command with its full name: `/outdoornorw
 
 ## Set up (once)
 
-You need a Claude account that includes Claude Code. [VERIFY: confirm which Claude plans include Claude Code]
+You need three things: a Claude account, Claude Code, and Python 3.
 
-You also need Python 3, because the checker is a Python script. Open a terminal and run `python3 --version`. If it prints a version number, you are set. If it says the command is not found, install Python 3 [link: Python 3 install page, Sameer to add] and try again. The commands call `python3`, and on Windows that name may not exist. [VERIFY: confirm the checker runs on Windows]
+1. **A Claude account.** Claude Code needs a paid Claude plan (Pro, Max, Team or Enterprise) or a Claude Console account, according to the official quickstart.
+2. **Claude Code.** Follow Step 1 of the [Claude Code quickstart](https://code.claude.com/docs/en/quickstart). It gives one command for each system (Mac, Linux, Windows). If you have never used a terminal, read the [terminal guide](https://code.claude.com/docs/en/terminal-guide) first. When it is installed, open a new terminal window and run `claude --version`. It should print a version number.
+3. **Python 3.** The checker is a Python script. Open a terminal and run `python3 --version`. If it prints a version number, you are set. If it says the command is not found, install Python 3 from the [official Python download page](https://www.python.org/downloads/) and try again. The commands call `python3`, and on Windows that name may not exist. [VERIFY: confirm the checker runs on Windows]
+
+Then pick one way to add our tools.
 
 **Option A: install the plugin (works from any folder).** In a terminal, run these two lines:
 
@@ -53,7 +57,7 @@ claude plugin install outdoornorway-marketing@outdoornorway
 
 Or type `/plugin` inside Claude Code and add the marketplace `Sameersexy/outdoornorway`, then install `outdoornorway-marketing`. (A marketplace is a list of plugins that lives on GitHub.) Restart Claude Code. To update later: `claude plugin marketplace update outdoornorway`, then `claude plugin update outdoornorway-marketing@outdoornorway`, then restart Claude Code.
 
-**Option B: clone the repo (best if you will also edit files and send pull requests).** Install Claude Code first [link: Claude Code install steps, Sameer to add], then run:
+**Option B: clone the repo (best if you will also edit files and send pull requests).** Run:
 
 ```
 git clone https://github.com/Sameersexy/outdoornorway.git
