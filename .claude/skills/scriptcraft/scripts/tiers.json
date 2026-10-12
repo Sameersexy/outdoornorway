@@ -1,0 +1,231 @@
+{
+  "version": "0.3.0",
+  "verified": "2026-10-07",
+  "note": "Single source of truth for length rules. The validator and every document read this file. Grades: A platform official or peer reviewed, B documented creator process or large dataset, C practitioner lore, J judgement derived from A and B inputs. Almost every limit below is J. Change a number here and the validator changes with it. 0.2.0 added cta.hard_max: max counts every ask (cta plus soft-cta beats), hard_max counts cta beats alone, so a long script has one primary ask and at most one soft ask. 0.3.0 added the styles section (voiceover, ugc_talk, ugc_text), the front matter fields creator, relationship and sound, the role token disclosure, and the rules U01 to U07, D01 and SND01 that read it. The tier values below are the voiceover values and did not change.",
+  "tiers": {
+    "short": {
+      "label": "Short form: Instagram Reels, YouTube Shorts, TikTok",
+      "platforms": ["reels", "shorts", "tiktok"],
+      "max_seconds": 25,
+      "warn_seconds": 23,
+      "wps": 2.4,
+      "number_penalty_seconds": 0.4,
+      "words": { "hard_max": 60, "target_min": 40, "target_max": 55 },
+      "beats": { "min": 4, "target_max": 6, "hard_max": 7 },
+      "seconds_per_beat": { "min": 3, "max": 6 },
+      "words_per_beat": { "target_min": 8, "target_max": 15, "hard_max": 18 },
+      "hook": { "max_seconds": 3, "min_words": 4, "max_words": 9, "hard_max_words": 10 },
+      "facts": { "per_beat_max": 1, "per_script_max": 3, "numbers_per_script_max": 2 },
+      "sentence": { "avg_min": 6, "avg_max": 9, "hard_max_words": 12 },
+      "overlay": { "max_words": 6, "max_chars_per_line": 32, "max_lines": 2, "min_seconds": 1.5, "chars_per_second": 15 },
+      "cta": { "min": 1, "max": 1, "hard_max": 1, "max_words": 8, "last_seconds": 4 },
+      "visual": { "max_seconds_per_shot": 3, "hard_max_static_seconds": 4 },
+      "loops": { "dominant_open_by_seconds": 3, "supporting_allowed": false, "max_open": 1 }
+    },
+    "long": {
+      "label": "Long form: YouTube landscape",
+      "platforms": ["youtube"],
+      "max_seconds": 200,
+      "warn_seconds": 190,
+      "wps": 2.2,
+      "number_penalty_seconds": 0.4,
+      "words": { "hard_max": 440, "target_min": 320, "target_max": 400 },
+      "beats": { "min": 14, "target_max": 22, "hard_max": 24 },
+      "seconds_per_beat": { "min": 6, "max": 15 },
+      "words_per_beat": { "target_min": 20, "target_max": 35, "hard_max": 45 },
+      "hook": { "verbal_by_seconds": 8, "max_words": 22, "promise_by_seconds": 30, "promise_max_words": 70 },
+      "facts": { "per_beat_max": 2, "numbers_per_beat_max": 1, "per_script_max": 14, "numbers_per_script_max": 6 },
+      "sentence": { "avg_min": 8, "avg_max": 12, "hard_max_words": 18 },
+      "overlay": { "max_words": 8, "max_chars_per_line": 42, "max_lines": 2, "min_seconds": 2, "chars_per_second": 15 },
+      "cta": { "min": 1, "max": 2, "hard_max": 1, "max_words": 25, "last_seconds": 20, "soft_mid_max": 1 },
+      "visual": { "max_seconds_per_shot": 6, "pattern_interrupt_every_seconds": 40 },
+      "chapters": { "min": 4, "max": 6 },
+      "loops": {
+        "dominant_open_by_seconds": 8,
+        "dominant_close_by_seconds": 185,
+        "max_open": 2,
+        "mini_payoff_per_chapter": true,
+        "partial_answer_window": [80, 120],
+        "reengage_windows": [[55, 80], [120, 145]]
+      }
+    }
+  },
+  "styles": {
+    "note": "Front matter 'style:' picks one style; left out, it is voiceover. A style object holds tier overrides keyed by tier name (short, long): each value replaces the tier value for that style only, nested objects merge key by key. Keys named note and evidence are documentation. Facts limits (facts.per_beat_max, per_script_max, numbers_per_script_max) are never raised by a style: creators talk faster, but the extra speed is connective talk, not more facts. Brand rules (brand_rules.json) run in every style. Rule scope: H02 and H03 run in voiceover only; U01, U02, U04, U05, U07 run in ugc_talk and ugc_text; U03 and U06 run in ugc_talk only; D01 runs in the ugc styles, and in voiceover only when 'relationship:' is written in the front matter; SND01 runs in every style. Sources: research notes 04 (five UK and US creators, 32 videos), 05 (micro creators, 49 videos) and 06 (TikTok mechanics, disclosure, sound).",
+    "default": "voiceover",
+    "allowed": ["voiceover", "ugc_talk", "ugc_text"],
+    "ugc_styles": ["ugc_talk", "ugc_text"],
+    "fields": {
+      "note": "Optional front matter fields. A value outside 'allowed' is a parse error naming the line. Left out, 'default' applies.",
+      "creator": { "allowed": ["guide", "guest", "staff", "editor"], "default": "guide", "note": "Who is on camera or filming. Recorded in the report; it changes no limit." },
+      "relationship": { "allowed": ["staff", "guide", "guest_paid", "guest_gifted", "guest_unpaid"], "default": "staff", "note": "The creator's tie to the brand. D01 reads it." },
+      "sound": { "allowed": ["original", "commercial_library", "voiceover_only", "trending", "none"], "default": "original", "note": "The audio bed. SND01 reads it." }
+    },
+    "voiceover": {
+      "note": "The voiceover-led brand film. No overrides: every rule works exactly as in 0.2.0.",
+      "tiers_allowed": ["short", "long"]
+    },
+    "ugc_talk": {
+      "note": "A guide, staff member or real guest talks on camera: phone-shot, first person, handheld, selfie or POV, casual spoken voice, native text. Pace and word budgets rise; facts do not.",
+      "tiers_allowed": ["short", "long"],
+      "short": {
+        "wps": 3.0,
+        "words": { "hard_max": 75, "target_min": 55, "target_max": 68 },
+        "words_per_beat": { "target_min": 10, "target_max": 20, "hard_max": 24 },
+        "sentence": { "avg_min": 7, "avg_max": 12, "hard_max_words": 16 },
+        "hook": { "max_seconds": 3, "max_seconds_with_overlay": 4, "min_words": 4, "max_words": 15, "hard_max_words": 15, "first_word_by_seconds": 0.5, "first_sentence_min_words": 6, "first_sentence_max_words": 15 },
+        "overlay": { "max_words": 8, "max_chars_per_line": 40 },
+        "cta": { "min": 0, "max": 1, "hard_max": 1, "max_words": 10, "last_seconds": 5 },
+        "casual": { "markers_max_per_100_words": 2, "contractions_min_per_100_words": 1 }
+      },
+      "long": {
+        "wps": 2.8,
+        "words": { "hard_max": 560, "target_min": 420, "target_max": 520 },
+        "sentence": { "hard_max_words": 20 },
+        "casual": { "markers_max_per_100_words": 2, "contractions_min_per_100_words": 1 }
+      },
+      "evidence": {
+        "short.wps": "3.0, grade J, our chosen value. Measured: the five top creators talk at 3.3 to 4.9 wps (note 04, 32 videos, C); talking-to-camera clips 3.46 median (note 06, n 6, C); micro creators 2.87 pooled median (note 05, 49 videos, C). Chosen below the 3.3 to 4.9 range on purpose: the extra speed is connective talk, not more facts, and many of our guides speak English as a second language.",
+        "short.words": "hard_max 75 is 3.0 wps over 25 s (J). Target 55 to 68 sits between note 06 (55 to 65, hard 70) and note 05 (max 70, ceiling 75), both C inputs.",
+        "short.words_per_beat": "The tier values scaled by 3.0 / 2.4 and rounded (J).",
+        "short.sentence": "Spoken creator sentences run longer than a read voiceover (note 05 section 2.1, C). 7 to 12 average, 16 hard (J).",
+        "short.hook": "First word by 0.5 s: measured 0.0 to 0.4 s (note 04, C) and 0.0 to 0.1 s in 5 of 6 clips (note 06, C). First sentence 6 to 15 words: 10 to 15 words in the first 3 s (note 04, C), 8 to 11 (note 06, C). Up to 4 s when beat 1 carries an overlay hook from frame one (note 04 section 7 point 3, J).",
+        "short.overlay": "A title of up to 8 words and 40 characters per line (note 04 section 7 point 5, one creator's title pattern, C). Burned-in captions that mirror speech are not written in the text column.",
+        "short.cta": "0 or 1 ask, at most 10 words, in the last 5 s (note 04 section 7 point 6, C). No measured creator used an end card.",
+        "short.casual": "Casual markers above 2 per 100 words warn; contractions below 1 per 100 words warn (note 04 section 7 point 8: measured creators used few markers, forced slang reads fake, C).",
+        "facts": "Unchanged from the tier: 1 per beat, 3 per short script, 2 numbers (note 04 section 7 point 2 and note 05 point 3: numerals per 30 s were 0.4 to 2.7, already under our cap, C).",
+        "long.wps": "2.8, grade J. Long spoken micro creator videos run 2.3 to 3.1 wps with B-roll gaps (note 05, C). Note 04 suggested 3.8; rejected for the same reason as short.",
+        "long.words": "hard_max 560 is 2.8 wps over 200 s (J). Target 420 to 520 follows note 05 (400 to 520 at 2.6 wps for 3:20, C).",
+        "long.sentence": "hard_max 20 (J), the long tier average range stays."
+      }
+    },
+    "ugc_text": {
+      "note": "Silent text-on-screen loop clip: a phone shot with one or two lines of native text on screen from frame one, built to loop. Short tier only.",
+      "tiers_allowed": ["short"],
+      "short": {
+        "max_seconds": 15,
+        "min_seconds": 7,
+        "warn_seconds": 15,
+        "words": { "hard_max": 12, "target_min": 0, "target_max": 12, "scale_with_seconds": false },
+        "words_per_beat": { "target_min": 0, "target_max": 12, "hard_max": 12 },
+        "beats": { "min": 1, "target_max": 3, "hard_max": 3 },
+        "seconds_per_beat": { "min": 2, "max": 15 },
+        "hook": { "max_seconds": 15, "min_words": 0, "max_words": 12, "hard_max_words": 12 },
+        "facts": { "per_beat_max": 1, "per_script_max": 1, "numbers_per_script_max": 2 },
+        "sentence": { "avg_min": 1, "avg_max": 12, "hard_max_words": 12 },
+        "overlay": { "max_words": 12, "max_chars_per_line": 40, "max_lines": 2, "min_seconds": 2, "chars_per_second": 15, "persistent": true, "script_min_words": 4, "script_max_words": 12, "script_max_lines": 2, "required_in_first_beat": true },
+        "cta": { "min": 0, "max": 1, "hard_max": 1, "max_words": 8, "last_seconds": 4 },
+        "visual": { "max_seconds_per_shot": 8, "hard_max_static_seconds": 15 },
+        "loops": { "close_in_last_beat": true }
+      },
+      "evidence": {
+        "short": "Note 04 section 7 point 4 (C): one creator's eight text-only posts and another's 528,500-view tips post. Zero spoken words is normal; overlay 1 or 2 lines, 4 to 12 words, on screen from frame one; 7 to 15 s; built to loop; cta optional. Spoken hard_max 12 and facts at most 1 are judgement (J).",
+        "short.overlay": "persistent: the text stays on screen, so O01 and O02 count each distinct line once across the script, and O02 reads it over the time from its first beat to the end."
+      }
+    },
+    "ugc_rules": {
+      "note": "Word lists for the U rules. Matched case-insensitively as whole words; a hyphen counts as a space, so 'end-card' matches 'end card'.",
+      "first_frame_person_cues": [
+        "person", "people", "guide", "guides", "guest", "guests", "skier", "skiers", "snowboarder", "snowboarders",
+        "snowshoer", "snowshoers", "walker", "walkers", "instructor", "patroller", "creator", "host", "staff",
+        "friend", "friends", "family", "parent", "partner", "kid", "kids", "child", "children", "daughter", "son",
+        "group", "couple", "man", "woman", "girl", "boy", "he", "she", "his", "her", "him", "i", "me", "my", "myself",
+        "hand", "hands", "selfie", "pov", "handheld", "hand held", "chest mount", "chest cam", "helmet cam", "head cam",
+        "first person", "to camera", "into the camera", "front camera"
+      ],
+      "first_frame_banned": ["intro", "introduction", "fade in", "black screen", "greeting", "waves hello", "wave hello", "says hello", "says hi", "say hi"],
+      "visual_disallowed": [
+        "logo", "logos", "end card", "endcard", "end screen", "title card", "title slide", "title slate", "intro card",
+        "outro card", "stock footage", "stock clip", "stock video", "stock shot", "stock photo", "animation", "animated map", "animated graphic", "animated text",
+        "motion graphics", "slideshow", "slide show", "slide deck", "text slide", "info slide",
+        "lower third", "lower thirds", "brand sting", "logo sting", "watermark"
+      ],
+      "visual_disallowed_regex": "\\b(text|title|info|end|closing|opening|intro|outro|white|black|branded|final|powerpoint|presentation|static)\\s+slides?\\b|\\bslides?\\s+(with|showing)\\s+(the\\s+|a\\s+)?(text|dates|prices|logo|title|info|bullets?|words)\\b|\\bstock\\s+(\\w+\\s+)?(footage|clips?|videos?|shots?|photos?|images?)\\b|\\banimated\\s+(\\w+\\s+){0,2}(maps?|graphics?|text|titles?|logos?|routes?|lines?|captions?|icons?)\\b|\\b(closing|final|outro|ending|branded)\\s+(cards?|screens?|titles?)\\b|\\b(price|title|date|info|map|route|brand|branded|text)\\s+graphics?\\b",
+      "visual_disallowed_note": "'slide' is caught only as a presentation slide (an end slide, a text slide, a slide with the dates). The ski move is allowed: skis slide uphill, the guest copies the slide. The regex also catches stock with a word between (stock drone footage), animated maps, routes and graphics (an animated guest is fine), closing or final cards and screens, and price, title, date or map graphics.",
+      "first_person_words": ["i", "i'm", "i've", "i'll", "i'd", "my", "me", "mine", "myself"],
+      "hook_first_person_stakes": ["i", "i'm", "i've", "i'll", "i'd", "my", "me", "we", "we're", "we've", "we'll"],
+      "overlay_caps_min_letters": 2,
+      "cta_soft_prompts": [
+        "save this", "save it", "save for", "send this to", "send this", "send it to", "send to your", "share this with",
+        "which one", "which would you", "which do you", "follow along", "follow for part", "follow for more",
+        "booking is in the caption", "booking info in the caption", "booking link in the caption", "dates in the caption",
+        "details in the caption", "how to book is in the caption", "book in the caption", "book through the caption",
+        "dates and prices in the caption"
+      ],
+      "cta_soft_regex": "\\b(dates?|prices?|booking|book|details|info|times?)\\b[^.!?]{0,30}\\b(caption|description)\\b",
+      "cta_soft_prompts_note": "Soft prompts from note 04 section 7 point 6: save, send to a friend, which one, follow along, or one logistics sentence on how to book. cta_soft_regex accepts any logistics sentence that points to the caption (dates are in the caption, how to book is down in the caption). A link_only phrase in any beat, when no cta beat holds a soft prompt, warns.",
+      "cta_link_only": [
+        "link in bio", "link in my bio", "link in the bio", "link below", "link in the description",
+        "link in comments", "link in the comments", "comment for the link", "comment for a link", "comment link",
+        "dm for the link", "dm me for the link", "dm me link"
+      ],
+      "casual_markers": ["okay so", "ok so", "honestly", "literally", "kinda", "sorta", "lowkey", "wait for it", "you know what i mean"],
+      "casual_filler_like_regex": "(^|,\\s*)like\\s*,",
+      "casual_markers_note": "U06 counts these plus 'like' used as filler (', like,' or a sentence starting 'Like,'), per 100 spoken words, against the style tier value casual.markers_max_per_100_words.",
+      "contraction_suffixes": ["n't", "'re", "'ve", "'ll", "'d", "'m"],
+      "contraction_s_words": ["it's", "that's", "there's", "here's", "what's", "let's", "he's", "she's", "who's", "where's", "how's", "everyone's", "nobody's", "everything's", "nothing's"],
+      "visual_min_words": 3
+    },
+    "disclosure": {
+      "note": "D01. FTC (Disclosures 101, A): disclose in the video, early, not only in the caption; employees disclose too. ASA (B): '#ad' up front. TikTok Commercial Disclosure (A): own business promotion needs the disclosure toggle. Note 06 section 4.1.",
+      "within_seconds": 5,
+      "overlay_required": true,
+      "overlay_max_words": 6,
+      "overlay_max_words_note": "In ugc_text the overlay is limited to 2 distinct lines for the whole script. The disclosure line sits on top of that cap, up to 6 words, so a muted viewer sees who the creator is without losing a content line (O01).",
+      "overlay_required_note": "The disclosure beat needs on-screen text (D01 warn). Many viewers watch muted, and the FTC and ASA want the disclosure seen, not only heard.",
+      "role_token": "disclosure",
+      "ad_label_required": ["guest_paid", "guest_gifted"],
+      "role_line_expected": ["staff", "guide"],
+      "caption_label_regex": "^\\s*\\[?\\s*#?(ad|advert|advertisement|reklame|annonse)\\b",
+      "caption_label_note": "The caption must start with an ad label: Ad, #ad, Advert, Advertisement, Reklame or Annonse. Advert is ASA wording; Advertisement, Reklame and Annonse are what Norwegian guidance calls clear (note 06).",
+      "paid_negation_regex": "\\b(not|never|no|nobody|nothing|\\w+n't)\\b(\\s+\\w+){0,2}\\s*$",
+      "paid_negation_note": "A paid word right after a negation in the same clause (not an ad, I'm not paid, never sponsored) does not count as disclosure.",
+      "paid_words": ["ad", "advert", "advertisement", "paid", "paid partnership", "sponsored", "gifted", "free trip", "for free", "invited", "hosted", "comped", "partnership", "partnered", "reklame"],
+      "role_words": ["guide", "guides", "guiding", "instructor", "staff", "team", "employee", "work for", "work at", "work with", "i run", "we run", "owner", "founder", "co-founder"],
+      "role_words_note": "The brand name from brand_rules.json also counts as naming the role."
+    },
+    "example_copy": {
+      "note": "R04. The skill ships fictional example scripts and templates. A script that repeats their lines or visuals is copying fiction, and the end-to-end test found writers lifting shot lists and call-to-action shapes. Warn only, because short generic runs ('send this to a friend') are legitimate. The validator must be given a file path for R04 to run.",
+      "reference_dirs": ["../examples", "../assets"],
+      "shingle_words": 5,
+      "voiceover_shingles_warn": 2,
+      "visual_shingles_warn": 2,
+      "near_shots_warn": 3,
+      "near_min_content_words": 3,
+      "near_containment": 0.6,
+      "near_note": "A shot restates a reference shot when it has at least 3 content words (small words and camera words removed, plural and verb endings cut) and at least 60 percent of the reference shot's content words appear in it. 3 such shots warn. This catches 'skis and snowshoes stacked together by a door' against 'skis and snowshoes stacked'. The end-to-end review found six shots lifted this way that no word-run check sees."
+    },
+    "sound": {
+      "note": "SND01. TikTok Commercial Music Library (A): businesses cannot use the general music library commercially; business posts use pre-cleared tracks. A trending song blocks when the script names the brand, a trip or a price. Note 06.",
+      "blocked_value": "trending",
+      "trip_words": ["tour", "tours", "trip", "trips", "booking", "book", "package", "packages", "day tour", "guided tour", "holiday", "departure", "departures", "weekend", "weekends", "getaway", "getaways", "excursion", "excursions", "itinerary"],
+      "price_regex": "\\b(nok|kr|eur|usd|gbp)\\s?\\d[\\d,.]*|\\d[\\d,. ]*\\s?(nok|kr|kroner|euros?|dollars?|pounds?)\\b|[$\\u00a3\\u20ac]\\s?\\d|\\b(price|prices|priced|costs?|per person|per adult)\\b"
+    }
+  },
+  "caption_chapters": {
+    "note": "C06. YouTube Help, 'Add chapters to your videos' (A): the description needs at least 3 timestamps in ascending order, the first at 0:00, and each chapter at least 10 seconds. [VERIFY: confirm current feature set for YouTube chapters] The rule applies to platform youtube, tier long. Chapter timestamps are positions in the video, so F04 does not count them as numbers.",
+    "platform": "youtube",
+    "tier": "long",
+    "line_regex": "^\\s*((?:\\d{1,2}:)?\\d{1,2}:\\d{2})\\b",
+    "min_chapters": 3,
+    "min_chapter_seconds": 10,
+    "must_match_beat_start": true,
+    "beat_match_seconds": 1
+  },
+  "sources": {
+    "note": "F06. A row marked verified yes from a client brief must quote the brief in double quotes in the source cell. The end-to-end test found a writer marking 'the trip starts Friday and ends Sunday' as verified yes against a brief that did not say it. A quote does not prove the brief says it, but it lets the reviewer check in seconds.",
+    "quote_required_regex": "\\bbrief\\b"
+  },
+  "narrators": {
+    "standard": { "pace": 1.0, "word_scale": 1.0, "note": "Native or fluent English voiceover at a natural, not rushed, pace." },
+    "slow": { "pace": 0.85, "word_scale": 0.85, "note": "Non-native narrator, text-to-speech, or a deliberately calm read. Cuts the word budget by 15 percent." }
+  },
+  "roles": {
+    "note": "Allowed tokens in the role column, comma separated. Loop tokens take a letter: open:A, close:A. disclosure marks the beat that says who the creator is to the brand (D01).",
+    "common": ["hook", "setup", "build", "shift", "explain", "proof", "payoff", "cta", "disclosure"],
+    "long_only": ["promise", "partial", "progress", "reengage", "soft-cta"],
+    "chapter_tokens": "ch:1 to ch:6 marks a beat as part of a chapter. mini:1 to mini:6 marks the beat where that chapter's small question is answered.",
+    "loop_tokens": "open:A, close:A (any single capital letter)"
+  },
+  "acronym_allowlist": ["CTA", "POV", "UGC", "NOK", "USD", "EUR", "UK", "EU", "US", "FAQ", "DM", "GPS", "SOS", "TV", "AM", "PM", "OK", "HQ", "RV"]
+}
