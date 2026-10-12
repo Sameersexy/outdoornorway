@@ -8,7 +8,7 @@ Writers and video editors: start with [docs/getting-started.md](docs/getting-sta
 
 ## Install
 
-Pick one. Both need Claude Code and Python 3 (the validator is a Python script, run as `python3`).
+Pick one. Both need [Claude Code](https://code.claude.com/docs/en/quickstart) and [Python 3](https://www.python.org/downloads/) (the validator is a Python script, run as `python3`).
 
 **Plugin (works from any folder).** In a terminal:
 
