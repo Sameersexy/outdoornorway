@@ -1,5 +1,6 @@
 {
   "enabledPlugins": {
     "claude-code-setup@anthropic-plugin-directory": true
-  }
+  },
+  "autoCompactWindow": 200000
 }

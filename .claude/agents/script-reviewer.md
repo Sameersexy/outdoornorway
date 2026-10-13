@@ -17,13 +17,15 @@ Read `.claude/skills/scriptcraft/SKILL.md` and the reference the tier needs (`re
 From the repo root:
 
 ```
-python3 -I .claude/skills/scriptcraft/scripts/script_check.py <file>
-python3 -I .claude/skills/scriptcraft/scripts/script_check.py <file> --final
+python3 -I .claude/skills/scriptcraft/scripts/script_check.py <file> --brief
+python3 -I .claude/skills/scriptcraft/scripts/script_check.py <file> --final --brief
 ```
+
+`--brief` prints the header, totals, findings and RESULT; a rule that repeats shows its first lines and a count. Run the full report for one script only when you need every location of a repeated rule.
 
 Report each run's RESULT line, the counts of blocking and warnings, and every failing or warning rule id with its one-line message; paste the full output only when the caller asks. If the draft run fails, the verdict is REJECT and you still finish the review so the writer knows what else to fix. If the writer's pasted output differs from yours, say so first. An R04 warning means the script copies the examples or templates: quote the shared run, score Distinct 4 or lower, and name the source file.
 
-Ask for the brief the writer worked from (platform, audience, relationship, facts source, objection). If you were not given it, say "brief not provided" and mark every finding that depends on it (audience, objection, who may appear in the video) as unconfirmed instead of blocking. Never infer the audience from the script.
+The brief the writer worked from is in the notes file beside the script (the script path with `-notes.md` in place of `.md`). Read it first if it exists. Otherwise ask for the brief (platform, audience, relationship, facts source, objection). If you were not given it, say "brief not provided" and mark every finding that depends on it (audience, objection, who may appear in the video) as unconfirmed instead of blocking. Never infer the audience from the script.
 
 ## Step 2: check facts against sources
 

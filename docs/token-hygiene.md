@@ -16,6 +16,20 @@ The usage report's 37M and the transcript's total differ (different windows and 
 - `tools/transcript_report.py` measures a session, so the effect can be checked.
 - `CLAUDE.md` is short on purpose: it loads in every session.
 
+## Measured effect of the thinner commands
+
+The `/script`, `/review-script` and agent files were cut down (the commands carry short instructions, the validator answers `--limits` and `--tour` questions so nobody reads whole rule or tour files). Same requests, plugin install, one run each, `claude -p` with JSON output:
+
+| Run | Cost before | Cost after | Time before | Time after |
+|---|---|---|---|---|
+| `/script ski-snowshoe-3day reels voiceover` | USD 0.306 | USD 0.238 | 71 s | 47 s |
+| `/review-script` on that script | not measured alone | USD 0.240 | not measured alone | 57 s |
+| `/script ski-6day shorts voiceover` | not measured | USD 0.224 | not measured | 57 s |
+
+The write run is about 22 percent cheaper and about 34 percent faster. One run each, so treat the percentages as a rough size, not a promise. The turn counts are not comparable: the earlier figure counted every model call including the writer agent, the new figure counts only the main conversation.
+
+Both new scripts passed the validator and each came with a notes file in the right folder. A first version of the thin `/script` command let the writer agent save files under a wrong absolute path. The agent file now says to use relative paths only and to run `ls -l` once, and the second round saved correctly.
+
 ## Habits that cut the most
 
 1. One deliverable per session. A fresh session starts at about 70k and the repo notes carry the state. This is the biggest lever: average context per call can fall from about 350k to about 100k to 150k, which is a 2x to 3x cut in cache reads.

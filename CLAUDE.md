@@ -23,3 +23,8 @@ Tokens (details in `docs/token-hygiene.md`)
 - One deliverable per session. Compact early.
 - Subagents and workflows return paths, scores and short lists. Long reports go to files.
 - Do not print whole files or full validator output. Filter with grep, or read with an offset and limit.
+- Use `script_check.py --brief`, `--limits TIER STYLE` and `--tour TOUR_ID` instead of reading whole rule or tour files.
+
+Compact instructions
+- Keep: the script and notes paths, the last RESULT lines, open items and who confirms them, the branch name, and decisions the user made.
+- Drop: pasted script text, validator dumps and file contents that are on disk.

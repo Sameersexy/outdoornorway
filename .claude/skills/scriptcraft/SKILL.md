@@ -85,9 +85,12 @@ Copy the template from assets/ for the file format, then re-time its beats to yo
 From the repo root. When the plugin is installed instead of a clone, use the plugin folder in place of the repo root: it is three folders above this skill's base directory.
 
 ```
-python3 -I .claude/skills/scriptcraft/scripts/script_check.py path/to/script.md
-python3 -I .claude/skills/scriptcraft/scripts/script_check.py path/to/script.md --final
+python3 -I .claude/skills/scriptcraft/scripts/script_check.py path/to/script.md --brief
+python3 -I .claude/skills/scriptcraft/scripts/script_check.py path/to/script.md --final --brief
+python3 -I .claude/skills/scriptcraft/scripts/script_check.py path/to/script.md --open-items
 python3 -I .claude/skills/scriptcraft/scripts/script_check.py --explain F01
+python3 -I .claude/skills/scriptcraft/scripts/script_check.py --limits short voiceover
+python3 -I .claude/skills/scriptcraft/scripts/script_check.py --tour ski-snowshoe-3day
 ```
 
 Exit 0 is PASS, 1 is FAIL, 2 is a parse error naming the line (an invalid style, creator, relationship or sound value is a parse error, and so is ugc_text in a long script). Use `--final` before publishing: placeholders, unverified facts and numbers from uncited rows then block. `--explain` prints what a rule counts and the usual fix. Read "How the validator counts" in references/tiers.md before your first draft.
@@ -107,6 +110,7 @@ Return, in this order:
 3. The caption.
 4. Open items: every `[VERIFY]` and every fact row with `verified: no`, each naming who confirms it.
 5. On request, or for any ugc script a guide will film: a creator brief from assets/creator-brief-template.md (the one message, approved facts with ids, the do-not-say list, hook plus two alternates, the beat table with framing and filming notes, overlay, call to action, disclosure line, music, caption, consent checklist, safety line). Build it only from a script that passed. examples/creator-brief-fictional.md shows one.
+6. For a shoot that feeds several scripts: assets/shoot-plan-template.md, one row per shot, grouped by place. Fill it from tours.json, never from memory.
 
 No script leaves this skill without a PASS. If the validator cannot run, say so and return the draft marked "not validated".
 

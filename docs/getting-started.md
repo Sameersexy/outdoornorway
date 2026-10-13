@@ -21,11 +21,12 @@ A set of tools that lives in this GitHub repo. It writes and checks video script
 
 1. Install once. The steps are under "Set up (once)" in `docs/getting-started.md`. If you only write or read scripts, choose the plugin.
 2. Start Claude Code in the folder where you want your scripts saved. For a clone, that is the repo folder.
-3. Type `/` and pick a command. To write a script: `/script ski-aurora-7day youtube voiceover`
-4. Claude saves the script in `content/scripts/` and tells you what is still open.
-5. `/open-items content/scripts/<file>.md` lists everything that still needs a person: footage, permissions, facts to confirm.
-6. `/review-script content/scripts/<file>.md` gets an independent second opinion.
-7. When you are happy, send the script to Sameer. If you cloned the repo, ask Claude: "commit this and open a pull request".
+3. Ask the tour guide the ten questions on the intake form (see "For writers") and keep their answers. Skip this only for a quick generic draft.
+4. Type `/` and pick a command. To write a script: `/script ski-aurora-7day youtube voiceover`
+5. Claude saves the script and a notes file in `content/scripts/` and tells you what is still open.
+6. `/open-items content/scripts/<file>.md` lists everything that still needs a person: footage, permissions, facts to confirm.
+7. `/review-script content/scripts/<file>.md` gets an independent second opinion.
+8. When you are happy, send the script to Sameer. If you cloned the repo, ask Claude: "commit this and open a pull request".
 
 | Command | Use it to |
 |---|---|
@@ -45,6 +46,14 @@ You need three things: a Claude account, Claude Code, and Python 3.
 1. **A Claude account.** Claude Code needs a paid Claude plan (Pro, Max, Team or Enterprise) or a Claude Console account, according to the official quickstart.
 2. **Claude Code.** Follow Step 1 of the [Claude Code quickstart](https://code.claude.com/docs/en/quickstart). It gives one command for each system (Mac, Linux, Windows). If you have never used a terminal, read the [terminal guide](https://code.claude.com/docs/en/terminal-guide) first. When it is installed, open a new terminal window and run `claude --version`. It should print a version number.
 3. **Python 3.** The checker is a Python script. Open a terminal and run `python3 --version`. If it prints a version number, you are set. If it says the command is not found, install Python 3 from the [official Python download page](https://www.python.org/downloads/) and try again. The commands call `python3`, and on Windows that name may not exist. [VERIFY: confirm the checker runs on Windows]
+
+Optional, keeps usage down: cap how long a session can grow. Put this in the file `settings.json` inside the `.claude` folder in your home folder (create the file if it is not there):
+
+```
+{ "autoCompactWindow": 200000 }
+```
+
+If the file already has settings, add the line inside the existing braces with a comma. Claude Code then summarises a long conversation at about 200k tokens.
 
 Then pick one way to add our tools.
 
@@ -84,7 +93,7 @@ Ask for one script per session. Examples:
 - `/script ski-aurora-7day youtube voiceover` (a long YouTube video, a calm voiceover over footage)
 - `/script 3-day ski and snowshoe tiktok ugc_talk` (a short TikTok where a guide talks to the phone)
 
-What you get is a file in `content/scripts/` with a table of beats (what is said, what is shown, what text is on screen) and a description with chapter lines for YouTube. Claude also lists open items.
+What you get is two files in `content/scripts/`. The script has a table of beats (what is said, what is shown, what text is on screen) and a description with chapter lines for YouTube. The notes file beside it (same name, ending `-notes.md`) holds the brief, the open items by who confirms them, assumptions and one alternative hook.
 
 Things to know:
 
@@ -92,7 +101,19 @@ Things to know:
 - **Facts come from `campaigns/ski-meta-ads/tours.json`**, `.claude/product-marketing.md` or a page we name. Do not type prices or dates into a script by hand. If a price looks wrong, run `/tour-data`.
 - **Changes:** tell Claude what to change in plain words. It must keep `/validate` passing.
 - **Ready to publish** means: `/validate <file> --final --strict` says `RESULT: PASS` and `/open-items <file>` shows nothing open. Until then it is a draft. Do not remove a `[VERIFY]` marker yourself unless the person named in it has confirmed.
-- **Cost:** each script runs extra Claude helper sessions (the agents), and they count against your Claude usage limit. One script per session, and run `/review-script` once, not after every edit.
+- **Cost:** see "Keep your usage low" below.
+
+## Keep your usage low
+
+Claude Code reads the whole conversation again on every step, so a long session costs far more than a short one. These habits cut the most:
+
+- One script per session. Start a new session for the next one.
+- Run `/review-script` once per script, after the checks pass, not after every edit.
+- Do not resume yesterday's session. Start a new one and point Claude at the script file and its notes file.
+- If Claude gets something wrong twice in a row, type `/clear` and ask again with the fix in your first sentence.
+- Type `/context` to see how full the session is. Above about 150k tokens, type `/compact`.
+- Do not use workflows or agent teams for one script.
+- If you cloned the repo and only need pass or fail, run the checker in a terminal, with no Claude: `python3 -I .claude/skills/scriptcraft/scripts/script_check.py content/scripts/<file>.md --brief`
 
 ## For video editors
 
@@ -144,4 +165,5 @@ Editor's checklist for each script:
 - Invite people who need to push: on GitHub, repo Settings, Collaborators, Add people. On a personal account a collaborator can push.
 - Ask everyone to work on a branch and open a pull request, then review and merge. Branch protection on `main` is available for public repos on the free plan. [VERIFY: confirm on the current plan]
 - The repo is public. Do not add supplier terms, customer or staff personal data, or other private client information. The existing page-audit notes in `campaigns/ski-meta-ads/` stay public on purpose (owner decision, 12 October 2026).
+- Your own usage: long sessions and the plugins and connectors that add overhead to every step cost the most. Settings to review (auto-compact window, plugins and connectors to switch off, the Artifact tool) are in `docs/token-hygiene.md`.
 - When you change the tools, bump `version` in `.claude-plugin/plugin.json` and `.claude-plugin/marketplace.json` so installed copies update.

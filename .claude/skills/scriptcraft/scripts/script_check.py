@@ -30,6 +30,7 @@ import re
 import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+TOURS_FILE = os.path.normpath(os.path.join(HERE, "..", "..", "..", "..", "campaigns", "ski-meta-ads", "tours.json"))
 EM_DASH, EN_DASH = chr(0x2014), chr(0x2013)
 
 # Tolerances fixed by the validator contract (they are not tier limits).
@@ -1859,6 +1860,20 @@ def explain(rule_id, cfg, brand):
 PLACEHOLDER_RE = re.compile(r"\[\s*(verify|todo|tbd|link)\b[:\s]*([^\]]*)\]", re.I)
 
 
+KIND_RES = (
+    ("release", re.compile(r"\b(releases?|consent)\b", re.I)),
+    ("permission", re.compile(r"\b(permissions?|permits?|approval)\b", re.I)),
+    ("footage", re.compile(r"\b(footage|shots?|clips?|b-roll|screen recording)\b", re.I)),
+)
+
+
+def item_kinds(where, what):
+    """What kind of work an open item is: release, permission, footage, fact or other (an item can be several)."""
+    if where.startswith("fact "):
+        return ["fact"]
+    return [k for k, rx in KIND_RES if rx.search(what)] or ["other"]
+
+
 def open_items_report(doc):
     """Placeholders and unverified fact rows, grouped by who must confirm (the last comma part of a [VERIFY: what, who])."""
     found = []  # (owner, where, what)
@@ -1878,16 +1893,54 @@ def open_items_report(doc):
     for f in doc.facts:
         scan("fact %s" % f.id, f.text + " " + f.source)
     unverified = [f for f in doc.facts if f.verified != "yes"]
-    groups = {}
+    groups, kinds = {}, {}
     for owner, where, what in found:
         groups.setdefault(owner, []).append((where, what))
+        for k in item_kinds(where, what):
+            kinds[k] = kinds.get(k, 0) + 1
     out = ["open items: %d placeholders, %d unverified fact rows" % (len(found), len(unverified))]
+    if kinds:
+        out.append("by kind: " + ", ".join("%s %d" % kv for kv in sorted(kinds.items(), key=lambda kv: (-kv[1], kv[0]))))
     for owner, items in sorted(groups.items(), key=lambda kv: (-len(kv[1]), kv[0])):
         out.append("%s (%d)" % (owner, len(items)))
-        out += ["  %s: %s" % (w, quote(x, 110)) for w, x in items]
+        out += ["  %s: %s [%s]" % (w, quote(x, 110), ", ".join(item_kinds(w, x))) for w, x in items]
     if unverified:
         out.append("unverified fact rows")
         out += ["  %s: %s" % (f.id, quote(f.text, 110)) for f in unverified]
+    return "\n".join(out)
+
+
+def limits_card(cfg, tier, style):
+    """The numeric limits for one tier and style, generated from tiers.json (never typed), so a writer need not read the whole file."""
+    if tier not in cfg["tiers"]:
+        raise ParseError(0, "unknown tier %r; tiers: %s" % (tier, ", ".join(cfg["tiers"])))
+    allowed = cfg.get("styles", {}).get("allowed", [])
+    if allowed and style not in allowed:
+        raise ParseError(0, "unknown style %r; styles: %s" % (style, ", ".join(allowed)))
+    out = ["limits: tier %s | style %s | tiers.json version %s" % (tier, style, cfg.get("version", "?"))]
+    for key, val in tier_limits(cfg, tier, style).items():
+        out.append("%s: %s" % (key, json.dumps(val, ensure_ascii=False, separators=(",", ":"))))
+    if cfg.get("roles"):
+        out.append("roles: %s" % json.dumps(cfg["roles"], ensure_ascii=False, separators=(",", ":")))
+    if tier == "long" and cfg.get("caption_chapters"):
+        out.append("caption_chapters: %s" % json.dumps(cfg["caption_chapters"], ensure_ascii=False, separators=(",", ":")))
+    out.append("rules and wording: SKILL.md and references; one rule: --explain RULE_ID")
+    return "\n".join(out)
+
+
+def tour_card(data, tour_id):
+    """The shared top-level facts plus one tour record from tours.json."""
+    tours = {t.get("id"): t for t in data.get("tours", [])}
+    if tour_id not in tours:
+        raise ParseError(0, "unknown tour id %r; ids: %s" % (tour_id, ", ".join(str(k) for k in tours)))
+    out = ["tours.json card: %s" % tour_id]
+    for key, val in data.items():
+        if key not in ("tours", "display_name_lines"):
+            out.append("%s: %s" % (key, json.dumps(val, ensure_ascii=False, separators=(",", ":"))))
+    names = data.get("display_name_lines", {})
+    if tour_id in names:
+        out.append("display_name_lines: %s" % json.dumps(names[tour_id], ensure_ascii=False, separators=(",", ":")))
+    out.append("tour: %s" % json.dumps(tours[tour_id], ensure_ascii=False, separators=(",", ":")))
     return "\n".join(out)
 
 
@@ -1930,6 +1983,11 @@ def main(argv=None):
     ap.add_argument("--explain", metavar="RULE_ID")
     ap.add_argument("--brief", action="store_true",
                     help="print only the header, totals, [INFO], [FAIL], [WARN] and RESULT lines (a short report)")
+    ap.add_argument("--limits", nargs=2, metavar=("TIER", "STYLE"),
+                    help="print the numeric limits for one tier and style from tiers.json, then exit")
+    ap.add_argument("--tour", metavar="TOUR_ID",
+                    help="print the shared facts and one tour record from tours.json, then exit")
+    ap.add_argument("--tours-file", default=TOURS_FILE, help="tours.json for --tour")
     ap.add_argument("--open-items", action="store_true",
                     help="list every [VERIFY] placeholder and unverified fact row, grouped by who confirms it")
     args = ap.parse_args(argv)
@@ -1939,6 +1997,12 @@ def main(argv=None):
             text = explain(args.explain, cfg, brand)
             print(text or "unknown rule id %s" % args.explain)
             return 0 if text else 2
+        if args.limits:
+            print(limits_card(cfg, args.limits[0], args.limits[1]))
+            return 0
+        if args.tour:
+            print(tour_card(load_json(args.tours_file), args.tour))
+            return 0
         if not args.file:
             raise ParseError(0, "no script file given")
         try:
