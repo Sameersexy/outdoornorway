@@ -17,7 +17,9 @@ level folder, scriptcraft/, laid out like this:
 
 Left out on purpose: the validator's tests (test_script_check.py,
 attack_cases.py), fixtures/, __pycache__ and *.pyc. The scripts folder is an
-allowlist, so a new helper there never ships by accident.
+allowlist, so a new helper there never ships by accident. The copied folders
+hold text files only (.md, .json, .py, .txt): any other type stops the build,
+because the leak scan could not read it.
 
 Source references are never edited. The built copies get the exact-string
 replacements in REPLACEMENTS, then every built text file is scanned for
@@ -156,6 +158,10 @@ def collect():
             name = "%s/%s" % (folder, rel)
             if name in sources:
                 raise BuildError("duplicate entry %s" % name)
+            if not is_text(name):
+                raise BuildError("%s is not a text file (%s). The leak scan reads text only, so "
+                                 "a binary file cannot ship. Remove it or add its type to TEXT_SUFFIXES "
+                                 "in tools/build_chat_skill.py" % (path, ", ".join(TEXT_SUFFIXES)))
             sources[name] = path
     return {"%s/%s" % (TOP, name): prepare(name, read_source(path)) for name, path in sorted(sources.items())}
 
@@ -169,6 +175,8 @@ def check_skill_md(entries):
     if fields.get("name") != TOP:
         raise BuildError("SKILL.md name must be %s, found %r" % (TOP, fields.get("name")))
     description = fields.get("description", "")
+    if re.fullmatch(r"[>|][+-]?", description) or re.search(r"(?m)^description: .*\n[ \t]+\S", match.group(1)):
+        raise BuildError("SKILL.md description must be one plain line, not a folded or multi-line value")
     if not description or len(description) > DESCRIPTION_MAX:
         raise BuildError("SKILL.md description must be 1 to %d characters, found %d" % (DESCRIPTION_MAX, len(description)))
     lines = data.count("\n")
@@ -222,7 +230,7 @@ def main(argv=None):
     args = parser.parse_args(argv)
     try:
         path, size, count = build(args.out)
-    except BuildError as exc:
+    except (BuildError, OSError) as exc:
         print("build_chat_skill: ERROR: %s" % exc, file=sys.stderr)
         return 1
     print("%s  %d bytes  %d files" % (path, size, count))

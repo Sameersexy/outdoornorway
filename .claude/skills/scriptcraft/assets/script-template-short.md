@@ -1,6 +1,9 @@
 ---
 tier: short
 platform: reels
+creator: [FILL: guide, guest, staff or editor; who is on camera or filming]
+relationship: [FILL: staff, guide, guest_paid, guest_gifted or guest_unpaid]
+sound: [FILL: original, commercial_library, voiceover_only or none; trending blocks when the script names the brand, a trip or a price]
 narrator: standard
 seconds: 25
 title: [FILL: working title, the promise in plain words]

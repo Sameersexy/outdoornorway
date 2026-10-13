@@ -20,6 +20,7 @@ from unittest import mock
 
 ROOT = Path(__file__).resolve().parent.parent
 SKILL_SRC = ROOT / ".claude" / "skills" / "scriptcraft"
+CHAT_SRC = ROOT / "tools" / "chat_skill"
 TOURS_SRC = ROOT / "campaigns" / "ski-meta-ads" / "tours.json"
 TOP = "scriptcraft"
 
@@ -159,7 +160,9 @@ class BuiltZip(unittest.TestCase):
         for needle in ["Pair mode", "same tour", "Code execution", "Validator: not run. This script is not validated.",
                        "--tours-file data/tours.json", "RESULT: PASS", "Variant hook:", "Variant CTA:",
                        "SHIP, REVISE or REJECT", "[VERIFY: what, who confirms]", "references/reviewer-rubric.md",
-                       "--final --brief", "I write up to two scripts per request", "A pair needs one tour"]:
+                       "--final --brief", "I write up to two scripts per request", "A pair needs one tour",
+                       "`Script A: <tour id>, <platform>, <style>`", "heading A, script block A",
+                       "Do not name your scratch file or add a closing remark"]:
             self.assertIn(needle, text)
 
     def test_skill_md_has_no_repo_or_agent_wording(self):
@@ -270,6 +273,28 @@ class BuiltZip(unittest.TestCase):
                 continue
             self.assertNotRegex(text, r"(?<!scripts/)script_check\.py", name)
 
+    def test_every_prose_mention_of_the_tour_card_carries_the_tours_file(self):
+        mentions = 0
+        for name, text in self.text_entries():
+            if name.endswith("scripts/script_check.py") or not name.endswith(".md"):
+                continue
+            for number, line in enumerate(text.splitlines(), 1):
+                if re.search(r"--tour(?![a-z-])", line):
+                    mentions += 1
+                    self.assertIn("--tours-file data/tours.json", line, "%s line %d" % (name, number))
+        self.assertGreaterEqual(mentions, 3)
+
+    def test_rubric_asks_for_the_same_five_fixes_as_the_reviewer_agent(self):
+        def fixes(text):
+            block = text[text.index("Top five fixes, in order:"):text.index("Verdict: SHIP")]
+            return re.findall(r"(?m)^([0-9]+)\. \.\.\.$", block)
+
+        agent = (ROOT / ".claude" / "agents" / "script-reviewer.md").read_text(encoding="utf-8")
+        rubric = self.text("references/reviewer-rubric.md")
+        self.assertEqual(fixes(rubric), ["1", "2", "3", "4", "5"])
+        self.assertEqual(fixes(rubric), fixes(agent))
+        self.assertNotIn("Top three fixes", rubric)
+
     def test_every_command_runs_from_the_unzipped_folder(self):
         work = Path(tempfile.mkdtemp(dir=self.tmp.name)) / TOP
         shutil.copytree(self.skill, work)
@@ -376,7 +401,8 @@ class LeakCheck(unittest.TestCase):
 
     def build_with_leak(self, relative, line):
         target = self.skill / relative
-        target.write_text(target.read_text(encoding="utf-8") + "\n" + line + "\n", encoding="utf-8")
+        original = (SKILL_SRC / relative).read_text(encoding="utf-8")
+        target.write_text(original + "\n" + line + "\n", encoding="utf-8")
         err = io.StringIO()
         with mock.patch.object(self.builder, "SKILL_SRC", self.skill), contextlib.redirect_stderr(err):
             code = self.builder.main(["--out", str(self.out)])
@@ -390,10 +416,13 @@ class LeakCheck(unittest.TestCase):
         self.assertFalse(self.out.exists())
 
     def test_each_forbidden_string_is_caught(self):
-        for leak in ["campaigns/x", "tools/y", "${CLAUDE_PLUGIN_ROOT}/z"]:
-            code, err = self.build_with_leak("assets/guide-moment-intake.md", "Open " + leak + " now.")
-            self.assertEqual(code, 1, leak)
-            self.assertIn("guide-moment-intake.md", err)
+        self.assertGreaterEqual(len(self.builder.FORBIDDEN), 7)
+        for needle in self.builder.FORBIDDEN:
+            with self.subTest(needle=needle):
+                code, err = self.build_with_leak("assets/guide-moment-intake.md", "Open " + needle + " now.")
+                self.assertEqual(code, 1, needle)
+                self.assertIn("guide-moment-intake.md", err)
+                self.assertIn(repr(needle), err)
 
     def test_a_listed_path_is_rewritten_and_the_build_passes(self):
         code, err = self.build_with_leak("references/short-form.md", "Facts: `campaigns/ski-meta-ads/tours.json`.")
@@ -401,6 +430,37 @@ class LeakCheck(unittest.TestCase):
         with zipfile.ZipFile(self.out) as archive:
             built = archive.read(TOP + "/references/short-form.md").decode("utf-8")
         self.assertIn("Facts: `data/tours.json`.", built)
+
+    def test_a_non_text_file_in_a_copied_folder_stops_the_build(self):
+        (self.skill / "assets" / "logo.png").write_bytes(b"\x89PNG\r\n\x1a\n")
+        err = io.StringIO()
+        with mock.patch.object(self.builder, "SKILL_SRC", self.skill), contextlib.redirect_stderr(err):
+            self.assertEqual(self.builder.main(["--out", str(self.out)]), 1)
+        self.assertIn("logo.png", err.getvalue())
+        self.assertIn("not a text file", err.getvalue())
+        self.assertFalse(self.out.exists())
+
+    def test_an_unwritable_output_path_is_an_error_message_not_a_traceback(self):
+        blocked = Path(self.tmp.name) / "blocked"
+        blocked.mkdir()
+        err = io.StringIO()
+        with contextlib.redirect_stderr(err):
+            self.assertEqual(self.builder.main(["--out", str(blocked)]), 1)
+        self.assertIn("build_chat_skill: ERROR", err.getvalue())
+
+    def test_a_folded_or_multi_line_description_stops_the_build(self):
+        chat = Path(self.tmp.name) / "chat_skill"
+        shutil.copytree(CHAT_SRC, chat)
+        source = (CHAT_SRC / "SKILL.md").read_text(encoding="utf-8")
+        description = re.search(r"(?m)^description: (.*)$", source).group(1)
+        folded = source.replace("description: " + description, "description: >\n  " + description)
+        multi = source.replace("description: " + description, "description: " + description[:40] + "\n  " + description[40:])
+        for label, text in [("folded", folded), ("multi-line", multi)]:
+            (chat / "SKILL.md").write_text(text, encoding="utf-8")
+            err = io.StringIO()
+            with mock.patch.object(self.builder, "CHAT_SRC", chat), contextlib.redirect_stderr(err):
+                self.assertEqual(self.builder.main(["--out", str(self.out)]), 1, label)
+            self.assertIn("one plain line", err.getvalue(), label)
 
     def test_missing_source_stops_the_build_with_a_message(self):
         (self.skill / "scripts" / "tiers.json").unlink()

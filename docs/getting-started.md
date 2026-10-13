@@ -56,7 +56,7 @@ Optional, keeps usage down: cap how long a session can grow, and remove the Arti
 { "autoCompactWindow": 200000, "permissions": { "deny": ["Artifact"] } }
 ```
 
-If the file already has settings, add the two entries inside the existing braces with commas. If it already has a `permissions` entry, add `"Artifact"` to its `deny` list. Claude Code then summarises a long conversation at about 200k tokens, and the first step of every session reads about 11,000 fewer tokens (one measured run). Restart Claude Code after the change.
+If the file already has settings, copy it to a backup first. Then add the two entries inside the existing braces with commas, and keep every entry that was there. If it already has a `permissions` entry, add `"Artifact"` to its `deny` list and leave the rest. Claude Code then summarises a long conversation at about 200k tokens, and the first step of every session reads fewer tokens (one measured run saved roughly 11,000, so treat that as a rough guide). Restart Claude Code after the change. [VERIFY: confirm current feature set for Claude Code deny rules and autoCompactWindow in the settings documentation]
 
 Then pick one way to add our tools.
 
