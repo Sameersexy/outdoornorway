@@ -16,7 +16,7 @@ NON-NEGOTIABLE RULES
 3. Take every word budget and limit from scripts/tiers.json. Never invent one.
 4. Use facts only from the facts table. Anything you cannot source becomes [VERIFY: what, who].
 5. Write only in the script file format (assets/script-template-*.md).
-6. Run scripts/script_check.py until it says RESULT: PASS. Report the RESULT line and every warning id; keep the full output in a file or paste it when asked.
+6. Run scripts/script_check.py until it says RESULT: PASS. Report the RESULT line and every warning id; keep the full output in the scratch folder or paste it when asked.
 7. One idea in a short. One question in a long. Fact and density limits never
    loosen in any style.
 8. Hook in beat 1: motion or a person on screen, "you" or a first-person stake in
@@ -103,14 +103,16 @@ PASS is a floor, not a verdict. The validator does not catch tricolons, "not X b
 
 ### 7. Final output
 
-Return, in this order:
+The user reads the result as text in the chat. Write the working files in a scratch folder (`python3 -c "import tempfile; print(tempfile.mkdtemp())"`) and write nothing in the user's folder unless the request ends with `save`. Return, in this order:
 
-1. The script file (frontmatter, facts, script table, caption), saved to disk with the path named.
-2. The validator RESULT line, the counts and each warning id, ending in `RESULT: PASS`. The full output goes in a file, or here when the user asks.
-3. The caption.
+1. The script, in full, in one fenced block (front matter, facts, script table, caption). With `save`, also copy it to `content/scripts/<yyyy-mm-dd>-<slug>.md` (slug: tour id, platform and style, joined with hyphens) and name the path.
+2. A short notes block: the brief (platform, style, creator, relationship, sound, narrator, takeaway, tour, objection), open items, assumptions, accepted warnings, and one variant hook and one variant call to action, each with a one-line hypothesis. With `save`, the same notes go to `content/scripts/<yyyy-mm-dd>-<slug>-notes.md`.
+3. The validator RESULT line, the counts and each warning id, ending in `RESULT: PASS`. The full output stays in the scratch folder unless the user asks for it.
 4. Open items: every `[VERIFY]` and every fact row with `verified: no`, each naming who confirms it.
-5. On request, or for any ugc script a guide will film: a creator brief from assets/creator-brief-template.md (the one message, approved facts with ids, the do-not-say list, hook plus two alternates, the beat table with framing and filming notes, overlay, call to action, disclosure line, music, caption, consent checklist, safety line). Build it only from a script that passed. examples/creator-brief-fictional.md shows one.
+5. On request, or for any ugc script a guide or guest will film: a creator brief from assets/creator-brief-template.md (the one message, approved facts with ids, the do-not-say list, hook plus two alternates, the beat table with framing and filming notes, overlay, call to action, disclosure line, music, caption, consent checklist, safety line). Build it only from a script that passed. examples/creator-brief-fictional.md shows one.
 6. For a shoot that feeds several scripts: assets/shoot-plan-template.md, one row per shot, grouped by place. Fill it from tours.json, never from memory.
+
+Pair mode: one request may name two scripts when both use the same tour (`ski-6day shorts voiceover and reels ugc_talk`). Pull the facts once, validate each script on its own, return both in full. Refuse a third script or two different tours in one line.
 
 No script leaves this skill without a PASS. If the validator cannot run, say so and return the draft marked "not validated".
 
@@ -137,7 +139,7 @@ The limits below hold in every style; ugc_text allows 1 fact.
 | ugc_talk | A guide, staff member or real guest talks to a phone: first person, handheld, selfie or POV, casual spoken voice, native text | short, long | assets/script-template-short-ugc-talk.md |
 | ugc_text | One or two lines of on-screen text over a clip built to loop, 0 to 12 spoken words, 7 to 15 s | short | assets/script-template-short-ugc-text.md |
 
-Style overrides live in tiers.json under `styles`, keyed by style then tier. tiers.md renders them. Read references/ugc-style.md before any ugc script. The ugc templates leave creator, relationship and sound as [FILL], so the validator stops with a parse error naming the line until you choose.
+Style overrides live in tiers.json under `styles`, keyed by style then tier. tiers.md renders them. Read references/ugc-style.md before any ugc script. Every template leaves creator, relationship and sound as [FILL], so the validator stops with a parse error naming the line until you choose.
 
 Why ugc_talk allows 3.0 words per second and not the 3.3 to 4.9 measured. Talking creators do speak that fast (grade C, notes 04 to 06), but the extra speed is connective talk, not more facts, and the pooled median across 49 micro-creator videos is 2.87. Many of our guides speak English as a second language, and the footage needs silent action gaps: a kick turn, a laugh, skins on snow. So the pace allowance rises a little and the fact, number and beat limits do not move. The value is our judgement (J), recorded with that note in tiers.json.
 
@@ -191,7 +193,7 @@ Kept: loops, the "which loop does this line serve" test, word economy, concrete 
 
 ## Agents
 
-- `.claude/agents/script-writer.md` runs this method end to end, takes style, creator, relationship and sound, and returns only a passing script, plus a creator brief on request.
+- `.claude/agents/script-writer.md` runs this method end to end, takes style, creator, relationship and sound, and returns only a passing script as text in the chat, plus a creator brief on request or for a ugc script a guide or guest will film. It writes files only on `save`.
 - `.claude/agents/script-reviewer.md` reruns the validator and scores what code cannot judge, including whether a ugc script sounds like a person talking to a phone. Use it before anything is published.
 
 ## References

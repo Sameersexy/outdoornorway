@@ -119,6 +119,118 @@ class Agents(unittest.TestCase):
             self.assertNotRegex(frontmatter(text), r"(?m)^model:", path.name)
 
 
+class TextFirst(unittest.TestCase):
+    """/script returns text in the chat. Files only when the request ends with save."""
+
+    def test_script_command_is_text_first(self):
+        text = read(ROOT / ".claude" / "commands" / "script.md")
+        self.assertIn("[save]", frontmatter(text))
+        self.assertIn("Output is text in the chat", text)
+        self.assertIn("ends with the word `save`", text)
+        self.assertIn("Pair mode", text)
+
+    def test_writer_agent_is_text_first(self):
+        text = read(ROOT / ".claude" / "agents" / "script-writer.md")
+        for needle in ("SCRATCH", "Pair mode", "### Save", "### Creator brief", "four backticks"):
+            self.assertIn(needle, text, needle)
+        # The only copy into the user's folder sits in the Save section.
+        before_save = text[:text.index("### Save")]
+        self.assertNotIn("cp SCRATCH", before_save)
+        self.assertNotIn("mkdir -p content/scripts", before_save)
+
+    def test_writer_agent_writes_files_only_on_save(self):
+        text = read(ROOT / ".claude" / "agents" / "script-writer.md")
+        save = text[text.index("### Save"):text.index("### Creator brief")]
+        brief = text[text.index("### Creator brief"):text.index("## Style in everything you write")]
+        self.assertIn("Only when the request ends with the word `save`", save)
+        self.assertIn("Never overwrite a saved file", save)
+        self.assertIn("slug", save)
+        self.assertIn("Refuse a third script, or two different tours", text)
+        # Collisions: one listing, first free name, never clobber, same name for script, notes and brief.
+        self.assertIn("ls <dir>/<yyyy-mm-dd>-*", save)
+        self.assertIn("first free name", save)
+        self.assertIn("`<base>-2`", save)
+        self.assertEqual(save.count("cp -n "), 2)
+        self.assertNotRegex(save, r"cp (?!-n)")
+        self.assertNotIn("never share a slug", save)
+        self.assertIn("unless the request names another relative folder", save)
+        self.assertIn("<dir>/<name>-brief.md", brief)
+        self.assertNotRegex(brief, r"cp (?!-n)")
+        # The brief may name a saved path, but only under `save`.
+        self.assertIn("`save`", brief)
+        # No sentence outside the Save and Creator brief sections tells the agent to write into content/scripts.
+        outside = text.replace(save, "").replace(brief, "")
+        self.assertNotRegex(outside, r"(?i)(write|copy|save)[^.\n]*`?content/scripts/<")
+
+    def test_every_edition_gives_the_same_creator_brief_default(self):
+        phrase = "a guide or guest will film"
+        agent = read(ROOT / ".claude" / "agents" / "script-writer.md")
+        skill = read(ROOT / ".claude" / "skills" / "scriptcraft" / "SKILL.md")
+        chat = read(ROOT / "tools" / "chat_skill" / "SKILL.md")
+        self.assertIn("any ugc script " + phrase, agent[agent.index("### Creator brief"):])
+        self.assertIn("On request, or for any ugc script " + phrase, skill)
+        self.assertIn("a ugc script " + phrase, chat)
+        self.assertNotIn("On request only", skill)
+
+    def test_every_script_template_carries_creator_relationship_and_sound(self):
+        # The writer agent and the chat skill both say to write the three fields in every style.
+        assets = ROOT / ".claude" / "skills" / "scriptcraft" / "assets"
+        templates = sorted(assets.glob("script-template-*.md"))
+        self.assertEqual(len(templates), 4)
+        for path in templates:
+            head = read(path).split("\n---\n")[0]
+            for field in ("creator", "relationship", "sound"):
+                self.assertRegex(head, r"(?m)^" + field + r": \[FILL", path.name)
+        skill = read(ROOT / ".claude" / "skills" / "scriptcraft" / "SKILL.md")
+        chat = read(ROOT / "tools" / "chat_skill" / "SKILL.md")
+        self.assertIn("Every template leaves creator, relationship and sound as [FILL]", skill)
+        self.assertIn("Every template leaves creator, relationship and sound as `[FILL]`", chat)
+        self.assertNotIn("voiceover templates leave these three out", chat)
+
+    def test_reviewer_asks_for_five_fixes(self):
+        text = read(ROOT / ".claude" / "agents" / "script-reviewer.md")
+        self.assertIn("Top five fixes", text)
+        self.assertNotIn("Top three fixes", text)
+        block = text[text.index("Top five fixes, in order:"):text.index("Verdict: SHIP")]
+        self.assertEqual(re.findall(r"(?m)^([0-9]+)\. \.\.\.$", block), ["1", "2", "3", "4", "5"])
+
+    def test_skill_final_output_is_text_first(self):
+        text = read(ROOT / ".claude" / "skills" / "scriptcraft" / "SKILL.md")
+        final = text[text.index("### 7. Final output"):]
+        self.assertIn("`save`", final)
+
+    def test_review_script_takes_pasted_text(self):
+        text = read(ROOT / ".claude" / "commands" / "review-script.md")
+        self.assertIn("pasted", frontmatter(text))
+        self.assertIn("scratch folder", text)
+        self.assertIn("without the code fence", text)
+        self.assertIn("`test -f`", text)
+        self.assertIn("File not found: <path>", text)
+        self.assertIn("copied exactly as pasted", text)
+
+    def test_script_command_relays_the_text_exactly_and_names_the_recheck(self):
+        # The main model relays the agent's reply, so the command asks for a character-for-character copy
+        # and points at /review-script, which validates the exact pasted text.
+        text = read(ROOT / ".claude" / "commands" / "script.md")
+        self.assertIn("copied character for character", text)
+        self.assertIn("re-runs the validator on the exact text the user copied", text)
+
+    def test_script_command_does_not_name_a_saved_path_by_default(self):
+        # Quick start step 5 must say text first, so /howto does not promise saved files.
+        guide = read(ROOT / "docs" / "getting-started.md")
+        quick = guide[guide.index("## Quick start"):guide.index("## Set up (once)")]
+        self.assertIn("as text in the chat", quick)
+        self.assertIn("`save`", quick)
+
+
+class ResearchNotes(unittest.TestCase):
+    def test_note_07_keeps_its_section_numbers_in_order(self):
+        # Other notes cite "note 07 section 3", so a removed section leaves a stub and the numbers never shift.
+        text = read(ROOT / "docs" / "research" / "ad-copy" / "07-outdoor-norway-voice-and-category.md")
+        numbers = [int(n) for n in re.findall(r"(?m)^## ([0-9]+)\. ", text)]
+        self.assertEqual(numbers, list(range(0, 13)))
+
+
 class Licences(unittest.TestCase):
     def test_every_listed_third_party_skill_has_its_licence_file(self):
         table = read(ROOT / "THIRD_PARTY_SKILLS.md")

@@ -2,12 +2,13 @@
 
 What is here
 - `.claude/skills/scriptcraft/`: video script skill, validator (`scripts/script_check.py`), fixtures and tests. Agents: `.claude/agents/script-writer.md`, `script-reviewer.md`.
+- `tools/build_chat_skill.py` and `tools/chat_skill/`: build the zip that is uploaded to claude.ai chat (`python3 -I tools/build_chat_skill.py`, output in `dist/`, not committed).
 - `campaigns/ski-meta-ads/tours.json`: source of truth for prices, dates and day-by-day plans. Check it with `verify_tours.py`.
 - `adquill/`: paused ad-copy skill and agents (drafts, not installed by the plugin).
 - `content/scripts/`: finished and draft scripts, each with a notes file. `docs/`: research and test write-ups.
 
 Commands
-- Tests: `python3 -I .claude/skills/scriptcraft/scripts/test_script_check.py` and `python3 -I tools/test_repo_integrity.py`
+- Tests: `python3 -I .claude/skills/scriptcraft/scripts/test_script_check.py`, `python3 -I tools/test_repo_integrity.py` and `python3 -I tools/test_build_chat_skill.py`
 - Validate a script: `python3 -I .claude/skills/scriptcraft/scripts/script_check.py FILE [--final] [--strict]`
 - Live data check: `python3 -I campaigns/ski-meta-ads/verify_tours.py`
 - Slash commands (in `.claude/commands/`): `/script`, `/review-script`, `/validate`, `/open-items`, `/tour-data`, `/tokens`, `/howto`. The validator takes `--brief` for a short report and `--open-items` for the placeholder list.
@@ -23,6 +24,7 @@ Tokens (details in `docs/token-hygiene.md`)
 - One deliverable per session. Compact early.
 - Subagents and workflows return paths, scores and short lists. Long reports go to files.
 - Do not print whole files or full validator output. Filter with grep, or read with an offset and limit.
+- One exception: the finished script. `/script` returns each script as text in the chat, in one fenced block, followed by its notes and validator lines. Files are written only when the request ends with `save`.
 - Use `script_check.py --brief`, `--limits TIER STYLE` and `--tour TOUR_ID` instead of reading whole rule or tour files.
 
 Compact instructions

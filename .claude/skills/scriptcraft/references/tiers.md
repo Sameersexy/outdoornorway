@@ -184,7 +184,7 @@ Grades: disclosure rests on FTC Disclosures 101 (A), ASA (B) and TikTok Commerci
 
 ## How the validator counts
 
-Run `script_check.py --explain RULE_ID` for any rule. The short version:
+Run `python3 -I .claude/skills/scriptcraft/scripts/script_check.py --explain RULE_ID` for any rule. The short version:
 
 | Thing | Counted as |
 |---|---|

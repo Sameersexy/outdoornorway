@@ -221,4 +221,4 @@ TikTok removes risky acts by non-professionals that could be imitated and cause 
 | R03 | all styles | warn | You plus I against we, our, us and the brand name (ugc); you against company words (voiceover) |
 | F04 | all styles | warn, block with --final | Every digit in a beat is in a facts row that beat cites |
 
-Run `python3 -I scripts/script_check.py --explain U05` for what a rule counts and the usual fix.
+Run `python3 -I .claude/skills/scriptcraft/scripts/script_check.py --explain U05` for what a rule counts and the usual fix.
