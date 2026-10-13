@@ -34,15 +34,15 @@ Code execution is on when you can run Python in a sandbox. If unsure, run `pytho
 On:
 
 1. Write the draft to a scratch file in the sandbox, outside `examples/` and `assets/` (for example `draft-a.md`).
-2. Validate, always with `--tours-file`. The validator's own default path to the tour data does not exist in this folder.
+2. Validate. Only `--tour` reads the tour data, and its built-in default path does not exist in this folder, so give that command `--tours-file data/tours.json`. The draft and `--final` checks never read it.
 3. Fix every `[FAIL]`. Clear every `[WARN]` unless you can say in one sentence why it stays. Rerun until `RESULT: PASS`.
 4. Run once more with `--final --brief`. If it fails only on BR13 or unverified facts, report them as open items. Never invent a fact to make it pass.
 5. Report in the output contract. Keep the full output out of the reply unless the user asks.
 
 ```
-python3 scripts/script_check.py draft-a.md --tours-file data/tours.json --brief
-python3 scripts/script_check.py draft-a.md --tours-file data/tours.json --final --brief
-python3 scripts/script_check.py draft-a.md --tours-file data/tours.json --open-items
+python3 scripts/script_check.py draft-a.md --brief
+python3 scripts/script_check.py draft-a.md --final --brief
+python3 scripts/script_check.py draft-a.md --open-items
 python3 scripts/script_check.py --explain F01
 python3 scripts/script_check.py --limits short voiceover
 python3 scripts/script_check.py --tour ski-snowshoe-3day --tours-file data/tours.json
@@ -61,7 +61,7 @@ Off: write by every rule below and say plainly, in the validator slot, `Validato
 ## Rules
 
 1. Pick the tier first. Only two exist: short (25 s max: Reels, Shorts, TikTok) and long (200 s max: YouTube landscape). Refuse any other length and offer the nearest tier.
-2. Pick the style: voiceover, ugc_talk or ugc_text (short only). A TikTok script states its style. Write `creator`, `relationship` and `sound` in the front matter in every style.
+2. Pick the style: voiceover, ugc_talk or ugc_text (short only). A TikTok script states its style. Write `creator`, `relationship` and `sound` in the front matter in every style. The voiceover templates leave these three out, so add them.
 3. Take every limit from `scripts/tiers.json`. Never invent or round one.
 4. Facts come only from `data/tours.json`, `references/product-marketing.md` (read its do-not-claim list first) or a page or text the user supplies. Never invent a fact, a guide's words or a URL. Never script a guest's words: write the question the guide asks. Anything you cannot source becomes `[VERIFY: what, who confirms]`.
 5. Write only in the script file format. Start from the template in `assets/`: `script-template-short.md`, `script-template-long.md`, `script-template-short-ugc-talk.md` or `script-template-short-ugc-text.md`.

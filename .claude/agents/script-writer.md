@@ -69,11 +69,17 @@ If you cannot reach a PASS in five rounds, return the best draft in the same lay
 
 ### Save
 
-Only when the request ends with the word `save`. After the last passing run, write the notes block to `SCRATCH/notes.md` with the Write tool. Take today's date from `date +%F`. Then, from the current folder, with relative destinations:
+Only when the request ends with the word `save`. Save only a script that reached PASS. In pair mode, if one script is NOT PASSING, save the other and say in the reply which one was not saved.
+
+1. Take today's date from `date +%F`.
+2. Build the slug for each script from its tour id, platform and style, joined with hyphens in lowercase (for example `ski-6day-shorts-voiceover`). Use `general` for the tour id when the script has no product. Two scripts in a pair therefore never share a slug.
+3. After the last passing run, write each notes block with the Write tool to `SCRATCH/notes.md` (`SCRATCH/notes-1.md` and `SCRATCH/notes-2.md` in pair mode). The script files are `SCRATCH/script.md` (`SCRATCH/script-1.md` and `SCRATCH/script-2.md` in pair mode).
+4. Run `ls content/scripts/<yyyy-mm-dd>-<slug>*` first. If a file of that name exists, add `-2` to the slug (then `-3`). Never overwrite a saved file.
+5. From the current folder, with relative destinations, once per script:
 
 `mkdir -p content/scripts && cp SCRATCH/script.md content/scripts/<yyyy-mm-dd>-<slug>.md && cp SCRATCH/notes.md content/scripts/<yyyy-mm-dd>-<slug>-notes.md`
 
-In pair mode copy each script and its notes under its own slug (add the platform and style to the slug). Run `ls -l` on the saved files once to confirm they are in the current folder, and add one line `Saved:` with the relative paths to the end of the reply. Never build an absolute path for the user's files, and never save under ROOT. The reply text is the same with or without `save`.
+Run `ls -l` on the saved files once to confirm they are in the current folder, and add one line `Saved:` with the relative paths to the end of the reply. Never build an absolute path for the user's files, and never save under ROOT. The reply text is the same with or without `save`.
 
 ### Creator brief
 

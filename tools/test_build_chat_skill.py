@@ -30,6 +30,7 @@ MODEL_NAMES = re.compile("claude[- ]?(?:" + MODEL_WORDS + r")|\b(?:" + MODEL_WOR
 LEAKS = [".claude/", "campaigns/", "tools/", "${CLAUDE_PLUGIN_ROOT}"]
 EXCLUDED = ["test_script_check.py", "attack_cases.py", "fixtures", "__pycache__", ".pyc"]
 TEXT_SUFFIXES = (".md", ".json", ".py", ".txt")
+SCRIPT_EXAMPLES = ["short-fictional.md", "short-ugc-talk-fictional.md", "short-ugc-text-fictional.md", "long-fictional.md"]
 
 
 def load_builder():
@@ -245,22 +246,91 @@ class BuiltZip(unittest.TestCase):
         self.assertEqual(self.zip.read(TOP + "/scripts/script_check.py"),
                          (SKILL_SRC / "scripts" / "script_check.py").read_bytes())
 
+    # Commands and copies
+
+    def command_lines(self):
+        """Every python3 command the shipped text tells the model to run, as (file, command)."""
+        found = []
+        for name, text in self.text_entries():
+            if name.endswith("scripts/script_check.py") or not name.endswith(".md"):
+                continue
+            for match in re.finditer(r"python3 [^`\n]*", text):
+                found.append((name, match.group(0).strip()))
+        return found
+
+    def test_every_command_names_the_validator_by_its_zip_path(self):
+        commands = self.command_lines()
+        self.assertGreaterEqual(len(commands), 10)
+        for name, command in commands:
+            self.assertRegex(command, r"^python3 (-I )?scripts/script_check\.py\b", (name, command))
+            if "--tour " in command:
+                self.assertIn("--tours-file data/tours.json", command, (name, command))
+        for name, text in self.text_entries():
+            if name.endswith("scripts/script_check.py"):
+                continue
+            self.assertNotRegex(text, r"(?<!scripts/)script_check\.py", name)
+
+    def test_every_command_runs_from_the_unzipped_folder(self):
+        work = Path(tempfile.mkdtemp(dir=self.tmp.name)) / TOP
+        shutil.copytree(self.skill, work)
+        shutil.copy(self.skill / "examples" / "short-fictional.md", work / "draft-a.md")
+        tour_id = json.loads(TOURS_SRC.read_text(encoding="utf-8"))["tours"][0]["id"]
+        for name, command in self.command_lines():
+            command = re.sub(r"\bFILE\b", "draft-a.md", command)
+            command = command.replace("TOUR_ID", tour_id).replace("RULE_ID", "F01")
+            args = command.split()[1:]
+            if args[0] == "-I":
+                args = args[1:]
+            result = run(args, work)
+            self.assertEqual(result.returncode, 0, (name, command, result.stdout[-300:], result.stderr[-300:]))
+
+    def test_shipped_text_equals_the_source_after_the_replacements(self):
+        for folder in ["references", "assets", "examples"]:
+            for path in sorted((SKILL_SRC / folder).iterdir()):
+                if not path.is_file() or not path.name.endswith(TEXT_SUFFIXES):
+                    continue
+                expected = self.builder.apply_replacements(path.read_text(encoding="utf-8"))
+                self.assertEqual(self.text("%s/%s" % (folder, path.name)), expected, "%s/%s" % (folder, path.name))
+        for name in ["tiers.json", "brand_rules.json"]:
+            expected = self.builder.apply_replacements((SKILL_SRC / "scripts" / name).read_text(encoding="utf-8"))
+            self.assertEqual(self.text("scripts/" + name), expected, name)
+
+    def test_second_limits_table_and_narrator_match_tiers_json(self):
+        text = self.text("SKILL.md")
+        tiers = json.loads(self.text("scripts/tiers.json"))
+
+        def card(tier, style):
+            out = run(["scripts/script_check.py", "--limits", tier, style], self.skill).stdout
+            return {key: json.loads(value) for key, value in re.findall(r"(?m)^(overlay|facts): (\{.*\})$", out)}
+
+        short_voice, short_talk, long_voice = card("short", "voiceover"), card("short", "ugc_talk"), card("long", "voiceover")
+        self.assertIn("| Overlay words | %d voiceover, %d ugc_talk | %d |" % (
+            short_voice["overlay"]["max_words"], short_talk["overlay"]["max_words"], long_voice["overlay"]["max_words"]), text)
+        self.assertIn("| Facts (numbers, names, prices, places) | %d max, " % short_voice["facts"]["per_script_max"], text)
+        self.assertIn("| %d max, 2 per beat |" % long_voice["facts"]["per_script_max"], text)
+        self.assertIn("| Numbers | %d max, " % short_voice["facts"]["numbers_per_script_max"], text)
+        self.assertIn("| %d max, 1 per beat |" % long_voice["facts"]["numbers_per_script_max"], text)
+        slow = json.dumps(tiers).count('"word_scale": 0.85')
+        self.assertEqual(slow, 1)
+        self.assertIn("cuts the word budget by 15 percent", text)
+
     # The validator inside the zip
 
     def draft_in_empty_folder(self, example):
         folder = Path(tempfile.mkdtemp(dir=self.tmp.name))
-        shutil.copy(SKILL_SRC / "examples" / example, folder / "draft.md")
+        shutil.copy(self.skill / "examples" / example, folder / "draft.md")
         self.assertEqual([p.name for p in folder.iterdir()], ["draft.md"])
         return folder
 
-    def test_validator_passes_a_passing_script_from_the_skill_folder(self):
-        for example in ["short-fictional.md", "short-ugc-talk-fictional.md", "long-fictional.md"]:
+    def test_validator_passes_every_example_script_from_the_zip(self):
+        for example in SCRIPT_EXAMPLES:
             folder = self.draft_in_empty_folder(example)
-            result = run(["scripts/script_check.py", folder / "draft.md", "--tours-file", "data/tours.json", "--brief"], self.skill)
+            result = run(["scripts/script_check.py", folder / "draft.md", "--brief"], self.skill)
             self.assertEqual(result.returncode, 0, example + result.stdout + result.stderr)
             self.assertIn("RESULT: PASS", result.stdout)
-            final = run(["scripts/script_check.py", folder / "draft.md", "--tours-file", "data/tours.json", "--final", "--brief"], self.skill)
-            self.assertIn("RESULT:", final.stdout)
+            final = run(["scripts/script_check.py", folder / "draft.md", "--final", "--brief"], self.skill)
+            self.assertEqual(final.returncode, 0, example + final.stdout + final.stderr)
+            self.assertIn("RESULT: PASS", final.stdout)
 
     def test_validator_runs_with_absolute_paths_from_an_empty_folder(self):
         folder = self.draft_in_empty_folder("short-ugc-text-fictional.md")

@@ -11,8 +11,8 @@ Read the reference the tier needs (`short-form.md` or `long-form.md`) and `brand
 With code execution, save the pasted script to a scratch file in the sandbox, outside `examples/` and `assets/`, then run from the skill folder:
 
 ```
-python3 scripts/script_check.py FILE --tours-file data/tours.json --brief
-python3 scripts/script_check.py FILE --tours-file data/tours.json --final --brief
+python3 scripts/script_check.py FILE --brief
+python3 scripts/script_check.py FILE --final --brief
 ```
 
 `--brief` prints the header, totals, findings and RESULT. Run the full report only when you need every location of a repeated rule.

@@ -24,7 +24,7 @@ Tokens (details in `docs/token-hygiene.md`)
 - One deliverable per session. Compact early.
 - Subagents and workflows return paths, scores and short lists. Long reports go to files.
 - Do not print whole files or full validator output. Filter with grep, or read with an offset and limit.
-- One exception: the finished script. `/script` returns each script as text in the chat, in one fenced block with its notes and validator lines. Files are written only when the request ends with `save`.
+- One exception: the finished script. `/script` returns each script as text in the chat, in one fenced block, followed by its notes and validator lines. Files are written only when the request ends with `save`.
 - Use `script_check.py --brief`, `--limits TIER STYLE` and `--tour TOUR_ID` instead of reading whole rule or tour files.
 
 Compact instructions

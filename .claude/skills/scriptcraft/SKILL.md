@@ -16,7 +16,7 @@ NON-NEGOTIABLE RULES
 3. Take every word budget and limit from scripts/tiers.json. Never invent one.
 4. Use facts only from the facts table. Anything you cannot source becomes [VERIFY: what, who].
 5. Write only in the script file format (assets/script-template-*.md).
-6. Run scripts/script_check.py until it says RESULT: PASS. Report the RESULT line and every warning id; keep the full output in a file or paste it when asked.
+6. Run scripts/script_check.py until it says RESULT: PASS. Report the RESULT line and every warning id; keep the full output in the scratch folder or paste it when asked.
 7. One idea in a short. One question in a long. Fact and density limits never
    loosen in any style.
 8. Hook in beat 1: motion or a person on screen, "you" or a first-person stake in
@@ -105,9 +105,9 @@ PASS is a floor, not a verdict. The validator does not catch tricolons, "not X b
 
 The user reads the result as text in the chat. Write the working files in a scratch folder (`python3 -c "import tempfile; print(tempfile.mkdtemp())"`) and write nothing in the user's folder unless the request ends with `save`. Return, in this order:
 
-1. The script, in full, in one fenced block (front matter, facts, script table, caption). With `save`, also copy it to `content/scripts/<yyyy-mm-dd>-<slug>.md` and name the path.
+1. The script, in full, in one fenced block (front matter, facts, script table, caption). With `save`, also copy it to `content/scripts/<yyyy-mm-dd>-<slug>.md` (slug: tour id, platform and style, joined with hyphens) and name the path.
 2. A short notes block: the brief (platform, style, creator, relationship, sound, narrator, takeaway, tour, objection), open items, assumptions, accepted warnings, and one variant hook and one variant call to action, each with a one-line hypothesis. With `save`, the same notes go to `content/scripts/<yyyy-mm-dd>-<slug>-notes.md`.
-3. The validator RESULT line, the counts and each warning id, ending in `RESULT: PASS`. The full output goes in a file, or here when the user asks.
+3. The validator RESULT line, the counts and each warning id, ending in `RESULT: PASS`. The full output stays in the scratch folder unless the user asks for it.
 4. Open items: every `[VERIFY]` and every fact row with `verified: no`, each naming who confirms it.
 5. On request only: a creator brief from assets/creator-brief-template.md (the one message, approved facts with ids, the do-not-say list, hook plus two alternates, the beat table with framing and filming notes, overlay, call to action, disclosure line, music, caption, consent checklist, safety line). Build it only from a script that passed. examples/creator-brief-fictional.md shows one.
 6. For a shoot that feeds several scripts: assets/shoot-plan-template.md, one row per shot, grouped by place. Fill it from tours.json, never from memory.

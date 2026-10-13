@@ -1,6 +1,6 @@
 # Shoot plan: [FILL: tour id and departure window]
 
-One page for the whole shoot, organised by place, so a filming day covers several scripts. Take the places, dates and activities from `campaigns/ski-meta-ads/tours.json` (run `script_check.py --tour TOUR_ID`). Do not type a date or a place from memory.
+One page for the whole shoot, organised by place, so a filming day covers several scripts. Take the places, dates and activities from `campaigns/ski-meta-ads/tours.json` (run `python3 -I .claude/skills/scriptcraft/scripts/script_check.py --tour TOUR_ID`). Do not type a date or a place from memory.
 
 | | |
 |---|---|
