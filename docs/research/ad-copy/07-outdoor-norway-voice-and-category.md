@@ -146,6 +146,12 @@ Hypothesis for the ski job (Inference): cold audiences for a NOK 17,451 to 42,12
 
 ---
 
+## 2. Not published in this repo
+
+This section is left out of the public copy. The numbering stays so the references to sections 3 to 11, here and in other notes, still point at the right place.
+
+---
+
 ## 3. Outdoor Norway voice guide for ads
 
 ### 3.1 What the client's own rules say (Official: brand-voice-checker, guest-benefit-checker, content-qc)

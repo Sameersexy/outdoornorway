@@ -71,19 +71,21 @@ If you cannot reach a PASS in five rounds, return the best draft in the same lay
 
 Only when the request ends with the word `save`. Save only a script that reached PASS. In pair mode, if one script is NOT PASSING, save the other and say in the reply which one was not saved.
 
+The folder is `content/scripts/` in the current folder, unless the request names another relative folder. It is never an absolute path and never under ROOT. Below, `<dir>` is that folder.
+
 1. Take today's date from `date +%F`.
-2. Build the slug for each script from its tour id, platform and style, joined with hyphens in lowercase (for example `ski-6day-shorts-voiceover`). Use `general` for the tour id when the script has no product. Two scripts in a pair therefore never share a slug.
+2. Build the slug for each script from its tour id, platform and style, joined with hyphens in lowercase (for example `ski-6day-shorts-voiceover`). Use `general` for the tour id when the script has no product. The same slug can come up twice (a pair for one tour, platform and style, or a second run on the same day), so step 4 settles the name.
 3. After the last passing run, write each notes block with the Write tool to `SCRATCH/notes.md` (`SCRATCH/notes-1.md` and `SCRATCH/notes-2.md` in pair mode). The script files are `SCRATCH/script.md` (`SCRATCH/script-1.md` and `SCRATCH/script-2.md` in pair mode).
-4. Run `ls content/scripts/<yyyy-mm-dd>-<slug>*` first. If a file of that name exists, add `-2` to the slug (then `-3`). Never overwrite a saved file.
+4. Run `ls <dir>/<yyyy-mm-dd>-* 2>/dev/null` once. A base name `<yyyy-mm-dd>-<slug>` is taken when any listed file starts with it, or when an earlier script in this reply already uses it. Give each script the first free name: the base name, then `<base>-2`, then `<base>-3`, and so on. A script, its notes and its brief share one name, written `<name>` below. Never overwrite a saved file.
 5. From the current folder, with relative destinations, once per script:
 
-`mkdir -p content/scripts && cp SCRATCH/script.md content/scripts/<yyyy-mm-dd>-<slug>.md && cp SCRATCH/notes.md content/scripts/<yyyy-mm-dd>-<slug>-notes.md`
+`mkdir -p <dir> && cp -n SCRATCH/script.md <dir>/<name>.md && cp -n SCRATCH/notes.md <dir>/<name>-notes.md`
 
-Run `ls -l` on the saved files once to confirm they are in the current folder, and add one line `Saved:` with the relative paths to the end of the reply. Never build an absolute path for the user's files, and never save under ROOT. The reply text is the same with or without `save`.
+`cp -n` never replaces a file. If a copy fails or skips a file, go back to step 4 and take the next free name. Run `ls -l` on the saved files once to confirm they are in the current folder, and add one line `Saved:` with the relative paths to the end of the reply. Never build an absolute path for the user's files, and never save under ROOT. The reply text is the same with or without `save`.
 
 ### Creator brief
 
-Write one only when the user asks for one. Fill `ROOT/.claude/skills/scriptcraft/assets/creator-brief-template.md` from the passing script (the one message, approved facts with ids, the do-not-say list from brand_rules.json, the hook plus two alternates, the beat table with timing, framing and filming notes, overlay text, the call to action, the disclosure line for the relationship, the music choice, the caption, the consent checklist and the safety line; `ROOT/.claude/skills/scriptcraft/examples/creator-brief-fictional.md` shows one). Return it in its own fenced block after the notes with the heading `Brief for script <n>`. With `save`, also write it to `SCRATCH/brief.md` and copy it to `content/scripts/<yyyy-mm-dd>-<slug>-brief.md`. For a ugc script, add one line to `Notes:` saying a creator brief is available on request.
+Write one when the user asks for one, and for any ugc script a guide or guest will film. Fill `ROOT/.claude/skills/scriptcraft/assets/creator-brief-template.md` from the passing script (the one message, approved facts with ids, the do-not-say list from brand_rules.json, the hook plus two alternates, the beat table with timing, framing and filming notes, overlay text, the call to action, the disclosure line for the relationship, the music choice, the caption, the consent checklist and the safety line; `ROOT/.claude/skills/scriptcraft/examples/creator-brief-fictional.md` shows one). Return it in its own fenced block after the notes with the heading `Brief for script <n>`. With `save`, also write it to `SCRATCH/brief.md` and copy it with `cp -n` to `<dir>/<name>-brief.md`. For any other script, add one line to `Notes:` saying a creator brief is available on request.
 
 ## Style in everything you write
 

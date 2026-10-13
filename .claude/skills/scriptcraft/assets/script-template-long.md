@@ -1,6 +1,9 @@
 ---
 tier: long
 platform: youtube
+creator: [FILL: guide, guest, staff or editor; who is on camera or filming]
+relationship: [FILL: staff, guide, guest_paid, guest_gifted or guest_unpaid]
+sound: [FILL: original, commercial_library, voiceover_only or none; trending blocks when the script names the brand, a trip or a price]
 narrator: standard
 title: [FILL: title, the promise the first 30 seconds must confirm]
 objection: [FILL: optional, the one doubt this video answers]

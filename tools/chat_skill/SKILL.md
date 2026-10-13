@@ -21,11 +21,11 @@ This is the chat edition. There are no agents and no slash commands here, so thi
 
 Reply with these three parts, in this order.
 
-1. The full script in one fenced block: front matter, facts table, script table, caption.
+1. A heading line: `Script` for one script, or `Script A: <tour id>, <platform>, <style>` in pair mode. Then the full script in one fenced block: front matter, facts table, script table, caption.
 2. A short notes block, also fenced: brief (platform, style, creator, relationship, sound, narrator, takeaway, tour, objection), caption, open items grouped by who confirms, assumptions, accepted warnings with one sentence each, then `Variant hook:` and `Variant CTA:`, each with a one-line hypothesis of what it should beat the main version on.
 3. The validator line: the RESULT line, the counts and every warning id. Example: `Validator: RESULT: PASS (0 blocking, 2 warnings: C05, W02). Final: RESULT: PASS`.
 
-Offer no files, downloads or save steps unless the user asks. Do not paste validator output. A creator brief is written only on request, or for a ugc script a guide or guest will film. Build it from `assets/creator-brief-template.md` and a script that passed, and add it as a fourth fenced block.
+Offer no files, downloads or save steps unless the user asks. Do not paste validator output. Do not name your scratch file or add a closing remark. A creator brief is written only on request, or for a ugc script a guide or guest will film. Build it from `assets/creator-brief-template.md` and a script that passed, and add it as a fourth fenced block.
 
 ## Code execution on or off
 
@@ -61,7 +61,7 @@ Off: write by every rule below and say plainly, in the validator slot, `Validato
 ## Rules
 
 1. Pick the tier first. Only two exist: short (25 s max: Reels, Shorts, TikTok) and long (200 s max: YouTube landscape). Refuse any other length and offer the nearest tier.
-2. Pick the style: voiceover, ugc_talk or ugc_text (short only). A TikTok script states its style. Write `creator`, `relationship` and `sound` in the front matter in every style. The voiceover templates leave these three out, so add them.
+2. Pick the style: voiceover, ugc_talk or ugc_text (short only). A TikTok script states its style. Write `creator`, `relationship` and `sound` in the front matter in every style. Every template carries them as `[FILL]`.
 3. Take every limit from `scripts/tiers.json`. Never invent or round one.
 4. Facts come only from `data/tours.json`, `references/product-marketing.md` (read its do-not-claim list first) or a page or text the user supplies. Never invent a fact, a guide's words or a URL. Never script a guest's words: write the question the guide asks. Anything you cannot source becomes `[VERIFY: what, who confirms]`.
 5. Write only in the script file format. Start from the template in `assets/`: `script-template-short.md`, `script-template-long.md`, `script-template-short-ugc-talk.md` or `script-template-short-ugc-text.md`.
@@ -75,7 +75,7 @@ Off: write by every rule below and say plainly, in the validator slot, `Validato
 
 1. Tier. Map the platform: reels, shorts or tiktok is short, youtube is long. If the length fits neither tier, name the nearest one and wait for the choice.
 2. Intake. Ask for what is missing, all in one message (table below). If the user cannot answer, take the conservative option and list it under assumptions: creator guide, relationship staff, sound original, narrator standard.
-3. Facts. Pull the tour record with `--tour TOUR_ID` (an unknown id prints the list of ids). Read `references/product-marketing.md`. Copy each fact you use into the facts table with its exact number, its source and verified yes or no. A row you cannot quote from a source is `no`, and every line built on it carries a `[VERIFY]` or is cut. Without code execution, open `data/tours.json` directly if you can. If you cannot, ask the user to paste the tour record and treat every fact as `no` until they do.
+3. Facts. Pull the tour record with `python3 scripts/script_check.py --tour TOUR_ID --tours-file data/tours.json` (an unknown id prints the list of ids). Read `references/product-marketing.md`. Copy each fact you use into the facts table with its exact number, its source and verified yes or no. A row you cannot quote from a source is `no`, and every line built on it carries a `[VERIFY]` or is cut. Without code execution, open `data/tours.json` directly if you can. If you cannot, ask the user to paste the tour record and treat every fact as `no` until they do.
 4. Structure. Pick a named structure, not the template grid. Voiceover short: outcome-first rewind, one real-time scene, guide and guest Q and A, loop-back (`references/short-form.md`). Long: a day as scenes, misconception test, three people one trip (`references/long-form.md`). UGC: a hook format plus a repeatable format (`references/ugc-style.md`). A long script still needs a hook by 8 s, a promise by 30 s, 4 to 6 chapters each with a mini-payoff, a partial answer between 80 and 120 s, two re-engagement beats, the full answer by 185 s, then the call to action.
 5. Draft. Write the visual column before the voiceover. Every line serves a loop: which one does it open, sustain or close? Cut lines that serve none. Read `references/brand-and-claims.md` before writing claims.
 6. Validate (code execution on) as above.
@@ -107,7 +107,7 @@ Up to two scripts per request, and only when both use the same tour. Example: "s
 
 - Pull the facts once. Each script still gets its own front matter, its own facts table, its own scratch file and its own validator run. One PASS never covers the other.
 - Give the two scripts different structures, hooks and shots. They share no line.
-- Show both in full: script block A, notes block A, validator line A, then B in the same order.
+- Show both in full: heading A, script block A, notes block A, validator line A, then B in the same order.
 - A third script: refuse in one line, "I write up to two scripts per request. Send the third as its own request."
 - Two different tours: refuse in one line, "A pair needs one tour. Pick one for this request and send the other as its own request."
 
@@ -142,7 +142,7 @@ Every digit counts as a number, including a day and a year, and spelled numbers 
 | ugc_talk | A guide, staff member or real guest talks to a phone: first person, handheld, selfie or POV | short, long | `assets/script-template-short-ugc-talk.md` |
 | ugc_text | One or two lines of on-screen text over a clip built to loop, 0 to 12 spoken words, 7 to 15 s | short | `assets/script-template-short-ugc-text.md` |
 
-The ugc templates leave creator, relationship and sound as `[FILL]`. Choose them before you validate, or the validator stops with a parse error naming the line. Read `references/ugc-style.md` before any ugc script.
+Every template leaves creator, relationship and sound as `[FILL]`. Choose them before you validate, or the validator stops with a parse error naming the line. Read `references/ugc-style.md` before any ugc script.
 
 ## Writing the beats
 
