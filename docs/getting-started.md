@@ -22,7 +22,7 @@ A set of tools that lives in this GitHub repo. It writes and checks video script
 
 1. Install once. The steps are under "Set up (once)" in `docs/getting-started.md`. If you only write or read scripts, choose the plugin.
 2. Start Claude Code in any folder you can find again. Files appear there only when you ask for `save`. For a clone, use the repo folder.
-3. Ask the tour guide the ten questions on the intake form (see "For writers") and keep their answers. Skip this only for a quick generic draft.
+3. If the reply ends with ten questions for the guide, copy that block and send it to the tour guide, then give Claude their answers. Skip this only for a quick generic draft.
 4. Type `/` and pick a command. To write a script: `/script ski-aurora-7day youtube voiceover`
 5. The script comes back in the chat as text, with its notes and what is still open. Copy it into Google Docs and tweak it there. Add the word `save` at the end of the request if you want files in `content/scripts/` as well.
 6. The notes under the script list everything that still needs a person: footage, permissions, facts to confirm. For a saved file, `/open-items content/scripts/<file>.md` gives the same list.
@@ -48,7 +48,7 @@ You need three things: a Claude account, Claude Code, and Python 3.
 
 1. **A Claude account.** Claude Code needs a paid Claude plan (Pro, Max, Team or Enterprise) or a Claude Console account, according to the official quickstart.
 2. **Claude Code.** Follow Step 1 of the [Claude Code quickstart](https://code.claude.com/docs/en/quickstart). It gives one command for each system (Mac, Linux, Windows). If you have never used a terminal, read the [terminal guide](https://code.claude.com/docs/en/terminal-guide) first. When it is installed, open a new terminal window and run `claude --version`. It should print a version number.
-3. **Python 3.** The checker is a Python script. Open a terminal and run `python3 --version`. If it prints a version number, you are set. If it says the command is not found, install Python 3 from the [official Python download page](https://www.python.org/downloads/) and try again. The commands call `python3`, and on Windows that name may not exist. [VERIFY: confirm the checker runs on Windows]
+3. **Python 3.** The checker is a Python script. Open a terminal and run `python3 --version`. If it prints a version number, you are set. If it says the command is not found, install Python 3 from the [official Python download page](https://www.python.org/downloads/) and try again. The commands call `python3`. If `python3` is not found, try `python` or `py` in its place. [VERIFY: not tested on Windows]
 
 Optional, keeps usage down: cap how long a session can grow, and remove the Artifact tool, which this work never uses. Put this in the file `settings.json` inside the `.claude` folder in your home folder (create the file if it is not there):
 
@@ -104,7 +104,7 @@ What you get is the script as text in the chat. It has a table of beats (what is
 
 Things to know:
 
-- **A guide's words are never invented.** If nobody gave a real moment from a real trip, the script has slots marked `[VERIFY: ...]`. Give the tour guide the intake form `.claude/skills/scriptcraft/assets/guide-moment-intake.md` (ten short questions; you can open it on GitHub) and give Claude their answers.
+- **A guide's words are never invented.** If nobody gave a real moment from a real trip, the script has slots marked `[VERIFY: ...]`. The reply then ends with ten short questions for the tour guide in one block. Copy the block, send it to the guide, and give Claude their answers.
 - **Facts come from `campaigns/ski-meta-ads/tours.json`**, `.claude/product-marketing.md` or a page we name. Do not type prices or dates into a script by hand. If a price looks wrong, run `/tour-data`.
 - **Changes:** tell Claude what to change in plain words. It runs the checker again and must keep it passing.
 - **Ready to publish** means: the checker says `RESULT: PASS` in final mode and nothing is still open. For a saved file, that is `/validate <file> --final --strict` and `/open-items <file>`. Until then it is a draft. Do not remove a `[VERIFY]` marker yourself unless the person named in it has confirmed.
@@ -118,10 +118,10 @@ Sameer sends you the zip (`scriptcraft.zip`). If you cloned the repo, you can bu
 
 Upload it once:
 
-1. Open claude.ai and go to Customize, then Skills. [VERIFY: confirm current menu label for claude.ai skills. The how-to page links to a Customize page for skills, and another source says Settings, then Features or Capabilities]
+1. Open claude.ai and go to Customize, then Skills. [VERIFY: label from the Skills how-to page] If you do not see it, go to Settings, then Features. [VERIFY: label from the Agent Skills overview. The two pages name different menus]
 2. Upload the zip as it is. Do not unzip it first.
 3. Switch the skill on.
-4. Check that code execution is on in your settings. The checker is a Python script and only runs there. [VERIFY: confirm the setting name and plan availability]
+4. Code execution must be on in your settings. The checker is a Python script and only runs there.
 
 Use it: start a new chat and ask in plain words, for example "Write a Reels voiceover script for ski-6day". The script comes back in the chat with its notes and the checker's result. To get a review, say "review this script" and paste it.
 
@@ -130,7 +130,8 @@ If code execution is off, the skill still writes by the rules. It says the check
 Good to know:
 
 - The facts in the zip are a snapshot of `campaigns/ski-meta-ads/tours.json` from the day the zip was built. After prices or dates change, build a new zip and upload it again.
-- A custom skill belongs to your own account. Team and Enterprise plans have Share and Publish controls.
+- Custom skills are per user. They do not sync to Claude Code, so install the plugin there as well. Team and Enterprise plans have Share and Publish controls.
+- A skill description can be up to 1,024 characters on claude.ai, per the Skills how-to page and the Agent Skills overview. The description in this zip is 200 characters or fewer, and the build stops if it grows past that.
 - Sources: the [Claude skills how-to](https://claude.com/docs/skills/how-to) and the [Agent Skills overview](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview).
 
 ## Keep your usage low

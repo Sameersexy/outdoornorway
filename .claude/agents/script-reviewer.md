@@ -96,7 +96,7 @@ Keep the reply compact. The caller reads it in a context that every later step r
 ## Output format
 
 ```
-## Script review: <file>
+## Script review: <file, or `pasted script` when the caller pasted the text; never a scratch or temp path>
 
 Validator (draft): <RESULT line, blocking and warning counts, failing ids>
 Validator (final): <RESULT line, blocking and warning counts, failing ids>

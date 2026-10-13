@@ -9,4 +9,4 @@ Run this one command with the Bash tool and nothing else. It reads local session
 
 `python3 -I ROOT/tools/transcript_report.py`
 
-Give the three biggest drivers in three lines and one change that would cut them. If the median context per call is above 150k tokens, say to compact or start a fresh session. See `ROOT/docs/token-hygiene.md`.
+Give the three biggest drivers in three lines and one change that would cut them. If the median context per call is above 150k tokens, say to compact or start a fresh session. Point to the token hygiene guide in the repo's docs folder, by name only.

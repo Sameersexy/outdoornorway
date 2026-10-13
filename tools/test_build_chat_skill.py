@@ -462,6 +462,36 @@ class LeakCheck(unittest.TestCase):
                 self.assertEqual(self.builder.main(["--out", str(self.out)]), 1, label)
             self.assertIn("one plain line", err.getvalue(), label)
 
+    def test_the_build_stops_when_the_description_or_the_line_count_goes_over_the_limit(self):
+        chat = Path(self.tmp.name) / "chat_skill"
+        shutil.copytree(CHAT_SRC, chat)
+        source = (CHAT_SRC / "SKILL.md").read_text(encoding="utf-8")
+        description = re.search(r"(?m)^description: (.*)$", source).group(1)
+        self.assertEqual(self.builder.DESCRIPTION_MAX, 200)
+        self.assertEqual(self.builder.SKILL_LINES_MAX, 500)
+
+        def padded(length):
+            return "description: " + (description + " " + "x" * 300)[:length]
+
+        def run(text):
+            (chat / "SKILL.md").write_text(text, encoding="utf-8")
+            err = io.StringIO()
+            with mock.patch.object(self.builder, "CHAT_SRC", chat), contextlib.redirect_stderr(err):
+                return self.builder.main(["--out", str(self.out)]), err.getvalue()
+
+        code, err = run(source.replace("description: " + description, padded(201)))
+        self.assertEqual(code, 1)
+        self.assertIn("1 to 200 characters", err)
+        code, err = run(source.replace("description: " + description, padded(200)))
+        self.assertEqual(code, 0, err)
+
+        lines = source.count("\n")
+        code, err = run(source + "filler\n" * (500 - lines))
+        self.assertEqual(code, 1)
+        self.assertIn("limit is under 500", err)
+        code, err = run(source + "filler\n" * (499 - lines))
+        self.assertEqual(code, 0, err)
+
     def test_missing_source_stops_the_build_with_a_message(self):
         (self.skill / "scripts" / "tiers.json").unlink()
         err = io.StringIO()

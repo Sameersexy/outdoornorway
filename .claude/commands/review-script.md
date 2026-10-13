@@ -14,4 +14,4 @@ The input is either a path or pasted text. It is a path when it is one line that
 
 Call the script-reviewer agent once, in the foreground, and wait for it (subagent_type `script-reviewer`; when installed as a plugin its full name is `outdoornorway-marketing:script-reviewer`). Give it the path and what ROOT is. It reads the notes file beside the script for the brief when one exists, reruns the validator itself, and replies compactly: the verdict, the ten scores, blocking findings and the top five fixes, with no pasted validator output or cells. It must not edit the file.
 
-Relay the verdict, the scores and the top five fixes in at most 25 lines. Do not apply any fix unless the user asks. Send no progress message.
+Relay the verdict, the scores and the top five fixes in at most 25 lines. For pasted text, head the review `Script review: pasted script` and show no scratch path anywhere. Do not apply any fix unless the user asks. Send no progress message.

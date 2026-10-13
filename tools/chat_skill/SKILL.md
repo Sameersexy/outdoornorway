@@ -19,11 +19,13 @@ This is the chat edition. There are no agents and no slash commands here, so thi
 
 ## Output contract
 
-Reply with these three parts, in this order.
+Reply with these three parts, in this order. In pair mode, repeat them for each script, then add the guide questions block (below) once at the very end, only when it applies.
 
 1. A heading line: `Script` for one script, or `Script A: <tour id>, <platform>, <style>` in pair mode. Then the full script in one fenced block: front matter, facts table, script table, caption.
 2. A short notes block, also fenced: brief (platform, style, creator, relationship, sound, narrator, takeaway, tour, objection), caption, open items grouped by who confirms, assumptions, accepted warnings with one sentence each, then `Variant hook:` and `Variant CTA:`, each with a one-line hypothesis of what it should beat the main version on.
 3. The validator line: the RESULT line, the counts and every warning id. Example: `Validator: RESULT: PASS (0 blocking, 2 warnings: C05, W02). Final: RESULT: PASS`.
+
+Guide questions. When the brief has no real moment from a real trip, end the reply, after the last script, with the line `Questions for the guide` and the ten questions in one fenced block, copied word for word from the block under "Send-ready text" in `assets/guide-moment-intake.md`. The user copies that block and sends it to the guide. Never print the file name or a path in its place, because the user cannot open files from the chat.
 
 Offer no files, downloads or save steps unless the user asks. Do not paste validator output. Do not name your scratch file or add a closing remark. A creator brief is written only on request, or for a ugc script a guide or guest will film. Build it from `assets/creator-brief-template.md` and a script that passed, and add it as a fourth fenced block.
 
@@ -99,7 +101,7 @@ Intake questions (ask only what is missing):
 | Narrator | standard, or slow (non-native guide or text-to-speech), which cuts the word budget by 15 percent. |
 | Objection | The one doubt this video answers. Goes in the optional `objection:` front matter field. |
 
-A brief with no real moment in it (no named person, object, place or sensory detail from a real trip) pulls writers toward brochure lines. Send the guide the ten questions in `assets/guide-moment-intake.md` and use their answers as facts rows, quoting the guide in the source cell. With nobody to ask, write visuals only from what the facts table supports, mark each assumed schedule or sequence with `[VERIFY: what, who confirms]` and list what the guide must supply.
+A brief with no real moment in it (no named person, object, place or sensory detail from a real trip) pulls writers toward brochure lines. End the reply with the guide questions block described under Output contract, and use the guide's answers, when they arrive, as facts rows that quote the guide in the source cell. With nobody to ask, write visuals only from what the facts table supports, mark each assumed schedule or sequence with `[VERIFY: what, who confirms]` and list what the guide must supply.
 
 ## Pair mode
 

@@ -29,7 +29,7 @@ Shots that need no guest release: hands, gear, landscape, sky, the guide who has
 - [ ] Releases signed for every identifiable guest in a planned shot. [VERIFY with counsel]
 - [ ] Permission from every place or operator named in the table above.
 - [ ] Sky shots are real evenings, no composited or AI sky.
-- [ ] Guide has answered the ten questions in `guide-moment-intake.md`.
+- [ ] Guide has answered the ten guide questions.
 
 ## After the shoot
 

@@ -9,4 +9,4 @@ Run this one command with the Bash tool and nothing else:
 
 `python3 -I ROOT/campaigns/ski-meta-ads/verify_tours.py`
 
-Say in two lines whether prices, dates and itinerary headings still match. If anything failed, name the tour and the field in `ROOT/campaigns/ski-meta-ads/tours.json`. Never change a price or a date without the user confirming it. If the check cannot reach the website, say so and stop.
+Say in two lines whether prices, dates and itinerary headings still match. If anything failed, name the tour and the field (for example the `ski-6day` price), and give no file path. Never change a price or a date without the user confirming it. If the check cannot reach the website, say so and stop.

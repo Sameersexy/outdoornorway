@@ -16,6 +16,6 @@ Pair mode: one request may name two scripts when both use the same tour, for exa
 - Ask the user a question only when the tour or the platform is missing from the request. Everything else has a default that the agent knows.
 - If the request names a web page, fetch its text first and give the agent the URL and the text as a source. Write no file for it.
 - If the agent says the tour id is unknown, show the ids it lists and stop.
-- If the request has no real moment from a real guide, add one line pointing to the intake form `ROOT/.claude/skills/scriptcraft/assets/guide-moment-intake.md`.
+- If the request has no real moment from a real guide, the agent ends its reply with the ten guide questions in one fenced block, ready to copy and send. Print that block with the rest. Never replace it with a file name or a path.
 
 Print the agent's reply in full, copied character for character (every number, date and disclosure line exactly as the agent wrote it): each script in its fenced block, then its notes and its validator lines. This is the one place where the repo prints a whole script. Add no summary of your own. Send no progress message, and do not check files afterwards: the agent's validator lines are the proof. End with one line naming the next step: `/review-script` with the script pasted after it, which re-runs the validator on the exact text the user copied.

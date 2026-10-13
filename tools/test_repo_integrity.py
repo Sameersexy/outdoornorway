@@ -49,6 +49,12 @@ class Manifests(unittest.TestCase):
         self.assertTrue(licence.startswith("MIT License"))
         self.assertIn("Copyright (c)", licence)
 
+    def test_repo_settings_deny_the_artifact_tool_and_keep_the_other_keys(self):
+        settings = json.loads(read(ROOT / ".claude" / "settings.json"))
+        self.assertEqual(settings["permissions"]["deny"], ["Artifact"])
+        self.assertTrue(settings["enabledPlugins"])
+        self.assertEqual(settings["autoCompactWindow"], 200000)
+
     def test_paths_exist(self):
         self.assertTrue((ROOT / self.plugin["commands"]).is_dir())
         self.assertTrue((ROOT / self.plugin["skills"]).is_dir())
@@ -214,6 +220,50 @@ class TextFirst(unittest.TestCase):
         text = read(ROOT / ".claude" / "commands" / "script.md")
         self.assertIn("copied character for character", text)
         self.assertIn("re-runs the validator on the exact text the user copied", text)
+
+    def intake_block(self):
+        text = read(ROOT / ".claude" / "skills" / "scriptcraft" / "assets" / "guide-moment-intake.md")
+        section = text[text.index("## Send-ready text"):text.index("## How the script uses it")]
+        blocks = re.findall(r"(?s)```\n(.*?)\n```", section)
+        self.assertEqual(len(blocks), 1)
+        return blocks[0]
+
+    def test_guide_questions_come_as_one_send_ready_block_with_no_path(self):
+        # A user in the chat cannot open a file, so the ten questions are printed inline.
+        block = self.intake_block()
+        self.assertEqual(re.findall(r"(?m)^([0-9]+)\. ", block), [str(n) for n in range(1, 11)])
+        self.assertLessEqual(len(block.splitlines()), 20)
+        for needle in ["ROOT", ".md", ".claude", "assets/", "/home/", "${"]:
+            self.assertNotIn(needle, block)
+        self.assertIn("signed release", block)
+
+    def test_prompts_print_the_questions_and_never_point_to_the_form_file_for_the_user(self):
+        command = read(ROOT / ".claude" / "commands" / "script.md")
+        self.assertNotIn("guide-moment-intake", command)
+        self.assertIn("ten guide questions in one fenced block", command)
+        agent = read(ROOT / ".claude" / "agents" / "script-writer.md")
+        contract = agent[agent.index("## Output contract"):agent.index("### Save")]
+        self.assertIn("`Questions for the guide`", contract)
+        self.assertIn("one fenced block", contract)
+        self.assertIn("Never print the file name or a path in its place", contract)
+        intake = agent[agent.index("2. Intake."):agent.index("3. Facts.")]
+        self.assertNotIn("hand the guide", intake)
+        chat = read(ROOT / "tools" / "chat_skill" / "SKILL.md")
+        self.assertIn("`Questions for the guide`", chat)
+        self.assertIn("Never print the file name or a path in its place", chat)
+        self.assertNotIn("Send the guide the ten questions in", chat)
+
+    def test_commands_that_print_to_the_user_name_no_repo_path(self):
+        # ROOT/ is allowed in shell lines (python3 -I ROOT/...) and in instructions that read a file,
+        # not in text the user is told to read.
+        for name in ["tour-data", "tokens"]:
+            text = read(ROOT / ".claude" / "commands" / (name + ".md"))
+            for line in text.splitlines():
+                if "ROOT/" in line:
+                    self.assertTrue(line.startswith("`python3 -I ROOT/"), (name, line[:80]))
+        review = read(ROOT / ".claude" / "commands" / "review-script.md")
+        self.assertIn("`Script review: pasted script`", review)
+        self.assertIn("never a scratch or temp path", read(ROOT / ".claude" / "agents" / "script-reviewer.md"))
 
     def test_script_command_does_not_name_a_saved_path_by_default(self):
         # Quick start step 5 must say text first, so /howto does not promise saved files.

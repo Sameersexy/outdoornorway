@@ -2,5 +2,8 @@
   "enabledPlugins": {
     "claude-code-setup@anthropic-plugin-directory": true
   },
-  "autoCompactWindow": 200000
+  "autoCompactWindow": 200000,
+  "permissions": {
+    "deny": ["Artifact"]
+  }
 }
