@@ -138,6 +138,25 @@ class TextFirst(unittest.TestCase):
         self.assertNotIn("cp SCRATCH", before_save)
         self.assertNotIn("mkdir -p content/scripts", before_save)
 
+    def test_writer_agent_writes_files_only_on_save(self):
+        text = read(ROOT / ".claude" / "agents" / "script-writer.md")
+        save = text[text.index("### Save"):text.index("### Creator brief")]
+        brief = text[text.index("### Creator brief"):text.index("## Style in everything you write")]
+        self.assertIn("Only when the request ends with the word `save`", save)
+        self.assertIn("Never overwrite a saved file", save)
+        self.assertIn("slug", save)
+        self.assertIn("Refuse a third script, or two different tours", text)
+        # The brief may name a saved path, but only under `save`.
+        self.assertIn("`save`", brief)
+        # No sentence outside the Save and Creator brief sections tells the agent to write into content/scripts.
+        outside = text.replace(save, "").replace(brief, "")
+        self.assertNotRegex(outside, r"(?i)(write|copy|save)[^.\n]*`?content/scripts/<")
+
+    def test_reviewer_asks_for_five_fixes(self):
+        text = read(ROOT / ".claude" / "agents" / "script-reviewer.md")
+        self.assertIn("Top five fixes", text)
+        self.assertNotIn("Top three fixes", text)
+
     def test_skill_final_output_is_text_first(self):
         text = read(ROOT / ".claude" / "skills" / "scriptcraft" / "SKILL.md")
         final = text[text.index("### 7. Final output"):]
@@ -147,6 +166,8 @@ class TextFirst(unittest.TestCase):
         text = read(ROOT / ".claude" / "commands" / "review-script.md")
         self.assertIn("pasted", frontmatter(text))
         self.assertIn("scratch folder", text)
+        self.assertIn("without the code fence", text)
+        self.assertIn("`test -f`", text)
 
     def test_script_command_does_not_name_a_saved_path_by_default(self):
         # Quick start step 5 must say text first, so /howto does not promise saved files.

@@ -10,7 +10,7 @@ Show the quick start below to the user exactly as written. Then say in one line 
 2. Start Claude Code in any folder you can find again. Files appear there only when you ask for `save`. For a clone, use the repo folder.
 3. Ask the tour guide the ten questions on the intake form (see "For writers") and keep their answers. Skip this only for a quick generic draft.
 4. Type `/` and pick a command. To write a script: `/script ski-aurora-7day youtube voiceover`
-5. The script comes back in the chat as text, with its notes and what is still open. Copy it into Google Docs and tweak it there. Add the word `save` at the end of the request if you want files in `content/scripts/` instead.
+5. The script comes back in the chat as text, with its notes and what is still open. Copy it into Google Docs and tweak it there. Add the word `save` at the end of the request if you want files in `content/scripts/` as well.
 6. The notes under the script list everything that still needs a person: footage, permissions, facts to confirm. For a saved file, `/open-items content/scripts/<file>.md` gives the same list.
 7. `/review-script` with the script pasted after it gets an independent second opinion. A saved file path works too.
 8. When you are happy, send the script to Sameer. If you cloned the repo and saved files, ask Claude: "commit this and open a pull request".

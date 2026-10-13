@@ -3,7 +3,7 @@
 Every model call re-reads the whole conversation from cache. Cost is therefore calls times context size. In the long session that built this repo (measured with `tools/transcript_report.py`):
 
 - 378 model calls, a median of 350k tokens of context per call, a peak of 774k.
-- A fixed part is sent on every call: about 59k tokens (51 tool definitions at about 50k, the Artifact tool alone about 14k and never used here, plus about 9k of system prompt).
+- A fixed part is sent on every call: about 59k tokens (51 tool definitions at about 50k, the Artifact tool alone about 14k by the transcript's count, never used here (the first-turn saving measured later on this page is 11,403), plus about 9k of system prompt).
 - The skill and connector listing was injected into the conversation 28 times, about 4.6k tokens each (128k in all), mostly when connectors such as Miro and GitHub reconnected.
 - The conversation itself grew to about 1.2M tokens of text: my own messages and tool inputs 512k, tool results 263k. Subagent hand-backs of 10k to 11k tokens each (the validator output printed twice) were the largest single entries.
 
@@ -11,7 +11,7 @@ The usage report's 37M and the transcript's total differ (different windows and 
 
 ## What changed in the repo
 
-- `script-writer` and `script-reviewer` now return compact results: the RESULT line, counts and rule ids, not the full validator output and not the whole script. Full text stays in files.
+- `script-writer` and `script-reviewer` now return compact results: the RESULT line, counts and rule ids, not the full validator output and not the whole script. The finished script is the one exception: it comes back as text, and validator output stays compact.
 - `SKILL.md` no longer asks for the validator output to be pasted verbatim.
 - `/script` returns the finished script as text in the chat and writes files only when the request ends with `save`. The finished script is the one thing printed whole. The writer agent validates in a scratch folder, so nothing lands in the user's folder by default. The cost of this change has not been measured.
 - `tools/transcript_report.py` measures a session, so the effect can be checked.
@@ -60,7 +60,7 @@ Measured effect on the first turn of a new session. Method: `claude -p "Reply wi
 | With the Artifact deny rule | 29,994 (11,403 fewer) |
 | Deny rule plus plugin disables set with `--settings` | 25,923 (4,071 fewer again) |
 
-The total drop is 15,474 tokens, about 37 percent. The saving is input tokens, not dollars, because cache reads cost far less than fresh input. The plugin disables were projected at about 5.7k and measured at about 4.1k.
+The total drop is 15,474 tokens, about 37 percent. The saving is counted in input tokens. [VERIFY: what it saves in cost, because cache reads are billed lower than fresh input]
 
 Copy plugin ids from `claude plugin list` or `/plugin`. `claude plugin details <plugin id>` shows what a plugin adds to every step, so read that before you decide. The plugins this repo does not use are the likely candidates: SEO, data, enterprise search, product management and Miro. Marketing, productivity and plugin management are optional. Each enabled plugin adds skill descriptions to every call and may add a connector that reconnects mid-session.
 

@@ -7,10 +7,10 @@ Review the script in: $ARGUMENTS
 
 Where the files live: ROOT is `${CLAUDE_PLUGIN_ROOT}`. If that text does not start with a slash, ROOT is the current folder (a clone of the repo). The validator, tools and data are under ROOT. Files you save for the user go in the current folder, never under ROOT. When you tell the user about a file under ROOT, write its real path, not the word ROOT.
 
-The input is either a path or pasted text. It is a path when it is one line with no spaces that ends in `.md`. Anything else is pasted text.
+The input is either a path or pasted text. It is a path when it is one line that ends in `.md` and the file exists (check with `test -f`, and quote the path if it has spaces). Anything else is pasted text.
 
 - Path: do not read the file yourself. Give the agent the path as typed (relative to the current folder).
-- Pasted text: make a scratch folder with `python3 -c "import tempfile; print(tempfile.mkdtemp())"`, then write the pasted text to `script.md` in that folder with the Write tool, using the literal path the command printed. Never build the path from memory. Give the agent that path. If the user also pasted a brief, write it to `script-notes.md` beside it.
+- Pasted text: make a scratch folder with `python3 -c "import tempfile; print(tempfile.mkdtemp())"`. A pasted script usually arrives as the writer's reply: a code fence, then notes, stats and validator lines. Write to `script.md` in that folder, with the Write tool and the literal path the command printed, only the script file itself: from its opening `---` line to the end of its caption, without the code fence, a heading line, the notes, the stats or the validator lines. Write the notes block to `script-notes.md` beside it when it was pasted. Never build the path from memory. Give the agent the path of `script.md`.
 
 Call the script-reviewer agent once, in the foreground, and wait for it (subagent_type `script-reviewer`; when installed as a plugin its full name is `outdoornorway-marketing:script-reviewer`). Give it the path and what ROOT is. It reads the notes file beside the script for the brief when one exists, reruns the validator itself, and replies compactly: the verdict, the ten scores, blocking findings and the top five fixes, with no pasted validator output or cells. It must not edit the file.
 

@@ -26,9 +26,10 @@ names the file, so an edit to a reference cannot leak a repo path.
 
 script_check.py is copied byte for byte. It holds no forbidden string: its one
 repo path (TOURS_FILE, near line 33) is assembled from separate path segments,
-so it never matches. That default does not exist inside a zip, so the chat
-SKILL.md tells the model to always pass --tours-file data/tours.json. The
-builder rewrites nothing in Python code.
+so it never matches. That default does not exist inside a zip, and only
+--tour reads it, so the chat SKILL.md and the tour card command in the
+references pass --tours-file data/tours.json. The builder rewrites nothing in
+Python code.
 
 The zip is deterministic: entries sorted by name, fixed timestamp, fixed
 permissions. Two builds of the same sources are byte-identical.
@@ -57,9 +58,13 @@ SKIP_SUFFIXES = (".pyc",)
 TEXT_SUFFIXES = (".md", ".json", ".py", ".txt")
 
 # Exact-string replacements for the built copies, applied longest first. Each
-# entry is (old, new). The first three are the path forms the sources use. The
-# last two remove a sentence about a repo-only checker that does not ship.
+# entry is (old, new). The tour card command gets --tours-file because the
+# validator's built-in tours path does not exist inside a zip. The three after
+# it are the path forms the sources use. The two sentence removals drop a
+# mention of a repo-only checker that does not ship.
 REPLACEMENTS = [
+    ("`python3 -I .claude/skills/scriptcraft/scripts/script_check.py --tour TOUR_ID`",
+     "`python3 -I scripts/script_check.py --tour TOUR_ID --tours-file data/tours.json`"),
     (" Re-check with `python3 -I campaigns/ski-meta-ads/verify_tours.py`.", ""),
     (".claude/skills/scriptcraft/scripts/script_check.py", "scripts/script_check.py"),
     ("campaigns/ski-meta-ads/tours.json", "data/tours.json"),
