@@ -11,7 +11,6 @@ What I read first:
 - CONFIRMED-PRICES-AND-DATES.md (prices and 2027 dates below are taken from it and treated as authoritative).
 - All seven in-scope ski page texts plus the ski hub text, line by line. Line numbers below refer to the cleaned `.txt` files in a local scratch folder (not in the repo).
 - The three reference ad images (ref-a, ref-b, ref-c). I viewed them myself. All analysis in section 1 comes from what I can see in the screenshots, not from the audit's data.
-- The nine first-cut creatives, using the copy quoted in the brief. I have not seen the images for those nine, so the critique is of copy and claims only.
 
 Evidence tags used in this file:
 
@@ -144,50 +143,6 @@ Hypothesis for the ski job (Inference): cold audiences for a NOK 17,451 to 42,12
 - Require a named source on any rating badge ("Tripadvisor 4.9", not "4.9 stars").
 - Avoid copying the redundant in-image button when the platform already shows one.
 - Keep a hard rule: no year-less dates in a ski ad. A winter 2027 date next to a 2026 post date is ambiguous.
-
----
-
-## 2. The ClickUp first-cut brief: an honest critique
-
-I have only the copy, not the images. Prices and dates come from the confirmed file. Page evidence comes from the claims bank in section 7.
-
-### 2.1 Creative by creative
-
-| # | Copy in the brief | What is strong | What is generic or weak | Missing vs winners | Risky claims |
-|---|---|---|---|---|---|
-| 1 | "Ski 4 fjord resorts in 9 days" / "Voss, Myrkdalen, Sogndal, Stranda" / "Join 9-Day Ski Trip" | Specific count, four named places, a verb. The best of the nine. | "Join" is a weak CTA word. Fjord claim applies to the set, not each place. | No price (NOK 42,126), no dates (five 2027 departures), no proof badge, no skill level. | "4 fjord resorts": the 9-day FAQ names Voss and Stranda as the fjord-skiing examples (9-day L236). Myrkdalen is described by snow and uncrowded slopes, Sogndal by "overlooking the Sognefjord region". Medium risk. Skill level absent: page says "intermediate and advanced" (L105). |
-| 2 | "Ski in Norway. With fjords below." / "Resort & backcountry skiing in Voss." / "Explore skiing in Norway" | Good sensory rhythm. | "Explore" is the weakest CTA verb in travel. The line "with fjords below" suggests a picture the viewer cannot place. Two products (resort and backcountry) in one ad. | Everything: price, date, tour name, proof, skill level. | "Fjords below" is literal geography. Voss resort views are described as "across the Voss valley" (9-day L111). The hub does say "fjord-view descents" (ski-hub L137). Needs a guide check. "Backcountry" implies an advanced product, but the one backcountry day tour starts at NOK 1,948 and needs "confident on skis". |
-| 3 | "Skiing and aurora nights in Norway" / "Bergen to Tromsø" / "Find out how" | Route in two words. | "Find out how" has no object. "Aurora nights" promises something the page says cannot be guaranteed (7-day L115, L297). | Price, dates, skill level, proof. | Aurora is a natural phenomenon. Any ad that implies a sighting will conflict with the page's own caveat. Medium to high risk. |
-| 4 | Eyebrow "Beginner friendly", "Ski days in Voss, aurora nights in Tromsø" / "Check dates" | The eyebrow tells the segment who the trip is for. | "Check dates" sends the viewer to find dates, which the ad could have shown. | Dates and price. | "Ski days" is plural. The 7-day trip includes one ski day (7-day L123, L155, "1-day ski pass"). "Aurora nights" see above. "Beginner friendly" matches the page ("beginner-friendly", 7-day L105), but conflicts with the spec strip "Easy to intermediate" (L74). Plural ski days is a factual error. High risk. |
-| 5 | "6 days of skiing in Fjord Norway" / "Voss resort, Myrkdalen" / "See the 6-day package" | Clear duration and places. | "See the package" is passive. | Price (NOK 28,896), dates (29 Jan to 3 Feb, 4 Feb to 9 Feb), beginner positioning that the page makes central. | "6 days of skiing" is false. The page: "three ski days" and "this is a mixed winter holiday, not a six-day ski trip" (6-day L292 to L294). "Fjord Norway" skiing is not claimed for these resorts on this page. High risk (refund dispute territory). |
-| 6 | "3 days. Skiing + snowshoeing." / "Voss, Norway" / "See the 3-day trip" | Honest and short. The snowshoe is a differentiator that Alps trips lack. | Plain. No emotional lift. "See the 3-day trip" says nothing. | Price (NOK 17,451), dates (28 to 30 Jan, 31 Jan to 2 Feb, 7 to 9 Feb), the audience (page: "families and friend groups"). | Location is Voss, Hardangerfjord and Myrkdalen (3-day ski L80). Calling it "Voss" is acceptable but incomplete. Age conflict: "10+ years" vs "no age limits" (L90 vs L114). Do not state an age. |
-| 7 | "Your 3-day winter escape to Norway" / "Ski + snowshoeing" / "See the 3-day trip" | "Winter escape" speaks to the segment (couples, remote workers). | It is near-identical to creative 6. The viewer cannot tell the two trips apart. Sub-line leaves out the powder day, which is this trip's selling point. | Price (NOK 16,527), dates (5 to 7 Feb, 12 to 14 Feb with Valentine's Day, 5 to 7 Mar), tour name. | Two different products with near-same copy. Another trap: the page says Intermediate and "Basic resort skiing skills" (multi-sport L88, L111), while the day-one text says "absolute beginner" (L95). Do not claim beginner. |
-| 8 | "7-day northern lights tour" / "Bergen, Voss, Tromsø, skiing, huskies, northern lights" / "Explore the tour" | Concrete list. | A noun dump with no hierarchy. Headline sells the aurora, which is the one thing that cannot be promised. | Price (NOK 41,181), dates, proof. | Headline leads with aurora (guarantee risk). "Skiing" is one beginner day with a 1-day pass. |
-| 9 | Eyebrow "7 days | 6 nights" / "5 Norwegian winter experiences" / "Bergen, skiing, snowshoeing, huskies, northern lights" / "Explore the 7-day tour" | "7 days | 6 nights" is exact and checks out (6 nights twin-share, 7-day L156). The count hook ("5") is a good curiosity device. | Duplicates creative 8 for the same tour. "Explore the 7-day tour" repeats creative 8's CTA. | Price, dates, proof. | The count must match the page. Count the list: Bergen, skiing, snowshoeing, huskies, northern lights = 5. The page also sells a private fjord boat day. If the ad says "5", the count must stay consistent across every variant. |
-
-### 2.2 Patterns across the nine
-
-1. None of the nine carries a price or a date. Both winning references that carry a date or a price (ref B, ref C) use them as central design elements.
-2. Every CTA is a soft verb: Join, Explore, Find out how, Check dates, See. The winners use "Explore the tour", "See details" and "Plan today". The verb quality is similar. The issue is that nothing in the ad earns the click beyond curiosity.
-3. Three creatives sell one tour (6 and 7 both 3-day, 8 and 9 both the 7-day). That suits a test, but not as two separate "concepts". Under Meta's creative-diversity guidance (sibling notes 03, section 4) similar ads compete for the same audience and learn less. [VERIFY: Meta's delivery behaviour is partly vendor lore, see notes 03]
-4. Skill level is shown in only two of nine (creative 4 eyebrow, and indirectly 1). The page analysis shows skill level is the first filter for every segment.
-5. No proof anywhere: no rating, no group size, no guide credential, no inclusion that removes a worry (gear, lessons, ski pass).
-6. Three creatives carry claims the pages do not support (4, 5, 8). Fix before design.
-7. The nine only use "Voss" and "Fjord" as place words. The sensory and cultural material the pages offer (frozen waterfalls, waffles, campfire grill, the train from Bergen) is untouched.
-
-### 2.3 Direction for the fix (not final copy)
-
-- Tour names: use the confirmed names. Creative 8 and 9 should use "7 Day Ski in Fjord Norway & Aurora in Tromsø" or a shortened form of it that keeps skiing in the name.
-- Put the date line and the "from NOK" pill on the warm-audience versions. For cold audiences, test one version with price and one without.
-- Fix the plural "ski days", the "6 days of skiing" line and the aurora promise first.
-- Make each of the seven tours visibly different at thumb distance: place names, duration and one unique hook each.
-- Illustrative lines, not approved (each supported by page text): "One ski day in Voss. Three nights under Arctic skies in Tromsø." (7-day L123, L124 to L131, FAQ L297), "Three ski days, a lesson on each. The Hardangerfjord on snowshoes in between." (6-day L105, L140), "Two nights, two dinners, skis and boots included." (multi-sport L128).
-
-### How adwright should use this
-
-- Add a "claim to source" pass to every output: each factual phrase must trace to a page line. Fail anything that counts a ski day or promises a sighting.
-- Add a "same product, same face" check: if two creatives sell one tour, flag them as variants and not concepts.
-- Add a CTA verb check that prefers verbs tied to a next step the viewer can predict ("See dates and prices", "Plan your trip") over "Explore".
 
 ---
 
@@ -845,7 +800,7 @@ Skill level ("beginner", "intermediate", "advanced") is not a listed attribute. 
 | Alcohol | Après drinks | Restricted goods | Low to medium | Avoid, or 18+ targeting |
 | Text in image | Heavy text | The old 20% rule ended in 2020 (notes 03) | Low | Keep text short for legibility |
 | AI-edited text | Advantage+ editing text in image | Can alter a price or date after approval (notes 03, section 4.4) | Medium | Turn off text-altering enhancements, check final render |
-| UTM | `utm_source=chatgpt.com` on every ClickUp link | Mislabels traffic | Medium (reporting) | Meta UTMs |
+| UTM | A `utm_source` value that does not name the channel (for example `chatgpt.com`) on ad links | Mislabels traffic | Medium (reporting) | Meta UTMs |
 
 ### 10.3 Norwegian and EEA layer
 
