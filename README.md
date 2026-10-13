@@ -1,6 +1,6 @@
 # outdoornorway
 
-Marketing tools for Outdoor Norway, built for Claude Code: a video script skill with an enforced validator, two agents, slash commands and vetted copywriting skills.
+Marketing tools for Outdoor Norway, built for Claude Code: a video script skill with an enforced validator, two agents, slash commands, a zip of the skill for Claude chat and vetted copywriting skills.
 
 This repo is public and specific to Outdoor Norway. It is MIT licensed (see [Licence](#licence)).
 
@@ -17,7 +17,7 @@ claude plugin marketplace add Sameersexy/outdoornorway
 claude plugin install outdoornorway-marketing@outdoornorway
 ```
 
-Restart Claude Code. The commands carry the plugin name: `/outdoornorway-marketing:script`, `/outdoornorway-marketing:validate` and so on. Scripts are saved in the folder where you run Claude Code. Update with `claude plugin marketplace update outdoornorway` and `claude plugin update outdoornorway-marketing@outdoornorway`.
+Restart Claude Code. The commands carry the plugin name: `/outdoornorway-marketing:script`, `/outdoornorway-marketing:validate` and so on. Scripts come back as text in the chat. Add `save` to a request to also write files in the folder where you run Claude Code. Update with `claude plugin marketplace update outdoornorway` and `claude plugin update outdoornorway-marketing@outdoornorway`.
 
 **Clone (best for editing the tools or sending pull requests).**
 
@@ -35,8 +35,8 @@ Check the packaging with `claude plugin validate .` (it passes; its one warning 
 
 | Command | What it does |
 |---|---|
-| `/script <tour or topic> <platform> [style]` | Writes a script with the script-writer agent, saves it to `content/scripts/`, validates it, and returns a short result |
-| `/review-script <file>` | Independent review by the script-reviewer agent: facts, voice, authenticity, verdict, top five fixes |
+| `/script <tour or topic> <platform> [style] [save]` | Writes a script with the script-writer agent, validates it, and returns it as text in the chat with its notes. With `save` it also writes the script and a notes file to `content/scripts/`. Add `and <platform> <style>` for a second script on the same tour |
+| `/review-script <file or pasted script>` | Independent review by the script-reviewer agent: facts, voice, authenticity, verdict, top five fixes |
 | `/validate <file> [--final] [--strict]` | Runs the validator and shows only the findings |
 | `/open-items <file>` | Lists every `[VERIFY]` placeholder and unverified fact row, grouped by who confirms it |
 | `/howto` | Shows the quick start for writers and editors |
@@ -44,6 +44,10 @@ Check the packaging with `claude plugin validate .` (it passes; its one warning 
 | `/tokens` | Shows where this session's tokens went |
 
 The commands run only when you type them.
+
+## Claude chat
+
+Claude chat on claude.ai has no slash commands, but it can use the script skill as an uploaded skill. `python3 -I tools/build_chat_skill.py` builds `dist/scriptcraft.zip` from the sources in `tools/chat_skill/` and the skill folder. The zip is not committed. Upload steps are in [docs/getting-started.md](docs/getting-started.md), section "Use it in Claude chat".
 
 ## What is here
 
@@ -54,7 +58,7 @@ The commands run only when you type them.
 - `adquill/`: a paused ad-copy skill and agents (drafts). The plugin does not install it.
 - `THIRD_PARTY_SKILLS.md`: the vetted third-party skills, their sources and licenses.
 
-Tests: `python3 -I .claude/skills/scriptcraft/scripts/test_script_check.py` (validator) and `python3 -I tools/test_repo_integrity.py` (commands, plugin files, licences, guide).
+Tests: `python3 -I .claude/skills/scriptcraft/scripts/test_script_check.py` (validator), `python3 -I tools/test_repo_integrity.py` (commands, plugin files, licences, guide) and `python3 -I tools/test_build_chat_skill.py` (the chat zip).
 
 ## Licence
 

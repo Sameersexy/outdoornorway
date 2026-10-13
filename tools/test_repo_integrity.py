@@ -119,6 +119,43 @@ class Agents(unittest.TestCase):
             self.assertNotRegex(frontmatter(text), r"(?m)^model:", path.name)
 
 
+class TextFirst(unittest.TestCase):
+    """/script returns text in the chat. Files only when the request ends with save."""
+
+    def test_script_command_is_text_first(self):
+        text = read(ROOT / ".claude" / "commands" / "script.md")
+        self.assertIn("[save]", frontmatter(text))
+        self.assertIn("Output is text in the chat", text)
+        self.assertIn("ends with the word `save`", text)
+        self.assertIn("Pair mode", text)
+
+    def test_writer_agent_is_text_first(self):
+        text = read(ROOT / ".claude" / "agents" / "script-writer.md")
+        for needle in ("SCRATCH", "Pair mode", "### Save", "### Creator brief", "four backticks"):
+            self.assertIn(needle, text, needle)
+        # The only copy into the user's folder sits in the Save section.
+        before_save = text[:text.index("### Save")]
+        self.assertNotIn("cp SCRATCH", before_save)
+        self.assertNotIn("mkdir -p content/scripts", before_save)
+
+    def test_skill_final_output_is_text_first(self):
+        text = read(ROOT / ".claude" / "skills" / "scriptcraft" / "SKILL.md")
+        final = text[text.index("### 7. Final output"):]
+        self.assertIn("`save`", final)
+
+    def test_review_script_takes_pasted_text(self):
+        text = read(ROOT / ".claude" / "commands" / "review-script.md")
+        self.assertIn("pasted", frontmatter(text))
+        self.assertIn("scratch folder", text)
+
+    def test_script_command_does_not_name_a_saved_path_by_default(self):
+        # Quick start step 5 must say text first, so /howto does not promise saved files.
+        guide = read(ROOT / "docs" / "getting-started.md")
+        quick = guide[guide.index("## Quick start"):guide.index("## Set up (once)")]
+        self.assertIn("as text in the chat", quick)
+        self.assertIn("`save`", quick)
+
+
 class Licences(unittest.TestCase):
     def test_every_listed_third_party_skill_has_its_licence_file(self):
         table = read(ROOT / "THIRD_PARTY_SKILLS.md")

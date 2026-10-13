@@ -7,21 +7,23 @@ Show the quick start below to the user exactly as written. Then say in one line 
 ## Quick start
 
 1. Install once. The steps are under "Set up (once)" in `docs/getting-started.md`. If you only write or read scripts, choose the plugin.
-2. Start Claude Code in the folder where you want your scripts saved. For a clone, that is the repo folder.
+2. Start Claude Code in any folder you can find again. Files appear there only when you ask for `save`. For a clone, use the repo folder.
 3. Ask the tour guide the ten questions on the intake form (see "For writers") and keep their answers. Skip this only for a quick generic draft.
 4. Type `/` and pick a command. To write a script: `/script ski-aurora-7day youtube voiceover`
-5. Claude saves the script and a notes file in `content/scripts/` and tells you what is still open.
-6. `/open-items content/scripts/<file>.md` lists everything that still needs a person: footage, permissions, facts to confirm.
-7. `/review-script content/scripts/<file>.md` gets an independent second opinion.
-8. When you are happy, send the script to Sameer. If you cloned the repo, ask Claude: "commit this and open a pull request".
+5. The script comes back in the chat as text, with its notes and what is still open. Copy it into Google Docs and tweak it there. Add the word `save` at the end of the request if you want files in `content/scripts/` instead.
+6. The notes under the script list everything that still needs a person: footage, permissions, facts to confirm. For a saved file, `/open-items content/scripts/<file>.md` gives the same list.
+7. `/review-script` with the script pasted after it gets an independent second opinion. A saved file path works too.
+8. When you are happy, send the script to Sameer. If you cloned the repo and saved files, ask Claude: "commit this and open a pull request".
 
 | Command | Use it to |
 |---|---|
-| `/script <tour or topic> <platform> [style]` | Write a script. Platform: reels, shorts, tiktok or youtube. Style: voiceover, ugc_talk or ugc_text |
-| `/review-script <file>` | Get a review: facts, voice, verdict, top five fixes |
+| `/script <tour or topic> <platform> [style] [save]` | Write a script as text in the chat. Platform: reels, shorts, tiktok or youtube. Style: voiceover, ugc_talk or ugc_text. Add `save` to also write files. Add `and <platform> <style>` for a second script on the same tour |
+| `/review-script <file or pasted script>` | Get a review: facts, voice, verdict, top five fixes |
 | `/validate <file>` | Run the checker. Add `--final` before anything is published |
 | `/open-items <file>` | List what is still unconfirmed, grouped by who confirms it |
 | `/tour-data` | Check our prices and dates against the live website |
 | `/howto` | Show this quick start again |
 
 If you installed the plugin, type each command with its full name: `/outdoornorway-marketing:script`, `/outdoornorway-marketing:validate` and so on. The short names above work when you cloned the repo.
+
+To use the same skill in the Claude chat on claude.ai, see "Use it in Claude chat" in `docs/getting-started.md`.

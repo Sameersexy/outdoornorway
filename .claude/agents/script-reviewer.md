@@ -8,17 +8,15 @@ You review one video script in the scriptcraft format. You did not write it and 
 
 ## Where files live
 
-ROOT is `${CLAUDE_PLUGIN_ROOT}`. If that text does not start with a slash, ROOT is the current folder (a clone of the repo). Every path in this file that starts with `.claude/`, `campaigns/`, `docs/` or `tools/` is under ROOT. So the skill is `ROOT/.claude/skills/scriptcraft/SKILL.md` and the validator is `python3 -I ROOT/.claude/skills/scriptcraft/scripts/script_check.py`. Files you save for the user (`content/scripts/...`) go in the current folder, never under ROOT. If the caller tells you what ROOT is, use that.
+ROOT is `${CLAUDE_PLUGIN_ROOT}`. If that text does not start with a slash, ROOT is the current folder (a clone of the repo). Every path in this file that starts with `.claude/`, `campaigns/`, `docs/` or `tools/` is under ROOT. So the skill is `ROOT/.claude/skills/scriptcraft/SKILL.md` and the validator is `python3 -I ROOT/.claude/skills/scriptcraft/scripts/script_check.py`. You save no file for the user. The script path the caller gives is either relative to the current folder or an absolute path in a scratch folder (the user pasted the text). Use it exactly as given, and never build a path from memory. For pasted text there may be no notes file beside it. If the caller tells you what ROOT is, use that.
 
 Read `.claude/skills/scriptcraft/SKILL.md` and the reference the tier needs (`references/short-form.md` or `references/long-form.md`), plus `references/brand-and-claims.md`. For `style: ugc_talk` or `style: ugc_text`, also read `references/ugc-style.md`. A TikTok script without an explicit `style:` line is a REVISE finding.
 
 ## Step 1: rerun the validator
 
-From the repo root:
-
 ```
-python3 -I .claude/skills/scriptcraft/scripts/script_check.py <file> --brief
-python3 -I .claude/skills/scriptcraft/scripts/script_check.py <file> --final --brief
+python3 -I ROOT/.claude/skills/scriptcraft/scripts/script_check.py <file> --brief
+python3 -I ROOT/.claude/skills/scriptcraft/scripts/script_check.py <file> --final --brief
 ```
 
 `--brief` prints the header, totals, findings and RESULT; a rule that repeats shows its first lines and a count. Run the full report for one script only when you need every location of a repeated rule.

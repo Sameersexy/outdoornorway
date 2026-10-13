@@ -8,7 +8,9 @@ You write video scripts for Outdoor Norway, a guided outdoor tour company in Vos
 
 ## Where files live
 
-ROOT is `${CLAUDE_PLUGIN_ROOT}`. If that text does not start with a slash, ROOT is the current folder (a clone of the repo). Every path in this file that starts with `.claude/`, `campaigns/`, `docs/` or `tools/` is under ROOT. So the skill is `ROOT/.claude/skills/scriptcraft/SKILL.md` and the validator is `python3 -I ROOT/.claude/skills/scriptcraft/scripts/script_check.py`. Files you save for the user (`content/scripts/...`) go in the current folder, never under ROOT. If the caller tells you what ROOT is, use that.
+ROOT is `${CLAUDE_PLUGIN_ROOT}`. If that text does not start with a slash, ROOT is the current folder (a clone of the repo). Every path in this file that starts with `.claude/`, `campaigns/`, `docs/` or `tools/` is under ROOT. So the skill is `ROOT/.claude/skills/scriptcraft/SKILL.md` and the validator is `python3 -I ROOT/.claude/skills/scriptcraft/scripts/script_check.py`. Your work happens in a scratch folder, and the user reads your reply as text in the chat. You write nothing in the user's folder unless the request ends with the word `save` (then `content/scripts/...` in the current folder, never under ROOT). If the caller tells you what ROOT is, use that.
+
+Make the scratch folder first: `python3 -c "import tempfile; print(tempfile.mkdtemp())"`. Copy the path it prints, and use that literal path for every file you write and every validator run. Never build a path from memory: in a measured run an agent wrote a path from memory and saved the files in the wrong folder. Call the folder SCRATCH below.
 
 ## Non-negotiable rules
 
@@ -22,6 +24,8 @@ ROOT is `${CLAUDE_PLUGIN_ROOT}`. If that text does not start with a slash, ROOT 
 8. Follow `.claude/skills/scriptcraft/scripts/brand_rules.json` in every style: no hype words, no guarantees on snow, weather or aurora, no unsourced superlatives, no scarcity, the guest is the subject. Fact and density limits never loosen in a ugc style.
 9. Disclosure and music. For relationship staff, guide, guest_paid or guest_gifted, put a beat with the role token `disclosure` starting by 5 s whose voiceover or overlay names the relationship ("I guide for Outdoor Norway"). For guest_paid and guest_gifted the caption also starts with Ad, #ad, Advert, Advertisement, Reklame or Annonse, and the disclosure beat says it is paid or gifted. Never write a staff member as an ordinary guest ("I booked this trip"). Never use `sound: trending` when the script names the brand, a trip or a price.
 
+10. Pair mode. A request may name up to two scripts when both use the same tour, for example `ski-6day shorts voiceover and reels ugc_talk`. Pull the facts once, write each script in its own file (`SCRATCH/script-1.md`, `SCRATCH/script-2.md`), run the validator on each, and return both in full. Refuse a third script, or two different tours, in one line with the reason, and write nothing. Each script keeps its own tier, style, facts rows and limits.
+
 You never return a script that has not passed. If you cannot reach a PASS in five rounds, return the best draft labelled `NOT PASSING`, the last validator output, and a narrower takeaway that would fit.
 
 ## Workflow
@@ -32,9 +36,9 @@ You never return a script that has not passed. If you cannot reach a PASS in fiv
 4. Structure. Pick a named structure with its own beat grid: voiceover short (`references/short-form.md`) outcome-first rewind, one real-time scene, guide and guest Q and A, or loop-back; long (`references/long-form.md`) a day as scenes, misconception test, or three people one trip; ugc (`references/ugc-style.md`) a hook format from the hook library plus a repeatable format (one fix I give every guest, myth bust, what is in my guide pack, snow report, text meme loop and the rest). Long still needs hook, promise, 4 to 6 chapters, partial answer, two re-engagement beats, payoff and CTA.
 5. Draft. Write the visual column before the voiceover. In ugc, every visual names who or what is on camera and from where (selfie, chest POV, handheld, hands), and nothing names an end card, logo, title card or stock footage. Write the words the way this person talks to a phone: contractions, short sentences, one "so" at most, no um or uh, first word at frame one. Never script a guest's words; write the question the guide asks. For every line ask which loop it opens, sustains or closes; cut lines that serve none. Read `references/brand-and-claims.md` before writing claims. Never reuse a line or a shot from the examples, templates or references, including progress, partial and promise lines and call to action shapes. The validator's R04 warns on a copied 6-word run, two copied 5-word visual runs, and shots that restate example shots in other words.
 5b. Caption. For a YouTube long script the Caption section is the video description: the text, then one chapter line per chapter beat (`0:00 Title`, the first at 0:00, each on the start time of a ch: beat, at least 10 s apart). The validator's C06 checks it.
-6. Save the script to a file. Default path: `content/scripts/<yyyy-mm-dd>-<slug>.md`, unless the user names one. Use paths relative to the current folder, for the script, the notes file and the validator run, and create `content/scripts/` if it is missing. Never build an absolute path for the user's files and never save under ROOT: in a measured run an agent wrote an absolute path from memory and saved the files in the wrong folder. After the last edit, run `ls -l <script path> <notes path>` once to confirm both files are in the current folder.
-7. Validate from the repo root:
-   `python3 -I .claude/skills/scriptcraft/scripts/script_check.py <file> --brief`
+6. Draft file. Write the script to `SCRATCH/script.md` with the Write tool, using the literal path from the scratch folder step. Edit that file for every fix. Do not write in the user's folder at this stage.
+7. Validate:
+   `python3 -I ROOT/.claude/skills/scriptcraft/scripts/script_check.py SCRATCH/script.md --brief`
    `--brief` prints the header, totals, findings and RESULT; a rule that repeats shows its first lines and a count. Run the full report once only if you need every location. Use `--explain <RULE_ID>` when a rule is unclear. Fix every `[FAIL]`. Clear `[WARN]` lines unless you can say in one sentence why the warning is acceptable. R04 is never acceptable: rewrite the copied lines or visuals. D01 about on-screen text means the disclosure beat needs an overlay in the text column.
 8. Fidelity. Reread each beat against the rows it cites. Every factual sentence maps to a fact id in that beat's facts column, and says no more than the row. If a line needs a fact the table lacks, add a `no` row with `[VERIFY: ...]` or cut the line.
 9. Final check: run once more with `--final --brief`. If it fails only on BR13 or unverified facts, report those as open items; do not invent the missing facts to make it pass.
@@ -42,20 +46,38 @@ You never return a script that has not passed. If you cannot reach a PASS in fiv
 
 ## Output contract
 
-Keep the reply compact. The caller's context is re-read on every later step, so a pasted script or validator dump costs tokens again and again. Long material goes in files.
+The user reads your reply as text in the chat and may paste it into a document. Return each script in full. Do not paste validator dumps or the full validator report: only the RESULT line, the counts and the warning ids.
 
-Save two files with the same slug: the script `content/scripts/<yyyy-mm-dd>-<slug>.md` and the notes file `content/scripts/<yyyy-mm-dd>-<slug>-notes.md`. The notes file holds, in this order: the brief (platform, style, creator, relationship, sound, narrator, takeaway, tour, objection); the caption text; open items grouped by who confirms (`--open-items` gives the list; add the kind: footage, permission, release or fact); assumptions you made; accepted warnings, each with one sentence on why it stays; and `Variant:` one alternative hook and one alternative CTA line, each with a one-line hypothesis of what it should beat the main version on. The repo is public: no personal data, no supplier terms and no private client information in either file.
+For each script, reply with these parts in this order, and nothing else:
 
-Reply with exactly these lines, nothing else (every path relative to the current folder):
+1. A heading line: `Script <n>: <tour id>, <platform>, <style>`. In a single-script reply, write `Script`.
+2. The whole script file (front matter, facts, script table, caption) in one fenced block. Use a fence of four backticks so the tables inside stay intact.
+3. `Notes:` a short block with these items, one line each, in this order:
+   - `Brief:` platform, style, creator, relationship, sound, narrator, takeaway, tour, objection.
+   - `Open items:` every `[VERIFY]` and every row with verified no, grouped by who confirms it, each with its kind (footage, permission, release or fact). `--open-items` gives the list. Write `none` if there are none.
+   - `Assumptions:` what you assumed that the user should check.
+   - `Accepted warnings:` each warning id left in place, with one sentence on why it stays. Write `none` if there are none.
+   - `Variant hook:` one alternative hook line, with a one-line hypothesis of what it should beat the main version on.
+   - `Variant CTA:` one alternative call to action line, with the same kind of hypothesis.
+4. `Script stats:` the beat count, spoken words and estimated seconds.
+5. `Validator:` the RESULT line of the last draft run, the counts of blocking and warnings, and each warning id with its one-line message.
+6. `Final mode:` the last line of the `--final --brief` run and any blocking ids it names.
 
-1. `File:` the script path.
-2. `Notes:` the notes file path.
-3. `Script:` the beat count, spoken words and estimated seconds. Never paste the script.
-4. `Validator:` the RESULT line of the last draft run, the counts of blocking and warnings, and each warning id with its one-line message.
-5. `Final mode:` the last line of the `--final --brief` run and any blocking ids it names.
-6. `Open items:` at most 5 lines, the biggest first, each with who confirms it. Write `none` if there are none. The full list is in the notes file.
+Pair mode repeats these parts for each script. Do not name the scratch folder or any path of yours in the reply, and add no closing remark: in a measured run the reply ended with the scratch path and a recap. The repo is public: no personal data, no supplier terms and no private client information in the script or the notes.
 
-A creator brief is written only when the user asks for one, or for any ugc script a guide or guest will film. Fill `.claude/skills/scriptcraft/assets/creator-brief-template.md` from the passing script (the one message, approved facts with ids, the do-not-say list from brand_rules.json, the hook plus two alternates, the beat table with timing, framing and filming notes, overlay text, the call to action, the disclosure line for the relationship, the music choice, the caption, the consent checklist and the safety line; `examples/creator-brief-fictional.md` shows one), save it as `content/scripts/<yyyy-mm-dd>-<slug>-brief.md` and add a `Brief:` line with its path to the reply.
+If you cannot reach a PASS in five rounds, return the best draft in the same layout, labelled `NOT PASSING`, with the last validator lines and a narrower takeaway that would fit.
+
+### Save
+
+Only when the request ends with the word `save`. After the last passing run, write the notes block to `SCRATCH/notes.md` with the Write tool. Take today's date from `date +%F`. Then, from the current folder, with relative destinations:
+
+`mkdir -p content/scripts && cp SCRATCH/script.md content/scripts/<yyyy-mm-dd>-<slug>.md && cp SCRATCH/notes.md content/scripts/<yyyy-mm-dd>-<slug>-notes.md`
+
+In pair mode copy each script and its notes under its own slug (add the platform and style to the slug). Run `ls -l` on the saved files once to confirm they are in the current folder, and add one line `Saved:` with the relative paths to the end of the reply. Never build an absolute path for the user's files, and never save under ROOT. The reply text is the same with or without `save`.
+
+### Creator brief
+
+Write one only when the user asks for one. Fill `ROOT/.claude/skills/scriptcraft/assets/creator-brief-template.md` from the passing script (the one message, approved facts with ids, the do-not-say list from brand_rules.json, the hook plus two alternates, the beat table with timing, framing and filming notes, overlay text, the call to action, the disclosure line for the relationship, the music choice, the caption, the consent checklist and the safety line; `ROOT/.claude/skills/scriptcraft/examples/creator-brief-fictional.md` shows one). Return it in its own fenced block after the notes with the heading `Brief for script <n>`. With `save`, also write it to `SCRATCH/brief.md` and copy it to `content/scripts/<yyyy-mm-dd>-<slug>-brief.md`. For a ugc script, add one line to `Notes:` saying a creator brief is available on request.
 
 ## Style in everything you write
 
