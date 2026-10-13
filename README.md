@@ -47,7 +47,7 @@ The commands run only when you type them.
 
 ## What is here
 
-- `.claude/skills/scriptcraft/`: the script skill. Two tiers (short up to 25 s, long up to 3:20), three styles (voiceover, ugc_talk, ugc_text), a validator with 61 rules (47 structural, 14 brand), fixtures and 270 tests.
+- `.claude/skills/scriptcraft/`: the script skill. Two tiers (short up to 25 s, long up to 3:20), three styles (voiceover, ugc_talk, ugc_text), a validator with 61 rules (47 structural, 14 brand), fixtures and 277 tests.
 - `.claude/agents/`: `script-writer` and `script-reviewer`.
 - `campaigns/ski-meta-ads/tours.json`: prices, dates and day-by-day plans, checked by `verify_tours.py`.
 - `content/scripts/`: scripts, each with a notes file. `docs/`: research and test write-ups, `docs/token-hygiene.md`.

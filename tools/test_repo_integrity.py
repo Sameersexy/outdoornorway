@@ -5,8 +5,12 @@ Stdlib only. These catch the mistakes that broke installs before: a command that
 only works in a clone, a licence file that went missing, a guide that drifted
 from /howto.
 """
+import contextlib
+import importlib.util
+import io
 import json
 import re
+import tempfile
 import unittest
 from pathlib import Path
 
@@ -193,6 +197,45 @@ class Hygiene(unittest.TestCase):
         guide = read(ROOT / "docs" / "getting-started.md")
         self.assertNotIn("The repo is private", guide)
         self.assertNotIn("private repo", read(ROOT / "README.md").lower())
+
+
+class TranscriptReport(unittest.TestCase):
+    """tools/transcript_report.py (the /tokens command) on a small made-up session."""
+
+    def load(self):
+        spec = importlib.util.spec_from_file_location("transcript_report", ROOT / "tools" / "transcript_report.py")
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        return module
+
+    def session(self):
+        lines = [
+            {"type": "assistant", "message": {"id": "m1", "usage": {"input_tokens": 10, "cache_read_input_tokens": 1000, "cache_creation_input_tokens": 500, "output_tokens": 50}}},
+            {"type": "user", "message": {"role": "user", "content": "hello"}},
+            {"type": "assistant", "message": {"id": "m2", "usage": {"input_tokens": 5, "cache_read_input_tokens": 1500, "cache_creation_input_tokens": 100, "output_tokens": 20}}},
+            {"type": "assistant", "message": {"id": "m2", "usage": {"input_tokens": 5, "cache_read_input_tokens": 1500, "cache_creation_input_tokens": 100, "output_tokens": 20}}},
+            "not json at all",
+        ]
+        handle = tempfile.NamedTemporaryFile("w", suffix=".jsonl", delete=False, encoding="utf-8")
+        for line in lines:
+            handle.write((line if isinstance(line, str) else json.dumps(line)) + "\n")
+        handle.close()
+        return handle.name
+
+    def test_reports_calls_and_cache_hit_ratio_and_skips_junk_lines(self):
+        module = self.load()
+        buffer = io.StringIO()
+        with contextlib.redirect_stdout(buffer):
+            module.main(self.session())
+        out = buffer.getvalue()
+        self.assertIn("model calls: 2", out)  # the repeated message id counts once
+        self.assertIn("hit ratio", out)
+        self.assertIn("context above 150k", out)
+
+    def test_an_image_counts_as_a_fixed_cost_not_its_base64_length(self):
+        module = self.load()
+        image = {"type": "image", "source": {"type": "base64", "data": "A" * 400000}}
+        self.assertLess(module.size(image), 10000)
 
 
 if __name__ == "__main__":

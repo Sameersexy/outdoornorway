@@ -8,11 +8,12 @@ Show the quick start below to the user exactly as written. Then say in one line 
 
 1. Install once. The steps are under "Set up (once)" in `docs/getting-started.md`. If you only write or read scripts, choose the plugin.
 2. Start Claude Code in the folder where you want your scripts saved. For a clone, that is the repo folder.
-3. Type `/` and pick a command. To write a script: `/script ski-aurora-7day youtube voiceover`
-4. Claude saves the script in `content/scripts/` and tells you what is still open.
-5. `/open-items content/scripts/<file>.md` lists everything that still needs a person: footage, permissions, facts to confirm.
-6. `/review-script content/scripts/<file>.md` gets an independent second opinion.
-7. When you are happy, send the script to Sameer. If you cloned the repo, ask Claude: "commit this and open a pull request".
+3. Ask the tour guide the ten questions on the intake form (see "For writers") and keep their answers. Skip this only for a quick generic draft.
+4. Type `/` and pick a command. To write a script: `/script ski-aurora-7day youtube voiceover`
+5. Claude saves the script and a notes file in `content/scripts/` and tells you what is still open.
+6. `/open-items content/scripts/<file>.md` lists everything that still needs a person: footage, permissions, facts to confirm.
+7. `/review-script content/scripts/<file>.md` gets an independent second opinion.
+8. When you are happy, send the script to Sameer. If you cloned the repo, ask Claude: "commit this and open a pull request".
 
 | Command | Use it to |
 |---|---|

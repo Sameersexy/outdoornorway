@@ -7,12 +7,11 @@ Write a video script for: $ARGUMENTS
 
 Where the files live: ROOT is `${CLAUDE_PLUGIN_ROOT}`. If that text does not start with a slash, ROOT is the current folder (a clone of the repo). The validator, tools and data are under ROOT. Files you save for the user go in the current folder, never under ROOT. When you tell the user about a file under ROOT, write its real path, not the word ROOT.
 
-Use the script-writer agent (subagent_type `script-writer`; when installed as a plugin its full name is `outdoornorway-marketing:script-writer`) and follow `ROOT/.claude/skills/scriptcraft/SKILL.md`. Tell the agent what ROOT is.
+Do not read, list or grep any file yourself. Call the script-writer agent once, in the foreground, and wait for it (subagent_type `script-writer`; when installed as a plugin its full name is `outdoornorway-marketing:script-writer`). Give it the request exactly as typed and what ROOT is, and tell it to save its files in the current folder with relative paths. It saves the script and a notes file, and replies briefly.
 
-1. Work out the brief from the request. Platform reels, shorts or tiktok is tier short (up to 25 s). Youtube is tier long (up to 3:20). Style defaults to voiceover; use ugc_talk or ugc_text only when named. Take the tour from `ROOT/campaigns/ski-meta-ads/tours.json`. Facts come only from tours.json, `ROOT/.claude/product-marketing.md` and a page the user names (save its text to a file first and give the agent the path).
-2. Ask the user only for what is missing and cannot be defaulted: the tour or topic, the platform, who films (guide, staff or guest) for a ugc style. Do not ask about anything with a default.
-3. Give the agent the brief, the sources, and these output rules: save the script to `content/scripts/<yyyy-mm-dd>-<slug>.md`, run the validator in draft and --final mode, and reply compactly with the path, the RESULT lines, open items grouped by who confirms, and one alternative hook and call to action. No pasted script, no full validator output.
-4. If the brief has no real moment from a real guide, say so and point to `ROOT/.claude/skills/scriptcraft/assets/guide-moment-intake.md`.
-5. Relay the agent's result in at most 30 lines. Offer `/review-script` as the next step in one short line.
+- Ask the user a question only when the tour or the platform is missing from the request. Everything else has a default that the agent knows.
+- If the request names a web page, fetch its text first, save it as `content/sources/<slug>.txt` in the current folder, and give the agent that path as a source.
+- If the agent says the tour id is unknown, show the ids it lists and stop.
+- If the request has no real moment from a real guide, add one line pointing to the intake form `ROOT/.claude/skills/scriptcraft/assets/guide-moment-intake.md`.
 
-Do not send a progress message such as "the agent is working". Wait for the agent, then reply once with the result.
+Reply once, in at most 15 lines: the agent's short reply and the path of the notes file. Do not paste the script. Send no progress message, and do not check the files afterwards: the agent's validator lines are the proof. Offer `/review-script` as the next step in one short line.

@@ -1184,6 +1184,73 @@ class BriefAndOpenItems(unittest.TestCase):
         self.assertEqual(cli(self.tmp("no front matter here"), "--open-items")[0], 2)
 
 
+class OpenItemKindsAndCards(unittest.TestCase):
+    """--open-items tags each item by kind; --limits and --tour print slices so a writer need not read whole files."""
+
+    def tmp(self, text):
+        import tempfile
+        d = tempfile.mkdtemp()
+        path = os.path.join(d, "t.md")
+        with open(path, "w", encoding="utf-8") as fh:
+            fh.write(text)
+        return path
+
+    def test_open_items_tag_the_kind_and_count_them(self):
+        text = beat(read(TALK), 3, visual="selfie, the guide at the trailhead [VERIFY: Day 2 footage and filming permission, Sameer]")
+        text = beat(text, 4, visual="chest POV on the route [VERIFY: guest release for the group, Voss guide]")
+        code, out = cli(self.tmp(text), "--open-items")
+        self.assertEqual(code, 0)
+        self.assertIn("[permission, footage]", out)
+        self.assertIn("[release]", out)
+        by_kind = [l for l in out.splitlines() if l.startswith("by kind:")]
+        self.assertEqual(len(by_kind), 1)
+        for word in ("footage 1", "permission 1", "release 1"):
+            self.assertIn(word, by_kind[0])
+
+    def test_clean_script_has_no_by_kind_line(self):
+        _, out = cli(os.path.join(FIX, "valid-short.md"), "--open-items")
+        self.assertNotIn("by kind:", out)
+
+    def test_limits_card_is_generated_from_tiers_json(self):
+        cfg = sc.load_json(os.path.join(sc.HERE, "tiers.json"))
+        for tier, style in (("short", "voiceover"), ("short", "ugc_talk"), ("long", "voiceover")):
+            code, out = cli("--limits", tier, style)
+            self.assertEqual(code, 0)
+            self.assertTrue(out.startswith("limits: tier %s | style %s" % (tier, style)))
+            for key in sc.tier_limits(cfg, tier, style):
+                self.assertIn("\n%s: " % key, out, key)
+        self.assertIn("caption_chapters", cli("--limits", "long", "voiceover")[1])
+        self.assertNotIn("caption_chapters", cli("--limits", "short", "voiceover")[1])
+
+    def test_limits_card_rejects_an_unknown_tier_or_style(self):
+        code, out = cli("--limits", "medium", "voiceover")
+        self.assertEqual((code, out.startswith("PARSE ERROR: unknown tier")), (2, True))
+        code, out = cli("--limits", "short", "nope")
+        self.assertEqual((code, out.startswith("PARSE ERROR: unknown style")), (2, True))
+
+    def test_tour_card_holds_the_price_and_every_departure_for_every_tour(self):
+        data = sc.load_json(sc.TOURS_FILE)
+        for tour in data["tours"]:
+            code, out = cli("--tour", tour["id"])
+            self.assertEqual(code, 0, tour["id"])
+            self.assertIn('"price_nok":%d' % tour["price_nok"], out)
+            for dep in tour.get("departures", []):
+                self.assertIn(dep["start"], out, tour["id"])
+            self.assertIn("price_source:", out)
+
+    def test_tour_card_is_much_smaller_than_the_file(self):
+        data = sc.load_json(sc.TOURS_FILE)
+        size = os.path.getsize(sc.TOURS_FILE)
+        _, out = cli("--tour", data["tours"][0]["id"])
+        self.assertLess(len(out), size / 2)
+
+    def test_tour_card_rejects_an_unknown_id_and_lists_the_ids(self):
+        code, out = cli("--tour", "nope")
+        self.assertEqual(code, 2)
+        self.assertIn("unknown tour id 'nope'", out)
+        self.assertIn("ski-aurora-7day", out)
+
+
 class AttackHarness(unittest.TestCase):
     def test_attack_cases_have_no_mismatch(self):
         self.assertEqual(attack_cases.run_all(verbose=False), [])

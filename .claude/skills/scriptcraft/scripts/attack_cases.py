@@ -266,9 +266,11 @@ def judge(expect, rule, code, blocks, warns):
 
 def run_all(verbose=True):
     """Run every case; returns the names of the mismatches."""
+    from concurrent.futures import ThreadPoolExecutor
     bad = []
-    for name, expect, rule, text, args in CASES:
-        code, blocks, warns = run_case(text, args)
+    with ThreadPoolExecutor(max_workers=min(4, os.cpu_count() or 1)) as pool:  # each case is its own subprocess
+        results = list(pool.map(lambda case: run_case(case[3], case[4]), CASES))
+    for (name, expect, rule, text, args), (code, blocks, warns) in zip(CASES, results):
         ok = judge(expect, rule, code, blocks, warns)
         if not ok:
             bad.append(name)
