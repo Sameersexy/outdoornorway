@@ -1,7 +1,7 @@
 {
   "name": "outdoornorway-marketing",
   "description": "Video script skill, validator, writer and reviewer agents and slash commands for Outdoor Norway marketing, plus vetted copywriting skills.",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "author": { "name": "Outdoor Norway" },
   "repository": "https://github.com/Sameersexy/outdoornorway",
   "license": "MIT",

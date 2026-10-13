@@ -13,6 +13,7 @@ The usage report's 37M and the transcript's total differ (different windows and 
 
 - `script-writer` and `script-reviewer` now return compact results: the RESULT line, counts and rule ids, not the full validator output and not the whole script. Full text stays in files.
 - `SKILL.md` no longer asks for the validator output to be pasted verbatim.
+- `/script` returns the finished script as text in the chat and writes files only when the request ends with `save`. The finished script is the one thing printed whole. The writer agent validates in a scratch folder, so nothing lands in the user's folder by default. The cost of this change has not been measured.
 - `tools/transcript_report.py` measures a session, so the effect can be checked.
 - `CLAUDE.md` is short on purpose: it loads in every session.
 
@@ -38,9 +39,9 @@ Both new scripts passed the validator and each came with a notes file in the rig
 4. Review depth: one writer and one reviewer, at most two rounds. Run the two skeptic audits once, before publishing, at medium effort. Four rounds on one script moved the mean score only from 5.5 to 6.3.
 5. Never print a whole file or a full validator run in the main conversation. Use `| grep -E "FAIL|WARN|RESULT"` and `Read` with an offset and limit.
 
-## Trimming the fixed part (your settings, not applied)
+## Trimming the fixed part (your settings)
 
-These change which tools you have, so they are left to you. Put them in `.claude/settings.json` and restart the session. [VERIFY: confirm current feature set for Claude Code deny rules removing a tool from the tool list, and for per-project plugin switches]
+These change which tools and plugins you have. Put the first block in `~/.claude/settings.json` (the guide's "Keep your usage low" section has the same block) and restart the session. Plugin installs do not read a repo's settings, so a copy in the repo would not reach editors who installed the plugin. [VERIFY: confirm current feature set for Claude Code deny rules removing a tool from the tool list, and for per-project plugin switches]
 
 ```json
 {
@@ -51,4 +52,18 @@ These change which tools you have, so they are left to you. Put them in `.claude
 }
 ```
 
-Copy plugin ids from `/plugin`. The plugins this repo does not use are the likely candidates: SEO, data, enterprise search, productivity, product management, Miro and plugin management. Each enabled plugin adds skill descriptions to every call and may add a connector that reconnects mid-session.
+Measured effect on the first turn of a new session. Method: `claude -p "Reply with the single word ok." --permission-mode bypassPermissions --output-format json`, then the `usage` field (input plus cache creation plus cache read). One run each.
+
+| Run | Input tokens on the first turn |
+|---|---|
+| Baseline | 41,397 |
+| With the Artifact deny rule | 29,994 (11,403 fewer) |
+| Deny rule plus plugin disables set with `--settings` | 25,923 (4,071 fewer again) |
+
+The total drop is 15,474 tokens, about 37 percent. The saving is input tokens, not dollars, because cache reads cost far less than fresh input. The plugin disables were projected at about 5.7k and measured at about 4.1k.
+
+Copy plugin ids from `claude plugin list` or `/plugin`. `claude plugin details <plugin id>` shows what a plugin adds to every step, so read that before you decide. The plugins this repo does not use are the likely candidates: SEO, data, enterprise search, product management and Miro. Marketing, productivity and plugin management are optional. Each enabled plugin adds skill descriptions to every call and may add a connector that reconnects mid-session.
+
+Plugins marked "Synced from claude.ai" in `claude plugin list` come from the account and may be synced again in cloud sessions. [VERIFY: whether a plugin disable persists in cloud sessions, and where the plugin menu is]
+
+Connectors (ClickUp, Gmail, Google Calendar, Google Drive, Miro and others) are switched in your account, with `/mcp` or the connector settings on claude.ai. Do not set `disableClaudeAiConnectors: true` in a repo, because it would switch off every claude.ai connector for everyone who uses it.
