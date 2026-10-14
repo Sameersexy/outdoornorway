@@ -1,89 +1,65 @@
 # e-MTB one way tour short: notes
 
-Script: `content/scripts/emtb-9-day-traverse-short.md`. Source idea: `content/scripts/emtb-9-day-traverse-draft.md` (left untouched; the git log labels it unreviewed facts, REJECT). Status: passes the validator in draft mode. `--final` fails only on the intentional placeholders (BR13) and the three unverified rows (F04). Nothing can be filmed or published until F1 is confirmed. If F1 cannot be confirmed in writing, drop the script.
+Script: `content/scripts/emtb-9-day-traverse-short.md`. Source: Sameer's original 42 s script (pasted in session; the saved copy was deleted on request and stays in git history, commit 34f57d9). Status: passes the validator in draft mode (55 words, 22.9 s estimated, 6 beats, 3 facts). `--final` fails on the placeholders (BR13) and the three unverified fact rows (F04). Nothing can be filmed or published until F1 is confirmed. If F1 cannot be confirmed in writing, drop the script.
 
 ## Brief
 
-- Platform: reels (the same cut can go to Shorts; TikTok needs a style and music recheck).
-- Style: voiceover. Tier: short, 25 s cap, declared 25 s as asked (the word target scales with the length: 40 to 55 words at 25 s).
-- Creator: staff. Relationship: staff. Sound: original (natural ride sound under a calm read).
-- Narrator: standard.
-- Takeaway: the tour runs one way and finishes at the Sognefjord.
-- Tour: no tour id. `tours.json` holds 7 ski, snowshoe, aurora and backcountry tours and no bike tour; `product-marketing.md` lists winter products only. The e-MTB tour comes only from the rejected draft.
-- Objection: where do I end up, and how do I get back? Where: beat 4 and its overlay. Getting back: a placeholder sentence in the caption, waiting on the client. Both halves are the writer's reading of the likelier doubt, not a client brief.
-- Structure: outcome-first rewind. The hook asks where the tour finishes, the same handlebar framing returns at the answer, one ask.
-- Size as validated: 5 beats, 30 spoken words (each placeholder counts as 1 word), 12.5 s estimated. With the guide's line at 14 words in beat 3, 40 words and about 17 s.
+- Platform: reels (the same cut can go to Shorts; TikTok needs a music and style recheck).
+- Style: voiceover. Tier: short, 25 s cap, declared 25 s.
+- Voice: guest facing, "you", "our local guides". This is Sameer's own voice from the original script.
+- Tour: no tour id. `tours.json` holds winter tours only and `.claude/product-marketing.md` lists winter products only. Every e-MTB fact comes from the original script and is marked unverified.
+- Objection: is this a loop, or does the route go somewhere? Hook raises it, beat 2 answers it, beat 5 pays it off with the fjord picture.
+- Relationship and creator are left out of the front matter on purpose, so the validator skips the disclosure rule. See open item 6.
+
+## Edit round 2: more fun, within one third
+
+About 31 percent of the spoken words are new (17 of 55). Beats 2 and 4 and the whole structure are untouched.
+
+| Beat | Before | After |
+|---|---|---|
+| 1 | overlay "Point-to-point across Norway" | overlay "Same hotel. Every night." (brings back "every night" from the original, which the hook word cap would not fit in the voice) |
+| 3 | "A full-suspension e-MTB waits for you in Voss." | "The motor takes the climbs your legs would quit on." Overlay "Full-suspension e-MTB" keeps the bike detail. Shots: power button, then a grinning climb |
+| 5 | "The mountains hand you to the fjords." | "Light that doesn't want the day to end." Overlay "Glacier to fjord. One ride." Both lines are from the original |
+| 6 | "Tap the link for the route and dates." | "Tap the link for the route." Drops a claim about what the page shows and clears a pacing warning |
+
+Side effects: the validator count went from 56 to 55 words, the T02, W02, W03 and one T04 warning are gone, and "waits in Voss" is no longer spoken (F2 was reworded to match).
 
 ## Caption
 
-Where do you finish this bike tour? The e-MTB tour page is linked in the bio. [VERIFY: one sentence on how guests get back from the finish, Sameer or the client] #emtb #norway
+Most bike trips circle back to the same hotel. This one runs from Voss to the Sognefjord. [VERIFY: days, riding days, price and departures from Sameer's original script, Sameer or the client] [LINK: e-MTB tour page] #emtb #singletrack
 
 ## Open items, grouped by who confirms
 
 Sameer or the client, facts (kind: fact):
-1. F1, first and blocking: the tour exists, its name as sold, it is on sale, and a page sells it (with its URL). Put the client's own words in quotes in the source cell. Beat 5 and the caption rest on it. The CTA and caption now say only that a page sells the tour, not that it shows the full route.
-2. F3: where the tour finishes, in the client's own words, and whether a boat follows the riding. The draft says "Voss to the Sognefjord" and "Six riding days later, a boat carries you down Norway's longest fjord". "You finish at the Sognefjord" in beat 4 and its overlay rest on this. If the finish is somewhere else, change the voice, the overlay and the hook together.
-3. Getting back: how guests get back from the finish. Not in the draft. It fills the caption placeholder.
-4. Tour name as sold. The voice says "electric mountain bike tour page" because "e-MTB" in the voice trips the capitals rule and no name is sourced.
+1. F1, first and blocking: the tour runs one way from Voss to the Sognefjord. Put the client's own words in the source cell.
+2. F2: a full-suspension e-MTB is part of the tour and its motor takes the climbs. Confirm "included" and the word "full-suspension".
+3. F3: wording the client accepts for "singletrack only our local guides know".
+4. Caption placeholder: days, riding days, price and departures. The script states none of them. The original had 9 days, 6 riding days, 40,000 NOK and 3 departures in 2027, unverified.
+5. Tour page URL for the `[LINK: e-MTB tour page]` placeholder. Do not guess it.
 
 Sameer, decision (kind: other):
-5. Link placement. Reels captions do not make links clickable, so the overlay says "Link in bio" and the caption says the page is linked in the bio. Confirm the link goes in the bio, or change the overlay and the caption.
-6. Who films and who is on camera. The disclosure is spoken and on screen at 3 s as "Outdoor Norway staff filmed all of this" and "Filmed by Outdoor Norway staff". "All of this" and "staff" are unconfirmed. If a guide appears, use the guide's own role words in both places.
-
-The guide who has ridden the route (kind: fact, footage):
-7. Hand over `.claude/skills/scriptcraft/assets/guide-moment-intake.md`. Answer 3 is the one moment for beat 3, 14 words or fewer, quoted in row F6. Answers 5 and 9 give the rider benefit and the doubt; ask the guide to choose a moment that shows what the rider gets from a route that does not loop back. Answer 1 gives the role words for beat 2. Without a real moment the hook, loop and visuals stay at about 5 to 6 out of 10, and the viewer still has no reason why a one way route matters.
-8. Footage (kind: footage): the shot of the guide's moment, filmed where it happens; the finish, filmed at the same handlebar framing as beat 1. No clip is assumed to exist.
+6. Who films and who is on camera. If staff, a guide or a paid guest film it, the validator asks for a relationship and a disclosure beat. Decide before publishing.
+7. Link placement. Reels captions do not make links clickable. "Tap the link" suits an ad or a link sticker; for an organic post, change the CTA to "link in bio".
 
 Sameer, permission and release (kind: permission, release):
-9. Filming permission at the places on the route. A written release from every identifiable rider in beats 2, 3, 4 and 5, with separate boxes for organic posting and ads. [VERIFY with counsel: Norwegian image right and GDPR]
+8. Filming permission along the route and a written release from every identifiable rider, with separate boxes for organic posting and ads. [VERIFY with counsel: Norwegian image right and GDPR]
 
-Sameer, other:
-10. Repo hygiene: the rejected draft fails `tools/test_repo_integrity.py` (arrow glyphs and a middle dot in its table). It was left untouched. Decide whether to edit or archive it.
+## Not used from the original
 
-## Parked fact rows
-
-Removed from the script's facts table because no beat cites them. Each stays a claim from the rejected draft until the client confirms it.
-
-- F2: a descent that starts with glaciers in view and ends at a fjord edge (draft, beat 1). Needed only if a version brings the glacier hook back.
-- F4: a boat down the fjord after six riding days. Folded into the F3 question above.
-- F5: a bike is provided to each guest (draft: "A full-suspension e-MTB is waiting in Voss, set up for you"). Not in any beat. Never write "all gear included" (do-not-claim list in `product-marketing.md`).
-- F7: what a one way route gives the rider, in the guide's words. A short allows 3 facts per script (`tiers.json`, short, facts.per_script_max) and the script cites F1, F3 and F6, so F7 has no fourth beat. Once the guide answers, pick one: the guide's moment carries the benefit (F6 and F7 become one row), F7 replaces F6, or F7 goes in a second short.
-- Not in the table at all: trip length, riding days, price, departures, Bergen arrival and "Norway's longest fjord" (a superlative needs a named source, BR11). Confirm only for a longer version.
+Bergen arrival, the boat on the Sognefjord, "Norway's longest fjord" (a superlative needs a named source), "past every mountain you just rode", nine days, six riding days, price and departures. A short allows 3 facts per script, and F1 to F3 use them. A boat line would be a fourth fact, so it belongs in a longer cut.
 
 ## Assumptions
 
-- Nobody was available to ask, so the conservative defaults apply: creator and relationship staff, disclosure spoken and on screen, sound original, standard narrator, link in the bio. None is confirmed.
-- The draft is a claim to check, not a source. Its words are quoted in the facts rows and every row is verified no.
-- Spoken claims carry a `[VERIFY]` in their voiceover cell: beats 2, 3, 4 and 5. Beat 1 is a question.
-- "Finish" is the one word for where the tour stops, in beats 1 and 4 and both overlays. "End" appears nowhere in the voice or the overlays.
-- Visuals come only from filming that is possible on any guided ride: a mounted camera, a fixed camera beside the trail, a camera operator standing still, stops on level ground. No scenery, place or weather is shown except where a `[VERIFY]` says so. Shot timing is stated.
+- Facts are the original script's claims, not sources. Every row is verified no.
+- Visuals use only filming that is possible on any guided ride: a mounted camera, a camera operator standing still, stops on level ground. "Grinning" in beat 3 needs a rider who is actually enjoying the climb, not a staged smile.
+- Beat 4 says "fast POV". Cut fast, ride at the guide's pace.
 
 ## Accepted warnings
 
-- F04 on F1, F3 and F6 (fact used but not verified yes): they stay until the client or the guide confirms the rows. `--final` blocks on them by design.
-- W02 (30 words, target 40 to 55): each placeholder counts as one word, so the count reads low. It clears once the guide's line is in (about 40 words). Padding now would add claims.
-- W03 on beat 3 (1 word) and beat 4 (6 words): beat 3 is a placeholder for the guide's line; beat 4 is the answer to the hook and says no more than row F3. Adding words now would add unsourced claims.
-- INFO on beats 3 and 4 (about 6 s and 4 s with no voice): the guide's line fills beat 3. Beat 4 leaves room for the finish picture to play.
-
-## Variant
-
-- Hook: "Your bike tour starts in Voss. Where does it finish?" Hypothesis: naming the start gives the viewer a map to anchor the question, so it should beat "Where do you finish this bike tour?" on hold through the first 3 s; the main hook keeps the edge on a muted first frame because it has one place name fewer. It needs F3 confirmed and spends a second place name.
-- Call to action: "Send this to your riding partner." Hypothesis: a send ask should beat the tour page line on shares per reach, while the main line should win on tour page visits. It still needs F1, because the whole script does.
-
-## What changed against the review findings
-
-| Finding | Change | Still waits on |
-|---|---|---|
-| 1 F1 unconfirmed, CTA and caption overreach | F1 kept as no with a note to quote the client; CTA and caption say a page sells the tour and name it as the e-MTB tour page; link placement is a decision for Sameer | Sameer or the client |
-| 2 rows and uncited lines | Beat 2 "different landscape" shots and the staff overlay claim now carry a placeholder or are cut; F2, F4, F5, F7 moved to Parked fact rows; F3 reworded to the draft's route line, "point to point" dropped | F3, who films |
-| 3 loop not closed, "end" shifts | Hook asks where the tour finishes, beat 4 names the Sognefjord from the draft, both overlays carry the question and the answer, "finish" is the only word used | F3 |
-| 4 two beats empty | Beat 3 is a slot for the guide's moment with a word budget; the benefit cannot have its own beat under the 3 fact cap, so the guide is asked for a moment that shows it | the guide |
-| 5 brief not from the client | Objection now names both halves of the likelier doubt; defaults listed as unconfirmed | Sameer or the client |
-| 6 and 10 disclosure | Spoken and on screen at 3 s with the same role words; who films and who is in shot is open item 6; releases are item 9 | Sameer or the guide |
-| 7 confirm F1 and F3 in writing | Open items 1 and 2 | Sameer or the client |
-| 8 payoff answers the hook | Beat 4 answers with the place; beat 1 overlay carries the question | F3 |
-| 9 guide intake, cut two lines | Intake is open item 7; "Watch what's behind the bikes." and "It doesn't end where it began." are cut | the guide |
-| 11 tidy | Uncited rows parked; the helmet strap hands shot replaced by boots stepping off pedals; beat 5 is an ask ("Open ... page") and its overlay says where, not what | footage |
+- F04 on F1, F2 and F3: stays until the client confirms the rows. `--final` blocks on it by design.
+- T04 beat 1 (+25 percent): the hotel line is Sameer's chosen opener at 9 words, inside the 10 word hook cap, and the hook is capped at 3 s. The narrator reads it briskly.
+- H03 (no "you" in the first 3 s): the hotel line is the required opener. "You" arrives at 3 s in beat 2.
+- R02 on "e-MTB" in the beat 3 overlay: the original wording, kept.
 
 ## Safety line for riding shots
 
