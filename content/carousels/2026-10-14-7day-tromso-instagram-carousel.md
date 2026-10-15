@@ -24,7 +24,7 @@ Photo note: Bergen harbour or old streets with the mountains behind, daylight. [
 Alt text: Bergen harbour with mountains rising behind the city.
 
 ## Slide 3
-Headline: Day 2: Morning train to Voss
+Headline: Day 2: Morning train
 Body: Train from Bergen to Voss, about an hour. Then a guided snowshoe tour.
 Fact: F5
 Photo note: Group on snowshoes on a trail in daylight, people at human scale. [VERIFY: which photo from the approved library?]
@@ -45,21 +45,21 @@ Photo note: View from a plane window over mountains in daylight. [VERIFY: which 
 Alt text: A view from a plane window over mountains.
 
 ## Slide 6
-Headline: Day 5: Fjord boat trip
-Body: Private boat. Evening aurora observation at the hotel camp, if the sky allows.
+Headline: Day 5: Private boat trip
+Body: Evening at the hotel camp: look for the northern lights, if the sky allows.
 Fact: F7, F2
 Photo note: Boat on a fjord in daylight, no aurora needed. [VERIFY: which photo from the approved library?]
 Alt text: A boat crossing a fjord in daylight.
 
 ## Slide 7
 Headline: Day 6: Dog sledding
-Body: Then a night hunt for the aurora. It may or may not show.
+Body: Then a night trip to look for the northern lights. They may not show.
 Fact: F8
 Photo note: Dog sled team on a trail in daylight. [VERIFY: which photo from the approved library?]
 Alt text: A dog sled team runs along a trail.
 
 ## Slide 8
-Headline: Day 7: Airport transfer
+Headline: Day 7: To the airport
 Body: We take you to Tromsø Airport. The time fits your flight.
 Fact: F18
 Photo note: Tromsø waterfront or street in winter daylight. [VERIFY: which photo from the approved library?]
@@ -78,14 +78,14 @@ This is the 7 Day Ski in Fjord Norway & Aurora in Tromsø, from Bergen. Here is 
 
 Day 1: Your adventure begins in Bergen. A guide is with you throughout the trip.
 Day 2: Morning train from Bergen to Voss, about an hour. Then a guided snowshoe tour.
-Day 3: One ski day at Voss Resort, with a 1-day ski pass. Skis, boots, poles and helmets are not included, but rental can be arranged.
+Day 3: One ski day at Voss Resort. A 1-day ski pass is included. Skis, boots, poles and helmets: rental can be arranged.
 Day 4: Flight from Bergen to Tromsø. The flight is included.
-Day 5: Fjord trip on a private boat. In the evening, aurora observation at the hotel camp, if the sky allows.
-Day 6: Dog sledding, then a night hunt for the aurora. It may or may not show.
+Day 5: Fjord trip on a private boat. In the evening at the hotel camp, look for the northern lights, if the sky allows.
+Day 6: Dog sledding. Then a night trip to look for the northern lights. They may not show.
 Day 7: We take you to Tromsø Airport. The time fits your flight.
 
 Included: a guide throughout, a 1-day ski pass at Voss Resort and the flight from Bergen to Tromsø.
-Nobody can promise the northern lights. The aurora may or may not show.
+Nobody can promise the northern lights. They may or may not show.
 
 From NOK 41,181. Departures in 2027:
 23 Jan to 29 Jan 2027
@@ -103,5 +103,5 @@ Tap the link in bio to see the full trip.
 
 ## Swipe test
 Cover to the next card: the hook names the ski and a maybe for the northern lights, and Day 1 shows where the trip starts, so the reader swipes.
-Middle to the end: each card is one day with one plain headline, a train, a ski day, a flight, a boat, dog sledding, so the reader can follow the order and wants to see the next day.
+Middle to the end: each card is one day with one plain headline, a train, a ski day, a flight, a boat, dog sledding, the airport, so the reader can follow the order and wants to see the next day.
 The last card gives the start dates, the price and the link in bio, so the reader knows what to do next.
