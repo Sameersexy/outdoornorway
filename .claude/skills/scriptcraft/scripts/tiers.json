@@ -218,7 +218,8 @@
   },
   "narrators": {
     "standard": { "pace": 1.0, "word_scale": 1.0, "note": "Native or fluent English voiceover at a natural, not rushed, pace." },
-    "slow": { "pace": 0.85, "word_scale": 0.85, "note": "Non-native narrator, text-to-speech, or a deliberately calm read. Cuts the word budget by 15 percent." }
+    "slow": { "pace": 0.85, "word_scale": 0.85, "note": "Non-native narrator, text-to-speech, or a deliberately calm read. Cuts the word budget by 15 percent." },
+    "brisk": { "pace": 1.25, "word_scale": 1.25, "note": "A fluent narrator reading a punchy, spoken-style short at about 3.0 words per second, the pace the ugc_talk short tier already uses (top creators 3.3 to 4.9, micro creators 2.87 pooled median). Raises the word budget by 25 percent. Facts, hook words, sentence length and overlay limits do not change." }
   },
   "roles": {
     "note": "Allowed tokens in the role column, comma separated. Loop tokens take a letter: open:A, close:A. disclosure marks the beat that says who the creator is to the brand (D01).",

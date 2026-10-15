@@ -354,6 +354,21 @@ class Budgets(unittest.TestCase):
         slow = check(read("valid-short.md").replace("narrator: standard", "narrator: slow")).total_est
         self.assertGreater(slow, fast * 1.15)
 
+    def test_narrator_brisk_raises_word_budget(self):
+        text = read("valid-short.md").replace("narrator: standard", "narrator: brisk")
+        ctx = check(text)
+        self.assertFalse(found(ctx, "W01"))
+        self.assertFalse(found(ctx, "W02"))
+        ctx = check(text.replace("You ski down.", "You ski down" + " fast" * 26 + "."))
+        self.assertIn("maximum 75", found(ctx, "W01", "block")[0]["message"])
+        ctx = check(read("valid-short.md").replace("narrator: standard", "narrator: brisk").replace("You ski down.", "Ski."))
+        self.assertIn("target 50 to 69", found(ctx, "W02")[0]["message"])
+
+    def test_narrator_brisk_speeds_estimate(self):
+        standard = check(read("valid-short.md")).total_est
+        brisk = check(read("valid-short.md").replace("narrator: standard", "narrator: brisk")).total_est
+        self.assertLess(brisk, standard * 0.85)
+
     def test_t04_warn_band(self):
         text = read("valid-short.md").replace("grips the snow.", "grips the snow well.")
         self.assertTrue(found(check(text), "T04", "warn"))

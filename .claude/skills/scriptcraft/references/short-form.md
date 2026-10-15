@@ -74,7 +74,7 @@ Pick one per script. Each has its own grid. All of them keep the hard rules: bea
 
 Worked loop-back beat 6 (from examples/short-fictional.md, hook "Your guide wants you a little cold."): voiceover "That's why, on every climb," (5 words, role cta), overlay "Send to your overdresser". The replay lands on the hook and completes the sentence. The spoken tail carries no ask; the overlay and caption do. The cta role stays on the beat, so C01 to C04 still apply.
 
-Words: about 40 to 55 in all. Hook 4 to 7 words (6 with narrator slow): at 2.4 words per second, 8 or 9 words need 3.3 to 3.8 s and get a T04 warning in a 3 s beat. 10 words block (H01).
+Words: about 40 to 55 in all. Hook 4 to 7 words (6 with narrator slow): at 2.4 words per second, 8 or 9 words need 3.3 to 3.8 s and get a T04 warning in a 3 s beat. 10 words block (H01). With narrator brisk (3.0 words per second) the target is about 50 to 69 words and a 9 word hook fits a 3 s beat.
 
 ## Hook formulas
 

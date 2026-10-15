@@ -203,8 +203,11 @@ Run `script_check.py --explain RULE_ID` for any rule. The short version:
 |---|---|---|---|
 | standard | 1.0 | 1.0 | Native or fluent English voiceover at a natural, not rushed, pace |
 | slow | 0.85 | 0.85 | Non-native narrator, text-to-speech, or a deliberately calm read. Cuts the word budget by 15 percent |
+| brisk | 1.25 | 1.25 | A fluent narrator reading a punchy, spoken-style short at about 3.0 words per second, the pace the ugc_talk short tier already uses. Raises the word budget by 25 percent |
 
 With `slow`, the hard max becomes 51 words (short) and 374 words (long) in voiceover, before any `seconds` scaling. In ugc_talk, 75 becomes 64 (short) and 560 becomes 476 (long).
+
+With `brisk`, a voiceover short estimates at 3.0 words per second (2.4 x 1.25), the hard max becomes 75 words and the target 50 to 69 (hook words, sentence length, overlay and fact limits do not change). The estimate warns above 23 s, so about 69 spoken words is the practical top for a 25 s short. Use `brisk` for the short voiceover tier only. ugc_talk already runs at 3.0 words per second, so `brisk` there would stack to 3.75. Pick it when the owner wants a faster read and the narrator is fluent; a non-native narrator or text-to-speech should keep `standard` or `slow`.
 
 ## Roles
 
