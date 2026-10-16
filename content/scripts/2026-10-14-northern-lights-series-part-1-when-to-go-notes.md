@@ -3,166 +3,184 @@
 Script file: `content/scripts/2026-10-14-northern-lights-series-part-1-when-to-go.md`
 Sibling: `content/scripts/2026-10-14-northern-lights-series-part-2-how-to-go.md` and its notes. This file also holds the series-level material for both parts.
 
+Launch reel retired: `content/scripts/2026-10-14-northern-lights-launch-reel.md` and its notes are retired on the owner's instruction. They are not edited here; the main thread removes them. Neither part reuses the reel's takeaway, objection, closing line or shots. Two near overlaps were reworded in Part 1: the no-promise wording and a beat 4 shot. R04 compares only against examples and assets, so this was checked by hand.
+
 ## Brief
 
-- Platform: Instagram Reel, 9:16, front matter `reels`. Tier short, style voiceover, creator staff, relationship staff, sound original, narrator standard. Declared length 24 s (tier cap 25 s).
-- Series: "Northern lights basics" (the working name in the owner's brief was "Northern Lights 101", see Assumptions for why the end card line is different). Part 1 of 2, "When to go".
-- Takeaway: the season is wide, so pick your month for the trip around it.
-- Tour: none. This part is education only. It has no price, no tour name and no sales line. The company shows only in the disclosure overlay "We work at Outdoor Norway" and the caption sign-off.
+- Platform: Instagram Reel, 9:16, front matter `reels`. Tier short, style voiceover, creator staff, relationship staff, sound original, narrator standard. Declared 23 s (tier cap 25 s).
+- Series: "Northern lights basics", part 1 of 2, "When to go".
 - Objection answered: is there one right month for the northern lights?
-- Facts source: the owner's blog post on the best time to see the northern lights in Norway, read through a search summary only. The page was not fetched. Every blog row is verified no.
-- Loop: opens in beat 1 (which month suits your trip), closes in beat 5 (pick the month for the rest of your trip). One CTA, in the last 4 s, that points to Part 2.
+- Takeaway: no single month settles it, so check the clear sky before the calendar.
+- Tour: none. Part 1 names no tour, no price and no sales line. The company shows in the beat 2 disclosure ("I work at Outdoor Norway") and in the caption sign-off.
+- Loop: opens in beat 1 ("Is there one right month for you?"), closes in beat 5 ("No single month settles it, so check the sky that night."). One CTA, in the last 4 s (from 20 s): "Follow for part two."
+- Voice facts: F5 (beat 3), F3 (beat 4), F2 (beat 5). Three, the cap. F1, F4 and F6 are caption only.
+- Facts source: the owner's blog post at the URL in Source lines, read through a search summary only. The page was not fetched, so every blog row is verified no.
 
 ## Caption
 
-When should you go to see the northern lights in Norway? In Northern Norway the viewing window is roughly September through March, and exact dates shift with latitude. September and October bring dark nights without deep winter conditions. November through January has the longest darkness. February and March have dark evenings with more daylight, which suits daytime activities. Activity is often strongest between about 20:00 and 02:00, according to the local tourism authority. A clear sky and solar activity matter more than the month, and nobody can promise the lights. Part two, on how to go, is next. We're Outdoor Norway. #northernlights #norway
+When should you go to see the northern lights in Norway? In Northern Norway the viewing window is roughly September through March, and exact dates shift with latitude. September and October have dark nights without deep winter conditions. November through January has the longest darkness. February and March have dark evenings and more daylight. No single month settles it. Clear skies and solar activity matter more than the calendar month, and no timing can promise a sighting. Part two, on how to go, is next. We're Outdoor Norway. #northernlights #norway
+
+Caption fact map: window (F1), September and October (F4), November through January (F5), February and March (F6), no single month settles it (F2), clear skies and no promise (F3). The caption has no digits and no VERIFY placeholder.
 
 ## Open items
 
-Owner (facts and decisions)
-- Fact: check every blog row (F1 to F6) against the live post and quote it in the source cell. The facts came from a search summary and the page was not fetched. Until then strict and final fail on F04. [VERIFY: blog facts B1 to B9 against the live post, owner confirms]
-- Fact: which month guidance Outdoor Norway stands behind. The blog posts disagree, see "Blog conflict on best months". Part 1 does not recommend a month. [VERIFY: best months line, owner decides]
-- Decision: series name. "Northern Lights 101" has a digit group that costs a number from the 2 number budget and needs a verified row. The scripts say "Northern lights basics". [VERIFY: series name, owner]
-- Decision: posting order and gap between Part 1 and Part 2, and whether a Part 3 is planned. A Part 3 would make the "of two" overlays wrong. [VERIFY: series plan, owner decides]
-- Fact: the "20:00 to 02:00" line in the caption is attributed in the post to the local tourism authority. Confirm the attribution and the hours in the live post. [VERIFY: 20:00 to 02:00 attribution, owner confirms]
+Owner (fact)
+- Blog facts B1 to B9 (summary wording) against the live post. Quote each line from the post in the source cell and set the row to yes. F2, F3 and F5 are in the voice and cause the F04 lines. F1, F4 and F6 are caption only. [VERIFY: blog facts against the live post, owner confirms]
 
-Editor (footage, kind: footage)
-- Real clips for every visual: guests walking a snowy track at dusk with one stopping to look up, a wide shot of a dark sky above a ridge with thin cloud, a paper wall calendar with a hand flipping pages, a guide's gloved hand pointing up, guests on snowshoes in daylight, the same slope after dark with headlamps, cloud drifting off a dark ridge with stars behind it, a guest looking up with breath steaming, a pen circling one month on a calendar, the group walking away on a snowy track in daylight, a slow pan over a snowy ridge under a dark sky. The calendar shots are a prop that has to be filmed. No composited or generated sky. If a real aurora clip is added, it needs a known source. [VERIFY: which of these clips exist in the library, editor confirms]
+Owner (decision)
+- Which months Outdoor Norway names. The blog post and a companion post disagree (see Blog conflict on which months to name). Part 1 names no single month and should not until this is settled. [VERIFY: months line, owner decides]
+- Series name "Northern lights basics". The earlier working name "Northern Lights 101" is dropped, because its digits cost a number from the budget and need a verified row. [VERIFY: series name, owner confirms]
+- Posting order, gap between the two parts, and whether a Part 3 is planned (see Possible Part 3). Part 1 says "Follow for part two", so Part 2 should follow soon. [VERIFY: series plan, owner decides]
+
+Editor (kind: footage)
+- Real clips for beats 1 to 6 (see Beat map). Confirm each exists in the library. No composited or generated sky. No aurora clip is assumed; if one is added, it needs a known source. [VERIFY: which clips exist, editor confirms]
+- The paper wall calendar and the pen are a prop that has to be filmed for beats 2 and 5. [VERIFY: calendar prop shoot, editor confirms]
 - Burned-in captions from the final voiceover once the audio is recorded.
 
-Guests in shot (kind: release)
-- A written release from every guest in shot, with guardian consent for anyone under 18. [VERIFY with counsel: Norwegian image right and GDPR, owner confirms who checks]
+Release (kind: release)
+- Beat 1 shows gloved hands, beat 2 a hand turning a page, and beat 5 a finger and a pen. Beat 4 has no person in shot. Each person whose hands show needs a written release, with guardian consent for anyone under 18, or staff consent recorded for staff. [VERIFY with counsel: Norwegian image right and GDPR, owner confirms who checks]
 
 Designer (kind: footage)
-- The paired cover frames ("When" here, "How" in Part 2) and the shared end card, all inside the safe box. See "Connection devices".
+- The paired cover frames ("When" here, "How" in Part 2) and the shared title card, all inside the safe box. [VERIFY: designer confirms the covers and the grid crop]
 
 Music (kind: permission)
 - Sound is original. If music is added, the licence has to cover business use on Instagram. [VERIFY: music licence, owner confirms]
 
-Voice recorder
-- Standard narrator is assumed. A test copy at slow pace fails: 52 words against a maximum of 49 (W01) and T01 estimated 25.5 s against a maximum of 24. A slow voice needs a shorter cut.
+Link (kind: permission)
+- Part 1 has no link. Part 2 says "See the details in the bio.", so Part 2 is not posted until the owner names the page the bio link opens and that page lists the tours. [VERIFY: bio link page, owner names it]
 
 ## Assumptions
 
-- Relationship staff and sound original, narrator standard, because nobody could be asked.
-- The end card line is "Northern lights basics", and the part markers are spelled "part one of two" and "part two of two". The validator counts a digit group as a number, "101" and "1 of 2" would use the number budget (2 per script) and each needs a verified row cited in that beat. In Part 2 the budget is already full ("7" and "two"). Spelled "two" counts as a number, "one" is free.
-- The overlay in beat 1 holds the topic and the part marker together (6 words, the cap). The series line sits on the end card in beat 6, so no overlay goes over 6 words.
-- Beat 1 says "Northern Norway" because F1 names it. Part 2 says "Northern lights" in its first overlay because the day tour's start point is unknown.
-- Blog rows B5 (April to August is generally poor) and B7 (the Tromso region, late August to early April) are left out. B5 is in conflict with the companion post. B7 would add a place and a second window, and the facts table is capped at 3 in the voice.
-- F4, F5 and F6 are used in the caption only. A row that no beat cites does not count toward the 3 fact cap, but the caption digits still need a verified row (F04).
-- Beat 3 uses only the descriptive half of the post's February and March line (dark evenings, more daylight). The post's recommendation of those months for a fuller trip is not used.
-- "Nobody can promise the lights" is the honest line (BR10). It rests on the blog's "no timing guarantees a sighting" and on the do-not-claim list in the product file. The voice never gives odds or a best month.
-- The calendar is a repeated visual prop (flipping pages, a pen circling a month). It carries the "when" idea on mute and echoes into Part 2. If the owner prefers guests only, the shots can be swapped for walking and sky shots with no change to the words.
-- Part 1 promises Part 2 in the last beat ("Follow for part two, how to go."). That is only true if Part 2 is posted, so post them together or Part 2 soon after.
-- The caption has 2 hashtags. The brief said 1 to 3, and the validator's C05 allows at most 2.
+- Relationship staff, sound original and narrator standard, because nobody could be asked.
+- The disclosure is in the voice ("I work at Outdoor Norway.") in beat 2, before 5 s, with the same words as an overlay.
+- The beat 6 title card carries the series line "Northern lights basics". The beat 6 overlay "This is part one." carries the part marker.
+- Number budget: Part 1 counts 1 number, the spelled "two" in "Follow for part two." Part 2 counts 2 (the validator's figures).
+- The beat 3 line "Long, dark nights are part of the season." draws on the summary wording of B2 ("dark nights") and B3 ("the longest darkness"). It names no month.
+- Part 1 does not recommend a month. February and March appear only in the caption, in the descriptive words of B4 ("dark evenings", "more daylight"). The post's recommendation of those months is not used.
+- Blog rows B5 (April to August is generally poor) and B7 (the Tromsø region, late August to early April) are left out. B5 conflicts with the companion post, and B7 would add a place and a second window while the voice has a 3 fact cap.
+- "Nobody can promise a sighting" (beat 4) is the no-promise line (BR10). It rests on B9 and on the do-not-claim list in the product file. The voice gives no odds and names no month.
+- Beat 5 is the reusable rule: no single month settles it, so check the sky that night. It is not a month pick.
+- Overlays on the information beats (2, 3 and 4) are full sentences of 6 words or fewer, so a sound-off viewer gets the point. Beat 3's overlay sends the viewer to the caption for the windows, because the voice names no month.
+- The calendar is a repeated prop. It carries the "when" idea on mute and echoes into Part 2. If the owner prefers no prop, swap the calendar shots for sky shots. The words do not change.
+- Narrator: standard. Tested this round on a throwaway copy with narrator slow: 49 words, estimated 24.0 s (T01 fails at 23 s), and W01 sets the slow maximum at 47 words. Beats 1, 2 and 4 also fail T04 at a slow pace. A slow voice needs 47 words or fewer; the script is not changed for it.
+- The caption has 2 hashtags, the validator's limit (C05).
 
 ## Accepted warnings
 
-Plain run: RESULT: PASS. The five warnings are all F04 and all from one cause. The blog page was not fetched, so every blog row is verified no, and the validator flags what rests on them.
-- F04 caption: number only in an unverified fact row: 02:00. Stays until the owner confirms F6 against the live post.
-- F04 caption: number only in an unverified fact row: 20:00. Same cause, same fix.
-- F04 fact used but not verified yes: F1. Stays until the owner confirms the window against the live post.
-- F04 fact used but not verified yes: F2. Same cause.
-- F04 fact used but not verified yes: F3. Same cause.
+Plain run: RESULT: PASS with three F04 warnings, all from one cause: the blog page was not fetched, so the rows are verified no and the validator flags what rests on them.
+- F04 fact used but not verified yes: F2 (no single month settles it, beat 5). Stays until the owner checks the B6 line against the live post, because marking it yes without reading the page would invent a verification.
+- F04 fact used but not verified yes: F3 (clear skies and no promise, beat 4). Stays until the owner checks B9 against the live post. The do-not-claim half is in the product file, but the clear-skies half rests on the blog summary alone.
+- F04 fact used but not verified yes: F5 (longest darkness, November to January, beat 3). Stays until the owner checks B3 against the live post.
 
-Marking those rows yes without reading the page would be inventing a verification, so the rows stay no. The script carries no [VERIFY] tag in a script cell, so BR13 has nothing to block, and all open [VERIFY] items live in this file.
+Strict run: RESULT: FAIL (0 blocking, 3 warnings). The same three F04 lines.
+
+Final run: RESULT: FAIL (3 blocking). The same three F04 lines. No BR13 line, because the script has no VERIFY placeholder in its text. The owner's accepted class is "F04 lines about unverified blog facts", and it clears when the owner verifies the rows.
 
 ## Variant
 
-- Hook variant: "No month can promise you the lights." Hypothesis: a flat claim that the month does not decide the sighting should hold viewers in the first 3 s better than the question, because it breaks the common belief at once. Risk: it does not name the northern lights outright ("the lights"), so a cold viewer depends on the overlay and the cover frame. The main hook stays because it names the subject. A strict run on a throwaway copy gives only the five F04 lines (52 words, estimated 21.7 s).
-- CTA variant: "Send this to whoever plans your trip." Hypothesis: for a pure education part, a send prompt should beat the follow prompt on shares per view, at the cost of the pointer to Part 2, which would then live only in the caption. A strict run on a throwaway copy gives only the five F04 lines.
+- Variant: hook. "No month can promise you the lights." Hypothesis: a flat claim that the month does not decide the sighting should hold viewers in the first 3 s better than the question, because it breaks the common belief at once. Risk: a cold viewer depends on the overlay and the cover frame to learn the subject. The main hook stays because it names the subject.
+- Variant: CTA. "Send this to whoever plans." Hypothesis: for a pure education part, a send prompt should beat "Follow for part two." on shares per view, at the cost of the pointer to Part 2, which would then live only in the caption.
 
 ## Beat map
 
-1. 0 to 3 s, hook: "Which month suits your northern lights trip?" Guests walk a snowy track at dusk and one looks up. Overlay "Northern Norway / part one of two". Opens loop A.
-2. 3 to 6 s, setup and disclosure: "The season runs roughly September to March." Calendar pages flip month by month. Overlay "We work at Outdoor Norway" (starts before 5 s). F1.
-3. 6 to 11 s, build: "February and March bring dark evenings, more daylight for activities." Snowshoes by day, the same slope after dark. F2.
-4. 11 to 16 s, shift and explain: "Clear sky matters more than the month. Nobody can promise the lights." Cloud clears from a ridge. Overlay "Plus solar activity". F3.
-5. 16 to 20 s, payoff: "Pick the month for the rest of your trip." A pen circles one month. Closes loop A.
-6. 20 to 24 s, call to action: "Follow for part two, how to go." Slow pan, then the end card. Overlay "Northern lights basics".
+Footage means a real clip. A title card is plain text on a night-sky frame with no logo.
 
-The 3 facts are F1, F2 and F3. The 1 number is "two" in the overlay. Each beat cites at most one fact row.
+1. 0 to 3 s, hook, opens loop A. Voice: "Is there one right month for you?" Visual: gloved hands wipe frost off a window at dusk, and the glass clears onto a dark sky (footage, hands in shot). Text: "This part covers when to go."
+2. 3 to 7 s, setup and disclosure. Voice: "I work at Outdoor Norway. Here's how the year runs." Visual: close-up of a paper wall calendar, then a hand turns one page (footage, prop and hand). Text: "I work at Outdoor Norway."
+3. 7 to 11 s, build, F5. Voice: "Long, dark nights are part of the season." Visual: wide shot of a dark sky above a snowy ridge, then thin cloud drifts across the stars (footage, no people). Text: "The caption lists each window."
+4. 11 to 15 s, shift and explain, F3. Voice: "Clear skies matter, and nobody can promise a sighting." Visual: a dark ridge under a sky that clears, stars coming out (footage), then a single lit window across dark snow (footage, no people). Text: "Solar activity matters as well."
+5. 15 to 20 s, payoff, closes loop A, F2. Voice: "No single month settles it, so check the sky that night." Visual: a finger points up at the stars over a snowy track (footage, hand in shot), then a pen circles a date on a paper wall calendar (footage, prop and hand). Text: "Is your sky clear that night?"
+6. 20 to 23 s, call to action. Voice: "Follow for part two." Visual: a still shot across a snowy plain at blue hour, no people (footage), then the plain title card: the series name on a dark snow-field frame. Text: "This is part one."
+
+Footage: beats 1 to 5 and the first shot of beat 6. Title card: the second shot of beat 6 only. The editor uses the still first; the title card is the fallback.
 
 ## Validator (final state)
 
-- Plain: RESULT: PASS. 52 words, estimated 21.7 s, declared 24 s, 6 beats, 3 facts, 1 number. 5 warnings, all F04.
-- Strict: RESULT: FAIL (0 blocking, 5 warnings). The same five F04 lines, nothing else.
-- Final: RESULT: FAIL (5 blocking, 0 warnings). The same five F04 lines. No BR13 line.
+- Plain: RESULT: PASS. 49 words, estimated 20.4 s, declared 23 s, 6 beats, 3 facts, 1 number. Three F04 warnings (F2, F3, F5).
+- Strict: RESULT: FAIL (0 blocking, 3 warnings). The same three F04 lines.
+- Final: RESULT: FAIL (3 blocking). The same three F04 lines. No BR13 line.
 - `--open-items`: 0 placeholders, 6 unverified fact rows (F1 to F6).
 
-## Sources
+## Filming safety
 
-- The owner's blog post https://www.outdoornorway.com/blog/best-time-to-see-northern-lights-in-norway, read through a search summary, page not fetched. The fact sheet rows B1 to B9 feed F1 to F6. [VERIFY: the facts against the live post, owner confirms]
-- `.claude/product-marketing.md`: the do-not-claim list (no aurora sighting or guarantee).
-- `.claude/skills/scriptcraft/SKILL.md`, `assets/script-template-short.md`, `references/short-form.md`, `references/brand-and-claims.md`, `references/tiers.md`, `scripts/brand_rules.json`. Limits from `script_check.py --limits short voiceover`. tiers.json was not read whole and was not edited.
+Several shots are at dusk or at night on snow (beats 1, 3, 4, 5 and 6). Before any night shot:
+- A guide is present for the whole shoot.
+- Marked routes only. No off-trail walking and no unmarked ice.
+- Stop when hands are numb, or when the light is too low to walk safely.
+- Everyone in shot wears a headlamp and warm layers.
+- Nobody is posed on a slope or on ice for a shot.
+- Local rules for filming on the chosen site and any permits. [VERIFY: local rules and permits for filming on the site, owner or guide confirms]
+
+## Design changes in round 2
+
+- Launch reel retired. Part 1 no longer shares its takeaway, objection or shots.
+- Part 1 no longer steers to one month. The round 1 close "Pick the month for the rest of your trip." is replaced by "No single month settles it, so check the sky that night."
+- The hook shot is hands wiping frost off a window, not guests walking. Beat 4's second shot is a lit window with no guest, because the guest shot restated the retired reel's shot.
+- Part 1 has one sensory line in the voice, drawn from the summary wording of B2 and B3 ("Long, dark nights are part of the season.").
+- Part 1 caption dropped the 20:00 to 02:00 line (B8). B8 appears in Part 2 only, as the paraphrase "Aurora often peaks at night".
+- The disclosure is in the voice in beat 2 ("I work at Outdoor Norway."), with the beat 2 text as a plain fact line.
+- Text overlays are full sentences of 6 words or fewer. Round 1 had a 36 character overlay and a repeat of the voice.
+- The caption no longer says "There is no single best month." It says "No single month settles it." and "no timing can promise a sighting."
+- Length 23 s and 49 words, down from 24 s and 52 words.
+
+## Source lines
+
+Read through a search summary only. The page was not fetched (DNS and proxy errors). The quotes below are the summary's wording, not the post's text. Every line below is verified no. The owner checks each one against the live post.
+- URL: https://www.outdoornorway.com/blog/best-time-to-see-northern-lights-in-norway
+- B1 (summary wording): "The viewing window in Northern Norway is roughly September through March. Exact dates shift with latitude." Feeds F1 (caption only).
+- B2 (summary wording): "September and October: dark nights without deep winter conditions." Feeds F4 (caption only) and the beat 3 wording.
+- B3 (summary wording): "November through January: the longest darkness (December and January named for the longest darkness)." Feeds F5 (voice, beat 3).
+- B4 (summary wording): "February and March: dark evenings with more daylight, which suits daytime activities. For a fuller Arctic trip with daytime activities the post recommends February through March." Feeds F6 (caption, descriptive part only; the recommendation is not used).
+- B5 (summary wording): "April through August is generally poor for aurora trips." Not used.
+- B6 (summary wording): "The post says there is no single best month." Feeds F2 (voice, beat 5, as "no single month settles it").
+- B7 (summary wording): "Tromso region: visible aurora can occur from late August to early April when the sky is dark and clear enough." Not used.
+- B8 (summary wording): "The post cites the local tourism authority: activity is often strongest between about 20:00 and 02:00." Not used in Part 1. Used in Part 2 as a paraphrase.
+- B9 (summary wording): "Clear skies and solar activity matter more than the calendar month. No timing guarantees a sighting." Feeds F3 (voice, beat 4, and caption).
+- Do-not-claim list, `.claude/product-marketing.md`: "Any aurora sighting or guarantee. The page says no departure can guarantee one." Supports the no-promise line.
 - Not used: tours.json (this part names no tour).
 
 ## Series
 
 Ideas weighed
-1. "Northern lights basics": when to go, then how to go. Chosen. Two plain questions a trip planner asks in that order, each with one takeaway, each able to stand alone and to run in either order.
-2. "Day or week" launch pair: Part 1 the day tour, Part 2 the 7 day trip. Rejected. It is a sales series, the owner asked for something broader and educational, and the day tour has no facts beyond "launched".
-3. "Myths about the northern lights": two myth-bust parts. Rejected for now. Each myth needs its own verified row, and the only source read is one blog summary. It can follow once the other blog posts are read.
+1. "Northern lights basics": when to go, then how to go. Chosen. Two plain questions a trip planner asks in that order, each with one takeaway, each able to stand alone.
+2. "Day or week" launch pair: Part 1 the day tour, Part 2 the 7 day trip. Rejected. It is a sales series, the owner asked for something broader and educational, and the day tour has no facts beyond "has launched".
+3. "Myths about the northern lights": two myth-bust parts. Rejected for now. Each myth needs its own verified row, and the only source read is one blog summary.
 
-Why 1: it fits the facts that exist (the blog summary for Part 1, tours.json and the owner brief for Part 2), keeps Part 1 free of any sale, and gives Part 2 a natural reason to name the tours.
-
-## Connection devices
-
-- End card: the same plain night-sky frame and layout in both parts, with the series line "Northern lights basics" (beat 6, both parts).
-- Part markers: "part one of two" and "part two of two" in the beat 1 overlay, spelled out so they do not cost a number from the budget.
-- CTA: Part 1 ends "Follow for part two, how to go." (7 words, one CTA, last 4 s). Part 2 ends with the link in bio line.
-- Part 2 hook: "Month picked? Now choose how you go." It echoes the close of Part 1 for people who saw it. For a cold viewer the overlay "Northern lights / part two of two" gives the subject, and the line reads as a plain question about choosing how to go.
-- Cover frames: a pair on the same night-sky frame with one word each, "When" and "How", same type and position, inside the safe box. [VERIFY: designer confirms the covers and the grid crop]
-- Visual rhyme: the paper wall calendar. Part 1 flips pages and circles a month. Part 2 opens on a circled page and ends tapping a row of squares.
-- Disclosure: the same overlay in beat 2 of both parts.
-- Captions: each ends with a line pointing to its sibling ("Part two, on how to go, is next." and "Part one covers when to go.") and the same sign-off and hashtags.
-- Each part works alone: Part 2 never needs Part 1 for a fact, and Part 1 never needs Part 2.
+Connection devices
+- Series line "Northern lights basics" on the beat 6 title card in both parts, on the same night-sky frame.
+- Part markers in beat 6 overlays: "This is part one." and "This is part two."
+- CTA: Part 1 "Follow for part two." Part 2 "See the details in the bio."
+- Visual rhyme: the paper wall calendar. Part 1 flips a page and circles a date. Part 2 opens on a circled page and ends with a finger tapping a row of squares.
+- Disclosure: beat 2 in both parts, in the voice and as the overlay.
+- Captions: each points to its sibling. Part 1: "Part two, on how to go, is next." Part 2: "Part one covers when to go."
+- Each part works alone. Part 2's hook does not depend on Part 1.
+- Cover frames: a pair on the same night-sky frame, one word each, "When" and "How", same type and position, inside the safe box.
 
 ## Instagram pointers
 
 Every claim about current Instagram features carries a tag, because the feature set changes and was not checked live.
-
 1. Format: 9:16 at 1080 by 1920, filmed or cropped for vertical. [VERIFY: confirm current feature set for Instagram]
-2. Hook inside 3 s: motion, a question with "your" and the overlay all sit in beat 1 of Part 1. Put the strongest motion in frame 1, not a title or logo.
-3. Sound off: burn in captions from the final voiceover as their own track, two lines at most, in the lower part of the safe box. Overlays add to the voice and do not repeat it. [VERIFY: confirm current feature set for Instagram]
-4. UI safe zone: keep text out of the top 14 percent (about 270 px), the bottom 35 percent (about 670 px) and 6 percent at each side. The shared safe box is x 122 to 838 px, y 270 to 1210 px. The end card text must sit inside it. [VERIFY: confirm current feature set for Instagram]
-5. Cover frames: the paired "When" and "How" covers use a real frame, never a composited or generated sky, and sit inside the safe box. [VERIFY: confirm current feature set for Instagram, including how the profile grid crops the cover]
-6. Grouping the pair: post Part 1 first, then Part 2. Whether to group them (for example by pinning, or a highlight, or any series option the app offers) is the owner's call. [VERIFY: confirm current feature set for Instagram]
-7. Link: only Part 2 says "link in bio". The bio link has to open a page that lists the tours before Part 2 goes live. The day tour page is unknown. [VERIFY: which page the bio link opens, owner confirms]
-8. No aurora promise: both parts say nobody can promise the lights, in the voice and in the caption. In comments, never answer "will we see them?" with a yes or with odds, and never name a best month while the blog posts disagree.
-9. Music: sound is original. Trending audio is not allowed, because the scripts name the brand and a trip (rule SND01). If music is added, the licence must cover business use on Instagram. [VERIFY: confirm current feature set for Instagram, and the music licence, owner confirms]
-10. Caption shape: a question first, then the facts, then the sibling line, then the sign-off and 2 hashtags (the validator's limit). The first line has to carry the point because only the start of a caption may show before the cut. [VERIFY: confirm current feature set for Instagram]
-11. Carousel option: the caption-only facts (F4 to F6) could become a single carousel on the season, if the designer has time. Keep the facts the same in both places. [VERIFY: whether a carousel exists, designer confirms]
-12. Disclosure: staff relationship. The beat 2 overlay says "We work at Outdoor Norway" before 5 s in both parts, and each caption ends "We're Outdoor Norway."
-
-## Extending to 30 to 35 s
-
-The tier cap is 25 s, so `seconds: 32` is a parse error with tiers.json as it is. The tests below ran on a throwaway copy of the skill folder outside the repo, with only these limits changed: max_seconds 35, warn_seconds 33, words hard_max 84 (target 56 to 77), beats target_max 7 and hard_max 8. The repo files were not touched. Limits scale with the declared seconds divided by the cap, so raising the cap alone shrinks the word budget. The word, beat and warn limits have to move with it.
-
-Part 1 at 32 s, 7 beats (3 facts, no new fact)
-1. 0 to 3 s: the same hook and overlay.
-2. 3 to 7 s: "The season runs roughly September to March." Disclosure overlay.
-3. 7 to 12 s: "February and March bring dark evenings, more daylight for activities."
-4. 12 to 17 s: "Clear sky and solar activity matter more than the month."
-5. 17 to 22 s: "Nobody can promise the lights, in any month." Overlay "Plus solar activity".
-6. 22 to 28 s: "Pick the month for the rest of your trip." Closes the loop.
-7. 28 to 32 s: "Follow for part two, how to go."
-- Result on the throwaway copy: RESULT: PASS, 58 words, estimated 24.2 s, 7 beats, 3 facts, 1 number, plus the same F04 lines. A first run failed C02 because the CTA started at 27 s, so the last two beats were retimed to 22 to 28 s and 28 to 32 s (the CTA must start in the last 4 s).
-
-Part 2 at 32 s, 7 beats (adds multi-day tours in the voice, so 4 facts)
-- A new beat 4 (12 to 17 s): "Other multi day tours have launched as well." (F4). The rest keeps the same order, with the CTA at 28 to 32 s.
-- Result: with the fact cap at 3, F02 blocks (4 facts). With the fact cap raised to 4 as well, RESULT: PASS in plain and strict, 60 words, estimated 25.4 s, 4 facts, 2 numbers. So Part 2 needs the cap raised in words, beats and facts, and Part 1 needs only words and beats. [VERIFY: owner decides whether to change tiers.json, and whatever length is chosen, check it against the current Reel length options for Instagram]
+2. Hook inside 3 s: motion, a question with "you" and a text overlay all sit in beat 1 of Part 1. Put the strongest motion in frame 1, not a title or logo.
+3. Sound off: burn in captions from the final voiceover, two lines at most, in the lower part of the safe box. Overlays restate the voice in short form in both parts. [VERIFY: confirm current feature set for Instagram]
+4. UI safe zone: keep text out of the top 14 percent (about 270 px), the bottom 35 percent (about 670 px) and 6 percent at each side. Shared safe box x 122 to 838 px, y 270 to 1210 px. [VERIFY: confirm current feature set for Instagram]
+5. Cover frames: the paired "When" and "How" covers use a real frame, never a composited or generated sky, and sit inside the safe box. [VERIFY: confirm how the profile grid crops the cover]
+6. Grouping: post Part 1 first, then Part 2. Pinning, a highlight or any series option is the owner's call. [VERIFY: confirm current feature set for Instagram]
+7. Link: only Part 2 points to the bio, with "See the details in the bio." The bio page has to list the tours before Part 2 goes live. [VERIFY: which page the bio link opens, owner names it]
+8. No aurora promise: both parts say nobody can promise a sighting, in the voice and in the caption. In comments, never answer "will we see them?" with a yes or with odds, and never name one month as the answer while the blog posts disagree.
+9. Music: sound is original. Trending audio is not allowed, because the scripts name the brand and a trip (rule SND01). If music is added, the licence must cover business use on Instagram. [VERIFY: music licence, owner confirms]
+10. Caption shape: a question first, then the facts, then the sibling line, then the sign-off and 2 hashtags. The first line has to carry the point, because only the start of a caption shows before the cut. [VERIFY: confirm current feature set for Instagram]
+11. Carousel: not planned in this round. The owner's carousel feedback is handled separately.
+12. Disclosure: staff relationship. Beat 2 says "I work at Outdoor Norway" before 5 s in both parts, and each caption ends "We're Outdoor Norway."
 
 ## Possible Part 3: places
 
-- The owner's blog has a post on the best places to see the northern lights in Norway (title and URL from a search listing: https://www.outdoornorway.com/blog/best-places-to-see-the-northern-lights-in-norway). It was not opened. Nothing about its content is used. [VERIFY: the post and its URL, owner confirms]
-- A Part 3 would need its own takeaway in one sentence, written after the post is read, and every place name would need a facts row (F07).
-- Series markers: if Part 3 is planned before Part 1 goes live, the markers "part one of two" and "part two of two" need to change in both scripts. The other option is to post it as a bonus with its own overlay, so the first two stay as they are. [VERIFY: series plan, owner decides]
-- The place names the brand rules know are Norway, Tromso, Tromsø and Voss. Others need a verified row.
+- The owner's blog has a post on places to see the northern lights in Norway. Title and URL from a search listing, not read: https://www.outdoornorway.com/blog/best-places-to-see-the-northern-lights-in-norway. Two more posts were listed the same way (a local guide to whether you can see the lights in Norway, and a 2026 guide to the northern lights in Norway). Nothing about their content is used. [VERIFY: the posts and their URLs, owner confirms]
+- A Part 3 needs its own takeaway in one sentence, written after the post is read, and every place name needs a facts row. The brand rules know Norway, Tromso, Tromsø and Voss. Others need a verified row.
+- If Part 3 is planned before Part 1 goes live, the markers "part one of two" and "part two of two" need to change. The other option is to post it as a bonus with its own overlay. [VERIFY: series plan, owner decides]
 
-## Blog conflict on best months
+## Blog conflict on which months to name
 
-- The best-time post (read through a search summary) is reported to say there is no single best month (B6). It also recommends February through March for a fuller Arctic trip with daytime activities (B4), and says April through August is generally poor (B5).
-- A companion Outdoor Norway post (not read) is reported to list September to October and March to April as best months, citing an equinox effect. That leaves out February and puts April in.
-- Handling: the scripts name no best month. Beat 3 describes February and March (dark evenings, more daylight) without recommending them. F3 carries "no single best month". B5 is left out of the caption. The comment guidance says never to name a best month.
-- Also noted: the 2027 departures of the 7 day trip in Part 2 start between 23 Jan and 27 Feb (tours.json), and Part 1 mentions March. The scripts do not link the two, and none of them says the 7 day trip runs in March. [VERIFY: whether the owner wants the two parts to point at the same months, owner decides]
+- The blog post at the URL above (read through a search summary) is reported to say there is no single month that is the answer (B6). It also recommends February through March for a fuller Arctic trip with daytime activities (B4), and says April through August is generally poor (B5).
+- A companion Outdoor Norway post (not read) is reported to name September to October and March to April as the months to go, citing an equinox effect. That leaves out February and puts April in.
+- Handling: the scripts name no single month. Beat 3 describes February and March (dark evenings, more daylight) without recommending them. The caption carries "No single month settles it." Comments never name one month as the answer.
+- The 7 day trip's 2027 departures in Part 2 are not in its text, so no link between them is made in the scripts. [VERIFY: whether the owner wants the two parts to point at the same months, owner decides]

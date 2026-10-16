@@ -1,110 +1,145 @@
 # Northern lights basics, part two of two: how to go (Instagram Reel): notes
 
 Script file: `content/scripts/2026-10-14-northern-lights-series-part-2-how-to-go.md`
-Sibling: `content/scripts/2026-10-14-northern-lights-series-part-1-when-to-go.md` and its notes. The series-level material (ideas weighed, connection devices, Instagram pointers, Part 3, the blog conflict) is in the Part 1 notes.
+Sibling: `content/scripts/2026-10-14-northern-lights-series-part-1-when-to-go.md` and its notes. The series-level material (ideas weighed, connection devices, Instagram pointers, Possible Part 3, blog conflict on months) is in the Part 1 notes.
+
+Launch reel retired: `content/scripts/2026-10-14-northern-lights-launch-reel.md` and its notes are retired on the owner's instruction. They are not edited here; the main thread removes them. This part reuses none of the reel's takeaway, objection, closing line or shots. Two near overlaps were reworded: the no-promise wording and the pointer to the bio. R04 compares only against examples and assets, so this was checked by hand.
+
+Do not post this part yet. "See the details in the bio." needs the page the bio link opens to list the tours, and the owner has not named that page (see Open items).
 
 ## Brief
 
-- Platform: Instagram Reel, 9:16, front matter `reels`. Tier short, style voiceover, creator staff, relationship staff, sound original, narrator standard. Declared length 24 s (tier cap 25 s).
+- Platform: Instagram Reel, 9:16, front matter `reels`. Tier short, style voiceover, creator staff, relationship staff, sound original, narrator standard. Declared 23 s (tier cap 25 s).
 - Series: "Northern lights basics", part 2 of 2, "How to go".
-- Takeaway: you can go on a day tour or a longer trip, so pick the length that fits your time.
-- Tour: ski-aurora-7day (the 7 day trip), plus the Northern Lights day tour and other multi-day tours, which are named in the owner's brief only.
-- Objection answered: do you need a full week to try for the northern lights?
-- Facts source: tours.json through `script_check.py --tour ski-aurora-7day` (name, days, price, departures), `.claude/product-marketing.md` (do-not-claim list), and the owner's written brief of 14 Oct 2026 for the launches.
-- Loop: opens in beat 1 (choose how you go), closes in beat 5 (pick the length that fits your time). One CTA, in the last 4 s: the link in bio.
-- Shape: no itinerary and no price in the voice. The voice holds one number ("7"). Price and the 2027 departures sit in the caption only.
+- Objection answered: do you have to stay up late to see the northern lights?
+- Takeaway: choose how you go by the evenings you can spare.
+- Tour: the 7 day trip (`ski-aurora-7day`) is named once, in the beat 4 voice, with its aurora hunt at night (F8). The caption names no tour, price or date. No day tour or multi-day tour appears in the text.
+- Loop: opens in beat 1 ("Do you have to stay up late?"), closes in beat 5 ("Pick your trip by evenings you can spare."). One CTA, in the last 4 s (from 19 s): "See the details in the bio."
+- Voice facts: F7 (beat 2), F3 (beat 3), F8 (beat 4). Three, the cap. F1, F4, F5 and F6 are not used in the text. They stay in the facts table for the bio page and do not block this part.
+- Facts sources: `campaigns/ski-meta-ads/tours.json` through `script_check.py --tour ski-aurora-7day`; `.claude/product-marketing.md` (do-not-claim list); the blog summary for B8 (page not fetched); the owner's written brief of 14 Oct 2026 for F1 and F4 (not used in the text).
 
 ## Caption
 
-How do you go for the northern lights? You can take a northern lights day tour, or go longer. The 7 day trip pairs skiing in fjord Norway with aurora in Tromsø and is from NOK 41,181. Other multi-day tours have launched too. The 2027 departures of the 7 day trip start on 23 Jan, 30 Jan, 6 Feb, 13 Feb and 27 Feb. No tour can promise the northern lights. Part one covers when to go. Details at the link in bio. We're Outdoor Norway. #northernlights #norway
+How do you go for the northern lights? Pick the trip that fits the evenings you have. Aurora often peaks at night, and no departure can promise a sighting, ours included. Part one covers when to go. We're Outdoor Norway. #northernlights #norway
+
+Caption facts: F7 (aurora often peaks at night) and F3 (no promise). The caption has no digits, no price, no dates, no tour name and no VERIFY placeholder, so the final run has no BR13 line.
 
 ## Open items
 
-Owner (facts and decisions)
-- Fact: the day tour. Price, length, start point, departure dates, inclusions and booking page are all unknown. The scripts say only that it has launched (the brief gives no more). [VERIFY: day tour facts, owner confirms]
-- Fact: the other multi-day tours. Which ones are in the launch, and anything about them. The caption says only that they have launched. [VERIFY: multi-day tours in this launch, owner confirms]
-- Fact: the 7 day trip. tours.json says its itinerary is not yet confirmed, so no itinerary is used. Confirm the price basis behind "from NOK 41,181" (per person is not stated) and the five 2027 departures against the hub page, which is the price source of truth. [VERIFY: price basis and departures against the hub page, owner confirms]
-- Fact: naming. The tours.json name is "7 Day Ski in Fjord Norway & Aurora in Tromsø". The voice says "7 days" and "fjord skiing and aurora in Tromsø", and the caption says "the 7 day trip". Confirm how the trip and the day tour are named in public. [VERIFY: product naming, owner confirms]
-- Fact: F1 and F4 quote the owner's brief of 14 Oct 2026 ("we launch northern lights day tour as well" and "and multi day tours"). The brief file is not in the repo. [VERIFY: both quotes are the owner's own words, owner confirms]
-- Decision: series name, posting order and gap, and a possible Part 3. See the Part 1 notes. [VERIFY: series plan, owner decides]
+Owner (fact)
+- Aurora timing (F7). The wording "aurora often peaks at night" paraphrases B8 from the blog summary. Owner checks it against the live post. [VERIFY: B8 paraphrase against the live post, owner confirms]
+- Day 6 of the 7 day trip (F8). The beat 4 voice says the trip includes a night aurora hunt, which is day 6 in tours.json. The itinerary note says it is not yet confirmed. Owner confirms before the line is posted. [VERIFY: day 6 aurora hunt at night, owner confirms]
+- Product naming. tours.json names the trip "7 Day Ski in Fjord Norway & Aurora in Tromsø". The voice says "the 7 day trip". Owner confirms how the trip is named in public. [VERIFY: product naming, owner confirms]
+- Payoff line (kind: decision). "Pick your trip by evenings you can spare." is advice, not a fact. Owner decides whether it stays.
 
-Editor (footage, kind: footage)
-- Real clips for every visual: a hand lifting a circled calendar page with a snowy track behind, guests with headlamps walking at dusk, a guide talking to a group on a snowy field after dark, boots on packed snow, a skier carving a turn above a fjord in daylight, a wide shot of a dark sky over a snowy landscape, cloud thickening over a dark ridge then thinning, guests looking up with breath steaming, a finger tapping calendar squares, the group laughing on snow after dark, a slow pan over a snowy ridge. No composited or generated sky. [VERIFY: which of these clips exist in the library, editor confirms]
-- Day tour footage: beat 2 uses generic night-group shots because no day tour footage is known. A real day tour clip is wanted. [VERIFY: day tour footage, editor confirms]
-- Fjord skiing: if no clip shows a skier above a fjord, drop "above a fjord" from the beat 3 visual. The voice line stays, because it rests on the tour name.
+Owner (permission, link)
+- Bio page. "See the details in the bio." needs a page that lists the tours. Owner names the page; it is checked before posting. [VERIFY: which page the bio link opens, owner names it]
+
+Editor (kind: footage)
+- Real clips for each shot in the beat map. Confirm each exists in the library. No composited or generated sky. [VERIFY: which clips exist in the library, editor confirms]
+- The paper wall calendar prop has to be filmed for beats 1 and 5. [VERIFY: calendar prop shoot, editor confirms]
+- The valley in beat 4 is not claimed as the 7 day trip's location. Do not add a place name. [VERIFY: editor confirms no place is named in the post]
+- Night shots (beats 2, 4 and 6) need a guide on the shoot. See Filming safety.
 - Burned-in captions from the final voiceover once the audio is recorded.
 
-Guests in shot (kind: release)
-- A written release from every guest in shot, with guardian consent for anyone under 18. [VERIFY with counsel: Norwegian image right and GDPR, owner confirms who checks]
+Release (kind: release)
+- Beat 1 shows a hand and boots, and beat 5 shows a finger. No face is in shot. Each person whose hands or boots show needs a written release, with guardian consent for anyone under 18, or staff consent recorded for staff. [VERIFY with counsel: Norwegian image right and GDPR, owner confirms who checks]
 
 Designer (kind: footage)
-- The paired cover frames ("When" in Part 1, "How" here) and the shared end card, inside the safe box.
+- The cover frame "How" (the pair of Part 1's "When") and the shared series title card, inside the safe box. [VERIFY: designer confirms the cover and the grid crop]
 
-Link and music (kind: permission)
-- The bio link has to open a page that lists the tours before this part goes live. [VERIFY: which page the bio link opens, owner confirms]
-- If music is added, the licence has to cover business use on Instagram. [VERIFY: music licence, owner confirms]
+Music (kind: permission)
+- Sound is original. If music is added, the licence has to cover business use on Instagram. [VERIFY: music licence, owner confirms]
 
-Voice recorder
-- Standard narrator is assumed. A test copy at slow pace fails: 52 words against a maximum of 49 (W01) and T01 estimated 25.9 s against a maximum of 24. A slow voice needs a shorter cut.
+Series (kind: decision)
+- Series name, posting order, gap and a possible Part 3 are in the Part 1 notes. [VERIFY: series plan, owner decides]
 
 ## Assumptions
 
-- Relationship staff and sound original, narrator standard, because nobody could be asked.
-- The day tour has no row in tours.json. Its only source is the owner's brief, so F1 says only "has launched" and the voice calls it "a northern lights day tour" in lower case, because the public product name is not known.
-- The number budget is full: "7" and the spelled "two" in "part two of two". Series line and part markers are spelled out for that reason (see the Part 1 notes on "Northern Lights 101").
-- Beat 3 reads the tour name as "skiing in fjord Norway and aurora in Tromsø". An earlier wording, "skiing and aurora in Tromsø", could be read as skiing in Tromsø, so it now says "fjord skiing and aurora in Tromsø" and F2 states the pairing from the name.
-- "Pick the length that fits the time you have" works because a day tour is a day and the trip is 7 days (F2). It says nothing about what the day tour includes.
-- F4, F5 and F6 are used in the caption only. A row that no beat cites does not count toward the 3 fact cap, and F5 and F6 hold the caption's digits with verified rows.
-- The price is "from" only. The per person basis is not stated in tours.json, so the caption does not say it.
-- "No tour can promise the lights" rests on the do-not-claim list. The page FAQ line behind it was not read for this script.
-- The hook "Month picked? Now choose how you go." echoes Part 1 for people who saw it. For a cold viewer the overlay "Northern lights / part two of two" names the subject.
-- The caption has 2 hashtags. The brief said 1 to 3, and the validator's C05 allows at most 2.
-- Part 1 mentions February and March, and the 2027 departures here start between 23 Jan and 27 Feb. The scripts do not link them.
+- Relationship staff, sound original and narrator standard, because nobody could be asked.
+- The voice names no price, date, departure or day tour. The 7 day trip is named once, in beat 4, and its aurora hunt is the worked example.
+- F3 is verified yes. Its no-promise half rests on the do-not-claim list in `.claude/product-marketing.md` ("The page says no departure can guarantee one.") and on tours.json, days 5 and 6 ("The aurora can never be promised."). The line "no departure can promise a sighting" says no more than those rows.
+- "Ours included" in beat 3 applies the same rule to Outdoor Norway's own departures.
+- The number budget is full: the digit "7" in beat 4 and the spelled "two" in the beat 6 overlay. The validator counts 2 numbers.
+- The caption has 2 hashtags, the validator's limit (C05).
+- Overlays in beats 1, 2, 4 and 5 restate the voice in short form, so a sound-off viewer gets the point. The owner can cut the repeat if a sound-off check shows it is not needed.
+- Narrator: standard. Tested this round on a throwaway copy with narrator slow: 48 words, estimated 23.9 s (T01 fails at 23 s), and W01 sets the slow maximum at 47 words. A slow voice needs 47 words or fewer; the script is not changed for it.
 
 ## Accepted warnings
 
-None. Plain, strict and final all print RESULT: PASS with no findings.
+Plain run: RESULT: PASS with three F04 warnings. None is accepted for posting. Each stays until the owner confirms the row it cites.
+- F04 beat 4: number only in an unverified fact row, "7 day trip". The digit sits in beat 4 with F8. It clears when F8 is verified yes.
+- F04 fact used but not verified yes: F7 (aurora often peaks at night). Stays until the owner checks the B8 paraphrase against the live post.
+- F04 fact used but not verified yes: F8 (day 6 aurora hunt at night). Stays until the owner confirms day 6.
 
-What passing does not cover: the day tour line rests on one sentence of the owner's brief, and the 7 day trip rows rest on tours.json, whose itinerary is marked not yet confirmed (not used). The hub page, the price basis and the bio link still need the owner before this goes live.
+Strict run: RESULT: FAIL (0 blocking, 3 warnings). The same three F04 lines.
+
+Final run: RESULT: FAIL (3 blocking). The same three F04 lines. No BR13 line, because the script has no VERIFY placeholder in its text.
+
+Marking F7 or F8 yes without the owner's confirmation would invent a verification, so both rows stay no.
 
 ## Variant
 
-- Hook variant: "Season set? Now choose how you go." Hypothesis: "season" is the broader word, so a cold viewer who never saw Part 1 should feel less that they missed a step, and it should hold the first 3 s better than "Month picked?". A strict run on a throwaway copy passes (52 words, estimated 22.1 s).
-- CTA variant: "Send this to whoever you'd go with." Hypothesis: it should beat "Compare the tours at the link in bio." on shares and sends from viewers who travel with someone, at the cost of link taps. The caption still says "Details at the link in bio." A strict run on a throwaway copy passes (51 words, estimated 21.6 s).
+- Variant: hook. "How many nights for your northern lights?" Hypothesis: it names the trip-length doubt a cold viewer already has, so it should hold beat 1 better than the stay-up-late question. Risk: it reads as the full-week theme of the retired launch reel, and a viewer may hear length rather than evenings.
+- Variant: CTA. "Send this to a friend." Hypothesis: a send prompt to a friend who travels should beat "See the details in the bio." on shares per view. The cost is bio taps, and the caption still points to the bio page.
 
 ## Beat map
 
-1. 0 to 3 s, hook: "Month picked? Now choose how you go." A hand lifts a circled calendar page, a snowy track behind it, guests with headlamps walk along it. Overlay "Northern lights / part two of two". Opens loop A.
-2. 3 to 7 s, setup and disclosure: "You can go on a northern lights day tour." A guide talks to a group on a snowy field after dark. Overlay "We work at Outdoor Norway" (starts before 5 s). F1.
-3. 7 to 12 s, build: "Or go 7 days, with fjord skiing and aurora in Tromsø." A skier above a fjord by day, a dark sky over snow. F2.
-4. 12 to 16 s, shift and explain: "Either way, no tour can promise the lights." Cloud thickens and thins over a ridge. F3.
-5. 16 to 20 s, payoff: "Pick the length that fits the time you have." A finger taps a calendar square and slides along a row. Closes loop A.
-6. 20 to 24 s, call to action: "Compare the tours at the link in bio." Slow pan, then the end card. Overlay "Northern lights basics".
+Footage means a real clip. A title card is plain text on a night-sky frame with no logo. Hands and boots are people in shot (see Release).
 
-The 3 facts in the voice are F1, F2 and F3. The 2 numbers are "7" and the spelled "two". Each beat cites at most one fact row.
+1. 0 to 3 s, hook, opens loop A. Voice: "Do you have to stay up late?" Visual: a hand lifts a circled page of a paper wall calendar (footage, prop and hand), then boots stamp snow off a wooden step at dusk (footage). Overlay: "Stay up late?"
+2. 3 to 7 s, setup and disclosure, F7. Voice: "I work at Outdoor Norway. Aurora often peaks at night." Visual: a snowy field under a dark sky, no people (footage), then a slow tilt from the snow up to the stars (footage). Overlay: "I work at Outdoor Norway."
+3. 7 to 11 s, shift and explain, F3. Voice: "No departure can promise a sighting, ours included." Visual: thin cloud moves over a dark ridge (footage, no people), then the cloud thins and stars show above the snow (footage). Overlay: "Bring warm layers."
+4. 11 to 15 s, build, F8. Voice: "The 7 day trip includes a night aurora hunt." Visual: a wide shot of a snowy valley in daylight (footage, no place named), then a headlamp beam crosses a field at night, no people in shot (footage). Overlay: "An aurora hunt at night."
+5. 15 to 19 s, payoff, closes loop A. Voice: "Pick your trip by evenings you can spare." Visual: a finger taps one square on a paper wall calendar (footage, prop and hand), then the finger slides along one full row (footage). Overlay: "Start with your evenings."
+6. 19 to 23 s, call to action. Voice: "See the details in the bio." Visual: a lantern on a snowy bench as the light fades, no people (footage), then the series title card, the same as Part 1 (title card on a night-sky frame). Overlay: "This is part two."
+
+Footage: beats 1 to 5 and the first shot of beat 6. Title card: the second shot of beat 6 only. Do not post until the bio page is named (see Open items).
+
+## Timing
+
+- Beat 4 needs 4.15 s of speech (9 words at 2.4 words a second, plus 0.4 s for the digit "7") in a 4 s slot. That is 4 percent over, inside the 10 percent T04 line. Beat 5 is 8 words in 4 s. Beat 6 starts at 19 s, inside the last 4 s of the 23 s declared length, which is where the CTA must start (C02).
 
 ## Validator (final state)
 
-- Plain: RESULT: PASS. 52 words, estimated 22.1 s, declared 24 s, 6 beats, 3 facts, 2 numbers. 0 findings.
-- Strict: RESULT: PASS. 0 findings.
-- Final: RESULT: PASS. 0 findings.
-- `--open-items`: 0 placeholders, 0 unverified fact rows.
+- Plain: RESULT: PASS. 48 words, estimated 20.4 s, declared 23 s, 6 beats, 3 facts, 2 numbers. Three F04 warnings (beat 4 "7", F7, F8).
+- Strict: RESULT: FAIL (0 blocking, 3 warnings). The same three F04 lines.
+- Final: RESULT: FAIL (3 blocking). The same three F04 lines. No BR13 line.
+- `--open-items`: 4 placeholders (VERIFY in F1, F4, F7, F8 rows). F1 and F4 are not used in the text, so they do not block this part.
 
-## Sources
+## Filming safety
 
-- The owner's written brief of 14 Oct 2026, quoted in F1 and F4. The brief file is not in the repo.
-- `campaigns/ski-meta-ads/tours.json`, only through `script_check.py --tour ski-aurora-7day`: name, days, price with its "from" qualifier and the 2027 departure starts. The file was not read whole.
-- `.claude/product-marketing.md`: the do-not-claim list behind F3.
-- `.claude/skills/scriptcraft/SKILL.md`, `assets/script-template-short.md`, `references/short-form.md`, `references/brand-and-claims.md`, `references/tiers.md`, `scripts/brand_rules.json`. Limits from `script_check.py --limits short voiceover`. tiers.json was not read whole and was not edited.
+Shots at dusk or at night on snow (beats 1, 2, 4 and 6). Before any night shot:
+- A guide is present for the whole shoot.
+- Marked routes only. No off-trail walking and no unmarked ice.
+- Stop when hands are numb, or when the light is too low to walk safely.
+- Everyone in shot wears a headlamp and warm layers.
+- Nobody is posed on a slope or on ice for a shot.
+- Local rules for filming on the chosen site and any permits. [VERIFY: local rules and permits for filming on the site, owner or guide confirms]
 
-## Extending to 30 to 35 s
+## Design changes in round 2
 
-The full test is in the Part 1 notes. In short, on a throwaway copy of the skill folder outside the repo with the cap, word and beat limits raised, a 32 s version of this part adds one beat, "Other multi day tours have launched as well." (F4), and the CTA moves to 28 to 32 s. It needs the fact cap raised to 4 as well: with the cap at 3, F02 blocks. With the fact cap at 4 the result is RESULT: PASS in plain and strict (60 words, estimated 25.4 s, 7 beats, 4 facts, 2 numbers). Tiers.json was not changed.
+- The launch reel is retired. This part no longer repeats its takeaway, objection, closing line or shots.
+- The hook asks the stay-up-late question. The earlier hook "How many nights for your northern lights?" is the variant.
+- The caption no longer names the day tour, the multi-day tours, the price, the 2027 dates or the tour. The three caption placeholders from round 1 are gone, and so is the BR13 failure.
+- The CTA is "See the details in the bio." (round 1 "Tap the link in bio.").
+- The aurora hunt is tied to day 6 only (F8). Round 1 also cited day 5.
+- The shot of a night sky over a field and the dolly shot in beat 6 were reworded: the first restated the retired reel's sky shot, and the second restated its pan.
+- Length 23 s and 48 words, down from 49.
+
+## Source lines
+
+Read through a search summary only (blog). The page was not fetched. The quotes below are the summary's wording, not the post's text, and every blog row is verified no.
+- Blog URL: https://www.outdoornorway.com/blog/best-time-to-see-northern-lights-in-norway
+- B8 (summary wording): "The post cites the local tourism authority: activity is often strongest between about 20:00 and 02:00." Behind F7, paraphrased in the voice as "Aurora often peaks at night."
+- `.claude/product-marketing.md`, do-not-claim list: "Any aurora sighting or guarantee. The page says no departure can guarantee one." Behind F3.
+- `campaigns/ski-meta-ads/tours.json`, only through `script_check.py --tour ski-aurora-7day`: name, days, price (F5), departure starts (F6), and day 6 of the itinerary (F8). Its aurora line for days 5 and 6: "The aurora can never be promised." Behind F3. The itinerary is marked not yet confirmed. The file was not read whole.
+- Owner's written brief of 14 Oct 2026, quoted in F1 and F4: "we launch northern lights day tour as well" and "and multi day tours". Not used in the text.
+- `.claude/skills/scriptcraft/SKILL.md`, the short voiceover template, `references/short-form.md`, `references/brand-and-claims.md`, `references/tiers.md`, `scripts/brand_rules.json`. Limits from `script_check.py --limits short voiceover`. tiers.json was not read whole and was not edited.
 
 ## Instagram pointers for this part
 
-The general pointers (format, safe box, covers, music, caption shape, comments) are in the Part 1 notes. Only this part's points are here. Each feature claim is tagged.
-
-- The CTA says "link in bio", so the bio link has to point at the tours before posting. [VERIFY: confirm current feature set for Instagram, and which page the bio link opens, owner confirms]
-- Price and dates are in the caption only, with the "from" qualifier and the year on the dates. Do not add them to the overlay.
-- In comments, do not state the day tour's price, length or start until the owner has confirmed them, and never answer "will we see them?" with a yes or with odds.
+The general pointers (format, safe box, covers, music, caption shape, comments, grouping) are in the Part 1 notes. Only this part's points are here.
+- The CTA says "See the details in the bio." Do not post until the bio page is named and lists the tours. [VERIFY: which page the bio link opens, owner names it]
+- Price and dates are not in this part. If the owner adds them later, use the "from" qualifier and the year on the dates, and keep them out of overlays.
+- In comments, do not state the day tour's price, length or start until the owner has confirmed them. Never answer "will we see them?" with a yes or with odds.

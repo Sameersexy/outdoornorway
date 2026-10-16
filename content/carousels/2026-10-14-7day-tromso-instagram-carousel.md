@@ -32,7 +32,7 @@ Alt text: People on snowshoes walk a trail in winter daylight.
 
 ## Slide 4
 Headline: Day 3: Ski at Voss
-Body: 1-day ski pass included. Skis, boots, poles and helmets: rental can be arranged.
+Body: A one-day ski pass is included. You can also rent skis, boots, poles and helmets.
 Fact: F6, F10, F11
 Photo note: Skier on a slope or the gondola at Voss Resort in daylight. [VERIFY: which photo from the approved library?]
 Alt text: A skier on a slope at Voss Resort.
@@ -66,11 +66,11 @@ Photo note: Tromsø waterfront or street in winter daylight. [VERIFY: which phot
 Alt text: Tromsø waterfront in winter daylight.
 
 ## Slide 9
-Headline: From NOK 41,181
+Headline: From NOK 41 181
 Body: 2027 start dates: 23 Jan, 30 Jan, 6 Feb, 13 Feb, 27 Feb. Tap the link in bio.
 Fact: F13, F14
 Photo note: Reuse the cover fjord photo with a quiet area for the price, the dates and the link line. [VERIFY: which photo from the approved library?]
-Alt text: Text on a fjord photo gives the price from NOK 41,181, the five 2027 start dates from 23 Jan to 27 Feb, and a line to tap the link in bio.
+Alt text: Text on a fjord photo gives the price from NOK 41 181, the five 2027 start dates from 23 Jan to 27 Feb, and a line to tap the link in bio.
 
 ## Caption
 7 days: ski, maybe northern lights.
@@ -78,7 +78,7 @@ This is the 7 Day Ski in Fjord Norway & Aurora in Tromsø, from Bergen. Here is 
 
 Day 1: Your adventure begins in Bergen. A guide is with you throughout the trip.
 Day 2: Morning train from Bergen to Voss, about an hour. Then a guided snowshoe tour.
-Day 3: One ski day at Voss Resort. A 1-day ski pass is included. Skis, boots, poles and helmets: rental can be arranged.
+Day 3: One ski day at Voss Resort. A one-day ski pass is included. You can also rent skis, boots, poles and helmets.
 Day 4: Flight from Bergen to Tromsø. The flight is included.
 Day 5: Fjord trip on a private boat. In the evening at the hotel camp, look for the northern lights, if the sky allows.
 Day 6: Dog sledding. Then a night trip to look for the northern lights. They may not show.
@@ -87,14 +87,13 @@ Day 7: We take you to Tromsø Airport. The time fits your flight.
 Included: a guide throughout, a 1-day ski pass at Voss Resort and the flight from Bergen to Tromsø.
 Nobody can promise the northern lights. They may or may not show.
 
-From NOK 41,181. Departures in 2027:
+From NOK 41 181 (NOK is Norwegian kroner). Departures in 2027:
 23 Jan to 29 Jan 2027
 30 Jan to 5 Feb 2027
 6 Feb to 12 Feb 2027
 13 Feb to 19 Feb 2027
 27 Feb to 5 Mar 2027
 
-Flights to and from Norway are not included.
 Tap the link in bio to see the full trip.
 
 ## Hashtags
