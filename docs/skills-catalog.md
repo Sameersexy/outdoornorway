@@ -6,7 +6,7 @@ This page is for anyone who wants to know which skills exist for Outdoor Norway 
 
 Skills sit in three places, and each place has its own sharing rule.
 
-- **This public repo.** The plugin loads the commands, the two agents and the skills under `.claude/` (see `.claude-plugin/plugin.json`). The paused adquill drafts sit in `adquill/` and are not loaded. The two account skills sit in `account-skills/`, and the plugin does not load them. The repo is public and MIT licensed, so nothing private goes in.
+- **This public repo.** The plugin loads the commands, the two agents and the skills under `.claude/` (see `.claude-plugin/plugin.json`). The paused adquill drafts sit in `adquill/` and are not loaded. The three account skills sit in `account-skills/`, and the plugin does not load them. The repo is public and MIT licensed, so nothing private goes in.
 - **The Claude account.** Skills the team built in the account, plus skills the platform provides. They work in account chats and are not part of the plugin. The account holds the live copy of each account-only skill.
 - **The private backup.** A backup kept outside this repo. It holds chat transcripts and a second copy of the account-only skills, and it is never merged into this repo. [backup-and-restore.md](backup-and-restore.md) covers saving and restoring it.
 
@@ -54,11 +54,12 @@ The six manual skills carry `disable-model-invocation: true`, so you call them b
 
 ## Account skills in this repo
 
-Both skills were read for supplier terms, prices, contacts, personal data and client facts before they were copied into `account-skills/`. Each is one folder with a `SKILL.md`. The plugin does not load them. [account-skills/README.md](../account-skills/README.md) explains how to copy or upload one, and how to add another. An account upload accepts a description of 200 characters at most, and the description of each skill below is longer, so shorten it in the copy you upload.
+All three skills were read for supplier terms, prices, contacts, personal data and client facts before they were copied into `account-skills/`. Each is one folder with a `SKILL.md`. The plugin does not load them. [account-skills/README.md](../account-skills/README.md) explains how to copy or upload one, and how to add another. An account upload accepts a description of 200 characters at most, and the description of each skill below is longer, so shorten it in the copy you upload.
 
 | Skill | What it does | Folder |
 |---|---|---|
 | brand-voice-checker | Reviews guest-facing copy, such as tour scripts, captions and blog copy, against the brand voice guidelines: tone, language, style, perspective, and mission, vision and values. | `account-skills/brand-voice-checker/` |
+| guest-benefit-checker | Reviews guest-facing copy for content angle, meaning whether it leads with the guest's benefit or with itinerary details, logistics or a sales pitch. | `account-skills/guest-benefit-checker/` |
 | script-writing | Writes, drafts, improves and reviews video, social media and short-form content scripts. | `account-skills/script-writing/` |
 
 ## Account-only skills
@@ -66,7 +67,6 @@ Both skills were read for supplier terms, prices, contacts, personal data and cl
 These skills live in the Claude account, with a second copy in the private backup. None of them has a copy in `account-skills/`, and the plugin loads no account copy of any of them. The skills are:
 
 - content-qc
-- guest-benefit-checker
 - page-intent-audit
 - scriptcraft
 - supplier-product-intake

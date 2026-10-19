@@ -8,11 +8,11 @@ The gap. We found no verified UK or US individual with traction posting about Vo
 
 | Creator | Who | TikTok followers | Why they matter |
 |---|---|---|---|
-| Ryan Wachendorfer, @ryanwachendorfer | US pro snowboarder from Colorado | 710,300 | Biggest individual winter account found. Fast first-person voiceover over phone footage. Brand tags sit in the caption |
-| Alex Hackel, @alexhackel | US skier, X Games medalist, from Boston | 170,200 | Was posting from Norway on the snapshot day. Text-on-screen meme clips, zero spoken words, built to be sent |
-| Hannah, Adventures of the Wests, @adventuresofthewests | UK family traveller from Brighton | 53,600 | Closest to real guest UGC. Her ski accommodation tour is the best booking-adjacent video in the sample. Labels her paid posts AD |
-| Brit, @mtn.brit | US, Breckenridge, part-time ski instructor | 39,300 | Closest model for a guide on camera. Talk posts and text-only tips |
-| Jess Cohen, @jess.cohenn | US full-time ski creator, Colorado | 68,900 | Weekly series and gifted unboxings. Shows how brand-heavy UGC goes flat |
+| Creator A | US pro snowboarder | 710,300 | Biggest individual winter account found. Fast first-person voiceover over phone footage. Brand tags sit in the caption |
+| Creator B | US skier, X Games medalist | 170,200 | Was posting from Norway on the snapshot day. Text-on-screen meme clips, zero spoken words, built to be sent |
+| Creator C | UK family traveller from a coastal city | 53,600 | Closest to real guest UGC. Her ski accommodation tour is the best booking-adjacent video in the sample. Labels her paid posts AD |
+| Creator D | US, Colorado mountain town, part-time ski instructor | 39,300 | Closest model for a guide on camera. Talk posts and text-only tips |
+| Creator E | US full-time ski creator, Colorado | 68,900 | Weekly series and gifted unboxings. Shows how brand-heavy UGC goes flat |
 
 ## Measured numbers
 
@@ -20,11 +20,11 @@ wps is spoken words over the full clip. w3 is words in the first 3 s. You share 
 
 | Creator | Median wps (talking videos) | w3 | First word | Avg sentence words | You share | Hook style | Performance (views) |
 |---|---|---|---|---|---|---|---|
-| Ryan | 4.18 (n = 3; range 0.95 to 4.87) | 11.6 | 0.1 to 0.4 s | 8 to 22 | 0.12 | Expectation flip, day-one check-in, haul | Median 6,127; best 67,800 (the explainer that taught how a dry slope works) |
-| Alex | 0, text-led (n = 8) | 0 | none | none | none | Relatable meme, before versus after, send-to-a-friend | Median 7,443; best 70,200; shares 0.36 % of views, highest in the sample |
-| Hannah | 3.95 (n = 5; range 3.32 to 3.98) | 13.0 | 0.0 s | 11 to 23 | 0.18 (tour: 11 you to 3 me) | Reveal tour, someone asked me, reply to comment | Median 3,191; best 312,600 (ski hostel tour, 2.97 % saves, 1.63 % shares) |
-| Brit | 3.73 (n = 6; range 2.81 to 4.29) | 12.7 | 0.0 to 0.1 s | 11 to 26 | 0.24 | Statement hook, fake-out, tips list | Median 1,363; best 528,500 (21 s text-only tips, 1.81 % saves) |
-| Jess | 1.29 (n = 4, music gaps) | 7.4 | 0.0 s | 5 to 18 | 0.38 | Series opener, relatable caption, opinion list | Median 305; best 8,174 (videos under a day old, not used to judge her) |
+| Creator A | 4.18 (n = 3; range 0.95 to 4.87) | 11.6 | 0.1 to 0.4 s | 8 to 22 | 0.12 | Expectation flip, day-one check-in, haul | Median 6,127; best 67,800 (the explainer that taught how a dry slope works) |
+| Creator B | 0, text-led (n = 8) | 0 | none | none | none | Relatable meme, before versus after, send-to-a-friend | Median 7,443; best 70,200; shares 0.36 % of views, highest in the sample |
+| Creator C | 3.95 (n = 5; range 3.32 to 3.98) | 13.0 | 0.0 s | 11 to 23 | 0.18 (tour: 11 you to 3 me) | Reveal tour, someone asked me, reply to comment | Median 3,191; best 312,600 (ski hostel tour, 2.97 % saves, 1.63 % shares) |
+| Creator D | 3.73 (n = 6; range 2.81 to 4.29) | 12.7 | 0.0 to 0.1 s | 11 to 26 | 0.24 | Statement hook, fake-out, tips list | Median 1,363; best 528,500 (21 s text-only tips, 1.81 % saves) |
+| Creator E | 1.29 (n = 4, music gaps) | 7.4 | 0.0 s | 5 to 18 | 0.38 | Series opener, relatable caption, opinion list | Median 305; best 8,174 (videos under a day old, not used to judge her) |
 
 Sentence lengths come from auto-caption punctuation and are rough.
 
@@ -45,31 +45,31 @@ What the five agree on: talking creators run 3.3 to 4.9 words per second and sta
 
 Pooled spoken median across the second ring: 2.87 words per second over 49 videos. Of the 15 TikTok videos over 100k views in that sample, 10 had no scripted creator voice (n = 15, selection biased toward what each profile surfaced).
 
-Planned speakers (George, Hannah) had the spoken hits: clean sentences, first word at 0.0 s, 10 to 13 words in 3 s. Improvised speakers won on real moments, not on words.
+Planned speakers (George, Creator C) had the spoken hits: clean sentences, first word at 0.0 s, 10 to 13 words in 3 s. Improvised speakers won on real moments, not on words.
 
 ## What to copy
 
 - Start speaking at 0.0 to 0.5 s with the reason to watch. No greeting.
 - One concrete, checkable detail per beat, said casually: a "from" price, a time, a day count.
-- Save-worthy practical formats: what is included, what to pack, how the day runs. Hannah's tour is the template: inclusions over B-roll, one booking sentence of logistics, then a save prompt.
-- Text-led clips with one line of honest guide humour over a POV run (Alex, Brit's tips).
+- Save-worthy practical formats: what is included, what to pack, how the day runs. Creator C's tour is the template: inclusions over B-roll, one booking sentence of logistics, then a save prompt.
+- Text-led clips with one line of honest guide humour over a POV run (Creator B, Creator D's tips).
 - Name the mistake, show one cue on a body, say why in one sentence, stop, ask one question (George).
 - Disclosure inside the video.
 
 ## What to adapt
 
-- Alex's relatable memes, about cold hands, skins and lunch on the ridge, not injuries.
-- Brit's tips list, each tip from a guide on a real tour day.
-- Ryan's expectation flip for Voss: what people expect of Norway in winter against what a day looks like.
-- Brit's name intro after the hook ("I'm Kari, I guide ski touring in Voss"). It doubles as disclosure (D01).
+- Creator B's relatable memes, about cold hands, skins and lunch on the ridge, not injuries.
+- Creator D's tips list, each tip from a guide on a real tour day.
+- Creator A's expectation flip for Voss: what people expect of Norway in winter against what a day looks like.
+- Creator D's name intro after the hook ("I'm Kari, I guide ski touring in Voss"). It doubles as disclosure (D01).
 - The dated snow report (Ski Patrol Life), with measured depth only and never a forecast.
 
 ## What not to copy
 
-- Crash, speed and injury humour (Alex). It clashes with a guided safety brand.
-- Unboxings and "welcome to the team" gifted content (Jess). The weakest videos in the sample.
-- Long sincere monologues as the default short (Brit's talk posts: 700 to 2,000 views).
-- "Welcome back" series openers (Jess).
+- Crash, speed and injury humour (Creator B). It clashes with a guided safety brand.
+- Unboxings and "welcome to the team" gifted content (Creator E). The weakest videos in the sample.
+- Long sincere monologues as the default short (Creator D's talk posts: 700 to 2,000 views).
+- "Welcome back" series openers (Creator E).
 - Course or booking pitches in the video body (George: 40 to 200 times fewer views than his tips).
 - Trending copyrighted songs on posts that promote the company. Use original sound or the Commercial Music Library (SND01).
 - Weather and aurora promises. None of the five promise snow; keep it that way (BR09, BR10).
@@ -77,9 +77,9 @@ Planned speakers (George, Hannah) had the spoken hits: clean sentences, first wo
 
 ## Sources
 
-- TikTok profiles and videos, read 2026-10-07: https://www.tiktok.com/@ryanwachendorfer, https://www.tiktok.com/@alexhackel, https://www.tiktok.com/@adventuresofthewests, https://www.tiktok.com/@mtn.brit, https://www.tiktok.com/@jess.cohenn, https://www.tiktok.com/@alpine_ski_tutorials, https://www.tiktok.com/@kmoney56, https://www.tiktok.com/@bernierosow, https://www.tiktok.com/@caseywillax
+- TikTok profiles and videos, read 2026-10-07: https://www.tiktok.com/@alpine_ski_tutorials, https://www.tiktok.com/@kmoney56, https://www.tiktok.com/@bernierosow, https://www.tiktok.com/@caseywillax. Account names for Creators A to E are left out on purpose.
 - YouTube about pages: https://www.youtube.com/@skipatrollife-southernutah7805/about, https://www.youtube.com/@skidadTV/about, https://www.youtube.com/@DanNoakes/about, https://www.youtube.com/@WheresAndrew/about, https://www.youtube.com/@caseywillax/about
-- Montana State University, Alex Hackel: https://www.montana.edu/dxi/articles/alex-hackel.html
+- A US university profile of Creator B. Not linked, to keep the creator unnamed.
 - Alpine Tutorials, about George: https://alpinetutorials.com/about
 - ActiveNorCal on Bernie Rosow (27 Apr 2026): https://www.activenorcal.com/the-california-ski-community-is-mourning-the-sudden-loss-of-a-mammoth-mountain-legend/
 - Popfly, ski and snowboard creators: https://www.popfly.com/post/ski-snowboard-creators

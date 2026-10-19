@@ -17,6 +17,7 @@ The plugin and marketplace manifests have carried version 0.2.0 since `8d7effb` 
 - A test in `tools/test_repo_integrity.py` that bans GPT model names in our own files.
 - `.gitignore` entries for `*.jsonl`, `*.zip`, `*.tgz`, `.env`, `.env.*`, `node_modules/`, `backup/` and `exports/`.
 - [account-skills/](account-skills/README.md): two account skills, `brand-voice-checker` and `script-writing`, one folder each, with a guide. The plugin does not load them.
+- `guest-benefit-checker` added to [account-skills/](account-skills/README.md) after the owner approved it. The repo copy was read for supplier terms, prices, contacts, personal data and client facts, like the other two.
 
 ### Changed
 
@@ -48,6 +49,7 @@ The plugin and marketplace manifests have carried version 0.2.0 since `8d7effb` 
 - `creator-patterns.md` points to the three video script research notes by path instead of to a scratch folder.
 - A test in `tools/test_repo_integrity.py` fails if a navigation doc other than this file says "privacy screen" or "screened", or calls the private backup a "private repository".
 - Research notes 04, 05 and 06 on UGC creators now label individuals Creator A to M and drop names, handles and video IDs, because the repo is public. The research index says so. The creator references in the scriptcraft skill and the travel creator note 02 still name creators, and that is left to the owner.
+- The five creator names and TikTok handles in `.claude/skills/scriptcraft/references/creator-patterns.md` and `ugc-style.md` were replaced by the Creator A to E labels that `docs/research/video-scripts/04-ugc-individuals-top5.md` uses, and their home towns were dropped. The other creators in those two files are still named. The X post link in `docs/research/ad-copy/01-craft-canon.md` was removed.
 - `adquill/AGENTS.md` no longer points to an `examples/` folder that does not exist. It points to `adquill/skills/adquill/assets/`.
 - The skill vetting note headings say 26 other candidates were read, which matches `THIRD_PARTY_SKILLS.md`, and a `[VERIFY]` flags the 36 in its opening line against the 34 rows in its ranked table. Other coding agents and an image model are no longer named in the vetting and virality notes.
 - The backup guide uses `git switch <branch>` in the restore dry run and names the current branch in prose. It also notes the local-only backup tag, with a `[VERIFY]` on whether to push it.

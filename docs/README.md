@@ -19,7 +19,7 @@ Related pages outside this folder:
 - [CONTRIBUTING.md](../CONTRIBUTING.md): how to change the tools and run the tests.
 - [CHANGELOG.md](../CHANGELOG.md): what changed and when.
 - [CLAUDE.md](../CLAUDE.md): the rules Claude Code follows in this repo.
-- [account-skills/README.md](../account-skills/README.md): two account skills you can copy into a project or upload to the Claude account.
+- [account-skills/README.md](../account-skills/README.md): three account skills you can copy into a project or upload to the Claude account.
 - Folder guides: [tools](../tools/README.md), [content/scripts](../content/scripts/README.md), [ski-meta-ads](../campaigns/ski-meta-ads/README.md) and [adquill](../adquill/README.md).
 
 When you add a file or folder to `docs/`, add a row here. The integrity test fails if this page does not mention it.

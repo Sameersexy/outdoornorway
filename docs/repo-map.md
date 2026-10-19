@@ -25,6 +25,7 @@ outdoornorway/
 |   `-- plugin.json             [fixed]  plugin manifest
 |-- account-skills/                      account skills, not loaded by the plugin
 |   |-- brand-voice-checker/             guest-facing copy checked against the brand voice
+|   |-- guest-benefit-checker/           guest-facing copy checked for a benefit-led angle
 |   |-- README.md                        guide to the account skills
 |   `-- script-writing/                  short-form video script craft
 |-- adquill/                             paused ad-copy skill, not installed by the plugin
@@ -90,7 +91,7 @@ Safe to move? has two answers. No means code, tests or manifests name the path. 
 | `package.json` | Launcher metadata: `bin`, `files`, Node `engines`, no dependencies | npm, `npx`, the integrity test | No. Keep it at the root. Its `version` must match `plugin.json` and `marketplace.json`. |
 | `.gitignore` | Keeps Python caches, transcripts (`*.jsonl`), archives (`*.zip`, `*.tgz`), `.env` files, `node_modules/`, `backup/` and `exports/` out of git | Git, the integrity test | No. The test checks that the main patterns are listed. |
 
-Chat transcripts are not in this repo. Two account skills are, in [account-skills/](../account-skills/README.md). The other account-only skills stay in the Claude account, with a second copy in a private backup kept outside this repo. [backup-and-restore.md](backup-and-restore.md) has the steps.
+Chat transcripts are not in this repo. Three account skills are, in [account-skills/](../account-skills/README.md). The other account-only skills stay in the Claude account, with a second copy in a private backup kept outside this repo. [backup-and-restore.md](backup-and-restore.md) has the steps.
 
 ## Where do I find...
 

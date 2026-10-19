@@ -83,7 +83,7 @@ outdoornorway/
 - [tools guide](tools/README.md) for the tests, token report and launcher
 - [script folder guide](content/scripts/README.md) for finished and draft scripts
 - [ski ads guide](campaigns/ski-meta-ads/README.md) for tour data and ad notes
-- [account skills guide](account-skills/README.md) for the two account skills
+- [account skills guide](account-skills/README.md) for the three account skills
 - [adquill guide](adquill/README.md) for the paused ad-copy skill
 
 The [skills catalog](docs/skills-catalog.md) separates our own skills from the vendored ones. The [changelog](CHANGELOG.md) lists what changed and when.
@@ -99,7 +99,7 @@ Each run prints how many tests ran, so this page carries no counts that go stale
 
 ## Backup and restore
 
-Git holds the code. It does not hold your chat history, the skills that live only on the Claude account, connector sign-ins or local Claude Code sessions. The two account skills in `account-skills/` are the exception. [docs/backup-and-restore.md](docs/backup-and-restore.md) lists what to save, where it goes and how to restore it on a new account.
+Git holds the code. It does not hold your chat history, the skills that live only on the Claude account, connector sign-ins or local Claude Code sessions. The three account skills in `account-skills/` are the exception. [docs/backup-and-restore.md](docs/backup-and-restore.md) lists what to save, where it goes and how to restore it on a new account.
 
 ## Licence
 

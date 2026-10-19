@@ -186,7 +186,7 @@ Source: https://www.selfstorming.com/tools/libraries/frameworks/market-sophistic
 
 **When it works.** When audience and message match tightly, and when the ad looks native to the place it appears. **When it fails.** When "personal" is faked (fake handwriting, fake urgency). It also does not map to a feed that already picks audiences by itself.
 
-**Real example.** The "Coat of Arms" letter (1971): one page, under 400 words, a plain envelope and the reader's surname in the first line. Claimed mailings of 600 million over thirty years come from Halbert's side and have not been audited [SECONDARY: https://x.com/ucheokorolive/status/1424681673225027585 and https://medium.com/@andy.a.g/the-sales-letter-that-mailed-for-thirty-years-worked-because-it-did-not-look-like-an-ad-89eb7acf9ba8 ; VERIFY: 600 million and the order figures].
+**Real example.** The "Coat of Arms" letter (1971): one page, under 400 words, a plain envelope and the reader's surname in the first line. Claimed mailings of 600 million over thirty years come from Halbert's side and have not been audited [SECONDARY: a post on X, link not kept, and https://medium.com/@andy.a.g/the-sales-letter-that-mailed-for-thirty-years-worked-because-it-did-not-look-like-an-ad-89eb7acf9ba8 ; VERIFY: 600 million and the order figures].
 
 **Mapping.** Static: an unpolished, native look can beat a polished ad (see Dry on ugly ads). Reel: a person talking, not a brand. X: write as a person, not a company.
 
@@ -471,7 +471,7 @@ Working rules for adwright (these are craft heuristics, not tested facts):
 
 ## 4. Hook typologies
 
-A hook is the first thing the reader meets: the headline on the image, the first line of the primary text, the first three seconds of a Reel, or the first line of a post. These categories come from practitioner guides [SECONDARY: https://www.opus.pro/blog/instagram-reels-hook-formulas and https://www.heyorca.com/blog/the-best-social-media-hooks-for-2026 , taxonomy from vendor blogs, no single standard]. I mapped each to a documented classic, and to the client. Client lines are **[illustrative]**, built only from tours.json facts, and each was length checked in code.
+A hook is the first thing the reader meets: the headline on the image, the first line of the primary text, the first three seconds of a Reel, or the first line of a post. These categories come from practitioner guides [SECONDARY: a vendor blog post on Instagram Reels hook formulas, link not kept, and https://www.heyorca.com/blog/the-best-social-media-hooks-for-2026 , taxonomy from vendor blogs, no single standard]. I mapped each to a documented classic, and to the client. Client lines are **[illustrative]**, built only from tours.json facts, and each was length checked in code.
 
 | Type | Mechanism | Documented real example | Static (illustrative) | Reel hook (illustrative) | X (illustrative) |
 |---|---|---|---|---|---|
