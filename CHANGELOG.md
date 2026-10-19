@@ -1,28 +1,19 @@
 # Changelog
 
-This file answers one question: what changed in this repo, and when. It follows the Keep a Changelog style.
+This file answers one question: what changed in this repo, and when. It follows the Keep a Changelog style. The commits carry no version numbers, so entries are grouped by date and milestone. `git log --format='%h %ad %s' --date=short` lists every commit.
 
-Older entries come from `git log` only. The commits carry no version numbers, so older entries are grouped by date and milestone. For the full list, run `git log --format='%h %ad %s' --date=short`. For the commit count, run `git log --oneline | wc -l`.
-
-The plugin, marketplace and package manifests all carry version 0.2.0. [VERIFY: which commit shipped 0.2.0]
+The plugin and marketplace manifests have carried version 0.2.0 since `8d7effb` on 12 October 2026, and `package.json` matches it.
 
 ## [Unreleased]
-
-These changes are not on the default branch yet.
 
 ### Added
 
 - Navigation docs: [docs/README.md](docs/README.md) (guide index), [docs/repo-map.md](docs/repo-map.md) (folder map) and [docs/skills-catalog.md](docs/skills-catalog.md).
-- Folder README files for `campaigns/ski-meta-ads/`, `content/scripts/`, `docs/script-skill-reviews/` and `tools/`.
-- [Install guide](docs/installation.md).
-- [Backup and restore guide](docs/backup-and-restore.md).
-- [Publishing guide](docs/publishing-to-npm.md).
-- [CONTRIBUTING.md](CONTRIBUTING.md).
+- Folder README files for `adquill/`, `campaigns/ski-meta-ads/`, `content/scripts/`, `docs/script-skill-reviews/` and `tools/`.
+- [Install guide](docs/installation.md), [backup and restore guide](docs/backup-and-restore.md), [publishing guide](docs/publishing-to-npm.md) and [CONTRIBUTING.md](CONTRIBUTING.md).
 - `package.json` with zero dependencies, a bin named `outdoornorway`, and Node 18 or newer in `engines`.
 - `tools/outdoornorway-cli.js`, a launcher with `doctor`, `install`, `update`, `test`, `version` and `help` commands. `install` and `update` print the Claude Code commands and run them only with `--run`. `test --all` adds the adquill tests. The launcher never writes files.
-- The npx route, `npx github:Sameersexy/outdoornorway doctor`, reads the default branch, so it works once this change set is merged. [VERIFY: confirm npx runs the bin from a GitHub spec]
-- Guard-rail tests in `tools/test_repo_integrity.py`. The main suites pass on Python 3.11, 3.12 and 3.13. [VERIFY: lowest Python 3 version; adquill's own docs state 3.9 or newer]
-- [adquill/README.md](adquill/README.md) marks adquill as paused. The plugin does not install it.
+- Guard-rail tests in `tools/test_repo_integrity.py`.
 - `.gitignore` entries for `*.jsonl`, `*.zip`, `*.tgz`, `.env`, `.env.*`, `node_modules/`, `backup/` and `exports/`.
 
 ### Changed

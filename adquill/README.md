@@ -1,14 +1,8 @@
 # adquill (paused)
 
-This folder is for anyone who wants to know what adquill is and why the plugin does not load it.
+This folder holds adquill, a paused skill and three agents that draft ad copy for Meta (Facebook and Instagram) and X. Read this page to learn what is here and why the plugin does not load it.
 
-adquill is a skill and three agents that write honest, human-sounding ad copy for Meta (Facebook and Instagram) and X. Work on it stopped after the drafts in October 2026. It is kept in the repo so nothing is lost. The plugin does not install it, and Claude Code does not load it from here.
-
-## Status
-
-- Paused. The files are drafts, not a finished product.
-- Not installed by the plugin. `.claude-plugin/plugin.json` points at `.claude/`, not at this folder.
-- The video script skill is the active work: see [docs/skills-catalog.md](../docs/skills-catalog.md).
+Work on adquill stopped after the drafts of October 2026, and the files are kept so nothing is lost. The plugin does not install them, and Claude Code does not load them from here. `.claude-plugin/plugin.json` points at `.claude/`, not at this folder. The video script skill is the active work: see the [skills catalog](../docs/skills-catalog.md).
 
 ## What is in here
 
@@ -21,19 +15,21 @@ adquill is a skill and three agents that write honest, human-sounding ad copy fo
 | `skills/adquill/scripts/` | `slop_lint.py` (the linter), `rules.json`, `test_slop_lint.py` and fixtures |
 | `agents/` | `creative-director`, `direct-response-chief` and `editorial-director` |
 
-All examples in the skill use one invented brand. They are not Outdoor Norway facts.
+Every example in the skill uses an invented company, Brekke Ski Guides. The examples are not Outdoor Norway facts.
+
+`AGENTS.md` says to install adquill as a plugin for Claude Code. That line does not apply yet, because this folder has no plugin manifest.
 
 ## Run the linter and its tests
 
-The linter is Python standard library only, with no network access.
+The linter uses only the Python standard library and needs no network.
 
 ```
 python3 -I adquill/skills/adquill/scripts/test_slop_lint.py
 python3 -I adquill/skills/adquill/scripts/slop_lint.py --text "your copy"
 ```
 
-`slop_lint.py` states that it needs Python 3.9 or newer. [VERIFY: confirm the linter on Python 3.9, only 3.11 to 3.13 were available when this file was written]
+`slop_lint.py` states that it needs Python 3.9 or newer. [VERIFY: lowest Python 3 version that runs the linter and its tests]
 
 ## If work resumes
 
-Read `AGENTS.md` first. Move the skill into `.claude/skills/` and the agents into `.claude/agents/` only when the team decides to ship it. That move changes what the plugin installs. In the same change, add the agents to the list in `.claude-plugin/plugin.json` and adjust `tools/test_repo_integrity.py`, which expects every skill folder other than `scriptcraft` to be listed in `THIRD_PARTY_SKILLS.md`.
+Read `AGENTS.md` first. Move the skill into `.claude/skills/` and the agents into `.claude/agents/` only when the team decides to ship it, because that changes what the plugin installs. In the same change, add the agents to the list in `.claude-plugin/plugin.json` and adjust `tools/test_repo_integrity.py`, which expects every skill folder other than `scriptcraft` to be listed in `THIRD_PARTY_SKILLS.md`.

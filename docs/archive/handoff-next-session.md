@@ -180,7 +180,6 @@ No soft closing offer. End with a short summary.
 ## 12. What lives outside the repo
 
 - The old session's scratch notes (cost levers, our flow, production practice and a ClickUp pipeline note, plus the measurement runs) sit in that session's scratchpad folder and may be gone. Everything needed is in sections 3 to 7 above. Do not recreate the ClickUp note in the repo.
-- The old transcript, if the container still has it: `/root/.claude/projects/-home-user-outdoornorway/698d341b-36e0-5dc5-a8cb-413a8d3083ac.jsonl`. Search it with grep and read with an offset and limit. Do not read it whole.
 
 ## 13. Starter prompt for the new session
 

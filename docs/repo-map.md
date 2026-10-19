@@ -1,106 +1,89 @@
 # Repo map
 
-This page is for anyone who has just opened the repo and wants to know where things are and what is safe to change.
+This page shows where each folder and file lives, what uses it and whether it can move.
 
 ## Start here
 
-The repo is a Claude Code plugin (`outdoornorway-marketing`) plus the files it works on. The plugin is the whole repo: `marketplace.json` points its `source` at `./`. Writers use slash commands to draft and check video scripts for Outdoor Norway. Tour prices and dates live in one data file. A handful of paths are written into code, tests and manifests, so those folders stay where they are.
+The repo is a Claude Code plugin (`outdoornorway-marketing`) plus the files it works on. The plugin is the whole repo: `marketplace.json` points its `source` at `./`. Writers use slash commands to draft and check video scripts. Tour prices and dates live in one data file. A handful of paths are written into code, tests and manifests, so those stay where they are.
 
-If you write scripts, read [getting-started.md](getting-started.md). If you change the tools, read [CONTRIBUTING.md](../CONTRIBUTING.md) first. Come back here when you need a path. The full docs index is [README.md](README.md).
+If you write scripts, read [getting-started.md](getting-started.md). If you change the tools, read [CONTRIBUTING.md](../CONTRIBUTING.md). The full docs index is [README.md](README.md).
 
 ## Tree
 
+The tree shows two levels. Each folder guide lists the files inside it.
+
 ```
-outdoornorway/  # repo root
-|-- .claude/  # project files for Claude Code
-|   |-- agents/  # script-writer and script-reviewer [fixed]
-|   |-- commands/  # slash commands [fixed]
-|   |-- skills/  # video script skill and vendored skills [fixed]
-|   |   |-- scriptcraft/  # video script skill
-|   |   |   |-- assets/  # templates and intake forms
-|   |   |   |-- examples/  # fictional sample scripts and briefs
-|   |   |   |-- references/  # guides the skill reads
-|   |   |   |-- scripts/  # script_check.py, tiers.json, brand_rules.json, tests
-|   |   |   `-- SKILL.md  # skill instructions
-|   |   `-- (vendored third-party skills)  # listed in docs/skills-catalog.md
-|   |-- product-marketing.md  # brand facts and do-not-claim list
-|   `-- settings.json  # project settings for a clone [fixed]
-|-- .claude-plugin/  # plugin.json and marketplace.json [fixed]
-|-- adquill/  # paused ad-copy skill and agents (drafts)
-|   |-- agents/  # paused agents
-|   |-- skills/  # paused ad-copy skill
-|   |-- AGENTS.md  # instructions for coding agents
-|   `-- README.md  # says the skill is paused
-|-- campaigns/  # tour data and ski ad notes
-|   `-- ski-meta-ads/  # tours.json, its checker and ad notes [fixed]
-|-- content/  # finished and draft scripts
-|   `-- scripts/  # scripts, each with a notes file
-|-- docs/  # guides, research and review history
-|   |-- archive/  # retired notes
-|   |   `-- handoff-next-session.md  # old handoff note
-|   |-- research/  # research behind the skills
-|   |   |-- ad-copy/  # ad copy research
-|   |   |-- video-scripts/  # video script research
-|   |   `-- README.md  # research notes
-|   |-- script-skill-reviews/  # how the script skill was reviewed
-|   |   |-- e2e-agent-tests.md  # end-to-end agent tests
-|   |   |-- README.md  # index of review rounds
-|   |   |-- round-1-creative.md  # round 1, creative
-|   |   |-- round-1-direct-response.md  # round 1, direct response
-|   |   `-- round-1-editorial.md  # round 1, editorial
-|   |-- backup-and-restore.md  # what to save and how to restore it
-|   |-- getting-started.md  # guide for writers and editors [fixed]
-|   |-- installation.md  # install, check, update and remove
-|   |-- publishing-to-npm.md  # publish the launcher to npm
-|   |-- README.md  # docs index
-|   |-- repo-map.md  # this page
-|   |-- skills-catalog.md  # what each skill is for
-|   `-- token-hygiene.md  # token tips [fixed]
-|-- tools/  # integrity test, token report and npx launcher [fixed]
-|   |-- outdoornorway-cli.js  # npx launcher
-|   |-- README.md  # guide to the tools
-|   |-- test_repo_integrity.py  # integrity test
-|   `-- transcript_report.py  # token report for /tokens
-|-- .gitignore  # keeps caches and local files out of git [fixed]
-|-- CHANGELOG.md  # what changed in each version
-|-- CLAUDE.md  # rules for Claude Code in this repo [fixed]
-|-- CONTRIBUTING.md  # how to change the tools
-|-- LICENSE  # MIT licence [fixed]
-|-- package.json  # launcher metadata [fixed]
-|-- README.md  # front page [fixed]
-`-- THIRD_PARTY_SKILLS.md  # sources and licences of vendored skills [fixed]
+outdoornorway/
+|-- .claude/                    [fixed]  commands, agents and skills for Claude Code
+|   |-- agents/                 [fixed]  script-writer and script-reviewer
+|   |-- commands/               [fixed]  the slash commands
+|   |-- skills/                 [fixed]  scriptcraft and the vendored skills
+|   |-- product-marketing.md             brand facts and the do-not-claim list
+|   `-- settings.json           [fixed]  project settings for a clone
+|-- .claude-plugin/             [fixed]  plugin and marketplace manifests
+|   |-- marketplace.json        [fixed]  marketplace listing
+|   `-- plugin.json             [fixed]  plugin manifest
+|-- adquill/                             paused ad-copy skill, not installed by the plugin
+|   |-- agents/                          paused agents
+|   |-- skills/                          paused ad-copy skill
+|   |-- AGENTS.md                        instructions for other coding agents
+|   `-- README.md                        why adquill is paused
+|-- campaigns/                  [fixed]  tour data and ski ad notes
+|   `-- ski-meta-ads/           [fixed]  tours.json, its checker and the ad notes
+|-- content/                    [fixed]  finished and draft video scripts
+|   `-- scripts/                [fixed]  scripts, each with a notes file
+|-- docs/                       [fixed]  guides, research and review history
+|   |-- archive/                         retired notes
+|   |-- research/                        research behind the skills
+|   |-- script-skill-reviews/            review rounds of the script skill
+|   |-- backup-and-restore.md            what to save and how to restore it
+|   |-- getting-started.md      [fixed]  guide for writers and editors
+|   |-- installation.md                  install, check, update and remove
+|   |-- publishing-to-npm.md             publish the launcher to npm
+|   |-- README.md                        docs index
+|   |-- repo-map.md                      this page
+|   |-- skills-catalog.md                what each skill is for
+|   `-- token-hygiene.md        [fixed]  habits that keep sessions cheap
+|-- tools/                      [fixed]  tests, token report and npx launcher
+|   |-- outdoornorway-cli.js    [fixed]  npx launcher
+|   |-- README.md                        guide to the tools
+|   |-- test_repo_integrity.py  [fixed]  integrity test
+|   `-- transcript_report.py    [fixed]  token report for /tokens
+|-- .gitignore                  [fixed]  keeps caches, .env files and transcripts out of git
+|-- CHANGELOG.md                         what changed and when
+|-- CLAUDE.md                   [fixed]  rules for Claude Code in this repo
+|-- CONTRIBUTING.md                      how to change the tools
+|-- LICENSE                     [fixed]  MIT licence
+|-- package.json                [fixed]  launcher metadata
+|-- README.md                   [fixed]  front page
+`-- THIRD_PARTY_SKILLS.md       [fixed]  sources and licences of vendored skills
 ```
 
-[fixed] = the Safe to move? column says No or keep in place. Git and cache folders are left out.
+[fixed] marks a path that must not move: its row in the next table starts with No. A folder carries the mark when something inside it is fixed. Git and cache folders are left out.
 
-## Folders
+## Paths and whether they can move
+
+Safe to move? has two answers. No means code, tests or manifests name the path. With edits means it can move once you fix the references the row lists.
 
 | Path | What it holds | Who uses it | Safe to move? |
 |---|---|---|---|
 | `.claude-plugin/` | `plugin.json` and `marketplace.json`: plugin name, version and which folders ship | The plugin install, the integrity test, `doctor` in the launcher | No. The test and `doctor` open both files by path. |
-| `.claude/commands/` | The slash commands (`/script`, `/validate` and the rest) | The plugin, the integrity test | No. `plugin.json` names this folder and the test reads every file in it. |
+| `.claude/commands/` | The slash commands | The plugin, the integrity test | No. `plugin.json` names this folder and the test reads every file in it. |
 | `.claude/agents/` | `script-writer.md` and `script-reviewer.md` | `/script` and `/review-script` | No. `plugin.json` lists both files by path. |
-| `.claude/skills/` | `scriptcraft` (the video script skill, its validator and tests) and the vetted third-party skills | The plugin, the commands, the agents | No. `plugin.json` names the folder. The commands and agents call `.claude/skills/scriptcraft/scripts/script_check.py`, and that script finds `tours.json` by going up four folders from its own folder. |
-| `.claude/product-marketing.md` | Brand context, confirmed facts and the do-not-claim list | The copy skills and both agents | Avoid. The agents and the script notes cite this path as a source of facts. |
-| `.claude/settings.json` | Project settings for a clone: enabled plugins and the auto-compact window | Claude Code, when you work in a clone | Keep it here, since Claude Code reads project settings from this path. |
-| `campaigns/ski-meta-ads/` | `tours.json` (prices, dates, day-by-day plans), its checker and the ski ad copy notes. See [its README](../campaigns/ski-meta-ads/README.md). | The validator (`--tour`), `/tour-data`, `doctor`, both agents | No. `script_check.py` builds the path `campaigns/ski-meta-ads/tours.json` from the repo root, so a move breaks `--tour` (unless you pass `--tours-file`). `doctor` lists the file as required. |
-| `content/scripts/` | Finished and draft scripts, each with a notes file. See [its README](../content/scripts/README.md). | `/script` writes here by default | Only with edits. The writer agent's default save path and the guides name this folder. |
-| `docs/` | Guides, token tips, research, review history. See [README.md](README.md). | `/howto`, `/tokens`, the integrity test | Partly. Keep `docs/getting-started.md` and `docs/token-hygiene.md` in place, because a command and the test name them. Other files can move if you fix every link to the old path. |
-| `docs/archive/` | Retired notes, such as the old handoff note | Nobody at run time | Yes. Nothing loads it. |
-| `tools/` | The integrity test, the token report and the npx launcher. See [its README](../tools/README.md). | `/tokens`, the tests, `package.json` | No. `/tokens` and the `bin` entry in `package.json` name the files, and both Python and Node code find the repo root as the folder above `tools/`. |
-| `adquill/` | A paused ad-copy skill and three agents (drafts). See [its README](../adquill/README.md). | Nothing at run time. The script skill review notes cite its agents, and the launcher's `test --all` runs its linter tests. | Only with edits. The plugin does not install it. A move means updating `files` in `package.json`, the `--all` path in the launcher and the links in the docs. |
-
-## Files at the top level
-
-| Path | What it holds | Who uses it | Safe to move? |
-|---|---|---|---|
+| `.claude/skills/` | `scriptcraft` (the video script skill, its validator and tests) and the vetted third-party skills. [skills-catalog.md](skills-catalog.md) says what each is for. | The plugin, the commands, the agents | No. `plugin.json` names the folder, and the commands and agents call `.claude/skills/scriptcraft/scripts/script_check.py`. |
+| `.claude/settings.json` | Project settings for a clone: enabled plugins and the auto-compact window | Claude Code, in a clone | No. Claude Code reads project settings from this path. |
+| `.claude/product-marketing.md` | Brand context, confirmed facts and the do-not-claim list | The copy skills and the agents | With edits. CLAUDE.md, the reviewer agent, several skills and the script notes cite this path. |
+| `campaigns/ski-meta-ads/` | `tours.json` (prices, dates, day-by-day plans), its checker and the ski ad notes. See [its README](../campaigns/ski-meta-ads/README.md). | The validator (`--tour`), `/tour-data`, `doctor`, both agents | No. `script_check.py` finds `tours.json` by going up four folders from its own folder, so a move breaks `--tour` unless you pass `--tours-file`. `doctor` lists the file as required. |
+| `content/scripts/` | Finished and draft scripts, each with a notes file. See [its README](../content/scripts/README.md). | `/script` writes here by default | No. The script agents save here by default, and the integrity test lists its README. |
+| `docs/getting-started.md`, `docs/token-hygiene.md` | The guide for writers and editors, and the token habits | `/howto`, `/tokens`, the integrity test | No. `/howto` copies the Quick start from the guide and the test reads it. `/tokens` points to the token page. |
+| `docs/` | Guides, research, review history and retired notes. See [README.md](README.md). | Everyone | With edits. The two files above keep the folder in place. Inside it, a moved guide needs its links fixed, and the docs index and the integrity test name most of them. |
+| `tools/outdoornorway-cli.js`, `tools/test_repo_integrity.py`, `tools/transcript_report.py` | The npx launcher, the integrity test and the token report. See [the tools guide](../tools/README.md). | `package.json` (`bin`), CLAUDE.md, `/tokens` | No. Each is named by the file that uses it, and both Python and Node code find the repo root as the folder above `tools/`. |
+| `adquill/` | A paused ad-copy skill and three agents (drafts). See [its README](../adquill/README.md). | Nothing at run time. The launcher's `test --all` runs its linter tests. | With edits. The plugin does not install it. A move means updating `files` in `package.json`, the `--all` path in the launcher and the links in the docs. |
 | `README.md` | The front page: install, commands, what is here | Everyone | No. The integrity test reads it. |
-| `CLAUDE.md` | Rules and commands for Claude Code working in this repo | Claude Code, in a clone | Keep at the root. The plugin does not ship it. |
-| `CONTRIBUTING.md` | How to change the tools and send a pull request. See [CONTRIBUTING.md](../CONTRIBUTING.md). | Contributors | Yes, if you fix the links. |
-| `CHANGELOG.md` | What changed in each version. See [CHANGELOG.md](../CHANGELOG.md). | Maintainers | Yes, if you fix the links. |
-| `LICENSE` | The MIT licence for this repo | The integrity test | No. The test reads it by path. |
-| `THIRD_PARTY_SKILLS.md` | Source, pinned commit and licence of each third-party skill | The integrity test, anyone checking a licence | No. The test checks every listed skill has its licence file, and every skill folder is listed or original. |
-| `package.json` | Package metadata for the launcher: `bin`, `files`, Node `engines`, no dependencies | npm, `npx`, the integrity test | No. Keep it at the root. Its `version` must match `plugin.json` and `marketplace.json`. |
+| `CLAUDE.md` | Rules and commands for Claude Code working in this repo | Claude Code, in a clone | No. Claude Code loads it from the repo root, and the integrity test reads it. |
+| `CONTRIBUTING.md`, `CHANGELOG.md` | How to change the tools, and what changed and when | Contributors, maintainers | With edits. The integrity test lists both, so a move also needs new links and a test edit. |
+| `LICENSE`, `THIRD_PARTY_SKILLS.md` | The MIT licence, and the source, pinned commit and licence of each third-party skill | The integrity test | No. The licence checks read both by path. |
+| `package.json` | Launcher metadata: `bin`, `files`, Node `engines`, no dependencies | npm, `npx`, the integrity test | No. Keep it at the root. Its `version` must match `plugin.json` and `marketplace.json`. |
 | `.gitignore` | Keeps Python caches, transcripts (`*.jsonl`), archives (`*.zip`, `*.tgz`), `.env` files, `node_modules/`, `backup/` and `exports/` out of git | Git, the integrity test | No. The test checks that the main patterns are listed. |
 
 Chat transcripts and account-only skills are not in this repo. They go in a separate private backup repository (`<your-private-backup-repo>`). [backup-and-restore.md](backup-and-restore.md) has the steps.
@@ -113,17 +96,18 @@ Chat transcripts and account-only skills are not in this repo. They go in a sepa
 | Tour prices, dates and day-by-day plans | `campaigns/ski-meta-ads/tours.json`. To print one tour, run `python3 -I .claude/skills/scriptcraft/scripts/script_check.py --tour ski-aurora-7day`. A wrong id prints the list of valid ids. |
 | The validator | `.claude/skills/scriptcraft/scripts/script_check.py`. Its limits are in `tiers.json` and its brand rules in `brand_rules.json`, both in the same folder. |
 | The slash commands | `.claude/commands/`. The list with one line each is in the root [README](../README.md). |
-| The agents | `.claude/agents/` (`script-writer.md` and `script-reviewer.md`) |
+| The agents | `.claude/agents/` |
 | Brand facts and the do-not-claim list | `.claude/product-marketing.md` |
-| Third-party skills and their licences | `THIRD_PARTY_SKILLS.md`, and the `LICENSE-*` file inside each skill folder under `.claude/skills/`. [skills-catalog.md](skills-catalog.md) says what each skill is for. |
+| Third-party skills and their licences | `THIRD_PARTY_SKILLS.md`, and the `LICENSE-*` file inside each skill folder under `.claude/skills/` |
 | Install, update or uninstall the plugin | [installation.md](installation.md) |
 | Back up or restore transcripts and account-only skills | [backup-and-restore.md](backup-and-restore.md) |
 | Publish the launcher to npm | [publishing-to-npm.md](publishing-to-npm.md) |
-| Test commands | The block under [Test and check commands](#test-and-check-commands) |
+| Test and check commands | [CONTRIBUTING.md](../CONTRIBUTING.md#run-the-tests) |
 | Token tips | [token-hygiene.md](token-hygiene.md), the `/tokens` command, and the Tokens section of `CLAUDE.md` |
 | How the script skill was reviewed | [script-skill-reviews/README.md](script-skill-reviews/README.md) |
-| Research behind the skills | `docs/research/` |
+| Research behind the skills | [research/README.md](research/README.md) |
 | The paused ad-copy skill | [adquill/README.md](../adquill/README.md) |
+| What changed and when | [CHANGELOG.md](../CHANGELOG.md) |
 
 ## How the pieces connect
 
@@ -142,23 +126,3 @@ Commands call agents or tools. Agents call the validator. The validator reads it
 - The validator reads `tiers.json` (limits) and `brand_rules.json` (brand rules) from its own folder. It opens `tours.json` only for `--tour`. A normal check does not compare a script's numbers with `tours.json`. The writer builds the facts table from the `--tour` output, and the reviewer checks each row against its source.
 - `verify_tours.py` is the only thing that compares `tours.json` with the live site, so it needs network access.
 - Every command and agent finds repo files through ROOT: `${CLAUDE_PLUGIN_ROOT}` when installed as a plugin, or the current folder in a clone. Files they save for you go in the current folder, never under ROOT.
-
-## Test and check commands
-
-```
-python3 -I .claude/skills/scriptcraft/scripts/test_script_check.py
-python3 -I tools/test_repo_integrity.py
-python3 -I adquill/skills/adquill/scripts/test_slop_lint.py
-python3 -I campaigns/ski-meta-ads/verify_tours.py
-```
-
-The first two are the main suites. The third covers the paused adquill linter. The fourth needs network access. If Node is installed, `node tools/outdoornorway-cli.js test` runs the first two and adds the third with `--all`.
-
-## What is safe to change
-
-- Add scripts and notes under `content/scripts/`. Edit prose docs freely, and run the integrity test afterwards.
-- Change a price or a date in `tours.json` only after the owner confirms it, then run `verify_tours.py`.
-- After editing the Quick start in `docs/getting-started.md`, regenerate `.claude/commands/howto.md`. The integrity test checks the two match.
-- Do not add `!` shell lines with `${...}` or bare repo paths to a command. Commands reach files through ROOT.
-- When you change the tools, bump `version` in `plugin.json`, `marketplace.json` and `package.json` together, so installed copies update.
-- The repo is public and MIT licensed. Do not add supplier terms, personal data or private client information.

@@ -2,7 +2,7 @@
 
 Reviewer: Dana Whitfield, direct-response chief (composite persona, `adquill/agents/direct-response-chief.md`).
 Subject: `.claude/skills/scriptcraft/` (SKILL.md, references, assets, examples, scripts) and `.claude/agents/script-writer.md`, `.claude/agents/script-reviewer.md`.
-Date: 2026-10-07. Scratch files: `/tmp/scr/` (attack scripts) and `/tmp/scr/applied/` (applied test).
+Date: 2026-10-07.
 
 ## Direct-response review
 
@@ -37,7 +37,7 @@ Overall: 7/10
 
 3. [`scripts/script_check.py` `superlative_hits`] Superlatives are whitelisted by any facts row anywhere. Exact input: add the row `| F3 | Guests say the best part is the waffle | fictional: guest review | yes |` and set beat 5 to "The best ski guides in Norway keep you warm." Result: `RESULT: PASS` with zero findings ("Norway" also escapes F07 because it is part of the brand name "Outdoor Norway"). Fix direction: allow a BR11 word only in a beat whose facts column cites a row containing that word, and exempt only the full brand string from F07, not its parts.
 
-4. [`scripts/script_check.py` `check_cta` C01 and C02; `references/long-form.md` "Call to action"; `SKILL.md` "What changed" row "No call to action"] The CTA rules in the docs are not the CTA rules in code. long-form.md says "One primary CTA", soft CTA "Never in the first 30 s", "No stacked asks". tiers.json `cta.max` is 2 and the validator counts `soft-cta` separately, so a long can carry 2 hard plus 1 soft. Exact input `/tmp/scr/a12.md`: the long example with `promise, soft-cta` on beat 2 (8 to 19 s), beat 16 "Book a date from the link below. Follow for the next tour." (cta) and beat 17 "Subscribe, and send this to the friend who rides lifts." (cta). Four asks, one inside the promise: `RESULT: PASS`. In the short tier, "Save this, follow, and book your seat." as the single CTA passes, and "10 minutes in, you sweat. Book from the link below." in a `build` beat passes with no warning. Fix direction: make C01 count hard plus soft against `cta.max` and hard alone against 1 (or document that `max` 2 means one hard plus one soft and enforce exactly that); add a check that `soft-cta` starts after `hook.promise_by_seconds` and after the first `mini:` beat; warn when a cta beat holds more than one CTA verb (send, save, follow, subscribe, book, comment, like) and when a non-cta beat contains "link below", "book", "subscribe" as an imperative.
+4. [`scripts/script_check.py` `check_cta` C01 and C02; `references/long-form.md` "Call to action"; `SKILL.md` "What changed" row "No call to action"] The CTA rules in the docs are not the CTA rules in code. long-form.md says "One primary CTA", soft CTA "Never in the first 30 s", "No stacked asks". tiers.json `cta.max` is 2 and the validator counts `soft-cta` separately, so a long can carry 2 hard plus 1 soft. Exact input: the long example with `promise, soft-cta` on beat 2 (8 to 19 s), beat 16 "Book a date from the link below. Follow for the next tour." (cta) and beat 17 "Subscribe, and send this to the friend who rides lifts." (cta). Four asks, one inside the promise: `RESULT: PASS`. In the short tier, "Save this, follow, and book your seat." as the single CTA passes, and "10 minutes in, you sweat. Book from the link below." in a `build` beat passes with no warning. Fix direction: make C01 count hard plus soft against `cta.max` and hard alone against 1 (or document that `max` 2 means one hard plus one soft and enforce exactly that); add a check that `soft-cta` starts after `hook.promise_by_seconds` and after the first `mini:` beat; warn when a cta beat holds more than one CTA verb (send, save, follow, subscribe, book, comment, like) and when a non-cta beat contains "link below", "book", "subscribe" as an imperative.
 
 ### Number and fact check
 
@@ -54,7 +54,7 @@ Applied test scripts (fictional brief): every number is in a facts row copied fr
 
 ## Validator attack
 
-Base files: the passing examples, copied to `/tmp/scr/base-short.md` and `/tmp/scr/base-long.md`, one change per test. Command: `python3 -I .claude/skills/scriptcraft/scripts/script_check.py FILE`.
+Base files: the passing examples, copied to a short and a long base script, one change per test. Command: `python3 -I .claude/skills/scriptcraft/scripts/script_check.py FILE`.
 
 ### Should FAIL (all caught)
 
@@ -112,7 +112,7 @@ Base files: the passing examples, copied to `/tmp/scr/base-short.md` and `/tmp/s
 
 ## Mandatory applied test: Brekke Ski Guides (fictional)
 
-Files: `/tmp/scr/applied/brekke-short.md` (Reels, 25 s) and `/tmp/scr/applied/brekke-long.md` (YouTube, 192 s).
+Files: `brekke-short.md` (Reels, 25 s) and `brekke-long.md` (YouTube, 192 s).
 
 Final validator lines:
 - brekke-short.md: `TOTAL words 50 | est 20.8 s | declared end 25 s | beats 6 | facts 3 | numbers 2`, `RESULT: PASS`. With `--final`: `RESULT: PASS`. With `--strict`: `RESULT: PASS`.

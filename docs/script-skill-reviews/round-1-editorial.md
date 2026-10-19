@@ -76,8 +76,8 @@ No em dashes, en dashes, emoji or model names appear in any skill or agent file 
 Brief: a 3-day ski and snowshoe weekend, from NOK 4,900, departures 12 Feb and 19 Feb 2027, small groups, a lesson on each ski day, one snowshoe day for non-skiers, aimed at families and friend groups. All of it is fictional.
 
 Files:
-- `/tmp/scriptcraft-test/brekke-short.md` (reels, 25 s, 6 beats, 52 words, est 21.7 s)
-- `/tmp/scriptcraft-test/brekke-long.md` (youtube, 191 s, 16 beats, 357 words, est 165.1 s, 4 chapters)
+- `brekke-short.md` (reels, 25 s, 6 beats, 52 words, est 21.7 s)
+- `brekke-long.md` (youtube, 191 s, 16 beats, 357 words, est 165.1 s, 4 chapters)
 
 Rounds:
 - Short, round 1: FAIL (3 blocking). F04 hit 12, 19 and 2027, which appeared only in the caption. Fix: add a dates row to the facts table.

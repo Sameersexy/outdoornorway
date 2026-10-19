@@ -1,6 +1,6 @@
 # 06 Skill vetting: what to install, what to copy from, what to skip
 
-Date of vetting: 2026-10-06. Vetter: research agent 06. Nothing was installed into /home/user/outdoornorway. Nothing from these repos was executed.
+Date of vetting: 2026-10-06. Vetter: research agent 06. Nothing was installed into this repo. Nothing from these repos was executed.
 
 ## 0. Method, safety and how to read this file
 
@@ -265,7 +265,7 @@ Exact commands. Run them from a scratch directory outside the client repo. They 
 ```bash
 set -euo pipefail
 SCRATCH=$(mktemp -d)            # outside the client repo
-REPO=/home/user/outdoornorway   # target repo
+REPO=<repo-root>   # target repo
 DEST="$REPO/.claude/skills"     # project-level skills dir (Claude Code reads it)
 mkdir -p "$DEST"
 cd "$SCRATCH"
@@ -366,9 +366,9 @@ Exact hand-copy commands (no gbrain install, no code runs):
 ```bash
 SCRATCH=$(mktemp -d); cd "$SCRATCH"
 git init -q gbrain && git -C gbrain fetch -q --depth 1 https://github.com/garrytan/gbrain.git 76a9984bdca8183f34965e04e0aad92c85e71ba8 && git -C gbrain checkout -q FETCH_HEAD
-mkdir -p /home/user/outdoornorway/.claude/skills/fact-check
-cp gbrain/skills/fact-check/SKILL.md /home/user/outdoornorway/.claude/skills/fact-check/SKILL.md
-cp gbrain/LICENSE /home/user/outdoornorway/.claude/skills/fact-check/LICENSE-gbrain
+mkdir -p <repo-root>/.claude/skills/fact-check
+cp gbrain/skills/fact-check/SKILL.md <repo-root>/.claude/skills/fact-check/SKILL.md
+cp gbrain/LICENSE <repo-root>/.claude/skills/fact-check/LICENSE-gbrain
 ```
 
 Then edit the copy:
@@ -384,8 +384,8 @@ Official scaffold route, for completeness (not recommended). The CLI help in `sr
 ```bash
 # prerequisite: Bun >= 1.4.0, then
 bun install -g github:garrytan/gbrain         # runs postinstall (applies migrations)
-gbrain skillpack scaffold --harness claude-code --skill fact-check --scope project --workspace /home/user/outdoornorway --dry-run
-gbrain skillpack scaffold --harness claude-code --skill fact-check --scope project --workspace /home/user/outdoornorway
+gbrain skillpack scaffold --harness claude-code --skill fact-check --scope project --workspace <repo-root> --dry-run
+gbrain skillpack scaffold --harness claude-code --skill fact-check --scope project --workspace <repo-root>
 ```
 
 Facts about that route:

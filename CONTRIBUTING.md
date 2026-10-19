@@ -10,11 +10,6 @@ git clone https://github.com/Sameersexy/outdoornorway.git
 
 [docs/repo-map.md](docs/repo-map.md) shows where each folder and file lives. [docs/README.md](docs/README.md) lists every guide.
 
-## Branches and pull requests
-
-- Work on the branch the session names.
-- Open a pull request only when someone asks for one.
-
 ## Run the tests
 
 Run both main suites before you send a change.
@@ -30,17 +25,15 @@ If you change anything in `adquill/`, also run its linter tests. adquill is paus
 python3 -I adquill/skills/adquill/scripts/test_slop_lint.py
 ```
 
-The repo uses only the Python standard library. Node is optional. The launcher runs the same suites, and it needs Node 18 or newer.
+The repo uses only the Python standard library, and [installation.md](docs/installation.md#prerequisites) lists the Python versions. Node is optional. `node tools/outdoornorway-cli.js test` runs the same suites, and [tools/README.md](tools/README.md) lists every launcher command.
+
+To check the plugin manifests with Claude Code itself, run this from the repo root:
 
 ```
-node tools/outdoornorway-cli.js doctor
-node tools/outdoornorway-cli.js test
-node tools/outdoornorway-cli.js test --all
+claude plugin validate .
 ```
 
-`doctor` checks Node, Python 3, the Claude Code CLI and the repo files. `--all` adds the adquill tests to `test`.
-
-The main suites pass on Python 3.11, 3.12 and 3.13. [VERIFY: lowest Python 3 version; adquill's own docs state 3.9 or newer]
+It passes. Its one warning says that CLAUDE.md at the plugin root is not loaded as project context. The warning can stay, because CLAUDE.md guides work in a clone.
 
 ### Validate a script
 
@@ -70,7 +63,7 @@ The integrity test checks some of these rules. Check the rest yourself.
 - No paths from a local machine, such as a scratch folder.
 - No email addresses, tokens or private keys.
 - No ALL CAPS for emphasis. Bold a noun, or rewrite the sentence.
-- Never invent a fact, a URL, a version number, a count, a command or a guide's words. Use only URLs that already appear in the repo.
+- Never invent a fact, a URL, a version number, a command or a guide's words.
 - Where you cannot check a claim, write `[VERIFY: what to confirm]` in its place.
 - Do not hand-write counts of tests, rules or files. Counts drift.
 
@@ -106,24 +99,13 @@ The Quick start in [docs/getting-started.md](docs/getting-started.md) is what `/
 - The Quick start must not use the word "below", and it must name the "Set up (once)" section.
 - Run the integrity test to confirm the two match.
 
-## Paths that must not move
+## Moving files
 
-[docs/repo-map.md](docs/repo-map.md) has a "Safe to move?" column for every path. Read it before you move, rename or delete anything. These paths break when they move:
-
-- `.claude-plugin/`: the plugin manifests, which the integrity test reads.
-- `.claude/`: the commands, agents and skills that the plugin loads.
-- `campaigns/ski-meta-ads/`: the validator finds `tours.json` from the repo root. A move breaks `--tour` unless you pass `--tours-file`.
-- `content/scripts/`: the default save path for the script agents.
-- `tools/test_repo_integrity.py`: named in CLAUDE.md and in the launcher's test steps.
-- `tools/transcript_report.py`: the `/tokens` command runs it.
-- `docs/getting-started.md`: `/howto` copies its Quick start, and the integrity test reads it.
-- `docs/token-hygiene.md`: `/tokens` points to it.
-- `LICENSE` and `THIRD_PARTY_SKILLS.md`: the licence checks read both.
-- `package.json`: the launcher metadata. Keep it at the root, because its version must match the plugin files.
+Several paths are load-bearing. Read the "Safe to move?" column in [docs/repo-map.md](docs/repo-map.md) before you move, rename or delete anything.
 
 ## Licence and private information
 
-- The repo is public and MIT licensed. Unless you say otherwise, a change you send is released under the MIT licence in [LICENSE](LICENSE).
+- The repo is public and MIT licensed. See [LICENSE](LICENSE).
 - Do not add supplier terms, personal data or other private client information.
 - The page-audit notes in `campaigns/ski-meta-ads/` stay public. The owner decided this on 12 October 2026.
 - `.gitignore` blocks transcripts (`*.jsonl`), archives (`*.zip`, `*.tgz`), `.env` files, `node_modules/`, `backup/` and `exports/`. Do not work around it.
@@ -138,9 +120,8 @@ The Quick start in [docs/getting-started.md](docs/getting-started.md) is what `/
 
 ## Before you send a change
 
-1. Work on the branch the session names.
-2. Run both main test suites, and the adquill tests if you changed `adquill/`.
-3. Run `verify_tours.py` if you changed `tours.json`.
-4. Regenerate `howto.md` if you edited the Quick start.
-5. Check the hygiene rules above.
-6. Open a pull request only when someone asks for one.
+1. Run both main test suites, and the adquill tests if you changed `adquill/`.
+2. Run `verify_tours.py` if you changed `tours.json`.
+3. Regenerate `howto.md` if you edited the Quick start.
+4. Check the hygiene rules above.
+5. Work on the branch you were given, and open a pull request only when someone asks for one.

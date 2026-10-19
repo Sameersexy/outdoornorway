@@ -56,7 +56,7 @@ Overall: 7/10
 
 Brief (fictional): Brekke Ski Guides, 3-day ski and snowshoe weekend, NOK 4,900 from, departures 12 Feb and 19 Feb 2027, small groups, a lesson on each ski day, one snowshoe day for non-skiers. Audience: families and friend groups.
 
-Files: `/tmp/brekke/short.md` (Reels, 25 s) and `/tmp/brekke/long.md` (YouTube, 192 s declared, 178 s estimated).
+Files: `short.md` (Reels, 25 s) and `long.md` (YouTube, 192 s declared, 178 s estimated).
 
 ### Short: final validator result
 

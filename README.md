@@ -38,16 +38,14 @@ npx github:Sameersexy/outdoornorway doctor
 npx github:Sameersexy/outdoornorway install
 ```
 
-`doctor` checks Node, Python 3, the Claude Code CLI and the repo files. `install` prints the two plugin commands and runs them only when you add `--run`. The same launcher is packaged for npm as `outdoornorway-marketing`. It is not published to the npm registry yet: see [docs/publishing-to-npm.md](docs/publishing-to-npm.md).
-
-Check the packaging with `claude plugin validate .` (it passes; its one warning says the repo's `CLAUDE.md` is not shipped inside the plugin, which is intended).
+`doctor` checks Node, Python 3, the Claude Code CLI and the repo files. `install` prints the two plugin commands and runs them only when you add `--run`. [VERIFY: confirm npx runs the bin from a GitHub spec]. The package is not on the npm registry yet: see [docs/publishing-to-npm.md](docs/publishing-to-npm.md).
 
 ## Slash commands
 
 | Command | What it does |
 |---|---|
 | `/script <tour or topic> <platform> [style]` | Writes a script with the script-writer agent, saves it to `content/scripts/`, validates it, and returns a short result |
-| `/review-script <file>` | Independent review by the script-reviewer agent: facts, voice, authenticity, verdict, top five fixes |
+| `/review-script <file>` | Independent review by the script-reviewer agent: facts, voice, authenticity, the top fixes and a verdict |
 | `/validate <file> [--final] [--strict]` | Runs the validator and shows only the findings |
 | `/open-items <file>` | Lists every `[VERIFY]` placeholder and unverified fact row, grouped by who confirms it |
 | `/howto` | Shows the quick start for writers and editors |
@@ -60,37 +58,42 @@ The commands run only when you type them.
 
 ```
 outdoornorway/
-|-- .claude/  # commands, agents and skills for Claude Code
-|-- .claude-plugin/  # plugin and marketplace files [fixed]
-|-- adquill/  # paused ad-copy skill, not installed by the plugin
-|-- campaigns/  # tour prices, dates and ski ad notes
-|-- content/  # finished and draft scripts
-|-- docs/  # guides, research and review history
-|-- tools/  # tests, token report and npx launcher [fixed]
-|-- .gitignore  # keeps caches, .env files and transcripts out of git [fixed]
-|-- CHANGELOG.md  # what changed in each version
-|-- CLAUDE.md  # rules for Claude Code in this repo [fixed]
-|-- CONTRIBUTING.md  # how to change the tools
-|-- LICENSE  # MIT licence [fixed]
-|-- package.json  # launcher metadata [fixed]
-|-- README.md  # this page [fixed]
-`-- THIRD_PARTY_SKILLS.md  # sources and licences of vendored skills [fixed]
+|-- .claude/               [fixed]  commands, agents and skills for Claude Code
+|-- .claude-plugin/        [fixed]  plugin and marketplace manifests
+|-- adquill/                        paused ad-copy skill, not installed by the plugin
+|-- campaigns/             [fixed]  tour data and ski ad notes
+|-- content/               [fixed]  finished and draft video scripts
+|-- docs/                  [fixed]  guides, research and review history
+|-- tools/                 [fixed]  tests, token report and npx launcher
+|-- .gitignore             [fixed]  keeps caches, .env files and transcripts out of git
+|-- CHANGELOG.md                    what changed and when
+|-- CLAUDE.md              [fixed]  rules for Claude Code in this repo
+|-- CONTRIBUTING.md                 how to change the tools
+|-- LICENSE                [fixed]  MIT licence
+|-- package.json           [fixed]  launcher metadata
+|-- README.md              [fixed]  front page
+`-- THIRD_PARTY_SKILLS.md  [fixed]  sources and licences of vendored skills
 ```
 
-[fixed] marks a path that must not move. Folder guides: the [docs index](docs/README.md), the [tools guide](tools/README.md) and the [adquill guide](adquill/README.md).
+[fixed] marks a path that must not move. The [repo map](docs/repo-map.md) says why for each one and lists what sits inside every folder. Each folder has its own guide:
 
-The [repo map](docs/repo-map.md) explains every folder and marks the paths that must not move, because the plugin and the validator rely on them. The [skills catalog](docs/skills-catalog.md) separates our own skills from the vendored ones.
+- [docs index](docs/README.md) for every guide
+- [research notes](docs/research/README.md) and [script skill reviews](docs/script-skill-reviews/README.md) for the sources and review history
+- [tools guide](tools/README.md) for the tests, token report and launcher
+- [script folder guide](content/scripts/README.md) for finished and draft scripts
+- [ski ads guide](campaigns/ski-meta-ads/README.md) for tour data and ad notes
+- [adquill guide](adquill/README.md) for the paused ad-copy skill
+
+The [skills catalog](docs/skills-catalog.md) separates our own skills from the vendored ones. The [changelog](CHANGELOG.md) lists what changed and when.
 
 ## Tests
-
-Run both. Each prints how many tests ran, so this page carries no counts that go stale.
 
 ```
 python3 -I .claude/skills/scriptcraft/scripts/test_script_check.py
 python3 -I tools/test_repo_integrity.py
 ```
 
-The first covers the validator. The second covers the commands, plugin files, licences, the guide, the npm package, the docs links and the public repo guards. With Node installed, `npm test` runs both. `python3 -I adquill/skills/adquill/scripts/test_slop_lint.py` covers the paused adquill linter.
+Each run prints how many tests ran, so this page carries no counts that go stale. The first covers the validator. The second covers the commands, plugin files, licences, the guide, the npm package, the docs links and the public repo guards. With Node installed, `npm test` runs both. The other checks are in [CONTRIBUTING.md](CONTRIBUTING.md#run-the-tests).
 
 ## Backup and restore
 
