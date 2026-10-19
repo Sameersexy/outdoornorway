@@ -6,9 +6,11 @@ only works in a clone, a licence file that went missing, a guide that drifted
 from /howto.
 """
 import contextlib
+import functools
 import importlib.util
 import io
 import json
+import os
 import re
 import shutil
 import subprocess
@@ -143,44 +145,53 @@ def third_party_skill_names():
     return set(re.findall(r"^\| ([a-z-]+) \| [^|]+ \| [0-9a-f]{40} \|", table, re.M))
 
 
-def tracked_text_files():
-    """Every text file in the repo except this one, with the skill folder it sits in (or None)."""
+@functools.lru_cache(maxsize=None)
+def tracked_texts():
+    """Every text file in the repo except this one, as (path, skill folder or None, text).
+
+    Built once per run. The folder walk skips .git and the other SKIP_FOLDERS instead of
+    listing them first, and the five scans below share one read of each file."""
     third = third_party_skill_names()
-    for path in sorted(ROOT.rglob("*")):
+    paths = []
+    for folder, names, files in os.walk(ROOT):
+        names[:] = [name for name in names if name not in SKIP_FOLDERS]
+        for name in files:
+            path = Path(folder, name)
+            if name in SKIP_FOLDERS or path == SELF or path.suffix not in TEXT_SUFFIXES or not path.is_file():
+                continue
+            paths.append(path)
+    found = []
+    for path in sorted(paths):
         rel = path.relative_to(ROOT).parts
-        if not path.is_file() or SKIP_FOLDERS.intersection(rel) or path == SELF:
-            continue
-        if path.suffix not in TEXT_SUFFIXES:
-            continue
         skill = rel[2] if len(rel) > 3 and rel[:2] == (".claude", "skills") and rel[2] in third else None
-        yield path, skill
+        found.append((path, skill, read(path)))
+    return tuple(found)
 
 
 class Hygiene(unittest.TestCase):
     def test_no_dashes_or_emoji_in_our_own_files(self):
         # Third-party skill files keep quoted examples (lists of AI tells), see THIRD_PARTY_SKILLS.md.
         bad = []
-        for path, skill in tracked_text_files():
+        for path, skill, text in tracked_texts():
             if skill is not None:
                 continue
-            text = read(path)
             if DASHES.search(text) or EMOJI.search(text):
                 bad.append(str(path.relative_to(ROOT)))
         self.assertEqual(bad, [], "em or en dash, or emoji, in: " + ", ".join(bad))
 
     def test_no_local_scratch_paths(self):
         scratch = "/tmp/" + "claude"
-        bad = [str(p.relative_to(ROOT)) for p, _ in tracked_text_files() if scratch in read(p)]
+        bad = [str(p.relative_to(ROOT)) for p, _, text in tracked_texts() if scratch in text]
         self.assertEqual(bad, [], "local scratch path in: " + ", ".join(bad))
 
     def test_no_claude_model_names_anywhere(self):
-        bad = [str(p.relative_to(ROOT)) for p, _ in tracked_text_files() if MODEL_NAMES.search(read(p))]
+        bad = [str(p.relative_to(ROOT)) for p, _, text in tracked_texts() if MODEL_NAMES.search(text)]
         self.assertEqual(bad, [], "model name in: " + ", ".join(bad))
 
     def test_no_gpt_model_names_in_our_own_files(self):
         # Third-party skill files keep upstream text, so they are skipped like the dash check.
         pattern = re.compile(r"\bGPT[- ]?[0-9]")
-        bad = [str(p.relative_to(ROOT)) for p, skill in tracked_text_files() if skill is None and pattern.search(read(p))]
+        bad = [str(p.relative_to(ROOT)) for p, skill, text in tracked_texts() if skill is None and pattern.search(text)]
         self.assertEqual(bad, [], "GPT model name in: " + ", ".join(bad))
 
     def test_no_dangling_session_references(self):
@@ -348,8 +359,7 @@ class PublicRepoGuards(unittest.TestCase):
             )
         )
         bad = []
-        for path, _ in tracked_text_files():
-            text = read(path)
+        for path, _, text in tracked_texts():
             if email.search(text) or secrets.search(text):
                 bad.append(str(path.relative_to(ROOT)))
         self.assertEqual(bad, [], "email address or secret-like text in: " + ", ".join(bad))

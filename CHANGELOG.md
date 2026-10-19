@@ -23,6 +23,10 @@ The plugin and marketplace manifests have carried version 0.2.0 since `8d7effb` 
 - [README.md](README.md) and [CLAUDE.md](CLAUDE.md) updated.
 - Python 3.9 or newer is the stated minimum, in the [installation guide](docs/installation.md) and the [adquill README](adquill/README.md).
 - Some open items closed in the installation, adquill, npm and backup guides. The ski ads guide explains why no file numbered 02 exists.
+- The validator tests run most attack cases in one process and keep one real child process for each expected outcome. The suite takes 3.7 s instead of 5.3 s (median of 7 runs).
+- The adquill tests call `main()` in the same process for most command line cases and keep five real child processes. The suite takes 1.0 s instead of 2.3 s.
+- `tools/test_repo_integrity.py` walks the repo once and shares the file list between its scan tests, which saves about 0.1 s.
+- `outdoornorway test` starts the suites together and prints their output in the old order with the same exit codes. On a 4 core machine `test` takes 4.0 s instead of 6.1 s and `test --all` 4.2 s instead of 8.2 s.
 
 ### Fixed
 

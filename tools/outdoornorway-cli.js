@@ -8,7 +8,7 @@
 
 const fs = require("fs");
 const path = require("path");
-const { spawnSync } = require("child_process");
+const { spawn, spawnSync } = require("child_process");
 
 const ROOT = path.resolve(__dirname, "..");
 const MARKETPLACE = "Sameersexy/outdoornorway";
@@ -72,6 +72,89 @@ function runSteps(steps, cwd) {
     }
   }
   return 0;
+}
+
+// The test suites do not depend on each other, so they all start at once.
+// Output still appears in step order: the first suite streams as it runs and each
+// later suite is held back until the ones before it have ended. The first failure
+// in that order sets the exit status, and nothing from later suites is shown.
+function runTogether(steps, cwd) {
+  return new Promise((resolve) => {
+    // Child output goes through pipes here, so ask for the colour a terminal would get.
+    const env = process.stderr.isTTY ? Object.assign({ FORCE_COLOR: "1" }, process.env) : process.env;
+    const runs = steps.map((step) => ({ step, held: [], opened: false, ended: false, status: 0, child: null }));
+    let current = 0;
+    let settled = false;
+
+    function settle(status) {
+      settled = true;
+      for (const run of runs) {
+        if (!run.ended && run.child) {
+          run.child.kill();
+        }
+      }
+      resolve(status);
+    }
+
+    function advance() {
+      while (!settled && current < runs.length) {
+        const run = runs[current];
+        if (!run.opened) {
+          console.log("> " + show(run.step));
+          run.opened = true;
+        }
+        for (const piece of run.held.splice(0)) {
+          piece.stream.write(piece.data);
+        }
+        if (!run.ended) {
+          return;
+        }
+        if (run.status !== 0) {
+          settle(run.status);
+          return;
+        }
+        current += 1;
+      }
+      if (!settled) {
+        settle(0);
+      }
+    }
+
+    function listen(run, stream) {
+      return (data) => {
+        if (runs[current] === run) {
+          stream.write(data);
+        } else {
+          run.held.push({ stream, data });
+        }
+      };
+    }
+
+    for (const run of runs) {
+      const child = spawn(run.step[0], run.step[1], { cwd, env, stdio: ["ignore", "pipe", "pipe"] });
+      run.child = child;
+      child.stdout.on("data", listen(run, process.stdout));
+      child.stderr.on("data", listen(run, process.stderr));
+      child.on("error", (error) => {
+        if (run.ended) {
+          return;
+        }
+        run.held.push({ stream: process.stderr, data: "Could not run " + run.step[0] + ": " + error.message + "\n" });
+        run.ended = true;
+        run.status = 1;
+        advance();
+      });
+      child.on("close", (code) => {
+        if (run.ended) {
+          return;
+        }
+        run.ended = true;
+        run.status = code === null ? 1 : code;
+        advance();
+      });
+    }
+    advance();
+  });
 }
 
 function doctor() {
@@ -157,7 +240,7 @@ function test(args) {
     console.error("python3 not found. Install Python 3 from https://www.python.org/downloads/");
     return 1;
   }
-  return runSteps(steps, ROOT);
+  return runTogether(steps, ROOT);
 }
 
 function main(argv) {
@@ -189,4 +272,6 @@ function main(argv) {
   }
 }
 
-process.exitCode = main(process.argv.slice(2));
+Promise.resolve(main(process.argv.slice(2))).then((code) => {
+  process.exitCode = code;
+});
