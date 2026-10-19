@@ -147,7 +147,7 @@ How adwright should use this: add a "group chat test" to the lint (does the ad m
 Primary source, read: https://github.com/xai-org/x-algorithm (33.5k stars on the page I fetched; Apache 2.0 per secondary summary). First published 2026-01-20, major update 2026-05-15 (secondary: https://pasqualepillitteri.it/en/news/2594/x-algorithm-open-source-may-2026).
 
 What the README states:
-- The Grok-based ranking model predicts probabilities for these actions. Engagement: favorite, reply, repost, quote, share, share via DM, share via copy link. Clicks: post, profile, link, photo expand, video open, quoted post. Attention: video quality view, dwell, dwell time, click dwell time, video continuation seconds, profile visit seconds. Author: follow author. Negative: not interested, mute author, block author, report, not dwelled.
+- The ranking model predicts probabilities for these actions. Engagement: favorite, reply, repost, quote, share, share via DM, share via copy link. Clicks: post, profile, link, photo expand, video open, quoted post. Attention: video quality view, dwell, dwell time, click dwell time, video continuation seconds, profile visit seconds. Author: follow author. Negative: not interested, mute author, block author, report, not dwelled.
 - The score is a weighted sum: final score equals the sum of weight_i times P(action_i), with weights in `home-mixer/params/param.rs`. Weights scale predicted probabilities, not raw counts.
 - After scoring: author diversity (repeat posts from one author decay), an out-of-network discount (below 1), and a new-author boost for low-impression authors.
 

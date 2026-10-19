@@ -112,7 +112,7 @@ Base files: the passing examples, copied to a short and a long base script, one 
 
 ## Mandatory applied test: Brekke Ski Guides (fictional)
 
-Files: `brekke-short.md` (Reels, 25 s) and `brekke-long.md` (YouTube, 192 s).
+Files: `brekke-short.md` (Reels, 25 s) and `brekke-long.md` (YouTube, 192 s). These test scripts are not kept in this repo.
 
 Final validator lines:
 - brekke-short.md: `TOTAL words 50 | est 20.8 s | declared end 25 s | beats 6 | facts 3 | numbers 2`, `RESULT: PASS`. With `--final`: `RESULT: PASS`. With `--strict`: `RESULT: PASS`.

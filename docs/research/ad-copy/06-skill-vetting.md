@@ -6,7 +6,7 @@ Date of vetting: 2026-10-06. Nothing was installed into this repo. Nothing from 
 
 What I did:
 
-- Shallow clones (`git clone --depth 1`) of 36 candidate repos were read from local folders that are not part of this repo. Three more (gbrain, Graft and claude-plugins-official) had already been cloned the same way.
+- Shallow clones (`git clone --depth 1`) of 36 candidate repos were read as local copies. This repo does not hold them. Three more (gbrain, Graft and claude-plugins-official) had already been cloned the same way.
 - Live stars, license, push date and description come from the GitHub repository search API (via the GitHub tool), queried on 2026-10-06. Last-commit dates, sizes, SKILL.md counts and word counts come from the local clones.
 - I read the actual SKILL.md files for every candidate that matters, plus the references for the ones I rate highly. I ran read-only greps (no code execution) over every clone for: hooks files, MCP configs, install scripts, network calls, credential names, telemetry, base64 or eval patterns, curl-pipe-shell, zero-width or bidi characters, and prompt-injection phrases.
 - For the platform and plugin schema questions I cross-checked the cloned official repo against the live Claude Code docs (code.claude.com/docs).

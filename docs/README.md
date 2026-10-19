@@ -1,6 +1,6 @@
 # Docs index
 
-Use this page to find the guide you need. It lists every file and folder in `docs/`. For the folders and files outside `docs/`, read the [repo map](repo-map.md).
+Use this page to find the guide you need. It lists every other file and folder in `docs/`. For the folders and files outside `docs/`, read the [repo map](repo-map.md).
 
 | Read | If you want to | Audience |
 |---|---|---|

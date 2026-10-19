@@ -4,6 +4,8 @@ This index is for anyone who wants the sources behind the skills in this repo. E
 
 ## ad-copy (behind the paused adquill skill)
 
+The ad-copy notes use the skill's earlier working name, adwright, in many places. Read it as adquill. The rename is in commit 3554144.
+
 | File | Topic |
 |---|---|
 | [01-craft-canon.md](ad-copy/01-craft-canon.md) | Copywriting craft, frameworks, headline and hook craft |

@@ -63,7 +63,7 @@ Both skills passed a privacy screen before they were copied into `account-skills
 
 ## Account-only skills
 
-These skills live in the Claude account, with a second copy in the private backup. None of them is copied into this repo or into the plugin. The reasons differ. Some did not pass the privacy screen, some are private by decision, and for one of them the copy in this repo is the canonical one. The skills are:
+These skills live only in the Claude account, with a second copy in the private backup. None of them is copied into this repo or into the plugin. The reasons differ, and this page does not assign a reason to any one skill. A skill may have failed the privacy screen, may be private by decision, or may have its canonical copy in this repo. The skills are:
 
 - content-qc
 - guest-benefit-checker

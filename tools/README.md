@@ -71,6 +71,7 @@ Behaviour notes:
 - `doctor` warns when Node is older than 18 or the Claude Code CLI is missing. It fails when `python3` is missing, a required file is missing, or the versions in `package.json`, `.claude-plugin/plugin.json` and `.claude-plugin/marketplace.json` differ. A failure sets exit code 1. Warnings leave it at 0.
 - `install --run` and `update --run` need the Claude Code CLI. Without it, they print an error and exit 1. The steps run in order, and the first failing step stops the run.
 - `test` needs `python3`. Without it, it prints a message and exits 1.
+- `test` needs a clone. The npm package leaves out `account-skills/` and `.gitignore`, so the integrity test fails there. `doctor` works in both.
 - An unknown command prints an error and the usage text to stderr, then exits 1.
 - With `--run`, the `claude` CLI changes Claude Code's plugin settings. The test steps can create `__pycache__` folders, which git ignores and `package.json` leaves out of the npm package.
 

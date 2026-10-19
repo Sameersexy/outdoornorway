@@ -704,7 +704,7 @@ Do not claim:
 | March | "March is one of our favourite months to ski: there's more daylight for longer days in the mountains while winter conditions are still well established." | L131 |
 | Snowshoes with non-skiers | "Snowshoeing offers an accessible alternative" | L111 |
 | Eco | "certified Eco Lighthouse (Miljøfyrtårn) company" | 9-day L286 |
-| Contact | +47 56 99 40 21 | hub L5 |
+| Contact | The company phone number shown on the hub page | hub L5 |
 
 ### How adwright should use this
 

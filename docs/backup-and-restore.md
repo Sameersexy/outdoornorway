@@ -55,7 +55,7 @@ Work through these steps in order.
 
    Restart Claude Code, then run `claude plugin list` to check that the plugin is enabled.
 
-4. Upload the custom skills from the private backup to the account. Restore only the skills that [skills-catalog.md](skills-catalog.md) lists as account-only. The repo copy of scriptcraft is the canonical one, so upload the account copy only if you want it in chat. Platform skills (docx, pdf, pptx and xlsx) are never in the backup. In Customize > Skills, click the + button, then + Create skill, then Upload a skill, and choose a zip file. The skill folder must be the root of the zip, and its name should match the skill's name. Inside the folder, the instructions file is named skill.md, and it starts with frontmatter that sets name (64 characters at most) and description (200 characters at most). Free, Pro and Max users can upload after they enable code execution. On Team and Enterprise, members can upload once the organization has skills enabled, and owners can turn user-created skills off or provision a skill for everyone. See [Use skills in Claude](https://support.claude.com/en/articles/12512180-use-skills-in-claude) and [How to create custom skills](https://support.claude.com/en/articles/12512198-how-to-create-custom-skills). [VERIFY: the help page names the file skill.md in lowercase, but the Claude Code skills page at https://code.claude.com/docs/en/skills says SKILL.md; check which name the upload accepts before you upload]
+4. Upload the custom skills from the private backup to the account. Restore only the skills that [skills-catalog.md](skills-catalog.md) lists as account-only. The repo copy of scriptcraft is the canonical one, so upload the account copy only if you want it in chat. Platform skills, such as docx, pdf, pptx and xlsx, are never in the backup. In Customize > Skills, click the + button, then + Create skill, then Upload a skill, and choose a zip file. The skill folder must be the root of the zip, and its name should match the skill's name. Inside the folder, the instructions file is named skill.md, and it starts with frontmatter that sets name (64 characters at most) and description (200 characters at most). Free, Pro and Max users can upload after they enable code execution. On Team and Enterprise, members can upload once the organization has skills enabled, and owners can turn user-created skills off or provision a skill for everyone. See [Use skills in Claude](https://support.claude.com/en/articles/12512180-use-skills-in-claude) and [How to create custom skills](https://support.claude.com/en/articles/12512198-how-to-create-custom-skills). [VERIFY: the help page names the file skill.md in lowercase, but the Claude Code skills page at https://code.claude.com/docs/en/skills says SKILL.md; check which name the upload accepts before you upload]
 
    The two screened skills are also in [account-skills/](../account-skills/README.md) in the public repo, and you can upload them from there. The steps are in [how to use a skill](../account-skills/README.md#how-to-use-a-skill).
 
@@ -63,13 +63,13 @@ Work through these steps in order.
 6. Copy old transcripts out of the private backup only if you want the token report to read them. The report takes any transcript path, so they can stay outside `~/.claude/projects`.
 7. If you publish the launcher, log in to npm with the owner's npm account. `npm whoami` prints the user name when the login works. The rest is in [publishing-to-npm.md](publishing-to-npm.md#5-log-in).
 
-Two items have no restore step. Platform skills (docx, pdf, pptx and xlsx) come with the new account, so there is nothing to upload. Chat history stays in the export you saved before the switch. This guide has no step that moves it into the new account.
+Two items have no restore step. Platform skills, such as docx, pdf, pptx and xlsx, come with the new account, so there is nothing to upload. Chat history stays in the export you saved before the switch. This guide has no step that moves it into the new account.
 
 ### Local Claude Code transcripts
 
 Claude Code writes one transcript per session on the computer where the session ran. Each is a JSON Lines file (`.jsonl`) in a folder for its project under `~/.claude/projects`. Subagent transcripts sit in a `subagents` folder inside a folder named after the session. These are local files, so they do not come with the account.
 
-Copy them by hand into the private backup and keep the same layout. The token report ([tools/transcript_report.py](../tools/transcript_report.py)) finds subagent runs through that folder, so a flat copy loses them. Never place a transcript in this repo.
+Copy them by hand into the private backup and keep the same layout. The token report ([tools/transcript_report.py](../tools/transcript_report.py)) lists the subagent runs it finds directly under `subagents/` as `agent-*.jsonl` files, so a flat copy loses them. It does not list runs that a workflow started, which sit one level deeper in `subagents/workflows/<workflow id>/`. Never place a transcript in this repo.
 
 ## Restore dry run
 
@@ -80,18 +80,24 @@ mkdir -p ~/restore-dry-run
 cd ~/restore-dry-run
 git clone https://github.com/Sameersexy/outdoornorway.git
 cd outdoornorway
+ls tools/outdoornorway-cli.js
+```
+
+The doctor step needs `tools/outdoornorway-cli.js`, and the default branch does not have that file until the branch that adds it is merged. If the `ls` line reports no such file, switch to that branch inside the same clone. Git creates the local branch from the remote one.
+
+```
+git switch claude/optimistic-cannon-rzksgv
+```
+
+Stay in this clone. A second clone into the scratch folder fails, because the `outdoornorway` folder already exists. Then run the checks:
+
+```
 python3 -I tools/test_repo_integrity.py
 python3 -I .claude/skills/scriptcraft/scripts/test_script_check.py
 node tools/outdoornorway-cli.js doctor
 ```
 
 Each test run ends with the line `OK` when it passes. [tools/README.md](../tools/README.md) describes the doctor.
-
-The doctor step needs `tools/outdoornorway-cli.js`, and the default branch does not have that file until the branch that adds it is merged. Before then, the last command fails with a module-not-found error. Clone the branch that carries the launcher instead, for example:
-
-```
-git clone --branch claude/optimistic-cannon-rzksgv https://github.com/Sameersexy/outdoornorway.git
-```
 
 Copy one transcript from the private backup to `~/restore-dry-run/sample.jsonl`, outside the clone. Pick one that has model calls, or the report exits with a message. Then run the report on that copy from inside the clone:
 

@@ -420,7 +420,7 @@ Encode the 12 steps as the skill's `edit` phase. The first and last steps call t
 
 ## 7. Linter specification
 
-The linter is a Python 3 script with no dependencies. The complete file is below in 7.4, and the test file in 7.5. On my run: 50 of 50 unit checks passed. All 30 Before lines reached REVISE or BLOCK, all 30 After lines scored PASS with no hits. A typical machine-written paragraph with bold-first bullets triggered 16 P1 hits and 12 P2 hits.
+The linter is a Python 3 script with no dependencies. The complete file is below in 7.4, and the test file in 7.5. When the linter was run, 50 of 50 unit checks passed. All 30 Before lines reached REVISE or BLOCK, all 30 After lines scored PASS with no hits. A typical machine-written paragraph with bold-first bullets triggered 16 P1 hits and 12 P2 hits.
 
 Honest limits: these are my regexes, tuned on my test strings and on 30 pairs. They have not been tested on a real corpus of human ad copy. Thresholds marked [HEURISTIC] are my choices, not published values.
 

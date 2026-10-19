@@ -34,8 +34,12 @@ The plugin and marketplace manifests have carried version 0.2.0 since `8d7effb` 
 - `adquill/AGENTS.md` and the adquill README no longer say to install it as a plugin, because it is paused.
 - The skills catalog no longer assigns a privacy screen result to each account-only skill, because the repo holds no record of one. The backup guide, the repo map and CONTRIBUTING.md now agree on where the private copies live.
 - The backup guide covers the npm login, and says the restore dry run needs the branch that carries the launcher until it is merged.
-- The repo map marks `docs/` as a path that must not move, and the adquill README links every file in the folder and names two reference files that SKILL.md and AGENTS.md cite but the repo does not hold.
-- Stray scratch wording removed from the research notes, two table rows with unescaped pipes fixed, and three open markers in the guides rewritten as plain statements or as `[VERIFY: what, who]`.
+- The repo map marks `docs/` as a path that must not move, and the adquill README links every file in the folder and names two reference files that the adquill `SKILL.md` and `adquill/AGENTS.md` cite but the repo does not hold.
+- Stray working-note wording removed from the research notes and the token hygiene guide, two table rows with unescaped pipes fixed, and three open markers in the guides rewritten as plain statements or as `[VERIFY: what, who]`.
+- The restore dry run in the backup guide now uses one clone and a `git switch` to the launcher branch. A second clone into the same folder failed. The guide also says the token report does not list subagent runs that a workflow started.
+- The npm guide and the tools guide say the installed package leaves out `account-skills/` and `.gitignore`, so `outdoornorway test` needs a clone. `doctor` works in both.
+- The repo map and CONTRIBUTING.md call the private backup a backup kept outside this repo and no longer call it a repository. CONTRIBUTING.md also says where screened account skills sit.
+- Research notes: a company phone number and an AI model name removed, a note added that the ad-copy notes use the earlier name adwright, and the round 1 reviews say their test scripts are not kept here. The docs index says it lists every other file in `docs/`.
 
 ### Removed
 

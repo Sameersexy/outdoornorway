@@ -524,7 +524,7 @@ Access note: business.x.com and help.x.com returned HTTP 402 or 403, so there ar
 
 - X rolled out a rebuilt, xAI-powered ads platform starting 30 April 2026, with AI retrieval and ranking and "contextual and semantic" delivery. Digiday (30 April 2026) says the full platform is expected "later this year". Source: https://digiday.com/marketing/x-upgrades-its-ad-platform-in-long-overdue-overhaul/ . A trade-press source repeats that nearly all top 100 advertisers returned, according to X's head of global advertising. That is X's own claim. [VERIFY]
 - CPM: Digiday-relayed figures put X's average CPM at $2.23 (2024), $1.05 (2025), $0.64 (early 2026), against Facebook $4.93 and Instagram Reels $3.95. Affect Group, an agency, reports Q2 2026 X CPMs of $9 to $13 for Website Traffic campaigns and $8 to $10 for Travel, with a 2.0% Travel engagement rate (https://affectgroup.com/blog/x-advertising-cpm-benchmarks-for-the-united-states/ , 17 July 2026). The two sets of numbers cannot both describe the same thing. The low figure looks like a blended average and the agency figure like a managed-account objective average. [VERIFY: both. Use neither as a plan]
-- Revenue: X ad revenue reported to be falling in 2025 and early 2026, and Grok-integrated placements are being sold. [VERIFY: figures vary between about $1.8 billion and $2.46 billion depending on source]
+- Revenue: X ad revenue reported to be falling in 2025 and early 2026, and placements tied to X's AI assistant are being sold. [VERIFY: figures vary between about $1.8 billion and $2.46 billion depending on source]
 - Return quality: an agency quote in Digiday says X "has struggled to keep up with its peers in direct-response advertising, and its returns have been subpar." (Shamsul Chowdhury, Zeno Group). That is an opinion from one agency.
 
 ### 8.4 Audience and tone reality for Norway
@@ -627,7 +627,7 @@ X
 - 13 May 2025 (background): headline and CTA button below the image or video for Sales objective ads.
 - August 2025 (background): "aesthetic score" ad quality system reported. (https://www.medianama.com/2025/08/223-x-aesthetic-score-ad-pricing-change/)
 - 30 April 2026: xAI-powered rebuilt ad platform begins phased rollout. (https://digiday.com/marketing/x-upgrades-its-ad-platform-in-long-overdue-overhaul/)
-- 2026: Grok-integrated ad placements and lower reported CPMs (see 8.3). [VERIFY]
+- 2026: ad placements tied to the AI assistant and lower reported CPMs (see 8.3). [VERIFY]
 
 ### How adwright should use this
 

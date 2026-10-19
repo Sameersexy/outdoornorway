@@ -5,7 +5,7 @@ This page is for anyone who runs long Claude Code sessions in this repo and want
 - 378 model calls, a median of 350k tokens of context per call, a peak of 774k.
 - A fixed part is sent on every call: about 59k tokens (51 tool definitions at about 50k, the Artifact tool alone about 14k and never used here, plus about 9k of system prompt).
 - The skill and connector listing was injected into the conversation 28 times, about 4.6k tokens each (128k in all), mostly when connectors such as Miro and GitHub reconnected.
-- The conversation itself grew to about 1.2M tokens of text: my own messages and tool inputs 512k, tool results 263k. Subagent hand-backs of 10k to 11k tokens each (the validator output printed twice) were the largest single entries.
+- The conversation itself grew to about 1.2M tokens of text: messages and tool inputs 512k, tool results 263k. Subagent hand-backs of 10k to 11k tokens each (the validator output printed twice) were the largest single entries.
 
 The usage report's 37M and the transcript's total differ (different windows and counting), but the shape is the same: a big fixed part times a very long conversation.
 

@@ -4,7 +4,7 @@ Scope: individual people on personal TikTok accounts. No brand, resort, tour ope
 
 Grades. A: platform or regulator, or platform-reported counts. B: documented creator process or large dataset. C: our own small-sample measurement or practitioner lore. Every measurement in the tables below is grade C unless marked.
 
-Method in one paragraph. Profile counts were read from the public TikTok profile page (A, snapshot). Recent video IDs came from the public embed page. Per video we pulled info.json and captions with yt-dlp. When TikTok had no captions we ran faster-whisper (base.en) on the audio and kept only real speech; whisper output on music-only clips was discarded as lyrics or hallucination and recorded as zero spoken words. Visuals: low-resolution copies, eight-frame contact sheets and ffmpeg scene detection (threshold 0.3) for cuts per 10 seconds. Scene detection undercounts whip pans and continuous POV, so cut counts are a floor. Transcripts and media stay in scratchpad/transcripts and scratchpad/vis only.
+Method in one paragraph. Profile counts were read from the public TikTok profile page (A, snapshot). Recent video IDs came from the public embed page. Per video we pulled info.json and captions with yt-dlp. When TikTok had no captions we ran faster-whisper (base.en) on the audio and kept only real speech; whisper output on music-only clips was discarded as lyrics or hallucination and recorded as zero spoken words. Visuals: low-resolution copies, eight-frame contact sheets and ffmpeg scene detection (threshold 0.3) for cuts per 10 seconds. Scene detection undercounts whip pans and continuous POV, so cut counts are a floor. Transcripts and media are not in this repo.
 
 ## 1. The five
 
