@@ -1,5 +1,7 @@
 # Handoff: text-first scripts and the Claude chat package
 
+> Archived on 15 October 2026. This handoff is stale. The branch it names, the test counts and the file path in section 13 are from 13 October 2026. It now lives in `docs/archive/`. Kept for history only.
+
 This file lets a fresh Claude Code session finish the work that was planned on 13 October 2026 for the Outdoor Norway marketing repo, without reading the old conversation. Delete it in the last commit of the work it describes.
 
 ## 1. Start here

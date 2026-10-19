@@ -1,0 +1,48 @@
+{
+  "name": "outdoornorway-marketing",
+  "version": "0.2.0",
+  "description": "Outdoor Norway marketing tools for Claude Code: a video script skill with an enforced validator, writer and reviewer agents, slash commands and vetted copywriting skills.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sameersexy/outdoornorway.git"
+  },
+  "homepage": "https://github.com/Sameersexy/outdoornorway#readme",
+  "bugs": {
+    "url": "https://github.com/Sameersexy/outdoornorway/issues"
+  },
+  "keywords": [
+    "claude-code",
+    "claude-code-plugin",
+    "marketing",
+    "video-scripts",
+    "outdoor-norway"
+  ],
+  "bin": {
+    "outdoornorway": "tools/outdoornorway-cli.js"
+  },
+  "files": [
+    ".claude-plugin/",
+    ".claude/",
+    "adquill/",
+    "campaigns/",
+    "content/",
+    "docs/",
+    "tools/",
+    "CHANGELOG.md",
+    "CLAUDE.md",
+    "CONTRIBUTING.md",
+    "LICENSE",
+    "README.md",
+    "THIRD_PARTY_SKILLS.md",
+    "!**/__pycache__/",
+    "!**/*.pyc"
+  ],
+  "scripts": {
+    "doctor": "node tools/outdoornorway-cli.js doctor",
+    "test": "node tools/outdoornorway-cli.js test"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

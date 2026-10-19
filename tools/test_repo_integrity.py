@@ -10,6 +10,8 @@ import importlib.util
 import io
 import json
 import re
+import shutil
+import subprocess
 import tempfile
 import unittest
 from pathlib import Path
@@ -21,7 +23,8 @@ DASHES = re.compile("[" + chr(0x2013) + chr(0x2014) + "]")
 EMOJI = re.compile("[" + chr(0x1F300) + "-" + chr(0x1FAFF) + chr(0x2600) + "-" + chr(0x27BF) + "]")
 MODEL_NAMES = re.compile(r"claude[- ]?(?:opus|sonnet|haiku|fable)|\b(?:opus|sonnet|haiku|fable) ?[0-9]", re.I)
 SELF = Path(__file__).resolve()
-TEXT_SUFFIXES = {".md", ".json", ".py", ".txt"}
+TEXT_SUFFIXES = {".md", ".json", ".py", ".txt", ".js", ".mjs", ".cjs", ".yml", ".yaml", ".sh"}
+SKIP_FOLDERS = {".git", "__pycache__", "node_modules"}
 
 
 def read(path):
@@ -145,7 +148,7 @@ def tracked_text_files():
     third = third_party_skill_names()
     for path in sorted(ROOT.rglob("*")):
         rel = path.relative_to(ROOT).parts
-        if not path.is_file() or ".git" in rel or "__pycache__" in rel or path == SELF:
+        if not path.is_file() or SKIP_FOLDERS.intersection(rel) or path == SELF:
             continue
         if path.suffix not in TEXT_SUFFIXES:
             continue
@@ -236,6 +239,198 @@ class TranscriptReport(unittest.TestCase):
         module = self.load()
         image = {"type": "image", "source": {"type": "base64", "data": "A" * 400000}}
         self.assertLess(module.size(image), 10000)
+
+
+def tracked_paths():
+    """Repo-relative paths that git tracks. Without a git checkout (a plugin copy) it lists every file instead."""
+    try:
+        out = subprocess.run(["git", "ls-files", "-z"], cwd=ROOT, capture_output=True, check=True, timeout=30).stdout
+        names = [name for name in out.decode("utf-8").split("\0") if name]
+        if names:
+            return names
+    except (OSError, subprocess.SubprocessError, UnicodeDecodeError):
+        pass
+    return [
+        str(path.relative_to(ROOT))
+        for path in ROOT.rglob("*")
+        if path.is_file() and not SKIP_FOLDERS.intersection(path.relative_to(ROOT).parts)
+    ]
+
+
+class Packaging(unittest.TestCase):
+    """package.json and the npx launcher (tools/outdoornorway-cli.js)."""
+
+    def setUp(self):
+        self.package = json.loads(read(ROOT / "package.json"))
+        self.plugin = json.loads(read(ROOT / ".claude-plugin" / "plugin.json"))
+        self.market = json.loads(read(ROOT / ".claude-plugin" / "marketplace.json"))
+
+    def run_cli(self, *args):
+        node = shutil.which("node")
+        if node is None:
+            self.skipTest("node is not installed")
+        script = ROOT / self.package["bin"]["outdoornorway"]
+        return subprocess.run([node, str(script), *args], capture_output=True, text=True, timeout=60)
+
+    def test_package_version_and_name_match_the_plugin(self):
+        self.assertEqual(self.package["version"], self.plugin["version"])
+        self.assertEqual(self.package["version"], self.market["plugins"][0]["version"])
+        self.assertEqual(self.package["name"], self.plugin["name"])
+        self.assertEqual(self.package["license"], "MIT")
+
+    def test_bin_file_exists_and_starts_with_a_node_shebang(self):
+        target = ROOT / self.package["bin"]["outdoornorway"]
+        self.assertTrue(target.is_file(), str(target))
+        self.assertTrue(read(target).startswith("#!/usr/bin/env node\n"))
+
+    def test_package_has_no_dependencies(self):
+        for key in ("dependencies", "devDependencies", "optionalDependencies", "peerDependencies"):
+            self.assertFalse(self.package.get(key), key)
+
+    def test_files_list_points_at_real_paths(self):
+        for entry in self.package["files"]:
+            if entry.startswith("!"):
+                continue
+            self.assertTrue((ROOT / entry.rstrip("/")).exists(), f"package.json files: {entry}")
+
+    def test_launcher_version_matches_the_package(self):
+        result = self.run_cli("version")
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual(result.stdout.strip(), self.package["version"])
+
+    def test_launcher_install_prints_the_marketplace_commands_and_runs_nothing(self):
+        result = self.run_cli("install")
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertIn("claude plugin marketplace add Sameersexy/outdoornorway", result.stdout)
+        self.assertIn("claude plugin install outdoornorway-marketing@outdoornorway", result.stdout)
+        self.assertIn("were not run", result.stdout)
+
+    def test_launcher_rejects_an_unknown_command(self):
+        self.assertNotEqual(self.run_cli("no-such-command").returncode, 0)
+
+
+class PublicRepoGuards(unittest.TestCase):
+    """The repo is public. Transcripts, archives, secrets and addresses stay out."""
+
+    def test_no_transcripts_archives_env_files_or_node_modules_are_tracked(self):
+        bad = []
+        for name in tracked_paths():
+            parts = Path(name).parts
+            base = parts[-1]
+            if base.endswith((".jsonl", ".zip", ".tgz")) or base == ".env" or base.startswith(".env.") or "node_modules" in parts:
+                bad.append(name)
+        self.assertEqual(bad, [], "must not be committed: " + ", ".join(bad))
+
+    def test_gitignore_blocks_the_same_files(self):
+        lines = {line.strip() for line in read(ROOT / ".gitignore").splitlines()}
+        for pattern in ("*.jsonl", "*.zip", "*.tgz", ".env", ".env.*", "node_modules/"):
+            self.assertIn(pattern, lines, pattern)
+
+    def test_no_email_addresses_or_secret_patterns(self):
+        email = re.compile(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9-]+\.[A-Za-z]{2,}")
+        secrets = re.compile(
+            "|".join(
+                [
+                    "gh" + r"[pousr]_[A-Za-z0-9]{20,}",
+                    "github" + r"_pat_[A-Za-z0-9_]{20,}",
+                    "sk" + r"-[A-Za-z0-9_-]{20,}",
+                    "AK" + r"IA[0-9A-Z]{16}",
+                    "xox" + r"[baprs]-[A-Za-z0-9-]{10,}",
+                    "npm" + r"_[A-Za-z0-9]{30,}",
+                    "-----BEGIN " + r"[A-Z ]*PRIVATE KEY-----",
+                ]
+            )
+        )
+        bad = []
+        for path, _ in tracked_text_files():
+            text = read(path)
+            if email.search(text) or secrets.search(text):
+                bad.append(str(path.relative_to(ROOT)))
+        self.assertEqual(bad, [], "email address or secret-like text in: " + ", ".join(bad))
+
+
+NAV_DOCS = [
+    "README.md",
+    "CONTRIBUTING.md",
+    "CHANGELOG.md",
+    "adquill/README.md",
+    "campaigns/ski-meta-ads/README.md",
+    "content/scripts/README.md",
+    "tools/README.md",
+    "docs/README.md",
+    "docs/repo-map.md",
+    "docs/skills-catalog.md",
+    "docs/installation.md",
+    "docs/backup-and-restore.md",
+    "docs/publishing-to-npm.md",
+    "docs/script-skill-reviews/README.md",
+]
+REPO_PREFIXES = (".claude/", ".claude-plugin/", "docs/", "tools/", "campaigns/", "content/", "adquill/")
+MARKDOWN_LINK = re.compile(r"(?<!!)\[[^\]]*\]\(([^)\s]+)\)")
+BACKTICKED = re.compile(r"`([^`\n]+)`")
+PLACEHOLDER_CHARS = re.compile(r"[<>*{}$|\s]|\.\.\.|yyyy|slug|NN")
+
+
+class Navigation(unittest.TestCase):
+    """The README files and guides that help people find their way around."""
+
+    def test_every_navigation_doc_exists(self):
+        missing = [name for name in NAV_DOCS if not (ROOT / name).is_file()]
+        self.assertEqual(missing, [], "missing: " + ", ".join(missing))
+
+    def test_relative_markdown_links_resolve(self):
+        bad = []
+        for name in NAV_DOCS:
+            path = ROOT / name
+            if not path.is_file():
+                continue
+            for target in MARKDOWN_LINK.findall(read(path)):
+                if target.startswith(("http://", "https://", "mailto:", "#")):
+                    continue
+                if not (path.parent / target.split("#")[0]).exists():
+                    bad.append(f"{name} -> {target}")
+        self.assertEqual(bad, [], "broken links: " + "; ".join(bad))
+
+    def test_backticked_repo_paths_exist(self):
+        # CHANGELOG.md records old paths on purpose, so it is skipped here.
+        bad = []
+        for name in NAV_DOCS:
+            path = ROOT / name
+            if not path.is_file() or name == "CHANGELOG.md":
+                continue
+            for token in BACKTICKED.findall(read(path)):
+                if not token.startswith(REPO_PREFIXES) or PLACEHOLDER_CHARS.search(token):
+                    continue
+                if not (ROOT / token.rstrip("/")).exists():
+                    bad.append(f"{name}: {token}")
+        self.assertEqual(bad, [], "paths that do not exist: " + "; ".join(bad))
+
+    def test_docs_index_lists_every_guide_and_folder(self):
+        index = read(ROOT / "docs" / "README.md")
+        for path in sorted((ROOT / "docs").iterdir()):
+            if path.name == "README.md" or path.name.startswith("."):
+                continue
+            needle = path.name + "/" if path.is_dir() else path.name
+            self.assertIn(needle, index, f"docs/README.md does not mention {needle}")
+
+    def test_root_readme_points_at_the_install_and_map_docs(self):
+        readme = read(ROOT / "README.md")
+        for target in ("docs/README.md", "docs/installation.md", "docs/repo-map.md", "docs/backup-and-restore.md", "CONTRIBUTING.md"):
+            self.assertIn(f"({target})", readme, target)
+
+    def test_readme_has_no_hand_written_test_or_rule_counts(self):
+        # Counts drift. The README shows the command that prints the live number instead.
+        self.assertIsNone(re.search(r"\b\d+ (?:tests|rules)\b", read(ROOT / "README.md")))
+
+    def test_claude_md_points_at_the_repo_map_and_keeps_its_rules(self):
+        text = read(ROOT / "CLAUDE.md")
+        self.assertIn("docs/repo-map.md", text)
+        self.assertIn("The repo is public and MIT licensed", text)
+        self.assertIn("No em or en dashes, no emojis", text)
+
+    def test_the_old_handoff_path_is_gone(self):
+        self.assertFalse((ROOT / "docs" / "handoff-next-session.md").exists())
+        self.assertTrue((ROOT / "docs" / "archive" / "handoff-next-session.md").is_file())
 
 
 if __name__ == "__main__":
