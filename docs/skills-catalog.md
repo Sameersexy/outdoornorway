@@ -7,8 +7,8 @@ This page is for anyone who wants to know which skills exist for Outdoor Norway 
 Skills sit in three places, and each place has its own sharing rule.
 
 - **This public repo.** The plugin loads the commands, the two agents and the skills under `.claude/` (see `.claude-plugin/plugin.json`). The paused adquill drafts sit in `adquill/` and are not loaded. The two screened account skills sit in `account-skills/`, and the plugin does not load them. The repo is public and MIT licensed, so nothing private goes in.
-- **The Claude account.** Skills the team built in the account, plus skills the platform provides. They work in account chats and are not part of the plugin.
-- **The private backup.** A separate private repository, written here as `<your-private-backup-repo>`. It holds chat transcripts and the account-only skills, and it is never merged into this repo. [backup-and-restore.md](backup-and-restore.md) covers saving and restoring it.
+- **The Claude account.** Skills the team built in the account, plus skills the platform provides. They work in account chats and are not part of the plugin. The account holds the live copy of each account-only skill.
+- **The private backup.** A separate private repository kept outside this one. It holds chat transcripts and a second copy of the account-only skills, and it is never merged into this repo. [backup-and-restore.md](backup-and-restore.md) covers saving and restoring it.
 
 The public repo is the source of truth for anything it contains. The account and the backup hold what the repo cannot.
 
@@ -63,7 +63,7 @@ Both skills passed a privacy screen before they were copied into `account-skills
 
 ## Account-only skills
 
-These skills live only in the Claude account. None of them is copied into this repo or into the plugin. Each one did not pass the privacy screen:
+These skills live in the Claude account, with a second copy in the private backup. None of them is copied into this repo or into the plugin. The reasons differ. Some did not pass the privacy screen, some are private by decision, and for one of them the copy in this repo is the canonical one. The skills are:
 
 - content-qc
 - guest-benefit-checker

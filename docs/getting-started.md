@@ -45,7 +45,7 @@ You need three things: a Claude account, Claude Code, and Python 3.
 
 1. **A Claude account.** Claude Code needs a paid Claude plan (Pro, Max, Team or Enterprise) or a Claude Console account, according to the official quickstart.
 2. **Claude Code.** Follow Step 1 of the [Claude Code quickstart](https://code.claude.com/docs/en/quickstart). It gives one command for each system (Mac, Linux, Windows). If you have never used a terminal, read the [terminal guide](https://code.claude.com/docs/en/terminal-guide) first. When it is installed, open a new terminal window and run `claude --version`. It should print a version number.
-3. **Python 3.** The checker is a Python script. Open a terminal and run `python3 --version`. If it prints a version number, you are set. If it says the command is not found, install Python 3 from the [official Python download page](https://www.python.org/downloads/) and try again. The commands call `python3`, and on Windows that name may not exist. [VERIFY: confirm the checker runs on Windows]
+3. **Python 3.** The checker is a Python script. Open a terminal and run `python3 --version`. If it prints a version number, you are set. If it says the command is not found, install Python 3 from the [official Python download page](https://www.python.org/downloads/) and try again. The commands call `python3`, and on Windows that name may not exist. The tools are not tested on Windows.
 
 Optional, keeps usage down: cap how long a session can grow. Put this in the file `settings.json` inside the `.claude` folder in your home folder (create the file if it is not there):
 
@@ -135,7 +135,7 @@ How to read the table:
 Editor's checklist for each script:
 
 1. **Who is on camera** and what they say about their role in the first 5 seconds. It must also be on screen.
-2. **Releases.** No identifiable guest in a shot without a written release. Under 18 needs a guardian's written consent. [VERIFY with counsel]
+2. **Releases.** No identifiable guest in a shot without a written release. Under 18 needs a guardian's written consent. [VERIFY: the wording of the release and the guardian-consent rule for guests under 18, counsel to confirm]
 3. **Permissions** for places and operators named in the visuals (resorts, airports, boat, dog yard).
 4. **Safety.** Off-piste or touring clips show beacon, shovel and probe, the guide in position and spacing on slopes. No closed terrain, no jumps with guests, no helmets off in moving shots, no guest unguided in avalanche terrain. Details: section "Safety on camera" in `.claude/skills/scriptcraft/references/ugc-style.md`.
 5. **Sky shots** are real evenings. No composited or AI sky (see the shoot notes beside the aurora script).
@@ -163,7 +163,7 @@ Editor's checklist for each script:
 ## For Sameer (admin)
 
 - Invite people who need to push: on GitHub, repo Settings, Collaborators, Add people. On a personal account a collaborator can push.
-- Ask everyone to work on a branch and open a pull request, then review and merge. Branch protection on `main` is available for public repos on the free plan. [VERIFY: confirm on the current plan]
+- Ask everyone to work on a branch and open a pull request, then review and merge. Branch protection on `main` is optional. This guide does not check whether the current plan allows it for this repo, so look in the repo settings.
 - The repo is public. Do not add supplier terms, customer or staff personal data, or other private client information. The existing page-audit notes in `campaigns/ski-meta-ads/` stay public on purpose (owner decision, 12 October 2026).
 - Your own usage: long sessions and the plugins and connectors that add overhead to every step cost the most. Settings to review (auto-compact window, plugins and connectors to switch off, the Artifact tool) are in `docs/token-hygiene.md`.
 - When you change the tools, bump `version` in `.claude-plugin/plugin.json` and `.claude-plugin/marketplace.json` so installed copies update.

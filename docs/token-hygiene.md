@@ -1,6 +1,6 @@
 # Token hygiene: why the session read 37M cached tokens, and what to change
 
-Every model call re-reads the whole conversation from cache. Cost is therefore calls times context size. In the long session that built this repo (measured with `tools/transcript_report.py`):
+This page is for anyone who runs long Claude Code sessions in this repo and wants to keep them cheap. Every model call re-reads the whole conversation from cache. Cost is therefore calls times context size. In the long session that built this repo (measured with `tools/transcript_report.py`):
 
 - 378 model calls, a median of 350k tokens of context per call, a peak of 774k.
 - A fixed part is sent on every call: about 59k tokens (51 tool definitions at about 50k, the Artifact tool alone about 14k and never used here, plus about 9k of system prompt).
@@ -40,7 +40,7 @@ Both new scripts passed the validator and each came with a notes file in the rig
 
 ## Trimming the fixed part (your settings, not applied)
 
-These change which tools you have, so they are left to you. Put them in `.claude/settings.json` and restart the session. [VERIFY: confirm current feature set for Claude Code deny rules removing a tool from the tool list, and for per-project plugin switches]
+These change which tools you have, so they are left to you. Put them in `.claude/settings.json` and restart the session. The `enabledPlugins` form is the one this repo already uses in that file. The `permissions` block below is not tested here. Check the current Claude Code settings documentation to see whether a deny rule removes the tool from the tool list, before you rely on it.
 
 ```json
 {

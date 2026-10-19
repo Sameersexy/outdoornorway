@@ -7,7 +7,7 @@ Method, in short:
 - Where TikTok had no captions, I downloaded the audio and ran faster-whisper (base.en) locally. Music lyrics and other speakers were excluded by hand. A video with 0 to 3 detected words is logged as "no voice".
 - Follower counts come from each public TikTok profile page or YouTube about page on the day. Engagement ratios: likes per view (LR) and shares per view (SR).
 - Grades: A platform official or peer reviewed. B documented process or large dataset. C my own small sample or practitioner lore. Every measured number here is C.
-- Transcripts stay in the scratchpad transcripts folder. No scripts are reproduced. Quotes are 15 words or fewer.
+- Transcripts are not kept in this repo. No scripts are reproduced. Quotes are 15 words or fewer.
 
 ## 1. Subjects and country verification
 

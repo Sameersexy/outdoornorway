@@ -1,6 +1,6 @@
 # outdoornorway
 
-Marketing tools for Outdoor Norway, built for Claude Code: a video script skill with an enforced validator, two agents, slash commands and vetted copywriting skills.
+This repo is for the Outdoor Norway writers, editors and maintainers who use Claude Code. It holds marketing tools: a video script skill with an enforced validator, two agents, slash commands and vetted copywriting skills.
 
 This repo is public and specific to Outdoor Norway. It is MIT licensed (see [Licence](#licence)).
 

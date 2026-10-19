@@ -6,14 +6,17 @@ The menu paths below come from the Anthropic help pages linked in each step, as 
 
 ## What lives where
 
-Four places hold the setup. Each has its own owner and sharing rule.
+Five places hold the setup. Each has its own owner and sharing rule.
 
 | Place | What is there | Shared? | How it comes back |
 |---|---|---|---|
 | Public repo (`Sameersexy/outdoornorway` on GitHub) | The plugin, commands, agents, the scriptcraft skill, vetted third-party skills, two screened account skills, tour data, scripts and guides | Public, MIT licensed | Clone it, or install the plugin. See [installation.md](installation.md). |
-| Claude account | Chat history, custom skills uploaded to the account, connector sign-ins, platform skills | Account owner only | Export before the switch. Upload skills and sign in to connectors again on the new login. |
-| Private backup (`<your-private-backup-repo>`) | Chat transcripts, account-only skills, local Claude Code transcripts copied by hand | Private | Copy files out of it on the new login. Never merge it into this repo. |
+| Claude account | Chat history, custom skills uploaded to the account (the live copy of each account-only skill), connector sign-ins, platform skills | Account owner only | Export before the switch. Upload skills and sign in to connectors again on the new login. |
+| Private backup | Chat transcripts, a second copy of the account-only skills, local Claude Code transcripts copied by hand | Private | Copy files out of it on the new login. Never merge it into this repo. |
+| npm account | The `outdoornorway-marketing` launcher package, after the first publish. It is not on npm yet. | The package is public. The login is the owner's. | Log in to npm on the new machine, then publish from a clean copy of the repo. See [publishing-to-npm.md](publishing-to-npm.md). |
 | Local computer | The clone, if there is one. Claude Code transcripts under `~/.claude/projects`. Any `.env` file. | That machine only | Copy by hand. Git does not carry these. |
+
+The private backup is a separate private repository, kept outside this one. [VERIFY: the owner confirms that the private backup repository exists and who can open it]
 
 [skills-catalog.md](skills-catalog.md) says which skill lives in which place.
 
@@ -58,6 +61,9 @@ Work through these steps in order.
 
 5. Sign in to each connector again, using the list you wrote before the switch. Connector sign-ins are kept neither in git nor in the private backup. To reconnect, open Customize > Connectors, select the service and disconnect it. Then click + next to Connectors, select the connector, click Connect or Install, and finish the authentication prompts. The help page does not name the disconnect button. On Team and Enterprise, an owner adds a connector from Organization settings > Connectors by clicking Browse connectors and then Add to your team. Each member still signs in on their own account. Custom remote connectors are available on Free, Pro, Max, Team and Enterprise, and Free users are limited to one. See [Use connectors to extend Claude's capabilities](https://support.claude.com/en/articles/11176164-use-connectors-to-extend-claude-s-capabilities).
 6. Copy old transcripts out of the private backup only if you want the token report to read them. The report takes any transcript path, so they can stay outside `~/.claude/projects`.
+7. If you publish the launcher, log in to npm with the owner's npm account. `npm whoami` prints the user name when the login works. The rest is in [publishing-to-npm.md](publishing-to-npm.md#5-log-in).
+
+Two items have no restore step. Platform skills (docx, pdf, pptx and xlsx) come with the new account, so there is nothing to upload. Chat history stays in the export you saved before the switch. This guide has no step that moves it into the new account.
 
 ### Local Claude Code transcripts
 
@@ -80,6 +86,12 @@ node tools/outdoornorway-cli.js doctor
 ```
 
 Each test run ends with the line `OK` when it passes. [tools/README.md](../tools/README.md) describes the doctor.
+
+The doctor step needs `tools/outdoornorway-cli.js`, and the default branch does not have that file until the branch that adds it is merged. Before then, the last command fails with a module-not-found error. Clone the branch that carries the launcher instead, for example:
+
+```
+git clone --branch claude/optimistic-cannon-rzksgv https://github.com/Sameersexy/outdoornorway.git
+```
 
 Copy one transcript from the private backup to `~/restore-dry-run/sample.jsonl`, outside the clone. Pick one that has model calls, or the report exits with a message. Then run the report on that copy from inside the clone:
 

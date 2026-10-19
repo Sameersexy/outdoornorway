@@ -14,6 +14,7 @@ The plugin and marketplace manifests have carried version 0.2.0 since `8d7effb` 
 - `package.json` with zero dependencies, a bin named `outdoornorway`, and Node 18 or newer in `engines`.
 - `tools/outdoornorway-cli.js`, a launcher with `doctor`, `install`, `update`, `test`, `version` and `help` commands. `install` and `update` print the Claude Code commands and run them only with `--run`. `test --all` adds the adquill tests. The launcher never writes files.
 - Guard-rail tests in `tools/test_repo_integrity.py`.
+- A test in `tools/test_repo_integrity.py` that bans GPT model names in our own files.
 - `.gitignore` entries for `*.jsonl`, `*.zip`, `*.tgz`, `.env`, `.env.*`, `node_modules/`, `backup/` and `exports/`.
 - [account-skills/](account-skills/README.md): two screened account skills, `brand-voice-checker` and `script-writing`, one folder each, with a guide. The plugin does not load them.
 
@@ -26,7 +27,11 @@ The plugin and marketplace manifests have carried version 0.2.0 since `8d7effb` 
 ### Fixed
 
 - `/review-script`, the script-reviewer agent and the guides now say the review gives the top three fixes. They said five.
-- adquill's `AGENTS.md` and README no longer say to install it as a plugin, because it is paused.
+- `adquill/AGENTS.md` and the adquill README no longer say to install it as a plugin, because it is paused.
+- The skills catalog no longer assigns a privacy screen result to each account-only skill, because the repo holds no record of one. The backup guide, the repo map and CONTRIBUTING.md now agree on where the private copies live.
+- The backup guide covers the npm login, and says the restore dry run needs the branch that carries the launcher until it is merged.
+- The repo map marks `docs/` as a path that must not move, and the adquill README links every file in the folder and names two reference files that SKILL.md and AGENTS.md cite but the repo does not hold.
+- Stray scratch wording removed from the research notes, two table rows with unescaped pipes fixed, and three open markers in the guides rewritten as plain statements or as `[VERIFY: what, who]`.
 
 ### Removed
 

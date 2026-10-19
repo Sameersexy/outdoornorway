@@ -41,7 +41,7 @@ Overall: 7/10
 
 ### Number and fact check
 
-Research claims in the skill (checked against `research-video/03-hook-retention-pacing.md` and `01-educational-voiceover.md`):
+Research claims in the skill (checked against `docs/research/video-scripts/03-hook-retention-pacing.md` and `docs/research/video-scripts/01-educational-voiceover.md`):
 - Zeigarnik meta-analysis, 59 studies, recall ratio 0.99, Ghibellini and Meier 2025: pass, matches 03 section 9.
 - Ovsiankina resumption tendency from the same meta-analysis: pass.
 - Gruber, Gelman and Ranganath 2014, curiosity and memory: pass.

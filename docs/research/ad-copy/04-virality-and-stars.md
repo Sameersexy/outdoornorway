@@ -632,7 +632,7 @@ How adwright should use this: build 1, 2 and 3 for v0.1, 4 and 5 for v0.2, and t
 | Weak or small-sample benchmarks | A loose number draws attacks, and it attracts comparison to ponytail's n=4 | State sample size and limits next to every number. Publish raw data. |
 | Platform guidance goes stale | X and Instagram change often; several claims here rest on secondary sources | Date-stamp every platform note, keep it in `references/`, set a quarterly review. |
 | Maintenance overload | anthropics/skills has 1,387 open issues, Composio's list has 1,642 | Issue templates, a small scope, triage rota, a stale bot with a polite message. |
-| Security perception | Skills can run scripts. Some repos use `curl | bash` installers, while claude-ads documents why not | No remote fetches in scripts; checksum release ZIP; state it in the README. |
+| Security perception | Skills can run scripts. Some repos use `curl \| bash` installers, while claude-ads documents why not | No remote fetches in scripts; checksum release ZIP; state it in the README. |
 | Funnel suspicion | Repos that are lead-gen look like ads (Composio's list, Ryze-linked repo) | Keep any client or agency promotion to one clearly labelled line. |
 | Client entanglement | Outdoor Norway's name and prices could appear in the gallery | Written consent, real figures only, no confidential performance data without sign-off. |
 | Fake engagement by third parties | Bots may star the repo and invite suspicion | Do not respond in kind; report to GitHub if clear abuse. |
@@ -642,7 +642,7 @@ How adwright should use this: write the top five risks into the repo's `docs/` a
 
 ## 21. Verification log
 
-Verified from primary sources in this session:
+Verified from primary sources:
 - Berger and Milkman 2012 numbers: PDF read in full for the abstract, data description (6,956 articles, 2008-08-30 to 2008-11-30, 20 percent most-emailed) and Figure 2 values.
 - xai-org/x-algorithm README: action list, score formula, post-ranking adjustments.
 - agentskills.io specification: field limits.

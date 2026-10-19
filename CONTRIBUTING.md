@@ -33,7 +33,7 @@ To check the plugin manifests with Claude Code itself, run this from the repo ro
 claude plugin validate .
 ```
 
-It passes. Its one warning says that CLAUDE.md at the plugin root is not loaded as project context. The warning can stay, because CLAUDE.md guides work in a clone.
+It passes. Its one warning says that CLAUDE.md at the plugin root is not loaded as project context. The warning can stay, because CLAUDE.md guides work in a clone. Do not add `--strict` to this command, because it turns the warning into an error and the run then fails.
 
 ### Validate a script
 
@@ -109,7 +109,7 @@ Several paths are load-bearing. Read the "Safe to move?" column in [docs/repo-ma
 - Do not add supplier terms, personal data or other private client information.
 - The page-audit notes in `campaigns/ski-meta-ads/` stay public. The owner decided this on 12 October 2026.
 - `.gitignore` blocks transcripts (`*.jsonl`), archives (`*.zip`, `*.tgz`), `.env` files, `node_modules/`, `backup/` and `exports/`. Do not work around it.
-- Chat transcripts and account-only skills live in a separate private backup repository, not in this one. See [docs/backup-and-restore.md](docs/backup-and-restore.md).
+- Account skills that passed a privacy screen sit in [account-skills/](account-skills/README.md). The other account-only skills stay private. They live in the Claude account, with a second copy in a separate private backup repository, and so do chat transcripts. See [docs/backup-and-restore.md](docs/backup-and-restore.md).
 
 ## Writing style
 

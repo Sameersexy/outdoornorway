@@ -177,6 +177,12 @@ class Hygiene(unittest.TestCase):
         bad = [str(p.relative_to(ROOT)) for p, _ in tracked_text_files() if MODEL_NAMES.search(read(p))]
         self.assertEqual(bad, [], "model name in: " + ", ".join(bad))
 
+    def test_no_gpt_model_names_in_our_own_files(self):
+        # Third-party skill files keep upstream text, so they are skipped like the dash check.
+        pattern = re.compile(r"\bGPT[- ]?[0-9]")
+        bad = [str(p.relative_to(ROOT)) for p, skill in tracked_text_files() if skill is None and pattern.search(read(p))]
+        self.assertEqual(bad, [], "GPT model name in: " + ", ".join(bad))
+
     def test_no_dangling_session_references(self):
         for name in ("THIRD_PARTY_SKILLS.md", "README.md", "CLAUDE.md"):
             text = read(ROOT / name).lower()
