@@ -16,7 +16,7 @@ Work on adquill stopped after the drafts of October 2026, and the files are kept
 | `skills/adquill/scripts/fixtures/` | Sample copy the tests read: [bad-1-meta-primary.txt](skills/adquill/scripts/fixtures/bad-1-meta-primary.txt), [bad-2-policy-risks.txt](skills/adquill/scripts/fixtures/bad-2-policy-risks.txt), [bad-3-chatbot-residue.txt](skills/adquill/scripts/fixtures/bad-3-chatbot-residue.txt), [good-1-meta-primary.txt](skills/adquill/scripts/fixtures/good-1-meta-primary.txt), [good-2-meta-long.txt](skills/adquill/scripts/fixtures/good-2-meta-long.txt) and [good-3-x-post.txt](skills/adquill/scripts/fixtures/good-3-x-post.txt) |
 | `agents/` | Three read-only reviewers: [creative-director](agents/creative-director.md), [direct-response-chief](agents/direct-response-chief.md) and [editorial-director](agents/editorial-director.md) |
 
-`SKILL.md` and `AGENTS.md` name two reference files that are not in this folder: `references/rewrite-protocol.md` and `references/voice-and-anti-slop.md`. Git history has no earlier copy of either. The drafts work without them, and anyone who resumes the work should add both files or remove the rows that name them.
+`SKILL.md` names two reference files that are not in this folder: `references/rewrite-protocol.md` and `references/voice-and-anti-slop.md`. `AGENTS.md` names the first. Git history has no earlier copy of either. The drafts work without them, and anyone who resumes the work should add both files or remove the rows that name them.
 
 Every example in the skill uses an invented company, Brekke Ski Guides. The examples are not Outdoor Norway facts.
 

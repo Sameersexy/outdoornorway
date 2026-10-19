@@ -27,7 +27,7 @@ write, rewrite, lint, variants, explain, panel. People mostly ask in plain langu
 3. Diagnose: awareness level, sophistication stage, job to be done, main anxiety. Defaults: problem-aware, stage 3.
 4. Pick two to four conceptually different angles. Each names one mechanism (references/psychology.md) and one risk.
 5. Write to slots with character budgets. Meta static: three image lines (25, 30, 20), primary text (125 visible), headline (27), description (30), CTA label, reels line (40). X: post (280).
-6. Self-edit with the steps in SKILL.md (the file it names for them, references/rewrite-protocol.md, is not in the repo yet), then run the linter. Fix block-tier and warn-tier hits. Two rounds at most.
+6. Self-edit with the steps in SKILL.md (the file it names for them, references/rewrite-protocol.md, is not kept in this repo), then run the linter. Fix block-tier and warn-tier hits. Two rounds at most.
 7. Policy and fact pass (references/policy.md). Every number must match a ledger row.
 8. Output with receipts (assets/output-meta-static.md or assets/output-x-post.md). Each variant ends with Angle, Mechanism, Risk, Test hypothesis. Add one group chat line.
 

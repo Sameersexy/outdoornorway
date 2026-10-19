@@ -87,4 +87,4 @@ Planned speakers (George, Hannah) had the spoken hits: clean sentences, first wo
 - TikTok Ads help, creative best practices (A): https://ads.tiktok.com/help/article/creative-best-practices?lang=en
 - FTC, Disclosures 101 for social media influencers (A): https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers
 - ASA, recognising ads on social media (A): https://www.asa.org.uk/advice-online/recognising-ads-social-media.html
-- Raw notes: scratchpad research-video 04, 05 and 06. Transcripts and media stay in the scratchpad and are not reproduced.
+- Raw notes: `docs/research/video-scripts/04-ugc-individuals-top5.md`, `docs/research/video-scripts/05-ugc-micro-creators.md` and `docs/research/video-scripts/06-tiktok-ugc-mechanics.md`. Transcripts and media are not reproduced.

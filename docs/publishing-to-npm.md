@@ -10,7 +10,7 @@ The package holds the paths in the `files` list of `package.json`: the plugin ma
 
 `account-skills/` is not in the list, on purpose, because the plugin does not load it. Links from the guides to that folder resolve in a clone or on GitHub, and they do not resolve inside the installed package. The two main test suites also need a clone, because the integrity test reads `.gitignore` and `account-skills/`, and the package holds neither. Inside the installed package, `outdoornorway doctor` works and `outdoornorway test` fails on those checks, so run the tests from a clone.
 
-npm adds a second way in, `npx outdoornorway-marketing`. It does not replace the plugin route: Claude Code still installs the plugin from GitHub, as [installation.md](installation.md) shows.
+Once the package is published, npm adds a second way in, `npx outdoornorway-marketing`. The package is not on npm yet. The second way in does not replace the plugin route: Claude Code still installs the plugin from GitHub, as [installation.md](installation.md) shows.
 
 Publishing needs your npm account. Nothing in this repo runs `npm login`, `npm publish` or a tag push, and the repo has no publishing workflow.
 

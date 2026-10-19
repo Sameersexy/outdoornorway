@@ -17,7 +17,7 @@ If you write or edit scripts, read [getting-started.md](getting-started.md) afte
 |---|---|---|---|---|
 | Plugin | Any folder | Writing and reading scripts | Claude Code, Python 3 | `claude plugin marketplace add Sameersexy/outdoornorway` |
 | Clone | The repo folder | Editing the tools and sending pull requests | Claude Code, Python 3, Git | `git clone https://github.com/Sameersexy/outdoornorway.git` |
-| npx launcher | Any folder, no clone | Checking your set up and printing the install commands | Claude Code, Python 3, Node.js 18 or newer | `npx github:Sameersexy/outdoornorway doctor` |
+| npx launcher | Any folder, no clone, but only once the launcher is on the default branch (it is not on npm yet) | Checking your set up and printing the install commands | Claude Code, Python 3, Node.js 18 or newer | `npx github:Sameersexy/outdoornorway doctor` |
 
 If you only write or read scripts, choose the plugin. The npx launcher is optional.
 
@@ -112,7 +112,7 @@ Delete the cloned folder. Before you do, send or copy any scripts in `content/sc
 
 ## Route 3: npx launcher (optional)
 
-This route works from any folder, with no clone. The launcher is `tools/outdoornorway-cli.js`. It never writes files. `install` and `update` print the Claude Code commands and run them only when you add `--run`. [tools/README.md](../tools/README.md) lists every launcher command.
+This route works from any folder, with no clone, but only once the launcher is on the default branch of the repo, and the launcher is not on npm yet. The launcher is `tools/outdoornorway-cli.js`. It never writes files. `install` and `update` print the Claude Code commands and run them only when you add `--run`. [tools/README.md](../tools/README.md) lists every launcher command.
 
 Check your set up:
 

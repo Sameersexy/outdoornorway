@@ -6,9 +6,9 @@ This page is for anyone who wants to know which skills exist for Outdoor Norway 
 
 Skills sit in three places, and each place has its own sharing rule.
 
-- **This public repo.** The plugin loads the commands, the two agents and the skills under `.claude/` (see `.claude-plugin/plugin.json`). The paused adquill drafts sit in `adquill/` and are not loaded. The two screened account skills sit in `account-skills/`, and the plugin does not load them. The repo is public and MIT licensed, so nothing private goes in.
+- **This public repo.** The plugin loads the commands, the two agents and the skills under `.claude/` (see `.claude-plugin/plugin.json`). The paused adquill drafts sit in `adquill/` and are not loaded. The two account skills sit in `account-skills/`, and the plugin does not load them. The repo is public and MIT licensed, so nothing private goes in.
 - **The Claude account.** Skills the team built in the account, plus skills the platform provides. They work in account chats and are not part of the plugin. The account holds the live copy of each account-only skill.
-- **The private backup.** A separate private repository kept outside this one. It holds chat transcripts and a second copy of the account-only skills, and it is never merged into this repo. [backup-and-restore.md](backup-and-restore.md) covers saving and restoring it.
+- **The private backup.** A backup kept outside this repo. It holds chat transcripts and a second copy of the account-only skills, and it is never merged into this repo. [backup-and-restore.md](backup-and-restore.md) covers saving and restoring it.
 
 The public repo is the source of truth for anything it contains. The account and the backup hold what the repo cannot.
 
@@ -54,7 +54,7 @@ The six manual skills carry `disable-model-invocation: true`, so you call them b
 
 ## Account skills in this repo
 
-Both skills passed a privacy screen before they were copied into `account-skills/`. Each is one folder with a `SKILL.md`. The plugin does not load them. [account-skills/README.md](../account-skills/README.md) explains how to copy or upload one, and how to add another.
+Both skills were read for supplier terms, prices, contacts, personal data and client facts before they were copied into `account-skills/`. Each is one folder with a `SKILL.md`. The plugin does not load them. [account-skills/README.md](../account-skills/README.md) explains how to copy or upload one, and how to add another.
 
 | Skill | What it does | Folder |
 |---|---|---|
@@ -63,14 +63,16 @@ Both skills passed a privacy screen before they were copied into `account-skills
 
 ## Account-only skills
 
-These skills live only in the Claude account, with a second copy in the private backup. None of them is copied into this repo or into the plugin. The reasons differ, and this page does not assign a reason to any one skill. A skill may have failed the privacy screen, may be private by decision, or may have its canonical copy in this repo. The skills are:
+These skills live in the Claude account, with a second copy in the private backup. None of them has a copy in `account-skills/`, and the plugin loads no account copy of any of them. The skills are:
 
 - content-qc
 - guest-benefit-checker
 - page-intent-audit
-- scriptcraft (account copy)
+- scriptcraft
 - supplier-product-intake
 - whatsapp-template-writer
+
+For scriptcraft, the maintained copy is `.claude/skills/scriptcraft/` in this repo, which the plugin loads. The account copy is not uploaded to this repo.
 
 Platform skills come with the account. They are not copied into this repo or into the plugin.
 

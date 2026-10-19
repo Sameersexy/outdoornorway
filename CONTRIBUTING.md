@@ -109,7 +109,7 @@ Several paths are load-bearing. Read the "Safe to move?" column in [docs/repo-ma
 - Do not add supplier terms, personal data or other private client information.
 - The page-audit notes in `campaigns/ski-meta-ads/` stay public. The owner decided this on 12 October 2026.
 - `.gitignore` blocks transcripts (`*.jsonl`), archives (`*.zip`, `*.tgz`), `.env` files, `node_modules/`, `backup/` and `exports/`. Do not work around it.
-- Account skills that passed a privacy screen sit in [account-skills/](account-skills/README.md). The rest stay private: they live in the Claude account, with a second copy in a private backup kept outside this repo. Chat transcripts are kept the same way. [docs/backup-and-restore.md](docs/backup-and-restore.md) says how the private backup is handled.
+- Two account skills sit in [account-skills/](account-skills/README.md). They were read for supplier terms, prices, contacts, personal data and client facts before they were copied there. The other account skills live in the Claude account, with a second copy in a private backup kept outside this repo. Chat transcripts are kept the same way. [docs/backup-and-restore.md](docs/backup-and-restore.md) says how the private backup is handled.
 
 ## Writing style
 

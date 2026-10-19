@@ -16,7 +16,7 @@ The plugin and marketplace manifests have carried version 0.2.0 since `8d7effb` 
 - Guard-rail tests in `tools/test_repo_integrity.py`.
 - A test in `tools/test_repo_integrity.py` that bans GPT model names in our own files.
 - `.gitignore` entries for `*.jsonl`, `*.zip`, `*.tgz`, `.env`, `.env.*`, `node_modules/`, `backup/` and `exports/`.
-- [account-skills/](account-skills/README.md): two screened account skills, `brand-voice-checker` and `script-writing`, one folder each, with a guide. The plugin does not load them.
+- [account-skills/](account-skills/README.md): two account skills, `brand-voice-checker` and `script-writing`, one folder each, with a guide. The plugin does not load them.
 
 ### Changed
 
@@ -32,14 +32,21 @@ The plugin and marketplace manifests have carried version 0.2.0 since `8d7effb` 
 
 - `/review-script`, the script-reviewer agent and the guides now say the review gives the top three fixes. They said five.
 - `adquill/AGENTS.md` and the adquill README no longer say to install it as a plugin, because it is paused.
-- The skills catalog no longer assigns a privacy screen result to each account-only skill, because the repo holds no record of one. The backup guide, the repo map and CONTRIBUTING.md now agree on where the private copies live.
+- The skills catalog lists the six account-only skills by name and gives no reason or privacy result for any of them, because the repo holds no record of one. It says the maintained scriptcraft copy is `.claude/skills/scriptcraft/` and that the account copy is not uploaded. The backup guide, the repo map and CONTRIBUTING.md agree on where the private copies live.
+- The docs no longer describe the two skills in `account-skills/` as having passed a check. The account skills guide, CONTRIBUTING.md and the skills catalog say only that both were read for supplier terms, prices, contacts, personal data and client facts before they were copied. The README, docs index, repo map, backup guide and the integrity test docstring call them account skills.
 - The backup guide covers the npm login, and says the restore dry run needs the branch that carries the launcher until it is merged.
-- The repo map marks `docs/` as a path that must not move, and the adquill README links every file in the folder and names two reference files that the adquill `SKILL.md` and `adquill/AGENTS.md` cite but the repo does not hold.
-- Stray working-note wording removed from the research notes and the token hygiene guide, two table rows with unescaped pipes fixed, and three open markers in the guides rewritten as plain statements or as `[VERIFY: what, who]`.
+- The repo map marks `docs/` as a path that must not move. The adquill README links every file in the folder and names two reference files that the repo does not hold. The adquill `SKILL.md` cites both and `adquill/AGENTS.md` cites one, and each citation now says the file is not kept in this repo.
+- Working-note wording was removed from the research notes (for example `On my run` and paths to scratch folders), and two research table rows with unescaped pipes were fixed. Open markers in the guides were rewritten as plain statements or as `[VERIFY: what, who]`.
+- The token hygiene guide has a new title and labels its figures as one measured session. A section lists what the repo already does, the 70k start figure is replaced by the 59k fixed part from the example, and the projected 2x to 3x saving and a remark about turn counts are gone. The review scores 5.5 and 6.3 carry a `[VERIFY]` because no file in the repo holds them.
 - The restore dry run in the backup guide now uses one clone and a `git switch` to the launcher branch. A second clone into the same folder failed. The guide also says the token report does not list subagent runs that a workflow started.
 - The npm guide and the tools guide say the installed package leaves out `account-skills/` and `.gitignore`, so `outdoornorway test` needs a clone. `doctor` works in both.
-- The repo map and CONTRIBUTING.md call the private backup a backup kept outside this repo and no longer call it a repository. CONTRIBUTING.md also says where screened account skills sit.
-- Research notes: a company phone number and an AI model name removed, a note added that the ad-copy notes use the earlier name adwright, and the round 1 reviews say their test scripts are not kept here. The docs index says it lists every other file in `docs/`.
+- The repo map and CONTRIBUTING.md call the private backup a backup kept outside this repo and no longer call it a repository. CONTRIBUTING.md also says where the two account skills sit.
+- Research notes: a company phone number removed, AI model and chatbot names reworded, a note added that the ad-copy notes use the earlier name adwright, and the round 1 reviews say their test scripts are not kept here. The docs index says it lists every other file in `docs/`.
+- The install guide, the README and the npm guide say the npx route works only once the launcher is on the default branch, and that the package is not on npm yet.
+- The backup guide says the private backup holds what the public repo must not hold and is kept outside this repo. One `[VERIFY]` asks the owner where it is kept and who can open it. The guide now lists six places, with a GitHub account row, and gives the git commands for the check before the switch, the folder to copy under `~/.claude/projects`, and the GitHub email settings step. Restore has a new step 7 for GitHub, so the npm login is step 8. A step that rests on a menu or button name that could not be checked carries a `[VERIFY]`.
+- The test counts in the end-to-end test note and in the ad-copy pitfalls note are labelled as figures from when they were written, with the command that prints the current count.
+- `creator-patterns.md` points to the three video script research notes by path instead of to a scratch folder.
+- A test in `tools/test_repo_integrity.py` fails if a navigation doc other than this file says "privacy screen" or "screened", or calls the private backup a "private repository".
 
 ### Removed
 

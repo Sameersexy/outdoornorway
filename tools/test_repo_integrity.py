@@ -449,9 +449,22 @@ class Navigation(unittest.TestCase):
         self.assertFalse((ROOT / "docs" / "handoff-next-session.md").exists())
         self.assertFalse((ROOT / "docs" / "archive").exists())
 
+    def test_docs_claim_no_privacy_screen_and_no_private_repository(self):
+        # The repo holds no record of a privacy screen, and the private backup is kept outside it.
+        # CHANGELOG.md is skipped because it names the old wording when it records the removal.
+        banned = ("privacy screen", "screened", "private repository")
+        bad = []
+        for name in NAV_DOCS:
+            path = ROOT / name
+            if not path.is_file() or name == "CHANGELOG.md":
+                continue
+            text = read(path).lower()
+            bad += [f"{name}: {phrase}" for phrase in banned if phrase in text]
+        self.assertEqual(bad, [], "wording the repo cannot back up: " + "; ".join(bad))
+
 
 class AccountSkills(unittest.TestCase):
-    """The screened skills in account-skills/. The plugin does not load this folder."""
+    """The skills in account-skills/. The plugin does not load this folder."""
 
     FOLDER = ROOT / "account-skills"
 

@@ -31,7 +31,7 @@ claude
 
 The commands then have short names (`/script`, `/validate`) and the skills and agents in `.claude/` load on their own. Update with `git pull`.
 
-**npx (checks your set up and prints the install commands, no clone).**
+**npx (checks your set up and prints the install commands, no clone, but only once the launcher is on the default branch; it is not on npm yet).**
 
 ```
 npx github:Sameersexy/outdoornorway doctor
@@ -60,7 +60,7 @@ The commands run only when you type them.
 outdoornorway/
 |-- .claude/               [fixed]  commands, agents and skills for Claude Code
 |-- .claude-plugin/        [fixed]  plugin and marketplace manifests
-|-- account-skills/                 screened account skills, not loaded by the plugin
+|-- account-skills/                 account skills, not loaded by the plugin
 |-- adquill/                        paused ad-copy skill, not installed by the plugin
 |-- campaigns/             [fixed]  tour data and ski ad notes
 |-- content/               [fixed]  finished and draft video scripts
@@ -83,7 +83,7 @@ outdoornorway/
 - [tools guide](tools/README.md) for the tests, token report and launcher
 - [script folder guide](content/scripts/README.md) for finished and draft scripts
 - [ski ads guide](campaigns/ski-meta-ads/README.md) for tour data and ad notes
-- [account skills guide](account-skills/README.md) for the two screened account skills
+- [account skills guide](account-skills/README.md) for the two account skills
 - [adquill guide](adquill/README.md) for the paused ad-copy skill
 
 The [skills catalog](docs/skills-catalog.md) separates our own skills from the vendored ones. The [changelog](CHANGELOG.md) lists what changed and when.
@@ -99,7 +99,7 @@ Each run prints how many tests ran, so this page carries no counts that go stale
 
 ## Backup and restore
 
-Git holds the code. It does not hold your chat history, the skills that live only on the Claude account, connector sign-ins or local Claude Code sessions. The two screened account skills are the exception, and live in `account-skills/`. [docs/backup-and-restore.md](docs/backup-and-restore.md) lists what to save, where it goes and how to restore it on a new account.
+Git holds the code. It does not hold your chat history, the skills that live only on the Claude account, connector sign-ins or local Claude Code sessions. The two account skills in `account-skills/` are the exception. [docs/backup-and-restore.md](docs/backup-and-restore.md) lists what to save, where it goes and how to restore it on a new account.
 
 ## Licence
 
