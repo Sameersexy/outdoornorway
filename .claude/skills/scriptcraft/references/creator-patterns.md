@@ -34,18 +34,18 @@ What the five agree on: talking creators run 3.3 to 4.9 words per second and sta
 
 | Creator | Role, country | Followers | Median wps | w3 | You share | What stands out |
 |---|---|---|---|---|---|---|
-| George, @alpine_ski_tutorials | BASI Level 4 instructor, UK | 42.7k TikTok, 83.5k YouTube | 3.11 (TikTok, n = 9) | 10 | 0.50 | Single tips under 60 s: 213k to 453k views. Course pitches: 2.0k to 5.3k. A 10 s text-only tip: 329.8k |
-| kmoney, @kmoney56 | Ski patroller, Park City, US | 2.7k | 3.10 (n = 1) | 8.8 | 0.67 | Silent patrol montage with trending audio: 685.7k |
-| Bernie Rosow, @bernierosow | Snowcat operator, Mammoth, US | 99.6k | 0.59 (n = 2) | 8 | 0 | Staff POV. Storm footage with one caption line: 6.9M. He died in April 2026; the archive is a reference only |
-| Ski Patrol Life Southern Utah | Patroller, Brian Head, US | 1.48k YouTube | 2.46 | 7 | 0.17 | Daily dated snow report from the same spot |
-| Ski Dad TV, @skidadTV | Full-time instructor, Deer Valley, US | 11.6k YouTube | 2.41 | 7 | 0.67 | Best clip: his child's first chute run, parent filming |
-| Casey Willax, @caseywillax | Snowboarder and vlogger, US | 33.2k TikTok, 128k YouTube | 2.83 | 1 | 0.60 | How to call ski patrol, real incident footage: 432.5k. Talking trick tutorial: 1.3k |
-| Dan Noakes | Backcountry skier, US | 12.2k YouTube | 2.47 | 10 | 0.55 | Gear and pack videos |
-| Where's Andrew | Travel writer, US | 11.8k YouTube | 2.70 | 7 | 0.33 | The only Norway snowshoe coverage found |
+| Creator F | BASI Level 4 instructor, UK | 42.7k TikTok, 83.5k YouTube | 3.11 (TikTok, n = 9) | 10 | 0.50 | Single tips under 60 s: 213k to 453k views. Course pitches: 2.0k to 5.3k. A 10 s text-only tip: 329.8k |
+| Creator G | Ski patroller, US | 2.7k | 3.10 (n = 1) | 8.8 | 0.67 | Silent patrol montage with trending audio: 685.7k |
+| Creator H | Snowcat operator, US | 99.6k | 0.59 (n = 2) | 8 | 0 | Staff POV. Storm footage with one caption line: 6.9M |
+| Creator I | Patroller, US | 1.48k YouTube | 2.46 | 7 | 0.17 | Daily dated snow report from the same spot |
+| Creator J | Full-time instructor, US | 11.6k YouTube | 2.41 | 7 | 0.67 | Best clip: their child's first chute run, parent filming |
+| Creator K | Snowboarder and vlogger, US | 33.2k TikTok, 128k YouTube | 2.83 | 1 | 0.60 | How to call ski patrol, real incident footage: 432.5k. Talking trick tutorial: 1.3k |
+| Creator L | Backcountry skier, US | 12.2k YouTube | 2.47 | 10 | 0.55 | Gear and pack videos |
+| Creator M | Travel writer, US | 11.8k YouTube | 2.70 | 7 | 0.33 | The only Norway snowshoe coverage found |
 
 Pooled spoken median across the second ring: 2.87 words per second over 49 videos. Of the 15 TikTok videos over 100k views in that sample, 10 had no scripted creator voice (n = 15, selection biased toward what each profile surfaced).
 
-Planned speakers (George, Creator C) had the spoken hits: clean sentences, first word at 0.0 s, 10 to 13 words in 3 s. Improvised speakers won on real moments, not on words.
+Planned speakers (Creator F, Creator C) had the spoken hits: clean sentences, first word at 0.0 s, 10 to 13 words in 3 s. Improvised speakers won on real moments, not on words.
 
 ## What to copy
 
@@ -53,7 +53,7 @@ Planned speakers (George, Creator C) had the spoken hits: clean sentences, first
 - One concrete, checkable detail per beat, said casually: a "from" price, a time, a day count.
 - Save-worthy practical formats: what is included, what to pack, how the day runs. Creator C's tour is the template: inclusions over B-roll, one booking sentence of logistics, then a save prompt.
 - Text-led clips with one line of honest guide humour over a POV run (Creator B, Creator D's tips).
-- Name the mistake, show one cue on a body, say why in one sentence, stop, ask one question (George).
+- Name the mistake, show one cue on a body, say why in one sentence, stop, ask one question (Creator F).
 - Disclosure inside the video.
 
 ## What to adapt
@@ -62,7 +62,7 @@ Planned speakers (George, Creator C) had the spoken hits: clean sentences, first
 - Creator D's tips list, each tip from a guide on a real tour day.
 - Creator A's expectation flip for Voss: what people expect of Norway in winter against what a day looks like.
 - Creator D's name intro after the hook ("I'm Kari, I guide ski touring in Voss"). It doubles as disclosure (D01).
-- The dated snow report (Ski Patrol Life), with measured depth only and never a forecast.
+- The dated snow report (Creator I), with measured depth only and never a forecast.
 
 ## What not to copy
 
@@ -70,20 +70,16 @@ Planned speakers (George, Creator C) had the spoken hits: clean sentences, first
 - Unboxings and "welcome to the team" gifted content (Creator E). The weakest videos in the sample.
 - Long sincere monologues as the default short (Creator D's talk posts: 700 to 2,000 views).
 - "Welcome back" series openers (Creator E).
-- Course or booking pitches in the video body (George: 40 to 200 times fewer views than his tips).
+- Course or booking pitches in the video body (Creator F: 40 to 200 times fewer views than their tips).
 - Trending copyrighted songs on posts that promote the company. Use original sound or the Commercial Music Library (SND01).
 - Weather and aurora promises. None of the five promise snow; keep it that way (BR09, BR10).
 - Paying clients in tutorials without consent. No creator in the sample showed one; copy that default.
 
 ## Sources
 
-- TikTok profiles and videos, read 2026-10-07: https://www.tiktok.com/@alpine_ski_tutorials, https://www.tiktok.com/@kmoney56, https://www.tiktok.com/@bernierosow, https://www.tiktok.com/@caseywillax. Account names for Creators A to E are left out on purpose.
-- YouTube about pages: https://www.youtube.com/@skipatrollife-southernutah7805/about, https://www.youtube.com/@skidadTV/about, https://www.youtube.com/@DanNoakes/about, https://www.youtube.com/@WheresAndrew/about, https://www.youtube.com/@caseywillax/about
+- TikTok profiles and videos, and YouTube about pages, were read on 2026-10-07. Account names and links are left out on purpose.
 - A US university profile of Creator B. Not linked, to keep the creator unnamed.
-- Alpine Tutorials, about George: https://alpinetutorials.com/about
-- ActiveNorCal on Bernie Rosow (27 Apr 2026): https://www.activenorcal.com/the-california-ski-community-is-mourning-the-sudden-loss-of-a-mammoth-mountain-legend/
 - Popfly, ski and snowboard creators: https://www.popfly.com/post/ski-snowboard-creators
-- Casey Willax profile: https://www.famousbirthdays.com/people/casey-willax.html
 - TikTok Ads help, creative best practices (A): https://ads.tiktok.com/help/article/creative-best-practices?lang=en
 - FTC, Disclosures 101 for social media influencers (A): https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers
 - ASA, recognising ads on social media (A): https://www.asa.org.uk/advice-online/recognising-ads-social-media.html

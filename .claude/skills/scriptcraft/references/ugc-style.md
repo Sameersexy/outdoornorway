@@ -65,7 +65,7 @@ The hook in UGC is three things at once: the first frame, the first sentence and
 | Reveal tour | Creator C, ski hostel tour | "This is where you sleep after a touring day, and it's not a hotel." | 14 | Selfie at the cabin door, a hand pushing it open |
 | Someone asked me | Creator C, toy question | "Someone asked me what I wear under my shell, so here it is." | 13 | Phone at arm's length, the base layer held up to the lens |
 | Reply to a comment | Creator C, chalet story | Reply sticker on screen, then "You asked if you'd hold the group up. Watch this." | 10 | Reply sticker over the guide filming the group on the skin track |
-| Myth bust | George, bend the knees | "Everyone tells you to lean back in deep snow. I tell guests the opposite." | 14 | Side shot of a skier in soft snow, the myth as the overlay |
+| Myth bust | Creator F, bend the knees | "Everyone tells you to lean back in deep snow. I tell guests the opposite." | 14 | Side shot of a skier in soft snow, the myth as the overlay |
 | POV | Common on TikTok, not used by our five, so unmeasured | Overlay only: "pov: your guide stops for a layer check" | 8 on screen | Chest POV, guide's raised pole in frame |
 | Tips list | Creator D, five ski tips | Overlay: "three things I check before every tour" | 7 on screen | Hands opening a pack on the snow, top-down |
 | Text meme loop | Creator B, before and after lunch | Overlay: "me telling the group it's one more kick turn" | 9 on screen | Chest POV on a switchback, the group below looking up |
@@ -83,17 +83,17 @@ From note 05, section 5. Word counts assume a 25 s short at 2.8 words per second
 
 | Format | Seen in | Beat structure (seconds) | Spoken words | Filming note | Style |
 |---|---|---|---|---|---|
-| One fix I give every guest | George, Dan Noakes | 0 to 3 name the mistake. 3 to 15 demo with one cue. 15 to 21 why, one line. 21 to 25 question to comments | 45 to 60 | Selfie or chest mount at the start, then a colleague films the demo from below. One take per cue | ugc_talk |
-| Myth bust | George, Creator E | 0 to 3 state the myth. 3 to 12 what actually happens, shown. 12 to 21 the replacement cue. 21 to 25 ask what else they were told | 45 to 60 | Myth as the overlay so it reads muted | ugc_talk |
-| Day in the life of a guide | kmoney, Creator D | 4 to 6 clips of 3 to 5 s: van, avalanche gear check, group skinning, the top, dinner. One overlay per clip | 0 to 15 | Phone in a chest pocket. Vertical. Natural sound | ugc_text |
-| Snow report from the guide | Ski Patrol Life, Bernie | 0 to 3 date and place. 3 to 15 what it looks like now, pole in the snow. 15 to 22 what we do today. 22 to 25 sign-off line | 35 to 55 | Same spot and same opener every time. Measured depth only. Never forecast (BR09) | ugc_talk |
-| What guests ask me | George, Casey | 0 to 3 the question on screen. 3 to 20 the answer with footage. 20 to 25 ask the next one below | 40 to 55 | TikTok reply-to-comment. Real questions only | ugc_talk |
-| What is in my guide pack | Dan Noakes, Bernie | 0 to 3 open the pack. One item per 4 s beat: beacon, shovel, probe, first aid, thermos. Last beat the why | 40 to 55 | Top-down on snow. Item name as overlay, 1 to 2 words | ugc_talk or ugc_text |
-| Real moment, then the lesson | Casey, patrol call | 0 to 10 real footage, no talk. 10 to 22 what to do, 2 steps. 22 to 25 save this | 25 to 40 | Only if nobody is hurt and everyone shown agrees. Never stage danger | ugc_talk |
+| One fix I give every guest | Creator F, Creator L | 0 to 3 name the mistake. 3 to 15 demo with one cue. 15 to 21 why, one line. 21 to 25 question to comments | 45 to 60 | Selfie or chest mount at the start, then a colleague films the demo from below. One take per cue | ugc_talk |
+| Myth bust | Creator F, Creator E | 0 to 3 state the myth. 3 to 12 what actually happens, shown. 12 to 21 the replacement cue. 21 to 25 ask what else they were told | 45 to 60 | Myth as the overlay so it reads muted | ugc_talk |
+| Day in the life of a guide | Creator G, Creator D | 4 to 6 clips of 3 to 5 s: van, avalanche gear check, group skinning, the top, dinner. One overlay per clip | 0 to 15 | Phone in a chest pocket. Vertical. Natural sound | ugc_text |
+| Snow report from the guide | Creator I, Creator H | 0 to 3 date and place. 3 to 15 what it looks like now, pole in the snow. 15 to 22 what we do today. 22 to 25 sign-off line | 35 to 55 | Same spot and same opener every time. Measured depth only. Never forecast (BR09) | ugc_talk |
+| What guests ask me | Creator F, Creator K | 0 to 3 the question on screen. 3 to 20 the answer with footage. 20 to 25 ask the next one below | 40 to 55 | TikTok reply-to-comment. Real questions only | ugc_talk |
+| What is in my guide pack | Creator L, Creator H | 0 to 3 open the pack. One item per 4 s beat: beacon, shovel, probe, first aid, thermos. Last beat the why | 40 to 55 | Top-down on snow. Item name as overlay, 1 to 2 words | ugc_talk or ugc_text |
+| Real moment, then the lesson | Creator K, patrol call | 0 to 10 real footage, no talk. 10 to 22 what to do, 2 steps. 22 to 25 save this | 25 to 40 | Only if nobody is hurt and everyone shown agrees. Never stage danger | ugc_talk |
 | Series counter | Creator D, day 4 of 100 | Overlay "guide season day 12" at 0.0 s. 3 to 5 clips. One caption line | 0 to 10 | The number must be true and continue. It is a digit, so it needs a facts row (F04) | ugc_text |
-| First-timer guest moment | Creator C, Ski Dad | 0 to 3 the guest says what they feared. 3 to 18 the run. 18 to 25 the guest's reaction in their words | 20 to 45, guest speaks | Written consent. The guest's words, never ours | ugc_talk |
-| Place in 20 seconds | Where's Andrew, Creator C | 0 to 3 where we ski on day 2. 3 to 20 three shots, one fact each. 20 to 25 question | 45 to 55 | Walk and talk, phone at arm's length | ugc_talk |
-| Long: one day, start to finish | Where's Andrew, Casey | Hook 0 to 10, 4 to 6 chapters of 25 to 40 s, close on the group | 400 to 520 | Landscape. The guide narrates live, not in post | ugc_talk, long |
+| First-timer guest moment | Creator C, Creator J | 0 to 3 the guest says what they feared. 3 to 18 the run. 18 to 25 the guest's reaction in their words | 20 to 45, guest speaks | Written consent. The guest's words, never ours | ugc_talk |
+| Place in 20 seconds | Creator M, Creator C | 0 to 3 where we ski on day 2. 3 to 20 three shots, one fact each. 20 to 25 question | 45 to 55 | Walk and talk, phone at arm's length | ugc_talk |
+| Long: one day, start to finish | Creator M, Creator K | Hook 0 to 10, 4 to 6 chapters of 25 to 40 s, close on the group | 400 to 520 | Landscape. The guide narrates live, not in post | ugc_talk, long |
 
 Where a format ends on a comment question, phrase it as a choice ("which one would you pack first?") or a save or send prompt: U05 accepts only the soft prompts listed in tiers.json, and an open comment question warns. A beat structure here is a starting grid. The validator still checks beat count (4 to 7 in a short), beat length (3 to 6 s), words per beat (ugc_talk 10 to 20, hard max 24) and the loop.
 
@@ -127,7 +127,7 @@ The joke or the tip lives in the overlay. The picture does the payoff: the landi
 |---|---|---|
 | Long sincere monologues | Creator D's talk posts 700 to 2,000 views; her silent tips post 528,500 | Words and beat limits (W01, W03, T01) |
 | Ad-style product stories and unboxings | Creator C's AD posts 441 to 3,191 views against 312,600 for her practical tour. Creator E's gifted unboxings 82 to 386 | Reviewer authenticity check; BR07 sales verbs |
-| Selling early | George's course pitch videos underperformed his tips by about 40 to 200 times | C01 (ask outside the cta beat), BR07 |
+| Selling early | Creator F's course pitch videos underperformed their tips by about 40 to 200 times | C01 (ask outside the cta beat), BR07 |
 | Greetings and channel intros | "Welcome back" openers sat on Creator E's lowest videos | BR01 |
 | End cards, logos, title slides | No creator measured in notes 04 and 05 used one | U02 |
 | Spoken list dumps | Lists worked only as on-screen text | F01 to F03, ugc_text |
