@@ -27,4 +27,4 @@ The ad-copy notes use the skill's earlier working name, adwright, in many places
 | [05-ugc-micro-creators.md](video-scripts/05-ugc-micro-creators.md) | Second ring: instructors, patrollers, guides, travelers |
 | [06-tiktok-ugc-mechanics.md](video-scripts/06-tiktok-ugc-mechanics.md) | TikTok UGC mechanics, creator briefs, disclosure and consent |
 
-Downloaded transcripts are third-party content, so they are not stored here.
+Downloaded transcripts are third-party content, so they are not stored here. Notes 04 to 06 label individual creators A to M and leave out names and handles, because this repo is public.

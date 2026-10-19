@@ -67,7 +67,7 @@ The integrity test checks some of these rules. Check the rest yourself.
 - Where you cannot check a claim, write `[VERIFY: what to confirm]` in its place.
 - Do not hand-write counts of tests, rules or files. Counts drift.
 
-Third-party skill copies listed in [THIRD_PARTY_SKILLS.md](THIRD_PARTY_SKILLS.md) keep their upstream text, so the dash and emoji check skips them.
+Third-party skill copies listed in [THIRD_PARTY_SKILLS.md](THIRD_PARTY_SKILLS.md) keep their upstream text, so the dash and emoji check skips them. Some of those copies also name other vendors' AI products and models in their examples. Nobody edits that text here. [VERIFY: the owner confirms that the no-model-names rule does not apply to upstream text in those copies]
 
 ## Facts and sources
 
@@ -83,6 +83,7 @@ Commands and agents reach repo files through ROOT. In the plugin, ROOT is `${CLA
 
 - Do not add `!` shell lines that use `${...}`. A clone has no plugin root, so the integrity test fails on them.
 - Do not add bare repo paths to commands. Paths such as `tools/` or `campaigns/ski-meta-ads/` must go through ROOT.
+- One command is exempt. `/howto` cites `docs/getting-started.md` in plain prose, because its text is a copy of the guide's Quick start. The integrity test skips `howto` by name in the bare-path check.
 - A command that uses ROOT must carry the ROOT note. The integrity test checks for it.
 - Each command sets `disable-model-invocation: true` in its frontmatter.
 - A new command must appear in the README and in [docs/getting-started.md](docs/getting-started.md). The guide check does not apply to `/tokens`.

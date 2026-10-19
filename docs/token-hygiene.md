@@ -36,7 +36,7 @@ Both scripts from these runs passed the validator, and each came with a notes fi
 
 1. One deliverable per session. A fresh session starts near the fixed part (about 59k tokens in the example above), and the repo notes carry the state. This is the biggest lever, because cost is calls times context size and the example's median context was 350k tokens per call.
 2. Compact at about 150k tokens instead of letting a session run to 500k and beyond.
-3. Subagents and workflows return paths, scores and short lists. Reports go to files. A workflow script reads from `scriptPath`, not inline.
+3. Subagents and workflows return paths, scores and short lists. Reports go to files. Save a long workflow script as a file and give the workflow its path. Do not paste the script into the conversation, because pasted text stays in the context and is read again on every call.
 4. Review depth: one writer and one reviewer, at most two rounds. Extra rounds add cost and gain little. In one earlier test, four rounds on one script moved the mean score only from 5.5 to 6.3. [VERIFY: the figures 5.5 and 6.3 have no source file in this repo, the owner confirms them]
 5. Never print a whole file or a full validator run in the main conversation. Use `| grep -E "FAIL|WARN|RESULT"` and `Read` with an offset and limit.
 

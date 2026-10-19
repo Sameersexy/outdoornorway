@@ -47,6 +47,13 @@ The plugin and marketplace manifests have carried version 0.2.0 since `8d7effb` 
 - The test counts in the end-to-end test note and in the ad-copy pitfalls note are labelled as figures from when they were written, with the command that prints the current count.
 - `creator-patterns.md` points to the three video script research notes by path instead of to a scratch folder.
 - A test in `tools/test_repo_integrity.py` fails if a navigation doc other than this file says "privacy screen" or "screened", or calls the private backup a "private repository".
+- Research notes 04, 05 and 06 on UGC creators now label individuals Creator A to M and drop names, handles and video IDs, because the repo is public. The research index says so. The creator references in the scriptcraft skill and the travel creator note 02 still name creators, and that is left to the owner.
+- `adquill/AGENTS.md` no longer points to an `examples/` folder that does not exist. It points to `adquill/skills/adquill/assets/`.
+- The skill vetting note headings say 26 other candidates were read, which matches `THIRD_PARTY_SKILLS.md`, and a `[VERIFY]` flags the 36 in its opening line against the 34 rows in its ranked table. Other coding agents and an image model are no longer named in the vetting and virality notes.
+- The backup guide uses `git switch <branch>` in the restore dry run and names the current branch in prose. It also notes the local-only backup tag, with a `[VERIFY]` on whether to push it.
+- The backup guide, `account-skills/README.md` and the skills catalog say the account upload takes a description of 200 characters at most, that both skills in `account-skills/` are over that, and that the instructions file name (`skill.md` or `SKILL.md`) is unconfirmed.
+- CONTRIBUTING.md says `/howto` is exempt from the bare-path rule, and the integrity test carries a comment that says the same. CONTRIBUTING.md also asks the owner to confirm that vendored upstream text is exempt from the no-model-names rule.
+- The token hygiene guide says in plain words to save a long workflow script as a file and pass its path.
 
 ### Removed
 

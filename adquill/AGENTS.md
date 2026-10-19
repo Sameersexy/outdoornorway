@@ -48,4 +48,4 @@ The three reviewer personas are in agents/. If your tool can run subagents, run 
 
 ## Examples
 
-All examples use one fictional brand, Brekke Ski Guides. Every example is a fictional brief. See examples/ for finished pairs.
+All examples use one fictional brand, Brekke Ski Guides. Every example is a fictional brief. The filled output shapes are in `adquill/skills/adquill/assets/`.

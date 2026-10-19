@@ -35,26 +35,26 @@ Completion and rewatch. TikTok Studio shows average watch time, "watched full vi
 
 ### 1.2 Measured pace of UK and US individual creators (C)
 
-Re-parsed from captions already downloaded in the 05 run. TikTok only. Cue-level timing, so words in the first 3 s are interpolated. Words per second use full duration. Country verification is in 05, section 1.
+Re-parsed from captions already downloaded in the 05 run. TikTok only. Cue-level timing, so words in the first 3 s are interpolated. Words per second use full duration. Country verification is in 05, section 1. Creator labels match 05.
 
 | Creator (country) | Spoken videos | Median dur s | Median wps | Median words first 3 s | Median first word s | You share of you+I | Casual markers per min | Median likes/view | Median shares/view |
 |---|---|---|---|---|---|---|---|---|---|
-| George, @alpine_ski_tutorials (UK) | 9 | 60 | 3.11 | 9.1 | 0.14 | 0.50 | 4.4 | 2.3% | 0.10% |
-| Hannah West, @adventuresofthewests (UK) | 6 | 56 | 3.95 | 12.8 | 0.01 | 0.18 | 3.8 | 5.7% | 0.10% |
-| Casey Willax, @caseywillax (US) | 4 | 85 | 3.03 | 1.0 | 4.21 | 0.81 | 5.0 | 5.0% | 0.20% |
-| kmoney, @kmoney56 (US) | 1 | 10 | 3.10 | 8.8 | 0.06 | 0.67 | 0.0 | 3.2% | 0.00% |
+| Creator F (UK) | 9 | 60 | 3.11 | 9.1 | 0.14 | 0.50 | 4.4 | 2.3% | 0.10% |
+| Creator C (UK) | 6 | 56 | 3.95 | 12.8 | 0.01 | 0.18 | 3.8 | 5.7% | 0.10% |
+| Creator K (US) | 4 | 85 | 3.03 | 1.0 | 4.21 | 0.81 | 5.0 | 5.0% | 0.20% |
+| Creator G (US) | 1 | 10 | 3.10 | 8.8 | 0.06 | 0.67 | 0.0 | 3.2% | 0.00% |
 | Pooled, 20 spoken videos | 20 | | 3.30 | | | | | | |
 
 The UGC-length subset (spoken, 45 s or less):
 
 | Video | Dur s | Words | wps | Words first 3 s | Views |
 |---|---|---|---|---|---|
-| George, lean-in tip | 37 | 127 | 3.43 | 7.7 | 452.7k |
-| George, knee-bend myth | 39 | 112 | 2.87 | 10.8 | 247.4k |
-| George, tip | 41 | 143 | 3.49 | 10.4 | 2.7k |
-| George, tip | 35 | 124 | 3.54 | 9.7 | 43.2k |
-| Hannah, trip clip | 35 | 138 | 3.94 | 14.3 | 3.2k |
-| kmoney, patrol clip | 10 | 31 | 3.10 | 8.8 | 1.0k |
+| Creator F, lean-in tip | 37 | 127 | 3.43 | 7.7 | 452.7k |
+| Creator F, knee-bend myth | 39 | 112 | 2.87 | 10.8 | 247.4k |
+| Creator F, tip | 41 | 143 | 3.49 | 10.4 | 2.7k |
+| Creator F, tip | 35 | 124 | 3.54 | 9.7 | 43.2k |
+| Creator C, trip clip | 35 | 138 | 3.94 | 14.3 | 3.2k |
+| Creator G, patrol clip | 10 | 31 | 3.10 | 8.8 | 1.0k |
 | Median, n = 6 | 36 | 126 | 3.46 | 10.0 | |
 
 Comment counts were missing in several info.json files and auto captions lack punctuation, so comment ratios and sentence lengths are not reported. 05 holds the wider set (49 videos, pooled 2.87 wps).

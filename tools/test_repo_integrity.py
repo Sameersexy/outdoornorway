@@ -91,6 +91,8 @@ class Commands(unittest.TestCase):
         # Paths under the repo must go through ROOT so the plugin install works.
         bare = re.compile(r"(?<![/\w])(?:\.claude/skills|campaigns/ski-meta-ads|tools/)")
         for path in COMMANDS:
+            # /howto is skipped by name. It copies the guide's Quick start and cites docs/getting-started.md.
+            # The exemption is also written in CONTRIBUTING.md under Commands and agents.
             if path.stem == "howto":
                 continue
             for number, line in enumerate(read(path).splitlines(), 1):

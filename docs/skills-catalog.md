@@ -54,7 +54,7 @@ The six manual skills carry `disable-model-invocation: true`, so you call them b
 
 ## Account skills in this repo
 
-Both skills were read for supplier terms, prices, contacts, personal data and client facts before they were copied into `account-skills/`. Each is one folder with a `SKILL.md`. The plugin does not load them. [account-skills/README.md](../account-skills/README.md) explains how to copy or upload one, and how to add another.
+Both skills were read for supplier terms, prices, contacts, personal data and client facts before they were copied into `account-skills/`. Each is one folder with a `SKILL.md`. The plugin does not load them. [account-skills/README.md](../account-skills/README.md) explains how to copy or upload one, and how to add another. An account upload accepts a description of 200 characters at most, and the description of each skill below is longer, so shorten it in the copy you upload.
 
 | Skill | What it does | Folder |
 |---|---|---|

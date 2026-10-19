@@ -314,7 +314,7 @@ This is a survivor sample of 26 repos picked because they have many stars. It ca
 |---|---|---|
 | A copyable one-line install | About 21 | Exceptions: list repos (awesome-*), anthropics/skills (two commands), prompt-master (zip upload) |
 | Install by `npx skills add` or plugin marketplace | Majority | Marketplace support appears in most (superpowers, anthropics, ponytail, humanizer, claude-ads, brag, karpathy-skills, Understand-Anything) |
-| Cross-agent claim (Codex, Cursor, Gemini CLI, others) | About 22 | Counts of supported agents range from 3 to 70-plus |
+| Cross-agent claim (other coding agents by name) | About 22 | Counts of supported agents range from 3 to 70-plus |
 | Before/after that a stranger understands in seconds | At least 8 | humanizer, i-have-adhd, ponytail, prompt-master, planning-with-files, Graft, brag output, archify gallery |
 | Animated GIF or video | About 7 seen (claude-mem, planning-with-files, Graft, archify, claude-ads v1, career-ops, brag) | Several 100k-plus repos had none seen (gstack, mattpocock, superpowers). Media is helpful, not required. |
 | Benchmark or proof number | About 9 | Graft, ponytail, planning-with-files, gbrain, humanizer (16 of 16), gstack (productivity claim), K-Dense, claude-mem docs, career-ops personal numbers |
@@ -461,7 +461,7 @@ Section-by-section:
 1. **Title and one-line pitch.** Name, pitch, a single sentence of scope: Meta (Facebook, Instagram) and X. Under 25 words.
 2. **Hero before/after.** A real, ugly, plausible AI-written ad on the left and the adwright rewrite on the right, plus a lint score ("31/100" to "88/100" once the lint exists). Use text, not an image, so it can be copied. Include one Meta ad and one X post.
 3. **10-second terminal GIF** (or short video). One command in, ad out, score shown. Use a real run. Under 3 MB.
-4. **Install block.** Four lines, one per environment: `npx skills add <owner>/adwright`; `/plugin marketplace add <owner>/adwright`; claude.ai ZIP upload (link to release asset); paste-in prompt for any chat tool. Name Codex, Cursor and Gemini CLI explicitly in a one-line support table.
+4. **Install block.** Four lines, one per environment: `npx skills add <owner>/adwright`; `/plugin marketplace add <owner>/adwright`; claude.ai ZIP upload (link to release asset); paste-in prompt for any chat tool. Name each supported coding agent in a one-line support table.
 5. **First minute.** Three example prompts a marketer would actually type, with the output shape.
 6. **Commands.** Five verbs, not fifty: `write`, `rewrite`, `lint`, `variants`, `explain`. One line each.
 7. **Proof.** A blind-test table with sample size, method, raw data link and limits. Example format: "20 ad pairs, 12 reviewers, preferred 31 of 40 times"; fill only with real results. State what the test cannot show (conversions).
@@ -556,7 +556,7 @@ Product:
 - [ ] One verb works end to end: `write`, `rewrite`, `lint`. Zero-dependency lint script. No network calls in scripts.
 - [ ] SKILL.md under 500 lines, description under 1,024 characters, validated with `skills-ref validate`.
 - [ ] `claude plugin validate` passes. `.claude-plugin/plugin.json` has description, author, homepage, repository.
-- [ ] Tested install on Claude Code, Codex, Cursor, Gemini CLI, claude.ai ZIP. Record what fails.
+- [ ] Tested install on Claude Code, each other coding agent named in the support table, claude.ai ZIP. Record what fails.
 - [ ] Evals: 20 or more ad pairs (baseline model output versus adwright) with a blind rubric and at least 10 independent reviewers, raw data published. [Do not publish a headline number until it is real.]
 - [ ] Twelve real before/after pairs for Meta and X, with permission.
 - [ ] PROOF.md: adwright's own README and examples linted by adwright, score and date.
