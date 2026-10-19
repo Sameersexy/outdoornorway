@@ -2,7 +2,7 @@
 
 This guide is for the repo owner who is moving the Outdoor Norway Claude account to a new login. It covers what lives where, the checks before the switch, the restore steps, a dry run, and what must stay out of this public repo.
 
-The repo does not record the claude.ai menu paths for the data export, the skills upload and the connectors. [VERIFY: current claude.ai menu paths for the data export, the skills upload and the connectors, and the upload format for custom skills]
+The menu paths below come from the Anthropic help pages linked in each step, as read on 19 October 2026. Menus change, so follow the linked page if a name differs.
 
 ## What lives where
 
@@ -10,7 +10,7 @@ Four places hold the setup. Each has its own owner and sharing rule.
 
 | Place | What is there | Shared? | How it comes back |
 |---|---|---|---|
-| Public repo (`Sameersexy/outdoornorway` on GitHub) | The plugin, commands, agents, the scriptcraft skill, vetted third-party skills, tour data, scripts and guides | Public, MIT licensed | Clone it, or install the plugin. See [installation.md](installation.md). |
+| Public repo (`Sameersexy/outdoornorway` on GitHub) | The plugin, commands, agents, the scriptcraft skill, vetted third-party skills, two screened account skills, tour data, scripts and guides | Public, MIT licensed | Clone it, or install the plugin. See [installation.md](installation.md). |
 | Claude account | Chat history, custom skills uploaded to the account, connector sign-ins, platform skills | Account owner only | Export before the switch. Upload skills and sign in to connectors again on the new login. |
 | Private backup (`<your-private-backup-repo>`) | Chat transcripts, account-only skills, local Claude Code transcripts copied by hand | Private | Copy files out of it on the new login. Never merge it into this repo. |
 | Local computer | The clone, if there is one. Claude Code transcripts under `~/.claude/projects`. Any `.env` file. | That machine only | Copy by hand. Git does not carry these. |
@@ -30,7 +30,7 @@ Work through this list while the old login still works.
 
    The first command lists uncommitted files. The second counts commits that the remote does not have yet. Push the branch if the count is above zero.
 
-2. Export the Claude account data and save the export in the private backup, not in the repo.
+2. Export the Claude account data and save the export in the private backup, not in the repo. On a personal Free, Pro or Max account, open Settings > Privacy and click Export data. Exports can't be started from the iOS or Android apps. The download link arrives by email, needs a signed-in session, and expires 24 hours after delivery. Team and Enterprise members can export their own data only after an owner turns on Allow members to export their own data. Primary Owners export the whole organization's data from Organization settings > Data and privacy. See [Export your Claude data](https://support.claude.com/en/articles/9450526-export-your-claude-data).
 3. Copy the account-only skills into the private backup. [skills-catalog.md](skills-catalog.md) lists the account-only skills.
 4. Write down the connectors that are switched on, by name only. Never copy tokens or keys.
 5. Copy the local Claude Code transcripts into the private backup, as described under [local transcripts](#local-claude-code-transcripts).
@@ -42,7 +42,8 @@ Work through this list while the old login still works.
 Work through these steps in order.
 
 1. Sign in to claude.ai and to Claude Code with the new login.
-2. Install the plugin. Follow route 1 in [installation.md](installation.md), or run these two commands:
+2. If the account is on a Team or Enterprise plan, check the allowed email domains before you add the new login. On an organization that does not use domain capture, an owner opens Organization settings > Identity and access, clicks Add or edit domains in the Domains section, enters the domain in the Update organization email domains window, clicks +, and then clicks Save. The trash can icon beside a domain removes it. The owner's own domain is listed automatically. See [Account management FAQs](https://support.claude.com/en/articles/13325567-account-management-faqs). A second help page, [Find and join a Team or Enterprise organization](https://support.claude.com/en/articles/13566435-find-and-join-a-team-or-enterprise-organization), names the section Organization and access and a + Add domain button, and it says personal email providers and education domains can't be added to the allowed list. [VERIFY: which section and button the current admin screen shows for allowed email domains, whether public email providers can be added (the two pages disagree), and how to change an existing domain (neither page covers it)]
+3. Install the plugin. Follow route 1 in [installation.md](installation.md), or run these two commands:
 
    ```
    claude plugin marketplace add Sameersexy/outdoornorway
@@ -51,9 +52,12 @@ Work through these steps in order.
 
    Restart Claude Code, then run `claude plugin list` to check that the plugin is enabled.
 
-3. Upload the custom skills from the private backup to the account. Restore only the skills that [skills-catalog.md](skills-catalog.md) lists as account-only. The repo copy of scriptcraft is the canonical one, so upload the account copy only if you want it in chat. Platform skills (docx, pdf, pptx and xlsx) are never in the backup.
-4. Sign in to each connector again, using the list you wrote before the switch. Connector sign-ins are kept neither in git nor in the private backup.
-5. Copy old transcripts out of the private backup only if you want the token report to read them. The report takes any transcript path, so they can stay outside `~/.claude/projects`.
+4. Upload the custom skills from the private backup to the account. Restore only the skills that [skills-catalog.md](skills-catalog.md) lists as account-only. The repo copy of scriptcraft is the canonical one, so upload the account copy only if you want it in chat. Platform skills (docx, pdf, pptx and xlsx) are never in the backup. In Customize > Skills, click the + button, then + Create skill, then Upload a skill, and choose a zip file. The skill folder must be the root of the zip, and its name should match the skill's name. Inside the folder, the instructions file is named skill.md, and it starts with frontmatter that sets name (64 characters at most) and description (200 characters at most). Free, Pro and Max users can upload after they enable code execution. On Team and Enterprise, members can upload once the organization has skills enabled, and owners can turn user-created skills off or provision a skill for everyone. See [Use skills in Claude](https://support.claude.com/en/articles/12512180-use-skills-in-claude) and [How to create custom skills](https://support.claude.com/en/articles/12512198-how-to-create-custom-skills). [VERIFY: the help page names the file skill.md in lowercase, but the Claude Code skills page at https://code.claude.com/docs/en/skills says SKILL.md; check which name the upload accepts before you upload]
+
+   The two screened skills are also in [account-skills/](../account-skills/README.md) in the public repo, and you can upload them from there. The steps are in [how to use a skill](../account-skills/README.md#how-to-use-a-skill).
+
+5. Sign in to each connector again, using the list you wrote before the switch. Connector sign-ins are kept neither in git nor in the private backup. To reconnect, open Customize > Connectors, select the service and disconnect it. Then click + next to Connectors, select the connector, click Connect or Install, and finish the authentication prompts. The help page does not name the disconnect button. On Team and Enterprise, an owner adds a connector from Organization settings > Connectors by clicking Browse connectors and then Add to your team. Each member still signs in on their own account. Custom remote connectors are available on Free, Pro, Max, Team and Enterprise, and Free users are limited to one. See [Use connectors to extend Claude's capabilities](https://support.claude.com/en/articles/11176164-use-connectors-to-extend-claude-s-capabilities).
+6. Copy old transcripts out of the private backup only if you want the token report to read them. The report takes any transcript path, so they can stay outside `~/.claude/projects`.
 
 ### Local Claude Code transcripts
 

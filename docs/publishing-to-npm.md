@@ -91,7 +91,7 @@ The second command should print the version you just published.
 
 - `npm publish` does not run the tests, and `package.json` has no lifecycle script that does, so run step 4 first.
 - A version can be published only once. If the upload has a problem, bump the version (step 1) and publish again.
-- After a publish, `npx outdoornorway-marketing doctor` checks the copy that npm installed. [VERIFY: npx runs the package's single bin when the bin name differs from the package name]
+- After a publish, `npx outdoornorway-marketing doctor` checks the copy that npm installed. npm 10.9.4 runs the package's single `outdoornorway` bin under the package name, as a test against a local stand-in for the npm registry showed (`npx --yes outdoornorway-marketing version` printed `0.2.0`). [VERIFY: run `npx outdoornorway-marketing doctor` from an empty folder after the first publish, because the name is not on npmjs.com before then]
 
 ## 7. Tag the release
 
@@ -110,4 +110,4 @@ Use a scoped name such as `@<npm-scope>/outdoornorway-marketing` only if the uns
 
 - Change `name` in `package.json`. `tools/test_repo_integrity.py` requires the package name to equal the plugin name, `outdoornorway-marketing`, so change the test in the same commit or keep the unscoped name.
 - You need an npm scope that you own.
-- Publish with `npm publish --access public`, because scoped packages are private by default. [VERIFY: scoped packages default to restricted access on npm]
+- Publish with `npm publish --access public`, because scoped packages are private by default. The npm 10.9.4 docs confirm that scoped packages default to restricted access and that the flag is needed only on the first publish.

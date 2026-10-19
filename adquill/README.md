@@ -17,7 +17,7 @@ Work on adquill stopped after the drafts of October 2026, and the files are kept
 
 Every example in the skill uses an invented company, Brekke Ski Guides. The examples are not Outdoor Norway facts.
 
-`AGENTS.md` says to install adquill as a plugin for Claude Code. That line does not apply yet, because this folder has no plugin manifest.
+`AGENTS.md` explains how an agent loads the skill from this folder. Claude Code does not load it from here, because there is no plugin manifest for it.
 
 ## Run the linter and its tests
 
@@ -28,7 +28,7 @@ python3 -I adquill/skills/adquill/scripts/test_slop_lint.py
 python3 -I adquill/skills/adquill/scripts/slop_lint.py --text "your copy"
 ```
 
-`slop_lint.py` states that it needs Python 3.9 or newer. [VERIFY: lowest Python 3 version that runs the linter and its tests]
+`slop_lint.py` needs Python 3.9 or newer. The linter tests pass on Python 3.9 to 3.13 and fail on Python 3.8.
 
 ## If work resumes
 

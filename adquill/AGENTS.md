@@ -12,7 +12,7 @@ adquill writes honest, human-sounding ads for Meta (Facebook and Instagram) and 
 Where your tool looks for instructions:
 
 - Codex, Cursor and other tools that read AGENTS.md: this file is picked up from the repo root. Follow step 1 above.
-- Claude Code: install as a plugin (see README.md). The skill is called with /adquill:adquill <command>, or by asking in plain language.
+- Claude Code: adquill is paused and the plugin does not install it. This folder has no plugin manifest. To ship it, move the skill into `.claude/skills/` and the agents into `.claude/agents/`, as README.md ("If work resumes") describes.
 - Gemini CLI and tools that read a different context file: add a short file in your tool's format that tells the agent to read this file, or paste the "Method in short" section below as the instruction. Check your tool's current docs for the file name it expects.
 - Any chat tool with no file access: paste skills/adquill/SKILL.md, then paste the reference files you need.
 

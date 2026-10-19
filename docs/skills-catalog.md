@@ -6,7 +6,7 @@ This page is for anyone who wants to know which skills exist for Outdoor Norway 
 
 Skills sit in three places, and each place has its own sharing rule.
 
-- **This public repo.** The plugin loads the commands, the two agents and the skills under `.claude/` (see `.claude-plugin/plugin.json`). The paused adquill drafts sit in `adquill/` and are not loaded. The repo is public and MIT licensed, so nothing private goes in.
+- **This public repo.** The plugin loads the commands, the two agents and the skills under `.claude/` (see `.claude-plugin/plugin.json`). The paused adquill drafts sit in `adquill/` and are not loaded. The two screened account skills sit in `account-skills/`, and the plugin does not load them. The repo is public and MIT licensed, so nothing private goes in.
 - **The Claude account.** Skills the team built in the account, plus skills the platform provides. They work in account chats and are not part of the plugin.
 - **The private backup.** A separate private repository, written here as `<your-private-backup-repo>`. It holds chat transcripts and the account-only skills, and it is never merged into this repo. [backup-and-restore.md](backup-and-restore.md) covers saving and restoring it.
 
@@ -52,21 +52,26 @@ The six manual skills carry `disable-model-invocation: true`, so you call them b
 
 [THIRD_PARTY_SKILLS.md](../THIRD_PARTY_SKILLS.md) has the upstream projects, the pinned commits and the full list of local changes. The vetting notes (what was read, what was rejected and why) are in [research/ad-copy/06-skill-vetting.md](research/ad-copy/06-skill-vetting.md).
 
-## Account skills that are not in this repo
+## Account skills in this repo
 
-These skills live in the Claude account. None of them is copied into this repo or into the plugin. [VERIFY: this list was read from the account's synced skills folder and the backup column from the private backup, and neither can be checked from this repo; confirm both against the account]
+Both skills passed a privacy screen before they were copied into `account-skills/`. Each is one folder with a `SKILL.md`. The plugin does not load them. [account-skills/README.md](../account-skills/README.md) explains how to copy or upload one, and how to add another.
 
-| Skill | Purpose | In private backup |
+| Skill | What it does | Folder |
 |---|---|---|
-| brand-voice-checker | Reviews tour scripts, captions and other guest-facing copy against the company brand voice. Checks tone and voice only. | Yes |
-| content-qc | Pre-publish quality control for client-facing assets. Checks claims against a source of truth and the asset against itself, and produces a defect log with severity. | Yes |
-| guest-benefit-checker | Reviews scripts and guest-facing copy for content angle: whether they lead with the guest's problem or benefit, or with itinerary and sales language. | Yes |
-| page-intent-audit | Tests whether a page's structure serves search intent and whether its stated audience can complete a purchase. | Yes |
-| script-writing | General skill for writing, drafting and reviewing video and short-form social scripts. | Yes |
-| scriptcraft (account copy) | A chat edition of the repo skill. It carries the writer and reviewer procedures in one file, with no agents or commands. The repo copy is the canonical one, and the repo skill says it is preferred over script-writing for any video script with a length. | [VERIFY: confirm the backup holds the account copy] |
-| supplier-product-intake | Kept private, see the private backup. | Yes |
-| whatsapp-template-writer | Writes WhatsApp Business message templates and checks character, button, parameter and category rules. It does not set up the API or decide campaign strategy. | Yes |
+| brand-voice-checker | Reviews guest-facing copy, such as tour scripts, captions and blog copy, against the brand voice guidelines: tone, language, style, perspective, and mission, vision and values. | `account-skills/brand-voice-checker/` |
+| script-writing | Writes, drafts, improves and reviews video, social media and short-form content scripts. | `account-skills/script-writing/` |
 
-Platform skills come with the account and are not the team's to redistribute. The document skills (docx, pdf, pptx and xlsx) carry a licence that reserves all rights, so they are copied nowhere. The example skills (skill-creator, theme-factory, web-artifacts-builder, docs, google-workspace, import-memory and morning) are not copied either. [VERIFY: licence terms of the example skills, and whether the backup holds them]
+## Account-only skills
+
+These skills live only in the Claude account. None of them is copied into this repo or into the plugin. Each one did not pass the privacy screen:
+
+- content-qc
+- guest-benefit-checker
+- page-intent-audit
+- scriptcraft (account copy)
+- supplier-product-intake
+- whatsapp-template-writer
+
+Platform skills come with the account. They are not copied into this repo or into the plugin.
 
 Before an account skill moves into the public repo, its owner should read it for supplier terms, prices, contacts and client detail. To restore skills on a new login, follow [backup-and-restore.md](backup-and-restore.md). The plugin side of the setup is in [installation.md](installation.md).

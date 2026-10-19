@@ -23,6 +23,10 @@ outdoornorway/
 |-- .claude-plugin/             [fixed]  plugin and marketplace manifests
 |   |-- marketplace.json        [fixed]  marketplace listing
 |   `-- plugin.json             [fixed]  plugin manifest
+|-- account-skills/                      screened account skills, not loaded by the plugin
+|   |-- brand-voice-checker/  # guest-facing copy checked against the brand voice
+|   |-- README.md                        guide to the screened skills
+|   `-- script-writing/  # short-form video script craft
 |-- adquill/                             paused ad-copy skill, not installed by the plugin
 |   |-- agents/                          paused agents
 |   |-- skills/                          paused ad-copy skill
@@ -33,7 +37,6 @@ outdoornorway/
 |-- content/                    [fixed]  finished and draft video scripts
 |   `-- scripts/                [fixed]  scripts, each with a notes file
 |-- docs/                       [fixed]  guides, research and review history
-|   |-- archive/                         retired notes
 |   |-- research/                        research behind the skills
 |   |-- script-skill-reviews/            review rounds of the script skill
 |   |-- backup-and-restore.md            what to save and how to restore it
@@ -76,9 +79,10 @@ Safe to move? has two answers. No means code, tests or manifests name the path. 
 | `campaigns/ski-meta-ads/` | `tours.json` (prices, dates, day-by-day plans), its checker and the ski ad notes. See [its README](../campaigns/ski-meta-ads/README.md). | The validator (`--tour`), `/tour-data`, `doctor`, both agents | No. `script_check.py` finds `tours.json` by going up four folders from its own folder, so a move breaks `--tour` unless you pass `--tours-file`. `doctor` lists the file as required. |
 | `content/scripts/` | Finished and draft scripts, each with a notes file. See [its README](../content/scripts/README.md). | `/script` writes here by default | No. The script agents save here by default, and the integrity test lists its README. |
 | `docs/getting-started.md`, `docs/token-hygiene.md` | The guide for writers and editors, and the token habits | `/howto`, `/tokens`, the integrity test | No. `/howto` copies the Quick start from the guide and the test reads it. `/tokens` points to the token page. |
-| `docs/` | Guides, research, review history and retired notes. See [README.md](README.md). | Everyone | With edits. The two files above keep the folder in place. Inside it, a moved guide needs its links fixed, and the docs index and the integrity test name most of them. |
+| `docs/` | Guides, research and review history. See [README.md](README.md). | Everyone | With edits. The two files above keep the folder in place. Inside it, a moved guide needs its links fixed, and the docs index and the integrity test name most of them. |
 | `tools/outdoornorway-cli.js`, `tools/test_repo_integrity.py`, `tools/transcript_report.py` | The npx launcher, the integrity test and the token report. See [the tools guide](../tools/README.md). | `package.json` (`bin`), CLAUDE.md, `/tokens` | No. Each is named by the file that uses it, and both Python and Node code find the repo root as the folder above `tools/`. |
 | `adquill/` | A paused ad-copy skill and three agents (drafts). See [its README](../adquill/README.md). | Nothing at run time. The launcher's `test --all` runs its linter tests. | With edits. The plugin does not install it. A move means updating `files` in `package.json`, the `--all` path in the launcher and the links in the docs. |
+| `account-skills/` | Screened account skills, one folder each with a `SKILL.md`. See [its README](../account-skills/README.md). | Nothing at run time. The integrity test checks the folder. | With edits. Yes, it can move, but update the links and the integrity test. Nothing loads it. |
 | `README.md` | The front page: install, commands, what is here | Everyone | No. The integrity test reads it. |
 | `CLAUDE.md` | Rules and commands for Claude Code working in this repo | Claude Code, in a clone | No. Claude Code loads it from the repo root, and the integrity test reads it. |
 | `CONTRIBUTING.md`, `CHANGELOG.md` | How to change the tools, and what changed and when | Contributors, maintainers | With edits. The integrity test lists both, so a move also needs new links and a test edit. |
@@ -86,7 +90,7 @@ Safe to move? has two answers. No means code, tests or manifests name the path. 
 | `package.json` | Launcher metadata: `bin`, `files`, Node `engines`, no dependencies | npm, `npx`, the integrity test | No. Keep it at the root. Its `version` must match `plugin.json` and `marketplace.json`. |
 | `.gitignore` | Keeps Python caches, transcripts (`*.jsonl`), archives (`*.zip`, `*.tgz`), `.env` files, `node_modules/`, `backup/` and `exports/` out of git | Git, the integrity test | No. The test checks that the main patterns are listed. |
 
-Chat transcripts and account-only skills are not in this repo. They go in a separate private backup repository (`<your-private-backup-repo>`). [backup-and-restore.md](backup-and-restore.md) has the steps.
+Chat transcripts are not in this repo. The screened account skills are, in [account-skills/](../account-skills/README.md). The other account-only skills go in a separate private backup repository (`<your-private-backup-repo>`). [backup-and-restore.md](backup-and-restore.md) has the steps.
 
 ## Where do I find...
 
@@ -99,6 +103,7 @@ Chat transcripts and account-only skills are not in this repo. They go in a sepa
 | The agents | `.claude/agents/` |
 | Brand facts and the do-not-claim list | `.claude/product-marketing.md` |
 | Third-party skills and their licences | `THIRD_PARTY_SKILLS.md`, and the `LICENSE-*` file inside each skill folder under `.claude/skills/` |
+| Screened account skills that can be copied or uploaded | [account-skills/README.md](../account-skills/README.md) |
 | Install, update or uninstall the plugin | [installation.md](installation.md) |
 | Back up or restore transcripts and account-only skills | [backup-and-restore.md](backup-and-restore.md) |
 | Publish the launcher to npm | [publishing-to-npm.md](publishing-to-npm.md) |

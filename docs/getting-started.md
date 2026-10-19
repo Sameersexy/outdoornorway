@@ -31,7 +31,7 @@ A set of tools that lives in this GitHub repo. It writes and checks video script
 | Command | Use it to |
 |---|---|
 | `/script <tour or topic> <platform> [style]` | Write a script. Platform: reels, shorts, tiktok or youtube. Style: voiceover, ugc_talk or ugc_text |
-| `/review-script <file>` | Get a review: facts, voice, verdict, top five fixes |
+| `/review-script <file>` | Get a review: facts, voice, verdict, top three fixes |
 | `/validate <file>` | Run the checker. Add `--final` before anything is published |
 | `/open-items <file>` | List what is still unconfirmed, grouped by who confirms it |
 | `/tour-data` | Check our prices and dates against the live website |

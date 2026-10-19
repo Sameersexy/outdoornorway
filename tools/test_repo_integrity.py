@@ -354,6 +354,7 @@ NAV_DOCS = [
     "CONTRIBUTING.md",
     "CHANGELOG.md",
     "adquill/README.md",
+    "account-skills/README.md",
     "campaigns/ski-meta-ads/README.md",
     "content/scripts/README.md",
     "tools/README.md",
@@ -365,7 +366,7 @@ NAV_DOCS = [
     "docs/publishing-to-npm.md",
     "docs/script-skill-reviews/README.md",
 ]
-REPO_PREFIXES = (".claude/", ".claude-plugin/", "docs/", "tools/", "campaigns/", "content/", "adquill/")
+REPO_PREFIXES = (".claude/", ".claude-plugin/", "docs/", "tools/", "campaigns/", "content/", "adquill/", "account-skills/")
 MARKDOWN_LINK = re.compile(r"(?<!!)\[[^\]]*\]\(([^)\s]+)\)")
 BACKTICKED = re.compile(r"`([^`\n]+)`")
 PLACEHOLDER_CHARS = re.compile(r"[<>*{}$|\s]|\.\.\.|yyyy|slug|NN")
@@ -428,9 +429,48 @@ class Navigation(unittest.TestCase):
         self.assertIn("The repo is public and MIT licensed", text)
         self.assertIn("No em or en dashes, no emojis", text)
 
-    def test_the_old_handoff_path_is_gone(self):
+    def test_the_retired_handoff_note_and_its_archive_are_gone(self):
         self.assertFalse((ROOT / "docs" / "handoff-next-session.md").exists())
-        self.assertTrue((ROOT / "docs" / "archive" / "handoff-next-session.md").is_file())
+        self.assertFalse((ROOT / "docs" / "archive").exists())
+
+
+class AccountSkills(unittest.TestCase):
+    """The screened skills in account-skills/. The plugin does not load this folder."""
+
+    FOLDER = ROOT / "account-skills"
+
+    def skill_folders(self):
+        return sorted(path for path in self.FOLDER.iterdir() if path.is_dir())
+
+    def test_folder_holds_only_skill_folders_and_the_readme(self):
+        stray = sorted(path.name for path in self.FOLDER.iterdir() if path.is_file() and path.name != "README.md")
+        self.assertEqual(stray, [], "files other than README.md: " + ", ".join(stray))
+        for folder in self.skill_folders():
+            files = sorted(path.name for path in folder.iterdir())
+            self.assertEqual(files, ["SKILL.md"], folder.name)
+
+    def test_each_skill_name_matches_its_folder(self):
+        for folder in self.skill_folders():
+            meta = frontmatter(read(folder / "SKILL.md"))
+            self.assertRegex(meta, rf"(?m)^name: {re.escape(folder.name)}$", folder.name)
+
+    def test_each_skill_has_a_description(self):
+        for folder in self.skill_folders():
+            meta = frontmatter(read(folder / "SKILL.md"))
+            self.assertRegex(meta, r"(?m)^description: \S", folder.name)
+
+    def test_the_plugin_does_not_load_the_folder(self):
+        self.assertNotIn("account-skills", read(ROOT / ".claude-plugin" / "plugin.json"))
+        self.assertNotIn(ROOT / ".claude", self.FOLDER.parents)
+        for folder in self.skill_folders():
+            self.assertFalse((ROOT / ".claude" / "skills" / folder.name).exists(), folder.name)
+
+    def test_readme_links_every_skill_and_the_docs_point_here(self):
+        readme = read(self.FOLDER / "README.md")
+        for folder in self.skill_folders():
+            self.assertIn(f"({folder.name}/SKILL.md)", readme, folder.name)
+        for name in ("docs/README.md", "docs/repo-map.md", "docs/skills-catalog.md"):
+            self.assertIn("account-skills/", read(ROOT / name), name)
 
 
 if __name__ == "__main__":

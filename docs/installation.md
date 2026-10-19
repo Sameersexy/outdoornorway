@@ -7,7 +7,7 @@ If you write or edit scripts, read [getting-started.md](getting-started.md) afte
 ## Prerequisites
 
 - **Claude Code.** Follow the [Claude Code quickstart](https://code.claude.com/docs/en/quickstart). Check it with `claude --version`.
-- **Python 3.** The script validator and the tests run as `python3`. Check it with `python3 --version`. The main test suites pass on Python 3.11, 3.12 and 3.13. [VERIFY: lowest Python 3 version; adquill's own docs state 3.9 or newer]
+- **Python 3.9 or newer.** The validator and the tests run as `python3`, and `python3 --version` shows your version. The two main suites also pass on Python 3.8, but the adquill tests need 3.9.
 - **Git.** Needed for the clone route only. Check it with `git --version`.
 - **Node.js 18 or newer.** Needed for the npx launcher and for the `doctor` and `test` commands, and optional otherwise. Check it with `node --version`.
 
@@ -139,7 +139,7 @@ The launcher writes no files of its own. If you ran `install --run`, remove the 
 
 - **No commands when you type `/`.** On the plugin route, restart Claude Code and run `claude plugin list` to check the plugin is enabled. On the clone route, start Claude Code inside the repo folder.
 - **A plugin update changed nothing.** An installed copy updates when the `version` in the plugin files goes up. If a change you expect is missing, tell the repo owner.
-- **`[fail] python3 not found`.** Install Python 3 from the [official download page](https://www.python.org/downloads/) and try again. On Windows the name `python3` may not exist. [VERIFY: confirm the checker runs on Windows]
+- **`[fail] python3 not found`.** Install Python 3.9 or newer from the [official download page](https://www.python.org/downloads/) and try again. The tools are not tested on Windows. They call `python3` by name, so if that name does not exist on your machine, tell the repo owner.
 - **`[warn] Claude Code CLI not found`.** Install Claude Code from the [quickstart](https://code.claude.com/docs/en/quickstart). `install --run` and `update --run` need it.
 - **`[warn] Node` with "the launcher needs 18 or newer".** Install Node.js 18 or newer from [nodejs.org](https://nodejs.org/).
 - **`[fail] versions differ`.** The version numbers in `package.json` and the two plugin files do not match. Report it on the [issues page](https://github.com/Sameersexy/outdoornorway/issues).

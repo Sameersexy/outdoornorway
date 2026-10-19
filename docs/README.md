@@ -13,13 +13,13 @@ Use this page to find the guide you need. It lists every file and folder in `doc
 | [publishing-to-npm.md](publishing-to-npm.md) | Check the package and publish it from your own npm account | Maintainers |
 | [research/](research/README.md) | Read the sourced research behind the video script and ad copy skills | Maintainers |
 | [script-skill-reviews/](script-skill-reviews/README.md) | Read how the script skill was reviewed and tested | Maintainers |
-| [archive/](archive/handoff-next-session.md) | Read a retired handoff note, kept for history | History only |
 
 Related pages outside this folder:
 
 - [CONTRIBUTING.md](../CONTRIBUTING.md): how to change the tools and run the tests.
 - [CHANGELOG.md](../CHANGELOG.md): what changed and when.
 - [CLAUDE.md](../CLAUDE.md): the rules Claude Code follows in this repo.
+- [account-skills/README.md](../account-skills/README.md): two screened account skills you can copy into a project or upload to the Claude account.
 - Folder guides: [tools](../tools/README.md), [content/scripts](../content/scripts/README.md), [ski-meta-ads](../campaigns/ski-meta-ads/README.md) and [adquill](../adquill/README.md).
 
 When you add a file or folder to `docs/`, add a row here. The integrity test fails if this page does not mention it.

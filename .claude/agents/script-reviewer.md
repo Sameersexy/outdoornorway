@@ -93,7 +93,7 @@ A validator PASS is a floor. Never raise a score because the validator passed.
 
 ## Output size
 
-Keep the reply compact. The caller reads it in a context that every later step re-reads. Do not paste validator output or whole script cells. Quote only the line that proves a finding. If the caller names a report path, write the full review there and reply in at most 30 lines: verdict, the ten scores, blocking findings, the top five fixes and the path. Otherwise use the format below and keep it under about 900 words.
+Keep the reply compact. The caller reads it in a context that every later step re-reads. Do not paste validator output or whole script cells. Quote only the line that proves a finding. If the caller names a report path, write the full review there and reply in at most 30 lines: verdict, the ten scores, blocking findings, the top three fixes and the path. Otherwise use the format below and keep it under about 900 words.
 
 ## Output format
 

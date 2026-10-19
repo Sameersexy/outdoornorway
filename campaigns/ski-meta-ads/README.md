@@ -11,6 +11,8 @@ This folder holds the tour data (`tours.json`), the script that checks it agains
 | [03-review-of-first-cut-copy.md](03-review-of-first-cut-copy.md) | Review of the first-cut copy for nine Meta creatives, checked against the live tour pages, with fixes |
 | [04-questions-for-sameer.md](04-questions-for-sameer.md) | Open questions that keep specific claims out of ads, with the safe wording until each one is answered |
 
+No file numbered 02 exists in this folder or in git history, and the numbering was never contiguous.
+
 ## Source of truth
 
 `tours.json` holds the prices, dates and day-by-day plans. Its `price_source` field names the hub page as the price reference, because tour page prices are stale on two tours. The validator reads the file through `script_check.py --tour TOUR_ID`.

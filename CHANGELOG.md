@@ -15,11 +15,22 @@ The plugin and marketplace manifests have carried version 0.2.0 since `8d7effb` 
 - `tools/outdoornorway-cli.js`, a launcher with `doctor`, `install`, `update`, `test`, `version` and `help` commands. `install` and `update` print the Claude Code commands and run them only with `--run`. `test --all` adds the adquill tests. The launcher never writes files.
 - Guard-rail tests in `tools/test_repo_integrity.py`.
 - `.gitignore` entries for `*.jsonl`, `*.zip`, `*.tgz`, `.env`, `.env.*`, `node_modules/`, `backup/` and `exports/`.
+- [account-skills/](account-skills/README.md): two screened account skills, `brand-voice-checker` and `script-writing`, one folder each, with a guide. The plugin does not load them.
 
 ### Changed
 
 - [README.md](README.md) and [CLAUDE.md](CLAUDE.md) updated.
-- The handoff note moved to the archive: [docs/archive/handoff-next-session.md](docs/archive/handoff-next-session.md).
+- Python 3.9 or newer is the stated minimum, in the [installation guide](docs/installation.md) and the [adquill README](adquill/README.md).
+- Some open items closed in the installation, adquill, npm and backup guides. The ski ads guide explains why no file numbered 02 exists.
+
+### Fixed
+
+- `/review-script`, the script-reviewer agent and the guides now say the review gives the top three fixes. They said five.
+- adquill's `AGENTS.md` and README no longer say to install it as a plugin, because it is paused.
+
+### Removed
+
+- The retired handoff note, `docs/archive/handoff-next-session.md`, and its archive folder.
 
 ## 13 October 2026: command changes
 
