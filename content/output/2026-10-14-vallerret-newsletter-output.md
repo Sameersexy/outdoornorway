@@ -19,7 +19,7 @@ Three organic cotton tees and four caps.
 ## Collab strip
 Teamwork looks good on you.
 
-## Code banner (only if there is a code)
+## Code banner
 [DISCOUNT] off with code [CODE] until [DATE].
 
 ## T-shirts
