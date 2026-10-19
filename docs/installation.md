@@ -131,7 +131,7 @@ If the Claude Code CLI is missing, `install --run` stops and says so. Restart Cl
 
 To update, print the commands with `update`, then run them with `update --run`.
 
-npx reads the repo's default branch, so these commands work only once the launcher is on that branch. [VERIFY: confirm npx runs the bin from a GitHub spec] The launcher is not on npm yet: see [publishing-to-npm.md](publishing-to-npm.md).
+npx reads the repo's default branch, so these commands work only once the launcher is on that branch. The launcher is not on npm yet: see [publishing-to-npm.md](publishing-to-npm.md).
 
 The launcher writes no files of its own. If you ran `install --run`, remove the plugin as shown in route 1.
 

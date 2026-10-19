@@ -38,7 +38,7 @@ npx github:Sameersexy/outdoornorway doctor
 npx github:Sameersexy/outdoornorway install
 ```
 
-`doctor` checks Node, Python 3, the Claude Code CLI and the repo files. `install` prints the two plugin commands and runs them only when you add `--run`. [VERIFY: confirm npx runs the bin from a GitHub spec]. The package is not on the npm registry yet: see [docs/publishing-to-npm.md](docs/publishing-to-npm.md).
+`doctor` checks Node, Python 3, the Claude Code CLI and the repo files. `install` prints the two plugin commands and runs them only when you add `--run`. npx reads the repo's default branch, so the launcher must be on that branch. The package is not on the npm registry yet: see [docs/publishing-to-npm.md](docs/publishing-to-npm.md).
 
 ## Slash commands
 

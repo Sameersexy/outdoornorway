@@ -53,7 +53,7 @@ node tools/outdoornorway-cli.js <command> [flag]
 npx github:Sameersexy/outdoornorway doctor
 ```
 
-npx reads the default branch of the repo, so the launcher runs this way only once it is on that branch. [VERIFY: confirm npx runs the bin from a GitHub spec]
+npx reads the default branch of the repo, so the launcher runs this way only once it is on that branch.
 
 | Command | Flags | What it does |
 |---|---|---|
