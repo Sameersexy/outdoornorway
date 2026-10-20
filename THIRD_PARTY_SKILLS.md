@@ -28,6 +28,7 @@ The writing skills overlap. All of them say "write copy". If they all auto-invok
 - Removed `allowed-tools` and the deck step from `conversion-copywriter`.
 - `fact-check` is a rewrite: the gbrain database lane and every `gbrain` command were removed, and an ad-copy section with this repo's sources of truth was added.
 - Added `disable-model-invocation: true` to the six writing skills.
+- Removed `copy-that-sells/examples/` (a fictional mattress brand brief and its output, referenced nowhere). Removed the `cookbook/` bullet and the "spanish file" wording from `copy-that-sells/SKILL.md`, and the browser and `copy-deck.html` sentence from `conversion-copywriter/SKILL.md`, because the files they named were not copied.
 - Removed the Claude model names from one heading in `copy-that-sells/references/self-edit.md` and replaced one dash in `ad-creative/references/imessage-video-ads.md`.
 - Kept on purpose: quoted dashes and emoji where a file lists them as examples of AI writing to avoid (for example `copywriting/references/ai-tells.md`) or shows an ad format that uses them.
 

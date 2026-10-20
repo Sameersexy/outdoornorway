@@ -61,6 +61,8 @@ The plugin and marketplace manifests have carried version 0.2.0 since `8d7effb` 
 ### Removed
 
 - The retired handoff note, `docs/archive/handoff-next-session.md`, and its archive folder.
+- `.claude/skills/copy-that-sells/examples/`: a fictional mattress brand brief and its output. Nothing referenced them. The similar `references/examples.md`, `templates/billboard.md` and `templates/manifesto.md` stay, because the skill's own text points to them.
+- Three dangling lines in vendored skills that named files which were never copied: the `cookbook/` bullet and the "spanish file" wording in `copy-that-sells/SKILL.md`, and the browser and `copy-deck.html` sentence in `conversion-copywriter/SKILL.md`. Recorded in [THIRD_PARTY_SKILLS.md](THIRD_PARTY_SKILLS.md).
 
 ## 13 October 2026: command changes
 

@@ -35,12 +35,11 @@ For any non-trivial copy task, read the reference files. They are short and dens
 - `references/examples.md`. 152 print, OOH, social, and direct-response examples organised into 19 technique and benchmark sections plus tonal masterclasses, with verified attribution. Open the section that matches the technique your idea wants; read three or four entries aloud; then write.
 - `references/swipe-file.md`. A shorter, format-tagged swipe file for a fast hit when you want two or three proven patterns without opening the full examples library.
 - `references/anti-ai-rules.md`. The quick anti-AI companion to `self-edit.md`: a plain-English swap table (leverage → use, unlock → open, seamless → easy), before/after structural fixes, and three fast tests (So-What, read-aloud, 1995). Use it to fix a flagged line fast. It is not a banned list, `self-edit.md` (prose) and `references/banned-patterns.txt` (machine) own that, so this file cannot drift from them.
-- `cookbook/`. Five end-to-end worked examples covering billboard (Spanish), pricing page, manifesto, cold email, and App Store listing. Each includes the brief, the full output, and a postmortem.
 
 **Templates (optional scaffolds, not straitjackets):**
 - `templates/`. Fill-in blueprints for the six most-requested formats: `headline.md`, `tagline.md`, `billboard.md`, `landing-page.md`, `email.md`, `manifesto.md`. Reach for one when you want a fast structural start; the workflow above still governs. `references/formats.md` remains the deeper per-format reference (word counts, hook banks, RSA and App Store specifics).
 
-Default behaviour: skim the core three for any new piece. Add the format file and the spanish file when relevant. Open examples.md when you need a way in, not by default. Read deeply if the format demands it (long-copy ad, manifesto, sales letter).
+Default behaviour: skim the core three for any new piece. Add the format file when relevant. Open examples.md when you need a way in, not by default. Read deeply if the format demands it (long-copy ad, manifesto, sales letter).
 
 ---
 
