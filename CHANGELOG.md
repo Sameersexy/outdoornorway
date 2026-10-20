@@ -57,6 +57,7 @@ The plugin and marketplace manifests have carried version 0.2.0 since `8d7effb` 
 - The backup guide, `account-skills/README.md` and the skills catalog say the account upload takes a description of 200 characters at most, that both skills in `account-skills/` are over that, and that the instructions file name (`skill.md` or `SKILL.md`) is unconfirmed.
 - CONTRIBUTING.md says `/howto` is exempt from the bare-path rule, and the integrity test carries a comment that says the same. CONTRIBUTING.md also asks the owner to confirm that vendored upstream text is exempt from the no-model-names rule.
 - The token hygiene guide says in plain words to save a long workflow script as a file and pass its path.
+- `.claude/skills/conversion-copywriter/SKILL.md` no longer carries a warning-sign emoji in its "The site" bullet. The integrity test skips vendored skill files, so it did not catch it. Recorded in [THIRD_PARTY_SKILLS.md](THIRD_PARTY_SKILLS.md).
 
 ### Removed
 
