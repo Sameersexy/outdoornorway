@@ -25,7 +25,7 @@ The writing skills overlap. All of them say "write copy". If they all auto-invok
 - Removed upstream eval fixtures, a Spanish reference file, a validator script and a deck renderer that were not copied.
 - Replaced em and en dashes with commas and hyphens on every line that was not about dashes themselves.
 - Replaced the stale Meta table in `ad-creative/references/platform-specs.md` with the verified one (Facebook feed headline 27, Instagram feed headline field 40 but often hidden, about 125 visible characters of primary text).
-- Removed `allowed-tools` and the deck step from `conversion-copywriter`.
+- Removed `allowed-tools` and the deck step from `conversion-copywriter`, and a warning-sign emoji from its "The site" bullet.
 - `fact-check` is a rewrite: the gbrain database lane and every `gbrain` command were removed, and an ad-copy section with this repo's sources of truth was added.
 - Added `disable-model-invocation: true` to the six writing skills.
 - Removed `copy-that-sells/examples/` (a fictional mattress brand brief and its output, referenced nowhere). Removed the `cookbook/` bullet and the "spanish file" wording from `copy-that-sells/SKILL.md`, and the browser and `copy-deck.html` sentence from `conversion-copywriter/SKILL.md`, because the files they named were not copied.

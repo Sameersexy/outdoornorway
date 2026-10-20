@@ -68,7 +68,7 @@ Pull every provable thing you can find, tagged by source:
 
 - **Reviews, the best source by far.** Customers speak concretely because they have no reason not to: "works in 20 minutes," "I stopped skipping breakfast," "smaller than my old one." Mine for: what they actually use it for, what they compare it to, what changed, the words they use, and what they say the moment it clicked.
 - **The founder's answers**, origin, process, what's genuinely different, what they refuse to do.
-- **The site (optional, and handle with care).** ⚠️ A brand's own site is the *worst* fact source it owns, it's the most adjective-dense asset in the business, and it's where the empty language lives. Mine it for hard specifics only: ingredients, numbers, guarantees, timelines, materials, origin. **Never lift its phrasing.** If you catch yourself echoing site copy, you've laundered the abstraction instead of escaping it.
+- **The site (optional, and handle with care).** A brand's own site is the *worst* fact source it owns, it's the most adjective-dense asset in the business, and it's where the empty language lives. Mine it for hard specifics only: ingredients, numbers, guarantees, timelines, materials, origin. **Never lift its phrasing.** If you catch yourself echoing site copy, you've laundered the abstraction instead of escaping it.
 
 Write each fact as a flat statement with its source. **If a "fact" can't be proved true or false, it isn't one**, send it to §2 as an abstraction to be interrogated.
 
