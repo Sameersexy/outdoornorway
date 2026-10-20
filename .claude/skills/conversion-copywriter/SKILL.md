@@ -36,7 +36,7 @@ Test case, all three: *"New Balance. Worn by supermodels in London and dads in O
 
 The writing is model judgment. No scripts and no API keys are needed.
 
-**Portability:** `${CLAUDE_SKILL_DIR}` is this skill's folder, if that variable isn't set, use the path to the folder containing this SKILL.md. If you can't open a browser, run the renderer with `--no-open` and hand over `copy-deck.html`.
+**Portability:** `${CLAUDE_SKILL_DIR}` is this skill's folder, if that variable isn't set, use the path to the folder containing this SKILL.md.
 
 ## 0: Intake
 

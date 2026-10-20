@@ -283,7 +283,7 @@ fetch mikefutia/conversion-copywriter-skill f8d30360d38b20ff1f616ff6c4c5d89a764c
 for s in copywriting ad-creative; do cp -r "corey/skills/$s" "$DEST/$s"; done
 mkdir -p "$DEST/humanizer" && cp humanizer/SKILL.md "$DEST/humanizer/"
 cp -r cts/skills/copy-that-sells "$DEST/copy-that-sells"
-rm -rf "$DEST/copy-that-sells/references/spanish-craft.md" "$DEST/copy-that-sells/cookbook" "$DEST/copy-that-sells/tests" "$DEST/copy-that-sells/scripts"
+rm -rf "$DEST/copy-that-sells/references/spanish-craft.md" "$DEST/copy-that-sells/cookbook" "$DEST/copy-that-sells/examples" "$DEST/copy-that-sells/tests" "$DEST/copy-that-sells/scripts"
 # Tier 2
 mkdir -p "$DEST/conversion-copywriter" && cp mikefutia/SKILL.md "$DEST/conversion-copywriter/"
 for s in social marketing-psychology; do cp -r "corey/skills/$s" "$DEST/$s"; done
