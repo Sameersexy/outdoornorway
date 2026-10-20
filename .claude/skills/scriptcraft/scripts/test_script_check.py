@@ -6,7 +6,10 @@ import io
 import json
 import os
 import sys
+import tempfile
+import threading
 import unittest
+from unittest import mock
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
@@ -1251,9 +1254,55 @@ class OpenItemKindsAndCards(unittest.TestCase):
         self.assertIn("ski-aurora-7day", out)
 
 
+_IN_PROCESS_LOCK = threading.Lock()  # redirect_stdout swaps a global, and run_all calls from four threads
+
+
+def attack_case_in_process(text, args=()):
+    """What attack_cases.run_case returns, without a child process.
+
+    A child process recompiles every regex and costs about 85 ms. Here the compiled patterns are
+    reused, so the same case takes a few milliseconds."""
+    with _IN_PROCESS_LOCK, tempfile.TemporaryDirectory() as folder:
+        path = os.path.join(folder, "t.md")
+        with open(path, "w", encoding="utf-8") as fh:
+            fh.write(text)
+        out = io.StringIO()
+        try:
+            with contextlib.redirect_stdout(out), contextlib.redirect_stderr(io.StringIO()):
+                code = sc.main([path, "--json", "--no-example-copy"] + list(args))
+        except SystemExit as exc:
+            code = exc.code if isinstance(exc.code, int) else 1
+    try:
+        data = json.loads(out.getvalue())
+    except ValueError:
+        return code, set(), set()
+    found_rules = data.get("findings", [])
+    return (code, {f["id"] for f in found_rules if f["severity"] == "block"},
+            {f["id"] for f in found_rules if f["severity"] == "warn"})
+
+
+def attack_runner():
+    """Runs the first case of each expected outcome (block, warn, pass, clean, parse) as a real
+    `python3 -I script_check.py` child process, so the command line entry point and its exit
+    codes stay covered. Every other case runs in this process."""
+    first = {}
+    for case in attack_cases.CASES:
+        first.setdefault(case[1], (case[3], tuple(case[4])))
+    real = set(first.values())
+    child_process = attack_cases.run_case
+
+    def run_case(text, args=()):
+        if (text, tuple(args)) in real:
+            return child_process(text, args)
+        return attack_case_in_process(text, args)
+
+    return run_case
+
+
 class AttackHarness(unittest.TestCase):
     def test_attack_cases_have_no_mismatch(self):
-        self.assertEqual(attack_cases.run_all(verbose=False), [])
+        with mock.patch.object(attack_cases, "run_case", attack_runner()):
+            self.assertEqual(attack_cases.run_all(verbose=False), [])
 
     def test_attack_harness_size(self):
         self.assertGreaterEqual(len(attack_cases.CASES), 81)

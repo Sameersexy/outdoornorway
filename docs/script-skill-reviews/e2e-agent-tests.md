@@ -43,7 +43,7 @@ Every script passed the draft validator. The reviewer found, in each one:
 | Voiceover script with no relationship line skipped disclosure silently | The report prints an [INFO] line |
 | tours.json had no day plans, so the writer could not state that day 2 is a snowshoe hike | `itinerary` list for the five multi-day tours, headings checked against the live pages by verify_tours.py |
 
-The suite grew from 224 to 247 unit tests; the attack harness stays at 81 cases with 0 mismatches.
+In this round the suite grew from 224 to 247 unit tests, and the attack harness stayed at 81 cases with 0 mismatches. Both counts date from the time this note was written. The current count comes from running the suite: `python3 -I .claude/skills/scriptcraft/scripts/test_script_check.py`.
 
 ## The loop
 

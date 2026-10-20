@@ -1,2 +1,15 @@
 __pycache__/
 *.pyc
+
+# Never commit chat transcripts, exports, archives or secrets to this public repo.
+# They belong in the separate private backup (see docs/backup-and-restore.md).
+*.jsonl
+*.zip
+*.tgz
+.env
+.env.*
+backup/
+exports/
+
+# Node
+node_modules/

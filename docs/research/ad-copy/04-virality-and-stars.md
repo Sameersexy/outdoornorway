@@ -147,7 +147,7 @@ How adwright should use this: add a "group chat test" to the lint (does the ad m
 Primary source, read: https://github.com/xai-org/x-algorithm (33.5k stars on the page I fetched; Apache 2.0 per secondary summary). First published 2026-01-20, major update 2026-05-15 (secondary: https://pasqualepillitteri.it/en/news/2594/x-algorithm-open-source-may-2026).
 
 What the README states:
-- The Grok-based ranking model predicts probabilities for these actions. Engagement: favorite, reply, repost, quote, share, share via DM, share via copy link. Clicks: post, profile, link, photo expand, video open, quoted post. Attention: video quality view, dwell, dwell time, click dwell time, video continuation seconds, profile visit seconds. Author: follow author. Negative: not interested, mute author, block author, report, not dwelled.
+- The ranking model predicts probabilities for these actions. Engagement: favorite, reply, repost, quote, share, share via DM, share via copy link. Clicks: post, profile, link, photo expand, video open, quoted post. Attention: video quality view, dwell, dwell time, click dwell time, video continuation seconds, profile visit seconds. Author: follow author. Negative: not interested, mute author, block author, report, not dwelled.
 - The score is a weighted sum: final score equals the sum of weight_i times P(action_i), with weights in `home-mixer/params/param.rs`. Weights scale predicted probabilities, not raw counts.
 - After scoring: author diversity (repeat posts from one author decay), an out-of-network discount (below 1), and a new-author boost for low-impression authors.
 
@@ -260,7 +260,7 @@ Each entry is from the repo's page on 2026-10-06 unless noted. Items marked "not
 
 **DietrichGebert/ponytail** (156,313, created 2026-06-12). Pitch: "Makes your AI agent think like the laziest senior dev in the room. The best code is the code you never wrote." Opening: "He says nothing. He writes one line. It works." Proof: "~54% less code (up to 94%) / ~20% cheaper / ~27% faster", from 12 feature tasks with a small model and n=4. That sample is small, and the README states it, which helps trust. Concrete before/after: the date picker becomes a native `<input type="date">`. Persona voice, works with 20 agents, five slash commands including `/ponytail-gain`, translations in four languages, a sponsor, a domain. Fastest large climber in this set.
 
-**garrytan/gstack** (135,436, created 2026-03-11). Pitch: "Use Garry Tan's exact Claude Code setup: 23 opinionated tools that serve as CEO, Designer, Eng Manager, Release Manager, Doc Engineer, and QA". Opening: a Karpathy quote, then Tan's own run-rate claim ("~810x my 2013 pace"). Install: one `git clone ... && ./setup` line, "about 30 seconds". Cross-agent: Claude Code full tier, Codex, OpenCode, Cursor, others experimental. License MIT. Demo: none seen. Launch: third-party accounts say Tan tweeted the repo on 2026-03-12 and it hit 10,000 stars within 48 hours and 60,000 in two weeks (https://www.augmentcode.com/learn/garry-tan-gstack-claude-code, https://gitpicks.dev/featured/gstack-viral-growth-github-stars). [VERIFY the day counts.] Tan said he "didn't get totally destroyed" on Hacker News (https://x.com/garrytan/status/2033020984093978930). The common critique is "a bunch of prompts in a text file". The gitpicks piece concedes the author's position drove reach: "Would a repository with identical content from an unknown developer have charted the same trajectory? Almost certainly not."
+**garrytan/gstack** (135,436, created 2026-03-11). Pitch: "Use Garry Tan's exact Claude Code setup: 23 opinionated tools that serve as CEO, Designer, Eng Manager, Release Manager, Doc Engineer, and QA". Opening: a Karpathy quote, then Tan's own run-rate claim ("~810x my 2013 pace"). Install: one `git clone ... && ./setup` line, "about 30 seconds". Cross-agent: Claude Code full tier, Codex, OpenCode, Cursor, others experimental. License MIT. Demo: none seen. Launch: third-party accounts say Tan tweeted the repo on 2026-03-12 and it hit 10,000 stars within 48 hours and 60,000 in two weeks (https://www.augmentcode.com/learn/garry-tan-gstack-claude-code, https://gitpicks.dev/featured/gstack-viral-growth-github-stars). [VERIFY the day counts.] Tan said he "didn't get totally destroyed" on Hacker News (a post on X, link not kept). The common critique is "a bunch of prompts in a text file". The gitpicks piece concedes the author's position drove reach: "Would a repository with identical content from an unknown developer have charted the same trajectory? Almost certainly not."
 
 **addyosmani/agent-skills** (101,648). "Production-grade engineering skills for AI coding agents." Install: `npx skills add addyosmani/agent-skills`. 70-plus agents. Nine slash commands mapped to a lifecycle shown as an ASCII flow. Trendshift badge. Author is a well-known engineer.
 
@@ -314,7 +314,7 @@ This is a survivor sample of 26 repos picked because they have many stars. It ca
 |---|---|---|
 | A copyable one-line install | About 21 | Exceptions: list repos (awesome-*), anthropics/skills (two commands), prompt-master (zip upload) |
 | Install by `npx skills add` or plugin marketplace | Majority | Marketplace support appears in most (superpowers, anthropics, ponytail, humanizer, claude-ads, brag, karpathy-skills, Understand-Anything) |
-| Cross-agent claim (Codex, Cursor, Gemini CLI, others) | About 22 | Counts of supported agents range from 3 to 70-plus |
+| Cross-agent claim (other coding agents by name) | About 22 | Counts of supported agents range from 3 to 70-plus |
 | Before/after that a stranger understands in seconds | At least 8 | humanizer, i-have-adhd, ponytail, prompt-master, planning-with-files, Graft, brag output, archify gallery |
 | Animated GIF or video | About 7 seen (claude-mem, planning-with-files, Graft, archify, claude-ads v1, career-ops, brag) | Several 100k-plus repos had none seen (gstack, mattpocock, superpowers). Media is helpful, not required. |
 | Benchmark or proof number | About 9 | Graft, ponytail, planning-with-files, gbrain, humanizer (16 of 16), gstack (productivity claim), K-Dense, claude-mem docs, career-ops personal numbers |
@@ -337,7 +337,7 @@ How adwright should use this: ship one verb and one before/after. Avoid a skills
 What I could verify live: creation date and today's count. That gives lifetime averages only (section 9).
 
 What third parties report, all [VERIFY] until the stargazer timeline is pulled:
-- gstack: created 2026-03-11, tweet 2026-03-12, 10,000 stars in 48 hours, 60,000 in two weeks, 89.7k "in under two months", 100k by about late May (https://www.augmentcode.com/learn/garry-tan-gstack-hits-89.7K-stars, https://x.com/rohit4verse/status/2058682520074608946).
+- gstack: created 2026-03-11, tweet 2026-03-12, 10,000 stars in 48 hours, 60,000 in two weeks, 89.7k "in under two months", 100k by about late May (https://www.augmentcode.com/learn/garry-tan-gstack-hits-89.7K-stars, a post on X, link not kept).
 - karpathy-skills: created 2026-01-27, 144k by early June (mer.vin).
 - mattpocock/skills: created 2026-02-03; "#1 trending at 21,900 stars" on 2026-04-26 (byteiota, article admits missing launch details).
 - humanizer: created 2026-01-18, covered by Tech Brew on 2026-01-21. A search snippet showed 347 stars at some early point. [VERIFY.] Today 54,276.
@@ -461,7 +461,7 @@ Section-by-section:
 1. **Title and one-line pitch.** Name, pitch, a single sentence of scope: Meta (Facebook, Instagram) and X. Under 25 words.
 2. **Hero before/after.** A real, ugly, plausible AI-written ad on the left and the adwright rewrite on the right, plus a lint score ("31/100" to "88/100" once the lint exists). Use text, not an image, so it can be copied. Include one Meta ad and one X post.
 3. **10-second terminal GIF** (or short video). One command in, ad out, score shown. Use a real run. Under 3 MB.
-4. **Install block.** Four lines, one per environment: `npx skills add <owner>/adwright`; `/plugin marketplace add <owner>/adwright`; claude.ai ZIP upload (link to release asset); paste-in prompt for any chat tool. Name Codex, Cursor and Gemini CLI explicitly in a one-line support table.
+4. **Install block.** Four lines, one per environment: `npx skills add <owner>/adwright`; `/plugin marketplace add <owner>/adwright`; claude.ai ZIP upload (link to release asset); paste-in prompt for any chat tool. Name each supported coding agent in a one-line support table.
 5. **First minute.** Three example prompts a marketer would actually type, with the output shape.
 6. **Commands.** Five verbs, not fifty: `write`, `rewrite`, `lint`, `variants`, `explain`. One line each.
 7. **Proof.** A blind-test table with sample size, method, raw data link and limits. Example format: "20 ad pairs, 12 reviewers, preferred 31 of 40 times"; fill only with real results. State what the test cannot show (conversions).
@@ -556,7 +556,7 @@ Product:
 - [ ] One verb works end to end: `write`, `rewrite`, `lint`. Zero-dependency lint script. No network calls in scripts.
 - [ ] SKILL.md under 500 lines, description under 1,024 characters, validated with `skills-ref validate`.
 - [ ] `claude plugin validate` passes. `.claude-plugin/plugin.json` has description, author, homepage, repository.
-- [ ] Tested install on Claude Code, Codex, Cursor, Gemini CLI, claude.ai ZIP. Record what fails.
+- [ ] Tested install on Claude Code, each other coding agent named in the support table, claude.ai ZIP. Record what fails.
 - [ ] Evals: 20 or more ad pairs (baseline model output versus adwright) with a blind rubric and at least 10 independent reviewers, raw data published. [Do not publish a headline number until it is real.]
 - [ ] Twelve real before/after pairs for Meta and X, with permission.
 - [ ] PROOF.md: adwright's own README and examples linted by adwright, score and date.
@@ -632,7 +632,7 @@ How adwright should use this: build 1, 2 and 3 for v0.1, 4 and 5 for v0.2, and t
 | Weak or small-sample benchmarks | A loose number draws attacks, and it attracts comparison to ponytail's n=4 | State sample size and limits next to every number. Publish raw data. |
 | Platform guidance goes stale | X and Instagram change often; several claims here rest on secondary sources | Date-stamp every platform note, keep it in `references/`, set a quarterly review. |
 | Maintenance overload | anthropics/skills has 1,387 open issues, Composio's list has 1,642 | Issue templates, a small scope, triage rota, a stale bot with a polite message. |
-| Security perception | Skills can run scripts. Some repos use `curl | bash` installers, while claude-ads documents why not | No remote fetches in scripts; checksum release ZIP; state it in the README. |
+| Security perception | Skills can run scripts. Some repos use `curl \| bash` installers, while claude-ads documents why not | No remote fetches in scripts; checksum release ZIP; state it in the README. |
 | Funnel suspicion | Repos that are lead-gen look like ads (Composio's list, Ryze-linked repo) | Keep any client or agency promotion to one clearly labelled line. |
 | Client entanglement | Outdoor Norway's name and prices could appear in the gallery | Written consent, real figures only, no confidential performance data without sign-off. |
 | Fake engagement by third parties | Bots may star the repo and invite suspicion | Do not respond in kind; report to GitHub if clear abuse. |
@@ -642,7 +642,7 @@ How adwright should use this: write the top five risks into the repo's `docs/` a
 
 ## 21. Verification log
 
-Verified from primary sources in this session:
+Verified from primary sources:
 - Berger and Milkman 2012 numbers: PDF read in full for the abstract, data description (6,956 articles, 2008-08-30 to 2008-11-30, 20 percent most-emailed) and Figure 2 values.
 - xai-org/x-algorithm README: action list, score formula, post-ranking adjustments.
 - agentskills.io specification: field limits.

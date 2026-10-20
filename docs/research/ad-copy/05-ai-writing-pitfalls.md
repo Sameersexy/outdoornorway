@@ -46,9 +46,9 @@ Points from the page that matter for ad copy:
 - Shallow -ing riders. A fact followed by "highlighting", "underscoring", "reflecting", "fostering".
 - Vague attribution. "Experts argue", "industry reports", "observers have cited".
 - Style signs. Title Case headings, bold overuse, inline-header vertical lists, em dash overuse, emoji as structure, curly quotes (weak alone).
-- Vocabulary changes by era. GPT-4 era (2023 to mid 2024): additionally, crucial, delve, intricate, landscape, meticulous, pivotal, tapestry, testament, vibrant. GPT-4o era: align with, enhance, fostering, highlighting, showcasing. The page says "delve" fell sharply in 2025. It also warns that overuse of one word does not make its synonyms suspect.
+- Vocabulary changes by era. The chat era of 2023 to mid 2024: additionally, crucial, delve, intricate, landscape, meticulous, pivotal, tapestry, testament, vibrant. The era after it: align with, enhance, fostering, highlighting, showcasing. The page says "delve" fell sharply in 2025. It also warns that overuse of one word does not make its synonyms suspect.
 - Human detection is weak. The page says humans are about as good as chance in one 2025 study, and that expert annotators reach about 90 percent.
-- Em dashes are fading as a ChatGPT tell. A section of the page reports a July 2026 study in which only Claude used em dashes more than professional writers. I could not open that study. [VERIFY: study title and authors]. This matters because the skill runs on Claude.
+- Em dashes are fading as a chatbot tell. A section of the page reports a July 2026 study in which only Claude used em dashes more than professional writers. I could not open that study. [VERIFY: study title and authors]. This matters because the skill runs on Claude.
 
 ### 1.2 Excess vocabulary, measured
 
@@ -420,7 +420,7 @@ Encode the 12 steps as the skill's `edit` phase. The first and last steps call t
 
 ## 7. Linter specification
 
-The linter is a Python 3 script with no dependencies. I wrote it and ran it. The complete file is below in 7.4, and the test file in 7.5. On my run: 50 of 50 unit checks passed. All 30 Before lines reached REVISE or BLOCK, all 30 After lines scored PASS with no hits. A typical machine-written paragraph with bold-first bullets triggered 16 P1 hits and 12 P2 hits.
+The linter is a Python 3 script with no dependencies. The complete file is below in 7.4, and the test file in 7.5. When the linter was run, 50 of 50 unit checks passed (a figure from when this note was written; the current count comes from running `python3 -I adquill/skills/adquill/scripts/test_slop_lint.py`). All 30 Before lines reached REVISE or BLOCK, all 30 After lines scored PASS with no hits. A typical machine-written paragraph with bold-first bullets triggered 16 P1 hits and 12 P2 hits.
 
 Honest limits: these are my regexes, tuned on my test strings and on 30 pairs. They have not been tested on a real corpus of human ad copy. Thresholds marked [HEURISTIC] are my choices, not published values.
 

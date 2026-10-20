@@ -139,7 +139,7 @@ Read references/hooks-and-headlines.md for hook types and the headline scorecard
 
 ### Step 6. Self-edit, then lint
 
-Run the self-edit pass in references/rewrite-protocol.md. It has twelve steps. The ones that matter most: find the one idea, replace abstractions with a thing, a time or a number, cut any sentence that denies one thing only to announce another, vary sentence length, add one honest limit.
+Run the self-edit pass in references/rewrite-protocol.md (not kept in this repo). It has twelve steps. The ones that matter most: find the one idea, replace abstractions with a thing, a time or a number, cut any sentence that denies one thing only to announce another, vary sentence length, add one honest limit.
 
 Then run the linter on every slot:
 
@@ -289,8 +289,8 @@ Read a reference when its trigger applies. Do not load them all by default. Each
 | references/meta.md | Any Meta output: specs, safe zones, CTA labels, Advantage+ settings, truncation |
 | references/x.md | Any X output: post and card limits, tone, what to check before promoting |
 | references/policy.md | Step 7: the block, warn and note tiers, plus the Norway and EU notes |
-| references/voice-and-anti-slop.md | Step 6: why a phrase is flagged, or when the user asks for a voice that is not the default |
-| references/rewrite-protocol.md | Step 6 and the rewrite command: the twelve-step self-edit |
+| references/voice-and-anti-slop.md (not kept in this repo) | Step 6: why a phrase is flagged, or when the user asks for a voice that is not the default |
+| references/rewrite-protocol.md (not kept in this repo) | Step 6 and the rewrite command: the twelve-step self-edit |
 
 Other files in this skill:
 

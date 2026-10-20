@@ -3,14 +3,17 @@
 
     python3 -I skills/adquill/scripts/test_slop_lint.py
 
-Standard library only (unittest). No network. The CLI tests run the script in a child
-process with python3 -I, the same way the skill does, and write nothing to disk except in
-a temporary directory that the test removes.
+Standard library only (unittest). No network. Five CLI tests (exit codes 0, 1, 2 and 3, and
+stdin) run the script in a child process with python3 -I, the same way the skill does. The
+other CLI tests call main() in this process, which skips about 90 ms of start-up each. Tests
+write nothing to disk except in a temporary directory that the test removes.
 
 Every example in this file is a fictional brief for the invented brand Brekke Ski Guides.
 Prices and dates are invented.
 """
 
+import contextlib
+import io
 import json
 import os
 import subprocess
@@ -44,12 +47,29 @@ def severities(text, rule_id, **kwargs):
     return {hit["severity"] for hit in lint(text, **kwargs)["hits"] if hit["id"] == rule_id}
 
 
-def run_cli(*args, stdin=None):
+def run_cli_process(*args, stdin=None):
+    """Run the script as a child process, the way the skill does. Returns (exit code, stdout, stderr)."""
     proc = subprocess.run(
         [sys.executable, "-I", SCRIPT] + list(args),
         input=stdin, capture_output=True, text=True, timeout=60,
     )
     return proc.returncode, proc.stdout, proc.stderr
+
+
+def run_cli(*args, stdin=None):
+    """Call main() in this process. Returns (exit code, stdout, stderr), like run_cli_process."""
+    out, err = io.StringIO(), io.StringIO()
+    stdin_stream = io.StringIO(stdin) if stdin is not None else sys.stdin
+    saved_stdin, sys.stdin = sys.stdin, stdin_stream
+    try:
+        with contextlib.redirect_stdout(out), contextlib.redirect_stderr(err):
+            try:
+                code = sl.main(list(args))
+            except SystemExit as exc:
+                code = exc.code if isinstance(exc.code, int) else (0 if exc.code is None else 1)
+    finally:
+        sys.stdin = saved_stdin
+    return code, out.getvalue(), err.getvalue()
 
 
 def read_fixture(name):
@@ -456,12 +476,12 @@ class SeparationTests(unittest.TestCase):
 
 class CliTests(unittest.TestCase):
     def test_clean_text_exits_zero(self):
-        code, out, _ = run_cli("--text", "Saturday 9 Jan, NOK 4,900, six per guide.")
+        code, out, _ = run_cli_process("--text", "Saturday 9 Jan, NOK 4,900, six per guide.")
         self.assertEqual(code, 0)
         self.assertIn("Score 100/100", out)
 
     def test_bad_text_exits_one(self):
-        code, out, _ = run_cli("--text", "Guaranteed fresh snow. Embark on an unforgettable adventure!")
+        code, out, _ = run_cli_process("--text", "Guaranteed fresh snow. Embark on an unforgettable adventure!")
         self.assertEqual(code, 1)
         self.assertIn("BLOCK", out)
 
@@ -487,7 +507,7 @@ class CliTests(unittest.TestCase):
         self.assertIn("Score breakdown", out)
 
     def test_stdin_input(self):
-        code, out, _ = run_cli("-", stdin="Saturday 9 Jan, NOK 4,900.")
+        code, out, _ = run_cli_process("-", stdin="Saturday 9 Jan, NOK 4,900.")
         self.assertEqual(code, 0)
         self.assertIn("Score 100/100", out)
 
@@ -518,7 +538,7 @@ class CliTests(unittest.TestCase):
         self.assertEqual(code, 1)
 
     def test_empty_input_is_a_usage_error(self):
-        code, _, err = run_cli("--text", "   ")
+        code, _, err = run_cli_process("--text", "   ")
         self.assertEqual(code, 2)
         self.assertIn("empty", err)
 
@@ -532,7 +552,7 @@ class CliTests(unittest.TestCase):
             bad = os.path.join(tmp, "bad.json")
             with open(bad, "w", encoding="utf-8") as handle:
                 handle.write("[]")
-            code, _, err = run_cli("--text", "Saturday.", "--rules", bad)
+            code, _, err = run_cli_process("--text", "Saturday.", "--rules", bad)
         self.assertEqual(code, 3)
         self.assertIn("rules error", err)
 

@@ -11,9 +11,9 @@ adquill writes honest, human-sounding ads for Meta (Facebook and Instagram) and 
 
 Where your tool looks for instructions:
 
-- Codex, Cursor and other tools that read AGENTS.md: this file is picked up from the repo root. Follow step 1 above.
-- Claude Code: install as a plugin (see README.md). The skill is called with /adquill:adquill <command>, or by asking in plain language.
-- Gemini CLI and tools that read a different context file: add a short file in your tool's format that tells the agent to read this file, or paste the "Method in short" section below as the instruction. Check your tool's current docs for the file name it expects.
+- Tools that read AGENTS.md: this file is picked up from the repo root. Follow step 1 above.
+- Claude Code: adquill is paused and the plugin does not install it. This folder has no plugin manifest. To ship it, move the skill into `.claude/skills/` and the agents into `.claude/agents/`, as README.md ("If work resumes") describes.
+- Tools that read a different context file: add a short file in your tool's format that tells the agent to read this file, or paste the "Method in short" section below as the instruction. Check your tool's current docs for the file name it expects.
 - Any chat tool with no file access: paste skills/adquill/SKILL.md, then paste the reference files you need.
 
 ## Commands
@@ -27,7 +27,7 @@ write, rewrite, lint, variants, explain, panel. People mostly ask in plain langu
 3. Diagnose: awareness level, sophistication stage, job to be done, main anxiety. Defaults: problem-aware, stage 3.
 4. Pick two to four conceptually different angles. Each names one mechanism (references/psychology.md) and one risk.
 5. Write to slots with character budgets. Meta static: three image lines (25, 30, 20), primary text (125 visible), headline (27), description (30), CTA label, reels line (40). X: post (280).
-6. Self-edit with references/rewrite-protocol.md, then run the linter. Fix block-tier and warn-tier hits. Two rounds at most.
+6. Self-edit with the steps in SKILL.md (the file it names for them, references/rewrite-protocol.md, is not kept in this repo), then run the linter. Fix block-tier and warn-tier hits. Two rounds at most.
 7. Policy and fact pass (references/policy.md). Every number must match a ledger row.
 8. Output with receipts (assets/output-meta-static.md or assets/output-x-post.md). Each variant ends with Angle, Mechanism, Risk, Test hypothesis. Add one group chat line.
 
@@ -48,4 +48,4 @@ The three reviewer personas are in agents/. If your tool can run subagents, run 
 
 ## Examples
 
-All examples use one fictional brand, Brekke Ski Guides. Every example is a fictional brief. See examples/ for finished pairs.
+All examples use one fictional brand, Brekke Ski Guides. Every example is a fictional brief. The filled output shapes are in `adquill/skills/adquill/assets/`.

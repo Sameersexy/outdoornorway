@@ -1,12 +1,12 @@
 # 06 Skill vetting: what to install, what to copy from, what to skip
 
-Date of vetting: 2026-10-06. Vetter: research agent 06. Nothing was installed into /home/user/outdoornorway. Nothing from these repos was executed.
+Date of vetting: 2026-10-06. Nothing was installed into this repo. Nothing from these repos was executed.
 
 ## 0. Method, safety and how to read this file
 
 What I did:
 
-- Shallow clones (`git clone --depth 1`) of 36 candidate repos sit in `.../scratchpad/vet/<name>`. Three more were already cloned in `.../scratchpad/clones/` (gbrain, Graft, claude-plugins-official).
+- Shallow clones (`git clone --depth 1`) of 36 candidate repos were read as local copies [VERIFY: the ranked table in 1.2 lists 34 repos; confirm whether 36 is right]. This repo does not hold them. Three more (gbrain, Graft and claude-plugins-official) had already been cloned the same way.
 - Live stars, license, push date and description come from the GitHub repository search API (via the GitHub tool), queried on 2026-10-06. Last-commit dates, sizes, SKILL.md counts and word counts come from the local clones.
 - I read the actual SKILL.md files for every candidate that matters, plus the references for the ones I rate highly. I ran read-only greps (no code execution) over every clone for: hooks files, MCP configs, install scripts, network calls, credential names, telemetry, base64 or eval patterns, curl-pipe-shell, zero-width or bidi characters, and prompt-injection phrases.
 - For the platform and plugin schema questions I cross-checked the cloned official repo against the live Claude Code docs (code.claude.com/docs).
@@ -170,7 +170,7 @@ Judgement: `ogilvy` (1,695 words) is the one gem. It condenses How to Create Adv
 
 Verdict: REFERENCE-ONLY for the repo; if the client wants Ogilvy specifically, copy the `ogilvy/` folder only. Risk: low for that folder, medium for the repo (scripts, mixed licenses).
 
-### 1.4 The other candidates (29 more read)
+### 1.4 The other candidates (26 more read)
 
 Strong enough to keep in the install list:
 
@@ -205,7 +205,7 @@ Skip (with reasons):
 - myroslavnahirniak/meta-ads-pro (6). Ukrainian-language media buyer skill with account operations, no license.
 - Hainrixz/claude-ads (93). Community fork of claude-ads by tododeia.com. 15 MB, API scripts for Meta, Google and TikTok, and `zernio_publish.py`, which posts generated creatives to 14 social networks through a paid third-party service. Posting capability plus tokens is the opposite of what a copy repo needs.
 - irinabuht12-oss/marketing-skills (3,653). 49 short skills (300 to 1,200 words), each ending with an instruction to connect the vendor's Ryze MCP connector (`https://connector.get-ryze.ai/mcp`, 101 files mention it). No LICENSE. Ships `all-marketing-skills.zip`. Its `ad-copy-variant-generator` is 427 words of description with no craft. Connecting an ad account to a third-party connector is exactly what the client repo should not do by default.
-- tarsluna/my-custom-skills (12). French lead-gen agency workflow: `curl ... | bash` installer in the README, `install.sh`, cron wrapper, image generation scripts (fal, GPT image, Higgsfield CLI via another curl-pipe-shell). Its `meta-ads-copywriter` is a 2,750 word skill with emojis. Skip.
+- tarsluna/my-custom-skills (12). French lead-gen agency workflow: `curl ... | bash` installer in the README, `install.sh`, cron wrapper, image generation scripts (fal, Higgsfield CLI via another curl-pipe-shell). Its `meta-ads-copywriter` is a 2,750 word skill with emojis. Skip.
 
 ### 1.5 Does it avoid slop itself? Measured on the skill text
 
@@ -265,7 +265,7 @@ Exact commands. Run them from a scratch directory outside the client repo. They 
 ```bash
 set -euo pipefail
 SCRATCH=$(mktemp -d)            # outside the client repo
-REPO=/home/user/outdoornorway   # target repo
+REPO=<repo-root>   # target repo
 DEST="$REPO/.claude/skills"     # project-level skills dir (Claude Code reads it)
 mkdir -p "$DEST"
 cd "$SCRATCH"
@@ -366,9 +366,9 @@ Exact hand-copy commands (no gbrain install, no code runs):
 ```bash
 SCRATCH=$(mktemp -d); cd "$SCRATCH"
 git init -q gbrain && git -C gbrain fetch -q --depth 1 https://github.com/garrytan/gbrain.git 76a9984bdca8183f34965e04e0aad92c85e71ba8 && git -C gbrain checkout -q FETCH_HEAD
-mkdir -p /home/user/outdoornorway/.claude/skills/fact-check
-cp gbrain/skills/fact-check/SKILL.md /home/user/outdoornorway/.claude/skills/fact-check/SKILL.md
-cp gbrain/LICENSE /home/user/outdoornorway/.claude/skills/fact-check/LICENSE-gbrain
+mkdir -p <repo-root>/.claude/skills/fact-check
+cp gbrain/skills/fact-check/SKILL.md <repo-root>/.claude/skills/fact-check/SKILL.md
+cp gbrain/LICENSE <repo-root>/.claude/skills/fact-check/LICENSE-gbrain
 ```
 
 Then edit the copy:
@@ -384,8 +384,8 @@ Official scaffold route, for completeness (not recommended). The CLI help in `sr
 ```bash
 # prerequisite: Bun >= 1.4.0, then
 bun install -g github:garrytan/gbrain         # runs postinstall (applies migrations)
-gbrain skillpack scaffold --harness claude-code --skill fact-check --scope project --workspace /home/user/outdoornorway --dry-run
-gbrain skillpack scaffold --harness claude-code --skill fact-check --scope project --workspace /home/user/outdoornorway
+gbrain skillpack scaffold --harness claude-code --skill fact-check --scope project --workspace <repo-root> --dry-run
+gbrain skillpack scaffold --harness claude-code --skill fact-check --scope project --workspace <repo-root>
 ```
 
 Facts about that route:
@@ -434,7 +434,7 @@ What would justify it later: if the client wants a persistent searchable brain o
 
 | Repo | Stars | License | Created | Last push | What it is |
 |---|---|---|---|---|---|
-| trailhq/Graft (npm `@nanonets/graft`) | 9,620 | MIT | 2026-07-03 | 2026-10-06 | "Turbocharge Claude Code, Cursor, Codex, Gemini and every coding agent": a codebase context graph written as linked markdown in `graft/`, plus MCP server, hooks, statusline, optional Trail service |
+| trailhq/Graft (npm `@nanonets/graft`) | 9,620 | MIT | 2026-07-03 | 2026-10-06 | a tagline that names Claude Code and several other coding agents: a codebase context graph written as linked markdown in `graft/`, plus MCP server, hooks, statusline, optional Trail service |
 | AEndrix03/Graft | 31 | Apache-2.0 | n/a | 2026-10-06 | "Your coding agents forget. Graft doesn't." Persistent local memory (fixes, decisions) with a daemon and hooks |
 | schrepa/graft (`@schrepa/graft`) | 5 | Apache-2.0 | n/a | 2026-03-26 | Library to define tools once and expose them as HTTP endpoints and MCP tools (builds agent-ready APIs). Has one skill folder |
 | grft-dev/graftcode | 930 | n/a | 2026-07-02 | 2026-10-05 | Cross-language integration layer. Different product |

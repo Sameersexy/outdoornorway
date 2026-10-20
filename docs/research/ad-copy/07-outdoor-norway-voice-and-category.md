@@ -163,7 +163,7 @@ I have only the copy, not the images. Prices and dates come from the confirmed f
 | 6 | "3 days. Skiing + snowshoeing." / "Voss, Norway" / "See the 3-day trip" | Honest and short. The snowshoe is a differentiator that Alps trips lack. | Plain. No emotional lift. "See the 3-day trip" says nothing. | Price (NOK 17,451), dates (28 to 30 Jan, 31 Jan to 2 Feb, 7 to 9 Feb), the audience (page: "families and friend groups"). | Location is Voss, Hardangerfjord and Myrkdalen (3-day ski L80). Calling it "Voss" is acceptable but incomplete. Age conflict: "10+ years" vs "no age limits" (L90 vs L114). Do not state an age. |
 | 7 | "Your 3-day winter escape to Norway" / "Ski + snowshoeing" / "See the 3-day trip" | "Winter escape" speaks to the segment (couples, remote workers). | It is near-identical to creative 6. The viewer cannot tell the two trips apart. Sub-line leaves out the powder day, which is this trip's selling point. | Price (NOK 16,527), dates (5 to 7 Feb, 12 to 14 Feb with Valentine's Day, 5 to 7 Mar), tour name. | Two different products with near-same copy. Another trap: the page says Intermediate and "Basic resort skiing skills" (multi-sport L88, L111), while the day-one text says "absolute beginner" (L95). Do not claim beginner. |
 | 8 | "7-day northern lights tour" / "Bergen, Voss, Tromsø, skiing, huskies, northern lights" / "Explore the tour" | Concrete list. | A noun dump with no hierarchy. Headline sells the aurora, which is the one thing that cannot be promised. | Price (NOK 41,181), dates, proof. | Headline leads with aurora (guarantee risk). "Skiing" is one beginner day with a 1-day pass. |
-| 9 | Eyebrow "7 days | 6 nights" / "5 Norwegian winter experiences" / "Bergen, skiing, snowshoeing, huskies, northern lights" / "Explore the 7-day tour" | "7 days | 6 nights" is exact and checks out (6 nights twin-share, 7-day L156). The count hook ("5") is a good curiosity device. | Duplicates creative 8 for the same tour. "Explore the 7-day tour" repeats creative 8's CTA. | Price, dates, proof. | The count must match the page. Count the list: Bergen, skiing, snowshoeing, huskies, northern lights = 5. The page also sells a private fjord boat day. If the ad says "5", the count must stay consistent across every variant. |
+| 9 | Eyebrow "7 days \| 6 nights" / "5 Norwegian winter experiences" / "Bergen, skiing, snowshoeing, huskies, northern lights" / "Explore the 7-day tour" | "7 days \| 6 nights" is exact and checks out (6 nights twin-share, 7-day L156). The count hook ("5") is a good curiosity device. | Duplicates creative 8 for the same tour. "Explore the 7-day tour" repeats creative 8's CTA. | Price, dates, proof. | The count must match the page. Count the list: Bergen, skiing, snowshoeing, huskies, northern lights = 5. The page also sells a private fjord boat day. If the ad says "5", the count must stay consistent across every variant. |
 
 ### 2.2 Patterns across the nine
 
@@ -704,7 +704,7 @@ Do not claim:
 | March | "March is one of our favourite months to ski: there's more daylight for longer days in the mountains while winter conditions are still well established." | L131 |
 | Snowshoes with non-skiers | "Snowshoeing offers an accessible alternative" | L111 |
 | Eco | "certified Eco Lighthouse (Miljøfyrtårn) company" | 9-day L286 |
-| Contact | +47 56 99 40 21 | hub L5 |
+| Contact | The company phone number shown on the hub page | hub L5 |
 
 ### How adwright should use this
 

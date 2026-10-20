@@ -5,6 +5,7 @@ What is here
 - `campaigns/ski-meta-ads/tours.json`: source of truth for prices, dates and day-by-day plans. Check it with `verify_tours.py`.
 - `adquill/`: paused ad-copy skill and agents (drafts, not installed by the plugin).
 - `content/scripts/`: finished and draft scripts, each with a notes file. `docs/`: research and test write-ups.
+- Folder map, and the paths that must not move: `docs/repo-map.md`. All guides: `docs/README.md`.
 
 Commands
 - Tests: `python3 -I .claude/skills/scriptcraft/scripts/test_script_check.py` and `python3 -I tools/test_repo_integrity.py`
