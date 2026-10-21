@@ -7,6 +7,7 @@ from /howto.
 """
 import contextlib
 import functools
+import hashlib
 import importlib.util
 import io
 import json
@@ -14,8 +15,10 @@ import os
 import re
 import shutil
 import subprocess
+import sys
 import tempfile
 import unittest
+import zipfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -38,15 +41,27 @@ def frontmatter(text):
     return match.group(1) if match else ""
 
 
+def is_umbrella(entry):
+    """True for a marketplace entry whose source is the repo root, the plugin.json plugin."""
+    return os.path.normpath(entry["source"]) == "."
+
+
+def entry_skill_folders(entry):
+    """Repo-relative posix paths of the skill folders a marketplace entry lists."""
+    return [os.path.normpath(os.path.join(entry["source"], path)).replace(os.sep, "/") for path in entry.get("skills", [])]
+
+
 class Manifests(unittest.TestCase):
     def setUp(self):
         self.plugin = json.loads(read(ROOT / ".claude-plugin" / "plugin.json"))
         self.market = json.loads(read(ROOT / ".claude-plugin" / "marketplace.json"))
 
     def test_versions_match(self):
-        listed = self.market["plugins"][0]
-        self.assertEqual(self.plugin["version"], listed["version"])
-        self.assertEqual(self.plugin["name"], listed["name"])
+        # The umbrella entry is the one named like plugin.json. Every entry carries the same version.
+        names = [entry["name"] for entry in self.market["plugins"]]
+        self.assertIn(self.plugin["name"], names)
+        for entry in self.market["plugins"]:
+            self.assertEqual(self.plugin["version"], entry["version"], entry["name"])
 
     def test_licence_is_mit_everywhere(self):
         self.assertEqual(self.plugin["license"], "MIT")
@@ -59,6 +74,102 @@ class Manifests(unittest.TestCase):
         self.assertTrue((ROOT / self.plugin["skills"]).is_dir())
         for agent in self.plugin["agents"]:
             self.assertTrue((ROOT / agent).is_file(), agent)
+
+
+class Marketplace(unittest.TestCase):
+    """The entries in .claude-plugin/marketplace.json and the skill folders they list."""
+
+    REQUIRED = ("name", "source", "description", "version", "category", "license")
+    SKILL_BASES = (".claude/skills", "account-skills")
+
+    def setUp(self):
+        self.market = json.loads(read(ROOT / ".claude-plugin" / "marketplace.json"))
+        self.plugin = json.loads(read(ROOT / ".claude-plugin" / "plugin.json"))
+        self.package = json.loads(read(ROOT / "package.json"))
+        self.entries = self.market["plugins"]
+
+    def entry(self, name):
+        found = [entry for entry in self.entries if entry["name"] == name]
+        self.assertEqual(len(found), 1, name)
+        return found[0]
+
+    def folder_names(self, base):
+        return sorted(path.name for path in (ROOT / base).iterdir() if path.is_dir())
+
+    def test_marketplace_name_and_owner(self):
+        # Every install line ends in @outdoornorway.
+        self.assertEqual(self.market["name"], "outdoornorway")
+        self.assertTrue(self.market["owner"]["name"].strip())
+        self.assertTrue(self.entries)
+
+    def test_entry_names_are_unique(self):
+        names = [entry["name"] for entry in self.entries]
+        self.assertEqual(len(names), len(set(names)), names)
+
+    def test_entries_have_the_required_fields(self):
+        for entry in self.entries:
+            for field in self.REQUIRED:
+                value = entry.get(field)
+                self.assertTrue(isinstance(value, str) and value.strip(), f"{entry.get('name')}: {field}")
+
+    def test_every_version_equals_package_json(self):
+        for entry in self.entries:
+            self.assertEqual(self.package["version"], entry["version"], entry["name"])
+
+    def test_the_umbrella_entry_is_the_root_plugin(self):
+        umbrella = self.entry(self.plugin["name"])
+        self.assertTrue(is_umbrella(umbrella))
+        self.assertEqual([entry["name"] for entry in self.entries if is_umbrella(entry)], [self.plugin["name"]])
+
+    def test_no_entry_combines_the_root_source_with_strict_false(self):
+        # Claude Code refuses it ("conflicting manifests") although claude plugin validate passes.
+        for entry in self.entries:
+            if is_umbrella(entry):
+                self.assertIsNot(entry.get("strict"), False, entry["name"])
+
+    def test_sources_are_folders_inside_the_repo(self):
+        for entry in self.entries:
+            self.assertTrue(entry["source"].startswith("./"), entry["name"])
+            folder = (ROOT / entry["source"]).resolve()
+            self.assertTrue(folder == ROOT or ROOT in folder.parents, entry["name"])
+            self.assertTrue(folder.is_dir(), f"{entry['name']}: {entry['source']}")
+
+    def test_every_listed_skill_has_a_skill_md_whose_name_matches_its_folder(self):
+        for entry in self.entries:
+            source = (ROOT / entry["source"]).resolve()
+            for path in entry.get("skills", []):
+                label = f"{entry['name']}: {path}"
+                self.assertTrue(path.startswith("./"), label)
+                folder = (source / path).resolve()
+                self.assertIn(source, folder.parents, label)
+                self.assertTrue((folder / "SKILL.md").is_file(), label)
+                meta = frontmatter(read(folder / "SKILL.md"))
+                self.assertRegex(meta, rf"(?m)^name: {re.escape(folder.name)}$", label)
+
+    def test_copy_skills_lists_the_skill_folders_except_scriptcraft(self):
+        want = [name for name in self.folder_names(".claude/skills") if name != "scriptcraft"]
+        listed = sorted(Path(path).name for path in self.entry("outdoornorway-copy-skills")["skills"])
+        self.assertEqual(listed, want)
+
+    def test_account_skills_lists_the_account_skills_folders(self):
+        listed = sorted(Path(path).name for path in self.entry("outdoornorway-account-skills")["skills"])
+        self.assertEqual(listed, self.folder_names("account-skills"))
+
+    def test_every_skill_folder_is_in_exactly_one_non_umbrella_entry(self):
+        owners = {}
+        for entry in self.entries:
+            if not is_umbrella(entry):
+                for folder in entry_skill_folders(entry):
+                    owners.setdefault(folder, []).append(entry["name"])
+        for base in self.SKILL_BASES:
+            for name in self.folder_names(base):
+                found = owners.pop(f"{base}/{name}", [])
+                if name == "scriptcraft":
+                    # It needs the validator and tours.json, so it ships in the umbrella plugin only.
+                    self.assertEqual(found, [], "scriptcraft is plugin only")
+                else:
+                    self.assertEqual(len(found), 1, f"{base}/{name} is listed by {found}")
+        self.assertEqual(owners, {}, "entries list folders that are not skill folders")
 
 
 class Commands(unittest.TestCase):
@@ -276,7 +387,21 @@ def tracked_paths():
     ]
 
 
-class Packaging(unittest.TestCase):
+class RunsLauncher:
+    """Mixin: run tools/outdoornorway-cli.js with node, or skip the test when node is missing."""
+
+    def run_cli(self, *args, env=None, cwd=None, root=None):
+        node = shutil.which("node")
+        if node is None:
+            self.skipTest("node is not installed")
+        script = (root or ROOT) / json.loads(read(ROOT / "package.json"))["bin"]["outdoornorway"]
+        # A marketplace source set in the shell must not change what the tests expect.
+        merged = {key: value for key, value in os.environ.items() if key != "OUTDOORNORWAY_MARKETPLACE"}
+        merged.update(env or {})
+        return subprocess.run([node, str(script), *args], capture_output=True, text=True, timeout=120, cwd=cwd, env=merged)
+
+
+class Packaging(RunsLauncher, unittest.TestCase):
     """package.json and the npx launcher (tools/outdoornorway-cli.js)."""
 
     def setUp(self):
@@ -284,16 +409,10 @@ class Packaging(unittest.TestCase):
         self.plugin = json.loads(read(ROOT / ".claude-plugin" / "plugin.json"))
         self.market = json.loads(read(ROOT / ".claude-plugin" / "marketplace.json"))
 
-    def run_cli(self, *args):
-        node = shutil.which("node")
-        if node is None:
-            self.skipTest("node is not installed")
-        script = ROOT / self.package["bin"]["outdoornorway"]
-        return subprocess.run([node, str(script), *args], capture_output=True, text=True, timeout=60)
-
     def test_package_version_and_name_match_the_plugin(self):
         self.assertEqual(self.package["version"], self.plugin["version"])
-        self.assertEqual(self.package["version"], self.market["plugins"][0]["version"])
+        for entry in self.market["plugins"]:
+            self.assertEqual(self.package["version"], entry["version"], entry["name"])
         self.assertEqual(self.package["name"], self.plugin["name"])
         self.assertEqual(self.package["license"], "MIT")
 
@@ -312,6 +431,25 @@ class Packaging(unittest.TestCase):
                 continue
             self.assertTrue((ROOT / entry.rstrip("/")).exists(), f"package.json files: {entry}")
 
+    def test_files_list_ships_the_folders_every_marketplace_source_needs(self):
+        shipped = [entry.rstrip("/") for entry in self.package["files"] if not entry.startswith("!")]
+        self.assertIn("account-skills", shipped)
+        self.assertIn("tools", shipped)
+        for entry in self.market["plugins"]:
+            top = os.path.normpath(entry["source"]).split(os.sep)[0]
+            if top != ".":
+                self.assertIn(top, shipped, entry["name"])
+
+    def test_gitignore_keeps_the_skill_zips_out_of_git(self):
+        if not (ROOT / ".gitignore").exists():
+            self.skipTest("no .gitignore here (an npm pack or npx copy does not ship one)")
+        lines = [line.strip() for line in read(ROOT / ".gitignore").splitlines()]
+        self.assertIn("dist/", lines)
+
+    def test_npm_scripts_call_the_launcher(self):
+        for script, tail in (("doctor", "doctor"), ("list", "list"), ("pack", "skills pack"), ("test", "test")):
+            self.assertEqual(self.package["scripts"][script], f"node {self.package['bin']['outdoornorway']} {tail}", script)
+
     def test_launcher_version_matches_the_package(self):
         result = self.run_cli("version")
         self.assertEqual(result.returncode, 0, result.stderr)
@@ -328,6 +466,472 @@ class Packaging(unittest.TestCase):
         self.assertNotEqual(self.run_cli("no-such-command").returncode, 0)
 
 
+class Launcher(RunsLauncher, unittest.TestCase):
+    """What the npx launcher prints and runs. A fake claude on PATH records calls, so Claude Code never starts."""
+
+    def setUp(self):
+        self.market = json.loads(read(ROOT / ".claude-plugin" / "marketplace.json"))
+        self.default = json.loads(read(ROOT / ".claude-plugin" / "plugin.json"))["name"]
+        self.names = [entry["name"] for entry in self.market["plugins"]]
+        self.overlap = "outdoornorway-copy-skills"
+
+    def fake_claude(self, add_message=""):
+        """Put a fake claude first on PATH. Returns (env, log file). Each call is appended to the log.
+
+        With add_message set, "claude plugin marketplace add" prints it and exits 1."""
+        if os.name == "nt":
+            self.skipTest("the fake claude is a shell script")
+        folder = tempfile.mkdtemp()
+        self.addCleanup(shutil.rmtree, folder, True)
+        log = Path(folder) / "calls.log"
+        script = Path(folder) / "claude"
+        script.write_text(
+            "#!/bin/sh\n"
+            'echo "$*" >> "$FAKE_CLAUDE_LOG"\n'
+            'if [ "$1 $2 $3" = "plugin marketplace add" ] && [ -n "$FAKE_CLAUDE_ADD_MESSAGE" ]; then\n'
+            '  echo "$FAKE_CLAUDE_ADD_MESSAGE" >&2\n'
+            "  exit 1\n"
+            "fi\n"
+            "exit 0\n",
+            encoding="utf-8",
+        )
+        script.chmod(0o755)
+        env = {
+            "PATH": folder + os.pathsep + os.environ.get("PATH", ""),
+            "FAKE_CLAUDE_LOG": str(log),
+            "FAKE_CLAUDE_ADD_MESSAGE": add_message,
+        }
+        try:
+            subprocess.run([str(script), "--version"], env={**os.environ, **env}, capture_output=True, timeout=30, check=True)
+        except (OSError, subprocess.SubprocessError):
+            self.skipTest("a script in the temp folder cannot be run here")
+        log.unlink()
+        return env, log
+
+    def calls(self, log):
+        """The fake claude's calls in order, without the --version probe the launcher makes before --run."""
+        if not log.exists():
+            return []
+        return [line for line in log.read_text(encoding="utf-8").splitlines() if line != "--version"]
+
+    def test_list_prints_every_entry_with_its_version_and_install_line(self):
+        result = self.run_cli("list")
+        self.assertEqual(result.returncode, 0, result.stderr)
+        for entry in self.market["plugins"]:
+            self.assertIn(f"{entry['name']}  {entry['version']}", result.stdout)
+            self.assertIn(entry["description"], result.stdout)
+            self.assertIn(f"claude plugin install {entry['name']}@{self.market['name']}", result.stdout)
+
+    def test_install_prints_the_default_steps_and_runs_nothing(self):
+        env, log = self.fake_claude()
+        result = self.run_cli("install", env=env)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertIn("claude plugin marketplace add Sameersexy/outdoornorway", result.stdout)
+        self.assertIn(f"claude plugin install {self.default}@outdoornorway", result.stdout)
+        self.assertIn("were not run", result.stdout)
+        for name in self.names:
+            if name != self.default:
+                self.assertNotIn(f"claude plugin install {name}@", result.stdout)
+        self.assertFalse(log.exists(), "install without --run called claude")
+
+    def test_install_all_skips_the_plugin_the_umbrella_already_carries(self):
+        env, log = self.fake_claude()
+        result = self.run_cli("install", "all", env=env)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual(result.stdout.count("claude plugin marketplace add"), 1)
+        self.assertEqual(len(re.findall(r"^  claude plugin install ", result.stdout, re.M)), len(self.names) - 1)
+        for name in self.names:
+            if name != self.overlap:
+                self.assertIn(f"claude plugin install {name}@outdoornorway", result.stdout)
+        self.assertNotIn(f"claude plugin install {self.overlap}@", result.stdout)
+        self.assertIn("Left out: " + self.overlap, result.stdout)
+        self.assertIn("listed twice", result.stdout)
+        self.assertIn("were not run", result.stdout)
+        self.assertFalse(log.exists(), "install all without --run called claude")
+
+    def test_update_prints_the_marketplace_refresh_then_one_update_per_entry(self):
+        env, log = self.fake_claude()
+        result = self.run_cli("update", "all", env=env)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertIn("claude plugin marketplace update outdoornorway", result.stdout)
+        for name in self.names:
+            self.assertIn(f"claude plugin update {name}@outdoornorway", result.stdout)
+        self.assertIn("were not run", result.stdout)
+        self.assertFalse(log.exists(), "update without --run called claude")
+
+    def test_an_unknown_name_exits_1_and_lists_the_valid_names(self):
+        env, log = self.fake_claude()
+        result = self.run_cli("install", "bogus", env=env)
+        self.assertEqual(result.returncode, 1)
+        self.assertIn("Unknown plugin: bogus", result.stderr)
+        for name in self.names + ["all"]:
+            self.assertIn(name, result.stderr)
+        self.assertFalse(log.exists())
+
+    def test_bad_usage_exits_1_and_runs_nothing(self):
+        env, log = self.fake_claude()
+        for args in (
+            ("install", "all", "bogus"),
+            ("install", "--bad"),
+            ("update", "bogus"),
+            ("skills",),
+            ("skills", "bogus"),
+            ("no-such-command",),
+        ):
+            with self.subTest(args=args):
+                result = self.run_cli(*args, env=env)
+                self.assertEqual(result.returncode, 1, result.stdout + result.stderr)
+        self.assertFalse(log.exists())
+
+    def test_the_marketplace_source_can_come_from_the_environment(self):
+        result = self.run_cli("install", env={"OUTDOORNORWAY_MARKETPLACE": "someone/fork"})
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertIn("claude plugin marketplace add someone/fork", result.stdout)
+        self.assertIn("OUTDOORNORWAY_MARKETPLACE", result.stdout)
+        self.assertNotIn("Sameersexy/outdoornorway", result.stdout)
+
+    def test_run_calls_claude_once_per_step_in_order(self):
+        env, log = self.fake_claude()
+        result = self.run_cli("install", "all", "--run", env=env)
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        want = ["plugin marketplace add Sameersexy/outdoornorway"] + [f"plugin install {name}@outdoornorway" for name in self.names if name != self.overlap]
+        self.assertEqual(self.calls(log), want)
+        result = self.run_cli("update", self.default, "--run", env=env)
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        self.assertEqual(self.calls(log)[len(want):], ["plugin marketplace update outdoornorway", f"plugin update {self.default}@outdoornorway"])
+
+    def test_run_treats_an_already_added_marketplace_as_done(self):
+        env, log = self.fake_claude(add_message="Marketplace outdoornorway is already added")
+        result = self.run_cli("install", "--run", env=env)
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        self.assertEqual(self.calls(log), ["plugin marketplace add Sameersexy/outdoornorway", f"plugin install {self.default}@outdoornorway"])
+
+    def test_run_stops_at_a_real_failure(self):
+        env, log = self.fake_claude(add_message="network unreachable")
+        result = self.run_cli("install", "--run", env=env)
+        self.assertEqual(result.returncode, 1, result.stdout + result.stderr)
+        self.assertEqual(self.calls(log), ["plugin marketplace add Sameersexy/outdoornorway"])
+
+    def test_skills_list_has_a_row_for_every_skill_folder(self):
+        result = self.run_cli("skills", "list")
+        self.assertEqual(result.returncode, 0, result.stderr)
+        rows = {}
+        for line in result.stdout.splitlines():
+            if line.startswith("  "):
+                columns = re.split(r"\s{2,}", line.strip())
+                rows[columns[0]] = columns
+        self.assertEqual(rows.pop("skill"), ["skill", "plugins", "folder", "zip"])
+        folders = sorted(
+            f"{base}/{path.name}"
+            for base in (".claude/skills", "account-skills")
+            for path in (ROOT / base).iterdir()
+            if (path / "SKILL.md").is_file()
+        )
+        self.assertEqual(sorted(columns[2] for columns in rows.values()), folders)
+        for name, columns in rows.items():
+            folder = columns[2]
+            owners = set()
+            for entry in self.market["plugins"]:
+                if (is_umbrella(entry) and folder.startswith(".claude/skills/")) or folder in entry_skill_folders(entry):
+                    owners.add(entry["name"])
+            self.assertEqual(set(columns[1].split(", ")), owners, name)
+            self.assertEqual(columns[3], "plugin only" if name == "scriptcraft" else "zip", name)
+        self.assertIn(f"can package {len(rows) - 1} of {len(rows)} skills", result.stdout)
+
+    def test_help_names_every_command(self):
+        result = self.run_cli("help")
+        self.assertEqual(result.returncode, 0, result.stderr)
+        for command in ("list", "install", "update", "skills list", "skills pack", "doctor", "test", "version", "OUTDOORNORWAY_MARKETPLACE"):
+            self.assertIn(command, result.stdout, command)
+
+    def test_doctor_passes_on_this_repo(self):
+        if shutil.which("python3") is None:
+            self.skipTest("doctor needs python3 on PATH")
+        result = self.run_cli("doctor")
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        self.assertNotIn("[fail]", result.stdout)
+        self.assertIn("All required checks passed", result.stdout)
+        for name in self.names:
+            self.assertIn(name, result.stdout)
+
+    def fake_repo(self):
+        """A small stand-in repo with a copy of the launcher, for doctor runs that must fail."""
+        root = Path(tempfile.mkdtemp())
+        self.addCleanup(shutil.rmtree, root, True)
+        for name in ("tools/outdoornorway-cli.js", "package.json", ".claude-plugin/plugin.json"):
+            (root / name).parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy(ROOT / name, root / name)
+        for name in (".claude/commands", ".claude/agents"):
+            (root / name).mkdir(parents=True)
+        (root / "campaigns" / "ski-meta-ads").mkdir(parents=True)
+        (root / "campaigns" / "ski-meta-ads" / "tours.json").write_text("{}", encoding="utf-8")
+        for folder in (".claude/skills/scriptcraft", ".claude/skills/humanizer", "account-skills/script-writing"):
+            (root / folder).mkdir(parents=True)
+            (root / folder / "SKILL.md").write_text(f"---\nname: {Path(folder).name}\ndescription: Stand-in.\n---\n", encoding="utf-8")
+        return root
+
+    def write_market(self, root, plugins):
+        (root / ".claude-plugin" / "marketplace.json").write_text(
+            json.dumps({"name": "outdoornorway", "owner": {"name": "Test"}, "plugins": plugins}), encoding="utf-8"
+        )
+
+    def test_doctor_fails_on_a_broken_marketplace_entry_and_does_not_crash(self):
+        if shutil.which("python3") is None:
+            self.skipTest("doctor needs python3 on PATH")
+        version = json.loads(read(ROOT / "package.json"))["version"]
+        umbrella = {"name": self.default, "source": "./", "description": "Umbrella.", "version": version}
+        copy = {"name": "copy-skills", "source": "./.claude/skills", "strict": False, "description": "Copy.", "version": version, "skills": ["./humanizer"]}
+        cases = {
+            "a version that differs from package.json": ({**copy, "version": "9.9.9"}, "does not match package.json"),
+            "source ./ with strict false and a skills list": ({**umbrella, "name": "root-copy", "strict": False, "skills": ["./.claude/skills/humanizer"]}, "conflicts"),
+            "a source folder that is missing": ({**copy, "source": "./missing"}, "does not exist"),
+            "a source outside the repo": ({**copy, "source": "../outside"}, "outside the repo"),
+            "a skills path with no SKILL.md": ({**copy, "skills": ["./nothing"]}, "has no SKILL.md"),
+            "a skill whose name differs from its folder": ({**copy, "skills": ["./scriptcraft"]}, "not scriptcraft"),
+        }
+        root = self.fake_repo()
+        (root / ".claude" / "skills" / "scriptcraft" / "SKILL.md").write_text("---\nname: other\n---\n", encoding="utf-8")
+        self.write_market(root, [umbrella, copy])
+        good = self.run_cli("doctor", root=root)
+        self.assertEqual(good.returncode, 0, "the stand-in repo must pass first: " + good.stdout)
+        for label, (entry, expected) in cases.items():
+            with self.subTest(label):
+                self.write_market(root, [umbrella, entry])
+                result = self.run_cli("doctor", root=root)
+                self.assertEqual(result.returncode, 1, result.stdout)
+                self.assertRegex(result.stdout, rf"\[fail\].*{expected}")
+                self.assertNotIn("at Object", result.stderr)
+        with self.subTest("a name used twice"):
+            self.write_market(root, [umbrella, umbrella])
+            result = self.run_cli("doctor", root=root)
+            self.assertEqual(result.returncode, 1, result.stdout)
+            self.assertIn("used twice", result.stdout)
+        with self.subTest("no marketplace file"):
+            (root / ".claude-plugin" / "marketplace.json").unlink()
+            result = self.run_cli("doctor", root=root)
+            self.assertEqual(result.returncode, 1, result.stdout)
+            self.assertIn("could not read .claude-plugin/marketplace.json", result.stdout)
+            self.assertNotIn("at Object", result.stderr)
+
+
+PACKER = ROOT / "tools" / "pack_skills.py"
+
+
+class Packer(RunsLauncher, unittest.TestCase):
+    """tools/pack_skills.py: one zip per skill, the same bytes every run, nothing written outside --out."""
+
+    BASES = ("account-skills", ".claude/skills")
+
+    def pack(self, *args, cwd=None, packer=PACKER):
+        return subprocess.run([sys.executable, "-I", str(packer), *args], capture_output=True, text=True, timeout=120, cwd=cwd)
+
+    def temp(self):
+        folder = Path(tempfile.mkdtemp()).resolve()
+        self.addCleanup(shutil.rmtree, folder, True)
+        return folder
+
+    def packable(self):
+        """Names of the skill folders the packer should pick up."""
+        return sorted(
+            path.name
+            for base in self.BASES
+            for path in (ROOT / base).iterdir()
+            if (path / "SKILL.md").is_file() and path.name != "scriptcraft"
+        )
+
+    def repo_snapshot(self):
+        """Every path in the repo outside .git, to prove a run created nothing there."""
+        found = set()
+        for folder, names, files in os.walk(ROOT):
+            names[:] = [name for name in names if name != ".git"]
+            found.update(os.path.join(folder, name) for name in names + files)
+        return found
+
+    def skill_digests(self):
+        return {
+            str(path): hashlib.sha256(path.read_bytes()).hexdigest()
+            for base in self.BASES
+            for path in sorted((ROOT / base).rglob("*"))
+            if path.is_file()
+        }
+
+    def test_two_runs_give_identical_bytes(self):
+        first, second = self.temp() / "a", self.temp() / "b"
+        for out in (first, second):
+            result = self.pack("--out", str(out))
+            self.assertEqual(result.returncode, 0, result.stderr)
+        zips = sorted(path.name for path in first.iterdir())
+        self.assertEqual(zips, [name + ".zip" for name in self.packable()])
+        self.assertEqual(zips, sorted(path.name for path in second.iterdir()))
+        for name in zips:
+            self.assertEqual((first / name).read_bytes(), (second / name).read_bytes(), name)
+
+    def test_each_zip_holds_the_skill_under_one_top_folder_with_fixed_metadata(self):
+        out = self.temp() / "zips"
+        self.assertEqual(self.pack("--out", str(out)).returncode, 0)
+        for name in self.packable():
+            source = next(ROOT / base / name for base in self.BASES if (ROOT / base / name).is_dir())
+            with zipfile.ZipFile(out / f"{name}.zip") as archive:
+                self.assertIsNone(archive.testzip(), name)
+                names = archive.namelist()
+                self.assertEqual(names, sorted(names), name)
+                self.assertIn(f"{name}/SKILL.md", names)
+                self.assertEqual(archive.read(f"{name}/SKILL.md"), (source / "SKILL.md").read_bytes(), name)
+                for info in archive.infolist():
+                    self.assertTrue(info.filename.startswith(f"{name}/"), info.filename)
+                    self.assertNotRegex(info.filename, r"__pycache__|\.pyc$|\.DS_Store")
+                    self.assertEqual(info.date_time, (1980, 1, 1, 0, 0, 0), info.filename)
+                    self.assertEqual((info.external_attr >> 16) & 0o777, 0o644, info.filename)
+                    self.assertEqual(info.compress_type, zipfile.ZIP_DEFLATED, info.filename)
+
+    def test_scriptcraft_is_left_out_and_cannot_be_asked_for(self):
+        out = self.temp() / "zips"
+        self.assertEqual(self.pack("--out", str(out)).returncode, 0)
+        self.assertFalse((out / "scriptcraft.zip").exists())
+        listing = self.pack("--list")
+        self.assertEqual(listing.returncode, 0, listing.stderr)
+        self.assertNotIn("scriptcraft", listing.stdout)
+        asked = self.pack("--out", str(self.temp() / "other"), "scriptcraft")
+        self.assertEqual(asked.returncode, 1)
+        self.assertIn("plugin only", asked.stderr)
+
+    def test_an_unknown_name_exits_1_and_writes_nothing(self):
+        for names in (["nonesuch"], ["humanizer", "nonesuch"]):
+            with self.subTest(names=names):
+                out = self.temp() / "zips"
+                result = self.pack("--out", str(out), *names)
+                self.assertEqual(result.returncode, 1)
+                self.assertIn("nonesuch", result.stderr)
+                self.assertIn("Valid names", result.stderr)
+                self.assertEqual(list(out.glob("*.zip")), [])
+
+    def test_bad_usage_exits_1_not_2(self):
+        for args in (["--no-such-option"], ["--out"]):
+            with self.subTest(args=args):
+                self.assertEqual(self.pack(*args).returncode, 1)
+
+    def test_list_prints_names_and_folders_and_writes_nothing(self):
+        out = self.temp() / "zips"
+        result = self.pack("--list", "--out", str(out))
+        self.assertEqual(result.returncode, 0, result.stderr)
+        rows = [line.split() for line in result.stdout.splitlines()]
+        self.assertEqual([row[0] for row in rows], self.packable())
+        for name, folder in rows:
+            self.assertTrue((ROOT / folder / "SKILL.md").is_file(), folder)
+            self.assertEqual(Path(folder).name, name)
+        self.assertFalse(out.exists())
+        one = self.pack("--list", "humanizer")
+        self.assertEqual([line.split()[0] for line in one.stdout.splitlines()], ["humanizer"])
+
+    def test_nothing_is_written_outside_the_out_folder(self):
+        before, digests = self.repo_snapshot(), self.skill_digests()
+        elsewhere = self.temp()
+        out = self.temp() / "zips"
+        result = self.pack("--out", str(out), cwd=elsewhere)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual(self.repo_snapshot() - before, set(), "the packer wrote inside the repo")
+        self.assertEqual(self.skill_digests(), digests, "the packer changed a skill file")
+        self.assertEqual(list(elsewhere.iterdir()), [], "the packer wrote into the current folder")
+
+    def test_the_default_out_folder_is_dist_skills_in_the_current_folder(self):
+        elsewhere = self.temp()
+        had_dist = (ROOT / "dist").exists()
+        result = self.pack("humanizer", cwd=elsewhere)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertTrue((elsewhere / "dist" / "skills" / "humanizer.zip").is_file())
+        self.assertEqual((ROOT / "dist").exists(), had_dist)
+
+    def test_the_report_has_one_line_per_zip_with_a_matching_hash(self):
+        out = self.temp() / "zips"
+        result = self.pack("--out", str(out))
+        self.assertEqual(result.returncode, 0, result.stderr)
+        lines = [line for line in result.stdout.splitlines() if " bytes  sha256 " in line]
+        self.assertEqual(len(lines), len(self.packable()))
+        for line in lines:
+            found = re.fullmatch(r"(\S+)\s+(\d+) bytes  sha256 ([0-9a-f]{12})  description (\d+) characters(  description over 200 characters)?", line)
+            self.assertIsNotNone(found, line)
+            name, size, short, length, note = found.groups()
+            data = (out / f"{name}.zip").read_bytes()
+            self.assertEqual(int(size), len(data), name)
+            self.assertEqual(short, hashlib.sha256(data).hexdigest()[:12], name)
+            self.assertEqual(note is not None, int(length) > 200, name)
+        self.assertIn(f"Wrote {len(lines)} zip files to {out}", result.stdout)
+
+    def test_the_launcher_passes_its_arguments_to_the_packer(self):
+        python = shutil.which("python3")
+        if python is None:
+            self.skipTest("the launcher needs python3 on PATH")
+        direct, through = self.temp() / "direct", self.temp() / "through"
+        first = subprocess.run([python, "-I", str(PACKER), "--out", str(direct), "humanizer", "social"], capture_output=True, text=True, timeout=120)
+        second = self.run_cli("skills", "pack", "--out", str(through), "humanizer", "social")
+        self.assertEqual((first.returncode, second.returncode), (0, 0), second.stderr)
+        for name in ("humanizer", "social"):
+            self.assertEqual((direct / f"{name}.zip").read_bytes(), (through / f"{name}.zip").read_bytes(), name)
+        self.assertEqual(self.run_cli("skills", "pack", "--out", str(self.temp() / "x"), "nonesuch").returncode, 1)
+
+    def stand_in_repo(self):
+        """A tiny repo with its own copy of the packer, so guard rails can be tried without touching this one."""
+        root = self.temp()
+        (root / "tools").mkdir()
+        shutil.copy(PACKER, root / "tools" / "pack_skills.py")
+        for folder in ("account-skills/alpha", ".claude/skills/beta", ".claude/skills/scriptcraft"):
+            (root / folder).mkdir(parents=True)
+            (root / folder / "SKILL.md").write_text(f"---\nname: {Path(folder).name}\ndescription: Short.\n---\nBody.\n", encoding="utf-8")
+        return root, root / "tools" / "pack_skills.py"
+
+    def test_junk_files_are_skipped_and_nested_files_are_kept(self):
+        root, packer = self.stand_in_repo()
+        skill = root / "account-skills" / "alpha"
+        (skill / "__pycache__").mkdir()
+        (skill / "__pycache__" / "x.pyc").write_bytes(b"x")
+        (skill / "stray.pyc").write_bytes(b"x")
+        (skill / ".DS_Store").write_bytes(b"x")
+        (skill / "references").mkdir()
+        (skill / "references" / "notes.md").write_text("Notes.\n", encoding="utf-8")
+        out = self.temp() / "zips"
+        result = self.pack("--out", str(out), cwd=root, packer=packer)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual(sorted(path.name for path in out.iterdir()), ["alpha.zip", "beta.zip"])
+        with zipfile.ZipFile(out / "alpha.zip") as archive:
+            self.assertEqual(archive.namelist(), ["alpha/SKILL.md", "alpha/references/notes.md"])
+
+    def test_a_symlink_inside_a_skill_folder_exits_1(self):
+        root, packer = self.stand_in_repo()
+        try:
+            os.symlink(root / "tools" / "pack_skills.py", root / "account-skills" / "alpha" / "link.py")
+        except (OSError, NotImplementedError):
+            self.skipTest("symbolic links are not available here")
+        result = self.pack("--out", str(self.temp() / "zips"), cwd=root, packer=packer)
+        self.assertEqual(result.returncode, 1)
+        self.assertIn("Symbolic links", result.stderr)
+
+    def test_a_symlink_to_a_folder_inside_a_skill_folder_exits_1(self):
+        root, packer = self.stand_in_repo()
+        try:
+            os.symlink(root / "tools", root / "account-skills" / "alpha" / "linked", target_is_directory=True)
+        except (OSError, NotImplementedError):
+            self.skipTest("symbolic links are not available here")
+        result = self.pack("--out", str(self.temp() / "zips"), cwd=root, packer=packer)
+        self.assertEqual(result.returncode, 1)
+        self.assertIn("Symbolic links", result.stderr)
+
+    def test_an_out_folder_inside_a_skill_source_exits_1(self):
+        root, packer = self.stand_in_repo()
+        for inside in ("account-skills", ".claude/skills/beta/zips"):
+            with self.subTest(inside=inside):
+                result = self.pack("--out", str(root / inside / "out"), cwd=root, packer=packer)
+                self.assertEqual(result.returncode, 1)
+                self.assertFalse((root / inside / "out").exists())
+
+    def test_two_skill_folders_with_one_name_exit_1(self):
+        root, packer = self.stand_in_repo()
+        (root / ".claude" / "skills" / "alpha").mkdir()
+        (root / ".claude" / "skills" / "alpha" / "SKILL.md").write_text("---\nname: alpha\n---\n", encoding="utf-8")
+        result = self.pack("--out", str(self.temp() / "zips"), cwd=root, packer=packer)
+        self.assertEqual(result.returncode, 1)
+        self.assertIn("alpha", result.stderr)
+
+
 class PublicRepoGuards(unittest.TestCase):
     """The repo is public. Transcripts, archives, secrets and addresses stay out."""
 
@@ -341,6 +945,8 @@ class PublicRepoGuards(unittest.TestCase):
         self.assertEqual(bad, [], "must not be committed: " + ", ".join(bad))
 
     def test_gitignore_blocks_the_same_files(self):
+        if not (ROOT / ".gitignore").exists():
+            self.skipTest("no .gitignore here (an npm pack or npx copy does not ship one)")
         lines = {line.strip() for line in read(ROOT / ".gitignore").splitlines()}
         for pattern in ("*.jsonl", "*.zip", "*.tgz", ".env", ".env.*", "node_modules/"):
             self.assertIn(pattern, lines, pattern)
@@ -466,7 +1072,7 @@ class Navigation(unittest.TestCase):
 
 
 class AccountSkills(unittest.TestCase):
-    """The skills in account-skills/. The plugin does not load this folder."""
+    """The skills in account-skills/. The umbrella plugin does not load this folder. Its own marketplace entry does."""
 
     FOLDER = ROOT / "account-skills"
 
@@ -490,11 +1096,20 @@ class AccountSkills(unittest.TestCase):
             meta = frontmatter(read(folder / "SKILL.md"))
             self.assertRegex(meta, r"(?m)^description: \S", folder.name)
 
-    def test_the_plugin_does_not_load_the_folder(self):
+    def test_the_umbrella_plugin_does_not_load_the_folder(self):
+        # plugin.json loads .claude/skills only. The folder reaches Claude Code through its own marketplace entry.
         self.assertNotIn("account-skills", read(ROOT / ".claude-plugin" / "plugin.json"))
         self.assertNotIn(ROOT / ".claude", self.FOLDER.parents)
         for folder in self.skill_folders():
             self.assertFalse((ROOT / ".claude" / "skills" / folder.name).exists(), folder.name)
+
+    def test_the_marketplace_entry_loads_the_folder(self):
+        market = json.loads(read(ROOT / ".claude-plugin" / "marketplace.json"))
+        loaders = [entry for entry in market["plugins"] if entry["source"] == "./account-skills"]
+        self.assertEqual([entry["name"] for entry in loaders], ["outdoornorway-account-skills"])
+        for entry in market["plugins"]:
+            if entry["name"] != "outdoornorway-account-skills":
+                self.assertNotIn("account-skills", json.dumps(entry), entry["name"])
 
     def test_readme_links_every_skill_and_the_docs_point_here(self):
         readme = read(self.FOLDER / "README.md")

@@ -1,13 +1,55 @@
 {
   "name": "outdoornorway",
-  "owner": { "name": "Outdoor Norway" },
-  "metadata": { "description": "Marketing tools for Outdoor Norway: scriptcraft video scripts, slash commands and copy skills." },
+  "owner": {
+    "name": "Outdoor Norway"
+  },
+  "metadata": {
+    "description": "Marketing tools for Outdoor Norway: scriptcraft video scripts, slash commands, copy skills and brand checkers."
+  },
   "plugins": [
     {
       "name": "outdoornorway-marketing",
       "source": "./",
       "description": "Video script skill, validator, writer and reviewer agents and slash commands for Outdoor Norway marketing.",
-      "version": "0.2.0"
+      "version": "0.2.0",
+      "category": "marketing",
+      "license": "MIT",
+      "keywords": ["scriptcraft", "video-scripts", "marketing", "outdoor-norway"]
+    },
+    {
+      "name": "outdoornorway-copy-skills",
+      "source": "./.claude/skills",
+      "strict": false,
+      "description": "Eight copy skills: ad creative, conversion copy, copy that sells, copywriting, fact-check, humanizer, marketing psychology and social.",
+      "version": "0.2.0",
+      "category": "marketing",
+      "license": "MIT",
+      "keywords": ["copywriting", "ads", "social", "fact-check", "humanizer"],
+      "skills": [
+        "./ad-creative",
+        "./conversion-copywriter",
+        "./copy-that-sells",
+        "./copywriting",
+        "./fact-check",
+        "./humanizer",
+        "./marketing-psychology",
+        "./social"
+      ]
+    },
+    {
+      "name": "outdoornorway-account-skills",
+      "source": "./account-skills",
+      "strict": false,
+      "description": "Three Outdoor Norway skills: brand voice checker, guest benefit checker and script writing.",
+      "version": "0.2.0",
+      "category": "marketing",
+      "license": "MIT",
+      "keywords": ["brand-voice", "guest-benefit", "script-writing", "outdoor-norway"],
+      "skills": [
+        "./brand-voice-checker",
+        "./guest-benefit-checker",
+        "./script-writing"
+      ]
     }
   ]
 }

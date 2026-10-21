@@ -33,7 +33,7 @@ To check the plugin manifests with Claude Code itself, run this from the repo ro
 claude plugin validate .
 ```
 
-It passes. Its one warning says that CLAUDE.md at the plugin root is not loaded as project context. The warning can stay, because CLAUDE.md guides work in a clone. Do not add `--strict` to this command, because it turns the warning into an error and the run then fails.
+It passes. Its one warning says that CLAUDE.md at the plugin root is not loaded as project context. The warning can stay, because CLAUDE.md guides work in a clone. Do not add `--strict` to this command, because it turns the warning into an error and the run then fails. The command does not catch every marketplace mistake. The integrity test and `node tools/outdoornorway-cli.js doctor` check the marketplace entries too, so run them after you edit `.claude-plugin/marketplace.json`.
 
 ### Validate a script
 
@@ -91,6 +91,14 @@ Commands and agents reach repo files through ROOT. In the plugin, ROOT is `${CLA
 - Put a file in `.claude/commands/` or `.claude/skills/` only if it is a command or a skill. Those folders load automatically.
 - Every skill folder except `scriptcraft` needs a row in [THIRD_PARTY_SKILLS.md](THIRD_PARTY_SKILLS.md). A row with a 40-character commit hash also needs a licence file in its folder.
 
+## Plugins and versions
+
+The marketplace lists three plugins, and [docs/marketplace.md](docs/marketplace.md) has the full steps.
+
+- A new skill goes in `.claude/skills/` or `account-skills/`. Add `./<name>` to the `skills` list of the matching entry in `.claude-plugin/marketplace.json`. The integrity test checks that every skill folder sits in exactly one of those two lists, except `scriptcraft`, which only the main plugin carries.
+- Do not give the `outdoornorway-marketing` entry a component list. With `strict: false` it fails to load with a "conflicting manifests" error, although `claude plugin validate` passes.
+- A feature change does not bump versions. A release sets the same value in `package.json`, `.claude-plugin/plugin.json` and the three marketplace entries, which is five fields in three files. It also adds a line to [CHANGELOG.md](CHANGELOG.md). Claude Code offers a plugin update only when the version string changes.
+
 ## Howto
 
 The Quick start in [docs/getting-started.md](docs/getting-started.md) is what `/howto` shows. After you edit it, update `.claude/commands/howto.md` to match.
@@ -109,8 +117,8 @@ Several paths are load-bearing. Read the "Safe to move?" column in [docs/repo-ma
 - The repo is public and MIT licensed. See [LICENSE](LICENSE).
 - Do not add supplier terms, personal data or other private client information.
 - The page-audit notes in `campaigns/ski-meta-ads/` stay public. The owner decided this on 12 October 2026.
-- `.gitignore` blocks transcripts (`*.jsonl`), archives (`*.zip`, `*.tgz`), `.env` files, `node_modules/`, `backup/` and `exports/`. Do not work around it.
-- Three account skills sit in [account-skills/](account-skills/README.md). They were read for supplier terms, prices, contacts, personal data and client facts before they were copied there. The other account skills live in the Claude account, with a second copy in a private backup kept outside this repo. Chat transcripts are kept the same way. [docs/backup-and-restore.md](docs/backup-and-restore.md) says how the private backup is handled.
+- `.gitignore` blocks transcripts (`*.jsonl`), archives (`*.zip`, `*.tgz`), `.env` files, `node_modules/`, `backup/`, `exports/` and `dist/`. Do not work around it.
+- Three account skills sit in [account-skills/](account-skills/README.md), and the plugin `outdoornorway-account-skills` ships them. They were read for supplier terms, prices, contacts, personal data and client facts before they were copied there. The other account skills live in the Claude account, with a second copy in a private backup kept outside this repo. Chat transcripts are kept the same way. [docs/backup-and-restore.md](docs/backup-and-restore.md) says how the private backup is handled.
 
 ## Writing style
 
@@ -124,5 +132,6 @@ Several paths are load-bearing. Read the "Safe to move?" column in [docs/repo-ma
 1. Run both main test suites, and the adquill tests if you changed `adquill/`.
 2. Run `verify_tours.py` if you changed `tours.json`.
 3. Regenerate `howto.md` if you edited the Quick start.
-4. Check the hygiene rules above.
-5. Work on the branch you were given, and open a pull request only when someone asks for one.
+4. Run `node tools/outdoornorway-cli.js doctor` if you changed a marketplace entry or a skill list.
+5. Check the hygiene rules above.
+6. Work on the branch you were given, and open a pull request only when someone asks for one.
