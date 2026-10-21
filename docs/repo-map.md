@@ -4,7 +4,7 @@ This page shows where each folder and file lives, what uses it and whether it ca
 
 ## Start here
 
-The repo is a Claude Code plugin (`outdoornorway-marketing`) plus the files it works on. The plugin is the whole repo: `marketplace.json` points its `source` at `./`. Writers use slash commands to draft and check video scripts. Tour prices and dates live in one data file. A handful of paths are written into code, tests and manifests, so those stay where they are.
+The repo is a Claude Code marketplace with three plugins, plus the files they work on. The main plugin, `outdoornorway-marketing`, is the whole repo: its entry in `marketplace.json` points `source` at `./`. The other two ship only skills, from `.claude/skills/` and `account-skills/`. [marketplace.md](marketplace.md) describes all three. Writers use slash commands to draft and check video scripts. Tour prices and dates live in one data file. A handful of paths are written into code, tests and manifests, so those stay where they are.
 
 If you write scripts, read [getting-started.md](getting-started.md). If you change the tools, read [CONTRIBUTING.md](../CONTRIBUTING.md). The full docs index is [README.md](README.md).
 
@@ -23,7 +23,7 @@ outdoornorway/
 |-- .claude-plugin/             [fixed]  plugin and marketplace manifests
 |   |-- marketplace.json        [fixed]  marketplace listing
 |   `-- plugin.json             [fixed]  plugin manifest
-|-- account-skills/                      account skills, not loaded by the plugin
+|-- account-skills/                      account skills, shipped by their own plugin
 |   |-- brand-voice-checker/             guest-facing copy checked against the brand voice
 |   |-- guest-benefit-checker/           guest-facing copy checked for a benefit-led angle
 |   |-- README.md                        guide to the account skills
@@ -43,13 +43,15 @@ outdoornorway/
 |   |-- backup-and-restore.md            what to save and how to restore it
 |   |-- getting-started.md      [fixed]  guide for writers and editors
 |   |-- installation.md                  install, check, update and remove
+|   |-- marketplace.md                   the three plugins, installs and releases
 |   |-- publishing-to-npm.md             publish the launcher to npm
 |   |-- README.md                        docs index
 |   |-- repo-map.md                      this page
 |   |-- skills-catalog.md                what each skill is for
 |   `-- token-hygiene.md        [fixed]  habits that keep sessions cheap
-|-- tools/                      [fixed]  tests, token report and npx launcher
+|-- tools/                      [fixed]  tests, token report, npx launcher and skill packer
 |   |-- outdoornorway-cli.js    [fixed]  npx launcher
+|   |-- pack_skills.py          [fixed]  packs skills into zips for claude.ai
 |   |-- README.md                        guide to the tools
 |   |-- test_repo_integrity.py  [fixed]  integrity test
 |   `-- transcript_report.py    [fixed]  token report for /tokens
@@ -71,25 +73,25 @@ Safe to move? has two answers. No means code, tests or manifests name the path. 
 
 | Path | What it holds | Who uses it | Safe to move? |
 |---|---|---|---|
-| `.claude-plugin/` | `plugin.json` and `marketplace.json`: plugin name, version and which folders ship | The plugin install, the integrity test, `doctor` in the launcher | No. The test and `doctor` open both files by path. |
+| `.claude-plugin/` | `plugin.json` and `marketplace.json`: plugin names, versions and which folders ship. The marketplace lists three plugins. | The plugin install, the integrity test, `doctor` and `list` in the launcher | No. The test and the launcher open both files by path. |
 | `.claude/commands/` | The slash commands | The plugin, the integrity test | No. `plugin.json` names this folder and the test reads every file in it. |
 | `.claude/agents/` | `script-writer.md` and `script-reviewer.md` | `/script` and `/review-script` | No. `plugin.json` lists both files by path. |
-| `.claude/skills/` | `scriptcraft` (the video script skill, its validator and tests) and the vetted third-party skills. [skills-catalog.md](skills-catalog.md) says what each is for. | The plugin, the commands, the agents | No. `plugin.json` names the folder, and the commands and agents call `.claude/skills/scriptcraft/scripts/script_check.py`. |
+| `.claude/skills/` | `scriptcraft` (the video script skill, its validator and tests) and the vetted third-party skills. [skills-catalog.md](skills-catalog.md) says what each is for. | The plugins `outdoornorway-marketing` and `outdoornorway-copy-skills`, the commands, the agents | No. `plugin.json` names the folder, the copy-skills entry in `marketplace.json` uses it as its `source`, and the commands and agents call `.claude/skills/scriptcraft/scripts/script_check.py`. |
 | `.claude/settings.json` | Project settings for a clone: enabled plugins and the auto-compact window | Claude Code, in a clone | No. Claude Code reads project settings from this path. |
 | `.claude/product-marketing.md` | Brand context, confirmed facts and the do-not-claim list | The copy skills and the agents | With edits. CLAUDE.md, the reviewer agent, several skills and the script notes cite this path. |
 | `campaigns/ski-meta-ads/` | `tours.json` (prices, dates, day-by-day plans), its checker and the ski ad notes. See [its README](../campaigns/ski-meta-ads/README.md). | The validator (`--tour`), `/tour-data`, `doctor`, both agents | No. `script_check.py` finds `tours.json` by going up four folders from its own folder, so a move breaks `--tour` unless you pass `--tours-file`. `doctor` lists the file as required. |
 | `content/scripts/` | Finished and draft scripts, each with a notes file. See [its README](../content/scripts/README.md). | `/script` writes here by default | No. The script agents save here by default, and the integrity test lists its README. |
 | `docs/getting-started.md`, `docs/token-hygiene.md` | The guide for writers and editors, and the token habits | `/howto`, `/tokens`, the integrity test | No. `/howto` copies the Quick start from the guide and the test reads it. `/tokens` points to the token page. |
 | `docs/` | Guides, research and review history. See [README.md](README.md). | Everyone | No. The two files above keep the folder in place, and CLAUDE.md names `docs/repo-map.md`, `docs/README.md` and `docs/token-hygiene.md` by path. Inside it, a guide can move once its links are fixed, and the docs index and the integrity test name most of them. |
-| `tools/outdoornorway-cli.js`, `tools/test_repo_integrity.py`, `tools/transcript_report.py` | The npx launcher, the integrity test and the token report. See [the tools guide](../tools/README.md). | `package.json` (`bin`), CLAUDE.md, `/tokens` | No. Each is named by the file that uses it, and both Python and Node code find the repo root as the folder above `tools/`. |
+| `tools/outdoornorway-cli.js`, `tools/pack_skills.py`, `tools/test_repo_integrity.py`, `tools/transcript_report.py` | The npx launcher, the skill packer, the integrity test and the token report. See [the tools guide](../tools/README.md). | `package.json` (`bin`), the launcher's `skills pack`, CLAUDE.md, `/tokens` | No. Each is named by the file that uses it, and both Python and Node code find the repo root as the folder above `tools/`. |
 | `adquill/` | A paused ad-copy skill and three agents (drafts). See [its README](../adquill/README.md). | Nothing at run time. The launcher's `test --all` runs its linter tests. | With edits. The plugin does not install it. A move means updating `files` in `package.json`, the `--all` path in the launcher and the links in the docs. |
-| `account-skills/` | Account skills, one folder each with a `SKILL.md`. See [its README](../account-skills/README.md). | Nothing at run time. The integrity test checks the folder. | With edits. Yes, it can move, but update the links and the integrity test. Nothing loads it. |
+| `account-skills/` | Account skills, one folder each with a `SKILL.md`. See [its README](../account-skills/README.md). | The plugin `outdoornorway-account-skills`, `skills pack`, the integrity test | No. The `account-skills` entry in `marketplace.json` uses the folder as its `source`, and `files` in `package.json` lists it. A move also needs new links and a test edit. |
 | `README.md` | The front page: install, commands, what is here | Everyone | No. The integrity test reads it. |
 | `CLAUDE.md` | Rules and commands for Claude Code working in this repo | Claude Code, in a clone | No. Claude Code loads it from the repo root, and the integrity test reads it. |
 | `CONTRIBUTING.md`, `CHANGELOG.md` | How to change the tools, and what changed and when | Contributors, maintainers | With edits. The integrity test lists both, so a move also needs new links and a test edit. |
 | `LICENSE`, `THIRD_PARTY_SKILLS.md` | The MIT licence, and the source, pinned commit and licence of each third-party skill | The integrity test | No. The licence checks read both by path. |
-| `package.json` | Launcher metadata: `bin`, `files`, Node `engines`, no dependencies | npm, `npx`, the integrity test | No. Keep it at the root. Its `version` must match `plugin.json` and `marketplace.json`. |
-| `.gitignore` | Keeps Python caches, transcripts (`*.jsonl`), archives (`*.zip`, `*.tgz`), `.env` files, `node_modules/`, `backup/` and `exports/` out of git | Git, the integrity test | No. The test checks that the main patterns are listed. |
+| `package.json` | Launcher metadata: `bin`, `files`, Node `engines`, no dependencies | npm, `npx`, the integrity test | No. Keep it at the root. Its `version` must match `plugin.json` and every entry in `marketplace.json`. |
+| `.gitignore` | Keeps Python caches, transcripts (`*.jsonl`), archives (`*.zip`, `*.tgz`), `.env` files, `node_modules/`, `backup/`, `exports/` and `dist/` (the zips from `skills pack`) out of git | Git, the integrity test | No. The test checks that the main patterns are listed. |
 
 Chat transcripts are not in this repo. Three account skills are, in [account-skills/](../account-skills/README.md). The other account-only skills stay in the Claude account, with a second copy in a private backup kept outside this repo. [backup-and-restore.md](backup-and-restore.md) has the steps.
 
@@ -104,8 +106,9 @@ Chat transcripts are not in this repo. Three account skills are, in [account-ski
 | The agents | `.claude/agents/` |
 | Brand facts and the do-not-claim list | `.claude/product-marketing.md` |
 | Third-party skills and their licences | `THIRD_PARTY_SKILLS.md`, and the `LICENSE-*` file inside each skill folder under `.claude/skills/` |
-| Account skills that can be copied or uploaded | [account-skills/README.md](../account-skills/README.md) |
+| Account skills that can be installed, copied or uploaded | [account-skills/README.md](../account-skills/README.md) |
 | Install, update or uninstall the plugin | [installation.md](installation.md) |
+| Choose among the three plugins, add a skill or cut a release | [marketplace.md](marketplace.md) |
 | Back up or restore transcripts and account-only skills | [backup-and-restore.md](backup-and-restore.md) |
 | Publish the launcher to npm | [publishing-to-npm.md](publishing-to-npm.md) |
 | Test and check commands | [CONTRIBUTING.md](../CONTRIBUTING.md#run-the-tests) |

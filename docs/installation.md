@@ -19,7 +19,7 @@ If you write or edit scripts, read [getting-started.md](getting-started.md) afte
 | Clone | The repo folder | Editing the tools and sending pull requests | Claude Code, Python 3, Git | `git clone https://github.com/Sameersexy/outdoornorway.git` |
 | npx launcher | Any folder, no clone, but only once the launcher is on the default branch (it is not on npm yet) | Checking your set up and printing the install commands | Claude Code, Python 3, Node.js 18 or newer | `npx github:Sameersexy/outdoornorway doctor` |
 
-If you only write or read scripts, choose the plugin. The npx launcher is optional.
+If you only write or read scripts, choose the plugin. The npx launcher is optional. The plugin route offers three plugins, and route 1 shows how to pick one.
 
 ## Route 1: plugin (works from any folder)
 
@@ -33,6 +33,18 @@ claude plugin install outdoornorway-marketing@outdoornorway
 ```
 
 You can also type `/plugin` inside Claude Code and follow the prompts. A marketplace is a list of plugins kept on GitHub. Restart Claude Code when you are done. Scripts are saved in the folder where you run Claude Code.
+
+### Choose a plugin
+
+The marketplace has three plugins. Replace the name in the second line above to install another one.
+
+| Plugin | Choose it if you |
+|---|---|
+| `outdoornorway-marketing` | Write or review video scripts. It holds the commands, the agents, scriptcraft and the eight copy skills. |
+| `outdoornorway-copy-skills` | Want only the eight copy skills and none of the script tools. |
+| `outdoornorway-account-skills` | Want the brand voice checker, the guest benefit checker and the script-writing skill in Claude Code. |
+
+Claude Code 2.1.292 or later can add the marketplace and install in one line: `claude plugin install NAME --marketplace Sameersexy/outdoornorway`. [VERIFY: the one-step line was not run against this repo] The two-line version above works on every version that has plugins. [marketplace.md](marketplace.md) covers what happens when you install two plugins together, and how a team can prompt its members to install.
 
 ### Confirm it worked
 
@@ -49,7 +61,7 @@ claude plugin marketplace update outdoornorway
 claude plugin update outdoornorway-marketing@outdoornorway
 ```
 
-Restart Claude Code.
+Restart Claude Code. The first line refreshes the list only. Run the second line once for each plugin you installed, because there is no update-all command.
 
 ### Switch off or remove
 
@@ -66,6 +78,8 @@ To remove it, and then the marketplace entry:
 claude plugin uninstall outdoornorway-marketing@outdoornorway
 claude plugin marketplace remove outdoornorway
 ```
+
+`marketplace remove` also uninstalls every plugin from this marketplace, so skip it if you want to keep another one.
 
 ## Route 2: clone (best for editing)
 
@@ -114,10 +128,11 @@ Delete the cloned folder. Before you do, send or copy any scripts in `content/sc
 
 This route works from any folder, with no clone, but only once the launcher is on the default branch of the repo, and the launcher is not on npm yet. The launcher is `tools/outdoornorway-cli.js`. It never writes files. `install` and `update` print the Claude Code commands and run them only when you add `--run`. [tools/README.md](../tools/README.md) lists every launcher command.
 
-Check your set up:
+Check your set up, then list the plugins:
 
 ```
 npx github:Sameersexy/outdoornorway doctor
+npx github:Sameersexy/outdoornorway list
 ```
 
 Print the install commands, then run them:
@@ -127,9 +142,11 @@ npx github:Sameersexy/outdoornorway install
 npx github:Sameersexy/outdoornorway install --run
 ```
 
+`install` without a name means `outdoornorway-marketing`. Add a plugin name, such as `install outdoornorway-account-skills`, to pick another. `install all` installs the umbrella and the account skills. It leaves out `outdoornorway-copy-skills` and says so, because the umbrella already carries those eight skills. A name that is not on the list stops with the valid names.
+
 If the Claude Code CLI is missing, `install --run` stops and says so. Restart Claude Code after the install. To confirm it worked, run `doctor` again, look for "All required checks passed.", then follow the confirm steps in route 1.
 
-To update, print the commands with `update`, then run them with `update --run`.
+To update, print the commands with `update`, then run them with `update --run`. `update all` covers every plugin.
 
 npx reads the repo's default branch, so these commands work only once the launcher is on that branch. The launcher is not on npm yet: see [publishing-to-npm.md](publishing-to-npm.md).
 
@@ -142,7 +159,8 @@ The launcher writes no files of its own. If you ran `install --run`, remove the 
 - **`[fail] python3 not found`.** Install Python 3.9 or newer from the [official download page](https://www.python.org/downloads/) and try again. The tools are not tested on Windows. They call `python3` by name, so if that name does not exist on your machine, tell the repo owner.
 - **`[warn] Claude Code CLI not found`.** Install Claude Code from the [quickstart](https://code.claude.com/docs/en/quickstart). `install --run` and `update --run` need it.
 - **`[warn] Node` with "the launcher needs 18 or newer".** Install Node.js 18 or newer from [nodejs.org](https://nodejs.org/).
-- **`[fail] versions differ`.** The version numbers in `package.json` and the two plugin files do not match. Report it on the [issues page](https://github.com/Sameersexy/outdoornorway/issues).
+- **Each copy skill is listed twice.** You installed `outdoornorway-copy-skills` next to `outdoornorway-marketing`, and both carry the same eight skills. Remove the one you do not need, for example `claude plugin uninstall outdoornorway-copy-skills`.
+- **`[fail] versions differ` or `[fail] NAME: version X does not match package.json (Y)`.** The version numbers in `package.json`, the plugin file and the marketplace entries do not match. Report it on the [issues page](https://github.com/Sameersexy/outdoornorway/issues).
 - **The npx commands do not work.** Use the plugin or clone route. See the note on the default branch in route 3.
 - **"Usage limit reached".** Wait for the reset. Use one script per session. See [token-hygiene.md](token-hygiene.md).
 - **`/tour-data` cannot reach the site.** It needs internet access, and so does the live price check, `python3 -I campaigns/ski-meta-ads/verify_tours.py`. If your session blocks outside websites, tell the repo owner.

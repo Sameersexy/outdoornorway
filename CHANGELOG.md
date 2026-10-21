@@ -2,7 +2,7 @@
 
 This file answers one question: what changed in this repo, and when. It follows the Keep a Changelog style. The commits carry no version numbers, so entries are grouped by date and milestone. `git log --format='%h %ad %s' --date=short` lists every commit.
 
-The plugin and marketplace manifests have carried version 0.2.0 since `8d7effb` on 12 October 2026, and `package.json` matches it.
+The plugin manifest and the `outdoornorway-marketing` marketplace entry have carried version 0.2.0 since `8d7effb` on 12 October 2026. The two newer marketplace entries start at 0.2.0 too, and `package.json` matches all of them.
 
 ## [Unreleased]
 
@@ -16,12 +16,19 @@ The plugin and marketplace manifests have carried version 0.2.0 since `8d7effb` 
 - Guard-rail tests in `tools/test_repo_integrity.py`.
 - A test in `tools/test_repo_integrity.py` that bans another vendor's model names in our own files.
 - `.gitignore` entries for `*.jsonl`, `*.zip`, `*.tgz`, `.env`, `.env.*`, `node_modules/`, `backup/` and `exports/`.
-- [account-skills/](account-skills/README.md): two account skills, `brand-voice-checker` and `script-writing`, one folder each, with a guide. The plugin does not load them.
+- [account-skills/](account-skills/README.md): two account skills, `brand-voice-checker` and `script-writing`, one folder each, with a guide. The `outdoornorway-marketing` plugin does not load them.
 - `guest-benefit-checker` added to [account-skills/](account-skills/README.md) after the owner approved it. The repo copy was read for supplier terms, prices, contacts, personal data and client facts, like the other two.
+- A marketplace with three plugins, all at version 0.2.0: `outdoornorway-marketing` (the full toolset), `outdoornorway-copy-skills` (the eight copy skills) and `outdoornorway-account-skills` (the three account skills). Each installs on its own as `NAME@outdoornorway`. The copy skills plugin cannot read `tours.json`, so its fact-check needs another source of truth.
+- [docs/marketplace.md](docs/marketplace.md): who each plugin is for, install lines, update and uninstall, a team prompt through project settings, how to add a skill, how to cut a release, and the steps only the owner can do.
+- Launcher commands `list`, `install NAME` and `install all`, `update NAME` and `update all`, `skills list` and `skills pack`, and the `OUTDOORNORWAY_MARKETPLACE` variable that points them at a fork or a local folder. `doctor` checks every marketplace entry. `install all` leaves out `outdoornorway-copy-skills`, because with the umbrella installed each of its eight skills would be listed twice.
+- `tools/pack_skills.py`, a packer that zips each skill for upload to claude.ai, with the same bytes on every run. It prints each description length and flags any over 200 characters. Zips go to `dist/`, which `.gitignore` now lists.
+- Tests in `tools/test_repo_integrity.py` for the marketplace entries and the launcher commands.
 
 ### Changed
 
 - [README.md](README.md) and [CLAUDE.md](CLAUDE.md) updated.
+- The README, installation guide, npm guide, skills catalog, repo map, account skills guide, CONTRIBUTING.md and backup guide describe the three plugins. A release now changes five version fields in three files.
+- `package.json` lists `account-skills/` in `files`, and has `list` and `pack` scripts.
 - Python 3.9 or newer is the stated minimum, in the [installation guide](docs/installation.md) and the [adquill README](adquill/README.md).
 - Some open items closed in the installation, adquill, npm and backup guides. The ski ads guide explains why no file numbered 02 exists.
 - The validator tests run most attack cases in one process and keep one real child process for each expected outcome. The suite takes 3.7 s instead of 5.3 s (median of 7 runs).
@@ -40,7 +47,7 @@ The plugin and marketplace manifests have carried version 0.2.0 since `8d7effb` 
 - Working-note wording was removed from the research notes (for example `On my run` and paths to scratch folders), and two research table rows with unescaped pipes were fixed. Open markers in the guides were rewritten as plain statements or as `[VERIFY: what, who]`.
 - The token hygiene guide has a new title and labels its figures as one measured session. A section lists what the repo already does, the 70k start figure is replaced by the 59k fixed part from the example, and the projected 2x to 3x saving and a remark about turn counts are gone. The review scores 5.5 and 6.3 carry a `[VERIFY]` because no file in the repo holds them.
 - The restore dry run in the backup guide now uses one clone and a `git switch` to the launcher branch. A second clone into the same folder failed. The guide also says the token report does not list subagent runs that a workflow started.
-- The npm guide and the tools guide say the installed package leaves out `account-skills/` and `.gitignore`, so `outdoornorway test` needs a clone. `doctor` works in both.
+- The npm guide and the tools guide say the installed package leaves out `.gitignore`, so `outdoornorway test` needs a clone. `doctor` works in both.
 - The repo map and CONTRIBUTING.md call the private backup a backup kept outside this repo and no longer call it a repository. CONTRIBUTING.md also says where the two account skills sit.
 - Research notes: a company phone number removed, AI model and chatbot names reworded, a note added that the ad-copy notes use the earlier name adwright, and the round 1 reviews say their test scripts are not kept here. The docs index says it lists every other file in `docs/`.
 - The install guide, the README and the npm guide say the npx route works only once the launcher is on the default branch, and that the package is not on npm yet.

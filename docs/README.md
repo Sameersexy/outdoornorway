@@ -6,6 +6,7 @@ Use this page to find the guide you need. It lists every other file and folder i
 |---|---|---|
 | [getting-started.md](getting-started.md) | Write or edit a video script with Claude Code, no coding needed | Writers and video editors |
 | [installation.md](installation.md) | Install the plugin, clone the repo or use npx, then check, update or remove it | Anyone installing |
+| [marketplace.md](marketplace.md) | Choose among the three plugins, install and update them, add a skill or cut a release | Marketers and maintainers |
 | [token-hygiene.md](token-hygiene.md) | Keep long Claude Code sessions cheap | Anyone running long sessions |
 | [repo-map.md](repo-map.md) | See what each folder holds and which paths must not move | Maintainers |
 | [skills-catalog.md](skills-catalog.md) | Tell our own skills from the vendored ones and the account-only ones | Maintainers |
@@ -19,7 +20,7 @@ Related pages outside this folder:
 - [CONTRIBUTING.md](../CONTRIBUTING.md): how to change the tools and run the tests.
 - [CHANGELOG.md](../CHANGELOG.md): what changed and when.
 - [CLAUDE.md](../CLAUDE.md): the rules Claude Code follows in this repo.
-- [account-skills/README.md](../account-skills/README.md): three account skills you can copy into a project or upload to the Claude account.
+- [account-skills/README.md](../account-skills/README.md): three account skills you can install as a plugin, copy into a project or upload to the Claude account.
 - Folder guides: [tools](../tools/README.md), [content/scripts](../content/scripts/README.md), [ski-meta-ads](../campaigns/ski-meta-ads/README.md) and [adquill](../adquill/README.md).
 
 When you add a file or folder to `docs/`, add a row here. The integrity test fails if this page does not mention it.

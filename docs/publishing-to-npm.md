@@ -4,13 +4,13 @@ This guide is for the repo owner, who publishes the launcher package to npm from
 
 ## What gets published
 
-The package is named `outdoornorway-marketing`, as set in [package.json](../package.json). It has one command, `outdoornorway`, which runs `tools/outdoornorway-cli.js`. It has no dependencies and needs Node 18 or newer. npm comes with Node.
+The package is named `outdoornorway-marketing`, as set in [package.json](../package.json). It has one command, `outdoornorway`, which runs `tools/outdoornorway-cli.js`. It has no dependencies and needs Node 18 or newer. npm comes with Node. The command lists and installs the three marketplace plugins, and packs skills into zips for claude.ai. [marketplace.md](marketplace.md) describes the plugins.
 
-The package holds the paths in the `files` list of `package.json`: the plugin manifests, `.claude/`, `adquill/`, `campaigns/`, `content/`, `docs/`, `tools/` and the top-level guides and licence files.
+The package holds the paths in the `files` list of `package.json`: the plugin manifests, `.claude/`, `account-skills/`, `adquill/`, `campaigns/`, `content/`, `docs/`, `tools/` and the top-level guides and licence files.
 
-`account-skills/` is not in the list, on purpose, because the plugin does not load it. Links from the guides to that folder resolve in a clone or on GitHub, and they do not resolve inside the installed package. The two main test suites also need a clone, because the integrity test reads `.gitignore` and `account-skills/`, and the package holds neither. Inside the installed package, `outdoornorway doctor` works and `outdoornorway test` fails on those checks, so run the tests from a clone.
+`account-skills/` is in the list because the marketplace entry `outdoornorway-account-skills` reads that folder, and `skills pack` zips it. The two main test suites still need a clone, because the integrity test reads `.gitignore`, and the package does not hold it. Inside the installed package, `outdoornorway doctor` works and `outdoornorway test` fails on that check, so run the tests from a clone.
 
-Once the package is published, npm adds a second way in, `npx outdoornorway-marketing`. The package is not on npm yet. The second way in does not replace the plugin route: Claude Code still installs the plugin from GitHub, as [installation.md](installation.md) shows.
+Once the package is published, npm adds a second way in, `npx outdoornorway-marketing`, so `npx github:Sameersexy/outdoornorway list` becomes `npx outdoornorway-marketing list`. The package is not on npm yet. The second way in does not replace the plugin route: Claude Code still installs the plugins from GitHub, as [installation.md](installation.md) shows.
 
 Publishing needs your npm account. Nothing in this repo runs `npm login`, `npm publish` or a tag push, and the repo has no publishing workflow.
 
@@ -20,13 +20,13 @@ Merge the change to the default branch first and work from that clean copy. `npm
 
 Skip this step for the first publish, which uses the version already in the manifests.
 
-The version appears in three files. Change all three in the same commit, to the same value.
+The version appears in five fields in three files. Change all five in the same commit, to the same value.
 
 | File | Field |
 |---|---|
 | `package.json` | `version` |
 | `.claude-plugin/plugin.json` | `version` |
-| `.claude-plugin/marketplace.json` | `version` of the entry in `plugins` |
+| `.claude-plugin/marketplace.json` | `version` of each of the three entries in `plugins` |
 
 Check the result:
 
@@ -34,7 +34,7 @@ Check the result:
 grep -n '"version"' package.json .claude-plugin/plugin.json .claude-plugin/marketplace.json
 ```
 
-Each line should show the same version.
+The command prints five lines, and each should show the same version. Claude Code offers an update for a plugin only when its version string changes, so a field you miss leaves that plugin's users without the release. [marketplace.md](marketplace.md#cut-a-release) lists the full release steps.
 
 Do not rely on `npm version`. It edits only `package.json`, since this repo has no package-lock.json, and it leaves the two plugin manifests alone. Inside a git repository it also makes a commit and a tag by default.
 
@@ -69,7 +69,7 @@ npm test
 ```
 
 - `git status --short` prints nothing when the copy is clean.
-- `doctor` prints `versions match (<version>)` when `package.json` and the two plugin manifests agree. It exits with 1 only when a check fails. A warning about Node or the Claude Code CLI does not stop it.
+- `doctor` prints one `ok` line per version when `package.json`, `plugin.json` and each marketplace entry agree, and a `fail` line for any that differ. It also checks that every marketplace entry points at a real folder and that each listed skill has a `SKILL.md` with a matching `name`. It exits with 1 only when a check fails. A warning about Node or the Claude Code CLI does not stop it.
 - `npm test` runs `node tools/outdoornorway-cli.js test`, which covers the validator tests and the repo integrity tests. Add `--all` to include the adquill tests.
 
 The tests need `python3` on your PATH. [installation.md](installation.md#prerequisites) lists the Python versions.
@@ -93,7 +93,7 @@ The second command should print the version you just published.
 
 - `npm publish` does not run the tests, and `package.json` has no lifecycle script that does, so run step 4 first.
 - A version can be published only once. If the upload has a problem, bump the version (step 1) and publish again.
-- After a publish, `npx outdoornorway-marketing doctor` checks the copy that npm installed. npm 10.9.4 runs the package's single `outdoornorway` bin under the package name, as a test against a local stand-in for the npm registry showed (`npx --yes outdoornorway-marketing version` printed `0.2.0`). [VERIFY: run `npx outdoornorway-marketing doctor` from an empty folder after the first publish, because the name is not on npmjs.com before then]
+- After a publish, `npx outdoornorway-marketing doctor` checks the copy that npm installed. npm 10.9.4 runs the package's single `outdoornorway` bin under the package name, as a test against a local stand-in for the npm registry showed (`npx --yes outdoornorway-marketing version` printed `0.2.0`). [VERIFY: run `npx outdoornorway-marketing doctor` and `npx outdoornorway-marketing list` from an empty folder after the first publish, because the name is not on npmjs.com before then]
 
 ## 7. Tag the release
 

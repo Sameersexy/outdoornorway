@@ -13,3 +13,6 @@ exports/
 
 # Node
 node_modules/
+
+# Build output from tools/pack_skills.py (skill zips for claude.ai upload)
+dist/
