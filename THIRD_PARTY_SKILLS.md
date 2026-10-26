@@ -11,6 +11,7 @@ The vetting notes (what was read, what was rejected and why) are in `docs/resear
 | marketing-psychology | coreyhaines31/marketingskills, `skills/marketing-psychology` | dda3841f0b294e01e93b1541486beefbfab0915e | MIT | No (manual) |
 | humanizer | blader/humanizer, `SKILL.md` | 225a6f39ac85f76ee48dbad772ea4abe4ed6c9d8 | MIT | Yes |
 | avoid-ai-writing | conorbronsdon/avoid-ai-writing, `SKILL.md` and `references/patterns.md` | 209815cdeb4af942616daec89a5e0a706c804e3a | MIT | No (manual) |
+| asd-ste100 | danyuchn/asd-ste100-skill, `SKILL.md`, `references/writing-rules.md` and `examples/before-after.md` | 8da6b6340aa22faf46fd07db8efbdea010cd38d9 | MIT | No (manual) |
 | copy-that-sells | avectats7/copy-that-sells, `skills/copy-that-sells` | aef838698152ef7904d1344a71213721ffe4b474 | MIT | No (manual) |
 | conversion-copywriter | mikefutia/conversion-copywriter-skill, `SKILL.md` | f8d30360d38b20ff1f616ff6c4c5d89a764ce9a3 | MIT | No (manual) |
 | fact-check | garrytan/gbrain, `skills/fact-check` (rewritten, see below) | 76a9984bdca8183f34965e04e0aad92c85e71ba8 | MIT | Yes |
@@ -33,6 +34,7 @@ The writing skills overlap. All of them say "write copy". If they all auto-invok
 - Removed `copy-that-sells/examples/` (a fictional mattress brand brief and its output, referenced nowhere). Removed the `cookbook/` bullet and the "spanish file" wording from `copy-that-sells/SKILL.md`, and the browser and `copy-deck.html` sentence from `conversion-copywriter/SKILL.md`, because the files they named were not copied.
 - Removed the Claude model names from one heading in `copy-that-sells/references/self-edit.md` and replaced one dash in `ad-creative/references/imessage-video-ads.md`.
 - `avoid-ai-writing`: copied only `SKILL.md` and `references/patterns.md` (v3.38.0). Not copied: the `scripts/`, `detector/`, `examples/`, `bin/`, `evals/`, `corpus/` and `dist/` folders and the packaging for other tools, because no third-party code runs here. Added `disable-model-invocation: true` so it stays manual next to `humanizer`, removed the emoji from the frontmatter, replaced spaced em dashes with hyphens in `SKILL.md` prose, and added a note under the title that the bundled commands are absent and the manual fallbacks apply. `references/patterns.md` is unchanged.
+- `asd-ste100`: copied `SKILL.md`, `references/writing-rules.md` and `examples/before-after.md` (v0.4.0). Not copied: `scripts/ste-lint.py` and `examples/linter-edge-cases.md`, because no third-party code runs here. Added `disable-model-invocation: true` (its own description says it is not for marketing copy), replaced spaced em dashes with hyphens in all three files, and added a note under the title that the linter command is absent and the first pass is done by hand. It does not include ASD's approved dictionary, which ASD does not allow to be redistributed. The skill name has digits, so the two table patterns in `tools/test_repo_integrity.py` now accept `0-9`.
 - Kept on purpose: quoted dashes and emoji where a file lists them as examples of AI writing to avoid (for example `copywriting/references/ai-tells.md`) or shows an ad format that uses them.
 
 ## What was deliberately not installed

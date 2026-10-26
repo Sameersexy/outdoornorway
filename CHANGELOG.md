@@ -25,6 +25,7 @@ The plugin manifest and the `outdoornorway-marketing` marketplace entry have car
 - `tools/pack_skills.py`, a packer that zips each skill for upload to claude.ai, with the same bytes on every run. It prints each description length and flags any over 200 characters. Zips go to `dist/`, which `.gitignore` now lists.
 - Tests in `tools/test_repo_integrity.py` for the marketplace entries and the launcher commands.
 - `avoid-ai-writing` in `.claude/skills/`, a manual skill that audits text for AI writing patterns and rewrites it (text copied from conorbronsdon/avoid-ai-writing at `209815c`, MIT, no code copied). It is in the `outdoornorway-copy-skills` entry, so the copy skills now number nine. Provenance and local changes are in [THIRD_PARTY_SKILLS.md](THIRD_PARTY_SKILLS.md).
+- `asd-ste100` in `.claude/skills/`, a manual skill that rewrites text an agent or system must parse into Simplified Technical English (text copied from danyuchn/asd-ste100-skill at `8da6b63`, MIT, linter not copied). It is not for marketing copy, so the copy skill count stays at nine. The licence-table patterns in `tools/test_repo_integrity.py` now accept digits in a skill name.
 
 ### Changed
 

@@ -240,7 +240,7 @@ class Agents(unittest.TestCase):
 class Licences(unittest.TestCase):
     def test_every_listed_third_party_skill_has_its_licence_file(self):
         table = read(ROOT / "THIRD_PARTY_SKILLS.md")
-        skills = re.findall(r"^\| ([a-z-]+) \| [^|]+ \| [0-9a-f]{40} \|", table, re.M)
+        skills = re.findall(r"^\| ([a-z0-9-]+) \| [^|]+ \| [0-9a-f]{40} \|", table, re.M)
         self.assertGreaterEqual(len(skills), 8)
         for skill in skills:
             folder = ROOT / ".claude" / "skills" / skill
@@ -255,7 +255,7 @@ class Licences(unittest.TestCase):
 
 def third_party_skill_names():
     table = read(ROOT / "THIRD_PARTY_SKILLS.md")
-    return set(re.findall(r"^\| ([a-z-]+) \| [^|]+ \| [0-9a-f]{40} \|", table, re.M))
+    return set(re.findall(r"^\| ([a-z0-9-]+) \| [^|]+ \| [0-9a-f]{40} \|", table, re.M))
 
 
 @functools.lru_cache(maxsize=None)

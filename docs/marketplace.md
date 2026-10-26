@@ -7,7 +7,7 @@ This page is for marketers who choose and install the Outdoor Norway plugins, an
 | Plugin | Who it is for | What it holds |
 |---|---|---|
 | `outdoornorway-marketing` | Writers and editors who make video scripts. Most people want this one. | The umbrella plugin: the slash commands, the two agents, scriptcraft with its validator, and the nine copy skills. |
-| `outdoornorway-copy-skills` | People who want only the copy skills, with none of the video script tools. | Ten skills: ad-creative, avoid-ai-writing, conversion-copywriter, copy-that-sells, copywriting, fact-check, humanizer, marketing-psychology, ponytail and social. |
+| `outdoornorway-copy-skills` | People who want only the copy skills, with none of the video script tools. | Eleven skills: ad-creative, asd-ste100, avoid-ai-writing, conversion-copywriter, copy-that-sells, copywriting, fact-check, humanizer, marketing-psychology, ponytail and social. |
 | `outdoornorway-account-skills` | Anyone who wants the brand and script skills in Claude Code. | Three skills: brand-voice-checker, guest-benefit-checker and script-writing. |
 | `repo-band` | Anyone who works in the terminal or the desktop app and wants a status row above the prompt. | A mod, not a skill: cost, context fill, last turn, branch, changed files and the last validator result, with Compact and Hide buttons. See [its README](../mods/repo-band/README.md). |
 
