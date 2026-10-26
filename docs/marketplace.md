@@ -7,7 +7,7 @@ This page is for marketers who choose and install the Outdoor Norway plugins, an
 | Plugin | Who it is for | What it holds |
 |---|---|---|
 | `outdoornorway-marketing` | Writers and editors who make video scripts. Most people want this one. | The umbrella plugin: the slash commands, the two agents, scriptcraft with its validator, and the eight copy skills. |
-| `outdoornorway-copy-skills` | People who want only the copy skills, with none of the video script tools. | Eight skills: ad-creative, conversion-copywriter, copy-that-sells, copywriting, fact-check, humanizer, marketing-psychology and social. |
+| `outdoornorway-copy-skills` | People who want only the copy skills, with none of the video script tools. | Nine skills: ad-creative, conversion-copywriter, copy-that-sells, copywriting, fact-check, humanizer, marketing-psychology, ponytail and social. |
 | `outdoornorway-account-skills` | Anyone who wants the brand and script skills in Claude Code. | Three skills: brand-voice-checker, guest-benefit-checker and script-writing. |
 
 Every plugin id has the form `NAME@outdoornorway`. The skills in the second and third plugin carry the plugin name, for example `outdoornorway-copy-skills:copywriting` and `outdoornorway-account-skills:brand-voice-checker`.
