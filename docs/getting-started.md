@@ -47,14 +47,6 @@ You need three things: a Claude account, Claude Code, and Python 3.
 2. **Claude Code.** Follow Step 1 of the [Claude Code quickstart](https://code.claude.com/docs/en/quickstart). It gives one command for each system (Mac, Linux, Windows). If you have never used a terminal, read the [terminal guide](https://code.claude.com/docs/en/terminal-guide) first. When it is installed, open a new terminal window and run `claude --version`. It should print a version number.
 3. **Python 3.** The checker is a Python script. Open a terminal and run `python3 --version`. If it prints a version number, you are set. If it says the command is not found, install Python 3 from the [official Python download page](https://www.python.org/downloads/) and try again. The commands call `python3`, and on Windows that name may not exist. The tools are not tested on Windows.
 
-Optional, keeps usage down: cap how long a session can grow. Put this in the file `settings.json` inside the `.claude` folder in your home folder (create the file if it is not there):
-
-```
-{ "autoCompactWindow": 200000 }
-```
-
-If the file already has settings, add the line inside the existing braces with a comma. Claude Code then summarises a long conversation at about 200k tokens.
-
 Then pick one way to add our tools.
 
 **Option A: install the plugin (works from any folder).** In a terminal, run these two lines:
@@ -165,5 +157,5 @@ Editor's checklist for each script:
 - Invite people who need to push: on GitHub, repo Settings, Collaborators, Add people. On a personal account a collaborator can push.
 - Ask everyone to work on a branch and open a pull request, then review and merge. Branch protection on `main` is optional. This guide does not check whether the current plan allows it for this repo, so look in the repo settings.
 - The repo is public. Do not add supplier terms, customer or staff personal data, or other private client information. The existing page-audit notes in `campaigns/ski-meta-ads/` stay public on purpose (owner decision, 12 October 2026).
-- Your own usage: long sessions and the plugins and connectors that add overhead to every step cost the most. Settings to review (auto-compact window, plugins and connectors to switch off, the Artifact tool) are in `docs/token-hygiene.md`.
+- Your own usage: long sessions and the plugins and connectors that add overhead to every step cost the most. Settings to review (plugins and connectors to switch off, the Artifact tool) are in `docs/token-hygiene.md`.
 - When you change the tools, bump `version` in `.claude-plugin/plugin.json` and `.claude-plugin/marketplace.json` so installed copies update.
