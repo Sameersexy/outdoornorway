@@ -13,6 +13,7 @@ The vetting notes (what was read, what was rejected and why) are in `docs/resear
 | copy-that-sells | avectats7/copy-that-sells, `skills/copy-that-sells` | aef838698152ef7904d1344a71213721ffe4b474 | MIT | No (manual) |
 | conversion-copywriter | mikefutia/conversion-copywriter-skill, `SKILL.md` | f8d30360d38b20ff1f616ff6c4c5d89a764ce9a3 | MIT | No (manual) |
 | fact-check | garrytan/gbrain, `skills/fact-check` (rewritten, see below) | 76a9984bdca8183f34965e04e0aad92c85e71ba8 | MIT | Yes |
+| ponytail | DietrichGebert/ponytail, `skills/ponytail` | 09c434ab73ca43761c5d8b0c5d341926c2fba710 | MIT | Yes |
 
 This repo's own files are MIT licensed (see `LICENSE`). Each third-party skill keeps the licence of its upstream project, in a `LICENSE-*` file inside its folder.
 

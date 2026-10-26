@@ -55,6 +55,7 @@ These eight skills sit in `.claude/skills/` as text copied from pinned commits. 
 | ad-creative | Generates and iterates ad headlines, descriptions and primary text for paid platforms | No (manual) |
 | social | Creates and optimises social media content | No (manual) |
 | marketing-psychology | Applies psychological principles and mental models to marketing | No (manual) |
+| ponytail | Makes the agent write the smallest complete change on coding tasks | Yes |
 | humanizer | Rewrites AI-sounding text so it reads like the writer | Yes |
 | copy-that-sells | Writes ads, headlines, taglines, long copy and landing pages | No (manual) |
 | conversion-copywriter | Writes conversion copy from scratch, with alternates for every headline | No (manual) |
