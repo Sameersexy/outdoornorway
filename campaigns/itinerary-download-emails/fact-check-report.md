@@ -6,6 +6,8 @@ Independent check of decisions 1 to 8, re-run on 26 October 2026: the counts bel
 
 Source pages re-fetched later on 26 October 2026: all 17 returned 200, and every quoted page line below still matches the live text, including both prices, the five 7-Day departures and the 4.9/5 Tripadvisor badge on both tour pages. No page change was found. The quote in [74] was shortened in the first check and now reads as the page does; the email line it supports is unchanged.
 
+Structure change, 26 October 2026, at the owner's request: the old Emails 7 and 8 are folded into Email 6, and the Facts lines are no longer in the sequence files; this report is now the only record of each claim's source. The claims of the old Emails 7 and 8 are listed under Email 6 below. The corrections list keeps the email numbers of the time.
+
 Source keys used below (URLs in the README sources table):
 
 | Key | Source |
@@ -31,8 +33,8 @@ Source keys used below (URLs in the README sources table):
 
 ## Summary
 
-- Claims checked: 93 (97 listed; 4 removed from the drafts on the owner's answers and not counted)
-- Verified (levels 1 to 2): 93, of which 11 rest on the owner's answers of 26 October 2026, recorded as the source on each entry
+- Claims checked: 92 (97 listed; 5 removed from the drafts and not counted: 4 on the owner's answers, 1 when Emails 6 and 7 were merged)
+- Verified (levels 1 to 2): 92, of which 11 rest on the owner's answers of 26 October 2026, recorded as the source on each entry
 - Unverified (level 3): 0
 - Disputed (level 4): 0
 - Corrected: 20 (12 at the first check, 8 when the answers were applied)
@@ -280,7 +282,7 @@ Still open:
     SOURCE: T7 badge "4.9/5 RATING" with the Tripadvisor logo in the page HTML
     NOTES: No review count on the page. The product-marketing rule asks for a named source and a number; the source is named and the rating is the number. Ask for the count.
 
-### 7-Day Email 6, day 18
+### 7-Day Email 6, day 18 (old Emails 6, 7 and 8)
 
 [36] CLAIM: You fly into Bergen and home from Tromsø.
     SLOT: body
@@ -298,9 +300,6 @@ Still open:
     STATUS: 2 LIKELY ACCURATE
     SOURCE: owner's answer to Decision 4, 26 October 2026 ("he is a trip captain"); TE still lists no Mate
     NOTES: Was level 3. Counted once for both tours.
-
-### 7-Day Email 7, day 25
-
 [39] CLAIM: Departures 23 January, 30 January, 6 February, 13 February and 27 February 2027, each 7 days.
     SLOT: body
     STATUS: 1 VERIFIED
@@ -319,8 +318,9 @@ Still open:
 
 [42] CLAIM: The Alta trip is six days in one Arctic base with your own dog team, a snowmobile day and a whale cruise.
     SLOT: body
-    STATUS: 2 LIKELY ACCURATE
+    STATUS: removed from the draft
     SOURCE: TA Included list
+    NOTES: Removed when Emails 6 and 7 were merged on 26 October 2026; the "This trip or Alta?" question is gone from the last email. Email 3 keeps the cross-sell line.
 
 [43] CLAIM: Full refund up to 60 days before departure.
     SLOT: body
@@ -332,16 +332,13 @@ Still open:
     SLOT: body (dates)
     STATUS: 1 VERIFIED
     SOURCE: arithmetic from [1]; checked with Python date subtraction
-    NOTES: The other three cut-offs, listed in the Email 7 Facts line: 1 December, 8 December and 15 December 2026.
+    NOTES: The other three cut-offs: 1 December, 8 December and 15 December 2026.
 
 [45] CLAIM: Any of the five weeks is open to request.
     SLOT: body
     STATUS: 2 LIKELY ACCURATE
     SOURCE: owner's answer to Decision 3, 26 October 2026 ("all dates available"); the five weeks from TJ
     NOTES: Was level 3, as "Sending the request is a question, not a booking". Whether the form takes payment is not stated anywhere, so the email does not say.
-
-### 7-Day Email 8, day 40
-
 [46] CLAIM: We also build trips to your own dates.
     SLOT: body
     STATUS: 2 LIKELY ACCURATE
@@ -589,7 +586,7 @@ Still open:
     SOURCE: TA badge with the Tripadvisor logo in the page HTML
     NOTES: As [35]. No count shown.
 
-### 6-Day Alta Email 6, day 18
+### 6-Day Alta Email 6, day 18 (old Emails 6, 7 and 8)
 
 [91] CLAIM: The transfer from Alta Airport is included.
     SLOT: body
@@ -601,9 +598,6 @@ Still open:
     STATUS: removed from the draft
     SOURCE: as [37]
     NOTES: Was level 3. Marker removed. Alta Email 6 promises neither.
-
-### 6-Day Alta Email 7, day 25
-
 [93] CLAIM: The trip runs November to April, 6 days and 5 nights, on dates you choose.
     SLOT: body (dates)
     STATUS: 2 LIKELY ACCURATE
@@ -622,13 +616,10 @@ Still open:
     NOTES: An example date, labelled as such in the email. The Decision 1 and Decision 3 markers were removed with the owner's answers.
 
 [97] CLAIM: Any start date in the season is open to request.
-    SLOT: body (Alta Email 7)
+    SLOT: body (Alta Email 6)
     STATUS: 2 LIKELY ACCURATE
     SOURCE: owner's answer to Decision 3, 26 October 2026 ("all dates available"); TA flexible dates, November to April
     NOTES: Added when "Sending the request is a question, not a booking" was replaced. Whether the form takes payment is not stated anywhere, so the email does not say.
-
-### 6-Day Alta Email 8, day 40
-
 [96] CLAIM: We also build trips to your own dates and pace.
     SLOT: body
     STATUS: 2 LIKELY ACCURATE
@@ -636,9 +627,9 @@ Still open:
 
 ## Consistency check across slots
 
-- Price: Email 5 and Email 7 of each sequence send the reader to the tour page that shows the same figure. No email states a price the page does not show.
-- Dates: the five 7-Day departures appear in Email 2 and Email 7 with the same dates. The Alta emails never name a fixed departure; the one date in Alta Email 7 is labelled as an example.
+- Price: Email 5 and Email 6 of each sequence send the reader to the tour page that shows the same figure. No email states a price the page does not show.
+- Dates: the five 7-Day departures appear in Email 2 and Email 6 with the same dates. The Alta emails never name a fixed departure; the one date in Alta Email 6 is labelled as an example.
 - Length: "7 days" and "6 days and 5 nights" match the pages and the date spans.
-- Cancellation: identical wording in both Email 5 drafts (the scale plus the flexible booking link) and in both Email 7 drafts (the 60-day rule attributed to the tour page).
-- Sender: all 14 signatures read "Mate, trip captain" above "Outdoor Norway".
+- Cancellation: identical wording in both Email 5 drafts (the scale plus the flexible booking link) and in both Email 6 drafts (the 60-day rule attributed to the tour page).
+- Sender: all 10 signatures read "Mate, trip captain" above "Outdoor Norway".
 - Links: every URL in the two sequences returned HTTP 200 on 26 October 2026 (command in the README).

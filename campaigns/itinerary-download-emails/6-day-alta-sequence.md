@@ -1,15 +1,8 @@
-# 6-Day Alta: follow-up sequence after the itinerary download
+# 6-Day Alta: follow-up emails after the itinerary download
 
-Status: draft, awaiting approval. Decisions 1 to 8 in the README were answered by the owner on 26 October 2026 and the answers are applied here; decisions 9 and 10 are still open. Mate signs as trip captain, which the owner confirmed the same day. Read the [folder README](README.md) for the reasoning, the decisions and the sources. Days count from the download. Each email has one button and at most two text links. `[first name]` is the merge field. `[REPLY ADDRESS]` in Email 6 is filled in by whoever sends.
-
-Sender: Mate, trip captain, Outdoor Norway. Replies go to the company inquiry address the current sequence already uses; the mailing tool fills in `[REPLY ADDRESS]` (the repo keeps no email addresses). See Decision 4 in the README.
-
-Tour page used in every email: https://www.outdoornorway.com/multi-day-tour/norway-northern-lights-tour-package
+Draft for approval. Sent by Mate, trip captain, Outdoor Norway. Email 1 is the existing delivery email; days count from the download. The reasoning, the decisions and the source of every fact are in the [folder README](README.md) and the [fact-check report](fact-check-report.md).
 
 ## Email 2, day 2: which month
-
-Reader's question: when, and how long?
-Step we ask for: reply with the month, and whether the dates are fixed or flexible.
 
 Subject A: November to April. Which month is your Alta?
 Subject B: Your dates are flexible. Here is how the month changes the trip
@@ -32,14 +25,7 @@ Everything about Alta and the lights is in our [Alta aurora guide](https://www.o
 Mate, trip captain
 Outdoor Norway
 
-Principle: commitment and consistency. A reply with a month and a fixed-or-flexible answer is a small step that gives the team something to work with. The season guide is the reciprocity gift.
-
-Facts: flexible dates for 2026 and 2027, November to April, from the Alta tour page; "much further into the Arctic winter" for November, "exceptionally long Arctic nights" for December and January, "another strong contender" for March, April window shrinks, and the Visit Norway note from the season guide; "noticeably longer than around the December solstice" from the Bergen winter blog; "there isn't one guaranteed best month" and "we wouldn't build an entire trip around a single night" from the Alta blog; dog sledding and the Finnmarksvidda snowmobile trip from the tour page; the April sentence stays on the owner's answer of 26 October 2026 that the sold season and the aurora season end at the same time, late March to early April (README decision 5).
-
 ## Email 3, day 5: can I do it
-
-Reader's question: am I fit enough, and what will I be asked to do?
-Step we ask for: check yourself against the requirements, then settle the month.
 
 Subject A: Can you do the Alta trip? Check yourself, day by day
 Subject B: You drive your own dog team. Here is what each day asks of you
@@ -67,14 +53,7 @@ What a Gargia evening is like, and how to dress for it: [our Alta guide](https:/
 Mate, trip captain
 Outdoor Norway
 
-Principle: ability before motivation (Fogg). Name the physical asks and the time on each activity so the reader can say yes with confidence, and name who the trip is not for. The two-sided message raises trust in the rest.
-
-Facts: grade, requirements, cruise length and refreshments, dog sledding length with your own team and lunch, Gargia Lodge and sauna, snowmobile length and pairs, age and licence line, optional snowshoe not included, free time days, specialist equipment line, packing items and "good for a first trip" from the Alta tour page and its FAQ; "Gargia Valley" from the tour page; "dress for standing still" from the Alta blog; the cruise is part of the package: it is Day 2 and in the Included list on the tour page (README decision 6).
-
 ## Email 4, day 9: what if we see nothing
-
-Reader's question: what if the lights do not show?
-Step we ask for: accept the real odds and keep going.
 
 Subject A: What if the lights do not show in Alta?
 Subject B: Four evenings, the Finnmarksvidda, and a fire to wait by
@@ -99,14 +78,7 @@ How Alta compares with Tromsø: [where to see the lights in Norway](https://www.
 Mate, trip captain
 Outdoor Norway
 
-Principle: name the anxiety before the reader does. A two-sided message (no guarantee, here is what you get anyway) is more credible than a promise, and the specific evenings let the reader picture the trip, which is where experiences start paying back.
-
-Facts: "can never be guaranteed", Day 1 welcome dinner and possible first sighting, Day 3 fire and sky, Day 4 kennel with about 40 huskies, Arctic dinner and viewing away from light pollution, Day 5 final chance, Day 2 no aurora activity, "rest of the trip goes ahead", from the Alta tour page and its FAQ; 70 degrees north, "long, dark winter nights with quick access to the open landscapes of Finnmarksvidda", "something you won't find in a city viewpoint", "Clouds can obscure an otherwise active Aurora", 6 pm to 1 am, "Dress for standing still" and "a snowmobile adventure first and an Aurora experience second" from the Alta blog; "Alta could be clear while Tromsø is cloudy" from the where-to-see blog.
-
 ## Email 5, day 13: the full price
-
-Reader's question: how much, for what, and what if I cannot go?
-Step we ask for: forward this to the person you are travelling with.
 
 Subject A: The full price, what it covers, and what happens if you cancel
 Subject B: NOK 31,000. Everything in, everything out, in one email
@@ -158,92 +130,29 @@ Our [travel insurance page](https://www.outdoornorway.com/travel-insurance) expl
 Mate, trip captain
 Outdoor Norway
 
-Principle: the second reader. The decision passes through a partner who was not on the website. Give them total price, inclusions and the exit terms in one place. The refund scale is risk reversal; the rating is social proof with a named source.
-
-Facts: price, taxes, 6 days 5 nights, hotels and nights, inclusions, exclusions, cancellation scale and rating from the Alta tour page; Gargia Lodge about 30 minutes outside Alta with sauna and evenings by the fire from the tour page; insurance recommendation and "does not insure the participants" from the terms page and the travel insurance page; the 14-day window and lifetime deposit from the flexible booking page, and that both policies apply from the owner's answer of 26 October 2026 (README decision 1).
-
-## Email 6, day 18: a note from Mate
-
-Reader's question: what is stopping me?
-Step we ask for: reply with the one thing.
-
-Subject A: The three things people get stuck on
-Subject B: Dates, a travel partner, or flights to Alta?
-Preview: If you have not booked, it is usually one of three things. Reply with the number.
-
-Hi [first name],
-
-A couple of weeks ago you downloaded the plan. If you have not booked yet, it is usually one of three things. I can help with all of them, so reply with the number.
-
-1. The dates. You have a window but not a week. Tell me the window and I will tell you what we can do inside it.
-2. The person you want to bring is not sure. Forward them my last email, the one with the price. Or tell me what they are worried about and I will answer it in writing so you can pass it on.
-3. Flights to Alta. Tell me the city you leave from and I will tell you how our guests usually route it. The transfer from Alta Airport is included either way.
-
-If it is something else, that is fine too. One line is enough.
-
-And if the answer is "not this year", reply with just that and I will stop writing.
-
-[Button: Reply to Mate](mailto:[REPLY ADDRESS]?subject=6-Day%20Alta%20question)
-
-Mate, trip captain
-Outdoor Norway
-
-Principle: lower the effort of asking. Naming the three common blockers turns "ask me anything" into a multiple choice. The opt-out line respects the reader and keeps the list clean.
-
-Facts: airport transfer included from the Alta tour page. "What we can do inside it" is a promise the sender answers by hand; it is not a claim about availability.
-
-## Email 7, day 25: decide
-
-Reader's question: is it time to decide?
-Step we ask for: request your dates.
+## Email 6, day 18: three questions, then you are done
 
 Subject A: Three questions, then you are done
 Subject B: Which dates, who is coming, and the one date that matters
-Preview: The only three questions left, and why requesting your dates now costs nothing.
+Preview: The three things people get stuck on, and why requesting your dates now costs nothing.
 
 Hi [first name],
 
-If you are still deciding, these are the only three questions left. Answer them and you are done.
+A couple of weeks ago you downloaded the plan. If you are still deciding, it usually comes down to three things. Answer them and you are done.
 
-1. Which dates? The trip runs November to April, 6 days and 5 nights, on dates you choose. Give us a start date, or a window, and we come back with what works.
-2. Who is coming? Tell us how many, and we will confirm the rooms at Canyon Hotel and Gargia Lodge. Travelling alone? There is a room-share option. Tell us and we will explain how it works.
-3. This trip or Bergen to Tromsø? If you want one Arctic base, your own dog team, a snowmobile day and a whale cruise, this is the one. If you want Bergen, the fjords and a ski day before the Arctic, it is our [7-Day Bergen to Tromsø](https://www.outdoornorway.com/multi-day-tour/northern-lights-tour-bergen-tromso).
+1. Which dates? The trip runs November to April, 6 days and 5 nights, on dates you choose, and any start date in the season is open to request. Have a window but not a week? Tell me the window and I will tell you what we can do inside it.
+2. Who is coming? Tell us how many, and we will confirm the rooms at Canyon Hotel and Gargia Lodge. Travelling alone? There is a room-share option. Tell us and we will explain how it works. If the person you want to bring is not sure, forward them my last email, the one with the price, or tell me what they are worried about and I will answer it in writing.
+3. Flights to Alta. Tell me the city you leave from and I will tell you how our guests usually route it. The transfer from Alta Airport is included either way.
 
 Why a date matters now. The cancellation terms on the tour page give a full refund up to 60 days before departure. For a trip starting on 15 February 2027, that is 17 December 2026. Requesting your dates now gives you the longest window to change your mind at no cost.
 
-Any start date in the season is open to request. Send the request and we come back to confirm your dates and the next step.
+Send the request and we come back to confirm your dates and the next step.
 
 [Button: Request your dates](https://www.outdoornorway.com/multi-day-tour/norway-northern-lights-tour-package)
 
-Mate, trip captain
-Outdoor Norway
+Rather ask first? [Reply to me](mailto:[REPLY ADDRESS]?subject=6-Day%20Alta%20question) with the number of your question, or anything else. One line is enough. If the plan does not quite fit, we also build trips to your own dates and pace: see [tailor-made trips](https://www.outdoornorway.com/tailor-made-adventures).
 
-Principle: close the choice. Three questions, each with a short answer, and the only deadline that is true. The refund cut-off reframes "book now" as "keep your options open", which puts loss aversion on the reader's side.
-
-Facts: season, 6 days 5 nights, flexible dates, hotels and the 60-day full refund from the Alta tour page; the example cut-off is calculated (60 days before 15 February 2027 is 17 December 2026); the room-share option and that any start date in the season is open to request from the owner's answers of 26 October 2026 (README decisions 7 and 3).
-
-## Email 8, day 40, optional: last check-in
-
-Reader's question: still interested?
-Step we ask for: reply, or request dates.
-
-Subject A: Still thinking about Alta?
-Subject B: One line from you and I will do the rest
-Preview: A short check-in, then I leave you alone.
-
-Hi [first name],
-
-A short one. Are you still thinking about Alta this winter?
-
-If yes, reply with your dates, or a window, and I will take it from there. If the plan does not quite fit, we also build trips to your own dates and pace: see [tailor-made trips](https://www.outdoornorway.com/tailor-made-adventures).
-
-If not this year, no reply needed. This is the last email in the series.
-
-[Button: Request your dates](https://www.outdoornorway.com/multi-day-tour/norway-northern-lights-tour-package)
+And if the answer is "not this year", reply with just that and I will stop writing.
 
 Mate, trip captain
 Outdoor Norway
-
-Principle: a clean end. Telling the reader this is the last email removes the pressure and often gets the reply the earlier emails did not.
-
-Facts: tailor-made page exists on the live site; flexible dates from the Alta tour page.

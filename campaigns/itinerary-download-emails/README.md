@@ -1,11 +1,11 @@
 # Itinerary download emails
 
-Status: draft, awaiting approval. Nothing in this folder has been sent. Decisions 1 to 8 were answered by the owner on 26 October 2026 and the answers are applied in the drafts; decisions 9 and 10 are open. The emails here replace the follow-up sequence that goes out after someone downloads a tour itinerary, for the 7-Day Bergen to Tromsø trip and the 6-Day Alta trip. Read this file first, then the two sequence files.
+Status: draft, awaiting approval. Nothing in this folder has been sent. Decisions 1 to 8 were answered by the owner on 26 October 2026 and the answers are applied in the drafts; decisions 9 and 10 are open. On 26 October 2026 the owner also cut the sequence to five emails: the old Emails 7 and 8 are folded into Email 6, and the working notes (reader's question, step, principle and Facts lines) are out of the sequence files, which now hold only the emails. The emails here replace the follow-up sequence that goes out after someone downloads a tour itinerary, for the 7-Day Bergen to Tromsø trip and the 6-Day Alta trip. Read this file first, then the two sequence files.
 
 | File | What it holds |
 |---|---|
-| [7-day-bergen-tromso-sequence.md](7-day-bergen-tromso-sequence.md) | Seven emails for the 7-Day Northern Lights Tour, Bergen to Tromsø, plus one optional check-in |
-| [6-day-alta-sequence.md](6-day-alta-sequence.md) | Seven emails for the 6-Day Alta trip, plus one optional check-in |
+| [7-day-bergen-tromso-sequence.md](7-day-bergen-tromso-sequence.md) | Emails 2 to 6 for the 7-Day Northern Lights Tour, Bergen to Tromsø |
+| [6-day-alta-sequence.md](6-day-alta-sequence.md) | Emails 2 to 6 for the 6-Day Alta trip |
 | [fact-check-report.md](fact-check-report.md) | Claim-by-claim check of both sequences against the live pages, with the corrections made and the open questions |
 | [decision-check-2026-10-26.md](decision-check-2026-10-26.md) | Independent check of how decisions 1 to 8 were applied: fixes made and the findings left for the owner |
 | [handoff-2026-10-26.md](handoff-2026-10-26.md) | Session handoff of 26 October 2026: what is done, what the owner still decides, and the checks to run before touching the drafts again |
@@ -34,9 +34,9 @@ One version per email. Each email answers the next question a buyer asks and ask
 | 3 | 5 | Can I do it? | Check yourself against the requirements | Tour page, day by day |
 | 4 | 9 | What if we see nothing? | Accept the odds, keep reading | Aurora blog for that base |
 | 5 | 13 | How much, for what, and what if I cancel? | Forward to the travel partner | Tour page, price and inclusions |
-| 6 | 18 | What is stopping me? | Reply with the one thing | Reply by email |
-| 7 | 25 | Is it time to decide? | Request your dates | Tour page, date request |
-| 8 (optional) | 40 | Still interested? | Reply or request dates | Tour page |
+| 6 | 18 | What is stopping me, and is it time to decide? | Request your dates, or reply with the one thing | Tour page, date request (reply link and tailor-made link as text) |
+
+Email 6 is the last email. It holds the three common blockers (the week or dates, the travel partner, flights), the room-share option, the 60-day refund cut-off, the date request, a reply link, the tailor-made line for people whose dates do not fit, and the "not this year" opt-out.
 
 Stop rules: stop the sequence when the person books, requests dates, or replies "not this year". A reply to any email goes to a person, and the next scheduled email still goes out unless the reply changes the stop rule.
 
@@ -47,7 +47,7 @@ Suggested edit to Email 1, the delivery email: add the price line ("From NOK 41,
 - Voice and the do-not-claim list from `.claude/product-marketing.md`. No group size numbers, no age limits, no "all gear included", no "slots left", no "per person", no guaranteed sightings, no guaranteed departures.
 - The rating appears once per sequence as "4.9/5 on Tripadvisor", the form the tour pages use.
 - The Tripadvisor review page and the site's own reviews page are not linked: the reviews page shows no winter trips and no named rating source.
-- The cross-sell to the other tour appears once, in Email 3, as an honest exit line, and once more in Email 7 as one of three questions. Nowhere else.
+- The cross-sell to the other tour appears once, in Email 3, as an honest exit line. It was dropped from the last email when Emails 6 and 7 were merged, so the reader is not handed a new choice at decision time.
 - Every button URL was fetched live on 26 October 2026. Links to the month guide and the Alta guide use the blog URLs as published; their slugs contain words the voice guide avoids, which is fine for a URL and a page title but not for our own sentences.
 - No scarcity wording. The only deadline used is the real one: the full-refund cut-off 60 days before departure, as published on the tour pages.
 
@@ -55,13 +55,13 @@ Suggested edit to Email 1, the delivery email: add the price line ("From NOK 41,
 
 Items 1 to 8 were answered by the owner on 26 October 2026. The answers count as confirmed client data, source hierarchy level 1 in the fact-check skill, and are applied in the drafts. Items 9 and 10 are still open.
 
-1. Cancellation terms. The tour pages and the terms page give a 60, 45 and 30 day scale (full refund, 75%, 50%, none). The flexible booking page promises a 14-day risk-free window and a lifetime deposit on 90 days notice. Answer: both apply; they come from different vendors with different policies. Applied: Email 5 keeps the scale and now links the flexible booking page for the 14-day window and the lifetime deposit; Email 7 attributes the 60-day full refund to the tour page. Not published anywhere: which vendor covers which part of the trip, and the flexible booking note that a cancellation within 90 days of departure forfeits the whole payment, which differs from the tour page scale. Whoever answers the replies should have that answer ready.
+1. Cancellation terms. The tour pages and the terms page give a 60, 45 and 30 day scale (full refund, 75%, 50%, none). The flexible booking page promises a 14-day risk-free window and a lifetime deposit on 90 days notice. Answer: both apply; they come from different vendors with different policies. Applied: Email 5 keeps the scale and now links the flexible booking page for the 14-day window and the lifetime deposit; Email 6 attributes the 60-day full refund to the tour page. Not published anywhere: which vendor covers which part of the trip, and the flexible booking note that a cancellation within 90 days of departure forfeits the whole payment, which differs from the tour page scale. Whoever answers the replies should have that answer ready.
 2. Deposit and balance. No page states the deposit amount or when the balance is due. Answer: not needed. Applied: the sentence is dropped from both Email 5 drafts; the emails say nothing about a deposit or a balance.
-3. What the date request does. Answer: all dates are available. Applied: "a question, not a booking" is replaced in both Email 7 drafts with "any of the five weeks" (7-Day) or "any start date in the season" (Alta) being open to request, and the team confirming the dates and the next step. The emails do not state live availability as a fact, and they do not say whether the form takes payment.
+3. What the date request does. Answer: all dates are available. Applied: "a question, not a booking" is replaced in both Email 6 drafts (formerly Email 7) with "any of the five weeks" (7-Day) or "any start date in the season" (Alta) being open to request, and the team confirming the dates and the next step. The emails do not state live availability as a fact, and they do not say whether the form takes payment.
 4. Sender. The emails are signed "Mate". The team page lists no one by that name. Answer: Mate is a trip captain. Applied: every signature reads "Mate, trip captain" above "Outdoor Norway". No reply time and no call are promised; Email 6 ends at "One line is enough."
 5. Alta in April. The Alta trip is sold for November to April; the Alta blog puts the aurora season at September to the end of March. Answer: it does not matter, both end at the same time, late March to early April. Applied: Email 2 for Alta keeps the April sentence ("the dark window shrinks, so the daytime activities carry more of the trip"), which matches the season guide, and the marker is removed.
 6. The whale cruise. Answer: yes, if it is in the package. Applied: the cruise is Day 2 on the Alta tour page and in its Included list, so Email 3 for Alta names it without a caveat and the marker is removed.
-7. Single travellers. Rooms are twin-share on the 7-Day. Answer: there are share options for accommodation. Applied: both Email 7 drafts add "Travelling alone? There is a room-share option. Tell us and we will explain how it works." No single supplement or price is mentioned, because none is published.
+7. Single travellers. Rooms are twin-share on the 7-Day. Answer: there are share options for accommodation. Applied: both Email 6 drafts (formerly Email 7) add "Travelling alone? There is a room-share option. Tell us and we will explain how it works." No single supplement or price is mentioned, because none is published.
 8. Age and licence rules. The 7-Day page states a minimum age; the Alta page says activities may have age or licence requirements confirmed before departure. Answer: confirmed. Applied: Alta Email 3 keeps "confirmed before departure" and no number; the 7-Day drafts name no age rule.
 9. Open. Ski gear on the 7-Day. The Day 3 page text reads as if gear is included; the inclusions list says it is not, rentals can be arranged. The drafts follow the inclusions list. Fix the page text or confirm the drafts.
 10. Open. Manner 1 and Manner 2 are dropped. If you want a test, test the subject lines (two per email, listed in each sequence file) and keep one body.
@@ -75,8 +75,8 @@ Items 1 to 8 were answered by the owner on 26 October 2026. The answers count as
 - Social proof (Cialdini; Google Decoding Decisions 2020, where it was the largest single lever in travel). Used once per sequence, with a named source and number.
 - Two-sided messages raise credibility (Eisend 2006, meta-analysis of 87 studies). Each sequence says plainly that the aurora is not guaranteed and names who the trip is not for.
 - Loss aversion and risk reversal (Kahneman and Tversky, prospect theory). The cancellation terms and the insurance line reduce the cost of a wrong decision, which matters more than adding benefits at this stage.
-- Choice overload (Iyengar and Lepper 2000). The reader sees five dated departures instead of an open calendar, and the other tour appears only in Email 3 and Email 7, where a choice is being closed.
-- Anticipation (Kumar, Killingsworth and Gilovich 2014). Experiences pay back before they happen. Email 4 and Email 7 describe specific evenings and days so the reader can picture them.
+- Choice overload (Iyengar and Lepper 2000). The reader sees five dated departures instead of an open calendar, and the other tour appears only in Email 3, where the reader is still checking fit.
+- Anticipation (Kumar, Killingsworth and Gilovich 2014). Experiences pay back before they happen. Email 4 describes specific evenings and days so the reader can picture them.
 - Fogg Behaviour Model (B = MAP). For a NOK 17,000 and up purchase, ability is the binding constraint, so every email cuts effort: one button, one ask, the numbers in one place.
 - Honest deadline. The Norwegian Marketing Control Act and EU rules treat invented scarcity as unlawful. The only deadline used is the published refund cut-off.
 
@@ -114,6 +114,6 @@ All fetched on 26 October 2026.
 | Flexible booking | https://www.outdoornorway.com/flexible-booking | 14-day window and lifetime deposit, linked from Email 5 (decision 1) |
 | Terms and conditions | https://www.outdoornorway.com/terms-and-conditions | Cancellation scale, insurance advice, payment before departure |
 | Travel insurance | https://www.outdoornorway.com/travel-insurance | Insurance recommendation |
-| Tailor-made trips | https://www.outdoornorway.com/tailor-made-adventures | Optional Email 8 line for people whose dates do not fit |
+| Tailor-made trips | https://www.outdoornorway.com/tailor-made-adventures | Email 6 line for people whose dates do not fit |
 | Northern lights hub | https://www.outdoornorway.com/northern-lights-tours-norway | Both tours on one page; not linked from the emails because it carries "slots left" and "all gear included" |
 | Our team | https://www.outdoornorway.com/our-team/ | Sender check (no Mate listed; the owner confirmed Mate as a trip captain on 26 October 2026, decision 4) |
