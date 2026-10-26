@@ -72,7 +72,7 @@ Three evenings. Day 4 is a guided aurora safari on the evening you land in Troms
 
 A guide who reads the sky. On a safari night your guide checks the forecasts, the cloud cover and the road conditions, and sometimes drives a long way to find a gap in the clouds. Tromsø sits at about 69 degrees north, directly beneath the aurora oval, which is why it is one of the world's most established places to see the lights.
 
-Patience after 9 pm. Activity is often strongest between 20:00 and 02:00. Displays can appear suddenly, disappear and return later, so the night is not over because nothing has happened by 9 pm.
+Patience. Activity is often strongest between 8 pm and 2 am. Displays can appear suddenly, disappear and return later, so the night is not over because nothing has happened by 9 pm.
 
 If the sky stays cloudy. You still have the fjord by private boat on Day 5, the husky teams on Day 6, the snowshoe and ski days in Voss, and Bergen's seven mountains on Day 1.
 
@@ -113,7 +113,7 @@ What is not:
 
 How booking works. Send us your preferred week through the tour page and we come back to confirm it and the next step.
 
-If you have to cancel. Cancel 60 days or more before departure and you get a full refund. 45 to 59 days before, 75%. 30 to 44 days before, 50%. Under 30 days, no refund. Card fees are not refundable. Our [flexible booking page](https://www.outdoornorway.com/flexible-booking) sets out the 14-day risk-free window after a deposit and the lifetime deposit, both for multiday tours.
+If you have to cancel. Cancel 60 days or more before departure and you get a full refund. 45 to 59 days before, 75%. 30 to 44 days before, 50%. Under 30 days, no refund. Card fees are not refundable. Our [flexible booking page](https://www.outdoornorway.com/flexible-booking) adds two policies for multiday tours: a 14-day risk-free window after you put down a deposit, and a lifetime deposit, which stays good for a later date or another trip as long as you give 90 days notice.
 
 Insurance. We recommend comprehensive health and accident insurance from your home country. The trip does not insure you.
 
@@ -130,7 +130,7 @@ Outdoor Norway
 
 Subject A: Three questions, then you are done
 Subject B: Which week, who is coming, and the one date that matters
-Preview: The three things people get stuck on, and why requesting your week now costs nothing.
+Preview: The three things people get stuck on, and the date until which you can cancel for a full refund.
 
 Hi [first name],
 
@@ -140,7 +140,7 @@ A couple of weeks ago you downloaded the plan. If you are still deciding, it usu
 2. Who is coming? Rooms are twin-share. Travelling alone? There is a room-share option. Tell us and we will explain how it works. If the person you want to bring is not sure, forward them my last email, the one with the price, or tell me what they are worried about and I will answer it in writing.
 3. Flights. You fly into Bergen and home from Tromsø. Tell me the city you leave from and I will tell you how our guests usually route it.
 
-Why a date matters now. The cancellation terms on the tour page give a full refund up to 60 days before departure. For the 23 January week that is 24 November 2026. For the 27 February week it is 29 December 2026. Requesting your week now gives you the longest window to change your mind at no cost.
+The date that matters. The cancellation terms on the tour page give a full refund if you cancel 60 days or more before departure. For the 23 January week that cut-off is 24 November 2026, and for the 27 February week it is 29 December 2026. Up to that date you can cancel for a full refund.
 
 Send the request and we come back to confirm the week and the next step.
 

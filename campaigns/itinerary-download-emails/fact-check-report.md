@@ -208,10 +208,11 @@ Still open:
     STATUS: 2 LIKELY ACCURATE
     SOURCE: WB "destinations beneath the auroral oval", "Tromsø is one of the world's most established Northern Lights destinations"
 
-[23] CLAIM: Activity is often strongest between 20:00 and 02:00.
+[23] CLAIM: Activity is often strongest between 8 pm and 2 am.
     SLOT: body
     STATUS: 2 LIKELY ACCURATE
     SOURCE: SG
+    NOTES: SG gives the window as 20:00 to 02:00; the email uses the 12-hour form so it matches "9 pm" in the next sentence (persona review, 26 October 2026).
 
 [24] CLAIM: Displays can appear suddenly, disappear and return later; the night is not over at 9 pm.
     SLOT: body
@@ -265,10 +266,10 @@ Still open:
     STATUS: 1 VERIFIED
     SOURCE: T7 Cancellation Policy; TC cancellation bullets
 
-[33] CLAIM: Our flexible booking page sets out the 14-day risk-free window after a deposit and the lifetime deposit, both for multiday tours.
+[33] CLAIM: The flexible booking page adds two policies for multiday tours: a 14-day risk-free window after a deposit, and a lifetime deposit that stays good for a later date or another trip with 90 days notice.
     SLOT: body
     STATUS: 2 LIKELY ACCURATE
-    SOURCE: FB "PEACE OF MIND POLICIES FOR MULTIDAY TOURS"; FB "14-DAY RISK-FREE BOOKING WINDOW: After putting down a deposit, you can cancel at any point during the first 14 days after booking and get a 100% refund"; FB "LIFETIME DEPOSITS"; owner's answer to Decision 1, 26 October 2026 (both policies apply, they come from different vendors)
+    SOURCE: FB "PEACE OF MIND POLICIES FOR MULTIDAY TOURS"; FB "14-DAY RISK-FREE BOOKING WINDOW: After putting down a deposit, you can cancel at any point during the first 14 days after booking and get a 100% refund"; FB "LIFETIME DEPOSITS"; FB "As long as you give us 90 days notice, your deposit will be good forever, whether you use it for the same trip or transfer it to another one"; owner's answer to Decision 1, 26 October 2026 (both policies apply, they come from different vendors)
     NOTES: Was level 4. The owner's answer resolves which policy applies: both. Still unpublished: which vendor covers which part of the trip, and the FB note that a cancellation within 90 days of departure forfeits the whole payment, which differs from the T7 and TC scale. The email states only what FB says and links the page.
 
 [34] CLAIM: We recommend comprehensive health and accident insurance from your home country; the trip does not insure you.
@@ -326,7 +327,7 @@ Still open:
     SLOT: body
     STATUS: 1 VERIFIED
     SOURCE: as [32]
-    NOTES: The Decision 1 marker was removed with the owner's answer; the email now attributes the rule to the tour page ("The cancellation terms on the tour page give a full refund up to 60 days before departure").
+    NOTES: The Decision 1 marker was removed with the owner's answer; the email attributes the rule to the tour page ("The cancellation terms on the tour page give a full refund if you cancel 60 days or more before departure"). After the persona review of 26 October 2026, "Requesting your dates now gives you the longest window to change your mind at no cost" was dropped: the cut-off is fixed, so requesting early does not lengthen it.
 
 [44] CLAIM: 60 days before 23 January 2027 is 24 November 2026; 60 days before 27 February 2027 is 29 December 2026.
     SLOT: body (dates)

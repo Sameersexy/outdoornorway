@@ -117,7 +117,7 @@ What is not:
 
 How booking works. Tell us your dates through the tour page and we come back to confirm them and the next step.
 
-If you have to cancel. Cancel 60 days or more before departure and you get a full refund. 45 to 59 days before, 75%. 30 to 44 days before, 50%. Under 30 days, no refund. Card fees are not refundable. Our [flexible booking page](https://www.outdoornorway.com/flexible-booking) sets out the 14-day risk-free window after a deposit and the lifetime deposit, both for multiday tours.
+If you have to cancel. Cancel 60 days or more before departure and you get a full refund. 45 to 59 days before, 75%. 30 to 44 days before, 50%. Under 30 days, no refund. Card fees are not refundable. Our [flexible booking page](https://www.outdoornorway.com/flexible-booking) adds two policies for multiday tours: a 14-day risk-free window after you put down a deposit, and a lifetime deposit, which stays good for a later date or another trip as long as you give 90 days notice.
 
 Insurance. We recommend comprehensive health and accident insurance from your home country. The trip does not insure you.
 
@@ -134,7 +134,7 @@ Outdoor Norway
 
 Subject A: Three questions, then you are done
 Subject B: Which dates, who is coming, and the one date that matters
-Preview: The three things people get stuck on, and why requesting your dates now costs nothing.
+Preview: The three things people get stuck on, and the date until which you can cancel for a full refund.
 
 Hi [first name],
 
@@ -144,7 +144,7 @@ A couple of weeks ago you downloaded the plan. If you are still deciding, it usu
 2. Who is coming? Tell us how many, and we will confirm the rooms at Canyon Hotel and Gargia Lodge. Travelling alone? There is a room-share option. Tell us and we will explain how it works. If the person you want to bring is not sure, forward them my last email, the one with the price, or tell me what they are worried about and I will answer it in writing.
 3. Flights to Alta. Tell me the city you leave from and I will tell you how our guests usually route it. The transfer from Alta Airport is included either way.
 
-Why a date matters now. The cancellation terms on the tour page give a full refund up to 60 days before departure. For a trip starting on 15 February 2027, that is 17 December 2026. Requesting your dates now gives you the longest window to change your mind at no cost.
+The date that matters. The cancellation terms on the tour page give a full refund if you cancel 60 days or more before departure. For example, for a trip starting on 15 February 2027 the cut-off is 17 December 2026. Up to that date you can cancel for a full refund.
 
 Send the request and we come back to confirm your dates and the next step.
 
