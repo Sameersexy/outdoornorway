@@ -40,8 +40,8 @@ The marketplace has four plugins. Replace the name in the second line above to i
 
 | Plugin | Choose it if you |
 |---|---|
-| `outdoornorway-marketing` | Write or review video scripts. It holds the commands, the agents, scriptcraft and the eight copy skills. |
-| `outdoornorway-copy-skills` | Want only the eight copy skills and none of the script tools. |
+| `outdoornorway-marketing` | Write or review video scripts. It holds the commands, the agents, scriptcraft and the nine copy skills. |
+| `outdoornorway-copy-skills` | Want only the nine copy skills and none of the script tools. |
 | `outdoornorway-account-skills` | Want the brand voice checker, the guest benefit checker and the script-writing skill in Claude Code. |
 
 Claude Code 2.1.292 or later can add the marketplace and install in one line: `claude plugin install NAME --marketplace Sameersexy/outdoornorway`. [VERIFY: the one-step line was not run against this repo] The two-line version above works on every version that has plugins. [marketplace.md](marketplace.md) covers what happens when you install two plugins together, and how a team can prompt its members to install.
@@ -142,7 +142,7 @@ npx github:Sameersexy/outdoornorway install
 npx github:Sameersexy/outdoornorway install --run
 ```
 
-`install` without a name means `outdoornorway-marketing`. Add a plugin name, such as `install outdoornorway-account-skills`, to pick another. `install all` installs the umbrella and the account skills. It leaves out `outdoornorway-copy-skills` and says so, because the umbrella already carries those eight skills. A name that is not on the list stops with the valid names.
+`install` without a name means `outdoornorway-marketing`. Add a plugin name, such as `install outdoornorway-account-skills`, to pick another. `install all` installs the umbrella and the account skills. It leaves out `outdoornorway-copy-skills` and says so, because the umbrella already carries those nine skills. A name that is not on the list stops with the valid names.
 
 If the Claude Code CLI is missing, `install --run` stops and says so. Restart Claude Code after the install. To confirm it worked, run `doctor` again, look for "All required checks passed.", then follow the confirm steps in route 1.
 
@@ -159,7 +159,7 @@ The launcher writes no files of its own. If you ran `install --run`, remove the 
 - **`[fail] python3 not found`.** Install Python 3.9 or newer from the [official download page](https://www.python.org/downloads/) and try again. The tools are not tested on Windows. They call `python3` by name, so if that name does not exist on your machine, tell the repo owner.
 - **`[warn] Claude Code CLI not found`.** Install Claude Code from the [quickstart](https://code.claude.com/docs/en/quickstart). `install --run` and `update --run` need it.
 - **`[warn] Node` with "the launcher needs 18 or newer".** Install Node.js 18 or newer from [nodejs.org](https://nodejs.org/).
-- **Each copy skill is listed twice.** You installed `outdoornorway-copy-skills` next to `outdoornorway-marketing`, and both carry the same eight skills. Remove the one you do not need, for example `claude plugin uninstall outdoornorway-copy-skills`.
+- **Each copy skill is listed twice.** You installed `outdoornorway-copy-skills` next to `outdoornorway-marketing`, and both carry the same nine skills. Remove the one you do not need, for example `claude plugin uninstall outdoornorway-copy-skills`.
 - **`[fail] versions differ` or `[fail] NAME: version X does not match package.json (Y)`.** The version numbers in `package.json`, the plugin file and the marketplace entries do not match. Report it on the [issues page](https://github.com/Sameersexy/outdoornorway/issues).
 - **The npx commands do not work.** Use the plugin or clone route. See the note on the default branch in route 3.
 - **"Usage limit reached".** Wait for the reset. Use one script per session. See [token-hygiene.md](token-hygiene.md).

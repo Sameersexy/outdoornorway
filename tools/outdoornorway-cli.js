@@ -15,7 +15,7 @@ const ROOT = path.resolve(__dirname, "..");
 const MARKETPLACE = "Sameersexy/outdoornorway";
 const DEFAULT_MARKETPLACE_NAME = "outdoornorway";
 const DEFAULT_PLUGIN = "outdoornorway-marketing";
-// The umbrella already carries these eight skills. Installed next to it, each shows up twice.
+// The umbrella already carries these nine skills. Installed next to it, each shows up twice.
 const OVERLAP_PLUGIN = "outdoornorway-copy-skills";
 const SOURCE_ENV = "OUTDOORNORWAY_MARKETPLACE";
 const UMBRELLA_SKILLS = ".claude/skills";
@@ -424,7 +424,7 @@ function planSteps(kind, args) {
     console.error("Valid names: " + market.plugins.map((entry) => entry.name).join(", ") + ", all");
     return null;
   }
-  // Both plugins at once would list the same eight skills twice.
+  // Both plugins at once would list the same nine skills twice.
   const overlap = requested === "all" && kind === "install" && chosen.some((entry) => entry.name === DEFAULT_PLUGIN);
   const skipped = overlap ? chosen.filter((entry) => entry.name === OVERLAP_PLUGIN) : [];
   chosen = chosen.filter((entry) => !skipped.includes(entry));
@@ -461,7 +461,7 @@ function install(kind, args) {
     console.log("This changes where the Claude Code marketplace called " + plan.marketName + " points.");
   }
   if (plan.skipped.length > 0) {
-    console.log("\nLeft out: " + OVERLAP_PLUGIN + ". " + DEFAULT_PLUGIN + " already has the same eight skills, and with both installed each skill is listed twice.");
+    console.log("\nLeft out: " + OVERLAP_PLUGIN + ". " + DEFAULT_PLUGIN + " already has the same nine skills, and with both installed each skill is listed twice.");
     console.log("To add it alone: outdoornorway install " + OVERLAP_PLUGIN);
   }
   if (!plan.run) {

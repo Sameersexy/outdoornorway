@@ -18,8 +18,8 @@ The marketplace has four plugins, and only three hold skills. [marketplace.md](m
 
 | Plugin | Skills | Folder |
 |---|---|---|
-| `outdoornorway-marketing` | scriptcraft and the eight copy skills, plus the commands and agents | `.claude/` |
-| `outdoornorway-copy-skills` | The eight copy skills only | `.claude/skills/` |
+| `outdoornorway-marketing` | scriptcraft and the nine copy skills, plus the commands and agents | `.claude/` |
+| `outdoornorway-copy-skills` | The nine copy skills only | `.claude/skills/` |
 | `outdoornorway-account-skills` | brand-voice-checker, guest-benefit-checker and script-writing | `account-skills/` |
 
 scriptcraft is only in the umbrella plugin, because the validator needs the tour data and the plugin root. Each other skill sits in one folder and is listed in one plugin besides the umbrella.
@@ -47,7 +47,7 @@ A skill and three agents for ad copy on Meta (Facebook and Instagram) and X. The
 
 ## Third-party skills vendored in this repo
 
-These eight skills sit in `.claude/skills/` as text copied from pinned commits. No third-party code runs. All eight are MIT licensed, and each folder keeps its upstream licence file, named `LICENSE-*`.
+These ten skills sit in `.claude/skills/` as text copied from pinned commits. No third-party code runs. All ten are MIT licensed, and each folder keeps its upstream licence file, named `LICENSE-*`.
 
 | Skill | What it does | Auto-invokes |
 |---|---|---|
@@ -57,11 +57,12 @@ These eight skills sit in `.claude/skills/` as text copied from pinned commits. 
 | marketing-psychology | Applies psychological principles and mental models to marketing | No (manual) |
 | ponytail | Makes the agent write the smallest complete change on coding tasks | Yes |
 | humanizer | Rewrites AI-sounding text so it reads like the writer | Yes |
+| avoid-ai-writing | Audits text for AI writing patterns and rewrites it, with detect-only and voice options | No (manual) |
 | copy-that-sells | Writes ads, headlines, taglines, long copy and landing pages | No (manual) |
 | conversion-copywriter | Writes conversion copy from scratch, with alternates for every headline | No (manual) |
 | fact-check | Checks every claim in a piece of copy against a named source before it ships | Yes |
 
-The six manual skills carry `disable-model-invocation: true`, so you call them by name, for example `/copywriting`. The umbrella plugin loads all eight. The plugin `outdoornorway-copy-skills` ships only these eight, and its fact-check cannot read the tour data (see [marketplace.md](marketplace.md#the-fact-check-caveat)).
+The seven manual skills carry `disable-model-invocation: true`, so you call them by name, for example `/copywriting`. The umbrella plugin loads all ten. The plugin `outdoornorway-copy-skills` ships only these ten, and its fact-check cannot read the tour data (see [marketplace.md](marketplace.md#the-fact-check-caveat)).
 
 [THIRD_PARTY_SKILLS.md](../THIRD_PARTY_SKILLS.md) has the upstream projects, the pinned commits and the full list of local changes. The vetting notes (what was read, what was rejected and why) are in [research/ad-copy/06-skill-vetting.md](research/ad-copy/06-skill-vetting.md).
 
