@@ -18,6 +18,5 @@
     "claude-code-setup@anthropic-plugin-directory": true,
     "ponytail@ponytail": true,
     "repo-band@outdoornorway": true
-  },
-  "autoCompactWindow": 200000
+  }
 }
