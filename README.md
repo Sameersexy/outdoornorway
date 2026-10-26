@@ -21,7 +21,7 @@ claude plugin install outdoornorway-marketing@outdoornorway
 
 Restart Claude Code. The commands carry the plugin name: `/outdoornorway-marketing:script`, `/outdoornorway-marketing:validate` and so on. Scripts are saved in the folder where you run Claude Code. Update with `claude plugin marketplace update outdoornorway` and `claude plugin update outdoornorway-marketing@outdoornorway`.
 
-The marketplace lists three plugins. `outdoornorway-marketing` is the full toolset and the one most people want. `outdoornorway-copy-skills` holds only the eight copy skills. `outdoornorway-account-skills` holds the three brand and script skills. Replace the name in the second line to install another one. [docs/marketplace.md](docs/marketplace.md) says who each is for, and covers one-step installs, team set up and releases.
+The marketplace lists four plugins. `outdoornorway-marketing` is the full toolset and the one most people want. `outdoornorway-copy-skills` holds only the eight copy skills. `outdoornorway-account-skills` holds the three brand and script skills. `repo-band` is not a skill: it draws a status row above the prompt in the terminal and desktop app. Replace the name in the second line to install another one. [docs/marketplace.md](docs/marketplace.md) says who each is for, and covers one-step installs, team set up and releases.
 
 **Clone (best for editing the tools or sending pull requests).**
 
@@ -42,7 +42,7 @@ npx github:Sameersexy/outdoornorway install
 npx github:Sameersexy/outdoornorway install outdoornorway-account-skills
 ```
 
-`doctor` checks Node, Python 3, the Claude Code CLI and the repo files. `list` shows the three plugins. `install` prints the plugin commands and runs them only when you add `--run`. Without a name it means `outdoornorway-marketing`, and `install all` covers every plugin except `outdoornorway-copy-skills`, which the first one already includes. npx reads the repo's default branch, so the launcher must be on that branch. The package is not on the npm registry yet: see [docs/publishing-to-npm.md](docs/publishing-to-npm.md).
+`doctor` checks Node, Python 3, the Claude Code CLI and the repo files. `list` shows the four plugins. `install` prints the plugin commands and runs them only when you add `--run`. Without a name it means `outdoornorway-marketing`, and `install all` covers every plugin except `outdoornorway-copy-skills`, which the first one already includes. npx reads the repo's default branch, so the launcher must be on that branch. The package is not on the npm registry yet: see [docs/publishing-to-npm.md](docs/publishing-to-npm.md).
 
 ## Slash commands
 
@@ -90,7 +90,7 @@ outdoornorway/
 - [account skills guide](account-skills/README.md) for the three account skills
 - [adquill guide](adquill/README.md) for the paused ad-copy skill
 
-The [plugin marketplace guide](docs/marketplace.md) covers the three plugins. The [skills catalog](docs/skills-catalog.md) separates our own skills from the vendored ones. The [changelog](CHANGELOG.md) lists what changed and when.
+The [plugin marketplace guide](docs/marketplace.md) covers the four plugins. The [skills catalog](docs/skills-catalog.md) separates our own skills from the vendored ones. The [changelog](CHANGELOG.md) lists what changed and when.
 
 ## Tests
 

@@ -1,6 +1,23 @@
 {
+  "extraKnownMarketplaces": {
+    "outdoornorway": {
+      "source": {
+        "source": "github",
+        "repo": "Sameersexy/outdoornorway"
+      },
+      "autoUpdate": true
+    },
+    "ponytail": {
+      "source": {
+        "source": "github",
+        "repo": "DietrichGebert/ponytail"
+      }
+    }
+  },
   "enabledPlugins": {
-    "claude-code-setup@anthropic-plugin-directory": true
+    "claude-code-setup@anthropic-plugin-directory": true,
+    "ponytail@ponytail": true,
+    "repo-band@outdoornorway": true
   },
   "autoCompactWindow": 200000
 }

@@ -8,6 +8,7 @@ The plugin manifest and the `outdoornorway-marketing` marketplace entry have car
 
 ### Added
 
+- `repo-band`, a fourth marketplace plugin in `mods/repo-band/`: a status row above the prompt with cost, context fill, last turn, branch, changed files and the last validator result, plus Compact and Hide buttons. It draws on the terminal and desktop surfaces only, and `.claude/settings.json` enables it for a clone. The marketplace now has four entries, so a release changes six version fields in three files.
 - Navigation docs: [docs/README.md](docs/README.md) (guide index), [docs/repo-map.md](docs/repo-map.md) (folder map) and [docs/skills-catalog.md](docs/skills-catalog.md).
 - Folder README files for `adquill/`, `campaigns/ski-meta-ads/`, `content/scripts/`, `docs/script-skill-reviews/` and `tools/`.
 - [Install guide](docs/installation.md), [backup and restore guide](docs/backup-and-restore.md), [publishing guide](docs/publishing-to-npm.md) and [CONTRIBUTING.md](CONTRIBUTING.md).

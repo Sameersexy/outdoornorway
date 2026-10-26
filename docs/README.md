@@ -6,7 +6,7 @@ Use this page to find the guide you need. It lists every other file and folder i
 |---|---|---|
 | [getting-started.md](getting-started.md) | Write or edit a video script with Claude Code, no coding needed | Writers and video editors |
 | [installation.md](installation.md) | Install the plugin, clone the repo or use npx, then check, update or remove it | Anyone installing |
-| [marketplace.md](marketplace.md) | Choose among the three plugins, install and update them, add a skill or cut a release | Marketers and maintainers |
+| [marketplace.md](marketplace.md) | Choose among the four plugins, install and update them, add a skill or cut a release | Marketers and maintainers |
 | [token-hygiene.md](token-hygiene.md) | Keep long Claude Code sessions cheap | Anyone running long sessions |
 | [repo-map.md](repo-map.md) | See what each folder holds and which paths must not move | Maintainers |
 | [skills-catalog.md](skills-catalog.md) | Tell our own skills from the vendored ones and the account-only ones | Maintainers |
