@@ -86,14 +86,14 @@ Outdoor Norway
 ## Email 5, day 13: the full price
 
 Subject A: The full price, what it covers, and what happens if you cancel
-Subject B: From NOK 41,181. Everything in, everything out, in one email
+Subject B: From NOK 41,181 per person. Everything in, everything out, in one email
 Preview: The numbers, the inclusions and the refund scale, written to be forwarded.
 
 Hi [first name],
 
 This is the email to forward to whoever you are travelling with. It has the numbers.
 
-The price. From NOK 41,181, including all taxes, twin-share.
+The price. From NOK 41,181 per person, including all taxes, twin-share.
 
 What is in:
 

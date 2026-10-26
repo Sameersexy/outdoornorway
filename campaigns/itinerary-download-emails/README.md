@@ -1,6 +1,6 @@
 # Itinerary download emails
 
-Status: draft, awaiting approval. Nothing in this folder has been sent. Decisions 1 to 8 were answered by the owner on 26 October 2026 and the answers are applied in the drafts; decisions 9 and 10 are open. On 26 October 2026 the owner also cut the sequence to five emails: the old Emails 7 and 8 are folded into Email 6, and the working notes (reader's question, step, principle and Facts lines) are out of the sequence files, which now hold only the emails. The emails here replace the follow-up sequence that goes out after someone downloads a tour itinerary, for the 7-Day Bergen to Tromsø trip and the 6-Day Alta trip. Read this file first, then the two sequence files.
+Status: draft, awaiting approval. Nothing in this folder has been sent. Decisions 1 to 8 and 11 were answered by the owner on 26 October 2026 and the answers are applied in the drafts; decisions 9 and 10 are open. On 26 October 2026 the owner also cut the sequence to five emails: the old Emails 7 and 8 are folded into Email 6, and the working notes (reader's question, step, principle and Facts lines) are out of the sequence files, which now hold only the emails. The emails here replace the follow-up sequence that goes out after someone downloads a tour itinerary, for the 7-Day Bergen to Tromsø trip and the 6-Day Alta trip. Read this file first, then the two sequence files.
 
 | File | What it holds |
 |---|---|
@@ -40,11 +40,11 @@ Email 6 is the last email. It holds the three common blockers (the week or dates
 
 Stop rules: stop the sequence when the person books, requests dates, or replies "not this year". A reply to any email goes to a person, and the next scheduled email still goes out unless the reply changes the stop rule.
 
-Suggested edit to Email 1, the delivery email: add the price line ("From NOK 41,181 including taxes" or "NOK 31,000 including taxes") and one question ("Which month are you thinking of? Reply and tell me."). The sequence then starts with a known price, and the reply gives the team something to work with from day 0.
+Suggested edit to Email 1, the delivery email: add the price line ("From NOK 41,181 per person including taxes" or "NOK 31,000 per person including taxes") and one question ("Which month are you thinking of? Reply and tell me."). The sequence then starts with a known price, and the reply gives the team something to work with from day 0.
 
 ## Rules applied
 
-- Voice and the do-not-claim list from `.claude/product-marketing.md`. No group size numbers, no age limits, no "all gear included", no "slots left", no "per person", no guaranteed sightings, no guaranteed departures.
+- Voice and the do-not-claim list from `.claude/product-marketing.md`. No group size numbers, no age limits, no "all gear included", no "slots left", "per person" only because the owner confirmed it (decision 11), no guaranteed sightings, no guaranteed departures.
 - The rating appears once per sequence as "4.9/5 on Tripadvisor", the form the tour pages use.
 - The Tripadvisor review page and the site's own reviews page are not linked: the reviews page shows no winter trips and no named rating source.
 - The cross-sell to the other tour appears once, in Email 3, as an honest exit line. It was dropped from the last email when Emails 6 and 7 were merged, so the reader is not handed a new choice at decision time.
@@ -53,7 +53,7 @@ Suggested edit to Email 1, the delivery email: add the price line ("From NOK 41,
 
 ## Decisions
 
-Items 1 to 8 were answered by the owner on 26 October 2026. The answers count as confirmed client data, source hierarchy level 1 in the fact-check skill, and are applied in the drafts. Items 9 and 10 are still open.
+Items 1 to 8 and 11 were answered by the owner on 26 October 2026. The answers count as confirmed client data, source hierarchy level 1 in the fact-check skill, and are applied in the drafts. Items 9 and 10 are still open.
 
 1. Cancellation terms. The tour pages and the terms page give a 60, 45 and 30 day scale (full refund, 75%, 50%, none). The flexible booking page promises a 14-day risk-free window and a lifetime deposit on 90 days notice. Answer: both apply; they come from different vendors with different policies. Applied: Email 5 keeps the scale and now links the flexible booking page for the 14-day window and the lifetime deposit; Email 6 attributes the 60-day full refund to the tour page. Not published anywhere: which vendor covers which part of the trip, and the flexible booking note that a cancellation within 90 days of departure forfeits the whole payment, which differs from the tour page scale. Whoever answers the replies should have that answer ready.
 2. Deposit and balance. No page states the deposit amount or when the balance is due. Answer: not needed. Applied: the sentence is dropped from both Email 5 drafts; the emails say nothing about a deposit or a balance.
@@ -65,6 +65,7 @@ Items 1 to 8 were answered by the owner on 26 October 2026. The answers count as
 8. Age and licence rules. The 7-Day page states a minimum age; the Alta page says activities may have age or licence requirements confirmed before departure. Answer: confirmed. Applied: Alta Email 3 keeps "confirmed before departure" and no number; the 7-Day drafts name no age rule.
 9. Open. Ski gear on the 7-Day. The Day 3 page text reads as if gear is included; the inclusions list says it is not, rentals can be arranged. The drafts follow the inclusions list. Fix the page text or confirm the drafts.
 10. Open. Manner 1 and Manner 2 are dropped. If you want a test, test the subject lines (two per email, listed in each sequence file) and keep one body.
+11. Price basis. The product-marketing list forbids "per person" until confirmed. Answer, 26 October 2026: the price is per person. Applied: both Email 5 drafts and their second subject lines say "per person".
 
 ## Principles used, and where they came from
 

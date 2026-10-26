@@ -34,7 +34,7 @@ Source keys used below (URLs in the README sources table):
 ## Summary
 
 - Claims checked: 92 (97 listed; 5 removed from the drafts and not counted: 4 on the owner's answers, 1 when Emails 6 and 7 were merged)
-- Verified (levels 1 to 2): 92, of which 11 rest on the owner's answers of 26 October 2026, recorded as the source on each entry
+- Verified (levels 1 to 2): 92, of which 13 rest wholly or partly on the owner's answers of 26 October 2026, recorded on each entry (the two price claims rest on the owner for "per person" only)
 - Unverified (level 3): 0
 - Disputed (level 4): 0
 - Corrected: 20 (12 at the first check, 8 when the answers were applied)
@@ -227,11 +227,11 @@ Still open:
 
 ### 7-Day Email 5, day 13
 
-[26] CLAIM: From NOK 41,181, including all taxes, twin-share.
+[26] CLAIM: From NOK 41,181 per person, including all taxes, twin-share.
     SLOT: body (price)
     STATUS: 1 VERIFIED
     SOURCE: TJ price_nok 41181, price_qualifier "from"; T7 "From NOK 41,181", "all taxes"; HUB "NOK 41,181"
-    NOTES: No page states per person. The email does not say per person, in line with the product-marketing do-not-claim list.
+    NOTES: No page states per person. The owner confirmed on 26 October 2026 that the price is per person (README decision 11), so the email says it; that part rests on the owner's answer.
 
 [27] CLAIM: Included: professional guide throughout; all transport in Norway including the flight; 1-day ski pass at Voss Resort; 6 nights of twin-share accommodation in classic hotels in Voss and Tromsø; 6 breakfasts and 5 dinners; guided winter experiences and Northern Lights activities.
     SLOT: body
@@ -530,11 +530,11 @@ Still open:
 
 ### 6-Day Alta Email 5, day 13
 
-[81] CLAIM: NOK 31,000, including all taxes, for 6 days and 5 nights.
+[81] CLAIM: NOK 31,000 per person, including all taxes, for 6 days and 5 nights.
     SLOT: body (price)
     STATUS: 1 VERIFIED
     SOURCE: TA "NOK 31,000", "Incl. all taxes"; HUB "NOK 31,000"
-    NOTES: Not in TJ, so `verify_tours.py` does not cover it. No per person basis stated; the email does not claim one.
+    NOTES: Not in TJ, so `verify_tours.py` does not cover it. No page states per person; the owner confirmed it on 26 October 2026 (README decision 11).
 
 [82] CLAIM: 2 nights at Canyon Hotel in Alta, 3 nights at Gargia Lodge, about 30 minutes outside town, with a sauna and evenings by the fire.
     SLOT: body
