@@ -7,6 +7,7 @@ Status: draft, awaiting approval. Nothing in this folder has been sent. Decision
 | [7-day-bergen-tromso-sequence.md](7-day-bergen-tromso-sequence.md) | Seven emails for the 7-Day Northern Lights Tour, Bergen to Tromsø, plus one optional check-in |
 | [6-day-alta-sequence.md](6-day-alta-sequence.md) | Seven emails for the 6-Day Alta trip, plus one optional check-in |
 | [fact-check-report.md](fact-check-report.md) | Claim-by-claim check of both sequences against the live pages, with the corrections made and the open questions |
+| [handoff-2026-10-26.md](handoff-2026-10-26.md) | Session handoff of 26 October 2026: what is done, what the owner still decides, and the checks to run before touching the drafts again |
 
 Every fact in the emails comes from the live tour pages, the blog posts and the policy pages listed under Sources, all fetched on 26 October 2026, or from `campaigns/ski-meta-ads/tours.json`. Facts the site does not publish were marked `[CONFIRM ...]` in the drafts and listed under Decisions. The owner's answers of 26 October 2026 count as confirmed client data, and no marker remains. The reply address in Email 6 is a placeholder, `[REPLY ADDRESS]`, because the repo test rejects email addresses in tracked files.
 
