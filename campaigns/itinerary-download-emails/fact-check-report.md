@@ -1,6 +1,6 @@
 # Fact-Check Report: itinerary download sequences (7-Day Bergen to Tromsø and 6-Day Alta)
 
-Checked on 26 October 2026 against the live pages fetched that day, `campaigns/ski-meta-ads/tours.json` and the terms, flexible booking, insurance, tailor-made and team pages. Method: every checkable claim in the two sequence files was listed, matched against a named source with a text search of the fetched page, and given a level on the 6-level scale in `.claude/skills/fact-check/SKILL.md`. Opinions, mood lines and the sender's offers to help were not scored.
+Checked on 26 October 2026 against the live pages fetched that day, `campaigns/ski-meta-ads/tours.json` and the terms, flexible booking, insurance, tailor-made and team pages. Method: every checkable claim in the two sequence files was listed, matched against a named source with a text search of the fetched page, and given a level on the 6-level scale in `.claude/skills/fact-check/SKILL.md`. Opinions, mood lines and the sender's offers to help were not scored. Updated the same day after the owner answered decisions 1 to 8 in the README; where an answer resolves a claim, the answer is recorded as the source.
 
 Source keys used below (URLs in the README sources table):
 
@@ -27,15 +27,15 @@ Source keys used below (URLs in the README sources table):
 
 ## Summary
 
-- Claims checked: 96
-- Verified (levels 1 to 2): 84
-- Unverified (level 3, marked `[CONFIRM ...]` in the drafts): 9
-- Disputed (level 4, marked `[CONFIRM ...]` in the drafts): 3
-- Corrected: 12 (unverified detail removed or wording aligned with the page)
+- Claims checked: 93 (97 listed; 4 removed from the drafts on the owner's answers and not counted)
+- Verified (levels 1 to 2): 93, of which 11 rest on the owner's answers of 26 October 2026, recorded as the source on each entry
+- Unverified (level 3): 0
+- Disputed (level 4): 0
+- Corrected: 20 (12 at the first check, 8 when the answers were applied)
 - Wrong (fixed): 0
-- Confidence: MEDIUM
+- Confidence: HIGH
 
-Every price and every date is at level 1. The gate passes at MEDIUM. The drafts still cannot be sent with a `[CONFIRM ...]` marker in place; the twelve markers are the nine level 3 and three level 4 items below, and each maps to a numbered decision in the README.
+Every price and every date is at level 1. No `[CONFIRM ...]` marker remains, so the gate passes. The drafts still wait for the owner's approval of the wording, and README decisions 9 and 10 are open; neither is a fact gate item.
 
 ## Corrections applied
 
@@ -52,18 +52,27 @@ Every price and every date is at level 1. The gate passes at MEDIUM. The drafts 
 11. Alta Email 5 inclusion "selected warm drinks and snacks" is now "selected warm beverages and snacks during the activities", the TA Included wording. Source: TA.
 12. Both Email 6 reply buttons use `mailto:[REPLY ADDRESS]` instead of an address, because the repo integrity test rejects any email address in a tracked file. Source: `tools/test_repo_integrity.py`.
 
+Applied on 26 October 2026 after the owner answered decisions 1 to 8:
+
+13. Both Email 5 drafts dropped the deposit and balance sentence. Source: owner's answer to Decision 2.
+14. Both Email 5 drafts keep the 60, 45 and 30 day scale and now link the flexible booking page for the 14-day risk-free window and the lifetime deposit. Source: FB; owner's answer to Decision 1.
+15. Both Email 7 drafts say "The cancellation terms on the tour page give a full refund up to 60 days before departure" instead of "Our terms give". Source: T7 and TA Cancellation Policy.
+16. Both Email 7 drafts replaced "Sending the request is a question, not a booking" with the weeks (7-Day) or any start date (Alta) being open to request, and the team confirming the dates and the next step. Source: owner's answer to Decision 3.
+17. Every signature reads "Mate, trip captain" above "Outdoor Norway"; the sender line in each sequence file says the same. Source: owner's answer to Decision 4.
+18. Both Email 6 drafts dropped the reply time and call marker; neither is promised. Source: owner's answer to Decision 4.
+19. Both Email 7 drafts add "Travelling alone? There is a room-share option. Tell us and we will explain how it works." Source: owner's answer to Decision 7.
+20. Alta Email 2 (April) and Alta Email 3 (cruise months) lost their markers with the wording unchanged. Source: owner's answers to Decisions 5 and 6; SG; TA.
+
 ## Needs the client's input
 
-- Deposit amount and balance due date (both Email 5). No page states either. Question: what is the deposit, and when is the balance due?
-- Cancellation terms (both Email 5 and Email 7). T7, TA and TC agree on the 60, 45 to 59, 30 to 44 and under 30 day scale. FB promises a 14-day 100 percent refund window after the deposit and a Lifetime Deposit. Question: which policy applies to these two tours, and should the emails state both?
-- What the date request does (both Email 7). The emails say sending the request is a question, not a booking. Question: does the form create a booking, a hold, or an inquiry?
-- Reply time and calls (both Email 6). Question: can Mate promise a reply within one working day, and is a call offered?
-- Sender identity (every email). TE does not list anyone called Mate. Question: keep the name, or sign with a listed team member?
-- Alta aurora season (Alta Email 2). TA gives the season as November to April. AB gives the aurora season as September to late March. SG says early April is possible where nights stay dark. Question: should April be offered as an aurora month?
-- Whale cruise months (Alta Email 3). TA does not say which months the cruise runs. Question: does Day 2 run in every month of the season, and what replaces it when it does not?
-- Single travellers (both Email 7). T7 says twin-share. Neither page mentions a single supplement or a solo option. Question: can a single traveller book, and at what price?
+Answered on 26 October 2026 (decisions 1 to 8 in the README): deposit and balance (not needed), cancellation terms (both policies apply, from different vendors), what the date request does (all dates available), reply time and calls (none promised), sender identity (Mate, trip captain), Alta aurora season (ends with the sold season, late March to early April), whale cruise months (in the package, so yes), single travellers (share options for accommodation). The claim entries below record each answer as the source.
+
+Still open:
+
 - Tripadvisor review count (both Email 5). Both tour pages show a 4.9/5 badge with the Tripadvisor logo but no review count. Question: how many reviews, so the line can carry the number?
 - Alta is not in `tours.json`, so `verify_tours.py` does not re-check the Alta price. Suggestion: add an Alta entry so the next check covers it.
+- Decision 1 leaves one gap for whoever answers replies: which vendor covers which part of each trip, and the flexible booking note that a cancellation within 90 days of departure forfeits the whole payment, which differs from the tour page scale. The emails state only what each page says.
+- README decisions 9 (7-Day ski gear page text versus the inclusions list) and 10 (a subject-line test instead of Manner 1 and Manner 2) are not fact-check items, and are still unanswered.
 
 ## Claim by claim
 
@@ -233,28 +242,28 @@ Every price and every date is at level 1. The gate passes at MEDIUM. The drafts 
     STATUS: 1 VERIFIED
     SOURCE: TJ Day 1 and Day 7; T7 "pick you up at Bergen Flesland International Airport on Day 1 and drop you off at Tromsø Airport on Day 7"
 
-[30] CLAIM: Send your preferred week through the tour page and we confirm availability.
+[30] CLAIM: Send us your preferred week through the tour page and we come back to confirm it and the next step.
     SLOT: body
-    STATUS: 3 UNVERIFIED
-    SOURCE: none
-    NOTES: Marked `[CONFIRM]`. Decision 3.
+    STATUS: 2 LIKELY ACCURATE
+    SOURCE: owner's answer to Decision 3, 26 October 2026 ("all dates available")
+    NOTES: Was level 3. Marker removed. "Confirm availability" is gone; the email no longer states availability as a fact.
 
 [31] CLAIM: Deposit amount and balance due date.
     SLOT: body
-    STATUS: 3 UNVERIFIED
-    SOURCE: none; TC says payment is due before departure but gives no amount or date
-    NOTES: Left as a `[CONFIRM]` marker. Decision 2.
+    STATUS: removed from the draft
+    SOURCE: owner's answer to Decision 2, 26 October 2026 ("not needed")
+    NOTES: Was level 3. The sentence is dropped. Email 5 says nothing about a deposit or a balance.
 
 [32] CLAIM: Cancel 60 days or more before departure for a full refund; 45 to 59 days, 75 percent; 30 to 44 days, 50 percent; under 30 days, no refund; card fees not refundable.
     SLOT: body
     STATUS: 1 VERIFIED
     SOURCE: T7 Cancellation Policy; TC cancellation bullets
 
-[33] CLAIM: The flexible booking page promises a 14-day risk-free window and a lifetime deposit.
-    SLOT: body (marker only)
-    STATUS: 4 DISPUTED
-    SOURCE: FB versus T7 and TC
-    NOTES: Marked `[CONFIRM]`. Decision 1. Not stated to the reader until resolved.
+[33] CLAIM: Our flexible booking page sets out the 14-day risk-free window after a deposit and the lifetime deposit, both for multiday tours.
+    SLOT: body
+    STATUS: 2 LIKELY ACCURATE
+    SOURCE: FB "PEACE OF MIND POLICIES FOR MULTIDAY TOURS"; FB "14-DAY RISK-FREE BOOKING WINDOW: After putting down a deposit, you can cancel at any point during the first 14 days after booking and get a 100% refund"; FB "LIFETIME DEPOSITS"; owner's answer to Decision 1, 26 October 2026 (both policies apply, they come from different vendors)
+    NOTES: Was level 4. The owner's answer resolves which policy applies: both. Still unpublished: which vendor covers which part of the trip, and the FB note that a cancellation within 90 days of departure forfeits the whole payment, which differs from the T7 and TC scale. The email states only what FB says and links the page.
 
 [34] CLAIM: We recommend comprehensive health and accident insurance from your home country; the trip does not insure you.
     SLOT: body
@@ -276,17 +285,15 @@ Every price and every date is at level 1. The gate passes at MEDIUM. The drafts 
 
 [37] CLAIM: Reply time and whether a call is offered.
     SLOT: body
-    STATUS: 3 UNVERIFIED
-    SOURCE: none
-    NOTES: Marked `[CONFIRM]`. Decision 4.
+    STATUS: removed from the draft
+    SOURCE: owner's answer to Decision 4, 26 October 2026, names Mate's role and gives no reply time or call offer
+    NOTES: Was level 3. Marker removed. Email 6 promises neither.
 
-[38] CLAIM: Sender "Mate" at Outdoor Norway.
+[38] CLAIM: Sender "Mate, trip captain" at Outdoor Norway.
     SLOT: signature
-    STATUS: 3 UNVERIFIED
-    SOURCE: TE lists no Mate
-    NOTES: Kept from the current sequence. Decision 4. Counted once for both tours.
-
-### 7-Day Email 7, day 25
+    STATUS: 2 LIKELY ACCURATE
+    SOURCE: owner's answer to Decision 4, 26 October 2026 ("he is a trip captain"); TE still lists no Mate
+    NOTES: Was level 3. Counted once for both tours.
 
 [39] CLAIM: Departures 23 January, 30 January, 6 February, 13 February and 27 February 2027, each 7 days.
     SLOT: body
@@ -298,11 +305,11 @@ Every price and every date is at level 1. The gate passes at MEDIUM. The drafts 
     STATUS: 2 LIKELY ACCURATE
     SOURCE: T7 "6 nights of twin-share accommodation"
 
-[41] CLAIM: Single traveller option.
+[41] CLAIM: Travelling alone? There is a room-share option.
     SLOT: body
-    STATUS: 3 UNVERIFIED
-    SOURCE: none
-    NOTES: Marked `[CONFIRM]`. Decision 7.
+    STATUS: 2 LIKELY ACCURATE
+    SOURCE: owner's answer to Decision 7, 26 October 2026 ("share options for accommodations")
+    NOTES: Was level 3. Marker removed. No single supplement or price is stated; neither page publishes one.
 
 [42] CLAIM: The Alta trip is six days in one Arctic base with your own dog team, a snowmobile day and a whale cruise.
     SLOT: body
@@ -313,7 +320,7 @@ Every price and every date is at level 1. The gate passes at MEDIUM. The drafts 
     SLOT: body
     STATUS: 1 VERIFIED
     SOURCE: as [32]
-    NOTES: Carries the Decision 1 marker because of [33].
+    NOTES: The Decision 1 marker was removed with the owner's answer; the email now attributes the rule to the tour page ("The cancellation terms on the tour page give a full refund up to 60 days before departure").
 
 [44] CLAIM: 60 days before 23 January 2027 is 24 November 2026; 60 days before 27 February 2027 is 29 December 2026.
     SLOT: body (dates)
@@ -321,13 +328,11 @@ Every price and every date is at level 1. The gate passes at MEDIUM. The drafts 
     SOURCE: arithmetic from [1]; checked with Python date subtraction
     NOTES: The other three cut-offs, for the README: 1 December, 8 December and 15 December 2026.
 
-[45] CLAIM: Sending the request is a question, not a booking.
+[45] CLAIM: Any of the five weeks is open to request.
     SLOT: body
-    STATUS: 3 UNVERIFIED
-    SOURCE: none
-    NOTES: Marked `[CONFIRM]`. Decision 3.
-
-### 7-Day Email 8, day 40
+    STATUS: 2 LIKELY ACCURATE
+    SOURCE: owner's answer to Decision 3, 26 October 2026 ("all dates available"); the five weeks from TJ
+    NOTES: Was level 3, as "Sending the request is a question, not a booking". Whether the form takes payment is not stated anywhere, so the email does not say.
 
 [46] CLAIM: We also build trips to your own dates.
     SLOT: body
@@ -363,10 +368,10 @@ Every price and every date is at level 1. The gate passes at MEDIUM. The drafts 
     SOURCE: SG "Potentially, particularly in early April and at destinations where sufficiently dark nights remain"
 
 [52] CLAIM: April is an aurora month for this trip.
-    SLOT: body (marker)
-    STATUS: 4 DISPUTED
-    SOURCE: TA season November to April; AB season September to late March
-    NOTES: Marked `[CONFIRM]`. Decision 5.
+    SLOT: body
+    STATUS: 2 LIKELY ACCURATE
+    SOURCE: owner's answer to Decision 5, 26 October 2026 (the sold season and the aurora season end at the same time, late March to early April); SG "Potentially, particularly in early April and at destinations where sufficiently dark nights remain"
+    NOTES: Was level 4. Marker removed. The email says the dark window shrinks in April and the daytime activities carry more of the trip.
 
 [53] CLAIM: No single month is guaranteed to be better than another.
     SLOT: body
@@ -390,11 +395,11 @@ Every price and every date is at level 1. The gate passes at MEDIUM. The drafts 
     STATUS: 2 LIKELY ACCURATE
     SOURCE: TA "four-hour journey in search of whales. Warm beverages and snacks are included"
 
-[57] CLAIM: Which months the cruise runs.
-    SLOT: body (marker)
-    STATUS: 3 UNVERIFIED
-    SOURCE: none
-    NOTES: Marked `[CONFIRM]`. Decision 6.
+[57] CLAIM: The cruise runs in every month the trip is sold.
+    SLOT: body
+    STATUS: 2 LIKELY ACCURATE
+    SOURCE: owner's answer to Decision 6, 26 October 2026 ("if it is included in the package then yes"); TA "Day 2 - Whales & Fjords of Northern Norway"; TA Included list "4-hour fjord and whale-watching cruise"
+    NOTES: Was level 3. Marker removed. The email names the cruise as Day 2 without a month caveat.
 
 [58] CLAIM: Day 3 dog sledding, 4 hours, your own team, through Gargia Valley, with lunch; then Gargia Lodge and the sauna.
     SLOT: body
@@ -542,28 +547,28 @@ Every price and every date is at level 1. The gate passes at MEDIUM. The drafts 
     STATUS: 2 LIKELY ACCURATE
     SOURCE: TA Not Included list, verbatim
 
-[85] CLAIM: Tell us your dates through the tour page and we confirm availability.
+[85] CLAIM: Tell us your dates through the tour page and we come back to confirm them and the next step.
     SLOT: body
-    STATUS: 3 UNVERIFIED
-    SOURCE: none
-    NOTES: Marked `[CONFIRM]`. Decision 3.
+    STATUS: 2 LIKELY ACCURATE
+    SOURCE: owner's answer to Decision 3, 26 October 2026 ("all dates available")
+    NOTES: Was level 3. Marker removed. "Confirm availability" is gone.
 
 [86] CLAIM: Deposit amount and balance due date.
     SLOT: body
-    STATUS: 3 UNVERIFIED
-    SOURCE: none
-    NOTES: Marked `[CONFIRM]`. Decision 2.
+    STATUS: removed from the draft
+    SOURCE: as [31]
+    NOTES: Was level 3. The sentence is dropped from Alta Email 5.
 
 [87] CLAIM: Cancellation scale, as [32].
     SLOT: body
     STATUS: 1 VERIFIED
     SOURCE: TA Cancellation Policy; TC
 
-[88] CLAIM: Flexible booking conflict, as [33].
-    SLOT: body (marker)
-    STATUS: 4 DISPUTED
-    SOURCE: FB versus TA and TC
-    NOTES: Marked `[CONFIRM]`. Decision 1.
+[88] CLAIM: Flexible booking sentence, as [33].
+    SLOT: body
+    STATUS: 2 LIKELY ACCURATE
+    SOURCE: as [33]
+    NOTES: Was level 4. See [33].
 
 [89] CLAIM: Insurance recommendation, as [34].
     SLOT: body
@@ -585,28 +590,26 @@ Every price and every date is at level 1. The gate passes at MEDIUM. The drafts 
 
 [92] CLAIM: Reply time and calls.
     SLOT: body
-    STATUS: 3 UNVERIFIED
-    SOURCE: none
-    NOTES: Marked `[CONFIRM]`. Decision 4.
-
-### 6-Day Alta Email 7, day 25
+    STATUS: removed from the draft
+    SOURCE: as [37]
+    NOTES: Was level 3. Marker removed. Alta Email 6 promises neither.
 
 [93] CLAIM: The trip runs November to April, 6 days and 5 nights, on dates you choose.
     SLOT: body (dates)
     STATUS: 2 LIKELY ACCURATE
     SOURCE: TA, as [47]
 
-[94] CLAIM: Single traveller option.
+[94] CLAIM: Travelling alone? There is a room-share option.
     SLOT: body
-    STATUS: 3 UNVERIFIED
-    SOURCE: none
-    NOTES: Marked `[CONFIRM]`. Decision 7.
+    STATUS: 2 LIKELY ACCURATE
+    SOURCE: as [41]
+    NOTES: Was level 3. Marker removed. No single supplement or price is stated.
 
 [95] CLAIM: 60 days before 15 February 2027 is 17 December 2026.
     SLOT: body (dates)
     STATUS: 1 VERIFIED
     SOURCE: arithmetic; the 60-day rule as [87]
-    NOTES: An example date, labelled as such in the email. Carries the Decision 1 and Decision 3 markers.
+    NOTES: An example date, labelled as such in the email. The Decision 1 and Decision 3 markers were removed with the owner's answers.
 
 ### 6-Day Alta Email 8, day 40
 
@@ -615,10 +618,17 @@ Every price and every date is at level 1. The gate passes at MEDIUM. The drafts 
     STATUS: 2 LIKELY ACCURATE
     SOURCE: TM "built around your goals, dates, and fitness level"
 
+[97] CLAIM: Any start date in the season is open to request.
+    SLOT: body (Alta Email 7)
+    STATUS: 2 LIKELY ACCURATE
+    SOURCE: owner's answer to Decision 3, 26 October 2026 ("all dates available"); TA flexible dates, November to April
+    NOTES: Added when "Sending the request is a question, not a booking" was replaced. Whether the form takes payment is not stated anywhere, so the email does not say.
+
 ## Consistency check across slots
 
 - Price: Email 5 and Email 7 of each sequence send the reader to the tour page that shows the same figure. No email states a price the page does not show.
 - Dates: the five 7-Day departures appear in Email 2 and Email 7 with the same dates. The Alta emails never name a fixed departure; the one date in Alta Email 7 is labelled as an example.
 - Length: "7 days" and "6 days and 5 nights" match the pages and the date spans.
-- Cancellation: identical wording in both Email 5 drafts and in both Email 7 drafts.
+- Cancellation: identical wording in both Email 5 drafts (the scale plus the flexible booking link) and in both Email 7 drafts (the 60-day rule attributed to the tour page).
+- Sender: all 14 signatures read "Mate, trip captain" above "Outdoor Norway".
 - Links: every URL in the two sequences returned HTTP 200 on 26 October 2026 (command in the README).

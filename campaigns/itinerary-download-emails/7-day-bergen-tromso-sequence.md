@@ -1,8 +1,8 @@
 # 7-Day Bergen to Tromsø: follow-up sequence after the itinerary download
 
-Status: draft, awaiting approval. Read the [folder README](README.md) for the reasoning, the decisions needed and the sources. Days count from the download. Each email has one button and at most two text links. `[first name]` is the merge field. `[CONFIRM ...]` marks a fact the site does not publish; do not send with a marker in place.
+Status: draft, awaiting approval. Decisions 1 to 8 in the README were answered by the owner on 26 October 2026 and the answers are applied here; decisions 9 and 10 are still open. Mate signs as trip captain, which the owner confirmed the same day. Read the [folder README](README.md) for the reasoning, the decisions and the sources. Days count from the download. Each email has one button and at most two text links. `[first name]` is the merge field. `[REPLY ADDRESS]` in Email 6 is filled in by whoever sends.
 
-Sender: Mate, Outdoor Norway. Replies go to the company inquiry address the current sequence already uses; the mailing tool fills in `[REPLY ADDRESS]` (the repo keeps no email addresses). See Decision 4 in the README.
+Sender: Mate, trip captain, Outdoor Norway. Replies go to the company inquiry address the current sequence already uses; the mailing tool fills in `[REPLY ADDRESS]` (the repo keeps no email addresses). See Decision 4 in the README.
 
 Tour page used in every email: https://www.outdoornorway.com/multi-day-tour/northern-lights-tour-bergen-tromso
 
@@ -35,7 +35,7 @@ One ask: hit reply and tell me which week you are leaning towards, even if it is
 
 All five departures are on the [tour page](https://www.outdoornorway.com/multi-day-tour/northern-lights-tour-bergen-tromso).
 
-Mate
+Mate, trip captain
 Outdoor Norway
 
 Principle: commitment and consistency. A reply with a month is a small public step that makes the larger one easier. Five dated options keep the choice small. The season guide is the reciprocity gift.
@@ -69,7 +69,7 @@ If you want more skiing than one day, this is not the trip for it, and I would r
 
 What to bring is on the [packing list page](https://www.outdoornorway.com/faq/what-should-i-bring-with-me-for-7-day-ski-fjord-norway-aurora-tour).
 
-Mate
+Mate, trip captain
 Outdoor Norway
 
 Principle: ability before motivation (Fogg). Name the physical asks day by day so the reader can say yes with confidence, and name who the trip is not for. The two-sided message raises trust in the rest.
@@ -101,7 +101,7 @@ If the sky stays cloudy. You still have the fjord by private boat on Day 5, the 
 
 Why Tromsø, and how it compares with Alta: [where to see the lights in Norway](https://www.outdoornorway.com/blog/best-places-to-see-the-northern-lights-in-norway).
 
-Mate
+Mate, trip captain
 Outdoor Norway
 
 Principle: name the anxiety before the reader does. A two-sided message (no guarantee, here is what you get anyway) is more credible than a promise, and the specific evenings let the reader picture the trip, which is where experiences start paying back.
@@ -139,9 +139,9 @@ What is not:
 - lunches, beverages and snacks
 - travel insurance and personal expenses
 
-How booking works. Send us your preferred week through the tour page and we confirm availability. [CONFIRM: deposit amount and when the balance is due, for example "Hold your place with NOK X, balance due 60 days before departure".]
+How booking works. Send us your preferred week through the tour page and we come back to confirm it and the next step.
 
-If you have to cancel. Cancel 60 days or more before departure and you get a full refund. 45 to 59 days before, 75%. 30 to 44 days before, 50%. Under 30 days, no refund. Card fees are not refundable. [CONFIRM: the flexible booking page also promises a 14-day risk-free window and a lifetime deposit. Decision 1 in the README.]
+If you have to cancel. Cancel 60 days or more before departure and you get a full refund. 45 to 59 days before, 75%. 30 to 44 days before, 50%. Under 30 days, no refund. Card fees are not refundable. Our [flexible booking page](https://www.outdoornorway.com/flexible-booking) sets out the 14-day risk-free window after a deposit and the lifetime deposit, both for multiday tours.
 
 Insurance. We recommend comprehensive health and accident insurance from your home country. The trip does not insure you.
 
@@ -151,12 +151,12 @@ Guests rate the trip 4.9/5 on Tripadvisor.
 
 Our [travel insurance page](https://www.outdoornorway.com/travel-insurance) explains what to look for in a policy.
 
-Mate
+Mate, trip captain
 Outdoor Norway
 
 Principle: the second reader. The decision passes through a partner who was not on the website. Give them total price, inclusions and the exit terms in one place. The refund scale is risk reversal; the rating is social proof with a named source.
 
-Facts: price, taxes, twin-share, inclusions, exclusions, cancellation scale and rating from the tour page; Day 1 Bergen and Day 7 Tromsø Airport from tours.json; insurance recommendation and "does not insure the participants" from the terms page and the travel insurance page.
+Facts: price, taxes, twin-share, inclusions, exclusions, cancellation scale and rating from the tour page; Day 1 Bergen and Day 7 Tromsø Airport from tours.json; insurance recommendation and "does not insure the participants" from the terms page and the travel insurance page; the 14-day window and lifetime deposit from the flexible booking page, and that both policies apply from the owner's answer of 26 October 2026 (README decision 1).
 
 ## Email 6, day 18: a note from Mate
 
@@ -175,13 +175,13 @@ A couple of weeks ago you downloaded the plan. If you have not booked yet, it is
 2. The person you want to bring is not sure. Forward them my last email, the one with the price. Or tell me what they are worried about and I will answer it in writing so you can pass it on.
 3. Flights. You fly into Bergen and home from Tromsø. Tell me the city you leave from and I will tell you how our guests usually route it.
 
-If it is something else, that is fine too. One line is enough. [CONFIRM: reply time, for example "I answer within one working day", and whether a call can be offered.]
+If it is something else, that is fine too. One line is enough.
 
 And if the answer is "not this year", reply with just that and I will stop writing.
 
 [Button: Reply to Mate](mailto:[REPLY ADDRESS]?subject=7-Day%20Bergen%20to%20Troms%C3%B8%20question)
 
-Mate
+Mate, trip captain
 Outdoor Norway
 
 Principle: lower the effort of asking. Naming the three common blockers turns "ask me anything" into a multiple choice. The opt-out line respects the reader and keeps the list clean.
@@ -202,21 +202,21 @@ Hi [first name],
 If you are still deciding, these are the only three questions left. Answer them and you are done.
 
 1. Which week? 23 January, 30 January, 6 February, 13 February or 27 February 2027. Each departure is 7 days.
-2. Who is coming? Rooms are twin-share. [CONFIRM: single traveller option. Decision 7 in the README.]
+2. Who is coming? Rooms are twin-share. Travelling alone? There is a room-share option. Tell us and we will explain how it works.
 3. This trip or Alta? If you want Bergen, the fjords and a ski day as well as the Arctic, this is the one. If you want six days in one Arctic base with your own dog team, a snowmobile day and a whale cruise, it is our [Alta trip](https://www.outdoornorway.com/multi-day-tour/norway-northern-lights-tour-package).
 
-Why a date matters now. Our terms give a full refund up to 60 days before departure. [CONFIRM: Decision 1.] For the 23 January week that is 24 November 2026. For the 27 February week it is 29 December 2026. Requesting your dates now gives you the longest window to change your mind at no cost.
+Why a date matters now. The cancellation terms on the tour page give a full refund up to 60 days before departure. For the 23 January week that is 24 November 2026. For the 27 February week it is 29 December 2026. Requesting your dates now gives you the longest window to change your mind at no cost.
 
-Sending the request is a question, not a booking. [CONFIRM: Decision 3.] We come back with availability and the next step.
+Any of the five weeks is open to request. Send the request and we come back to confirm the week and the next step.
 
 [Button: Request your dates](https://www.outdoornorway.com/multi-day-tour/northern-lights-tour-bergen-tromso)
 
-Mate
+Mate, trip captain
 Outdoor Norway
 
 Principle: close the choice. Three questions, each with a short answer, and the only deadline that is true. The refund cut-off reframes "book now" as "keep your options open", which puts loss aversion on the reader's side.
 
-Facts: departures from tours.json; twin-share and the 60-day full refund from the tour page; cut-off dates calculated from the departures (60 days before 23 January 2027 is 24 November 2026; before 30 January, 1 December; before 6 February, 8 December; before 13 February, 15 December; before 27 February, 29 December 2026).
+Facts: departures from tours.json; twin-share and the 60-day full refund from the tour page; cut-off dates calculated from the departures (60 days before 23 January 2027 is 24 November 2026; before 30 January, 1 December; before 6 February, 8 December; before 13 February, 15 December; before 27 February, 29 December 2026); the room-share option and that any of the five weeks is open to request from the owner's answers of 26 October 2026 (README decisions 7 and 3).
 
 ## Email 8, day 40, optional: last check-in
 
@@ -237,7 +237,7 @@ If not this year, no reply needed. This is the last email in the series.
 
 [Button: See the 2027 dates](https://www.outdoornorway.com/multi-day-tour/northern-lights-tour-bergen-tromso)
 
-Mate
+Mate, trip captain
 Outdoor Norway
 
 Principle: a clean end. Telling the reader this is the last email removes the pressure and often gets the reply the earlier emails did not.
