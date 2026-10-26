@@ -8,11 +8,11 @@ How to read the dates: the compact line lists **start dates**, the same conventi
 
 | Tour | Dates (start dates, 2027) | Price |
 |---|---|---|
-| 9 Day Ski Trip in Norway | JAN 30 / FEB 11, 20 / MAR 13 / APR 10 | from NOK 42,126 |
-| 7 Day Ski in Fjord Norway & Aurora in Tromsø | JAN 23, 30 / FEB 6, 13, 27 | from NOK 41,181 |
-| 6 Day Ski Package Fresh & Cruisers | JAN 29 / FEB 4 | from NOK 28,896 |
-| 3-Day Ski and Snowshoe Experience | JAN 28, 31 / FEB 7 | from NOK 17,451 |
-| 3-Day Winter Multi-Sport Explorer | FEB 5, 12 / MAR 5 | from NOK 16,527 |
+| 9 Day Ski Trip in Norway | JAN 30 / FEB 11, 20 / MAR 13 / APR 10 | from NOK 42,126 per person |
+| 7 Day Ski in Fjord Norway & Aurora in Tromsø | JAN 23, 30 / FEB 6, 13, 27 | from NOK 41,181 per person |
+| 6 Day Ski Package Fresh & Cruisers | JAN 29 / FEB 4 | from NOK 28,896 per person |
+| 3-Day Ski and Snowshoe Experience | JAN 28, 31 / FEB 7 | from NOK 17,451 per person |
+| 3-Day Winter Multi-Sport Explorer | FEB 5, 12 / MAR 5 | from NOK 16,527 per person |
 | Backcountry Ski Tour, Beginner to Intermediate | EVERY SAT + SUN / JAN TO APR | NOK 1,948 per adult |
 | Backcountry Ski Tour, Intermediate to Advanced | EVERY SAT + SUN / JAN TO APR | NOK 1,948 per adult |
 
@@ -43,7 +43,7 @@ Full departures (start to end, 2027):
 - 13 to 21 Mar (Sat to Sun)
 - 10 to 18 Apr (Sat to Sun)
 
-Price note: Tour pages say "From" (for example "From NOK 41,181" on the 7 Day page). The hub shows the bare price. Per person basis is not stated anywhere. [VERIFY: confirm per person with Sameer before it goes in an ad.]
+Price note: Tour pages say "From" (for example "From NOK 41,181" on the 7 Day page). The hub shows the bare price. Per person basis is not stated on the pages; Sameer confirmed on 2026-10-26 that the price is per person.
 
 ### 7 Day Ski in Fjord Norway & Aurora in Tromsø
 
@@ -68,7 +68,7 @@ Full departures (start to end, 2027):
 - 13 to 19 Feb (Sat to Fri)
 - 27 Feb to 5 Mar (Sat to Fri)
 
-Price note: Tour pages say "From" (for example "From NOK 41,181" on the 7 Day page). The hub shows the bare price. Per person basis is not stated anywhere. [VERIFY: confirm per person with Sameer before it goes in an ad.]
+Price note: Tour pages say "From" (for example "From NOK 41,181" on the 7 Day page). The hub shows the bare price. Per person basis is not stated on the pages; Sameer confirmed on 2026-10-26 that the price is per person.
 
 ### 6 Day Ski Package Fresh & Cruisers
 
@@ -90,7 +90,7 @@ Full departures (start to end, 2027):
 - 29 Jan to 3 Feb (Fri to Wed)
 - 4 to 9 Feb (Thu to Tue)
 
-Price note: Tour pages say "From" (for example "From NOK 41,181" on the 7 Day page). The hub shows the bare price. Per person basis is not stated anywhere. [VERIFY: confirm per person with Sameer before it goes in an ad.]
+Price note: Tour pages say "From" (for example "From NOK 41,181" on the 7 Day page). The hub shows the bare price. Per person basis is not stated on the pages; Sameer confirmed on 2026-10-26 that the price is per person.
 
 ### 3-Day Ski and Snowshoe Experience
 
@@ -113,7 +113,7 @@ Full departures (start to end, 2027):
 - 31 Jan to 2 Feb (Sun to Tue)
 - 7 to 9 Feb (Sun to Tue)
 
-Price note: Tour pages say "From" (for example "From NOK 41,181" on the 7 Day page). The hub shows the bare price. Per person basis is not stated anywhere. [VERIFY: confirm per person with Sameer before it goes in an ad.]
+Price note: Tour pages say "From" (for example "From NOK 41,181" on the 7 Day page). The hub shows the bare price. Per person basis is not stated on the pages; Sameer confirmed on 2026-10-26 that the price is per person.
 
 Data warning: the tour page still shows NOK 13,462. Use NOK 17,451.
 
@@ -138,7 +138,7 @@ Full departures (start to end, 2027):
 - 12 to 14 Feb (Fri to Sun) (Valentine's Day departure)
 - 5 to 7 Mar (Fri to Sun)
 
-Price note: Tour pages say "From" (for example "From NOK 41,181" on the 7 Day page). The hub shows the bare price. Per person basis is not stated anywhere. [VERIFY: confirm per person with Sameer before it goes in an ad.]
+Price note: Tour pages say "From" (for example "From NOK 41,181" on the 7 Day page). The hub shows the bare price. Per person basis is not stated on the pages; Sameer confirmed on 2026-10-26 that the price is per person.
 
 Data warning: the tour page still shows NOK 12,749. Use NOK 16,527.
 

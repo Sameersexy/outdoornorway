@@ -4,7 +4,7 @@ Nothing here blocks the copy drafts. Each item stops a specific claim from going
 
 | # | Question | Why it matters | Safe wording until answered |
 |---|---|---|---|
-| 1 | Are the multi-day prices per person? | The hub and pages do not say. A wrong "per person" is a price claim error | "from NOK 17,451" |
+| 1 | Are the multi-day prices per person? Answered 26 October 2026: yes, per person. | The hub and pages do not say, so the answer is the source | "from NOK 17,451 per person" |
 | 2 | Day tours: is the headline price NOK 1,948 (adult)? The pages also show NOK 1,753 (youth) and open group prices of NOK 1,858 (beginner) and NOK 1,650 (advanced) that need three guests | "From" must match the landing page. If fewer than three guests book, the guest may be asked to share a private guide fee | "NOK 1,948 per adult" |
 | 3 | Are lift passes included on the 9 Day, 3-Day Ski and Snowshoe, and 3-Day Multi-Sport trips? | Not stated. The 7 Day trip includes a 1-day pass and the 6 Day package includes ski passes | Do not mention lift passes |
 | 4 | Is "All gear included" true on any tour? The hub badge says so, but the 7 Day page says skis, boots, poles and helmets are not included | A false inclusion claim is a refund dispute | Do not claim gear is included |

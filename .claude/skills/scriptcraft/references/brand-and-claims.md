@@ -64,7 +64,7 @@ The full phrase lists are in the JSON. Read them before writing, not after the v
 - A number is tied to the row you cite in that beat. Every digit spoken or shown, and every spelled number from twenty up ("ninety percent"), must appear in a verified row listed in that beat's facts column (F04). A number found only in another row warns in a draft and blocks with --final. A number in no row blocks.
 - Caption digits are checked too (F04): any verified row will do.
 - Every factual sentence maps to a fact id cited in that beat, and claims no more than the row. Row "snowshoe day for non-skiers" supports "non-skiers get a snowshoe day", not "nobody skis that day".
-- Prices: "from NOK X" for multi-day trips, "NOK X per adult" for day tours. Never "per person" until confirmed.
+- Prices: "from NOK X per person" for multi-day trips (per person confirmed by Sameer, 26 October 2026), "NOK X per adult" for day tours.
 - Every numeral counts toward the number budget, including the day and the year. Spoken lines and overlays carry one date element per beat ("in February 2027"). Full dates with the year ("30 Jan to 7 Feb 2027") go in the caption or description, backed by a verified row.
 - Missing fact: write `[VERIFY: what to confirm, who confirms it]` in the voiceover and list it in open items. Never fill the gap with a plausible number.
 - Never invent a URL. Use `[LINK: what the page is]`.

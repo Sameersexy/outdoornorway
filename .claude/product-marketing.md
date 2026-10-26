@@ -57,7 +57,7 @@ Words to avoid: winter wonderland, breathtaking, magical, unforgettable, epic, s
 - Any aurora sighting or guarantee. The page says no departure can guarantee one.
 - "Guaranteed snow", "perfect powder", "all gear included" (contradicted on several pages), any group size number, any age limit (pages conflict).
 - "Few slots left", countdowns or any scarcity wording, unless live availability is confirmed. Real departure dates are fine.
-- "Per person" until confirmed. Use "from NOK X". Day tours say "per adult".
+- "Per person" on a day tour; day tours say "per adult". Multi-day prices are per person (confirmed by Sameer, 26 October 2026), so "from NOK X per person" is fine there.
 - A rating badge without a named source and current number ("Tripadvisor 4.9", not "4.9 stars") [VERIFY].
 - Beginner positioning on the 3-Day Ski and Snowshoe or the 3-Day Multi-Sport. The pages contradict themselves on level [VERIFY].
 - Personal-attribute questions to the viewer ("Are you a beginner?", "Over 60?"). Describe the trip instead.

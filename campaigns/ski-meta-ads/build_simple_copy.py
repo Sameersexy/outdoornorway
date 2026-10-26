@@ -71,7 +71,7 @@ def main():
     out.append("|---|---|---|")
     for t in data["tours"]:
         dates = start_dates_line(t["departures"]) if t["kind"] == "multi-day" else "EVERY SAT + SUN | JAN TO APR"
-        table_price = f"from NOK {money(t['price_nok'])}" if t["price_qualifier"] == "from" else f"NOK {money(t['price_nok'])} per adult"
+        table_price = f"from NOK {money(t['price_nok'])} per person" if t["price_qualifier"] == "from" else f"NOK {money(t['price_nok'])} per adult"
         out.append(f"| {t['name']} | {dates.replace('|', '/')} | {table_price} |")
     out.append("")
     out.append("## Per tour, ready for the designer\n")
