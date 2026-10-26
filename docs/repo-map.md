@@ -33,7 +33,8 @@ outdoornorway/
 |   |-- skills/                          paused ad-copy skill
 |   |-- AGENTS.md                        instructions for other coding agents
 |   `-- README.md                        why adquill is paused
-|-- campaigns/                  [fixed]  tour data and ski ad notes
+|-- campaigns/                  [fixed]  tour data, ski ad notes and email drafts
+|   |-- itinerary-download-emails/       follow-up emails after an itinerary download, drafts
 |   `-- ski-meta-ads/           [fixed]  tours.json, its checker and the ad notes
 |-- content/                    [fixed]  finished and draft video scripts
 |   `-- scripts/                [fixed]  scripts, each with a notes file
@@ -82,6 +83,7 @@ Safe to move? has two answers. No means code, tests or manifests name the path. 
 | `.claude/settings.json` | Project settings for a clone: enabled plugins (including ponytail and repo-band), their marketplaces and the auto-compact window | Claude Code, in a clone | No. Claude Code reads project settings from this path. |
 | `.claude/product-marketing.md` | Brand context, confirmed facts and the do-not-claim list | The copy skills and the agents | With edits. CLAUDE.md, the reviewer agent, several skills and the script notes cite this path. |
 | `campaigns/ski-meta-ads/` | `tours.json` (prices, dates, day-by-day plans), its checker and the ski ad notes. See [its README](../campaigns/ski-meta-ads/README.md). | The validator (`--tour`), `/tour-data`, `doctor`, both agents | No. `script_check.py` finds `tours.json` by going up four folders from its own folder, so a move breaks `--tour` unless you pass `--tours-file`. `doctor` lists the file as required. |
+| `campaigns/itinerary-download-emails/` | Draft follow-up email sequences for the 7-Day Bergen to Tromsø and 6-Day Alta trips, with the reasoning, open decisions and sources. See [its README](../campaigns/itinerary-download-emails/README.md). | Nothing yet; the emails are sent from the mailing tool | Yes, nothing reads it. |
 | `content/scripts/` | Finished and draft scripts, each with a notes file. See [its README](../content/scripts/README.md). | `/script` writes here by default | No. The script agents save here by default, and the integrity test lists its README. |
 | `docs/getting-started.md`, `docs/token-hygiene.md` | The guide for writers and editors, and the token habits | `/howto`, `/tokens`, the integrity test | No. `/howto` copies the Quick start from the guide and the test reads it. `/tokens` points to the token page. |
 | `docs/` | Guides, research and review history. See [README.md](README.md). | Everyone | No. The two files above keep the folder in place, and CLAUDE.md names `docs/repo-map.md`, `docs/README.md` and `docs/token-hygiene.md` by path. Inside it, a guide can move once its links are fixed, and the docs index and the integrity test name most of them. |

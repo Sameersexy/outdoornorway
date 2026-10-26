@@ -1,0 +1,249 @@
+# 6-Day Alta: follow-up sequence after the itinerary download
+
+Status: draft, awaiting approval. Read the [folder README](README.md) for the reasoning, the decisions needed and the sources. Days count from the download. Each email has one button and at most two text links. `[first name]` is the merge field. `[CONFIRM ...]` marks a fact the site does not publish; do not send with a marker in place.
+
+Sender: Mate, Outdoor Norway. Replies go to the company inquiry address the current sequence already uses; the mailing tool fills in `[REPLY ADDRESS]` (the repo keeps no email addresses). See Decision 4 in the README.
+
+Tour page used in every email: https://www.outdoornorway.com/multi-day-tour/norway-northern-lights-tour-package
+
+## Email 2, day 2: which month
+
+Reader's question: when, and how long?
+Step we ask for: reply with the month, and whether the dates are fixed or flexible.
+
+Subject A: November to April. Which month is your Alta?
+Subject B: Your dates are flexible. Here is how the month changes the trip
+Preview: Dates on request for 2026 and 2027. What each part of the season gives you.
+
+Hi [first name],
+
+You have the six-day plan. With Alta the first decision is the month, because the dates are flexible and available on request for 2026 and 2027, from November to April.
+
+November takes you well into the Arctic winter. December and January bring the longest nights: long evenings for the lights, short days for the dog sledding and the snowmobile trip across Finnmarksvidda. By February the days are already noticeably longer than around the December solstice, so you get daylight for the activities and dark nights for the aurora. March is another strong month, and Visit Norway notes that spring statistically sees high levels of aurora activity. In April the dark window shrinks, so the daytime activities carry more of the trip. [CONFIRM: Decision 5 in the README, the aurora season versus the sold season.]
+
+Our Alta guide says no single month is guaranteed to beat the others, and that we would not build a whole trip around a single night. This plan gives the lights several evenings, and the days are full whatever the sky does.
+
+One ask: hit reply and tell me the month you are thinking of, and whether your dates are fixed or flexible. I will come back with anything you should know about that time of year.
+
+[Button: Read the month-by-month guide](https://www.outdoornorway.com/blog/best-time-to-see-northern-lights-in-norway)
+
+Everything about Alta and the lights is in our [Alta aurora guide](https://www.outdoornorway.com/blog/alta-norway-northern-lights).
+
+Mate
+Outdoor Norway
+
+Principle: commitment and consistency. A reply with a month and a fixed-or-flexible answer is a small step that gives the team something to work with. The season guide is the reciprocity gift.
+
+Facts: flexible dates for 2026 and 2027, November to April, from the Alta tour page; "much further into the Arctic winter" for November, "exceptionally long Arctic nights" for December and January, "another strong contender" for March, April window shrinks, and the Visit Norway note from the season guide; "noticeably longer than around the December solstice" from the Bergen winter blog; "there isn't one guaranteed best month" and "we wouldn't build an entire trip around a single night" from the Alta blog; dog sledding and the Finnmarksvidda snowmobile trip from the tour page.
+
+## Email 3, day 5: can I do it
+
+Reader's question: am I fit enough, and what will I be asked to do?
+Step we ask for: check yourself against the requirements, then settle the month.
+
+Subject A: Can you do the Alta trip? Check yourself, day by day
+Subject B: You drive your own dog team. Here is what each day asks of you
+Preview: Easy to medium, four hours on the sled, four on the snowmobile, free mornings. Day by day.
+
+Hi [first name],
+
+Once people have the plan, the question they ask most is "am I fit enough, and what will I actually be asked to do?" Here is the check, day by day.
+
+- The grade is easy to medium. You need to be comfortable outdoors in winter and moderately active.
+- Day 2, the fjord and whale cruise. 4 hours on the water, with warm drinks and snacks on board. The main demand is standing on deck in the cold. [CONFIRM: Decision 6, which months the cruise runs.]
+- Day 3, dog sledding. 4 hours, driving your own team of huskies through Gargia Valley, with lunch. Then you check in at Gargia Lodge and the sauna is yours.
+- Day 4, the snowmobile trip. 4 hours across Finnmarksvidda, driving in pairs. Some activities have age, licence or participation requirements, and we confirm them with you before departure.
+- Day 5, your choice. A free morning and the sauna, or an optional 5-hour snowshoe to a frozen waterfall. The snowshoe is not included.
+- The rest. Free time on Days 1, 2, 4 and 5. Specialist equipment and safety gear for the guided activities is provided where applicable. Pack warm layers, a waterproof outer layer and winter footwear, and dress for standing still, not just for the temperature on your weather app. It is a good trip for a first visit to Northern Norway.
+
+If that reads like you, the next thing to settle is the month. Reply to my last email, or just reply here.
+
+If you want fjords and a ski day as well as the Arctic, this is not the trip for it, and I would rather say so now. That trip is our [7-Day Bergen to Tromsø](https://www.outdoornorway.com/multi-day-tour/northern-lights-tour-bergen-tromso).
+
+[Button: See the day-by-day plan](https://www.outdoornorway.com/multi-day-tour/norway-northern-lights-tour-package)
+
+What a Gargia evening is like, and how to dress for it: [our Alta guide](https://www.outdoornorway.com/blog/alta-norway-northern-lights).
+
+Mate
+Outdoor Norway
+
+Principle: ability before motivation (Fogg). Name the physical asks and the time on each activity so the reader can say yes with confidence, and name who the trip is not for. The two-sided message raises trust in the rest.
+
+Facts: grade, requirements, cruise length and refreshments, dog sledding length with your own team and lunch, Gargia Lodge and sauna, snowmobile length and pairs, age and licence line, optional snowshoe not included, free time days, specialist equipment line, packing items and "good for a first trip" from the Alta tour page and its FAQ; "Gargia Valley" from the tour page; "dress for standing still" from the Alta blog.
+
+## Email 4, day 9: what if we see nothing
+
+Reader's question: what if the lights do not show?
+Step we ask for: accept the real odds and keep going.
+
+Subject A: What if the lights do not show in Alta?
+Subject B: Four evenings, the Finnmarksvidda, and a fire to wait by
+Preview: Sightings can never be guaranteed. Here is how the trip stacks the odds.
+
+Hi [first name],
+
+Nobody can promise you the aurora, and I would not trust anyone who does. Sightings can never be guaranteed. So here is how this trip improves your chances, and what you still have if the sky stays shut.
+
+Four evenings. Day 1, the welcome dinner at Raus Social, then a possible first sighting on your first night. Day 3, the evening by the fire at Gargia Lodge, watching the sky after dark. Day 4, the signature evening: a visit to a kennel of about 40 huskies, a warm Arctic dinner, then viewing away from the light pollution. Day 5, a final chance after the farewell dinner. Day 2 has no aurora activity in the plan.
+
+Why Alta. The town sits at about 70 degrees north and combines long, dark winter nights with quick access to the open landscapes of Finnmarksvidda. That plateau gives you something you will not find at a city viewpoint. On one particular night Alta could be clear while Tromsø is cloudy, and the other way round. Clouds can obscure an otherwise active aurora, so the trip gives you several nights and a base away from town light.
+
+Patience after dinner. Viewing is most often reported between about 6 pm and 1 am. Dress for standing still.
+
+If the sky stays cloudy. You still have the whales on Day 2, your own dog team on Day 3, the snowmobile across the plateau on Day 4, the sauna and the fire every evening at Gargia. As our guide puts it, a Northern Lights snowmobile trip is a snowmobile adventure first and an aurora experience second. The rest of the trip goes ahead whatever the sky does.
+
+[Button: Read the Alta aurora guide](https://www.outdoornorway.com/blog/alta-norway-northern-lights)
+
+How Alta compares with Tromsø: [where to see the lights in Norway](https://www.outdoornorway.com/blog/best-places-to-see-the-northern-lights-in-norway).
+
+Mate
+Outdoor Norway
+
+Principle: name the anxiety before the reader does. A two-sided message (no guarantee, here is what you get anyway) is more credible than a promise, and the specific evenings let the reader picture the trip, which is where experiences start paying back.
+
+Facts: "can never be guaranteed", Day 1 welcome dinner and possible first sighting, Day 3 fire and sky, Day 4 kennel with about 40 huskies, Arctic dinner and viewing away from light pollution, Day 5 final chance, Day 2 no aurora activity, "rest of the trip goes ahead", from the Alta tour page and its FAQ; 70 degrees north, "long, dark winter nights with quick access to the open landscapes of Finnmarksvidda", "something you won't find in a city viewpoint", "Clouds can obscure an otherwise active Aurora", 6 pm to 1 am, "Dress for standing still" and "a snowmobile adventure first and an Aurora experience second" from the Alta blog; "Alta could be clear while Tromsø is cloudy" from the where-to-see blog.
+
+## Email 5, day 13: the full price
+
+Reader's question: how much, for what, and what if I cannot go?
+Step we ask for: forward this to the person you are travelling with.
+
+Subject A: The full price, what it covers, and what happens if you cancel
+Subject B: NOK 31,000. Everything in, everything out, in one email
+Preview: The numbers, the inclusions and the refund scale, written to be forwarded.
+
+Hi [first name],
+
+This is the email to forward to whoever you are travelling with. It has the numbers.
+
+The price. NOK 31,000, including all taxes, for 6 days and 5 nights.
+
+Where you sleep. 2 nights at Canyon Hotel in Alta, then 3 nights at Gargia Lodge, about 30 minutes outside town, with a sauna and evenings by the fire.
+
+What is in:
+
+- all 5 nights
+- transfers as specified in the plan, from Alta Airport and back
+- professional local guides for the guided activities
+- the 4-hour fjord and whale cruise
+- dog sledding, driving your own team
+- the snowmobile trip across Finnmarksvidda
+- the kennel evening
+- Northern Lights viewing opportunities throughout the trip
+- sauna access at Gargia Lodge
+- the welcome dinner, lunch on the dog sledding day, the Arctic dinner at the kennel and the farewell dinner
+- selected warm beverages and snacks during the activities
+- specialist equipment and safety gear for the guided activities, where applicable
+
+What is not:
+
+- flights to and from Alta
+- the optional snowshoe on Day 5
+- meals not listed above
+- alcoholic and other extra drinks
+- travel and accident insurance, and personal expenses
+
+How booking works. Tell us your dates through the tour page and we confirm availability. [CONFIRM: deposit amount and when the balance is due. Decision 2 in the README.]
+
+If you have to cancel. Cancel 60 days or more before departure and you get a full refund. 45 to 59 days before, 75%. 30 to 44 days before, 50%. Under 30 days, no refund. Card fees are not refundable. [CONFIRM: the flexible booking page also promises a 14-day risk-free window and a lifetime deposit. Decision 1 in the README.]
+
+Insurance. We recommend comprehensive health and accident insurance from your home country. The trip does not insure you.
+
+Guests rate the trip 4.9/5 on Tripadvisor.
+
+[Button: See the price and inclusions on the tour page](https://www.outdoornorway.com/multi-day-tour/norway-northern-lights-tour-package)
+
+Our [travel insurance page](https://www.outdoornorway.com/travel-insurance) explains what to look for in a policy.
+
+Mate
+Outdoor Norway
+
+Principle: the second reader. The decision passes through a partner who was not on the website. Give them total price, inclusions and the exit terms in one place. The refund scale is risk reversal; the rating is social proof with a named source.
+
+Facts: price, taxes, 6 days 5 nights, hotels and nights, inclusions, exclusions, cancellation scale and rating from the Alta tour page; Gargia Lodge about 30 minutes outside Alta with sauna and evenings by the fire from the tour page; insurance recommendation and "does not insure the participants" from the terms page and the travel insurance page.
+
+## Email 6, day 18: a note from Mate
+
+Reader's question: what is stopping me?
+Step we ask for: reply with the one thing.
+
+Subject A: The three things people get stuck on
+Subject B: Dates, a travel partner, or flights to Alta?
+Preview: If you have not booked, it is usually one of three things. Reply with the number.
+
+Hi [first name],
+
+A couple of weeks ago you downloaded the plan. If you have not booked yet, it is usually one of three things. I can help with all of them, so reply with the number.
+
+1. The dates. You have a window but not a week. Tell me the window and I will tell you what we can do inside it.
+2. The person you want to bring is not sure. Forward them my last email, the one with the price. Or tell me what they are worried about and I will answer it in writing so you can pass it on.
+3. Flights to Alta. Tell me the city you leave from and I will tell you how our guests usually route it. The transfer from Alta Airport is included either way.
+
+If it is something else, that is fine too. One line is enough. [CONFIRM: reply time, for example "I answer within one working day", and whether a call can be offered. Decision 4 in the README.]
+
+And if the answer is "not this year", reply with just that and I will stop writing.
+
+[Button: Reply to Mate](mailto:[REPLY ADDRESS]?subject=6-Day%20Alta%20question)
+
+Mate
+Outdoor Norway
+
+Principle: lower the effort of asking. Naming the three common blockers turns "ask me anything" into a multiple choice. The opt-out line respects the reader and keeps the list clean.
+
+Facts: airport transfer included from the Alta tour page. "What we can do inside it" is a promise the sender answers by hand; it is not a claim about availability.
+
+## Email 7, day 25: decide
+
+Reader's question: is it time to decide?
+Step we ask for: request your dates.
+
+Subject A: Three questions, then you are done
+Subject B: Which dates, who is coming, and the one date that matters
+Preview: The only three questions left, and why requesting your dates now costs nothing.
+
+Hi [first name],
+
+If you are still deciding, these are the only three questions left. Answer them and you are done.
+
+1. Which dates? The trip runs November to April, 6 days and 5 nights, on dates you choose. Give us a start date, or a window, and we come back with what works.
+2. Who is coming? Tell us how many, and we will confirm the rooms at Canyon Hotel and Gargia Lodge. [CONFIRM: single traveller option. Decision 7 in the README.]
+3. This trip or Bergen to Tromsø? If you want one Arctic base, your own dog team, a snowmobile day and a whale cruise, this is the one. If you want Bergen, the fjords and a ski day before the Arctic, it is our [7-Day Bergen to Tromsø](https://www.outdoornorway.com/multi-day-tour/northern-lights-tour-bergen-tromso).
+
+Why a date matters now. Our terms give a full refund up to 60 days before departure. [CONFIRM: Decision 1.] For a trip starting on 15 February 2027, that is 17 December 2026. Requesting your dates now gives you the longest window to change your mind at no cost.
+
+Sending the request is a question, not a booking. [CONFIRM: Decision 3.] We come back with availability and the next step.
+
+[Button: Request your dates](https://www.outdoornorway.com/multi-day-tour/norway-northern-lights-tour-package)
+
+Mate
+Outdoor Norway
+
+Principle: close the choice. Three questions, each with a short answer, and the only deadline that is true. The refund cut-off reframes "book now" as "keep your options open", which puts loss aversion on the reader's side.
+
+Facts: season, 6 days 5 nights, flexible dates, hotels and the 60-day full refund from the Alta tour page; the example cut-off is calculated (60 days before 15 February 2027 is 17 December 2026).
+
+## Email 8, day 40, optional: last check-in
+
+Reader's question: still interested?
+Step we ask for: reply, or request dates.
+
+Subject A: Still thinking about Alta?
+Subject B: One line from you and I will do the rest
+Preview: A short check-in, then I leave you alone.
+
+Hi [first name],
+
+A short one. Are you still thinking about Alta this winter?
+
+If yes, reply with your dates, or a window, and I will take it from there. If the plan does not quite fit, we also build trips to your own dates and pace: see [tailor-made trips](https://www.outdoornorway.com/tailor-made-adventures).
+
+If not this year, no reply needed. This is the last email in the series.
+
+[Button: Request your dates](https://www.outdoornorway.com/multi-day-tour/norway-northern-lights-tour-package)
+
+Mate
+Outdoor Norway
+
+Principle: a clean end. Telling the reader this is the last email removes the pressure and often gets the reply the earlier emails did not.
+
+Facts: tailor-made page exists on the live site; flexible dates from the Alta tour page.
