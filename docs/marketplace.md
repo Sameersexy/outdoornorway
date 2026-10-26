@@ -118,20 +118,21 @@ This page makes no promise about cloud sessions. [VERIFY: whether cloud sessions
 
 ## Cut a release
 
-A release changes five version fields in three files. Set them all to the same value in one commit.
+A release changes seven version fields in four files. Set them all to the same value in one commit.
 
 | File | Field |
 |---|---|
 | `package.json` | `version` |
 | `.claude-plugin/plugin.json` | `version` |
 | `.claude-plugin/marketplace.json` | `version` of each of the four entries |
+| `mods/repo-band/.claude-plugin/plugin.json` | `version` |
 
-For the umbrella, the manifest value wins over the entry value, and `claude plugin validate` warns if they differ. The two subfolder entries have no manifest, so their entry version is the only one.
+For the umbrella, the manifest value wins over the entry value, and `claude plugin validate` warns if they differ. The two subfolder skill entries have no manifest, so their entry version is the only one. `repo-band` has its own manifest, so the manifest value wins there too.
 
-1. Bump the five fields, then check them. The command prints five lines with one value:
+1. Bump the seven fields, then check them. The command prints seven lines with one value:
 
    ```
-   grep -n '"version"' package.json .claude-plugin/plugin.json .claude-plugin/marketplace.json
+   grep -n '"version"' package.json .claude-plugin/plugin.json .claude-plugin/marketplace.json mods/repo-band/.claude-plugin/plugin.json
    ```
 
 2. Add the change to [CHANGELOG.md](../CHANGELOG.md) in the same commit.

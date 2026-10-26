@@ -97,7 +97,7 @@ The marketplace lists four plugins, and [docs/marketplace.md](docs/marketplace.m
 
 - A new skill goes in `.claude/skills/` or `account-skills/`. Add `./<name>` to the `skills` list of the matching entry in `.claude-plugin/marketplace.json`. The integrity test checks that every skill folder sits in exactly one of those two lists, except `scriptcraft`, which only the main plugin carries.
 - Do not give the `outdoornorway-marketing` entry a component list. With `strict: false` it fails to load with a "conflicting manifests" error, although `claude plugin validate` passes.
-- A feature change does not bump versions. A release sets the same value in `package.json`, `.claude-plugin/plugin.json` and the four marketplace entries, which is six fields in three files. It also adds a line to [CHANGELOG.md](CHANGELOG.md). Claude Code offers a plugin update only when the version string changes.
+- A feature change does not bump versions. A release sets the same value in `package.json`, `.claude-plugin/plugin.json`, the four marketplace entries and `mods/repo-band/.claude-plugin/plugin.json`, which is seven fields in four files. It also adds a line to [CHANGELOG.md](CHANGELOG.md). Claude Code offers a plugin update only when the version string changes.
 
 ## Howto
 

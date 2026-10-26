@@ -116,6 +116,10 @@ class Marketplace(unittest.TestCase):
         for entry in self.entries:
             self.assertEqual(self.package["version"], entry["version"], entry["name"])
 
+    def test_the_repo_band_manifest_version_equals_package_json(self):
+        manifest = json.loads(read(ROOT / "mods" / "repo-band" / ".claude-plugin" / "plugin.json"))
+        self.assertEqual(self.package["version"], manifest["version"])
+
     def test_the_umbrella_entry_is_the_root_plugin(self):
         umbrella = self.entry(self.plugin["name"])
         self.assertTrue(is_umbrella(umbrella))

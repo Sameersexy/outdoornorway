@@ -20,21 +20,22 @@ Merge the change to the default branch first and work from that clean copy. `npm
 
 Skip this step for the first publish, which uses the version already in the manifests.
 
-The version appears in five fields in three files. Change all five in the same commit, to the same value.
+The version appears in seven fields in four files. Change all seven in the same commit, to the same value.
 
 | File | Field |
 |---|---|
 | `package.json` | `version` |
 | `.claude-plugin/plugin.json` | `version` |
 | `.claude-plugin/marketplace.json` | `version` of each of the four entries in `plugins` |
+| `mods/repo-band/.claude-plugin/plugin.json` | `version` |
 
 Check the result:
 
 ```bash
-grep -n '"version"' package.json .claude-plugin/plugin.json .claude-plugin/marketplace.json
+grep -n '"version"' package.json .claude-plugin/plugin.json .claude-plugin/marketplace.json mods/repo-band/.claude-plugin/plugin.json
 ```
 
-The command prints five lines, and each should show the same version. Claude Code offers an update for a plugin only when its version string changes, so a field you miss leaves that plugin's users without the release. [marketplace.md](marketplace.md#cut-a-release) lists the full release steps.
+The command prints seven lines, and each should show the same version. Claude Code offers an update for a plugin only when its version string changes, so a field you miss leaves that plugin's users without the release. [marketplace.md](marketplace.md#cut-a-release) lists the full release steps.
 
 Do not rely on `npm version`. It edits only `package.json`, since this repo has no package-lock.json, and it leaves the two plugin manifests alone. Inside a git repository it also makes a commit and a tag by default.
 
