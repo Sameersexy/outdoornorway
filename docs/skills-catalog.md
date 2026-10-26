@@ -14,7 +14,7 @@ The public repo is the source of truth for anything it contains. The account and
 
 ### Which plugin ships which skill
 
-The marketplace has three plugins. [marketplace.md](marketplace.md) says who each is for and how to install it.
+The marketplace has four plugins, and only three hold skills. [marketplace.md](marketplace.md) says who each is for and how to install it.
 
 | Plugin | Skills | Folder |
 |---|---|---|

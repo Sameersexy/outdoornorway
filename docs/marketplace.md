@@ -1,14 +1,15 @@
 # Plugin marketplace
 
-This page is for marketers who choose and install the Outdoor Norway plugins, and for maintainers who add a skill or cut a release. The marketplace is named `outdoornorway`. It lives in `.claude-plugin/marketplace.json` and lists three plugins.
+This page is for marketers who choose and install the Outdoor Norway plugins, and for maintainers who add a skill or cut a release. The marketplace is named `outdoornorway`. It lives in `.claude-plugin/marketplace.json` and lists four plugins.
 
-## The three plugins
+## The four plugins
 
 | Plugin | Who it is for | What it holds |
 |---|---|---|
 | `outdoornorway-marketing` | Writers and editors who make video scripts. Most people want this one. | The umbrella plugin: the slash commands, the two agents, scriptcraft with its validator, and the eight copy skills. |
 | `outdoornorway-copy-skills` | People who want only the copy skills, with none of the video script tools. | Nine skills: ad-creative, conversion-copywriter, copy-that-sells, copywriting, fact-check, humanizer, marketing-psychology, ponytail and social. |
 | `outdoornorway-account-skills` | Anyone who wants the brand and script skills in Claude Code. | Three skills: brand-voice-checker, guest-benefit-checker and script-writing. |
+| `repo-band` | Anyone who works in the terminal or the desktop app and wants a status row above the prompt. | A mod, not a skill: cost, context fill, last turn, branch, changed files and the last validator result, with Compact and Hide buttons. See [its README](../mods/repo-band/README.md). |
 
 Every plugin id has the form `NAME@outdoornorway`. The skills in the second and third plugin carry the plugin name, for example `outdoornorway-copy-skills:copywriting` and `outdoornorway-account-skills:brand-voice-checker`.
 
@@ -93,7 +94,7 @@ A team can have Claude Code offer the marketplace to every member who opens the 
 
 - The key under `extraKnownMarketplaces` must equal the marketplace `name`, which is `outdoornorway`. Each key under `enabledPlugins` is `NAME@outdoornorway`, so add a line per plugin you want on.
 - Members get the offer after they accept the workspace trust dialog for the folder. In a folder they have not trusted, Claude Code ignores the entries without a message.
-- All three plugins use relative paths, so they load from the marketplace copy and members need no separate install step.
+- All four plugins use relative paths, so they load from the marketplace copy and members need no separate install step.
 - `autoUpdate: true` makes Claude Code refresh the marketplace and update its installed plugins in the background after startup.
 - Project settings beat user settings. A plugin someone set to false in `~/.claude/settings.json` still loads if the project enables it.
 
@@ -123,7 +124,7 @@ A release changes five version fields in three files. Set them all to the same v
 |---|---|
 | `package.json` | `version` |
 | `.claude-plugin/plugin.json` | `version` |
-| `.claude-plugin/marketplace.json` | `version` of each of the three entries |
+| `.claude-plugin/marketplace.json` | `version` of each of the four entries |
 
 For the umbrella, the manifest value wins over the entry value, and `claude plugin validate` warns if they differ. The two subfolder entries have no manifest, so their entry version is the only one.
 

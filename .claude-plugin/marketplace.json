@@ -51,6 +51,15 @@
         "./guest-benefit-checker",
         "./script-writing"
       ]
+    },
+    {
+      "name": "repo-band",
+      "source": "./mods/repo-band",
+      "description": "Status row above the prompt: cost, context fill, last turn, branch, changed files and the last validator result, with Compact and Hide buttons.",
+      "version": "0.2.0",
+      "category": "productivity",
+      "license": "MIT",
+      "keywords": ["status-band", "mod", "cost", "context"]
     }
   ]
 }

@@ -1,0 +1,6 @@
+{
+  "name": "repo-band",
+  "version": "0.2.0",
+  "description": "A status row above the prompt: cost, context fill, last turn, branch, changed files and the last validator result, with Compact and Hide buttons.",
+  "types": "./types/index.d.ts"
+}

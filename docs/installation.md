@@ -19,7 +19,7 @@ If you write or edit scripts, read [getting-started.md](getting-started.md) afte
 | Clone | The repo folder | Editing the tools and sending pull requests | Claude Code, Python 3, Git | `git clone https://github.com/Sameersexy/outdoornorway.git` |
 | npx launcher | Any folder, no clone, but only once the launcher is on the default branch (it is not on npm yet) | Checking your set up and printing the install commands | Claude Code, Python 3, Node.js 18 or newer | `npx github:Sameersexy/outdoornorway doctor` |
 
-If you only write or read scripts, choose the plugin. The npx launcher is optional. The plugin route offers three plugins, and route 1 shows how to pick one.
+If you only write or read scripts, choose the plugin. The npx launcher is optional. The plugin route offers four plugins, and route 1 shows how to pick one.
 
 ## Route 1: plugin (works from any folder)
 
@@ -36,7 +36,7 @@ You can also type `/plugin` inside Claude Code and follow the prompts. A marketp
 
 ### Choose a plugin
 
-The marketplace has three plugins. Replace the name in the second line above to install another one.
+The marketplace has four plugins. Replace the name in the second line above to install another one.
 
 | Plugin | Choose it if you |
 |---|---|

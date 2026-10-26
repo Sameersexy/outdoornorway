@@ -1,7 +1,7 @@
 {
   "name": "outdoornorway-marketing",
   "version": "0.2.0",
-  "description": "Outdoor Norway marketing tools for Claude Code: three marketplace plugins with a video script skill and enforced validator, writer and reviewer agents, slash commands, vetted copywriting skills and brand checkers.",
+  "description": "Outdoor Norway marketing tools for Claude Code: four marketplace plugins with a video script skill and enforced validator, writer and reviewer agents, slash commands, vetted copywriting skills and brand checkers.",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -29,6 +29,7 @@
     "campaigns/",
     "content/",
     "docs/",
+    "mods/",
     "tools/",
     "CHANGELOG.md",
     "CLAUDE.md",

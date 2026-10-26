@@ -26,7 +26,7 @@ The version appears in five fields in three files. Change all five in the same c
 |---|---|
 | `package.json` | `version` |
 | `.claude-plugin/plugin.json` | `version` |
-| `.claude-plugin/marketplace.json` | `version` of each of the three entries in `plugins` |
+| `.claude-plugin/marketplace.json` | `version` of each of the four entries in `plugins` |
 
 Check the result:
 
