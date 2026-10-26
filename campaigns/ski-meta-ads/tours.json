@@ -330,17 +330,17 @@
         {
           "start": "2027-01-28",
           "end": "2027-01-30",
-          "page_text": "28 Jan to 30 Jan"
+          "page_text": "28-30 January"
         },
         {
           "start": "2027-01-31",
           "end": "2027-02-02",
-          "page_text": "31nd Jan to 2nd Feb"
+          "page_text": "31 January-2 February"
         },
         {
           "start": "2027-02-07",
           "end": "2027-02-09",
-          "page_text": "07th to 09th Feb"
+          "page_text": "7-9 February"
         }
       ],
       "price_qualifier": "from",
@@ -352,19 +352,17 @@
           "places": [
             "Voss Resort"
           ],
-          "fact": "Ski day at Voss Resort. The page mentions lessons.",
-          "page_heading": "Day 1 - The only thing you need is a hunger for winter sports"
+          "fact": "Ski day at Voss Resort, with slopes for different ability levels. The page mentions lessons.",
+          "page_heading": "Day 1: Start Your Winter Adventure at Voss Resort"
         },
         {
           "day": 2,
           "kind": "snowshoe",
           "places": [
-            "Hardangerfjord",
-            "Mount Oksen",
-            "Tjoflot"
+            "Hardangerfjord"
           ],
-          "fact": "Guided snowshoe hike in the Hardangerfjord region. The trail starts in Tjoflot and climbs through forest above the tree line. The page says the initial ascent is challenging. Age and level wording conflicts across pages, so say nothing about who it suits.",
-          "page_heading": "Day 2 - A boundless view of an ancient glacier bottom"
+          "fact": "Guided snowshoe hike in the Hardangerfjord region, after a shuttle from Voss to the starting point. The route crosses snow-covered forests and open snowfields. Age and level wording conflicts across pages, so say nothing about who it suits.",
+          "page_heading": "Day 2: Snowshoe Through the Hardangerfjord Region"
         },
         {
           "day": 3,
@@ -373,7 +371,7 @@
             "Myrkdalen"
           ],
           "fact": "Ski day at Myrkdalen. The page mentions the slope restaurant.",
-          "page_heading": "Day 3 - Another day, another thrill"
+          "page_heading": "Day 3: Finish With a Day of Skiing in Myrkdalen"
         }
       ]
     },
@@ -390,19 +388,18 @@
         {
           "start": "2027-02-05",
           "end": "2027-02-07",
-          "page_text": "5-7 Feb",
-          "note": "page lists 2026 and 2027 blocks, this is the 2027 block"
+          "page_text": "5-7 February"
         },
         {
           "start": "2027-02-12",
           "end": "2027-02-14",
-          "page_text": "12 - 14 Feb (Valentine's Day)",
+          "page_text": "12-14 February (Valentine's Day)",
           "label": "Valentine's Day departure"
         },
         {
           "start": "2027-03-05",
           "end": "2027-03-07",
-          "page_text": "5-7 Mar"
+          "page_text": "5-7 March"
         }
       ],
       "price_qualifier": "from",
@@ -414,8 +411,8 @@
           "places": [
             "Voss Resort"
           ],
-          "fact": "Guided ski day at Voss Resort, terrain to suit your level. The page mentions museums and cafes in Voss afterwards.",
-          "page_heading": "Day 1 - On the skis, life feels like a breeze"
+          "fact": "Ski day at Voss Resort, with slopes for different ability levels. The page mentions cafes in Voss afterwards.",
+          "page_heading": "Day 1: Kick Off Your Norway Winter Holiday at Voss Resort"
         },
         {
           "day": 2,
@@ -423,8 +420,8 @@
           "places": [
             "Voss"
           ],
-          "fact": "Guided snowshoe day on forest trails near Voss. The page says guides provide the equipment and mentions grilling local food on an open campfire. Confirm gear and campfire wording with Sameer before using them.",
-          "page_heading": "Day 2 - Walk on nature’s fluffy pillows"
+          "fact": "Guided snowshoe day on forest trails near Voss. Snowshoes and poles are on the Included list. The page says there may be local food over an open campfire, depending on the day and the conditions. Confirm the campfire wording with Sameer before using it.",
+          "page_heading": "Day 2: Snowshoe Through the Winter Landscapes Around Voss"
         },
         {
           "day": 3,
@@ -432,8 +429,8 @@
           "places": [
             "Voss"
           ],
-          "fact": "Guided off-piste powder skiing day near Voss. Snow conditions can never be promised (BR09).",
-          "page_heading": "Day 3 - Chasing Powder Dreams: Discover Norway's Hidden Beauty"
+          "fact": "Guided off-piste day near Voss, on powder routes the guide chooses for the snow and the group. Snow conditions can never be promised (BR09).",
+          "page_heading": "Day 3: Finish Your Winter Adventure With Powder Skiing in Voss"
         }
       ]
     },
@@ -498,5 +495,5 @@
       "INTERMEDIATE TO ADVANCED"
     ]
   },
-  "itinerary_note": "itinerary: per-day facts taken from the live tour pages on 2026-10-08 and shortened to plain statements. page_heading is the exact day heading on the page and verify_tours.py checks it. kind is ski, snowshoe, aurora or travel. The page text promises things this file does not repeat (powder, aurora, all gear included); see the do-not-claim list in .claude/product-marketing.md. Not yet confirmed by Sameer."
+  "itinerary_note": "itinerary: per-day facts taken from the live tour pages on 2026-10-08 and shortened to plain statements; the two 3-day tours were re-read on 2026-10-26 after their pages were redesigned. page_heading is the exact day heading on the page and verify_tours.py checks it. kind is ski, snowshoe, aurora or travel. The page text promises things this file does not repeat (powder, aurora, all gear included); see the do-not-claim list in .claude/product-marketing.md. Not yet confirmed by Sameer."
 }
