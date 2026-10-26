@@ -2,6 +2,8 @@
 
 Checked on 26 October 2026 against the live pages fetched that day, `campaigns/ski-meta-ads/tours.json` and the terms, flexible booking, insurance, tailor-made and team pages. Method: every checkable claim in the two sequence files was listed, matched against a named source with a text search of the fetched page, and given a level on the 6-level scale in `.claude/skills/fact-check/SKILL.md`. Opinions, mood lines and the sender's offers to help were not scored. Updated the same day after the owner answered decisions 1 to 8 in the README; where an answer resolves a claim, the answer is recorded as the source.
 
+Independent check of decisions 1 to 8, re-run on 26 October 2026: the counts below match the entries, three lost section headings were restored, and two findings for the owner are in [decision-check-2026-10-26.md](decision-check-2026-10-26.md).
+
 Source keys used below (URLs in the README sources table):
 
 | Key | Source |
@@ -65,7 +67,7 @@ Applied on 26 October 2026 after the owner answered decisions 1 to 8:
 
 ## Needs the client's input
 
-Answered on 26 October 2026 (decisions 1 to 8 in the README): deposit and balance (not needed), cancellation terms (both policies apply, from different vendors), what the date request does (all dates available), reply time and calls (none promised), sender identity (Mate, trip captain), Alta aurora season (ends with the sold season, late March to early April), whale cruise months (in the package, so yes), single travellers (share options for accommodation). The claim entries below record each answer as the source.
+Answered on 26 October 2026 (decisions 1 to 8 in the README): deposit and balance (not needed), cancellation terms (both policies apply, from different vendors), what the date request does (all dates available), reply time and calls (none promised), sender identity (Mate, trip captain), Alta aurora season (ends with the sold season, late March to early April), whale cruise months (in the package, so yes), single travellers (share options for accommodation), age and licence rules (confirmed, so the drafts keep "confirmed before departure" and no number). The claim entries below record each answer as the source.
 
 Still open:
 
@@ -295,6 +297,8 @@ Still open:
     SOURCE: owner's answer to Decision 4, 26 October 2026 ("he is a trip captain"); TE still lists no Mate
     NOTES: Was level 3. Counted once for both tours.
 
+### 7-Day Email 7, day 25
+
 [39] CLAIM: Departures 23 January, 30 January, 6 February, 13 February and 27 February 2027, each 7 days.
     SLOT: body
     STATUS: 1 VERIFIED
@@ -326,13 +330,15 @@ Still open:
     SLOT: body (dates)
     STATUS: 1 VERIFIED
     SOURCE: arithmetic from [1]; checked with Python date subtraction
-    NOTES: The other three cut-offs, for the README: 1 December, 8 December and 15 December 2026.
+    NOTES: The other three cut-offs, listed in the Email 7 Facts line: 1 December, 8 December and 15 December 2026.
 
 [45] CLAIM: Any of the five weeks is open to request.
     SLOT: body
     STATUS: 2 LIKELY ACCURATE
     SOURCE: owner's answer to Decision 3, 26 October 2026 ("all dates available"); the five weeks from TJ
     NOTES: Was level 3, as "Sending the request is a question, not a booking". Whether the form takes payment is not stated anywhere, so the email does not say.
+
+### 7-Day Email 8, day 40
 
 [46] CLAIM: We also build trips to your own dates.
     SLOT: body
@@ -594,6 +600,8 @@ Still open:
     SOURCE: as [37]
     NOTES: Was level 3. Marker removed. Alta Email 6 promises neither.
 
+### 6-Day Alta Email 7, day 25
+
 [93] CLAIM: The trip runs November to April, 6 days and 5 nights, on dates you choose.
     SLOT: body (dates)
     STATUS: 2 LIKELY ACCURATE
@@ -611,18 +619,18 @@ Still open:
     SOURCE: arithmetic; the 60-day rule as [87]
     NOTES: An example date, labelled as such in the email. The Decision 1 and Decision 3 markers were removed with the owner's answers.
 
+[97] CLAIM: Any start date in the season is open to request.
+    SLOT: body (Alta Email 7)
+    STATUS: 2 LIKELY ACCURATE
+    SOURCE: owner's answer to Decision 3, 26 October 2026 ("all dates available"); TA flexible dates, November to April
+    NOTES: Added when "Sending the request is a question, not a booking" was replaced. Whether the form takes payment is not stated anywhere, so the email does not say.
+
 ### 6-Day Alta Email 8, day 40
 
 [96] CLAIM: We also build trips to your own dates and pace.
     SLOT: body
     STATUS: 2 LIKELY ACCURATE
     SOURCE: TM "built around your goals, dates, and fitness level"
-
-[97] CLAIM: Any start date in the season is open to request.
-    SLOT: body (Alta Email 7)
-    STATUS: 2 LIKELY ACCURATE
-    SOURCE: owner's answer to Decision 3, 26 October 2026 ("all dates available"); TA flexible dates, November to April
-    NOTES: Added when "Sending the request is a question, not a booking" was replaced. Whether the form takes payment is not stated anywhere, so the email does not say.
 
 ## Consistency check across slots
 

@@ -7,6 +7,7 @@ Status: draft, awaiting approval. Nothing in this folder has been sent. Decision
 | [7-day-bergen-tromso-sequence.md](7-day-bergen-tromso-sequence.md) | Seven emails for the 7-Day Northern Lights Tour, Bergen to Tromsø, plus one optional check-in |
 | [6-day-alta-sequence.md](6-day-alta-sequence.md) | Seven emails for the 6-Day Alta trip, plus one optional check-in |
 | [fact-check-report.md](fact-check-report.md) | Claim-by-claim check of both sequences against the live pages, with the corrections made and the open questions |
+| [decision-check-2026-10-26.md](decision-check-2026-10-26.md) | Independent check of how decisions 1 to 8 were applied: fixes made and the findings left for the owner |
 | [handoff-2026-10-26.md](handoff-2026-10-26.md) | Session handoff of 26 October 2026: what is done, what the owner still decides, and the checks to run before touching the drafts again |
 
 Every fact in the emails comes from the live tour pages, the blog posts and the policy pages listed under Sources, all fetched on 26 October 2026, or from `campaigns/ski-meta-ads/tours.json`. Facts the site does not publish were marked `[CONFIRM ...]` in the drafts and listed under Decisions. The owner's answers of 26 October 2026 count as confirmed client data, and no marker remains. The reply address in Email 6 is a placeholder, `[REPLY ADDRESS]`, because the repo test rejects email addresses in tracked files.
@@ -61,7 +62,7 @@ Items 1 to 8 were answered by the owner on 26 October 2026. The answers count as
 5. Alta in April. The Alta trip is sold for November to April; the Alta blog puts the aurora season at September to the end of March. Answer: it does not matter, both end at the same time, late March to early April. Applied: Email 2 for Alta keeps the April sentence ("the dark window shrinks, so the daytime activities carry more of the trip"), which matches the season guide, and the marker is removed.
 6. The whale cruise. Answer: yes, if it is in the package. Applied: the cruise is Day 2 on the Alta tour page and in its Included list, so Email 3 for Alta names it without a caveat and the marker is removed.
 7. Single travellers. Rooms are twin-share on the 7-Day. Answer: there are share options for accommodation. Applied: both Email 7 drafts add "Travelling alone? There is a room-share option. Tell us and we will explain how it works." No single supplement or price is mentioned, because none is published.
-8. Age and licence rules. The 7-Day page states a minimum age; the Alta page says activities may have age or licence requirements confirmed before departure. Answer: confirmed. Applied: the drafts keep "confirmed before departure" and no number.
+8. Age and licence rules. The 7-Day page states a minimum age; the Alta page says activities may have age or licence requirements confirmed before departure. Answer: confirmed. Applied: Alta Email 3 keeps "confirmed before departure" and no number; the 7-Day drafts name no age rule.
 9. Open. Ski gear on the 7-Day. The Day 3 page text reads as if gear is included; the inclusions list says it is not, rentals can be arranged. The drafts follow the inclusions list. Fix the page text or confirm the drafts.
 10. Open. Manner 1 and Manner 2 are dropped. If you want a test, test the subject lines (two per email, listed in each sequence file) and keep one body.
 
