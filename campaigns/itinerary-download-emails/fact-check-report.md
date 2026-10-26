@@ -4,6 +4,8 @@ Checked on 26 October 2026 against the live pages fetched that day, `campaigns/s
 
 Independent check of decisions 1 to 8, re-run on 26 October 2026: the counts below match the entries, three lost section headings were restored, and two findings for the owner are in [decision-check-2026-10-26.md](decision-check-2026-10-26.md).
 
+Source pages re-fetched later on 26 October 2026: all 17 returned 200, and every quoted page line below still matches the live text, including both prices, the five 7-Day departures and the 4.9/5 Tripadvisor badge on both tour pages. No page change was found. The quote in [74] was shortened in the first check and now reads as the page does; the email line it supports is unchanged.
+
 Source keys used below (URLs in the README sources table):
 
 | Key | Source |
@@ -496,7 +498,7 @@ Still open:
 [74] CLAIM: Alta sits at about 70 degrees north and combines long, dark winter nights with quick access to Finnmarksvidda.
     SLOT: body
     STATUS: 2 LIKELY ACCURATE
-    SOURCE: AB "70° north", "long dark winter nights with quick access to Finnmarksvidda"
+    SOURCE: AB "70° north", "long, dark winter nights with quick access to the open landscapes of Finnmarksvidda"
 
 [75] CLAIM: The plateau gives you something you will not find at a city viewpoint.
     SLOT: body
