@@ -19,7 +19,7 @@ One table, so a size can be added later with one row. The safe zones are assumpt
 | 1:1 | `1x1` | 1080 x 1080 | The master's own margins. No platform overlay assumed. |
 | 9:16 | `9x16` | 1080 x 1920 | Top 250 px and bottom 340 px kept clear for Stories UI; Reels UI reaches higher, so also keep key text out of the bottom 35 percent. [VERIFY: confirm both zones against Meta's current Stories and Reels safe zone guide] |
 
-Whichever size the master is, build the rows it is not. A master at a size not in the table: stop and ask.
+Whichever size the master is, build the rows it is not. A 4:5 master (1080 x 1350, the size of most existing ads in the owner's file) is accepted as input: build both rows from it. A master at any other size: stop and ask.
 
 ```
 NON-NEGOTIABLE RULES
@@ -60,7 +60,7 @@ NON-NEGOTIABLE RULES
 
 ### 2. Activity per tour
 
-Find the activity tags each tour allows. [references/activity-and-images.md](references/activity-and-images.md) has the mapping and the photo naming convention.
+Find the activity tags each tour allows. [references/activity-and-images.md](references/activity-and-images.md) has the mapping and how photo frames work.
 
 - Multi-day tours: the `kind` values in `itinerary`, without `travel` (ski, snowshoe, aurora).
 - Day tours (no itinerary): the activity in the tour `name`.
