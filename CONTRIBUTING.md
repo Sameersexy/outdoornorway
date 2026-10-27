@@ -89,7 +89,7 @@ Commands and agents reach repo files through ROOT. In the plugin, ROOT is `${CLA
 - A new command must appear in the README and in [docs/getting-started.md](docs/getting-started.md). The guide check does not apply to `/tokens`.
 - Each agent has a `## Where files live` section that uses `${CLAUDE_PLUGIN_ROOT}`. Agents have no `model:` line in their frontmatter.
 - Put a file in `.claude/commands/` or `.claude/skills/` only if it is a command or a skill. Those folders load automatically.
-- Every skill folder except `scriptcraft` needs a row in [THIRD_PARTY_SKILLS.md](THIRD_PARTY_SKILLS.md). A row with a 40-character commit hash also needs a licence file in its folder.
+- Every skill folder needs a row in [THIRD_PARTY_SKILLS.md](THIRD_PARTY_SKILLS.md), except the ones written in this repo: `scriptcraft`, `figma-ads` and `figma-email`. A new original skill goes in the `original` set of `test_every_skill_folder_is_listed_or_original` in `tools/test_repo_integrity.py`. A row with a 40-character commit hash also needs a licence file in its folder.
 
 ## Plugins and versions
 

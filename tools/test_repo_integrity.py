@@ -247,9 +247,11 @@ class Licences(unittest.TestCase):
             self.assertTrue(list(folder.glob("LICENSE*")), f"{skill} has no licence file")
 
     def test_every_skill_folder_is_listed_or_original(self):
+        # Skills written in this repo have no upstream, so they need no row.
+        original = {"scriptcraft", "figma-ads", "figma-email"}
         table = read(ROOT / "THIRD_PARTY_SKILLS.md")
         for folder in (ROOT / ".claude" / "skills").iterdir():
-            if folder.is_dir() and folder.name != "scriptcraft":
+            if folder.is_dir() and folder.name not in original:
                 self.assertIn(f"| {folder.name} |", table, folder.name)
 
 

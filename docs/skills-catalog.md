@@ -18,8 +18,8 @@ The marketplace has four plugins, and only three hold skills. [marketplace.md](m
 
 | Plugin | Skills | Folder |
 |---|---|---|
-| `outdoornorway-marketing` | scriptcraft and the fifteen vendored skills, plus the commands and agents | `.claude/` |
-| `outdoornorway-copy-skills` | The fifteen vendored skills only | `.claude/skills/` |
+| `outdoornorway-marketing` | scriptcraft, figma-ads, figma-email and the fifteen vendored skills, plus the commands and agents | `.claude/` |
+| `outdoornorway-copy-skills` | figma-ads, figma-email and the fifteen vendored skills | `.claude/skills/` |
 | `outdoornorway-account-skills` | brand-voice-checker, guest-benefit-checker and script-writing | `account-skills/` |
 
 scriptcraft is only in the umbrella plugin, because the validator needs the tour data and the plugin root. Each other skill sits in one folder and is listed in one plugin besides the umbrella.
@@ -40,6 +40,16 @@ The video script skill, at `.claude/skills/scriptcraft/SKILL.md`. It writes and 
 | Command | `/open-items` | Lists every open placeholder and unverified fact row in a script. |
 
 The other commands (`/tour-data`, `/tokens`, `/howto`) do not use these agents. Installed as a plugin, the agents are named `outdoornorway-marketing:script-writer` and `outdoornorway-marketing:script-reviewer`.
+
+### figma-ads
+
+Builds the other ad sizes from one master ad that a person designed in Figma, at `.claude/skills/figma-ads/SKILL.md`. Run it on a staging frame that holds the master. It makes 1:1 (1080 x 1080) and 9:16 (1080 x 1920) frames named `<tour-id>_<variant>_<ratio>` next to the master, for one tour or several. Each size is re-adapted (photo crop and focal point, type, line breaks, safe zones), each tour gets its own copy from `tours.json` and a photo of its own activity, and the frames are screenshot, checked and exported as PNG. It uses the official Figma MCP server. Its `references/` folder holds the photo naming convention to agree with the designers and the adaptation rules.
+
+### figma-email
+
+Designs a marketing email in Figma from the existing email components and brand variables, then, after Sameer approves the design, builds it in HubSpot as a draft that reuses the HubSpot custom module matched to each Figma component. It never sends or schedules. The component to module mapping table in its `SKILL.md` starts empty and is filled on first use. The HubSpot connector keeps custom modules as they are and cannot change their content, so the skill writes a fill sheet for a person to paste in the HubSpot editor when needed.
+
+Both Figma skills set `disable-model-invocation: true`, because they write to outside accounts. Call them by name, for example `/figma-ads`. Like fact-check, they read `tours.json` through the validator, so with `outdoornorway-copy-skills` alone they ask for the path to it.
 
 ### adquill (paused)
 
@@ -67,7 +77,7 @@ These fifteen skills sit in `.claude/skills/` as text copied from pinned commits
 | competitor-profiling | Builds structured competitor profiles from a list of competitor URLs | Yes |
 | video | Plans video production with AI generation, avatars and programmatic tools. Scripts stay with scriptcraft | No (manual) |
 
-The eight manual skills carry `disable-model-invocation: true`, so you call them by name, for example `/copywriting`. `ads` is manual because it overlaps ad-creative and adquill, and `video` because scriptcraft writes every video script here. The umbrella plugin loads all fifteen. The plugin `outdoornorway-copy-skills` ships only these fifteen, and its fact-check cannot read the tour data (see [marketplace.md](marketplace.md#the-fact-check-caveat)).
+The eight manual skills carry `disable-model-invocation: true`, so you call them by name, for example `/copywriting`. `ads` is manual because it overlaps ad-creative and adquill, and `video` because scriptcraft writes every video script here. The umbrella plugin loads all fifteen. The plugin `outdoornorway-copy-skills` ships these fifteen plus figma-ads and figma-email, and its fact-check and Figma skills cannot read the tour data (see [marketplace.md](marketplace.md#the-fact-check-caveat)).
 
 [THIRD_PARTY_SKILLS.md](../THIRD_PARTY_SKILLS.md) has the upstream projects, the pinned commits and the full list of local changes. The vetting notes (what was read, what was rejected and why) are in [research/ad-copy/06-skill-vetting.md](research/ad-copy/06-skill-vetting.md).
 

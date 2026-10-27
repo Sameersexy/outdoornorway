@@ -18,7 +18,7 @@ outdoornorway/
 |   |-- agents/                 [fixed]  script-writer and script-reviewer
 |   |-- commands/               [fixed]  the slash commands
 |   |-- hooks/                  [fixed]  session-start.sh, installs the scrapers in cloud sessions
-|   |-- skills/                 [fixed]  scriptcraft and the vendored skills
+|   |-- skills/                 [fixed]  scriptcraft, figma-ads, figma-email, vendored skills
 |   |-- product-marketing.md             brand facts and the do-not-claim list
 |   `-- settings.json           [fixed]  project settings for a clone
 |-- .claude-plugin/             [fixed]  plugin and marketplace manifests
@@ -42,6 +42,7 @@ outdoornorway/
 |   |-- research/                        research behind the skills
 |   |-- script-skill-reviews/            review rounds of the script skill
 |   |-- backup-and-restore.md            what to save and how to restore it
+|   |-- figma-mcp-servers.md             the community Figma MCP servers
 |   |-- getting-started.md      [fixed]  guide for writers and editors
 |   |-- installation.md                  install, check, update and remove
 |   |-- marketplace.md                   the four plugins, installs and releases
@@ -59,7 +60,7 @@ outdoornorway/
 |   |-- test_repo_integrity.py  [fixed]  integrity test
 |   `-- transcript_report.py    [fixed]  token report for /tokens
 |-- .gitignore                  [fixed]  keeps caches, .env files and transcripts out of git
-|-- .mcp.json                   [fixed]  Scrapling MCP server, for cloud sessions
+|-- .mcp.json                   [fixed]  project MCP servers: Scrapling and three Figma servers
 |-- CHANGELOG.md                         what changed and when
 |-- CLAUDE.md                   [fixed]  rules for Claude Code in this repo
 |-- CONTRIBUTING.md                      how to change the tools
@@ -80,12 +81,13 @@ Safe to move? has two answers. No means code, tests or manifests name the path. 
 | `.claude-plugin/` | `plugin.json` and `marketplace.json`: plugin names, versions and which folders ship. The marketplace lists four plugins. | The plugin install, the integrity test, `doctor` and `list` in the launcher | No. The test and the launcher open both files by path. |
 | `.claude/commands/` | The slash commands | The plugin, the integrity test | No. `plugin.json` names this folder and the test reads every file in it. |
 | `.claude/agents/` | `script-writer.md` and `script-reviewer.md` | `/script` and `/review-script` | No. `plugin.json` lists both files by path. |
-| `.claude/skills/` | `scriptcraft` (the video script skill, its validator and tests) and the vetted third-party skills. [skills-catalog.md](skills-catalog.md) says what each is for. | The plugins `outdoornorway-marketing` and `outdoornorway-copy-skills`, the commands, the agents | No. `plugin.json` names the folder, the copy-skills entry in `marketplace.json` uses it as its `source`, and the commands and agents call `.claude/skills/scriptcraft/scripts/script_check.py`. |
+| `.claude/skills/` | `scriptcraft` (the video script skill, its validator and tests), `figma-ads` and `figma-email` (Figma ad sizes and Figma-first emails) and the vetted third-party skills. [skills-catalog.md](skills-catalog.md) says what each is for. | The plugins `outdoornorway-marketing` and `outdoornorway-copy-skills`, the commands, the agents | No. `plugin.json` names the folder, the copy-skills entry in `marketplace.json` uses it as its `source`, and the commands and agents call `.claude/skills/scriptcraft/scripts/script_check.py`. |
 | `.claude/settings.json` | Project settings for a clone: enabled plugins (including ponytail and repo-band), their marketplaces, and the SessionStart hook | Claude Code, in a clone | No. Claude Code reads project settings from this path. |
 | `.claude/hooks/` | `session-start.sh`: installs crawl4ai and Scrapling in cloud sessions only, with Playwright and Patchright pinned to the container's browser | Claude Code, at the start of each cloud session | No. `settings.json` runs the script by this path. |
 | `.claude/product-marketing.md` | Brand context, confirmed facts and the do-not-claim list | The copy skills and the agents | With edits. CLAUDE.md, the reviewer agent, several skills and the script notes cite this path. |
 | `campaigns/ski-meta-ads/` | `tours.json` (prices, dates, day-by-day plans), its checker and the ski ad notes. See [its README](../campaigns/ski-meta-ads/README.md). | The validator (`--tour`), `/tour-data`, `doctor`, both agents | No. `script_check.py` finds `tours.json` by going up four folders from its own folder, so a move breaks `--tour` unless you pass `--tours-file`. `doctor` lists the file as required. |
 | `content/scripts/` | Finished and draft scripts, each with a notes file. See [its README](../content/scripts/README.md). | `/script` writes here by default | No. The script agents save here by default, and the integrity test lists its README. |
+| `docs/figma-mcp-servers.md` | What the three community Figma MCP servers in `.mcp.json` do, when to use them instead of the official Figma connector, and how to set them up on a Mac | Designers and maintainers | With edits. The docs index and the `.mcp.json` row link to it. |
 | `docs/getting-started.md`, `docs/token-hygiene.md` | The guide for writers and editors, and the token habits | `/howto`, `/tokens`, the integrity test | No. `/howto` copies the Quick start from the guide and the test reads it. `/tokens` points to the token page. |
 | `docs/` | Guides, research and review history. See [README.md](README.md). | Everyone | No. The two files above keep the folder in place, and CLAUDE.md names `docs/repo-map.md`, `docs/README.md` and `docs/token-hygiene.md` by path. Inside it, a guide can move once its links are fixed, and the docs index and the integrity test name most of them. |
 | `tools/outdoornorway-cli.js`, `tools/pack_skills.py`, `tools/test_repo_integrity.py`, `tools/transcript_report.py` | The npx launcher, the skill packer, the integrity test and the token report. See [the tools guide](../tools/README.md). | `package.json` (`bin`), the launcher's `skills pack`, CLAUDE.md, `/tokens` | No. Each is named by the file that uses it, and both Python and Node code find the repo root as the folder above `tools/`. |
@@ -97,7 +99,7 @@ Safe to move? has two answers. No means code, tests or manifests name the path. 
 | `CONTRIBUTING.md`, `CHANGELOG.md` | How to change the tools, and what changed and when | Contributors, maintainers | With edits. The integrity test lists both, so a move also needs new links and a test edit. |
 | `LICENSE`, `THIRD_PARTY_SKILLS.md` | The MIT licence, and the source, pinned commit and licence of each third-party skill | The integrity test | No. The licence checks read both by path. |
 | `package.json` | Launcher metadata: `bin`, `files`, Node `engines`, no dependencies | npm, `npx`, the integrity test | No. Keep it at the root. Its `version` must match `plugin.json` and every entry in `marketplace.json`. |
-| `.mcp.json` | The project MCP server `scrapling`, which runs `scrapling mcp` over stdio so Claude Code can fetch and read web pages through Scrapling. Scrapling is installed by the SessionStart hook in cloud sessions only, so in a clone the server reports that Scrapling is missing and does not start, unless you run `pip install "scrapling[ai]"` first. Claude Code asks once before it starts a project server. | Claude Code | No. Claude Code reads project MCP servers from this file at the repo root. |
+| `.mcp.json` | The project MCP server `scrapling`, which runs `scrapling mcp` over stdio so Claude Code can fetch and read web pages through Scrapling. Scrapling is installed by the SessionStart hook in cloud sessions only, so in a clone the server reports that Scrapling is missing and does not start, unless you run `pip install "scrapling[ai]"` first. It also lists three community Figma servers, `TalkToFigma`, `figma-console` and `framelink-figma`, pinned to exact npm versions. They read their Figma token from the `FIGMA_ACCESS_TOKEN` and `FIGMA_API_KEY` environment variables, never from a file, and do useful work only on a Mac with Figma set up. See [figma-mcp-servers.md](figma-mcp-servers.md). Claude Code asks once before it starts a project server. | Claude Code | No. Claude Code reads project MCP servers from this file at the repo root. |
 | `.gitignore` | Keeps Python caches, transcripts (`*.jsonl`), archives (`*.zip`, `*.tgz`), `.env` files, `node_modules/`, `backup/`, `exports/` and `dist/` (the zips from `skills pack`) out of git | Git, the integrity test | No. The test checks that the main patterns are listed. |
 
 Chat transcripts are not in this repo. Three account skills are, in [account-skills/](../account-skills/README.md). The other account-only skills stay in the Claude account, with a second copy in a private backup kept outside this repo. [backup-and-restore.md](backup-and-restore.md) has the steps.
