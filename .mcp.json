@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "scrapling": {
+      "type": "stdio",
+      "command": "sh",
+      "args": [
+        "-c",
+        "command -v scrapling >/dev/null 2>&1 || { echo 'scrapling MCP: Scrapling is not installed. The SessionStart hook installs it in cloud sessions only. In a clone, run: pip install \"scrapling[ai]\"' >&2; exit 1; }; exec scrapling mcp"
+      ]
+    }
+  }
+}

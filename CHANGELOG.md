@@ -8,6 +8,8 @@ The plugin manifest and the `outdoornorway-marketing` marketplace entry have car
 
 ### Added
 
+- Six vendored skills from coreyhaines31/marketingskills, pinned at `e6c962c`: `seo-audit`, `ai-seo`, `schema` and `competitor-profiling` (auto-invoke), and `ads` and `video` (manual only). Each keeps `LICENSE-marketingskills`. The local changes (dashes, model version names, emoji, a shell loop, links to skills that are not vendored) are listed in [THIRD_PARTY_SKILLS.md](THIRD_PARTY_SKILLS.md). `outdoornorway-copy-skills` now ships fifteen skills.
+- `.mcp.json` with a project MCP server, `scrapling`, that runs `scrapling mcp` over stdio. The SessionStart hook now installs `scrapling[fetchers,ai]`, so the server works in cloud sessions. In a clone without Scrapling it prints how to install it and does not start.
 - `repo-band`, a fourth marketplace plugin in `mods/repo-band/`: a status row above the prompt with cost, context fill, last turn, branch, changed files and the last validator result, plus Compact and Hide buttons. It draws on the terminal and desktop surfaces only, and `.claude/settings.json` enables it for a clone. The marketplace now has four entries, so a release changes six version fields in three files.
 - Navigation docs: [docs/README.md](docs/README.md) (guide index), [docs/repo-map.md](docs/repo-map.md) (folder map) and [docs/skills-catalog.md](docs/skills-catalog.md).
 - Folder README files for `adquill/`, `campaigns/ski-meta-ads/`, `content/scripts/`, `docs/script-skill-reviews/` and `tools/`.

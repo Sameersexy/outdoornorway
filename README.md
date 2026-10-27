@@ -21,7 +21,7 @@ claude plugin install outdoornorway-marketing@outdoornorway
 
 Restart Claude Code. The commands carry the plugin name: `/outdoornorway-marketing:script`, `/outdoornorway-marketing:validate` and so on. Scripts are saved in the folder where you run Claude Code. Update with `claude plugin marketplace update outdoornorway` and `claude plugin update outdoornorway-marketing@outdoornorway`.
 
-The marketplace lists four plugins. `outdoornorway-marketing` is the full toolset and the one most people want. `outdoornorway-copy-skills` holds only the eight copy skills. `outdoornorway-account-skills` holds the three brand and script skills. `repo-band` is not a skill: it draws a status row above the prompt in the terminal and desktop app. Replace the name in the second line to install another one. [docs/marketplace.md](docs/marketplace.md) says who each is for, and covers one-step installs, team set up and releases.
+The marketplace lists four plugins. `outdoornorway-marketing` is the full toolset and the one most people want. `outdoornorway-copy-skills` holds only the fifteen vendored skills. `outdoornorway-account-skills` holds the three brand and script skills. `repo-band` is not a skill: it draws a status row above the prompt in the terminal and desktop app. Replace the name in the second line to install another one. [docs/marketplace.md](docs/marketplace.md) says who each is for, and covers one-step installs, team set up and releases.
 
 **Clone (best for editing the tools or sending pull requests).**
 

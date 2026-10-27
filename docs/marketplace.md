@@ -6,8 +6,8 @@ This page is for marketers who choose and install the Outdoor Norway plugins, an
 
 | Plugin | Who it is for | What it holds |
 |---|---|---|
-| `outdoornorway-marketing` | Writers and editors who make video scripts. Most people want this one. | The umbrella plugin: the slash commands, the two agents, scriptcraft with its validator, and the eight copy skills. |
-| `outdoornorway-copy-skills` | People who want only the copy skills, with none of the video script tools. | Nine skills: ad-creative, conversion-copywriter, copy-that-sells, copywriting, fact-check, humanizer, marketing-psychology, ponytail and social. |
+| `outdoornorway-marketing` | Writers and editors who make video scripts. Most people want this one. | The umbrella plugin: the slash commands, the two agents, scriptcraft with its validator, and the fifteen vendored skills. |
+| `outdoornorway-copy-skills` | People who want only the copy skills, with none of the video script tools. | Fifteen skills: ad-creative, ads, ai-seo, competitor-profiling, conversion-copywriter, copy-that-sells, copywriting, fact-check, humanizer, marketing-psychology, ponytail, schema, seo-audit, social and video. |
 | `outdoornorway-account-skills` | Anyone who wants the brand and script skills in Claude Code. | Three skills: brand-voice-checker, guest-benefit-checker and script-writing. |
 | `repo-band` | Anyone who works in the terminal or the desktop app and wants a status row above the prompt. | A mod, not a skill: cost, context fill, last turn, branch, changed files and the last validator result, with Compact and Hide buttons. See [its README](../mods/repo-band/README.md). |
 
@@ -43,9 +43,9 @@ npx github:Sameersexy/outdoornorway install all --run
 
 ## Installed alone or together
 
-- **The umbrella alone.** You get the commands, the agents, scriptcraft and the eight copy skills. This is the full toolset for writers.
-- **Copy skills alone.** You get the eight skills and nothing else. Without the umbrella, the skills register as `outdoornorway-copy-skills:<skill>`.
-- **Copy skills next to the umbrella.** Each of the eight skills is listed twice, once as `outdoornorway-marketing:<skill>` and once as `outdoornorway-copy-skills:<skill>`, because both plugins carry them. Nothing breaks, but the list gets longer and each skill uses description space twice. Install the umbrella alone, or the copy skills alone. A local folder marketplace hides the second copy, so the doubling shows only on a GitHub install.
+- **The umbrella alone.** You get the commands, the agents, scriptcraft and the fifteen vendored skills. This is the full toolset for writers.
+- **Copy skills alone.** You get the fifteen skills and nothing else. Without the umbrella, the skills register as `outdoornorway-copy-skills:<skill>`.
+- **Copy skills next to the umbrella.** Each of the fifteen skills is listed twice, once as `outdoornorway-marketing:<skill>` and once as `outdoornorway-copy-skills:<skill>`, because both plugins carry them. Nothing breaks, but the list gets longer and each skill uses description space twice. Install the umbrella alone, or the copy skills alone. A local folder marketplace hides the second copy, so the doubling shows only on a GitHub install.
 - **Account skills next to the umbrella.** The two do not overlap. The umbrella does not load `account-skills/`, so this install adds three skills.
 
 ## The fact-check caveat

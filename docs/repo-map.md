@@ -59,6 +59,7 @@ outdoornorway/
 |   |-- test_repo_integrity.py  [fixed]  integrity test
 |   `-- transcript_report.py    [fixed]  token report for /tokens
 |-- .gitignore                  [fixed]  keeps caches, .env files and transcripts out of git
+|-- .mcp.json                   [fixed]  Scrapling MCP server, for cloud sessions
 |-- CHANGELOG.md                         what changed and when
 |-- CLAUDE.md                   [fixed]  rules for Claude Code in this repo
 |-- CONTRIBUTING.md                      how to change the tools
@@ -96,6 +97,7 @@ Safe to move? has two answers. No means code, tests or manifests name the path. 
 | `CONTRIBUTING.md`, `CHANGELOG.md` | How to change the tools, and what changed and when | Contributors, maintainers | With edits. The integrity test lists both, so a move also needs new links and a test edit. |
 | `LICENSE`, `THIRD_PARTY_SKILLS.md` | The MIT licence, and the source, pinned commit and licence of each third-party skill | The integrity test | No. The licence checks read both by path. |
 | `package.json` | Launcher metadata: `bin`, `files`, Node `engines`, no dependencies | npm, `npx`, the integrity test | No. Keep it at the root. Its `version` must match `plugin.json` and every entry in `marketplace.json`. |
+| `.mcp.json` | The project MCP server `scrapling`, which runs `scrapling mcp` over stdio so Claude Code can fetch and read web pages through Scrapling. Scrapling is installed by the SessionStart hook in cloud sessions only, so in a clone the server reports that Scrapling is missing and does not start, unless you run `pip install "scrapling[ai]"` first. Claude Code asks once before it starts a project server. | Claude Code | No. Claude Code reads project MCP servers from this file at the repo root. |
 | `.gitignore` | Keeps Python caches, transcripts (`*.jsonl`), archives (`*.zip`, `*.tgz`), `.env` files, `node_modules/`, `backup/`, `exports/` and `dist/` (the zips from `skills pack`) out of git | Git, the integrity test | No. The test checks that the main patterns are listed. |
 
 Chat transcripts are not in this repo. Three account skills are, in [account-skills/](../account-skills/README.md). The other account-only skills stay in the Claude account, with a second copy in a private backup kept outside this repo. [backup-and-restore.md](backup-and-restore.md) has the steps.

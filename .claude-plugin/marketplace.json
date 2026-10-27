@@ -20,13 +20,16 @@
       "name": "outdoornorway-copy-skills",
       "source": "./.claude/skills",
       "strict": false,
-      "description": "Eight copy skills: ad creative, conversion copy, copy that sells, copywriting, fact-check, humanizer, marketing psychology and social.",
+      "description": "Fifteen vendored skills: ad creative, ads, AI SEO, competitor profiling, conversion copy, copy that sells, copywriting, fact-check, humanizer, marketing psychology, ponytail, schema, SEO audit, social and video.",
       "version": "0.2.0",
       "category": "marketing",
       "license": "MIT",
-      "keywords": ["copywriting", "ads", "social", "fact-check", "humanizer"],
+      "keywords": ["copywriting", "ads", "social", "fact-check", "humanizer", "seo"],
       "skills": [
         "./ad-creative",
+        "./ads",
+        "./ai-seo",
+        "./competitor-profiling",
         "./conversion-copywriter",
         "./copy-that-sells",
         "./copywriting",
@@ -34,7 +37,10 @@
         "./humanizer",
         "./marketing-psychology",
         "./ponytail",
-        "./social"
+        "./schema",
+        "./seo-audit",
+        "./social",
+        "./video"
       ]
     },
     {
