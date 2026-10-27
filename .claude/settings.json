@@ -18,5 +18,17 @@
     "claude-code-setup@anthropic-plugin-directory": true,
     "ponytail@ponytail": true,
     "repo-band@outdoornorway": true
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "$CLAUDE_PROJECT_DIR/.claude/hooks/session-start.sh"
+          }
+        ]
+      }
+    ]
   }
 }
