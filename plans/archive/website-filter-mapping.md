@@ -55,6 +55,14 @@ This plan is for the team building the tour filters on the new "Norway Guided To
 ## Progress
 | Phase | Status |
 | --- | --- |
-| 1 Facts | In progress |
-| 2 Mapping | Not started |
-| 3 Sheet | Not started |
+| 1 Facts | Done |
+| 2 Mapping | Done |
+| 3 Sheet | Done |
+
+## Execution record (29 Oct 2026)
+
+- Shipped: a private Google Sheet in Sameer's Drive, "Website Tour Filters v1 (tour mapping)", with tabs Read me, Tour filters, Filter values, Long format and Open items.
+- Size: 71 tours, 51 with a live page, 39 flagged Check = Yes, 23 open items.
+- Deviation: page-by-page fetching stopped at the owner's request. Facts come from the rates sheet, the northern lights page, tours.json and the multi-day and combo hub text already read. Gaps are flagged in Notes rather than filled.
+- Deviation: Difficulty and Min age come from the rates sheet Level and Age limits columns, not from pages.
+- Verified: the Tour filters text checksum (20607 characters, 1045 filled cells) matches the build script; all 42 counts in Filter values match a Python recount; the Long format tab has 448 rows, matching the script.
