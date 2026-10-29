@@ -62,7 +62,10 @@ Files to touch: scratchpad `deck/index.html`, `deck/October_2026_Marketing_Revie
 | --- | --- | --- |
 | Where data and deck live | Scratchpad, then Drive | Repo is public; metrics and names are private |
 | Design | September 2026 tokens | Continuity for the leadership audience |
-| Ads | Shipped list from ClickUp only unless the owner supplies exports | No ads connector |
+| Ads | Creatives created and shared, from ClickUp, no performance | Owner decision, 30 Oct |
+| Scope | Whole marketing team, owner's items flagged | Owner decision, 30 Oct |
+| Data cut | One pull, through 29 Oct, no refresh | Owner decision, 30 Oct |
+| Build order | Slide breakdown in chat, feedback rounds, then build | Owner decision, 30 Oct |
 
 ## Not yet specified
 - Phase 1: ads performance source (owner export or none).
