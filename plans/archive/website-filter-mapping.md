@@ -62,7 +62,8 @@ This plan is for the team building the tour filters on the new "Norway Guided To
 ## Execution record (29 Oct 2026)
 
 - Shipped: a private Google Sheet in Sameer's Drive, "Website Tour Filters v1 (tour mapping)", with tabs Read me, Tour filters, Filter values, Long format and Open items.
-- Size: 71 tours, 51 with a live page, 39 flagged Check = Yes, 23 open items.
+- Size: 71 tours, 52 with a live page, 40 flagged Check = Yes, 23 open items (after the second review).
 - Deviation: page-by-page fetching stopped at the owner's request. Facts come from the rates sheet, the northern lights page, tours.json and the multi-day and combo hub text already read. Gaps are flagged in Notes rather than filled.
 - Deviation: Difficulty and Min age come from the rates sheet Level and Age limits columns, not from pages.
-- Verified: the Tour filters text checksum (20607 characters, 1045 filled cells) matches the build script; all 42 counts in Filter values match a Python recount; the Long format tab has 448 rows, matching the script.
+- Verified: the Tour filters text checksum (20607 characters, 1045 filled cells) matched the build script, as did all 42 Filter values counts and the 448 Long format rows. After the second review: 21108 characters, 1067 cells, 468 Long format rows, all counts matching again.
+- Second review (29 Oct 2026, 13 findings, all applied): Autumn Getaway set to Live page with its hub URL; Ålesund added to the 9-day ski trip; snowshoeing added to the 6-day ski package; column A uses website card names; combos and courses carry Day Tour or Multi-Day Tour as a second trip type; Tour IDs drop apostrophes; destination notes reworded; two missing Check flags added.
