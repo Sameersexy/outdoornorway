@@ -67,3 +67,10 @@ This plan is for the team building the tour filters on the new "Norway Guided To
 - Deviation: Difficulty and Min age come from the rates sheet Level and Age limits columns, not from pages.
 - Verified: the Tour filters text checksum (20607 characters, 1045 filled cells) matched the build script, as did all 42 Filter values counts and the 448 Long format rows. After the second review: 21108 characters, 1067 cells, 468 Long format rows, all counts matching again.
 - Second review (29 Oct 2026, 13 findings, all applied): Autumn Getaway set to Live page with its hub URL; Ålesund added to the 9-day ski trip; snowshoeing added to the 6-day ski package; column A uses website card names; combos and courses carry Day Tour or Multi-Day Tour as a second trip type; Tour IDs drop apostrophes; destination notes reworded; two missing Check flags added.
+- Third round (29 Oct 2026): the owner trimmed the sheet to 52 live tours and three tabs. A customer-journey review (four reviewers, one synthesiser, one verifier, one reconciler) then changed the filters so that no value has zero tours:
+  - Seasons follow the design's two seasons with months, Summer (May to Sep) and Winter (Oct to Apr), tagged from real departure months.
+  - Duration is the length in days (1, 2, 3, 5, 6, 7 and 9 days), at the owner's request.
+  - Trip types use the design wording (Day Tours, Multi-Day Tours, Northern Lights Tours) plus Courses and Combo Tours.
+  - Ålesund is off the 9-day ski trip (transfer only) and Flåm is on the Spring Adventure (a day with the Flåm Railway). Lofoten, Narvik, Oslo, Ålesund and Year Round left the lists.
+  - Durations, seasons and activities for 13 gap rows came from their tour pages, fetched with Crawl4AI.
+  - Verified: 13136 characters, 638 cells, 367 Long format rows and all 35 counts match the build script, with no formula errors.
