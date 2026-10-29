@@ -17,6 +17,9 @@
   "enabledPlugins": {
     "claude-code-setup@anthropic-plugin-directory": true,
     "ponytail@ponytail": true,
+    "outdoornorway-marketing@outdoornorway": true,
+    "outdoornorway-copy-skills@outdoornorway": true,
+    "outdoornorway-account-skills@outdoornorway": true,
     "repo-band@outdoornorway": true
   }
 }
