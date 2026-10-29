@@ -1,62 +1,60 @@
 # Website tour filters: tour-to-filter mapping sheet
 
-Ticket: [Website destination filters v1](https://app.clickup.com/t/17tmpu8hjtm) (owner Sameer, design Abhishek, review Marcio and Karlo)
-
-This plan is for the team building the tour filters on the new "Norway Guided Tours" page. It answers one question: which filter values does each tour get?
+This plan is for the team building the tour filters on the new "Norway Guided Tours" page. It answers one question: which filter values does each tour get? The output is a private Google Sheet. No prices go into it or into this repo.
 
 ## Inputs (read 29 Oct 2026)
 
-1. Ticket: core destinations confirmed by Marcio are Lofoten, Tromsø, Alta, Narvik, Bergen, Voss, Oslo, Flåm and Ålesund. Multi-select per trip. Keep the list short.
-2. Figma frame 7217:79: filter groups are Destination, Activity, Trip Type (Day Tours, Multi-Day Tours, Northern Lights Tours), Season (Summer May to Sep, Winter Oct to Apr, Year Round) and Duration (Half Day, Full Day, 2-3 Days, 4+ Days). The hero search uses Destination, Activity, Trip type and Season. The design also shows "Fjord Norway" as a destination and "Fishing" as an activity.
-3. Internal 2027 rates sheet: tabs MULTIDAY TOURS PRICES, WINTER DAY TOURS, SUMMER DAY TOURS, COMBO PRICES, SPRING, AUTUMN TOURS and COURSES hold tours. Rental, hotel, shuttle and lesson-pricing tabs do not. No prices go into the new sheet or this repo.
-4. Northern lights page: 2 multi-day tours and 10 Alta day tours. The 10 day tours are not in the rates sheet.
-5. Site sitemap and `campaigns/ski-meta-ads/tours.json` give the page URL per tour.
+1. The website filters ticket: 9 core destinations (Lofoten, Tromsø, Alta, Narvik, Bergen, Voss, Oslo, Flåm, Ålesund), multi-select per trip, short list.
+2. Figma frame 7217:79: filter groups Destination, Activity, Trip Type (Day Tours, Multi-Day Tours, Northern Lights Tours), Season (Summer May to Sep, Winter Oct to Apr, Year Round) and Duration (Half Day, Full Day, 2-3 Days, 4+ Days).
+3. The internal 2027 rates sheet: tabs MULTIDAY TOURS PRICES, WINTER DAY TOURS, SUMMER DAY TOURS, COMBO PRICES, SPRING, AUTUMN TOURS and COURSES.
+4. Live site hubs: /multi-day-tour, /day-tour, /combo, /courses and /northern-lights-tours-norway.
+5. Each tour's own page, fetched live. `campaigns/ski-meta-ads/tours.json` for the ski tours.
 
 ## Phases
 
-### Phase 1: Master tour list
-Verified when: every tour row in the seven tabs, plus every tour on the northern lights page, appears once, with duplicates merged and each row's source noted.
-Files to touch: scratch CSV only.
+### Phase 1: Facts per tour (Size: M)
+- Fetch the four hubs and the northern lights page, list every live tour card.
+- Fetch each tour page. Record only what the page says: places, included activities, optional activities, months, length, difficulty, minimum age.
+- Match each rates sheet row to a page. Rows with no page keep a status instead.
+- Verified when: every rates sheet row and every hub card has a row in `facts.json` (scratch), with a source for each fact.
 
-#### Step 1.1: Build the list (Size: S)
-- Acceptance criteria: one row per sellable tour; duplicates merged (for example "7 Day Ski in Fjord Norway & Aurora in Tromsø" is the Bergen to Tromsø northern lights page); status set for each row.
-- Verification command: a Python count of rows per source tab against the tab row counts.
-- Test seams: the count script.
-- Blocked by: gate answers.
+### Phase 2: Map to filters (Size: S)
+- Apply the decisions below in one Python script, so the mapping is repeatable.
+- Verified when: a script check finds no value outside the allowed list, and no live tour without a destination.
 
-### Phase 2: Facts per tour
-Verified when: each tour with a live page has destinations, activities, season and duration taken from that page.
-
-#### Step 2.1: Scrape tour pages (Size: M)
-- Acceptance criteria: one live fetch per tour page; places and activities recorded only when the page names them; tours with no page are marked "From name only".
-- Verification command: a script that lists rows with no source.
-- Blocked by: 1.1.
-
-### Phase 3: Google Sheet
-Verified when: the sheet opens with the three tabs below, dropdowns work, and the counts tab matches a recount in Python.
-
-#### Step 3.1: Create and fill the sheet (Size: M)
-- Tab "Tour filters": A Tour name (website name), B Source tab, C Status, D Page URL, then one filter value per cell in fixed column blocks: Destination 1 to 3, Activity 1 to 6, Trip type 1 to 2, Season 1 to 2, Duration, then Notes.
-- Tab "Filter values": every allowed value per group with a live COUNTIF of tours.
+### Phase 3: Google Sheet (Size: M)
+- Tab "Tour filters": Tour ID, Tour name (website), Rates sheet name, Status, Source, URL, Region, Destination 1 to 3, Activity 1 to 6, Trip type 1 to 2, Season 1 to 2, Duration, then side columns Difficulty, Min age and Notes.
+- Tab "Long format": one row per tour and filter value, for the developer.
+- Tab "Filter values": the allowed values per group with a live count, plus a legend.
 - Tab "Open items": conflicts and unknowns, each with who confirms it.
-- Formatting: frozen header row and name column, colour per filter block, dropdown validation from "Filter values", filter view on.
-- Blocked by: 2.1.
+- Formatting: frozen header and name column, one colour per filter block, dropdowns from "Filter values", filter on.
+- Verified when: the counts in the sheet match a recount in Python.
 
 ## Decision log
 | Decision | Chosen option | Why |
 | --- | --- | --- |
-| Pending gate | | |
+| Destinations | The ticket's 9 only, tagged when the page names the place | Ticket list is confirmed. Fjord Norway is a region, so it goes in a Region column |
+| Region | Fjord Norway, Northern Norway, Abroad | Keeps the design's "Fjord Norway" card working without a fake destination |
+| Trip type | Day Tour, Multi-Day Tour, Combo, Course, Northern Lights (multi-select) | Figma's 3 cannot hold combos or courses |
+| Season | Winter, Spring, Summer, Autumn, Year Round, from page months and sheet departure dates | Rates sheet sells spring and autumn departures |
+| Duration | Figma's 4 values, from the page | Pages are the public truth |
+| Activity | Broad values (Biking covers MTB and e-bikes, Kayaking covers fjord, river and whitewater), only included activities | Short list, matches "Show more" |
+| Rows with no page | Kept, with Status: Live page, Not online yet, Affiliate, Abroad, Not a tour | Nothing is lost, the developer filters on Status |
+| Tour names | Website name, rates sheet name beside it | Customers see the website name |
+| Extra groups | Difficulty and Min age as side columns, marked "not in design" | On every page, cheap to add, the team can decide |
+| Review | Independent review on 29 Oct 2026, 16 findings, all folded in above | |
 
 ## Not yet specified
-- Phase 2: some combo rows in the rates sheet have no page and no clear status. Fog until the scrape shows which are live.
+- Whether the abroad tours belong on a Norway filter page at all. Marked "Abroad" and logged in Open items.
+- Whether the site's existing day-tour filters (Activity Type, Segment) feed the new filters. Logged in Open items for the developer.
 
 ## Always / Never
-- Always: one filter value per cell; facts from a page or the rates sheet; every guess flagged in Notes.
-- Never: prices in the new sheet; edits to the rates sheet; sharing the sheet with anyone but Sameer; adding tours that appear on neither source.
+- Always: one filter value per cell; each fact from a page or the rates sheet; every guess flagged in Notes.
+- Never: prices in the sheet; edits to the rates sheet; sharing the sheet; tours found on neither the rates sheet nor a live hub.
 
 ## Progress
 | Phase | Status |
 | --- | --- |
-| 1 Master list | Waiting on gate |
-| 2 Facts | Waiting on gate |
-| 3 Sheet | Waiting on gate |
+| 1 Facts | In progress |
+| 2 Mapping | Not started |
+| 3 Sheet | Not started |
