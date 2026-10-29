@@ -74,3 +74,7 @@ This plan is for the team building the tour filters on the new "Norway Guided To
   - Ålesund is off the 9-day ski trip (transfer only) and Flåm is on the Spring Adventure (a day with the Flåm Railway). Lofoten, Narvik, Oslo, Ålesund and Year Round left the lists.
   - Durations, seasons and activities for 13 gap rows came from their tour pages, fetched with Crawl4AI.
   - Verified: 13136 characters, 638 cells, 367 Long format rows and all 35 counts match the build script, with no formula errors.
+- Fourth round (29 Oct 2026): Season went back to four values at the owner's request: Spring (Mar to May), Summer (Jun to Aug), Autumn (Sep to Nov) and Winter (Dec to Feb).
+  - An agent tagged every season in which a tour departs or runs, plus any season in the tour's title. It used the rates sheet dates and 22 tour pages fetched with Crawl4AI.
+  - A Season 3 column was added for tours that run in three seasons. Duration moved to column V.
+  - Counts: Spring 34, Summer 31, Autumn 38, Winter 19. Verified: 14417 characters, 706 cells, 434 Long format rows, all 39 counts match, no formula errors.
