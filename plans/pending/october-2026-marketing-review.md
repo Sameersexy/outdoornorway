@@ -84,4 +84,4 @@ Files to touch: scratchpad `deck/index.html`, `deck/October_2026_Marketing_Revie
 | --- | --- |
 | 1 Collect | done 29 Oct, v1 then rechecked by 13 Opus agents (v2) |
 | 2 Synthesise | done, review_v2.md in scratchpad |
-| 3 Build | done 30 Oct: 17-slide HTML deck rendered to PDF, reviewed by 5 agents and 110 verifiers, 98 fixes applied; PDF kept outside the repo |
+| 3 Build | done 30 Oct: deck cut to 11 slides on owner feedback (short headlines, no footers, scorecard as a status table, October in solid blue in comparisons); PDF kept outside the repo |
