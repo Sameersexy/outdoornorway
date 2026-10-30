@@ -66,6 +66,9 @@ Files to touch: scratchpad `deck/index.html`, `deck/October_2026_Marketing_Revie
 | Scope | Whole marketing team, owner's items flagged | Owner decision, 30 Oct |
 | Data cut | One pull, through 29 Oct, no refresh | Owner decision, 30 Oct |
 | Build order | Slide breakdown in chat, feedback rounds, then build | Owner decision, 30 Oct |
+| Email scope | Marketing and download emails only; transactional and 2025 flows excluded | Owner decision, 30 Oct |
+| Deliverable count | Tasks with dated October work (33), bulk closes explained in a footer | Default after recheck, 30 Oct |
+| Paid media slide | Kept, sourced from the team tracker, platform lead counts withheld | Default after recheck, 30 Oct |
 
 ## Not yet specified
 - Phase 1: ads performance source (owner export or none).
@@ -79,6 +82,6 @@ Files to touch: scratchpad `deck/index.html`, `deck/October_2026_Marketing_Revie
 ## Progress
 | Phase | Status |
 | --- | --- |
-| 1 Collect | pending |
-| 2 Synthesise | pending |
-| 3 Build | pending |
+| 1 Collect | done 29 Oct, v1 then rechecked by 13 Opus agents (v2) |
+| 2 Synthesise | done, review_v2.md in scratchpad |
+| 3 Build | in progress, 17-slide HTML deck rendered to PDF |
