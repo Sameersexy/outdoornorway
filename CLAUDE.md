@@ -20,6 +20,14 @@ Rules
 - No model names in any file. No em or en dashes, no emojis.
 - Work on the branch the session names. Open a pull request only when asked.
 
+Web scraping
+- Read web pages only with `obscura`, `crwl` (Crawl4AI) or `scrapling`, run through Bash. Do not use Firecrawl tools, WebFetch, Playwright MCP or curl for page content.
+- Start with `obscura fetch URL --dump markdown`. Use `obscura scrape URL1 URL2` for batches and add `--stealth` if a site blocks it.
+- Use `CRAWL4AI_NO_CLOUD_NOTICE=1 crwl crawl URL -o markdown` to crawl a whole site or extract structured data. Local only, never Crawl4AI Cloud.
+- Use `scrapling extract get URL out.md` or `scrapling extract fetch URL out.md` for anti-bot pages. Add `-s "css selector"` to keep only matching content.
+- Respect robots.txt (`--obey-robots` in Obscura). Save large output to a file and read only what you need.
+- If all three tools fail on a page, say so and stop. Web search is not covered, so ask before using a search tool.
+
 Tokens (details in `docs/token-hygiene.md`)
 - One deliverable per session. Compact early.
 - Subagents and workflows return paths, scores and short lists. Long reports go to files.
