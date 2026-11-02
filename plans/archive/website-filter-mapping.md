@@ -78,3 +78,4 @@ This plan is for the team building the tour filters on the new "Norway Guided To
   - An agent tagged every season in which a tour departs or runs, plus any season in the tour's title. It used the rates sheet dates and 22 tour pages fetched with Crawl4AI.
   - A Season 3 column was added for tours that run in three seasons. Duration moved to column V.
   - Counts: Spring 34, Summer 31, Autumn 38, Winter 19. Verified: 14417 characters, 706 cells, 434 Long format rows, all 39 counts match, no formula errors.
+- Fifth round (2 Nov 2026), from Karlo's review: Trip type gained Fjord Tours (13 tours with time on or at a fjord) and Weekend Getaways (3 trips of 2 to 3 days with accommodation that depart Fridays or run every day). Fjord Norway stays as a Region. Trip type 3 and 4 columns were added. Verified: 14630 characters, 724 cells, 450 Long format rows, all 39 counts match.
